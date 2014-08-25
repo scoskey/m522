@@ -1,0 +1,108 @@
+\documentclass[11pt,oneside]{amsart}
+
+\title{Math 522 Course Notes}
+
+\usepackage[vscale=.8]{geometry}
+\usepackage{setspace}\onehalfspacing
+\renewcommand{\labelitemi}{$\circ$}
+
+\newcommand{\set}[1]{\left\{\,#1\,\right\}}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb R}
+
+\swapnumbers
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{example}[thm]{Example}
+
+\begin{document}
+\maketitle
+
+\section{Real numbers}
+
+\begin{defn}
+  The \emph{real number system} is a complete ordered field. That is, it is a set $\RR$ together with distinguished elements $0,1$, operations $+,\times$ and an ordering $<$ satisfying the following rules.
+\begin{itemize}
+\item It is a \emph{field}: it satsfies the associative, commutative, and distributive laws, $0$ is the additive identity and $1$ is the multiplicative identity;
+\item It is an \emph{ordered} field: $<$ is a strict total order, $a<b$ implies $a+c<b+c$, and if $c$ is positive then $ac<bc$;
+\item It is \emph{complete}: if $A\subset\RR$ has an upper bound, then it has a least upper bound (supremum).
+\end{itemize}
+\end{defn}
+
+\begin{rem}
+It is not difficult to prove that any two complete ordered fields are isomorphic to each other, so it makes sense to define the real number system as the unique such object.
+\end{rem}
+
+\begin{rem}
+The above definition of the real number system is an abstract, axiomatic definition. It doesn't tell you constructively what a real number really is, and for our set-theoretic purposes, this will be of some importance.
+\end{rem}
+
+In the 19th century, Dedekind gave the following explicit and rigorous construction of the real number system. First we will take the construction of the rational number system for granted. It is simply the set of fractions whose numerator is an integer and whose denominator is a nonzero natural number.
+
+The key insight is to realize that each real number $r$ has a \emph{cut} in the rational numbers associated with it: the set of rational numbers that are strictly less than $r$. This association should be bijective: If the least upper bound property is true, then any such cut gives rise to a real number as the supremum of the cut. And if two real numbers are different, then they should give rise to different cuts.
+
+So all we have to do to define real numbers was to define cuts. To avoid circularity, we should axiomatize cuts without referring to real numbers at all. A \emph{cut} in the rational numbers is a subset $r\subset\QQ$ satisfying three properties:
+\begin{enumerate}
+\item nontriviality: $r\neq\emptyset$ and $r\neq\QQ$
+\item downward closure: if $q\in r$ and $q'<q$ then $q'\in r$
+\item no last element: if $q\in r$ then there is $q'>q$ such that $q'\in r$
+\end{enumerate}
+To complete the construction one must say how the $+,\times$ operations and $<$ relation can be defined just in terms of cuts, and then prove that they satisfy the axioms of a complete ordered field. For example, one defines $r+r'$ to be the supremum of the set $\set{q+q'\mid q\in r,q'\in r'}$, and one defines $r<r'$ if and only if $r\subset r'$ and $r\neq r'$. We omit the details of verifying that these definitions work.
+
+\begin{defn}
+  A set $A$ of real numbers is said to be \emph{countable} if it can be enumerated with natural number indices. In other words, $A$ is countable if there exists a sequence $(a_n)_{n\in\NN}$ such that $A=\set{a_n\mid n\in\NN}$.
+\end{defn}
+
+Note that this definition implies that finite sets are countable. If we wish to emphasize that a particular countable set is infinite, we will use the term \emph{countably infinite}. A set that is not countable is called \emph{uncountable}. We now give Cantor's famous proof of teh fact that the set of all real numbers is uncountable. The argument goes by contradiction and uses an inductive evasion-style argument to reach a contradiction. Such arguments are often called ``diagonal'', for reasons we shall see later on.
+
+\begin{thm}[Cantor]
+  The set of all real numbers is uncountable.
+\end{thm}
+
+\begin{proof}
+  Suppose towards a contradiction that the set of all real numbers is countable. Then there exists a sequence $(a_n)_{n\in\NN}$ such that $\RR=\set{a_n\mid n\in\NN}$. Our strategy will be to inductively construct a decreasing sequence of closed intervals $I_n=[l_n,r_r]$ such that for all $n$, $a_n\notin I_n$. Then if $r$ lies in the intersection of these intervals, $r$ cannot be equal to $a_n$ for any $n$, a contradiction.
+
+The construction itself is straightforward. For the base case let $I_1=[l_1,r_1]$ be any interval which omits $a_1$. For the inductive step, if $I_{n-1}$ has been defined, let $I_n=[l_n,r_n]$ be any subinterval of $I_{n-1}$ which omits $a_n$.
+
+We can now find a point in the intersection of the $I_n$ using the completeness property. First observe that since $I_n\subset I_{n-1}$ for all $n$, the set of left endpoints $\set{l_n\mid n\in\NN}$ is bounded above by any and all of the right endpoints $r_n$. By the completeness property, the set of left endpoints has a least upper bound $x$. Since $x$ is an upper bound for $\set{l_n\mid n\in\NN}$, we have $l_n\leq x$ for all $n$. Since $x$ is the least possible upper bound for $\set{l_n\mid n\in\NN}$, we have $x\leq r_n$ for all $n$. Therefore we have $x\in[l_n,r_n]=I_n$ for all $n$.
+
+Since $x$ lies in $I_n$ for all $n$, and since we chose $I_n$ in such a way that it omits $a_n$, we know that $x\neq a_n$ for all $n$. This contradicts the hypothesis that $\RR=\set{a_n\mid n\in\NN}$, and concludes the proof.
+\end{proof}
+
+This argument appears in one form or another numerous times throughout elementary analysis and set theory. We shall next see it in the proof of the Baire category theorem.
+
+\section{Baire category}
+
+\begin{defn}
+  A set of real numbers $A$ is said to be \emph{nowhere dense} if the closure of $A$ contains no nonempty open intervals.
+\end{defn}
+
+\begin{example}
+  Any finite set is nowhere dense. The set $\set{1/n\mid n\in\NN}$ is nowhere dense. In fact, any discrete set is nowhere dense (here, $A$ is discrete if every point of $A$ is isolated). The set of rational numbers whose numerator is $1$ and whose denominator is a power of $2$ is not nowhere dense, because the closure is $[0,1]$.
+\end{example}
+
+\begin{example}
+  The Cantor middle thirds set is nowhere dense. Recall that the Cantor set is defined as follows. Let $I_1=[0,1]$ and let $I_2=[0,1/3]\cup[2/3,1]$ be the set $I_1$ with its open middle third removed. Inductively let $I_n$ be constructed from $I_{n-1}$ by removing the open middle third from every interval of $I_{n-1}$. Finally the Cantor set $C$ is defined to be $C=\bigcap I_n$. Then $C$ is closed because it is the intersection of closed sets. Hence to check that $C$ is nowhere dense, it suffices to show it contains no nonempty open intervals.
+\end{example}
+
+The terminology ``nowhere dense'' may sound strange at first, but it is justified by the following fact.
+
+\begin{prop}
+  A set of real numbers $A$ is nowhere dense if and only if for every nonempty open set $O$, we have that $A$ is not dense in $O$.
+\end{prop}
+
+\begin{proof}
+  
+\end{proof}
+
+\begin{thm}[Baire category theorem]
+  
+\end{thm}
+
+\end{document}
