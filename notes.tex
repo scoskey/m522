@@ -29,7 +29,9 @@
 \begin{document}
 \maketitle
 
-\section{Real numbers}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The real number system}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{defn}
   The \emph{real number system} is a complete ordered field. That is, it is a set $\RR$ together with distinguished elements $0,1$, operations $+,\times$ and an ordering $<$ satisfying the following rules.
@@ -86,21 +88,27 @@ Since $x$ lies in $I_n$ for all $n$, and since we chose $I_n$ in such a way that
 
 This argument appears in one form or another numerous times throughout elementary analysis and set theory. We shall next see it in the proof of the Baire category theorem.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Baire category theory}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{defn}
-  A set of real numbers $A$ is said to be \emph{nowhere dense} if every open interval $I$ contains an open interval $J$ such that $J\cap A=\emptyset$. (Here and always, we implicitly mean that $I$ and $J$ are nonempty.)
+  A set of real numbers $A$ is said to be \emph{nowhere dense} if every positive-length interval $I$ contains a positive-length interval $J$ such that $J$ is disjoint from $A$.
 \end{defn}
 
 \begin{example}
-  Any finite subset of $\RR$ is nowhere dense. The set $\set{1/n\mid n\in\NN}$ is nowhere dense. In fact, any \emph{discrete} set is nowhere dense (here, $A$ is discrete if every point of $A$ is isolated). The set of rational numbers whose numerator is $1$ and whose denominator is a power of $2$ is \emph{not} nowhere dense, because such a number can be found in every open subinterval of $[0,1]$.
+  Any finite subset of $\RR$ is nowhere dense. The set $\set{1/n\mid n\in\NN}$ is nowhere dense. In fact, any \emph{discrete} set is nowhere dense (here, $A$ is discrete if every point of $A$ is isolated). The set of rational numbers whose numerator is $1$ and whose denominator is a power of $2$ is \emph{not} nowhere dense, because such a number can be found in every positive-length subinterval of $[0,1]$.
 \end{example}
 
-\begin{example}
-  The Cantor set is nowhere dense. Recall that the \emph{Cantor set} is defined as follows. Let $I_1=[0,1]$ and let $I_2=[0,1/3]\cup[2/3,1]$ be the set $I_1$ with its open middle third removed. Inductively let $I_n$ be constructed from $I_{n-1}$ by removing the open middle third from every interval of $I_{n-1}$. Finally the Cantor set $C$ is defined to be $C=\bigcap I_n$. Then $C$ is closed because it is the intersection of closed sets. Hence to check that $C$ is nowhere dense, it suffices to show it contains no nonempty open intervals.
+Note that nowhere dense sets need not be countable. The classical Cantor middle thirds set is an archetypal example of a nowhere dense set. Recall that the \emph{Cantor set} is defined as follows. Let $I_1=[0,1]$ and let $I_2=[0,1/3]\cup[2/3,1]$ be the set $I_1$ with its open middle third removed. Inductively let $I_n$ be constructed from $I_{n-1}$ by removing the open middle third from every interval of $I_{n-1}$. Finally the Cantor set $C$ is defined to be $C=\bigcap I_n$.
 
-\ldots
-\end{example}
+\begin{prop}
+  The Cantor set $C$ is nowhere dense.
+\end{prop}
+
+\begin{proof}
+  First compute that the sum of the lengths of all of those middle thirds removed in the construction of the cantor set is exactly $1$ (we leave this as an exercise). It follows from this that $C$ does not contain any positive-length intervals. Now if $I$ is any positive-length interval, then $I$ must contain a point $x\notin C$. Now note that $C$ is closed because it is an intersection of closed sets, and henc $\RR\smallsetminus C$ is open. Thus there is an open interval $J$ centered at $x$ such that $J\subset\RR\smallsetminus C$. Shrinking the radius of $J$ if necessary, we can suppose that $J\subset I$. This shows that $C$ is nowhere dense.
+\end{proof}
 
 The terminology ``nowhere dense'' may sound strange at first, but it is justified by the following fact.
 
@@ -117,28 +125,48 @@ The terminology ``nowhere dense'' may sound strange at first, but it is justifie
 We leave the proof as an exercise.
 
 \begin{thm}
-  The class of nowhere dense sets is closed under the operations of subset, union, and closure.  
+  The class of nowhere dense sets is closed under the operations of subset, union, and closure.
 \end{thm}
 
 \begin{proof}
   Preservation to subsets is immediate from the definition.
 
-  For preservation to unions, suppose that $A,B$ are nowhere dense and let $I$ be an open interval. Since $A$ is nowhere dense, there is an open interval $J\subset I\smallsetminus A$. Since $B$ is nowhere dense there is an open interval $J_2\subset J\smallsetminus B$. It follows that
-\[J_2\subset (I\smallsetminus A)\smallsetminus B=I\smallsetminus (A\cup B)
+  For preservation to unions, suppose that $A,B$ are nowhere dense and let $I$ be a positive-length interval. Since $A$ is nowhere dense, there is a positive-length interval $J\subset I\smallsetminus A$. Since $B$ is nowhere dense there is a further positive-length interval $J'\subset J\smallsetminus B$. It follows that
+\[J'\subset (I\smallsetminus A)\smallsetminus B=I\smallsetminus (A\cup B)
 \]
 This establishes that $A\cup B$ is again nowhere dense.
 
-Preservation to closures is immediate from condition (b) of Proposition~\ref{prop:nwd-equiv}, but we can also give a direct argument. Let $A$ be nowhere dense and let $I$ be a given open interval. Since $A$ is nowhere dense there is an open interval $J$ such that $J\subset\RR\smallsetminus A$. Since $J$ is open, we also have $J\subset\RR\smallsetminus\bar{A}$. (Recall that since $\bar{A}$ is the intersection of all closed sets containing $A$, we have that $\RR\smallsetminus\bar{A}$ is the union of all open sets disjoint from $A$.) This shows that $\bar{A}$ is nowhere dense.
+Preservation to closures is immediate from condition (b) of Proposition~\ref{prop:nwd-equiv}, but we can also give a direct argument. Let $A$ be nowhere dense and let $I$ be a given positive-length interval. Since $A$ is nowhere dense there is a positive-length interval $J$ such that $J\subset\RR\smallsetminus A$. Removing endpoints if necessary, we may suppose that $J$ is open. It follows that $J\subset\RR\smallsetminus\bar{A}$ (recall that since $\bar{A}$ is the intersection of all closed sets containing $A$, we have that $\RR\smallsetminus\bar{A}$ is the union of all open sets disjoint from $A$). This shows that $\bar{A}$ is nowhere dense.
 \end{proof}
 
 \begin{rem}
-  It is easy to see that the class of nowhere dense sets is \emph{not} preserved to infinite unions, even countably infinite ones.
+  It is easy to see that the class of nowhere dense sets is \emph{not} preserved to infinite unions, even countably infinite ones. For example, the set of rational numbers is countable, and therefore it is a countable unions of singletons: $\QQ=\bigcup_{q\in\QQ}\{q\}$. Each singleton $\{q\}$ is clearly nowhere dense, so $\QQ$ is a countable union of nowhere dense sets, but $\QQ$ is dense.
 \end{rem}
 
+\begin{defn}
+  A set of real numbers $A$ is called \emph{meager} if it is a union of countably many nowhere dense sets.
+\end{defn}
+
+In principal it is possible that this notion is completely moot in the sense that maybe every set of real numbers is meager according to this definition. The Baire category theorem says that this is not the case. In fact, we will soon see that meager sets are rather paultry as the name implies.
+
 \begin{thm}[Baire category theorem]
-  
+  The set of all real numbers $\RR$ is not meager.
 \end{thm}
 
+\begin{proof}
+
+\end{proof}
+
+\begin{rem}
+  Baire category theory gets its name from the above theorem, and the fact that meager sets used to be called ``first category''. Nonmeager sets used to be called ``second category''.
+\end{rem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Measure theory}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sets, functions, and cardinality}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
