@@ -10,6 +10,7 @@
 \usepackage{setspace}\onehalfspacing
 \renewcommand{\labelitemi}{$\circ$}
 \renewcommand{\labelenumi}{(\alph{enumi})}
+\usepackage{etoolbox}\makeatletter\pretocmd{\@seccntformat}{\S}{}{}\pretocmd{\@subseccntformat}{\S}{}{}\makeatother
 
 \newcommand{\set}[1]{\left\{\,#1\,\right\}}
 \newcommand{\NN}{\mathbb N}
@@ -28,6 +29,31 @@
 
 \begin{document}
 \maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{section}{-1}
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This course is about set theory, and its use in the study of the real line. By way of motivation, consider the question of mesauring the \emph{size} of a given set of real numbers. The word ``size'' can mean many different things, depending on the context. To see what I mean, consider these three important examples.
+
+\begin{itemize}
+\item To a set theorist or combinatorist, the simplest notion of size is
+\emph{cardinality}, which asks for instance whether a set is finite, countably infinite, or uncountable.
+
+\item To an analyst, one standard notion of size is \emph{measure}, which asks for instance whether a set has zero length or positive length.
+
+\item To a topologist, a key notion of size is \emph{category}, which asks whether a set is meager, comeager, or nonmeager non-comeager.
+\end{itemize}
+
+In this course we will ask: how do these three kinds of size compare with one another? In answering this question, we will discover numerous relationships between measure and category, with the relationships giving rise to a beautiful structure.
+
+Our investigation of mesaure and category will lead us to a number of \emph{independence results}, that is, statements that cannot be decided using the usual axioms of set theory. The most central example of such a statement is the \emph{continuum hypothesis} (CH), which asserts that the set of all real numbers has cardinality equal to the first uncountable cardinal number. Cantor initially posed this problem in 1878. In 1940 G\"odel showed the axioms of set theory can't disprove CH, and in 1965 Cohen finally showed that the axioms of set theory can't prove CH.
+
+In his proof of the latter half of the independence of CH, Cohen developed a tool for building models of set theory called \emph{forcing}. Far from being an isolated application, since then forcing has become a standard tool for establishing independence results. We will develop the machinery of forcing and give a number of such applications.
+
+With the tool of forcing in hand, we will return to the notions of measure and category. We will find that there are numerous cardinal numbers surrounding the zero length sets and the meager sets whose values, like the size of the set of all real numbers, are also independent of set theory.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The real number system}
