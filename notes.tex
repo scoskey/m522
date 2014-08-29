@@ -39,14 +39,14 @@ This course is about set theory, and its use in the study of the real line. By w
 
 \begin{itemize}
 \item To a set theorist or combinatorist, the simplest notion of size is
-\emph{cardinality}, which asks for instance whether a set is finite, countably infinite, or uncountable.
+\emph{cardinality}, which asks for instance whether a set is finite, countably infinite, or uncountable. Of course if the set is uncountable, a set theorist would further ask whether it is of the first uncountable cardinality ($\aleph_1$), the second uncountable cardinality ($\aleph_2$), etc.
 
 \item To an analyst, one standard notion of size is \emph{measure}, which asks for instance whether a set has zero length or positive length.
 
-\item To a topologist, a key notion of size is \emph{category}, which asks whether a set is meager, comeager, or nonmeager non-comeager.
+\item To a topologist, a key notion of size is \emph{category}, which asks whether a set is meager, comeager, or neither meager nor comeager.
 \end{itemize}
 
-In this course we will ask: how do these three kinds of size compare with one another? In answering this question, we will discover numerous relationships between measure and category, with the relationships giving rise to a beautiful structure.
+In this course we will ask: how do these three kinds of size compare with one another? In answering this question, we will discover numerous relationships between measure and category, with the diagram of these relationships revealing a beautiful structure.
 
 Our investigation of mesaure and category will lead us to a number of \emph{independence results}, that is, statements that cannot be decided using the usual axioms of set theory. The most central example of such a statement is the \emph{continuum hypothesis} (CH), which asserts that the set of all real numbers has cardinality equal to the first uncountable cardinal number. Cantor initially posed this problem in 1878. In 1940 G\"odel showed the axioms of set theory can't disprove CH, and in 1965 Cohen finally showed that the axioms of set theory can't prove CH.
 
@@ -99,6 +99,7 @@ To complete the construction one must say how the $+,\times$ operations and $<$ 
 Note that this definition implies that finite sets are countable. If we wish to emphasize that a particular countable set is infinite, we will use the term \emph{countably infinite}. A set that is not countable is called \emph{uncountable}. We now give Cantor's famous proof of the fact that the set of all real numbers is uncountable. The argument goes by contradiction and uses a recursive construction to reach a contradiction one step at a time. Such arguments are often called ``diagonal'', for reasons we shall see later on.
 
 \begin{thm}[Cantor]
+  \label{thm:cantor}
   The set of all real numbers is uncountable.
 \end{thm}
 
@@ -170,22 +171,47 @@ Preservation to closures is immediate from condition (b) of Proposition~\ref{pro
 \end{rem}
 
 \begin{defn}
-  A set of real numbers $A$ is called \emph{meager} if it is a union of countably many nowhere dense sets.
+  A set of real numbers $A$ is called \emph{meager} if it is a union of countably many nowhere dense sets. A set $A$ is called \emph{comeager} if $\RR\smallsetminus A$ is meager.
 \end{defn}
 
 In principal it is possible that this notion is completely moot in the sense that maybe every set of real numbers is meager according to this definition. The Baire category theorem says that this is not the case. In fact, we will soon see that meager sets are rather paultry as the name implies.
 
 \begin{thm}[Baire category theorem]
-  The set of all real numbers $\RR$ is not meager.
+  The set of all real numbers $\RR$ is nonmeager. In fact, if $A$ is any set of real numbers whose complement is not dense, then $A$ is nonmeager.
 \end{thm}
 
 \begin{proof}
+  The proof is very similar to Cantor's proof of Theorem~\ref{thm:cantor}. Suppose towards a contradiction that $\RR$ is meager. Then there exists a sequence $(A_n)_{n\in\NN}$ of nowhere dense sets such that $\bigcup A_n=\RR$. We will inductively construct a decreasing sequence of closed intervals $J_n$ such that for all $n$, $J_n\cap N_n=\emptyset$.
 
+  The induction is again straightforward. Begin with an arbitrary positive-length interval $I$, and apply the definition of $A_1$ being nowhere dense to obtain $J_1$. Inductively apply the definition of $A_n$ being nowhere dense to $J_n$ to obtain $J_{n+1}$. (Each time we may shrink the newly obtained interval slightly to suppose that it is closed.)
+
+  We can now argue just as in the proof of Theorem~\ref{thm:cantor} that there exists a point $x\in\bigcap I_n$. It follows that $x\notin\bigcup A_n$, which contradicts the assumption that $\RR=\bigcup A_n$, and completes the proof of the first statement.
+
+  For the second statement, suppose that the complement of $A$ is not dense and that $A=\bigcup A_n$ is a countable union of nowhere dense sets. In the above argument the initial interval $I$ was chosen arbitrarily. In this argument since the complement of $A$ is not dense we may let $I$ be a positive-length subinterval of $A$. The rest of the argument proceeds identically, and gives a point $x\in A$ such that $x\notin\bigcup A_n$, a contradiction.
 \end{proof}
 
 \begin{rem}
   Baire category theory gets its name from the above theorem, and the fact that meager sets used to be called ``first category''. Nonmeager sets used to be called ``second category''.
 \end{rem}
+
+\begin{thm}
+  \label{thm:meager-pres}
+  The class of meager sets is closed under the operations of subset and countable union.
+\end{thm}
+
+We remark that the meager property is not necessarily preserved to the closure. In fact $\bar{A}$ is meager if and only if $A$ is nowhere dense.
+
+As a consequence of the Baire category theorem, for any set $A$ it is possible to assign $A$ one of three distinct ``sizes'':
+\begin{itemize}
+\item $A$ is meager (small)
+\item $A$ is comeager (large)
+\item $A$ neither meager nor comeager (intermediate)
+\end{itemize}
+We should verify that no set of numbers can be both meager and comeager. Indeed, suppose that both $A$ and $\RR\smallsetminus A$ were meager. Then by Theorem~\ref{thm:meager-pres} their union $\RR$ would be meager, contradicting the Baire category theorem.
+
+We should also verify that there exists sets of numbers that are neither meager nor comeager. Indeed, if $I$ is any bounded positive-length interval then by the second statement of the Baire category theorem $I$ is nonmeager, and since $\RR\smallsetminus I$ also contains a bounded interval, $I$ is also non-comeager.
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Measure theory}
