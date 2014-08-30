@@ -17,6 +17,8 @@
 \newcommand{\QQ}{\mathbb Q}
 \newcommand{\RR}{\mathbb R}
 
+\theoremstyle{definition}
+\newtheorem{exerc}{Exercise}[section]
 \swapnumbers
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
@@ -115,6 +117,20 @@ Since $x$ lies in $I_n$ for all $n$, and since we chose $I_n$ in such a way that
 
 This argument appears in one form or another numerous times throughout elementary analysis and set theory. We shall next see it in the proof of the Baire category theorem.
 
+\subsection*{Exercises}
+
+\begin{exerc}
+  With the definition of $r+r'$ for Dedekind cuts, show that addition is commutative and associative.
+\end{exerc}
+
+\begin{exerc}
+  Define multiplication $r\times r'$ for Dedekind cuts, and show that it agrees with multiplication for rational numbers. Hint: consider four cases when $r,r'$ are negative or nonnegative.
+\end{exerc}
+
+\begin{exerc}
+  Let $A$ be a set of real numbers containing a positive-length interval. Show that $A$ is uncountable.
+\end{exerc}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Baire category theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -208,6 +224,17 @@ As a consequence of the Baire category theorem, for any set $A$ it is possible t
 We should verify that no set of numbers can be both meager and comeager. Indeed, suppose that both $A$ and $\RR\smallsetminus A$ were meager. Then by Theorem~\ref{thm:meager-pres} their union $\RR$ would be meager, contradicting the Baire category theorem.
 
 We should also verify that there exists sets of numbers that are neither meager nor comeager. Indeed, if $I$ is any bounded positive-length interval then by the Baire category theorem $I$ is nonmeager, and since $\RR\smallsetminus I$ also contains a bounded interval, $I$ is also non-comeager.
+
+\subsection*{Exercises}
+
+\begin{exerc}
+  Compute the sum of the lengths of all of the intervals removed from $[0,1]$ in the construction of the Cantor set.
+\end{exerc}
+
+\begin{exerc}
+  Prove Proposition~\ref{prop:nwd-equiv}.
+\end{exerc}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Measure theory}
