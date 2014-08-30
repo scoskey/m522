@@ -177,17 +177,15 @@ Preservation to closures is immediate from condition (b) of Proposition~\ref{pro
 In principal it is possible that this notion is completely moot in the sense that maybe every set of real numbers is meager according to this definition. The Baire category theorem says that this is not the case. In fact, we will soon see that meager sets are rather paultry as the name implies.
 
 \begin{thm}[Baire category theorem]
-  The set of all real numbers $\RR$ is nonmeager. In fact, if $A$ is any set of real numbers whose complement is not dense, then $A$ is nonmeager.
+  The set of all real numbers $\RR$ is nonmeager. In fact, if $I$ is a positive-length interval, then $I$ is nonmeager.
 \end{thm}
 
 \begin{proof}
-  The proof is very similar to Cantor's proof of Theorem~\ref{thm:cantor}. Suppose towards a contradiction that $\RR$ is meager. Then there exists a sequence $(A_n)_{n\in\NN}$ of nowhere dense sets such that $\bigcup A_n=\RR$. We will inductively construct a decreasing sequence of closed intervals $J_n$ such that for all $n$, $J_n\cap N_n=\emptyset$.
+  The proof is very similar to Cantor's proof of Theorem~\ref{thm:cantor}. Let $I$ be a positive-length interval and suppose towards a contradiction that $I$ is meager. Then there exists a sequence $(A_n)_{n\in\NN}$ of nowhere dense sets such that $\bigcup A_n=I$. We will inductively construct a decreasing sequence of closed subintervals $J_n\subset I$ such that for all $n$, $J_n\cap N_n=\emptyset$.
 
-  The induction is again straightforward. Begin with an arbitrary positive-length interval $I$, and apply the definition of $A_1$ being nowhere dense to obtain $J_1$. Inductively apply the definition of $A_n$ being nowhere dense to $J_n$ to obtain $J_{n+1}$. (Each time we may shrink the newly obtained interval slightly to suppose that it is closed.)
+  The induction is again straightforward. First apply the definition of $A_1$ being nowhere dense to obtain $J_1$. Inductively apply the definition of $A_n$ being nowhere dense to $J_n$ to obtain $J_{n+1}$. (Each time we may shrink the newly obtained interval slightly to suppose that it is closed.)
 
-  We can now argue just as in the proof of Theorem~\ref{thm:cantor} that there exists a point $x\in\bigcap I_n$. It follows that $x\notin\bigcup A_n$, which contradicts the assumption that $\RR=\bigcup A_n$, and completes the proof of the first statement.
-
-  For the second statement, suppose that the complement of $A$ is not dense and that $A=\bigcup A_n$ is a countable union of nowhere dense sets. In the above argument the initial interval $I$ was chosen arbitrarily. In this argument since the complement of $A$ is not dense we may let $I$ be a positive-length subinterval of $A$. The rest of the argument proceeds identically, and gives a point $x\in A$ such that $x\notin\bigcup A_n$, a contradiction.
+  We can now argue just as in the proof of Theorem~\ref{thm:cantor} that there exists a point $x\in\bigcap J_n$. It follows that $x\notin\bigcup A_n$, which contradicts the assumption that $I=\bigcup A_n$, and completes the proof.
 \end{proof}
 
 \begin{rem}
@@ -209,13 +207,32 @@ As a consequence of the Baire category theorem, for any set $A$ it is possible t
 \end{itemize}
 We should verify that no set of numbers can be both meager and comeager. Indeed, suppose that both $A$ and $\RR\smallsetminus A$ were meager. Then by Theorem~\ref{thm:meager-pres} their union $\RR$ would be meager, contradicting the Baire category theorem.
 
-We should also verify that there exists sets of numbers that are neither meager nor comeager. Indeed, if $I$ is any bounded positive-length interval then by the second statement of the Baire category theorem $I$ is nonmeager, and since $\RR\smallsetminus I$ also contains a bounded interval, $I$ is also non-comeager.
-
-
+We should also verify that there exists sets of numbers that are neither meager nor comeager. Indeed, if $I$ is any bounded positive-length interval then by the Baire category theorem $I$ is nonmeager, and since $\RR\smallsetminus I$ also contains a bounded interval, $I$ is also non-comeager.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Measure theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{defn}
+  A set of real numbers $A$ is \emph{null} if for all $\epsilon>0$ there exists a sequence of intervals $(I_n)_{n\in\NN}$ such that $A\subset\bigcup I_n$ and $\sum\ell(I_n)<\epsilon$.
+\end{defn}
+
+\begin{example}
+  The Cantor set is null. Indeed\ldots
+\end{example}
+
+The following result is the analog of the Baire category theorem for the notion of null sets.
+
+\begin{thm}
+  The set $\RR$ of all real numbers is not null. In fact, if $I$ is any positive-length interval then $I$ is not null.
+\end{thm}
+
+\begin{proof}
+
+\end{proof}
+
+As was the case with category, measure theory allows us to assign to each set $A$ one of three ``sizes'': null, conull, or non-null and non-conull. However, 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sets, functions, and cardinality}
