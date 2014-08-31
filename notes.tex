@@ -11,6 +11,8 @@
 \renewcommand{\labelitemi}{$\circ$}
 \renewcommand{\labelenumi}{(\alph{enumi})}
 \usepackage{etoolbox}\makeatletter\pretocmd{\@seccntformat}{\S}{}{}\pretocmd{\@subseccntformat}{\S}{}{}\makeatother
+\usepackage{tikz}
+\usetikzlibrary{decorations.fractals}
 
 \newcommand{\set}[1]{\left\{\,#1\,\right\}}
 \newcommand{\NN}{\mathbb N}
@@ -21,6 +23,7 @@
 \newtheorem{exerc}{Exercise}[section]
 \swapnumbers
 \newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \theoremstyle{definition}
@@ -50,11 +53,11 @@ This course is about set theory, and its use in the study of the real line. By w
 
 In this course we will ask: how do these three kinds of size compare with one another? In answering this question, we will discover numerous relationships between measure and category, with the diagram of these relationships revealing a beautiful structure.
 
-Our investigation of mesaure and category will lead us to a number of \emph{independence results}, that is, statements that cannot be decided using the usual axioms of set theory. The most central example of such a statement is the \emph{continuum hypothesis} (CH), which asserts that the set of all real numbers has cardinality equal to the first uncountable cardinal number. Cantor initially posed this problem in 1878. In 1940 G\"odel showed the axioms of set theory can't disprove CH, and in 1965 Cohen finally showed that the axioms of set theory can't prove CH.
+Our investigation of mesaure and category will lead us to a number of statements that are \emph{independent} of the axioms of set theory. This means that such statements cannot be proved true or false using the usual axioms of set theory. The most central example of such a statement is the \emph{continuum hypothesis} (CH), which asserts that the set of all real numbers has cardinality equal to the first uncountable cardinal number. Cantor initially posed this problem in 1878. In 1940 G\"odel showed the axioms of set theory can't disprove CH, and in 1965 Cohen finally showed that the axioms of set theory can't prove CH.
 
 In his proof of the latter half of the independence of CH, Cohen developed a tool for building models of set theory called \emph{forcing}. Far from being an isolated application, since then forcing has become a standard tool for establishing independence results. We will develop the machinery of forcing and give a number of such applications.
 
-With the tool of forcing in hand, we will return to the notions of measure and category. We will find that there are numerous cardinal numbers surrounding the zero length sets and the meager sets whose values, like the size of the set of all real numbers, are also independent of set theory.
+With the tool of forcing in hand, we will return to the notions of measure and category. We will find that there are numerous cardinal numbers surrounding the zero length sets and the meager sets whose values, like the size of the set of all real numbers, are also independent of the axioms of set theory.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -143,14 +146,37 @@ This argument appears in one form or another numerous times throughout elementar
   Any finite subset of $\RR$ is nowhere dense. The set $\set{1/n\mid n\in\NN}$ is nowhere dense. In fact, any \emph{discrete} set is nowhere dense (here, $A$ is discrete if every point of $A$ is isolated). The set of rational numbers whose numerator is $1$ and whose denominator is a power of $2$ is \emph{not} nowhere dense, because such a number can be found in every positive-length subinterval of $[0,1]$.
 \end{example}
 
-Note that nowhere dense sets need not be countable. The classical Cantor middle thirds set is an archetypal example of a nowhere dense set. Recall that the \emph{Cantor set} is defined as follows. Let $I_1=[0,1]$ and let $I_2=[0,1/3]\cup[2/3,1]$ be the set $I_1$ with its open middle third removed. Inductively let $I_n$ be constructed from $I_{n-1}$ by removing the open middle third from every interval of $I_{n-1}$. Finally the Cantor set $C$ is defined to be $C=\bigcap I_n$.
+Note that nowhere dense sets need not be countable. The classical Cantor middle thirds set is an archetypal example of a nowhere dense set. Recall that the \emph{Cantor set} is defined as follows. Begin with the set $C_1=[0,1]$. Let $C_2=[0,1/3]\cup[2/3,1]$ be the set $C_1$ with its open middle third removed. Let $C_3=[1,1/9]\cup[2/9,1/3]\cup[2/3,7/9]\cup[8/9,1]$ be the set $C_2$ with the open middle third removed from each component of $C_2$. Refer to Figure~\ref{fig:cantor-set} for a picture of these first few sets. Recursively, let $C_{n+1}$ be constructed from $C_n$ by removing the open middle third from each component of $C_n$. Finally the Cantor set $C$ is defined to be $C=\bigcap C_n$.
+
+\begin{figure}[h]
+\begin{center}
+  \begin{tikzpicture}[decoration=Cantor set]
+    \draw (0,0)--(10,0) node[anchor=west]{\ \ $C_1$};
+    \draw decorate{ (0,-.5) -- (10,-.5) } node[anchor=west]{\ \ $C_2$};
+    \draw decorate{ decorate{ (0,-1) -- (10,-1) }} node[anchor=west]{\ \ $C_3$};
+    \node[anchor=west] at (10,-1.5) {\ \ \ $\vdots$};
+    \draw[very thick] decorate{ decorate{ decorate{ decorate{ decorate{  decorate{ decorate{ (0,-2) -- (10,-2) }}}}}}} node[anchor=west]{\ \ $C$};
+  \end{tikzpicture}
+%  \begin{tikzpicture}[every node/.style={above}]
+%    \draw[|-|] (0,0) -- (10,0) node[anchor=west] {\ \ $C_1$};
+%    \draw[|-|] (0,-.5) -- (10/3,-.5);
+%    \draw[|-|] (20/3,-.5) -- (10,-.5) node[anchor=west] {\ \ $C_2$};
+%    \draw[|-|] (0,-1) -- (10/9,-1);
+%    \draw[|-|] (20/9,-1) -- (30/9,-1);
+%    \draw[|-|] (60/9,-1) -- (70/9,-1);
+%    \draw[|-|] (80/9,-1) -- (10,-1) node[anchor=west] {\ \ $C_3$};
+%  \end{tikzpicture}
+\end{center}
+\caption{The first few steps in the construction of the Cantor set.\label{fig:cantor-set}}
+\end{figure}
+
 
 \begin{prop}
   The Cantor set $C$ is nowhere dense.
 \end{prop}
 
 \begin{proof}
-  First compute that the sum of the lengths of all of those middle thirds removed in the construction of the cantor set is exactly $1$ (we leave this as an exercise). It follows from this that $C$ does not contain any positive-length intervals. Now if $I$ is any positive-length interval, then $I$ must contain a point $x\notin C$. Now note that $C$ is closed because it is an intersection of closed sets, and henc $\RR\smallsetminus C$ is open. Thus there is an open interval $J$ centered at $x$ such that $J\subset\RR\smallsetminus C$. Shrinking the radius of $J$ if necessary, we can suppose that $J\subset I$. This shows that $C$ is nowhere dense.
+  First compute that the sum of the lengths of all of those middle thirds removed in the construction of the cantor set is exactly $1$ (Exercise~\ref{exerc:cantor}). It follows from this that $C$ does not contain any positive-length intervals. Now if $I$ is any positive-length interval, then $I$ must contain a point $x\notin C$. Now note that $C$ is closed because it is an intersection of closed sets, and henc $\RR\smallsetminus C$ is open. Thus there is an open interval $J$ centered at $x$ such that $J\subset\RR\smallsetminus C$. Shrinking the radius of $J$ if necessary, we can suppose that $J\subset I$. This shows that $C$ is nowhere dense.
 \end{proof}
 
 The terminology ``nowhere dense'' may sound strange at first, but it is justified by the following fact.
@@ -165,7 +191,7 @@ The terminology ``nowhere dense'' may sound strange at first, but it is justifie
 \end{enumerate}
 \end{prop}
 
-We leave the proof as an exercise.
+The proof is requested in Exercise~\ref{exerc:nwd-equiv}.
 
 \begin{thm}
   The class of nowhere dense sets is closed under the operations of subset, union, and closure.
@@ -193,7 +219,7 @@ Preservation to closures is immediate from condition (b) of Proposition~\ref{pro
 In principal it is possible that this notion is completely moot in the sense that maybe every set of real numbers is meager according to this definition. The Baire category theorem says that this is not the case. In fact, we will soon see that meager sets are rather paultry as the name implies.
 
 \begin{thm}[Baire category theorem]
-  The set of all real numbers $\RR$ is nonmeager. In fact, if $I$ is a positive-length interval, then $I$ is nonmeager.
+  The set of all real numbers $\RR$ is nonmeager. In fact, if $I$ is a positive-length interval then $I$ is nonmeager.
 \end{thm}
 
 \begin{proof}
@@ -228,41 +254,106 @@ We should also verify that there exists sets of numbers that are neither meager 
 \subsection*{Exercises}
 
 \begin{exerc}
-  Compute the sum of the lengths of all of the intervals removed from $[0,1]$ in the construction of the Cantor set.
+  \label{exerc:cantor}
+  Compute the sum of the lengths of all of the intervals removed from $[0,1]$ in the construction of the Cantor set. What if some other fraction is removed at each stage?
 \end{exerc}
 
 \begin{exerc}
+  \label{exerc:nwd-equiv}
   Prove Proposition~\ref{prop:nwd-equiv}.
 \end{exerc}
 
+\begin{exerc}
+  We have observed that unlike the nowhere dense property, the meager property is not necessarily preserved to the closure. Prove that if $\bar{A}$ is meager, then $A$ was nowhere dense to begin with.
+\end{exerc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Measure theory}
+\section{Lebesgue measure theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Classical measure theory aims to try to extend the length function on intervals to be defined on more complicated sets. For example, if a given set is a finite or even countable union of intervals, then it is appropriate to take the sum of the lengths of the components. But what about more unwieldy sets like the Cantor set? This was known as the \emph{measure problem}: to construct a measurement function $m$, defined on sets of real numbers and valued in $[0,\infty]$, satisfying:
+\begin{enumerate}
+\item $m$ agrees with length: if $I$ is an interval then $m(I)=\ell(I)$
+\item translation invariance: $m(x+A)=m(A)$ for all sets $A$ and real numbers $x$
+\item countably additivity: if $(A_n)_{n\in\NN}$ is a sequence pairwise disjoint sets then $m(\bigcup A_n)=\sum m(A_n)$
+\end{enumerate}
+
+Perhaps surprisingly, the conditions (a)--(c) are mutually contradictory and so no such measurement function $m$ exists! Here is Vitali's simple example of a contradiction arising from these requirements. Regard $\QQ$ as an additive subgroup of $\RR$ and consider the cosets of $\QQ$, that is, sets of the form $x+\QQ$. Let $A\subset[0,1]$ be a set of coset representatives, that is, $A$ contains exactly one element from each of the cosets. (It is always possible to choose a coset representative in $[0,1]$ because $\QQ$ is dense.)
+
+Then the translations $q+A$ for $q\in\QQ$ form a countable sequence of pairwise disjoint sets that cover all of $\RR$. In fact, if we let $S=\QQ\cap[-1,1]$ then the translations $q+A$ for $q\in S$ already cover all of $[0,1]$. We can then infer from (a) and (c) that $m[\bigcup_{q\in S}(q+A)]$ lies between $1$ and $4$. But on the other hand, by (b) and (c) we have that 
+\[m\left(\bigcup_{q\in S}(q+A)\right)=\sum_{q\in S}m(q+A)=\sum_{q\in S}m(A)
+\]
+This is a contradiction because an infinite sum of a single constant value $m(A)$ can be equal only to either $0$ or $\infty$, and so cannot lie between $1$ and $4$.
+
+\begin{rem}
+  We observe that the axiom of choice was explicitly used in Vitali's construction of the set $A$ above. In fact, it is known that the use of the axiom of choice is necessary to build a counterexample.
+\end{rem}
+
+The contradiction described above is typically resolved not by dropping one of the conditions (a)--(c), but rather by dropping the requirement that $m$ is defined on \emph{all} sets of real numbers. The justification for this decision is that sets like the $A$ constructed above should be regarded as pathological, and we don't usually need to measure them in applications.
+
+Let us na\"ively begin to construct a measure $m$ that is at least defined on reasonable sets. First, condition (a) implies we should let $m(I)=\ell(I)$ for any interval $I$. Next, if $A=\bigcup I_n$ is a union of disjoint intervals $I_n$, then condition (c) implies we should let $m(A)=\sum\ell(I_n)$. Third, if $A=\bigcap A_n$ is an intersection of sets where $m$ is defined and finite, then it is natural to define $m(A)=\inf m(A_n)$. We now observe that all three of the above simple cases fall under the following formula:
+\[m(A)=\inf\set{\sum\ell(I_n)\mid A\subset\bigcup I_n}
+\]
+The next result states that this rule for defining $m$ actually works for all sets that are reasonably constructible. Recall that a \emph{Borel set} is one that can be constructed by beginning with the intervals and then executing countably many countable unions or intersections.
+
+\begin{thm}[Carath\'eodory's extension theorem]
+  \label{thm:caratheodory}
+  The measure $m$ defined above satisfies conditions (a) and (b), and additionally satisfies condition (c) when applied to Borel sets.
+\end{thm}
+
+\begin{proof}[Proof of conditions (a) and (b) only]
+  For condition (a), let $I$ be an interval. Since $I$ is an interval we clearly have $m(I)\leq\ell(I)$. For the other direction, we will show that $I\subset\bigcup I_n$ implies $\sum\ell(I_n)\geq\ell(I)$. Then taking the infemum over all such coverings this allows us to conclude that $m(I)\geq\ell(I)$.
+
+  \ldots [to insert]
+
+  Condition (b) follows directly from the fact that the length function $\ell$ is translation invariant.
+
+  For the proof that $m$ satisfies condition (c), we refer the reader to any standard measure theory text.
+\end{proof}
+
+From now on we will ignore the full power of measure theory to assign a real number measure to any Borel set, and focus only on the specific value zero. Sets whose measure is zero are called null sets, and for convenience we extract the definition of null set from the above definition of arbitrary measure.
 
 \begin{defn}
+  \label{defn:null}
   A set of real numbers $A$ is \emph{null} if for all $\epsilon>0$ there exists a sequence of intervals $(I_n)_{n\in\NN}$ such that $A\subset\bigcup I_n$ and $\sum\ell(I_n)<\epsilon$.
 \end{defn}
 
 \begin{example}
-  The Cantor set is null. Indeed\ldots
+  The Cantor set $C$ is null. Indeed, we have already computed that the sum of the lengths of all intervals removed from $[0,1]$ in the construction of $C$ is equal to $1$. Since $[0,1]$ has measure $1$, it follows from additivity that $C$ must have measure $0$.
 \end{example}
 
-The following result is the analog of the Baire category theorem for the notion of null sets.
+The notion of null set bears many similarities with the notion of meager set. As was the case with meager sets, the notion of a null set allows us to assign to any given set $A$ one of three simple ``sizes'': null, conull, or non-null and non-conull. Moreover, the analog of the Baire category theorem holds for null sets as well.
 
-\begin{thm}
+\begin{cor}
+  \label{cor:interval-non-null}
   The set $\RR$ of all real numbers is not null. In fact, if $I$ is any positive-length interval then $I$ is not null.
-\end{thm}
+\end{cor}
 
-\begin{proof}
+Of course this follows from Theorem~\ref{thm:caratheodory} above, since in particular the measure function satisfies condition (a).
 
-\end{proof}
+\subsection*{Exercises}
 
-As was the case with category, measure theory allows us to assign to each set $A$ one of three ``sizes'': null, conull, or non-null and non-conull. However, 
+\begin{exerc}
+  Give a proof that the Cantor set is null using Definition~\ref{defn:null} directly.
+\end{exerc}
 
+\begin{exerc}
+  Prove that condition (c) of a measure implies \emph{monotonicity}: if $A\subset B$ then $m(A)\leq m(B)$.
+\end{exerc}
+
+\begin{exerc}
+  Prove that condition (c) of a measure implies \emph{continuity from above}: if $A_n$ is a decreasing sequence of sets, $m(A_n)$ is finite, and $A=\bigcap A_n$, then $m(A)=\inf m(A_n)$.
+\end{exerc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sets, functions, and cardinality}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The topology of Cantor and Baire space}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \end{document}
