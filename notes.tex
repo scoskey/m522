@@ -15,6 +15,7 @@
 \usetikzlibrary{decorations.fractals}
 
 \newcommand{\set}[1]{\left\{\,#1\,\right\}}
+\DeclareMathOperator{\cl}{cl}
 \newcommand{\NN}{\mathbb N}
 \newcommand{\QQ}{\mathbb Q}
 \newcommand{\RR}{\mathbb R}
@@ -120,8 +121,6 @@ Since $x$ lies in $I_n$ for all $n$, and since we chose $I_n$ in such a way that
 
 This argument appears in one form or another numerous times throughout elementary analysis and set theory. We shall next see it in the proof of the Baire category theorem.
 
-\subsection*{Exercises}
-
 \begin{exerc}
   With the definition of $r+r'$ for Dedekind cuts, show that addition is commutative and associative.
 \end{exerc}
@@ -146,30 +145,26 @@ This argument appears in one form or another numerous times throughout elementar
   Any finite subset of $\RR$ is nowhere dense. The set $\set{1/n\mid n\in\NN}$ is nowhere dense. In fact, any \emph{discrete} set is nowhere dense (here, $A$ is discrete if every point of $A$ is isolated). The set of rational numbers whose numerator is $1$ and whose denominator is a power of $2$ is \emph{not} nowhere dense, because such a number can be found in every positive-length subinterval of $[0,1]$.
 \end{example}
 
-Note that nowhere dense sets need not be countable. The classical Cantor middle thirds set is an archetypal example of a nowhere dense set. Recall that the \emph{Cantor set} is defined as follows. Begin with the set $C_1=[0,1]$. Let $C_2=[0,1/3]\cup[2/3,1]$ be the set $C_1$ with its open middle third removed. Let $C_3=[1,1/9]\cup[2/9,1/3]\cup[2/3,7/9]\cup[8/9,1]$ be the set $C_2$ with the open middle third removed from each component of $C_2$. Refer to Figure~\ref{fig:cantor-set} for a picture of these first few sets. Recursively, let $C_{n+1}$ be constructed from $C_n$ by removing the open middle third from each component of $C_n$. Finally the Cantor set $C$ is defined to be $C=\bigcap C_n$.
+Note that nowhere dense sets need not be countable. The classical Cantor middle thirds set is an archetypal example of a nowhere dense set. Recall that the \emph{Cantor set} is defined as follows. Begin with the set $C_1=[0,1]$. Let $C_2=[0,1/3]\cup[2/3,1]$ be the set $C_1$ with its open middle third removed. Let $C_3=[1,1/9]\cup[2/9,1/3]\cup[2/3,7/9]\cup[8/9,1]$ be the set $C_2$ with the open middle third removed from each component of $C_2$. Refer to Figure~\ref{fig:cantor-set} for a picture of these first few sets. Recursively, let $C_{n+1}$ be constructed from $C_n$ by removing the open middle third from each component of $C_n$. Finally the Cantor set $C$ is defined to be $C=\bigcap C_n$. We will see in a later section that the Cantor set is uncountable. % add ref
 
 \begin{figure}[h]
 \begin{center}
-  \begin{tikzpicture}[decoration=Cantor set]
-    \draw (0,0)--(10,0) node[anchor=west]{\ \ $C_1$};
-    \draw decorate{ (0,-.5) -- (10,-.5) } node[anchor=west]{\ \ $C_2$};
-    \draw decorate{ decorate{ (0,-1) -- (10,-1) }} node[anchor=west]{\ \ $C_3$};
-    \node[anchor=west] at (10,-1.5) {\ \ \ $\vdots$};
-    \draw[very thick] decorate{ decorate{ decorate{ decorate{ decorate{  decorate{ decorate{ (0,-2) -- (10,-2) }}}}}}} node[anchor=west]{\ \ $C$};
+  \begin{tikzpicture}
+    \draw[|-|] (0,0) -- (10,0) node[anchor=west] {\ \ $C_1$};
+    \draw[|-|] (0,-.5) -- (10/3,-.5);
+    \draw[|-|] (20/3,-.5) -- (10,-.5) node[anchor=west] {\ \ $C_2$};
+    \draw[|-|] (0,-1) -- (10/9,-1);
+    \draw[|-|] (20/9,-1) -- (30/9,-1);
+    \draw[|-|] (60/9,-1) -- (70/9,-1);
+    \draw[|-|] (80/9,-1) -- (10,-1) node[anchor=west] {\ \ $C_3$};
+    \node[anchor=west] at (10,-1.4) {\ \ \ $\vdots$};
+    \draw[decoration=Cantor set,very thick]
+    decorate{ decorate{ decorate{ decorate{ decorate{ decorate{
+                (0,-2) -- (10,-2) }}}}}} node[anchor=west] {\ \ $C$};
   \end{tikzpicture}
-%  \begin{tikzpicture}[every node/.style={above}]
-%    \draw[|-|] (0,0) -- (10,0) node[anchor=west] {\ \ $C_1$};
-%    \draw[|-|] (0,-.5) -- (10/3,-.5);
-%    \draw[|-|] (20/3,-.5) -- (10,-.5) node[anchor=west] {\ \ $C_2$};
-%    \draw[|-|] (0,-1) -- (10/9,-1);
-%    \draw[|-|] (20/9,-1) -- (30/9,-1);
-%    \draw[|-|] (60/9,-1) -- (70/9,-1);
-%    \draw[|-|] (80/9,-1) -- (10,-1) node[anchor=west] {\ \ $C_3$};
-%  \end{tikzpicture}
 \end{center}
 \caption{The first few steps in the construction of the Cantor set.\label{fig:cantor-set}}
 \end{figure}
-
 
 \begin{prop}
   The Cantor set $C$ is nowhere dense.
@@ -186,7 +181,7 @@ The terminology ``nowhere dense'' may sound strange at first, but it is justifie
   Let $A$ be a set of real numbers. The following are equivalent.
 \begin{enumerate}
 \item $A$ is nowhere dense;
-\item the closure of $A$ has no interior;
+\item $\cl(A)$ (the topological closure of $A$) has no interior;
 \item for every nonempty open set $O$, we have that $A$ is not dense in $O$.
 \end{enumerate}
 \end{prop}
@@ -205,7 +200,7 @@ The proof is requested in Exercise~\ref{exerc:nwd-equiv}.
 \]
 This establishes that $A\cup B$ is again nowhere dense.
 
-Preservation to closures is immediate from condition (b) of Proposition~\ref{prop:nwd-equiv}, but we can also give a direct argument. Let $A$ be nowhere dense and let $I$ be a given positive-length interval. Since $A$ is nowhere dense there is a positive-length interval $J$ such that $J\subset\RR\smallsetminus A$. Removing endpoints if necessary, we may suppose that $J$ is open. It follows that $J\subset\RR\smallsetminus\bar{A}$ (recall that since $\bar{A}$ is the intersection of all closed sets containing $A$, we have that $\RR\smallsetminus\bar{A}$ is the union of all open sets disjoint from $A$). This shows that $\bar{A}$ is nowhere dense.
+Preservation to closures is immediate from condition (b) of Proposition~\ref{prop:nwd-equiv}, but we can also give a direct argument. Let $A$ be nowhere dense and let $I$ be a given positive-length interval. Since $A$ is nowhere dense there is a positive-length interval $J$ such that $J\subset\RR\smallsetminus A$. Removing endpoints if necessary, we may suppose that $J$ is open. It follows that $J\subset\RR\smallsetminus\cl(A)$ (recall that since $\cl(A)$ is the intersection of all closed sets containing $A$, we have that $\RR\smallsetminus\cl(A)$ is the union of all open sets disjoint from $A$). This shows that $\cl(A)$ is nowhere dense.
 \end{proof}
 
 \begin{rem}
@@ -239,7 +234,7 @@ In principal it is possible that this notion is completely moot in the sense tha
   The class of meager sets is closed under the operations of subset and countable union.
 \end{thm}
 
-We remark that the meager property is not necessarily preserved to the closure. In fact $\bar{A}$ is meager if and only if $A$ is nowhere dense.
+We remark that the meager property is not necessarily preserved to the closure. In fact $\cl(A)$ is meager if and only if $A$ is nowhere dense.
 
 As a consequence of the Baire category theorem, for any set $A$ it is possible to assign $A$ one of three distinct ``sizes'':
 \begin{itemize}
@@ -250,8 +245,6 @@ As a consequence of the Baire category theorem, for any set $A$ it is possible t
 We should verify that no set of numbers can be both meager and comeager. Indeed, suppose that both $A$ and $\RR\smallsetminus A$ were meager. Then by Theorem~\ref{thm:meager-pres} their union $\RR$ would be meager, contradicting the Baire category theorem.
 
 We should also verify that there exists sets of numbers that are neither meager nor comeager. Indeed, if $I$ is any bounded positive-length interval then by the Baire category theorem $I$ is nonmeager, and since $\RR\smallsetminus I$ also contains a bounded interval, $I$ is also non-comeager.
-
-\subsection*{Exercises}
 
 \begin{exerc}
   \label{exerc:cantor}
@@ -264,7 +257,7 @@ We should also verify that there exists sets of numbers that are neither meager 
 \end{exerc}
 
 \begin{exerc}
-  We have observed that unlike the nowhere dense property, the meager property is not necessarily preserved to the closure. Prove that if $\bar{A}$ is meager, then $A$ was nowhere dense to begin with.
+  We have observed that unlike the nowhere dense property, the meager property is not necessarily preserved to the closure. Prove that if $\cl(A)$ is meager, then $A$ was nowhere dense to begin with.
 \end{exerc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -302,9 +295,15 @@ The next result states that this rule for defining $m$ actually works for all se
 \end{thm}
 
 \begin{proof}[Proof of conditions (a) and (b) only]
-  For condition (a), let $I$ be an interval. Since $I$ is an interval we clearly have $m(I)\leq\ell(I)$. For the other direction, we will show that $I\subset\bigcup I_n$ implies $\sum\ell(I_n)\geq\ell(I)$. Then taking the infemum over all such coverings this allows us to conclude that $m(I)\geq\ell(I)$.
+  For condition (a), let $I$ be an interval. It is clear that $m(I)\leq\ell(I)$, since $I$ itself is an interval covering $I$. For the other direction, we will show that $I\subset\bigcup I_n$ implies $\sum\ell(I_n)\geq\ell(I)$. Then taking the infemum over all such coverings this allows us to conclude that $m(I)\geq\ell(I)$.
 
-  \ldots [to insert]
+  Let us first handle the case when $I$ is closed and bounded, and all of the $I_n$ are open. Let $I_{n_0}$ be the first interval in the enumeration that contains the left endpoint of $I$. Next let $I_{n_1}$ be the first interval that contains the right endpoint of $I_1$. Inductively, let $I_{n_{j+1}}$ be the first interval that contains the right endpoint of $I_{n_j}$.
+
+  We claim that after finitely many steps the right endpoint of $I_{n_j}$ will lie outside of $I$. Otherwise, letting $\alpha$ be the supremum of the right endpoints of the $I_{n_j}$, we would have $\alpha\in I$ and hence some $I_{n^*}$ contains $\alpha$. Now infinitely many of the right endpoints of the $I_{n_j}$ lie in $I_{n^*}$. But since $I_{n^*}$ was never chosen as an $I_{n_j}$, that means infinitely many of the $n_j$ precede $n^*$, a contradiction.
+
+  Now by the claim, some $I_{n_0},\ldots,I_{n_N}$ cover $I$. Moreover each one overlaps the previous, so it is clear that $\sum\ell(I_{n_i})\geq\ell(I)$, as desired.
+
+  If $I$ is not necessarily closed and the $I_n$ are not necessarily open, then we can shrink $I$ slightly and expand $I_n$ slightly to assume that they are. More specifically, for any factor $r>1$ we may let $I'=\cl(\frac1rI)$ and $I_n'=r I_n^\circ$. The above argument shows that $r\sum\ell(I_{n_i})\geq\frac1r\ell(I)$. Letting $r$ tend to $1$ we again achieve the desired result. This concludes the proof of condition (a).
 
   Condition (b) follows directly from the fact that the length function $\ell$ is translation invariant.
 
@@ -322,20 +321,19 @@ From now on we will ignore the full power of measure theory to assign a real num
   The Cantor set $C$ is null. Indeed, we have already computed that the sum of the lengths of all intervals removed from $[0,1]$ in the construction of $C$ is equal to $1$. Since $[0,1]$ has measure $1$, it follows from additivity that $C$ must have measure $0$.
 \end{example}
 
-The notion of null set bears many similarities with the notion of meager set. As was the case with meager sets, the notion of a null set allows us to assign to any given set $A$ one of three simple ``sizes'': null, conull, or non-null and non-conull. Moreover, the analog of the Baire category theorem holds for null sets as well.
+The notion of null set bears many similarities with the notion of meager set. As was the case with meager sets, the notion of a null set allows us to assign to any given set $A$ one of three simple ``sizes'': null, conull, or non-null and non-conull. Moreover, null sets satisfy an analog of the Baire category theorem and the preservation properties of meager sets.
 
 \begin{cor}
   \label{cor:interval-non-null}
   The set $\RR$ of all real numbers is not null. In fact, if $I$ is any positive-length interval then $I$ is not null.
 \end{cor}
 
-Of course this follows from Theorem~\ref{thm:caratheodory} above, since in particular the measure function satisfies condition (a).
+\begin{cor}
+  \label{cor:null-pres}
+  The class of null sets is closed under the operations of subset and countable union.
+\end{cor}
 
-\subsection*{Exercises}
-
-\begin{exerc}
-  Give a proof that the Cantor set is null using Definition~\ref{defn:null} directly.
-\end{exerc}
+Corollary~\ref{cor:interval-non-null} is immediate from condition (a) of Theorem~\ref{thm:caratheodory}. Corollary~\ref{cor:null-pres} is immediate from condition (c) of Theorem~\ref{thm:caratheodory}.
 
 \begin{exerc}
   Prove that condition (c) of a measure implies \emph{monotonicity}: if $A\subset B$ then $m(A)\leq m(B)$.
@@ -343,6 +341,14 @@ Of course this follows from Theorem~\ref{thm:caratheodory} above, since in parti
 
 \begin{exerc}
   Prove that condition (c) of a measure implies \emph{continuity from above}: if $A_n$ is a decreasing sequence of sets, $m(A_n)$ is finite, and $A=\bigcap A_n$, then $m(A)=\inf m(A_n)$.
+\end{exerc}
+
+\begin{exerc}
+  Give a proof directly from Definition~\ref{defn:null} that the Cantor set is null.
+\end{exerc}
+
+\begin{exerc}
+  Give a proof directly from Definition ~\ref{defn:null} that the class of null sets is closed under countable union.
 \end{exerc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
