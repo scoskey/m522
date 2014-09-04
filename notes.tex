@@ -297,15 +297,19 @@ The next result states that this rule for defining $m$ actually works for all se
 \begin{proof}[Proof of conditions (a) and (b) only]
   For condition (a), let $I$ be an interval. It is clear that $m(I)\leq\ell(I)$, since $I$ itself is an interval covering $I$. For the other direction, we will show that $I\subset\bigcup I_n$ implies $\sum\ell(I_n)\geq\ell(I)$. Then taking the infemum over all such coverings this allows us to conclude that $m(I)\geq\ell(I)$.
 
-  Let us first handle the case when $I$ is closed and bounded, and all of the $I_n$ are open. Let $I_{n_0}$ be the first interval in the enumeration that contains the left endpoint of $I$. Next let $I_{n_1}$ be the first interval that contains the right endpoint of $I_1$. Inductively, let $I_{n_{j+1}}$ be the first interval that contains the right endpoint of $I_{n_j}$.
+  Let us first handle the case when $I=[a,b]$ is closed and bounded, and all of the $I_n$ are open intervals $(a_n,b_n)$. Then since $I$ is compact, $I$ is covered by just finitely many of the $I_n$, without loss of generality we may assume they are indexed $I_0,\ldots,I_N$. Now after further renaming or removing intervals from the list, we may suppose that $I_0$ covers the left endpoint of $I$, each $I_{n+1}$ covers the right endpoint of $I_n$, and $I_N$ covers the right endpoint of $I$. We can now compute that
+\[\sum\ell(I_n)
+\geq\sum_0^N(b_n-a_n)
+\geq\sum_1^N(b_n-b_{n-1})-a
+\geq b-a
+= \ell(I)\;.
+\]
 
-  We claim that after finitely many steps the right endpoint of $I_{n_j}$ will lie outside of $I$. Otherwise, letting $\alpha$ be the supremum of the right endpoints of the $I_{n_j}$, we would have $\alpha\in I$ and hence some $I_{n^*}$ contains $\alpha$. Now infinitely many of the right endpoints of the $I_{n_j}$ lie in $I_{n^*}$. But since $I_{n^*}$ was never chosen as an $I_{n_j}$, that means infinitely many of the $n_j$ precede $n^*$, a contradiction.
+  If $I$ is not necessarily closed and the $I_n$ are not necessarily open, then we look instead at $I'=\cl(I)$ and $I_n'=(I_n)^\circ$. Then the $I_n'$ cover all but a countable subset of $I'$, so for any $\epsilon$ we can find additional open intervals $J_n$ with $\ell(J_n)\leq\epsilon/2^n$ covering these missing points. Now the previous argument shows that $\sum\ell(I_n)+\sum\ell(J_n)\geq\ell(I)$. Using the geometric series formula we obtain $\sum\ell(I_n)+\epsilon\geq\ell(I)$. Letting $\epsilon\to0$ we have the desired result.
 
-  Now by the claim, some $I_{n_0},\ldots,I_{n_N}$ cover $I$. Moreover each one overlaps the previous, so it is clear that $\sum\ell(I_{n_i})\geq\ell(I)$, as desired.
+  Finally if $I$ is not bounded, we let $A_k$ be a sequence of bounded subintervals of $I$ such that $\ell(A_k)\to\infty$. The above result implies that $\sum\ell(I_n)\geq\ell(A_k)$, and letting $k\to\infty$ we once again achieve the desired result. This concludes the proof of condition (a).
 
-  If $I$ is not necessarily closed and the $I_n$ are not necessarily open, then we can shrink $I$ slightly and expand $I_n$ slightly to assume that they are. More specifically, for any factor $r>1$ we may let $I'=\cl(\frac1rI)$ and $I_n'=r I_n^\circ$. The above argument shows that $r\sum\ell(I_{n_i})\geq\frac1r\ell(I)$. Letting $r$ tend to $1$ we again achieve the desired result. This concludes the proof of condition (a).
-
-  Condition (b) follows directly from the fact that the length function $\ell$ is translation invariant.
+  Condition (b) follows directly from the fact that the length function $\ell$ is translation invariant, and the definition of $m$ depends only on $\ell$.
 
   For the proof that $m$ satisfies condition (c), we refer the reader to any standard measure theory text.
 \end{proof}
