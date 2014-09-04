@@ -359,6 +359,51 @@ Corollary~\ref{cor:interval-non-null} is immediate from condition (a) of Theorem
 \section{Sets, functions, and cardinality}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+So far we have seen sets that are finite, countable, and uncountable. If a set $A$ is finite, then there is a natural number that tells us exactly how many elements $A$ has. If $A$ is countable, we understand that it has exactly as many elements as there are natural numbers. But if $A$ is uncountable, is that all that needs be said or is there some kind of number that tells us just how uncountable it is?
+
+In this section we discuss the notion of ``cardinality'' of a set $A$, which replaces the notion of ``number of elements'' in the case when $A$ is infinite. Notationally, we write $|A|$ for the cardinality of $A$. As we shall see, when $A$ is finite $|A|$ will be a natural number. When $A$ is countable $|A|$ will take the value $\aleph_0$ (called aleph zero, or aleph nought). And when $A$ is uncountable $|A|$ will take one of the values $\aleph_1,\aleph_2$ and so forth.
+
+Our first result confirms that there are many different uncountable cardinalities. Recall that if $A$ is a set, then the \emph{power set} of $A$, denoted $\mathcal P(A)$, is the set of all subsets of $A$.
+
+\begin{thm}[Cantor]
+  If $A$ is any set, then $|A|<\mathcal P(A)$.
+\end{thm}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{defn}
+  Let $A$ be a set (or class). A \emph{total ordering} of $A$ is a binary relation $\leq$ which is antisymmetric, transitive, and total. A \emph{well-ordering} of $A$ is a total ordering $\leq$ such that every subset $B\subset A$ has a $\leq$-least element $b_0$.
+\end{defn}
+
+The following result shows that the cardinalities are totally ordered.
+
+\begin{thm}
+  If $A$ and $B$ are sets, then either there is an injection from $A$ to $B$ or else there is an injection from $B$ to $A$.
+\end{thm}
+
+\begin{proof}
+
+\end{proof}
+
+The next result shows that the cardinalities (well, any set of cardinalities) is well-ordered.
+
+\begin{thm}
+  If $(A_\alpha)_{\alpha\in I}$ is any collection of sets indexed by a set $I$, then there exists $\alpha_0\in I$ such that $|A_{\alpha_0}|\leq|A_\alpha|$ for all $\alpha\in I$.
+\end{thm}
+
+The following result gives a simple recipe for showing two sets have the same cardinality.
+
+\begin{thm}[Cantor--Schr\"oder--Bernstein]
+  If there are injections $i\colon A\to B$ and $j\colon B\to A$ then there is a bijection $f\colon A\to B$.
+\end{thm}
+
+\begin{proof}
+
+\end{proof}
+
+We conclude by briefly diving further into set theory and giving a more rigorous definition of the $\aleph$ numbers.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The topology of Cantor and Baire space}
