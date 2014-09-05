@@ -1,6 +1,7 @@
 \documentclass[11pt,oneside]{amsart}
 
 \title{Math 522 Course Notes}
+% cardinal characteristics of the real numbers and forcing
 \author{Samuel Coskey}
 \author{Erik Holmes}
 
@@ -59,7 +60,6 @@ Our investigation of mesaure and category will lead us to a number of statements
 In his proof of the latter half of the independence of CH, Cohen developed a tool for building models of set theory called \emph{forcing}. Far from being an isolated application, since then forcing has become a standard tool for establishing independence results. We will develop the machinery of forcing and give a number of such applications.
 
 With the tool of forcing in hand, we will return to the notions of measure and category. We will find that there are numerous cardinal numbers surrounding the zero length sets and the meager sets whose values, like the size of the set of all real numbers, are also independent of the axioms of set theory.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The real number system}
@@ -356,12 +356,22 @@ Corollary~\ref{cor:interval-non-null} is immediate from condition (a) of Theorem
 \end{exerc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Sets, functions, and cardinality}
+\section{Sets, orderings, and cardinality}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 So far we have seen sets that are finite, countable, and uncountable. If a set $A$ is finite, then there is a natural number that tells us exactly how many elements $A$ has. If $A$ is countable, we understand that it has exactly as many elements as there are natural numbers. But if $A$ is uncountable, is that all that needs be said or is there some kind of number that tells us just how uncountable it is?
 
 In this section we discuss the notion of ``cardinality'' of a set $A$, which replaces the notion of ``number of elements'' in the case when $A$ is infinite. Notationally, we write $|A|$ for the cardinality of $A$. As we shall see, when $A$ is finite $|A|$ will be a natural number. When $A$ is countable $|A|$ will take the value $\aleph_0$ (called aleph zero, or aleph nought). And when $A$ is uncountable $|A|$ will take one of the values $\aleph_1,\aleph_2$ and so forth.
+
+At the end of the section we will describe exactly what the $\aleph$'s are. But first, we give some of the most important facts about cardinality.
+
+\begin{defn}
+  Let $A$ and $B$ be sets. We say that $|A|=|B|$ if there is a bijective function $f\colon A\to B$, we say that $|A|\leq|B|$ if there is an injective function $i\colon A\to B$, and we say that $|A|<|B|$ if $|A|\leq|B|$ and also $|A|\neq|B|$.
+\end{defn}
+
+\begin{rem}
+  In the above definition, we managed to define all of the comparisons between cardinals without ever defining the cardinal itself. For most practical purposes, this definition is sufficient.
+\end{rem}
 
 Our first result confirms that there are many different uncountable cardinalities. Recall that if $A$ is a set, then the \emph{power set} of $A$, denoted $\mathcal P(A)$, is the set of all subsets of $A$.
 
@@ -370,11 +380,24 @@ Our first result confirms that there are many different uncountable cardinalitie
 \end{thm}
 
 \begin{proof}
+  It is clear that $|A|\leq\mathcal P(A)$, since the map $i(a)=\{a\}$ is an injection from $A$ into $\mathcal P(A)$.
 
+  To see that there is no bijection between $A$ and $\mathcal P(A)$, let $f$ be any function $f\colon A\to\mathcal P(A)$. Then build the set $D$ of all elements $a\in A$ such that $a\notin f(a)$. We claim that $D$ is not in the range of $f$, and therefore that $f$ is not a bijection.
+
+  To see this, suppose towards a contradiction that there exists $a_0\in A$ such that $D=f(a_0)$. Then by the definition of $D$, we have that $a_0\in D$ iff $a_0\notin f(a_0)$. And since $D=f(a_0)$ we can write this as $a_0\in D$ iff $a_0\notin D$, which is a clear contradiction.
 \end{proof}
 
+\begin{rem}
+  The classical argument above is given the name ``diagonal'' because of the key formula in the proof: $a\notin f(a)$. The idea is that if you were to shade the set of pairs $(x,y)\in A^2$ such that that $x\notin f(y)$, then the set $D$ would be built by taking the unshaded elements of the diagonal of the $A^2$ plane.
+\end{rem}
+
 \begin{defn}
-  Let $A$ be a set (or class). A \emph{total ordering} of $A$ is a binary relation $\leq$ which is antisymmetric, transitive, and total. A \emph{well-ordering} of $A$ is a total ordering $\leq$ such that every subset $B\subset A$ has a $\leq$-least element $b_0$.
+  Let $A$ be a set (or class).
+  \begin{itemize}
+  \item A \emph{partial ordering} of $A$ is a binary relation $\leq$ satisfying: (reflexive) $a\leq a$; (antisymmetric) $a\leq b\leq a\implies a=b$; (transitive) $a\leq b\leq c\implies a\leq c$.
+  \item A \emph{total ordering} of $A$ is a partial ordering such that for all $a,a'$ either $a\leq a'$ or $a'\leq a$.
+  \item A \emph{well-ordering} of $A$ is a total ordering $\leq$ such that every subset $B\subset A$ has a $\leq$-least element $b_0$.
+  \end{itemize}
 \end{defn}
 
 The following result shows that the cardinalities are totally ordered.
@@ -400,13 +423,35 @@ The following result gives a simple recipe for showing two sets have the same ca
 \end{thm}
 
 \begin{proof}
-
+  Replacing $B$ with $j(B)$, we may suppose that that $B\subset A$. Then we have
+\[A\supset B\supset i(A)\supset i(B)\supset i^2(A)\supset\cdots
+\]
+Therefore, $A$ can be written as a union
+\[(A\mathord{\smallsetminus}B)\cup(B\mathord{\smallsetminus}i(A))\cup(i(A)\mathord{\smallsetminus}i(B))\cup\cdots\cup \bigcap i^n(A)
+\]
+Moreover, $i$ gives bijections
+\[A\smallsetminus B\leftrightarrow i(A)\smallsetminus i(B)\leftrightarrow i^2(A)\smallsetminus i^2(B)\leftrightarrow\cdots
+\]
+It also gives bijections
+\[B\smallsetminus i(A)\leftrightarrow i(B)\smallsetminus i^2(A)\leftrightarrow i^2(B)\smallsetminus i^3(A)\leftrightarrow
+\]
+It follows that the map
+\[f(a)=\begin{cases}
+\end{cases}
+\]
 \end{proof}
 
-We conclude by briefly diving further into set theory and giving a more rigorous definition of the $\aleph$ numbers.
+We conclude by briefly diving further into set theory and giving a more rigorous definition of the $\aleph$ numbers. But first it is necessary to define the ordinals, which appear as the subscripts $\aleph_\alpha$. While cardinals like $\aleph_3$ measure the \emph{size} of a set, ordinals like $\alpha$ measure the \emph{position} in an enumeration.
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The topology of Cantor and Baire space}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The domination order on Cantor and Baire space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
