@@ -363,9 +363,10 @@ So far we have seen sets that are finite, countable, and uncountable. If a set $
 
 In this section we discuss the notion of ``cardinality'' of a set $A$, which replaces the notion of ``number of elements'' in the case when $A$ is infinite. Notationally, we write $|A|$ for the cardinality of $A$. As we shall see, when $A$ is finite $|A|$ will be a natural number. When $A$ is countable $|A|$ will take the value $\aleph_0$ (called aleph zero, or aleph nought). And when $A$ is uncountable $|A|$ will take one of the values $\aleph_1,\aleph_2$ and so forth.
 
-At the end of the section we will describe exactly what the $\aleph$'s are. But first, we give some of the most important facts about cardinality.
+In the next section we will describe exactly what the $\aleph$'s are. But first it turns out that we can give many of the most important facts about cardinality without ever defining the cardinal numbers precisely.
 
 \begin{defn}
+  \label{defn:cardinal-rel}
   Let $A$ and $B$ be sets. We say that $|A|=|B|$ if there is a bijective function $f\colon A\to B$, we say that $|A|\leq|B|$ if there is an injective function $i\colon A\to B$, and we say that $|A|<|B|$ if $|A|\leq|B|$ and also $|A|\neq|B|$.
 \end{defn}
 
@@ -400,23 +401,11 @@ Our first result confirms that there are many different uncountable cardinalitie
   \end{itemize}
 \end{defn}
 
-The following result shows that the cardinalities are totally ordered.
+\begin{rem}
+  The well-order property may seem obscure at first, but finding a least element is precisely what is needed in induction arguments (think: ``if not, let $x$ be the least counterexample'').
+\end{rem}
 
-\begin{thm}
-  If $A$ and $B$ are sets, then either there is an injection from $A$ to $B$ or else there is an injection from $B$ to $A$.
-\end{thm}
-
-\begin{proof}
-
-\end{proof}
-
-The next result shows that the cardinalities (well, any set of cardinalities) is well-ordered.
-
-\begin{thm}
-  If $(A_\alpha)_{\alpha\in I}$ is any collection of sets indexed by a set $I$, then there exists $\alpha_0\in I$ such that $|A_{\alpha_0}|\leq|A_\alpha|$ for all $\alpha\in I$.
-\end{thm}
-
-The following result gives a simple recipe for showing two sets have the same cardinality.
+In the next few results, we essentially show that the cardinalities are well-ordered. Note that reflexivity holds because the identity function is an injection from $A$ into itself, and transitivity holds because the composition of two injections is an injection. The following result establishes antisymmetry.
 
 \begin{thm}[Cantor--Schr\"oder--Bernstein]
   If there are injections $i\colon A\to B$ and $j\colon B\to A$ then there is a bijection $f\colon A\to B$.
@@ -426,25 +415,51 @@ The following result gives a simple recipe for showing two sets have the same ca
   Replacing $B$ with $j(B)$, we may suppose that that $B\subset A$. Then we have
 \[A\supset B\supset i(A)\supset i(B)\supset i^2(A)\supset\cdots
 \]
-Therefore, $A$ can be written as a union
-\[(A\mathord{\smallsetminus}B)\cup(B\mathord{\smallsetminus}i(A))\cup(i(A)\mathord{\smallsetminus}i(B))\cup\cdots\cup \bigcap i^n(A)
+Now $A$ can be written as the union of the successive differences of these sets, together with the intersection of them all:
+\[A=(A\mathord{\smallsetminus}B)\cup(B\mathord{\smallsetminus}i(A))\cup(i(A)\mathord{\smallsetminus}i(B))\cup\cdots\cup \bigcap i^n(A)
 \]
-Moreover, $i$ gives bijections
-\[A\smallsetminus B\leftrightarrow i(A)\smallsetminus i(B)\leftrightarrow i^2(A)\smallsetminus i^2(B)\leftrightarrow\cdots
-\]
-It also gives bijections
-\[B\smallsetminus i(A)\leftrightarrow i(B)\smallsetminus i^2(A)\leftrightarrow i^2(B)\smallsetminus i^3(A)\leftrightarrow
+Meanwhile, $i$ gives bijections
+\[A\mathord{\smallsetminus}B\leftrightarrow i(A)\mathord{\smallsetminus}i(B)\leftrightarrow i^2(A)\mathord{\smallsetminus}i^2(B)\leftrightarrow\cdots
 \]
 It follows that the map
-\[f(a)=\begin{cases}
+\[f(a)=\begin{cases}i(a)&\text{if }a\in(A\mathord{\smallsetminus}B)\cup(i(A)\mathord{\smallsetminus}i(B))\cup(i^2(A)\mathord{\smallsetminus}i^2(B))\cup\cdots\\
+a&\text{otherwise}
 \end{cases}
 \]
+is a bijection from $A$ to $B$.
 \end{proof}
 
-We conclude by briefly diving further into set theory and giving a more rigorous definition of the $\aleph$ numbers. But first it is necessary to define the ordinals, which appear as the subscripts $\aleph_\alpha$. While cardinals like $\aleph_3$ measure the \emph{size} of a set, ordinals like $\alpha$ measure the \emph{position} in an enumeration.
+\begin{rem}
+  This result also gives a simple recipe for checking whether two sets have the same cardinality. For example, to show that there is a bijection between $[0,1]$ and $(0,1)$ it is much easier to construct two injections than a single bijection.
+\end{rem}
 
+\begin{thm}
+  \label{thm:card-well}
+  Let $\mathcal A$ be a family of sets. Then there exists $A\in\mathcal A$ such that for all $B\in\mathcal A$ we have $|A|\leq|B|$.
+\end{thm}
 
+By applying this result to the family $\mathcal F=\{A_0,A_1\}$, we conclude that either $|A_0|\leq|A_1|$ or $|A_1|\leq|A_2|$, and hence the total ordering property holds. We also conclude the well-ordering property, except for the small technicality that the least element property should also apply when $\mathcal F$ is a proper class. In the proof we will need the following consequence of the axiom of choice.
 
+\begin{thm}[Zorn's lemma]
+  If $P$ is a partially ordered set such that every totally ordered subset has an upper bound, then $P$ has at least one maximal element.\qed
+\end{thm}
+
+\begin{proof}[Proof of Theorem~\ref{thm:card-well}]
+  Let $A$ be any fixed element of $\mathcal A$ and consider the set
+\[\mathcal F=\set{(f_B)_{B\in\mathcal F}\mid \text{there is $A_0\subset A$ such that for all $B$, $f_B$ is an injection from $A_0$ to $B$}}
+\]
+and partially order $\mathcal F$ by coordinatewise extension of functions. It is easy to verify that this partial order satisfies the conditions of Zorn's lemma, so there exists a maximal element $(f_B)_{B\in\mathcal F}$. Maximality implies one of two things: either the domain $A_0$ cannot be extended, or the range of one of the functions $f_B$ cannot be extended.
+
+In the first case we have $A_0=A$ and hence $f_B$ is an injection from $A$ to $B$ for all $B$, so $A$ is the minimal set we seek. In the second case there is $B$ such that $f_B(A_0)=B$. It follows that for all $D\in\mathcal F$, the composition $f_D\circ f_B^{-1}$ is an injection from $B$ to $D$, so $B$ is the minimal set.
+\end{proof}
+
+%We conclude by briefly giving a more rigorous set-theoretic definition of the $\aleph$ numbers. First, it is necessary to describe the ordinals, which appear as the subscripts $\aleph_\alpha$. While cardinals like $\aleph_3$ measure the \emph{size} of a set, ordinals like $\alpha$ measure the \emph{position} in an enumeration.
+
+%The first few ordinals are defined by $0=\emptyset$, $1=\{\emptyset\}$, and $n+1=n\cup\{n\}$. After infinitely many ordinals have been constructed, the next ordinal is defined as the union of all those that came before it.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ordinal numbers and cardinal numbers}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The topology of Cantor and Baire space}
