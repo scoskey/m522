@@ -489,9 +489,9 @@ Although we still can't be fully rigorous about the meaning of the symbols $\ale
 \section{Ordinal numbers and cardinal numbers}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Ordinal numbers play a central role in set theory, including both cardinality theory and forcing. While cardinal numbers are needed to measure the \emph{size} of an infinite set, ordinal numbers are needed to measure the \emph{length} of an infinite well-ordered set. In this section we introduce the ordinals and state many of the most important facts about them. We will also use the ordinals to give the official definition of the $\aleph$ numbers defined in the previous section.
+Ordinal numbers play a central role in set theory, including both cardinality theory and forcing. While cardinal numbers are needed to measure the \emph{size} of an infinite set, ordinal numbers are needed to measure the \emph{length} of an infinite well-ordered set. The ordinals can be used to extend the notion of \emph{counting} into the infinite, and to give a formal definition of the $\aleph$ cardinals described in the previous section.
 
-The goal in defining the ordinals is to provide a collection of well-ordered sets such that for any given well-ordered set $A$ there is one and only one ordinal $\alpha$ such that $A$ is isomorphic to $\alpha$. For finite well-ordered sets, we can write such a definition explicitly:
+The initial goal in defining the ordinals is to provide a collection of well-ordered sets such that for any given well-ordered set $A$ there is one and only one ordinal $\alpha$ such that $A$ is isomorphic to $\alpha$. For finite well-ordered sets, we can write such a definition explicitly:
 \begin{align*}
 0&=\emptyset\\
 1&=\{0\}\\
@@ -499,26 +499,45 @@ The goal in defining the ordinals is to provide a collection of well-ordered set
 \vdots\\
 n+1&=\{0,\ldots,n\}
 \end{align*}
-This construction can be summed up in one recurrence: $n+1=n\cup\{n\}$. The first infinite ordinal, called $\omega$ or $\omega_0$, is simply the union of all the finite ordinals.
+This construction can be summed up in one recurrence: $n+1=n\cup\{n\}$. The first infinite ordinal, called $\omega$ or $\omega_0$, is simply the union of all the finite ordinals. The process can then continue, with $\omega$ being succeeded by $\omega+1=\omega\cup\{\omega\}$.
 
-Intuitively, infinite ordinals are constructed similarly. That is, if $\alpha$ is an ordinal then the next one is $\alpha+1=\alpha\cup\{\alpha\}$. And after any infinite sequence of ordinals, we will have $\lambda&=\bigcup_{\alpha<\lambda}\alpha$. Unfortunately, this last formula doesn't work as a definition because it is circular. Instead we have the following more technical characterization.
+Intuitively, infinite ordinals are all constructed in this fashion. If $\alpha$ is any ordinal then it is succeeded by $\alpha+1=\alpha\cup\{\alpha\}$, and after infinitely many such steps we take a union. Unfortunately this prescription is not rigorous because it is circular; we cannot make a definition like $\alpha=\bigcup_{\beta<\alpha}\beta$. Instead we have the following more technical characterization.
 
 \begin{defn}
   A set $\alpha$ is an \emph{ordinal} if it satisfies the properties:
   \begin{itemize}
-  \item $\alpha$ is transitive: if $x\in\alpha$ and $y\in x$ then $x\in\alpha$;
-  \item $\alpha$ is well-ordered by the element relation $\in$
+  \item $\alpha$ is well-ordered by the element relation $\in$;
+  \item $\alpha$ is transitive: if $x\in y\in\alpha$ then $x\in\alpha$.
   \end{itemize}
 \end{defn}
 
 \begin{rem}
-The second condition ensures that the ordinals are well-ordered sets, and in fact that the order relation is the most convenient one available in set theory. The first condition ensures that the ordinals have no ``gaps''; for instance the set 
+The first condition ensures that the ordinals are well-ordered sets, and in fact that the order relation is the most convenient one available in set theory. The second condition ensures that the ordinals have no ``gaps''; for instance the set $\{0,1,3,5,9\}$ is well-ordered but not an ordinal.
 \end{rem}
 
 \begin{thm}
   If $A$ is a well-ordered set then there exists a unique ordinal $\alpha$ such that $A$ is isomorphic to $\alpha$.
 \end{thm}
 
+Just as the natural numbers form the indices of induction and recursion, the ordinals form the indices of transfinite induction and recursion. Like ordinary induction, transfinite recursion proceeds by assuming $f(\alpha)$ is defined and using this to define $f(\alpha+1)$. Just as induction requires a special ``base'' case when $n=0$, transfinite induction requires a special ``limit'' case when $\alpha=\lambda$ is a limit ordinal.
+
+We are now prepared to define the $\aleph$ cardinals.
+
+\begin{defn}
+  The first infinite cardinal $\aleph_0=\omega$. If $\aleph_\alpha$ is defined then $\aleph_{\alpha+1}$ is the least ordinal that does not inject into $\aleph_\alpha$. If $\lambda$ is a limit ordinal and $\aleph_\alpha$ has been defined for $\alpha<\lambda$, then $\aleph_\lambda=\bigcup_{\alpha<\lambda}\aleph_\alpha$.
+\end{defn}
+
+By analogy with the ordinals, the cardinals can also be divided into two kinds.
+
+\begin{defn}
+  If $\kappa$ is a cardinal which is the least cardinal greater than some other cardinal, then $\kappa$ is called a \emph{successor} cardinal. Otherwise $\kappa$ is called a \emph{limit} cardinal.
+\end{defn}
+
+Cofinality\ldots
+
+\begin{exerc}
+  If $\kappa$ is a cardinal, then $\kappa$ is a limit ordinal.
+\end{exerc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The topology of Cantor and Baire space}
