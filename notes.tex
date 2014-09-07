@@ -417,7 +417,7 @@ Our first result confirms that there are many different uncountable cardinalitie
   The well-order property may seem obscure at first, but finding a least element is precisely what is needed in induction arguments (think: ``if not, let $x$ be the least counterexample'').
 \end{rem}
 
-In the next few results, we essentially show that the cardinalities are well-ordered. Note that reflexivity holds because the identity function is an injection from $A$ into itself, and transitivity holds because the composition of two injections is an injection. The following result establishes antisymmetry.
+In the next few results, we essentially show that the cardinals are well-ordered by $\leq$. Note that reflexivity holds because the identity function is an injection from $A$ into itself, and transitivity holds because the composition of two injections is an injection. The following result establishes antisymmetry.
 
 \begin{thm}[Cantor--Schr\"oder--Bernstein]
   If there are injections $i\colon A\to B$ and $j\colon B\to A$ then there is a bijection $f\colon A\to B$.
@@ -445,26 +445,35 @@ is a bijection from $A$ to $B$.
   This result also gives a simple recipe for checking whether two sets have the same cardinality. For example, to show that there is a bijection between $[0,1]$ and $(0,1)$ it is much easier to construct two injections than a single bijection.
 \end{rem}
 
-\begin{thm}
-  \label{thm:card-well}
-  Let $\mathcal A$ be a family of sets. Then there exists $A\in\mathcal A$ such that for all $B\in\mathcal A$ we have $|A|\leq|B|$.
-\end{thm}
-
-By applying this result to the family $\mathcal F=\{A_0,A_1\}$, we conclude that either $|A_0|\leq|A_1|$ or $|A_1|\leq|A_2|$, and hence the total ordering property holds. In the proof we will need the following consequence of the axiom of choice.
+The next result shows that the cardinalities are totally ordered. In the proof we will need the following perennially used consequence of the axiom of choice.
 
 \begin{thm}[Zorn's lemma]
   If $P$ is a partially ordered set such that every totally ordered subset has an upper bound, then $P$ has at least one maximal element.\qed
 \end{thm}
 
-\begin{proof}[Proof of Theorem~\ref{thm:card-well}]
-  We give the proof first in the case when $\mathcal A$ is a \emph{set}. (This will be needed to apply Zorn's lemma; note that technically $\mathcal A$ can also be a ``proper class'' such as the set of all sets.) Let $A$ be any fixed element of $\mathcal A$ and consider the set
+\begin{thm}
+  \label{thm:card-total}
+  If $A,B$ are sets then either there is an injective function from $A$ to $B$ or an injective function from $B$ to $A$.
+\end{thm}
+
+\begin{proof}
+  Consider the family $\mathcal F$ of all injective functions whose domain is a subset of $A$ and whose range is a subset of $B$. Then $\mathcal F$ is partially ordered by extension of functions, and it is easy to check that this ordering satisfies the hypothesis of Zorn's lemma. Thus there is a maximal element $f$, and since it is maximal either the domain of $f$ is all of $A$ or the range of $f$ is all of $B$. In the first case $f$ is an injection from $A$ to $B$, and in the second case $f^{-1}$ is an injection from $B$ to $A$.
+\end{proof}
+
+Finally we show that the cardinals are well-ordered. One technicality arises here that did not in the last four properties. To check that the cardinals are well-ordered, we should check that \emph{any} collection of sets has a minimal element, and that collection need not itself be a set. (Remember: the set of all sets isn't a set!)
+
+\begin{thm}
+  \label{thm:card-well}
+  Let $\mathcal A$ be a class of sets. Then there exists $A\in\mathcal A$ that injects into all other $B\in\mathcal A$.
+\end{thm}
+
+\begin{proof}
+  We argue very similarly to Theorem~\ref{thm:card-total}, but in order to apply Zorn's lemma we must first suppose that $\mathcal A$ really is a set. Fix any element $A\in\mathcal A$ and let
 \[\mathcal F=\set{(f_B)_{B\in\mathcal F}\mid \text{there is $A_0\subset A$ such that for all $B$, $f_B$ is an injection from $A_0$ to $B$}}
 \]
-and partially order $\mathcal F$ by coordinatewise extension of functions. It is easy to verify that this partial order satisfies the conditions of Zorn's lemma, so there exists a maximal element $(f_B)_{B\in\mathcal F}$. Maximality implies one of two things: either the domain $A_0$ cannot be extended, or the range of one of the functions $f_B$ cannot be extended.
+This time $\mathcal F$ is partially ordered by coordinatewise extension of functions. By Zorn's lemma there exists a maximal element $(f_B)_{B\in\mathcal F}$, and since it is maximal either the domain $A_0$ is all of $A$ or the range of one of the functions $f_B$ is all of $B$. In the first case $f_B$ is an injection from $A$ to $B$ for all $B$. In the second case, fix $B$ such that $f_B(A_0)=B$. Then for any $C\in\mathcal A$, the composition $f_C\circ f_B^{-1}$ is an injection from $B$ to $C$, so $B$ is as desired.
 
-In the first case we have $A_0=A$ and hence $f_B$ is an injection from $A$ to $B$ for all $B$, so $A$ is the minimal set we seek. In the second case there is $B$ such that $f_B(A_0)=B$. It follows that for all $D\in\mathcal F$, the composition $f_D\circ f_B^{-1}$ is an injection from $B$ to $D$, so $B$ is the minimal set. This completes the proof in the case when $\mathcal A$ is a set.
-
-In the general case that $\mathcal A$ is a class, we can reduce to the set case as follows. Fix an element $A\in\mathcal A$ and let $\mathcal A'$ denote the collection of subsets of $A$ that are in bijection with some subset of $\mathcal A$. Then $\mathcal A'$ is a set, and so we may let $A_0$ be of minimal cardinality among all elements of $\mathcal A'$. Now if $A_1\in\mathcal A$ is in bijection with $A_0$, then $A_1$ is of minimal cardinality among all elements of $\mathcal A$.
+In the general case when $\mathcal A$ is a class, we can reduce to the set case as follows. Fix an element $D\in\mathcal A$ and let $\mathcal A'$ denote the collection of subsets of $D$ that are in bijection with some element of $\mathcal A$. Since $\mathcal A'$ is a set, we can find $A\in\mathcal A$ which injects into all elements of $\mathcal A'$. It follows that $A$ injects into all other elements of $\mathcal A$ too. Indeed if $B\in\mathcal A$ and $A$ does not inject into $B$, then by Theorem~\ref{thm:card-total}, $B$ injects into $A$. It follows that $B$ is in bijection with a subset of $D$ and hence $A$ injects into $B$ after all.
 \end{proof}
 
 Although we still can't be fully rigorous about the meaning of the symbols $\aleph_1,\aleph_2,\ldots$, the well-ordering property helps justify the use of these symbols. Essentially $\aleph_1$ is the least cardinality greater than $\aleph_0$, $\aleph_2$ is the least cardinality greater than $\aleph_1$, and so forth.
