@@ -133,6 +133,10 @@ This argument appears in one form or another numerous times throughout elementar
   Let $A$ be a set of real numbers containing a positive-length interval. Show that $A$ is uncountable.
 \end{exerc}
 
+% Abbott section 1.3 completeness
+% Abbott section 1.4 cantor's theorem
+% Abbott section 8.4 dedekind cuts
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Baire category theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -260,6 +264,10 @@ We should also verify that there exists sets of numbers that are neither meager 
   We have observed that unlike the nowhere dense property, the meager property is not necessarily preserved to the closure. Prove that if $\cl(A)$ is meager, then $A$ was nowhere dense to begin with.
 \end{exerc}
 
+% Abbott section 3.1 cantor set
+% Abbott section 3.5 baire category theorem
+% Oxtoby chapter 1 category
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lebesgue measure theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -355,6 +363,10 @@ Corollary~\ref{cor:interval-non-null} is immediate from condition (a) of Theorem
   Give a proof directly from Definition ~\ref{defn:null} that the class of null sets is closed under countable union.
 \end{exerc}
 
+% Folland section 1.1 vitali set
+% Folland section 1.4 caratheodory
+% Oxtoby chapter 1 interval property (a)
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sets, orderings, and cardinality}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -438,7 +450,7 @@ is a bijection from $A$ to $B$.
   Let $\mathcal A$ be a family of sets. Then there exists $A\in\mathcal A$ such that for all $B\in\mathcal A$ we have $|A|\leq|B|$.
 \end{thm}
 
-By applying this result to the family $\mathcal F=\{A_0,A_1\}$, we conclude that either $|A_0|\leq|A_1|$ or $|A_1|\leq|A_2|$, and hence the total ordering property holds. We also conclude the well-ordering property, except for the small technicality that the least element property should also apply when $\mathcal F$ is a proper class. In the proof we will need the following consequence of the axiom of choice.
+By applying this result to the family $\mathcal F=\{A_0,A_1\}$, we conclude that either $|A_0|\leq|A_1|$ or $|A_1|\leq|A_2|$, and hence the total ordering property holds. In the proof we will need the following consequence of the axiom of choice.
 
 \begin{thm}[Zorn's lemma]
   If $P$ is a partially ordered set such that every totally ordered subset has an upper bound, then $P$ has at least one maximal element.\qed
@@ -459,13 +471,29 @@ Although we still can't be fully rigorous about the meaning of the symbols $\ale
   Show that there is a bijection between $\mathcal P(\NN)$ and $\RR$.
 \end{exerc}
 
+% Chaim Samuel H\"onig, \emph{Proof of the well-ordering of cardinal numbers}.
+% Kunen section I.10 CSB theorem
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ordinal numbers and cardinal numbers}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this section we give a more rigorous set-theoretic definition of the $\aleph$ numbers. First, it is necessary to describe the ordinals, which appear as the subscripts $\aleph_\alpha$. While cardinals like $\aleph_3$ measure the \emph{size} of a set, ordinals like $\alpha$ measure the \emph{position} in an enumeration.
+In this section we introduce the ordinals, which play a central role in set theory, including both cardinality theory and forcing. While cardinal numbers measure the \emph{size} of a set, ordinal numbers measure the \emph{position} of an element in an enumeration. Ordinals also permit us to give a more rigorous and more satisfying definition of the $\aleph$ numbers than we did in the previous section.
 
-The first few ordinals are defined by $0=\emptyset$, $1=\{\emptyset\}$, and $n+1=n\cup\{n\}$. After infinitely many ordinals have been constructed, the next ordinal is defined as the union of all those that came before it.
+The ordinals are a class of well-ordered sets, and for each well-ordered set there is one and only one ordinal isomorphic to it. For finite well-ordered sets, here is the official way to do this:
+\begin{align*}
+0&=\emptyset\\
+1&=\{0\}\\
+2&=\{0,1\}\\
+\vdots\\
+n+1&=\{0,\ldots,n\}
+\end{align*}
+The single rule holding these together is $n+1=n\cup\{n\}$. After infinitely many ordinals have constructed, the next ordinal is defined as the union of all those that came before it. Thus we obtain the rules
+\begin{align*}
+\alpha+1&=\alpha\cup\{\alpha\}\\
+\lambda&=\bigcup_{\alpha<\lambda}\alpha
+\end{align*}
+where the second rule only holds if the set of $\alpha<\lambda$ have no last element.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The topology of Cantor and Baire space}
