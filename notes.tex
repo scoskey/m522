@@ -8,7 +8,7 @@
 \usepackage[vscale=.8]{geometry}
 \usepackage{mathpazo}
 \usepackage{amssymb}
-\usepackage{setspace}\onehalfspacing
+\usepackage{setspace}\onehalfspacing\raggedbottom
 \renewcommand{\labelitemi}{$\circ$}
 \renewcommand{\labelenumi}{(\alph{enumi})}
 \usepackage{etoolbox}\makeatletter\pretocmd{\@seccntformat}{\S}{}{}\pretocmd{\@subseccntformat}{\S}{}{}\makeatother
@@ -389,19 +389,19 @@ In the next section we will describe exactly what the $\aleph$'s are. But first 
 Our first result confirms that there are many different uncountable cardinalities. Recall that if $A$ is a set, then the \emph{power set} of $A$, denoted $\mathcal P(A)$, is the set of all subsets of $A$.
 
 \begin{thm}[Cantor]
-  If $A$ is any set, then $|A|<\mathcal P(A)$.
+  If $A$ is any set, then $|A|<|\mathcal P(A)|$.
 \end{thm}
 
 \begin{proof}
-  It is clear that $|A|\leq\mathcal P(A)$, since the map $i(a)=\{a\}$ is an injection from $A$ into $\mathcal P(A)$.
+  It is clear that $|A|\leq|\mathcal P(A)|$, since the map $i(a)=\{a\}$ is an injection from $A$ into $\mathcal P(A)$.
 
-  To see that there is no bijection between $A$ and $\mathcal P(A)$, let $f$ be any function $f\colon A\to\mathcal P(A)$. Then build the set $D$ of all elements $a\in A$ such that $a\notin f(a)$. We claim that $D$ is not in the range of $f$, and therefore that $f$ is not a bijection.
+  To see that there is no bijection between $A$ and $\mathcal P(A)$, let $f\colon A\to\mathcal P(A)$ be any function. Then build the set $D$ of all elements $a\in A$ such that $a\notin f(a)$. We claim that $D$ is not in the range of $f$, and therefore that $f$ is not a bijection.
 
   To see this, suppose towards a contradiction that there exists $a_0\in A$ such that $D=f(a_0)$. Then by the definition of $D$, we have that $a_0\in D$ iff $a_0\notin f(a_0)$. And since $D=f(a_0)$ we can write this as $a_0\in D$ iff $a_0\notin D$, which is a clear contradiction.
 \end{proof}
 
 \begin{rem}
-  The classical argument above is given the name ``diagonal'' because of the key formula in the proof: $a\notin f(a)$. The idea is that if you were to shade the set of pairs $(x,y)\in A^2$ such that that $x\notin f(y)$, then the set $D$ would be built by taking the unshaded elements of the diagonal of the $A^2$ plane.
+  The classical argument above is given the name ``diagonal'' because of the key formula in the proof: $a\notin f(a)$. The idea is that if you were to shade the set of pairs $(x,y)\in A^2$ such that that $x\in f(y)$, then the set $D$ would be built by taking the unshaded elements of the diagonal of the $A^2$ plane.
 \end{rem}
 
 \begin{defn}
@@ -457,12 +457,14 @@ By applying this result to the family $\mathcal F=\{A_0,A_1\}$, we conclude that
 \end{thm}
 
 \begin{proof}[Proof of Theorem~\ref{thm:card-well}]
-  Let $A$ be any fixed element of $\mathcal A$ and consider the set
+  We give the proof first in the case when $\mathcal A$ is a \emph{set}. (This will be needed to apply Zorn's lemma; note that technically $\mathcal A$ can also be a ``proper class'' such as the set of all sets.) Let $A$ be any fixed element of $\mathcal A$ and consider the set
 \[\mathcal F=\set{(f_B)_{B\in\mathcal F}\mid \text{there is $A_0\subset A$ such that for all $B$, $f_B$ is an injection from $A_0$ to $B$}}
 \]
 and partially order $\mathcal F$ by coordinatewise extension of functions. It is easy to verify that this partial order satisfies the conditions of Zorn's lemma, so there exists a maximal element $(f_B)_{B\in\mathcal F}$. Maximality implies one of two things: either the domain $A_0$ cannot be extended, or the range of one of the functions $f_B$ cannot be extended.
 
-In the first case we have $A_0=A$ and hence $f_B$ is an injection from $A$ to $B$ for all $B$, so $A$ is the minimal set we seek. In the second case there is $B$ such that $f_B(A_0)=B$. It follows that for all $D\in\mathcal F$, the composition $f_D\circ f_B^{-1}$ is an injection from $B$ to $D$, so $B$ is the minimal set.
+In the first case we have $A_0=A$ and hence $f_B$ is an injection from $A$ to $B$ for all $B$, so $A$ is the minimal set we seek. In the second case there is $B$ such that $f_B(A_0)=B$. It follows that for all $D\in\mathcal F$, the composition $f_D\circ f_B^{-1}$ is an injection from $B$ to $D$, so $B$ is the minimal set. This completes the proof in the case when $\mathcal A$ is a set.
+
+In the general case that $\mathcal A$ is a class, we can reduce to the set case as follows. Fix an element $A\in\mathcal A$ and let $\mathcal A'$ denote the collection of subsets of $A$ that are in bijection with some subset of $\mathcal A$. Then $\mathcal A'$ is a set, and so we may let $A_0$ be of minimal cardinality among all elements of $\mathcal A'$. Now if $A_1\in\mathcal A$ is in bijection with $A_0$, then $A_1$ is of minimal cardinality among all elements of $\mathcal A$.
 \end{proof}
 
 Although we still can't be fully rigorous about the meaning of the symbols $\aleph_1,\aleph_2,\ldots$, the well-ordering property helps justify the use of these symbols. Essentially $\aleph_1$ is the least cardinality greater than $\aleph_0$, $\aleph_2$ is the least cardinality greater than $\aleph_1$, and so forth.
@@ -478,9 +480,9 @@ Although we still can't be fully rigorous about the meaning of the symbols $\ale
 \section{Ordinal numbers and cardinal numbers}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this section we introduce the ordinals, which play a central role in set theory, including both cardinality theory and forcing. While cardinal numbers measure the \emph{size} of a set, ordinal numbers measure the \emph{position} of an element in an enumeration. Ordinals also permit us to give a more rigorous and more satisfying definition of the $\aleph$ numbers than we did in the previous section.
+Ordinal numbers play a central role in set theory, including both cardinality theory and forcing. While cardinal numbers are needed to measure the \emph{size} of an infinite set, ordinal numbers are needed to measure the \emph{length} of an infinite well-ordered set. In this section we introduce the ordinals and state many of the most important facts about them. We will also use the ordinals to give the official definition of the $\aleph$ numbers defined in the previous section.
 
-The ordinals are a class of well-ordered sets, and for each well-ordered set there is one and only one ordinal isomorphic to it. For finite well-ordered sets, here is the official way to do this:
+The goal in defining the ordinals is to provide a collection of well-ordered sets such that for any given well-ordered set $A$ there is one and only one ordinal $\alpha$ such that $A$ is isomorphic to $\alpha$. For finite well-ordered sets, we can write such a definition explicitly:
 \begin{align*}
 0&=\emptyset\\
 1&=\{0\}\\
@@ -488,12 +490,26 @@ The ordinals are a class of well-ordered sets, and for each well-ordered set the
 \vdots\\
 n+1&=\{0,\ldots,n\}
 \end{align*}
-The single rule holding these together is $n+1=n\cup\{n\}$. After infinitely many ordinals have constructed, the next ordinal is defined as the union of all those that came before it. Thus we obtain the rules
-\begin{align*}
-\alpha+1&=\alpha\cup\{\alpha\}\\
-\lambda&=\bigcup_{\alpha<\lambda}\alpha
-\end{align*}
-where the second rule only holds if the set of $\alpha<\lambda$ have no last element.
+This construction can be summed up in one recurrence: $n+1=n\cup\{n\}$. The first infinite ordinal, called $\omega$ or $\omega_0$, is simply the union of all the finite ordinals.
+
+Intuitively, infinite ordinals are constructed similarly. That is, if $\alpha$ is an ordinal then the next one is $\alpha+1=\alpha\cup\{\alpha\}$. And after any infinite sequence of ordinals, we will have $\lambda&=\bigcup_{\alpha<\lambda}\alpha$. Unfortunately, this last formula doesn't work as a definition because it is circular. Instead we have the following more technical characterization.
+
+\begin{defn}
+  A set $\alpha$ is an \emph{ordinal} if it satisfies the properties:
+  \begin{itemize}
+  \item $\alpha$ is transitive: if $x\in\alpha$ and $y\in x$ then $x\in\alpha$;
+  \item $\alpha$ is well-ordered by the element relation $\in$
+  \end{itemize}
+\end{defn}
+
+\begin{rem}
+The second condition ensures that the ordinals are well-ordered sets, and in fact that the order relation is the most convenient one available in set theory. The first condition ensures that the ordinals have no ``gaps''; for instance the set 
+\end{rem}
+
+\begin{thm}
+  If $A$ is a well-ordered set then there exists a unique ordinal $\alpha$ such that $A$ is isomorphic to $\alpha$.
+\end{thm}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The topology of Cantor and Baire space}
