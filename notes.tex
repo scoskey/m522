@@ -42,7 +42,7 @@
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This course is about set theory, and its use in the study of the real line. By way of motivation, consider the question of mesauring the \emph{size} of a given set of real numbers. The word ``size'' can mean many different things, depending on the context. To see what I mean, consider these three important examples.
+This course is about set theory, and its use in the study of the real line. By way of motivation, consider the question of measuring the \emph{size} of a given set of real numbers. The word ``size'' can mean many different things, depending on the context. To see what I mean, consider these three important examples.
 
 \begin{itemize}
 \item To a set theorist or combinatorist, the simplest notion of size is
@@ -55,7 +55,7 @@ This course is about set theory, and its use in the study of the real line. By w
 
 In this course we will ask: how do these three kinds of size compare with one another? In answering this question, we will discover numerous relationships between measure and category, with the diagram of these relationships revealing a beautiful structure.
 
-Our investigation of mesaure and category will lead us to a number of statements that are \emph{independent} of the axioms of set theory. This means that such statements cannot be proved true or false using the usual axioms of set theory. The most central example of such a statement is the \emph{continuum hypothesis} (CH), which asserts that the set of all real numbers has cardinality equal to the first uncountable cardinal number. Cantor initially posed this problem in 1878. In 1940 G\"odel showed the axioms of set theory can't disprove CH, and in 1965 Cohen finally showed that the axioms of set theory can't prove CH.
+Our investigation of measure and category will lead us to a number of statements that are \emph{independent} of the axioms of set theory. This means that such statements cannot be proved true or false using the usual axioms of set theory. The most central example of such a statement is the \emph{continuum hypothesis} (CH), which asserts that the set of all real numbers has cardinality equal to the first uncountable cardinal number. Cantor initially posed this problem in 1878. In 1940 G\"odel showed the axioms of set theory can't disprove CH, and in 1965 Cohen finally showed that the axioms of set theory can't prove CH.
 
 In his proof of the latter half of the independence of CH, Cohen developed a tool for building models of set theory called \emph{forcing}. Far from being an isolated application, since then forcing has become a standard tool for establishing independence results. We will develop the machinery of forcing and give a number of such applications.
 
@@ -68,7 +68,7 @@ With the tool of forcing in hand, we will return to the notions of measure and c
 \begin{defn}
   The \emph{real number system} is a complete ordered field. That is, it is a set $\RR$ together with distinguished elements $0,1$, operations $+,\times$ and an ordering $<$ satisfying the following rules.
 \begin{itemize}
-\item It is a \emph{field}: it satsfies the associative, commutative, and distributive laws, $0$ is the additive identity and $1$ is the multiplicative identity;
+\item It is a \emph{field}: it satisfies the associative, commutative, and distributive laws, $0$ is the additive identity and $1$ is the multiplicative identity;
 \item It is an \emph{ordered} field: $<$ is a strict total order, $a<b$ implies $a+c<b+c$, and if $c$ is positive then $a<b$ implies $ac<bc$;
 \item It is \emph{complete}: if $A\subset\RR$ has an upper bound, then it has a least upper bound (supremum).
 \end{itemize}
@@ -175,7 +175,7 @@ Note that nowhere dense sets need not be countable. The classical Cantor middle 
 \end{prop}
 
 \begin{proof}
-  First compute that the sum of the lengths of all of those middle thirds removed in the construction of the cantor set is exactly $1$ (Exercise~\ref{exerc:cantor}). It follows from this that $C$ does not contain any positive-length intervals. Now if $I$ is any positive-length interval, then $I$ must contain a point $x\notin C$. Now note that $C$ is closed because it is an intersection of closed sets, and henc $\RR\smallsetminus C$ is open. Thus there is an open interval $J$ centered at $x$ such that $J\subset\RR\smallsetminus C$. Shrinking the radius of $J$ if necessary, we can suppose that $J\subset I$. This shows that $C$ is nowhere dense.
+  First compute that the sum of the lengths of all of those middle thirds removed in the construction of the cantor set is exactly $1$ (Exercise~\ref{exerc:cantor}). It follows from this that $C$ does not contain any positive-length intervals. Now if $I$ is any positive-length interval, then $I$ must contain a point $x\notin C$. Now note that $C$ is closed because it is an intersection of closed sets, and hence $\RR\smallsetminus C$ is open. Thus there is an open interval $J$ centered at $x$ such that $J\subset\RR\smallsetminus C$. Shrinking the radius of $J$ if necessary, we can suppose that $J\subset I$. This shows that $C$ is nowhere dense.
 \end{proof}
 
 The terminology ``nowhere dense'' may sound strange at first, but it is justified by the following fact.
@@ -215,7 +215,7 @@ Preservation to closures is immediate from condition (b) of Proposition~\ref{pro
   A set of real numbers $A$ is called \emph{meager} if it is a union of countably many nowhere dense sets. A set $A$ is called \emph{comeager} if $\RR\smallsetminus A$ is meager.
 \end{defn}
 
-In principal it is possible that this notion is completely moot in the sense that maybe every set of real numbers is meager according to this definition. The Baire category theorem says that this is not the case. In fact, we will soon see that meager sets are rather paultry as the name implies.
+In principal it is possible that this notion is completely moot in the sense that maybe every set of real numbers is meager according to this definition. The Baire category theorem says that this is not the case. In fact, we will soon see that meager sets are rather paltry as the name implies.
 
 \begin{thm}[Baire category theorem]
   The set of all real numbers $\RR$ is nonmeager. In fact, if $I$ is a positive-length interval then $I$ is nonmeager.
@@ -546,7 +546,7 @@ The pattern continues transfinitely as well, with $\aleph_\alpha$ defined for ev
   The first infinite cardinal is $\aleph_0=\omega$. If $\aleph_\alpha$ is defined then $\aleph_{\alpha+1}$ is the least ordinal that is not in bijection with $\aleph_\alpha$. If $\lambda$ is a limit ordinal and $\aleph_\alpha$ has been defined for $\alpha<\lambda$, then $\aleph_\lambda=\bigcup_{\alpha<\lambda}\aleph_\alpha$.
 \end{defn}
 
-Cofinality\ldots
+[cofinality\ldots]
 
 \begin{exerc}
   Show that if $\kappa$ is a cardinal, then $\kappa$ is a limit ordinal.
@@ -564,8 +564,38 @@ Cofinality\ldots
 \section{The topology of Cantor and Baire space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+If $A$ is a countable set then $A^\omega$ denotes the space of all sequences with values in $A$, that is, functions from $\omega$ to $A$. We can endow $A^\omega$ with a topology by regarding $A$ as discrete, $A^\omega$ as a product of countably many copies of $A$, and using the \emph{product topology}. Officially a basic set in the product topology has the form
+\[\set{x\in A^\omega\mid x(i_0)\in A_0,\ldots,x(i_{n-1})\in A_{n-1}}
+\]
+where $i_j\in\omega$ are distinct and $A_j\subset A$ are open. However in our case we can make two simplifications: since $\omega$ is countable we can replace $i_0,\ldots i_{n-1}$ with $0,\ldots,n-1$, and since $A$ is discrete we can suppose the $A_j$ are singletons. Putting this all together, we obtain a basis consisting of all
+\[V_s=\set{x\in A^\omega\mid s\subset x}
+\]
+where $s$ is an element of $A^n$.
+
+The two most important examples of sequences spaces are the \emph{Cantor space} $2^\omega$ and the \emph{Baire space} $\omega^\omega$.
+
+\begin{prop}
+  The Cantor space is homeomorphic to the Cantor middle thirds set. The Baire space is homeomorphic to the set of irrational real numbers.
+\end{prop}
+
+\begin{proof}
+  \ldots
+\end{proof}
+
+The sequence space $A^\omega$ has a natural metric.
+\[d(x,y)=\sum_{i\in\omega}\frac{1}{2^{i+1}}\delta(x(i),y(i))
+\]
+
+\begin{rem}
+  While we have said that this metric is ``natural'', it is not really canonical because it gives different weights to different points in the sequence. In other words, reordering $\omega$ would give rise to a different compatible metric.
+\end{rem}
+
+\begin{exerc}
+  Check that the topology on $A^\omega$ with basis consisting of all $V_s$ is really the same as the product topology.
+\end{exerc}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The domination order on Cantor and Baire space}
+\section{The domination order on Baire space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
