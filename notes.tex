@@ -503,8 +503,8 @@ Intuitively, infinite ordinals are all constructed in this fashion. If $\alpha$ 
   \label{defn:ordinals}
   A set $\alpha$ is an \emph{ordinal} if it satisfies the properties:
   \begin{itemize}
-  \item $\alpha$ is well-ordered by the relation $\beta\leq\gamma$ iff $\beta\in\gamma$ or $\beta=\gamma$;
-  \item $\alpha$ is transitive: if $\beta\in\gamma\in\alpha$ then $\beta\in\alpha$.
+  \item $\alpha$ is well-ordered by the $\in$ relation (or more precisely by the relation $\leq$ defined as $\in$-or-equal);
+  \item $\alpha$ is transitive: if $\gamma\in\beta\in\alpha$ then $\gamma\in\alpha$.
   \end{itemize}
 \end{defn}
 
@@ -522,14 +522,16 @@ The following fundamental facts about ordinals together imply that Definition~\r
   \end{itemize}
 \end{thm}
 
-An ordinal $\alpha$ is said to be \emph{successor} if it is of the form $\beta+1$ for some ordinal $\beta$. Otherwise $\alpha$ is said to be \emph{limit} because of the following fact.
+An ordinal $\alpha$ is said to be \emph{successor} ordinal if it is of the form $\beta+1$ for some ordinal $\beta$. Otherwise $\alpha$ is said to be \emph{limit} ordinal. The first part of Theorem~\ref{thm:ordinals} allows us to show that successor and limit are appropriate names.
 
 \begin{prop}
-  Every limit ordinal is the union of the ordinals that came before it.
+  If $\alpha=\beta+1$ then $\alpha$ is the least ordinal greater than $\beta$. If $\alpha$ is a limit ordinal then $\alpha$ is the union of the ordinals that came before it.
 \end{prop}
 
 \begin{proof}
-  Let $\alpha$ be a limit ordinal, and let $\alpha'$ be the union of all $\beta\in\alpha$. Clearly since $\alpha$ is transitive we have $\alpha'\subset\alpha$. On the other hand if $\beta\in\alpha$ then $\beta+1\leq\alpha$ and since $\alpha$ is limit we must have $\beta+1<\alpha$. Thus $\beta\in\beta+1\in\alpha$ and it follows that $\beta\in\alpha'$.
+  It is easy to check $\alpha=\beta\cup\{\beta\}$ is indeed an ordinal (it is transitive and well-ordered by $\in$). Since the ordinals are well-ordered we may let $\alpha'$ be the least ordinal greater than $\beta$; we want to show that $\alpha=\alpha'$. If this were not the case, then by totality we would either have $\alpha'\in\alpha$ or $\alpha\in\alpha'$. In the first case either $\alpha=\beta$ or $\alpha\in\beta$, which contradicts that $\alpha'$ is greater than $\beta$. The second case contradicts that $\alpha'$ is the least such.
+
+  Next let $\alpha$ be a limit ordinal, and let $\alpha'$ be the union of all $\beta\in\alpha$. Since $\alpha$ is transitive we easily have that $\alpha'\subset\alpha$. On the other hand if $\gamma\in\alpha$ then by the previous paragraph $\gamma+1\leq\alpha$ and since $\alpha$ is limit we must have $\gamma+1\in\alpha$. Thus $\gamma\in\gamma+1\in\alpha$ and it follows that $\gamma\in\alpha'$.
 \end{proof}
 
 As we have hinted, although ordinals naturally measure the length of well-orderings, they can also be used to measure size $|A|$. Recall that the axiom of choice implies the \emph{well-ordering principle}, which states that any set $A$ admits a well-ordering $\leq$. Combining this with Theorem~\ref{thm:ordinals}, it follows that any set $A$ is in bijection with at least one ordinal. Different well-orderings of $A$ can lead to different ordinals, so we make the following definition.
