@@ -546,7 +546,11 @@ The pattern continues transfinitely as well, with $\aleph_\alpha$ defined for ev
   The first infinite cardinal is $\aleph_0=\omega$. If $\aleph_\alpha$ is defined then $\aleph_{\alpha+1}$ is the least ordinal that is not in bijection with $\aleph_\alpha$. If $\lambda$ is a limit ordinal and $\aleph_\alpha$ has been defined for $\alpha<\lambda$, then $\aleph_\lambda=\bigcup_{\alpha<\lambda}\aleph_\alpha$.
 \end{defn}
 
-[cofinality\ldots]
+[discuss the continuum]
+
+[define cofinality]
+
+[the continuum has uncountable cofinality]
 
 \begin{exerc}
   Show that if $\kappa$ is a cardinal, then $\kappa$ is a limit ordinal.
@@ -560,6 +564,9 @@ The pattern continues transfinitely as well, with $\aleph_\alpha$ defined for ev
   If $A$ is any set, show that $|A|$ is equal to $\aleph_\alpha$ for some $\alpha$.
 \end{exerc}
 
+% Kunen, set theory.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The topology of Cantor and Baire space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -570,7 +577,7 @@ If $A$ is a countable set then $A^\omega$ denotes the space of all sequences wit
 where $i_j\in\omega$ are distinct and $A_j\subset A$ are open. However in our case we can make two simplifications: since $\omega$ is countable we can replace $i_0,\ldots i_{n-1}$ with $0,\ldots,n-1$, and since $A$ is discrete we can suppose the $A_j$ are singletons. Putting this all together, we obtain a basis consisting of all
 \[V_s=\set{x\in A^\omega\mid s\subset x}
 \]
-where $s$ is an element of $A^n$.
+where $s$ is an element of $A^n$ for any $n$.
 
 The two most important examples of sequences spaces are the \emph{Cantor space} $2^\omega$ and the \emph{Baire space} $\omega^\omega$.
 
@@ -579,25 +586,77 @@ The two most important examples of sequences spaces are the \emph{Cantor space} 
 \end{prop}
 
 \begin{proof}
-  \ldots
+  The Cantor middle thirds set $C$ has a natural description in terms of ternary expansions. If $a\in[0,1]$ then $a$ lies in the Cantor set if and only if it has a ternary expansion that does not contain the digit $1$. Thus there is a simple bijection $2^\omega\to C$ given by replacing the $1$'s in $x$ with $2$'s:
+\[f(x)=0.(2x(0))(2x(1))(2x(2))\cdots
+\]
+The map is continuous: if $f(x)\in(a,b)$ then there exists $n$ such that if we round $f(x)$ down at its $n$th digit then it is still $>a$ and if we round it up at its $n$th digit then it is still $<b$. It follows that if $s=x\restriction n$, then we have $f(V_s)>a$. Finally recall that a continuous bijection between compact spaces is always ahomeomorphism.
+
+For the Baire space we use some facts from the theory of continued fractions.
+
+\ldots
 \end{proof}
 
-The sequence space $A^\omega$ has a natural metric.
-\[d(x,y)=\sum_{i\in\omega}\frac{1}{2^{i+1}}\delta(x(i),y(i))
-\]
+This result also implies that $2^\omega$ admits a complete metric, because the Cantor set is a closed and hence complete subspace of $\RR$. In fact, any sequence space $A^\omega$ is completely metrizable. For an example of a complete metric, given $x,y\in A^\omega$ such that $x\neq y$, let $n$ be the least natural number such that $x(n)\neq y(n)$ and set $d(x,y)=1/n$. 
+
+\begin{prop}
+  The metric on $A^\omega$ defined above is complete.
+\end{prop}
+
+\begin{proof}
+  Let $x_i$ be a Cauchy sequence in $A^\omega$. We can inductively construct an increasing sequence of indices $i_0,i_1,\ldots$ such that for all $n$ and $i\geq i_n$ we have $d(x_i,x_{i_n})<1/n$. In other words for $i\geq i_0$ the $x_i(0)$ all agree, for $i\geq i_1$ the $x_i(1)$ all agree, etc. Thus we may define an element $x$ by letting $x(i)=$ this agreed upon value. Now it is easy to check that $x_i\to x$.
+\end{proof}
 
 \begin{rem}
-  While we have said that this metric is ``natural'', it is not really canonical because it gives different weights to different points in the sequence. In other words, reordering $\omega$ would give rise to a different compatible metric.
+  While the metric on $A^\omega$ defined above is fairly natural, it is not canonical. For example, any reordering $\omega$ would give rise to a different compatible metric.
 \end{rem}
+
+We now discuss a variety of topological properties in the context of sequence space. The closed sets, nowhere dense sets, and compact sets all have special descriptions in sequence space.
+
+To begin, let $A^{<\omega}=\bigcup A^n$ denote the set of finite sequences of elements of $A$. This set is partially ordered by extension of sequences. A subset of $A^{<\omega}$ is said to be a \emph{tree} if it is closed downward in this order, that is, closed under initial segments. If $T\subset A^{<\omega}$ is a tree then an element $x\in A^\omega$ is said to be a \emph{branch} through $T$ if all finite initial segments of $x$ lie in $T$.
+
+\begin{prop}
+  A subset $C\subset A^\omega$ is closed if and only if there exists a tree $T\subset A^{<\omega}$ such that $C=$ the set of branches through $T$.
+\end{prop}
+
+\begin{proof}
+  First suppose $C$ is closed and let $T$ be the tree of all finite initial segments of elements of $C$. Then it is clear that every element of $C$ is a branch through $T$. On the other hand if $x$ is a branch through $T$ then for all $n$ we can find $x_n\in C$ such that $x,x_n$ share a common initial segment of length $n$. It follows that $x_n\to x$, and since $C$ is closed we have $x\in C$.
+
+  Conversely, suppose that $T\subset A^{<\omega}$ is a tree and $C$ is the set of braches through $T$. If $x\notin C$, then there must be some finite initial segment $s\subset x$ such that $s\notin T$. It follows that the basic open set $V_s$ is disjoint from $C$. This shows that the complement of $C$ is open, and hence that $C$ is closed.
+\end{proof}
+
+In previous sections we have defined nowhere dense subsets of $\RR$ in terms of intervals. In fact we can define nowhere dense subsets of any topological space in terms of open sets: $S\subset X$ is \emph{nowhere dense} in $X$ if every open set has an open subset disjoint from $S$. This definition can even be made with basic open sets in place of open sets. Thus we have the following characterization.
+
+\begin{prop}
+  $S\subset A^{<\omega}$ is nowhere dense if and only if for every $s\in A^{<\omega}$ there exists $t$ such that $s\subset t$ and $V_t$ is disjoint from $S$.\qed
+\end{prop}
+
+Meager sets are now defined in the same way as before: $X\subset A^{<\omega}$ is \emph{meager} if it is the union of countably many nowhere dense sets. Our proof of the Baire category theorem for the real numbers naturally extends to arbitrary complete metric spaces.
+
+\begin{thm}[Baire category theorem]
+  If $X$ is a complete metric space then $X$ is not meager. Moreover if $O$ is a nonempty open subset of $X$ then $O$ is not meager.\qed
+\end{thm}
+
+In particular the notions of meager and comeager sets make perfect sense in both $2^\omega$ and $\omega^\omega$.
+
+Compactness\ldots
 
 \begin{exerc}
   Check that the topology on $A^\omega$ with basis consisting of all $V_s$ is really the same as the product topology.
 \end{exerc}
 
+\begin{exerc}
+  Give an example of an open subset of $\omega^\omega$ which is not closed.
+\end{exerc}
+
+% Kechris
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The domination order on Baire space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ideals}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \end{document}
