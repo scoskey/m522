@@ -218,6 +218,7 @@ Preservation to closures is immediate from condition (b) of Proposition~\ref{pro
 In principal it is possible that this notion is completely moot in the sense that maybe every set of real numbers is meager according to this definition. The Baire category theorem says that this is not the case. In fact, we will soon see that meager sets are rather paltry as the name implies.
 
 \begin{thm}[Baire category theorem]
+  \label{thm:baire}
   The set of all real numbers $\RR$ is nonmeager. In fact, if $I$ is a positive-length interval then $I$ is nonmeager.
 \end{thm}
 
@@ -588,14 +589,17 @@ The two most important examples of sequences spaces are the \emph{Cantor space} 
 \end{prop}
 
 \begin{proof}
+  We give the proof in the case of the Cantor space, and a brief hint in the case of the Baire space.
+
   The Cantor middle thirds set $C$ has a natural description in terms of ternary expansions. If $a\in[0,1]$ then $a$ lies in the Cantor set if and only if it has a ternary expansion that does not contain the digit $1$. Thus there is a simple bijection $2^\omega\to C$ given by replacing the $1$'s in $x$ with $2$'s:
 \[f(x)=0.(2x(0))(2x(1))(2x(2))\cdots
 \]
 The map is continuous: if $f(x)\in(a,b)$ then there exists $n$ such that if we round $f(x)$ down at its $n$th digit then it is still $>a$ and if we round it up at its $n$th digit then it is still $<b$. It follows that if $s=x\restriction n$, then we have $f(V_s)>a$. Finally recall that a continuous bijection between compact spaces is always ahomeomorphism.
 
-For the Baire space we use some facts from the theory of continued fractions.
-
-\ldots
+  For the Baire space, it is common to use the values of $x\in(\omega\smallsetminus\{0\})^\omega$ as the entries in a continued fraction:
+\[f(x)=x(0)+\cfrac{1}{x(1)+\cfrac{1}{x(2)+\cdots}}
+\]
+With some elementary number theory, it is possible to verify that this map is a bijection onto the set of irrational numbers, and even a homeomorphism.
 \end{proof}
 
 This result also implies that $2^\omega$ admits a complete metric, because the Cantor set is a closed and hence complete subspace of $\RR$. In fact, any sequence space $A^\omega$ is completely metrizable. For an example of a complete metric, given $x,y\in A^\omega$ such that $x\neq y$, let $n$ be the least natural number such that $x(n)\neq y(n)$ and set $d(x,y)=1/n$. 
@@ -638,9 +642,9 @@ Meager sets are now defined in the same way as before: $X\subset A^{<\omega}$ is
   If $X$ is a complete metric space then $X$ is not meager. Moreover if $O$ is a nonempty open subset of $X$ then $O$ is not meager.\qed
 \end{thm}
 
-In particular the notions of meager and comeager sets make perfect sense in both $2^\omega$ and $\omega^\omega$.
+In particular the notions of meager and comeager sets make perfect sense in both $2^\omega$ and $\omega^\omega$. The proof of this general Baire category theorem is nearly identical to the proof of Theorem~\ref{thm:baire} with closed intervals replaced by closures of basic open sets $\overline{O_n}$. The completeness of $X$ is used to verify there is a point $x\in\bigcap\overline{O_n}$.
 
-Compactness\ldots
+[Compactness]
 
 \begin{exerc}
   Check that the topology on $A^\omega$ with basis consisting of all $V_s$ is really the same as the product topology.
@@ -650,6 +654,7 @@ Compactness\ldots
   Give an example of an open subset of $\omega^\omega$ which is not closed.
 \end{exerc}
 
+% Arnie Miller, section 1.
 % Kechris
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
