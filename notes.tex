@@ -549,11 +549,11 @@ The pattern continues transfinitely as well, with $\aleph_\alpha$ defined for ev
   The first infinite cardinal is $\aleph_0=\omega$. If $\aleph_\alpha$ is defined then $\aleph_{\alpha+1}$ is the least ordinal that is not in bijection with $\aleph_\alpha$. If $\lambda$ is a limit ordinal and $\aleph_\alpha$ has been defined for $\alpha<\lambda$, then $\aleph_\lambda=\bigcup_{\alpha<\lambda}\aleph_\alpha$.
 \end{defn}
 
-[discuss the continuum]
-
-[define cofinality]
-
-[the continuum has uncountable cofinality]
+% additional topics
+% discuss the value of the continuum |R|
+% define cofinality
+% konig's lemma limiting the value of |R|:
+%   the continuum has uncountable cofinality
 
 \begin{exerc}
   Show that if $\kappa$ is a cardinal, then $\kappa$ is a limit ordinal.
@@ -582,7 +582,7 @@ where $i_j\in\omega$ are distinct and $A_j\subset A$ are open. However in our ca
 \]
 where $s$ is an element of $A^n$ for any $n$.
 
-The two most important examples of sequences spaces are the \emph{Cantor space} $2^\omega$ and the \emph{Baire space} $\omega^\omega$.
+The two most important examples of sequence spaces are the \emph{Cantor space} $2^\omega$ and the \emph{Baire space} $\omega^\omega$.
 
 \begin{prop}
   The Cantor space is homeomorphic to the Cantor middle thirds set. The Baire space is homeomorphic to the set of irrational real numbers.
@@ -618,16 +618,20 @@ This result also implies that $2^\omega$ admits a complete metric, because the C
 
 We now discuss a variety of topological properties in the context of sequence space. The closed sets, nowhere dense sets, and compact sets all have special descriptions in sequence space.
 
-To begin, let $A^{<\omega}=\bigcup A^n$ denote the set of finite sequences of elements of $A$. This set is partially ordered by extension of sequences. A subset of $A^{<\omega}$ is said to be a \emph{tree} if it is closed downward in this order, that is, closed under initial segments. If $T\subset A^{<\omega}$ is a tree then an element $x\in A^\omega$ is said to be a \emph{branch} through $T$ if all finite initial segments of $x$ lie in $T$.
+To begin, let $A^{<\omega}=\bigcup A^n$ denote the set of finite sequences of elements of $A$. This set is partially ordered by the subset relation, but we emplay special terminology in this case. If $s\subset t$ we say that $s$ is an \emph{initial segment} of $t$ or alternatively that $t$ is an \emph{extension} of $s$. We use the same terminology if $s\in A^{<\omega}$, $x\in A^\omega$, and $s\subset x$: $s$ is a finite initial segment of $x$, or $x$ is an infinite extension of $s$.
+
+A subset $T\subset A^{<\omega}$ is said to be a \emph{tree} if it is closed downward, that is, closed under initial segments. An element $x\in A^\omega$ is said to be a \emph{branch} through $T$ if all of its finite initial segments $x\restriction n$ lie in $T$.
 
 \begin{prop}
   A subset $C\subset A^\omega$ is closed if and only if there exists a tree $T\subset A^{<\omega}$ such that $C=$ the set of branches through $T$.
 \end{prop}
 
 \begin{proof}
-  First suppose $C$ is closed and let $T$ be the tree of all finite initial segments of elements of $C$. Then it is clear that every element of $C$ is a branch through $T$. On the other hand if $x$ is a branch through $T$ then for all $n$ we can find $x_n\in C$ such that $x,x_n$ share a common initial segment of length $n$. It follows that $x_n\to x$, and since $C$ is closed we have $x\in C$.
+  Given any set $B\subset A^\omega$, we let $T_B$ be the tree consisting of all $s$ such that $V_s\cap B\neq\emptyset$. We will show that the set $\hat B$ of all branches through the tree $T_B$ is precisely the \emph{closure} of $B$, which implies the desired result.
 
-  Conversely, suppose that $T\subset A^{<\omega}$ is a tree and $C$ is the set of braches through $T$. If $x\notin C$, then there must be some finite initial segment $s\subset x$ such that $s\notin T$. It follows that the basic open set $V_s$ is disjoint from $C$. This shows that the complement of $C$ is open, and hence that $C$ is closed.
+  To see that $\overline{B}\subset\hat{B}$, if $x\in\overline{B}$ then every open neighborhood of of $x$ meets $B$. Thus every initial segment $s\subset x$ lies in $T_B$, that is, $x$ is a branch through $T_B$.
+
+  To see that $\hat{B}\subset\overline{B}$, we need only show that $B\subset\hat B$ and $\hat B$ is closed. For $B\subset\hat B$, if $x\in B$ then clearly every finite initial segment $s\subset x$ is an element of $T_B$ so $x\in\hat{B}$. For $\hat B$ being closed, if $x\notin\hat B$, then there must be some finite initial segment $s\subset x$ such that $s\notin T_B$. Then $V_s$ is disjoint from $\hat B$, which shows that the complement of $\hat B$ is open.
 \end{proof}
 
 In previous sections we have defined nowhere dense subsets of $\RR$ in terms of intervals. In fact we can define nowhere dense subsets of any topological space in terms of open sets: $S\subset X$ is \emph{nowhere dense} in $X$ if every open set has an open subset disjoint from $S$. This definition can even be made with basic open sets in place of open sets. Thus we have the following characterization.
@@ -644,8 +648,6 @@ Meager sets are now defined in the same way as before: $X\subset A^{<\omega}$ is
 
 In particular the notions of meager and comeager sets make perfect sense in both $2^\omega$ and $\omega^\omega$. The proof of this general Baire category theorem is nearly identical to the proof of Theorem~\ref{thm:baire} with closed intervals replaced by closures of basic open sets $\overline{O_n}$. The completeness of $X$ is used to verify there is a point $x\in\bigcap\overline{O_n}$.
 
-[Compactness]
-
 \begin{exerc}
   Check that the topology on $A^\omega$ with basis consisting of all $V_s$ is really the same as the product topology.
 \end{exerc}
@@ -661,8 +663,58 @@ In particular the notions of meager and comeager sets make perfect sense in both
 \section{The domination order on Baire space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{defn}
+  $\leq^*$
+\end{defn}
+
+\begin{defn}
+A family $\mathcal{D}\subseteq \omega^\omega$ is \underline{dominating} if, for all $f\in \omega^\omega$ there exists a $g\in D$ with $f\leq^* g$. The cardinal $\mathfrak{d}$, known as the dominating number, is the smallest cardinality of any dominating family: $\mathfrak{d}=\min\{|\mathcal{D}|:\mathcal{D} \text{ is dominating }\}$.
+\end{defn}
+
+
+\begin{defn}
+A family $\mathcal{B} \subseteq \omega^\omega$ is \underline{unbounded} if there is no single $f\in \omega^\omega$ such that $g\leq^* f$ for $g\in \mathcal{B}$. The cardinal $\mathfrak{b}$, known as the bounding (or unbounding) number, is the smallest cardinality of any unbounded family: $\mathfrak{b}=\min\{ |\mathcal{B}|: \mathcal{B} \text{ is unbounded }\}$.
+\end{defn}
+
+
+\begin{thm}
+  $\aleph_1\leq \mathfrak{b}\leq \mathfrak{d}\leq \mathfrak{c}.$ \end{thm}
+	
+\noindent	
+\textbf{Proof.} \textit{We work from left to right:}\\
+($\aleph_1\leq \mathfrak{b}$) Suppose we are given countably many countable sequences, letting $m_1,m_2,m_3, m_4,...$ enumerate these sequences, we claim that we can construct a new sequence dominating all of the given sequences. These sequences are just functions from $\omega$ to $\omega$; let $m_{i,j}=m_i(j)=$ the value of $m_i$ at $j$, ($i,j\in \omega$).
+
+Now, we want to construct a function dominating all of the countable functions given.
+We claim that the dominating function is given by: $$g(n)=\max_{1\leq i\leq n}\{ M_{i,n}\}$$ 
+That this is in fact a dominating function is fairly clear, since for each $n$: $M_{i,n}\leq g(n)$ for all $i\leq n$. 
+\\
+This shows that no countable family of sequences (functions) is unbounded and thus that $\mathfrak{b}>\aleph_0$, as desired.
+\\
+\\
+($\mathfrak{b}\leq \mathfrak{d}$), it may seem fairly clear that dominating implies unbounded. To make this intuition precise take a dominating family $\mathcal{D}$, we want to show that this family is also unbounded. Suppose, toward a contradiction, $\forall f\in \mathcal{D}$ that there is some function $g\in \omega^\omega$ such that $f\leq^* g$ (i.e. $\mathcal{D}$ is \underline{not} unbounded). But then the function $N_d=n\mapsto g(n)+1$ is not dominated by any $f\in \mathcal{D}$, contradicting that $\mathcal{D}$ is dominating. 
+\\
+\\
+($\mathfrak{d}\leq \mathfrak{c}$) For this, we note that $\mathfrak{c}=2^{\aleph_0}$ which we remember can be regarded as $\omega^\omega$. The result follows since $\mathcal{D}\subseteq \omega^\omega$.
+
+\hfill $\qed$
+\\
+
+
+
+%We just want to show that no unbounded family is countable, but we have already shown this in \textbf{Lemma 3.1}. Recall that no countable family of sequences is unbounded, as we can always construct a single sequence dominating the family. 
+
+
+\begin{thm}
+  $\mathfrak b$ is the least cardinality of a set $A\subset\omega^\omega$ which is not $\mathcal K_\sigma$. $\mathfrak d$ is the least cardinality of a family $\mathcal F$ of $\mathcal K_\sigma$ sets which does not cover all of $\omega^\omega$.
+\end{thm}
+
+
+
+
+% Blass, section 2
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Ideals}
+\section{Ideals and their cardinals}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
