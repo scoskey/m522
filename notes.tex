@@ -663,22 +663,23 @@ In particular the notions of meager and comeager sets make perfect sense in both
 \section{The domination order on Baire space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+As we have discussed in the introduction, the exact cardinal value of the size of the set of all real numbers is independent of the axioms of set theory. That is, if we write $\mathfrak c=|\RR|$ then we know $\mathfrak c=\aleph_\alpha$ for some $\alpha\geq1$, but we do not know which one. Here $\mathfrak c$ stands for \emph{continuum}. Since $\mathfrak c$ is also equal to the cardinality of Cantor space, it is also often denoted $2^{\aleph_0}$. In this section we discuss several cardinal values other than $\mathfrak c$ that arise from combinatorics of the Baire space $\omega^\omega$.
+
+To begin, we can partially order Baire space by $f\leq g$ iff for all $n$, we have $f(n)\leq g(n)$. We also have the more flexible \emph{eventual domination} order: $f\leq g$ iff there is some $N$ such that for all $n\geq N$ we have $f(n)\leq g(n)$. Of course eventual domination is not a partial order because $f\leq^*g\leq^*f$ implies that 
+
 \begin{defn}
-  $\leq^*$
+  A subset $A\subset\omega^\omega$ is said to be a \underline{dominating family} if for all $f\in\omega^\omega$ there exists $g\in A$ such that $f\leq^*g$. The \emph{dominating number} $\mathfrak d$, is the smallest cardinality of any dominating family.
 \end{defn}
 
 \begin{defn}
-A family $\mathcal{D}\subseteq \omega^\omega$ is \underline{dominating} if, for all $f\in \omega^\omega$ there exists a $g\in D$ with $f\leq^* g$. The cardinal $\mathfrak{d}$, known as the dominating number, is the smallest cardinality of any dominating family: $\mathfrak{d}=\min\{|\mathcal{D}|:\mathcal{D} \text{ is dominating }\}$.
+  A subset $A\subset\omega^\omega$ is said to be an \underline{unbounded family} if there is no single $f\in\omega^\omega$ such that $g\leq^*f$ for all $g\in A$. The \emph{bounding number} $\mathfrak b$ is the smallest cardinality of any unbounded family.
 \end{defn}
 
-
-\begin{defn}
-A family $\mathcal{B} \subseteq \omega^\omega$ is \underline{unbounded} if there is no single $f\in \omega^\omega$ such that $g\leq^* f$ for $g\in \mathcal{B}$. The cardinal $\mathfrak{b}$, known as the bounding (or unbounding) number, is the smallest cardinality of any unbounded family: $\mathfrak{b}=\min\{ |\mathcal{B}|: \mathcal{B} \text{ is unbounded }\}$.
-\end{defn}
-
+It is clear that $\mathfrak b$ and $\mathfrak d$ are less than or equal to $\mathfrak c$. The following result generalizes Cantor's theorem by showing that the cardinals $\mathfrak b$ and $\mathfrak d$ are already uncountable.
 
 \begin{thm}
-  $\aleph_1\leq \mathfrak{b}\leq \mathfrak{d}\leq \mathfrak{c}.$ \end{thm}
+  We have $\aleph_1\leq\mathfrak{b}\leq\mathfrak{d}\leq\mathfrak{c}$.
+\end{thm}
 	
 \noindent	
 \textbf{Proof.} \textit{We work from left to right:}\\
