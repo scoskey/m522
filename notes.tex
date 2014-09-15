@@ -5,7 +5,7 @@
 \author{Samuel Coskey}
 \author{Erik Holmes}
 
-\usepackage[vscale=.8]{geometry}
+\usepackage[vscale=.8,vmarginratio=4:3]{geometry}
 \usepackage{mathpazo}
 \usepackage{amssymb}
 \usepackage{setspace}\onehalfspacing\raggedbottom
@@ -675,7 +675,7 @@ In particular the notions of meager and comeager sets make perfect sense in both
 % Kechris
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The domination order on Baire space}
+\section{$\sigma$-compactness in Baire space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 As we have discussed in the introduction, the exact cardinal value of the size of the set of all real numbers is independent of the axioms of set theory. That is, if we write $\mathfrak c=|\RR|$ then we know $\mathfrak c=\aleph_\alpha$ for some $\alpha\geq1$, but we do not know which one. Here $\mathfrak c$ stands for \emph{continuum}. Since $\mathfrak c$ is also equal to the cardinality of Cantor space, it is also often denoted $2^{\aleph_0}$. In this section we discuss several cardinal values other than $\mathfrak c$ that arise from the special topology of the Baire space $\omega^\omega$.
@@ -700,11 +700,12 @@ We now introduce for the first time the process of associating \emph{cardinal ch
 Our next result will generalize Cantor's theorem by showing that the cardinals $\non(\mathcal K_\sigma)$ and $\cov(\mathcal K_\sigma)$ are uncountable lower bounds for the value of the continuum. First we need the following characterizations of compact sets in Baire space.
 
 \begin{lem}
-  A subset $A\subset\omega^\omega$ is compact if and only if it is closed and contained in some product of bounded intervals $\prod[0,K_n]$.
+  \label{lem:baire-compact}
+  A subset $A\subset\omega^\omega$ is compact if and only if it is a closed subset of some product of bounded intervals $\prod_{n\in\omega}\{0,\ldots,K_n\}$.
 \end{lem}
 
 \begin{proof}
-\ldots
+  We will use the fact that a countable product of finite metric is compact (this follows from Tychonoff's theorem, but it's easy to check directly too). Since a closed subspace of a compact metric space is again compact, it follows that any closed subset of a product $\prod_{n\in\omega}\{0,\ldots,K_n\}$ is compact. For the converse suppose that $A\subset\omega^\omega$ is compact, and suppose towards a contradiction that $A$ is not contained in a product of bounded intervals. Then there exists some coordinate $n$ such that $A$ contains a sequence of elements $f_i$ with $f_i(n)\to\infty$. Then $f_i$ clearly does not have any convergent subsequence, contradicting that $A$ was compact.
 \end{proof}
 
 \begin{thm}
@@ -712,14 +713,12 @@ Our next result will generalize Cantor's theorem by showing that the cardinals $
 \end{thm}
 
 \begin{proof}
-  It is clear that $\aleph_1\leq\non(\mathcal K_\sigma)$ because every countable set is $\mathcal K_\sigma$, being the union of its points.
+  It is clear that $\aleph_1\leq\non(\mathcal K_\sigma)$ because every countable set is $\mathcal K_\sigma$, being the union of its points. To see that $\non(\mathcal K_\sigma)\leq\mathfrak c$ it is enough to show that $\omega^\omega$ itself is not $\sigma$-compact. So suppose towards a contradiction that $\omega^\omega=\bigcup A_n$ where each $A_n$ is compact. Then by the Baire category theorem, at least one of the $A_n$ must have a nonempty interior, say $V_s\subset A_n$. But $V_s$ is not contained in a product of bounded intervals, so by Lemma~\ref{lem:baire-compact} this contradicts that $A_n$ is compact.
 
-  \ldots
-
-  Finally it is again clear that $\cov(\mathcal K_\sigma)\leq\mathfrak c$, since the whole space $\omega^\omega$ is the union of its points and $|\omega^\omega|=\mathfrak c$.
+  To show that $\aleph_1\leq\cov(\mathcal K_\sigma)$, suppose a countable family of $\sigma$-compact sets covered all of $\omega^\omega$. Then a countable family of compact sets would also cover all of $\omega^\omega$, again contradicting that $\omega^\omega$ is not $\sigma$-compact. Finally it is clear that $\cov(\mathcal K_\sigma)\leq\mathfrak c$, since the whole space $\omega^\omega$ is the union of its points and $|\omega^\omega|=\mathfrak c$.
 \end{proof}
 
-In fact we'll see shortly that $\non(\mathcal K_\sigma)\leq\cov(\mathcal K_\sigma)$. Meavwhile the theorem implies the analog of the Baire category theorem for $\sigma$-compact sets: if $V_s$ is any basic open set then $V_s$ is not $\sigma$-compact. Indeed, observe that $V_s$ is homeomorphic to $\omega^\omega$ itself, and $\omega^\omega$ is not $\sigma$-compact because that would imply that $\cov(\mathcal K_\sigma)=1$.
+In fact we'll see shortly that $\non(\mathcal K_\sigma)\leq\cov(\mathcal K_\sigma)$. Meanwhile the theorem implies the analog of the Baire category theorem for $\sigma$-compact sets: if $V_s$ is any basic open set then $V_s$ is not $\sigma$-compact. Indeed, observe that $V_s$ is homeomorphic to $\omega^\omega$ itself, and $\omega^\omega$ is not $\sigma$-compact because that would imply that $\cov(\mathcal K_\sigma)=1$.
 
 We now work establish a key relationship between the cardinals $\non(\mathcal K_\sigma)$ and $\cov(\mathcal K_\sigma)$, and the combinatorics of the Baire space. To begin, we can partially order Baire space by $f\leq g$ iff for all $n$, we have $f(n)\leq g(n)$. We also have the more versatile \emph{eventual domination} order: $f\leq^*g$ if $f\leq g$ almost everywher, that is, there is some $N$ such that for all $n\geq N$ we have $f(n)\leq g(n)$. Of course eventual domination is not a partial order because $f\leq^*g\leq^*f$ only implies that $f$ and $g$ agree almost everywhere, which we denote by $f=^*g$.
 
@@ -757,11 +756,18 @@ We are now ready to state the connection between $\mathcal K_\sigma$ sets and th
 
 \end{proof}
 
+\begin{exerc}
+  Prove directly that a countable product of finite metric spaces is compact.
+\end{exerc}
 
 % Blass, section 2
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ideals and their cardinals}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
