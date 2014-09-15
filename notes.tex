@@ -461,7 +461,7 @@ Finally we show that the cardinals are well-ordered. One technicality arises her
 
 \begin{thm}
   \label{thm:card-well}
-  Let $\mathcal A$ be a class of sets. Then there exists $A\in\mathcal A$ that injects into all other $B\in\mathcal A$.
+  Let $\mathcal A$ be a class of sets. Then there exists $A\in\mathcal A$ that injects into all other sets $B\in\mathcal A$.
 \end{thm}
 
 \begin{proof}
@@ -473,10 +473,18 @@ This time $\mathcal F$ is partially ordered by \emph{coordinatewise} extension o
 In the general case when $\mathcal A$ is a class, we can reduce to the set case as follows. Fix an element $D\in\mathcal A$ and let $\mathcal A'$ denote the collection of subsets of $D$ that are in bijection with some element of $\mathcal A$. Since $\mathcal A'$ is a set, we can find $A\in\mathcal A$ which injects into all elements of $\mathcal A'$. It follows that $A$ injects into all other elements of $\mathcal A$ too. Indeed if $B\in\mathcal A$ and $A$ does not inject into $B$, then by Theorem~\ref{thm:card-total}, $B$ injects into $A$. It follows that $B$ is in bijection with a subset of $D$ and hence $A$ injects into $B$ after all.
 \end{proof}
 
-Although we still can't be fully rigorous about the meaning of the symbols $\aleph_1,\aleph_2,\ldots$, the well-ordering property helps justify the use of these symbols. Essentially $\aleph_1$ is the least cardinality greater than $\aleph_0$, $\aleph_2$ is the least cardinality greater than $\aleph_1$, and so forth.
+Although we still can't be fully rigorous about the meaning of the symbols $\aleph_1,\aleph_2,\ldots$, the well-ordering property helps justify the use of these symbols. Essentially $\aleph_1$ is the least cardinality greater than $\aleph_0$, $\aleph_2$ is the least cardinality greater than $\aleph_1$, and so forth. In the next section, we will make this fully precise.
 
 \begin{exerc}
   Show that there is a bijection between $\mathcal P(\NN)$ and $\RR$.
+\end{exerc}
+
+\begin{exerc}
+  Which of the following categories satisfy the analog of the Cantor--Schr\"oder--Bernstein theorem? (That is, monomorphisms $A\to B\to A$ implies isomorphism $A\cong B$.) linear orders with order-preserving maps; groups with group homomorphisms; topological spaces with continuous maps; topological spaces with piecewise continuous maps.
+\end{exerc}
+
+\begin{exerc}
+  We used the well-ordering principle together with Cantor's theorem to argue that there are uncountable ordinals. Here is another way: show that the set of isomorphism equivalence classes of well-orderings of $\omega$ is itself naturally well-ordered, and that this well-ordering is uncountable.
 \end{exerc}
 
 % Chaim Samuel H\"onig, \emph{Proof of the well-ordering of cardinal numbers}.
@@ -569,7 +577,6 @@ The pattern continues transfinitely as well, with $\aleph_\alpha$ defined for ev
 
 % Kunen, set theory.
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The topology of Cantor and Baire space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -620,18 +627,18 @@ We now discuss a variety of topological properties in the context of sequence sp
 
 To begin, let $A^{<\omega}=\bigcup A^n$ denote the set of finite sequences of elements of $A$. This set is partially ordered by the subset relation, but we emplay special terminology in this case. If $s\subset t$ we say that $s$ is an \emph{initial segment} of $t$ or alternatively that $t$ is an \emph{extension} of $s$. We use the same terminology if $s\in A^{<\omega}$, $x\in A^\omega$, and $s\subset x$: $s$ is a finite initial segment of $x$, or $x$ is an infinite extension of $s$.
 
-A subset $T\subset A^{<\omega}$ is said to be a \emph{tree} if it is closed downward, that is, closed under initial segments. An element $x\in A^\omega$ is said to be a \emph{branch} through $T$ if all of its finite initial segments $x\restriction n$ lie in $T$.
+A subset $T\subset A^{<\omega}$ is said to be a \emph{tree} if it is closed downward, that is, closed under initial segments. An element $x\in A^\omega$ is said to be a \emph{branch} through $T$ if all of its finite initial segments $x\restriction n$ lie in $T$. We denote by $[T]$ the subset of $A^\omega$ consisting of all branches through $T$.
 
 \begin{prop}
-  A subset $C\subset A^\omega$ is closed if and only if there exists a tree $T\subset A^{<\omega}$ such that $C=$ the set of branches through $T$.
+  A subset $C\subset A^\omega$ is closed if and only if there exists a tree $T\subset A^{<\omega}$ such that $C=[T]$.
 \end{prop}
 
 \begin{proof}
-  Given any set $B\subset A^\omega$, we let $T_B$ be the tree consisting of all $s$ such that $V_s\cap B\neq\emptyset$. We will show that the set $\hat B$ of all branches through the tree $T_B$ is precisely the \emph{closure} of $B$, which implies the desired result.
+  Given any set $B\subset A^\omega$, we let $T_B$ be the tree consisting of all $s$ such that $V_s\cap B\neq\emptyset$. We will show that the set $[T_B]$ of all branches through the tree $T_B$ is precisely the \emph{closure} of $B$, which implies the desired result.
 
-  To see that $\overline{B}\subset\hat{B}$, if $x\in\overline{B}$ then every open neighborhood of of $x$ meets $B$. Thus every initial segment $s\subset x$ lies in $T_B$, that is, $x$ is a branch through $T_B$.
+  To see that $\overline{B}\subset[T_B]$, if $x\in\overline{B}$ then every open neighborhood of of $x$ meets $B$. Thus every initial segment $s\subset x$ lies in $T_B$, that is, $x$ is a branch through $T_B$.
 
-  To see that $\hat{B}\subset\overline{B}$, we need only show that $B\subset\hat B$ and $\hat B$ is closed. For $B\subset\hat B$, if $x\in B$ then clearly every finite initial segment $s\subset x$ is an element of $T_B$ so $x\in\hat{B}$. For $\hat B$ being closed, if $x\notin\hat B$, then there must be some finite initial segment $s\subset x$ such that $s\notin T_B$. Then $V_s$ is disjoint from $\hat B$, which shows that the complement of $\hat B$ is open.
+  To see that $[T_B]\subset\overline{B}$, we need only show that $B\subset[T_B]$ and $[T_B]$ is closed. For $B\subset[T_B]$, if $x\in B$ then clearly every finite initial segment $s\subset x$ is an element of $T_B$ so $x\in\hat{B}$. For $[T_B]$ being closed, if $x\notin[T_B]$, then there must be some finite initial segment $s\subset x$ such that $s\notin T_B$. Then $V_s$ is disjoint from $[T_B]$, which shows that the complement of $[T_B]$ is open.
 \end{proof}
 
 In previous sections we have defined nowhere dense subsets of $\RR$ in terms of intervals. In fact we can define nowhere dense subsets of any topological space in terms of open sets: $S\subset X$ is \emph{nowhere dense} in $X$ if every open set has an open subset disjoint from $S$. This definition can even be made with basic open sets in place of open sets. Thus we have the following characterization.
@@ -656,6 +663,10 @@ In particular the notions of meager and comeager sets make perfect sense in both
   Give an example of an open subset of $\omega^\omega$ which is not closed.
 \end{exerc}
 
+\begin{exerc}
+  Show that $\omega^\omega$ is homeomorphic to the product with itself $\omega^\omega\times\omega^\omega$. Is the same true of $2^\omega$?
+\end{exerc}
+
 % Arnie Miller, section 1.
 % Kechris
 
@@ -665,14 +676,14 @@ In particular the notions of meager and comeager sets make perfect sense in both
 
 As we have discussed in the introduction, the exact cardinal value of the size of the set of all real numbers is independent of the axioms of set theory. That is, if we write $\mathfrak c=|\RR|$ then we know $\mathfrak c=\aleph_\alpha$ for some $\alpha\geq1$, but we do not know which one. Here $\mathfrak c$ stands for \emph{continuum}. Since $\mathfrak c$ is also equal to the cardinality of Cantor space, it is also often denoted $2^{\aleph_0}$. In this section we discuss several cardinal values other than $\mathfrak c$ that arise from combinatorics of the Baire space $\omega^\omega$.
 
-To begin, we can partially order Baire space by $f\leq g$ iff for all $n$, we have $f(n)\leq g(n)$. We also have the more flexible \emph{eventual domination} order: $f\leq g$ iff there is some $N$ such that for all $n\geq N$ we have $f(n)\leq g(n)$. Of course eventual domination is not a partial order because $f\leq^*g\leq^*f$ implies that 
+To begin, we can partially order Baire space by $f\leq g$ iff for all $n$, we have $f(n)\leq g(n)$. We also have the more versatile \emph{eventual domination} order: $f\leq^*g$ if $f\leq g$ almost everywher, that is, there is some $N$ such that for all $n\geq N$ we have $f(n)\leq g(n)$. Of course eventual domination is not a partial order because $f\leq^*g\leq^*f$ only implies that $f$ and $g$ agree almost everywhere, denoted $f=^*g$.
 
 \begin{defn}
-  A subset $A\subset\omega^\omega$ is said to be a \underline{dominating family} if for all $f\in\omega^\omega$ there exists $g\in A$ such that $f\leq^*g$. The \emph{dominating number} $\mathfrak d$, is the smallest cardinality of any dominating family.
+  A subset $\mathcal F\subset\omega^\omega$ is said to be a \emph{dominating family} if for all $h\in\omega^\omega$ there exists $f\in\mathcal F$ such that $h\leq^*f$. The \emph{dominating number} $\mathfrak d$, is the smallest cardinality of any dominating family.
 \end{defn}
 
 \begin{defn}
-  A subset $A\subset\omega^\omega$ is said to be an \underline{unbounded family} if there is no single $f\in\omega^\omega$ such that $g\leq^*f$ for all $g\in A$. The \emph{bounding number} $\mathfrak b$ is the smallest cardinality of any unbounded family.
+  A subset $\mathcal F\subset\omega^\omega$ is said to be an \emph{unbounded family} if there is no single $h\in\omega^\omega$ such that $f\leq^*h$ for all $f\in\mathcal F$. The \emph{bounding number} $\mathfrak b$ is the smallest cardinality of any unbounded family.
 \end{defn}
 
 It is clear that $\mathfrak b$ and $\mathfrak d$ are less than or equal to $\mathfrak c$. The following result generalizes Cantor's theorem by showing that the cardinals $\mathfrak b$ and $\mathfrak d$ are already uncountable.
@@ -681,29 +692,20 @@ It is clear that $\mathfrak b$ and $\mathfrak d$ are less than or equal to $\mat
   We have $\aleph_1\leq\mathfrak{b}\leq\mathfrak{d}\leq\mathfrak{c}$.
 \end{thm}
 	
-\noindent	
-\textbf{Proof.} \textit{We work from left to right:}\\
-($\aleph_1\leq \mathfrak{b}$) Suppose we are given countably many countable sequences, letting $m_1,m_2,m_3, m_4,...$ enumerate these sequences, we claim that we can construct a new sequence dominating all of the given sequences. These sequences are just functions from $\omega$ to $\omega$; let $m_{i,j}=m_i(j)=$ the value of $m_i$ at $j$, ($i,j\in \omega$).
+\begin{proof}
+  We begin by showing that $\mathfrak{b}$ is uncountable. Suppose towards a contradiction that $\mathfrak b\leq\aleph_0$. Then there exists a countable unbounded family $\mathcal F\subset\omega^\omega$, which we enumerate $f_0,f_2,\ldots$. We will show that in fact there is an element $h\in\omega^\omega$ which eventually dominates each of the $f_i$, contradicting that $\mathcal F$ is unbounded.
 
-Now, we want to construct a function dominating all of the countable functions given.
-We claim that the dominating function is given by: $$g(n)=\max_{1\leq i\leq n}\{ M_{i,n}\}$$ 
-That this is in fact a dominating function is fairly clear, since for each $n$: $M_{i,n}\leq g(n)$ for all $i\leq n$. 
-\\
-This shows that no countable family of sequences (functions) is unbounded and thus that $\mathfrak{b}>\aleph_0$, as desired.
-\\
-\\
-($\mathfrak{b}\leq \mathfrak{d}$), it may seem fairly clear that dominating implies unbounded. To make this intuition precise take a dominating family $\mathcal{D}$, we want to show that this family is also unbounded. Suppose, toward a contradiction, $\forall f\in \mathcal{D}$ that there is some function $g\in \omega^\omega$ such that $f\leq^* g$ (i.e. $\mathcal{D}$ is \underline{not} unbounded). But then the function $N_d=n\mapsto g(n)+1$ is not dominated by any $f\in \mathcal{D}$, contradicting that $\mathcal{D}$ is dominating. 
-\\
-\\
-($\mathfrak{d}\leq \mathfrak{c}$) For this, we note that $\mathfrak{c}=2^{\aleph_0}$ which we remember can be regarded as $\omega^\omega$. The result follows since $\mathcal{D}\subseteq \omega^\omega$.
+  To construct $h$, we use a diagonalization process similar to the proof of Cantor's theorem. More specifically, we define $h(n)$ so that it dominates $f_0(n),\ldots,f_n(n)$:
+\[h(n)=\max\set{f_i(n)\mid 0\leq i\leq n}
+\]
+Then for each $i$ we have $f_i(n)\leq h(n)$ for all $n\geq i$, and therefore $f_i\leq h$, as desired.
 
-\hfill $\qed$
-\\
+To show that $\mathfrak{b}\leq\mathfrak{d}$, it is enough to show that every dominating family is unbounded. Let us establish the contrapositive: if $\mathcal F$ is bounded, say by $h\in\omega^\omega$, then every $f\in\mathcal F$ satisfies $f\leq^*h$. Letting $h'(n)=h(n+1)$, it follows that every $f\in\mathcal F$ satisfies $f\not\leq^*h'$, and hence that $\mathcal F$ is not a dominating family.
 
+Finally, $\mathfrak d\leq\mathfrak c$ since $\mathcal F=\omega^\omega$ is itself a dominating family, and $|\omega^\omega|=\mathfrak c$.
+\end{proof}
 
-
-%We just want to show that no unbounded family is countable, but we have already shown this in \textbf{Lemma 3.1}. Recall that no countable family of sequences is unbounded, as we can always construct a single sequence dominating the family. 
-
+We now establish an important relationship between the unbounding and dominating numbers and the topology of Baire space.
 
 \begin{thm}
   $\mathfrak b$ is the least cardinality of a set $A\subset\omega^\omega$ which is not $\mathcal K_\sigma$. $\mathfrak d$ is the least cardinality of a family $\mathcal F$ of $\mathcal K_\sigma$ sets which does not cover all of $\omega^\omega$.
