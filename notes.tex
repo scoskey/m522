@@ -20,6 +20,10 @@
 \newcommand{\NN}{\mathbb N}
 \newcommand{\QQ}{\mathbb Q}
 \newcommand{\RR}{\mathbb R}
+\DeclareMathOperator{\add}{\mathsf{add}}
+\DeclareMathOperator{\non}{\mathsf{non}}
+\DeclareMathOperator{\cov}{\mathsf{cov}}
+\DeclareMathOperator{\cof}{\mathsf{cof}}
 
 \theoremstyle{definition}
 \newtheorem{exerc}{Exercise}[section]
@@ -664,54 +668,94 @@ In particular the notions of meager and comeager sets make perfect sense in both
 \end{exerc}
 
 \begin{exerc}
-  Show that $\omega^\omega$ is homeomorphic to the product with itself $\omega^\omega\times\omega^\omega$. Is the same true of $2^\omega$?
+  Show that the sequence space $A^\omega$ is homeomorphic to the cartesian product with itself $A^\omega\times A^\omega$.
 \end{exerc}
 
-% Arnie Miller, section 1.
+% Arnie Miller, forcing and DST, section 1.
 % Kechris
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The domination order on Baire space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-As we have discussed in the introduction, the exact cardinal value of the size of the set of all real numbers is independent of the axioms of set theory. That is, if we write $\mathfrak c=|\RR|$ then we know $\mathfrak c=\aleph_\alpha$ for some $\alpha\geq1$, but we do not know which one. Here $\mathfrak c$ stands for \emph{continuum}. Since $\mathfrak c$ is also equal to the cardinality of Cantor space, it is also often denoted $2^{\aleph_0}$. In this section we discuss several cardinal values other than $\mathfrak c$ that arise from combinatorics of the Baire space $\omega^\omega$.
+As we have discussed in the introduction, the exact cardinal value of the size of the set of all real numbers is independent of the axioms of set theory. That is, if we write $\mathfrak c=|\RR|$ then we know $\mathfrak c=\aleph_\alpha$ for some $\alpha\geq1$, but we do not know which one. Here $\mathfrak c$ stands for \emph{continuum}. Since $\mathfrak c$ is also equal to the cardinality of Cantor space, it is also often denoted $2^{\aleph_0}$. In this section we discuss several cardinal values other than $\mathfrak c$ that arise from the special topology of the Baire space $\omega^\omega$.
 
-To begin, we can partially order Baire space by $f\leq g$ iff for all $n$, we have $f(n)\leq g(n)$. We also have the more versatile \emph{eventual domination} order: $f\leq^*g$ if $f\leq g$ almost everywher, that is, there is some $N$ such that for all $n\geq N$ we have $f(n)\leq g(n)$. Of course eventual domination is not a partial order because $f\leq^*g\leq^*f$ only implies that $f$ and $g$ agree almost everywhere, denoted $f=^*g$.
+We have measured the size of sets of real numbers using cardinality, category, and measure. We now introduce a fourth notion in the Baire space. A set $A\subset\omega^\omega$ is said to be \emph{$\sigma$-compact} if it is the union of countably many compact sets.
+
+Like the meager and null sets, the class of $\sigma$-compact sets is closed under countable unions. While the class of $\sigma$-compact sets is not closed under subsets, if one wishes they can simply consider instead the class of subsets of $\sigma$-compact sets instead. In a moment we shall show that the whole Baire space $\omega^\omega$ is not $\sigma$-compact, so that $\sigma$-compactness really is a good notion of a small set.
+
+\begin{rem}
+  Among the spaces we've explored so far, the notion of $\sigma$-compactness only works in the Baire space. That's because both $2^\omega$ and $\RR$ both have the property that the whole space is $\sigma$-compact: $\RR$ is the union of closed bounded intervals, and $2^\omega$ is itself compact.
+\end{rem}
+
+We now introduce for the first time the process of associating \emph{cardinal characteristics} to a class of sets. First we denote by $\mathcal K_\sigma$ the class of all sets $A\subset\omega^\omega$ such that $A$ is a subset of some $\sigma$-compact set.
 
 \begin{defn}
-  A subset $\mathcal F\subset\omega^\omega$ is said to be a \emph{dominating family} if for all $h\in\omega^\omega$ there exists $f\in\mathcal F$ such that $h\leq^*f$. The \emph{dominating number} $\mathfrak d$, is the smallest cardinality of any dominating family.
+  \begin{itemize}
+  \item The cardinal $\non(\mathcal K_\sigma)$ is the least cardinality of any set $A\subset\omega^\omega$ which is not $K_\sigma$.
+  \item The cardinal $\cov(\mathcal K_\sigma)$ is the least cardinality of any family $\mathcal F$ of subsets of $\omega^\omega$ whose union covers all of $\omega^\omega$.
+  \end{itemize}
 \end{defn}
 
-\begin{defn}
-  A subset $\mathcal F\subset\omega^\omega$ is said to be an \emph{unbounded family} if there is no single $h\in\omega^\omega$ such that $f\leq^*h$ for all $f\in\mathcal F$. The \emph{bounding number} $\mathfrak b$ is the smallest cardinality of any unbounded family.
-\end{defn}
+Our next result will generalize Cantor's theorem by showing that the cardinals $\non(\mathcal K_\sigma)$ and $\cov(\mathcal K_\sigma)$ are uncountable lower bounds for the value of the continuum. First we need the following characterizations of compact sets in Baire space.
 
-It is clear that $\mathfrak b$ and $\mathfrak d$ are less than or equal to $\mathfrak c$. The following result generalizes Cantor's theorem by showing that the cardinals $\mathfrak b$ and $\mathfrak d$ are already uncountable.
+\begin{lem}
+  A subset $A\subset\omega^\omega$ is compact if and only if it is closed and contained in some product of bounded intervals $\prod[0,K_n]$.
+\end{lem}
+
+\begin{proof}
+\ldots
+\end{proof}
 
 \begin{thm}
-  We have $\aleph_1\leq\mathfrak{b}\leq\mathfrak{d}\leq\mathfrak{c}$.
+  We have $\aleph_1\leq\non(\mathcal K_\sigma)\leq\mathfrak c$ and $\aleph_1\leq\cov(\mathcal K_\sigma)\leq\mathfrak c$.
 \end{thm}
+
+\begin{proof}
+  It is clear that $\aleph_1\leq\non(\mathcal K_\sigma)$ because every countable set is $\mathcal K_\sigma$, being the union of its points.
+
+  \ldots
+
+  Finally it is again clear that $\cov(\mathcal K_\sigma)\leq\mathfrak c$, since the whole space $\omega^\omega$ is the union of its points and $|\omega^\omega|=\mathfrak c$.
+\end{proof}
+
+In fact we'll see shortly that $\non(\mathcal K_\sigma)\leq\cov(\mathcal K_\sigma)$. Meavwhile the theorem implies the analog of the Baire category theorem for $\sigma$-compact sets: if $V_s$ is any basic open set then $V_s$ is not $\sigma$-compact. Indeed, observe that $V_s$ is homeomorphic to $\omega^\omega$ itself, and $\omega^\omega$ is not $\sigma$-compact because that would imply that $\cov(\mathcal K_\sigma)=1$.
+
+We now work establish a key relationship between the cardinals $\non(\mathcal K_\sigma)$ and $\cov(\mathcal K_\sigma)$, and the combinatorics of the Baire space. To begin, we can partially order Baire space by $f\leq g$ iff for all $n$, we have $f(n)\leq g(n)$. We also have the more versatile \emph{eventual domination} order: $f\leq^*g$ if $f\leq g$ almost everywher, that is, there is some $N$ such that for all $n\geq N$ we have $f(n)\leq g(n)$. Of course eventual domination is not a partial order because $f\leq^*g\leq^*f$ only implies that $f$ and $g$ agree almost everywhere, which we denote by $f=^*g$.
+
+\begin{defn}
+  \begin{itemize}
+  \item A subset $\mathcal F\subset\omega^\omega$ is said to be a \emph{dominating family} if for all $h\in\omega^\omega$ there exists $f\in\mathcal F$ such that $h\leq^*f$. The \emph{dominating number} $\mathfrak d$, is the smallest cardinality of any dominating family.
+  \item A subset $\mathcal F\subset\omega^\omega$ is said to be an \emph{unbounded family} if there is no single $h\in\omega^\omega$ such that $f\leq^*h$ for all $f\in\mathcal F$. The \emph{unbounding number} $\mathfrak b$ is the smallest cardinality of any unbounded family.
+  \end{itemize}
+\end{defn}
+
+The following result establishes the relationship between these two cardinal values.
+
+\begin{prop}
+  We have $\aleph_1\leq\mathfrak{b}\leq\mathfrak{d}\leq\mathfrak{c}$.
+\end{prop}
 	
 \begin{proof}
-  We begin by showing that $\mathfrak{b}$ is uncountable. Suppose towards a contradiction that $\mathfrak b\leq\aleph_0$. Then there exists a countable unbounded family $\mathcal F\subset\omega^\omega$, which we enumerate $f_0,f_2,\ldots$. We will show that in fact there is an element $h\in\omega^\omega$ which eventually dominates each of the $f_i$, contradicting that $\mathcal F$ is unbounded.
-
-  To construct $h$, we use a diagonalization process similar to the proof of Cantor's theorem. More specifically, we define $h(n)$ so that it dominates $f_0(n),\ldots,f_n(n)$:
+  We begin by showing that $\mathfrak{b}$ is uncountable. For this, it is enough to show that every countable family $\mathcal F\subset\omega^\omega$ is bounded by some $h\in\omega^\omega$. So let $\mathcal F\subset\omega^\omega$ be a countable family and enumerate its elements $f_0,f_2,\ldots$. To construct the bound $h$, we use a diagonalization process similar to the proof of Cantor's theorem. More specifically, we define $h(n)$ so that it dominates $f_0(n),\ldots,f_n(n)$:
 \[h(n)=\max\set{f_i(n)\mid 0\leq i\leq n}
 \]
-Then for each $i$ we have $f_i(n)\leq h(n)$ for all $n\geq i$, and therefore $f_i\leq h$, as desired.
+Then for each $i$ we have $f_i(n)\leq h(n)$ for all $n\geq i$, and therefore $f_i\leq^*h$, as desired.
 
-To show that $\mathfrak{b}\leq\mathfrak{d}$, it is enough to show that every dominating family is unbounded. Let us establish the contrapositive: if $\mathcal F$ is bounded, say by $h\in\omega^\omega$, then every $f\in\mathcal F$ satisfies $f\leq^*h$. Letting $h'(n)=h(n+1)$, it follows that every $f\in\mathcal F$ satisfies $f\not\leq^*h'$, and hence that $\mathcal F$ is not a dominating family.
+To show that $\mathfrak{b}\leq\mathfrak{d}$, it is enough to show that every dominating family is unbounded. Let us establish the contrapositive: if $\mathcal F$ is bounded, say by $h\in\omega^\omega$, then every $f\in\mathcal F$ satisfies $f\leq^*h$. Letting $h'(n)=h(n+1)$, it follows that every $f\in\mathcal F$ satisfies $h'\not\leq^*f$, and hence that $\mathcal F$ is not a dominating family.
 
 Finally, $\mathfrak d\leq\mathfrak c$ since $\mathcal F=\omega^\omega$ is itself a dominating family, and $|\omega^\omega|=\mathfrak c$.
 \end{proof}
 
-We now establish an important relationship between the unbounding and dominating numbers and the topology of Baire space.
+We are now ready to state the connection between $\mathcal K_\sigma$ sets and the eventual domination ordering.
 
 \begin{thm}
-  $\mathfrak b$ is the least cardinality of a set $A\subset\omega^\omega$ which is not $\mathcal K_\sigma$. $\mathfrak d$ is the least cardinality of a family $\mathcal F$ of $\mathcal K_\sigma$ sets which does not cover all of $\omega^\omega$.
+  We have $\mathfrak b=\non(\mathcal K_\sigma)$ and $\mathfrak d=\cov(\mathcal K_\sigma)$.
 \end{thm}
 
+\begin{proof}
 
+\end{proof}
 
 
 % Blass, section 2
