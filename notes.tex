@@ -729,7 +729,7 @@ We now work establish a key relationship between the cardinals $\non(\mathcal K_
   \end{itemize}
 \end{defn}
 
-The following result establishes the relationship between these two cardinal values.
+The following result records the relationship between these two cardinal values.
 
 \begin{prop}
   We have $\aleph_1\leq\mathfrak{b}\leq\mathfrak{d}\leq\mathfrak{c}$.
@@ -753,7 +753,9 @@ We are now ready to state the connection between $\mathcal K_\sigma$ sets and th
 \end{thm}
 
 \begin{proof}
+  For the first equality, we show that if $\mathcal F\subset\omega^\omega$ then $\mathcal F$ is $\leq^*$-bounded if and only if $\mathcal F$ is a subset of a $\sigma$-compact set. For this we will use the following notation: for $g\in\omega^\omega$ we let $A_g=\prod_n\{0,\ldots,g(n)\}$. Observe that $f\leq g$ if and only if $f\in A_g$.
 
+Now if $\mathcal F$ is bounded by $h\in\omega^\omega$ then let $h_i$ enumerate all finite modifications of $h$. Then for all $f$ there is some $i$ such that $f\leq h_i$, and hence $\mathcal F\subset\bigcup_iA_{h_i}$. Conversely, suppose that $\mathcal F\subset\bigcup A_i$, where each $A_i$ is compact. Then for each $i$ there exists some $h_i\in\omega^\omega$ such that $A_i\subset\prod_n\{0,\ldots,h_i(n)\}$, in other words $A_i\subset A_{h_i}$. Since $\aleph_1\leq\mathfrak b$, there exists $h$ such that $h_i\leq^*h$ for all $i$. It follows that $\mathcal F$ is $\leq^*$-bounded by $h$.  
 \end{proof}
 
 \begin{exerc}
