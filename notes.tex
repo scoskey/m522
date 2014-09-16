@@ -709,6 +709,7 @@ Our next result will generalize Cantor's theorem by showing that the cardinals $
 \end{proof}
 
 \begin{thm}
+  \label{thm:k-sigma}
   We have $\aleph_1\leq\non(\mathcal K_\sigma)\leq\mathfrak c$ and $\aleph_1\leq\cov(\mathcal K_\sigma)\leq\mathfrak c$.
 \end{thm}
 
@@ -718,7 +719,11 @@ Our next result will generalize Cantor's theorem by showing that the cardinals $
   To show that $\aleph_1\leq\cov(\mathcal K_\sigma)$, suppose a countable family of $\sigma$-compact sets covered all of $\omega^\omega$. Then a countable family of compact sets would also cover all of $\omega^\omega$, again contradicting that $\omega^\omega$ is not $\sigma$-compact. Finally it is clear that $\cov(\mathcal K_\sigma)\leq\mathfrak c$, since the whole space $\omega^\omega$ is the union of its points and $|\omega^\omega|=\mathfrak c$.
 \end{proof}
 
-In fact we'll see shortly that $\non(\mathcal K_\sigma)\leq\cov(\mathcal K_\sigma)$. Meanwhile the theorem implies the analog of the Baire category theorem for $\sigma$-compact sets: if $V_s$ is any basic open set then $V_s$ is not $\sigma$-compact. Indeed, observe that $V_s$ is homeomorphic to $\omega^\omega$ itself, and $\omega^\omega$ is not $\sigma$-compact because that would imply that $\cov(\mathcal K_\sigma)=1$.
+In fact we'll see shortly that $\non(\mathcal K_\sigma)\leq\cov(\mathcal K_\sigma)$.
+
+\begin{rem}
+  Theorem~\ref{thm:k-sigma} implies the analog of the Baire category theorem for $\sigma$-compact sets: if $V_s$ is any basic open set then $V_s$ is not $\sigma$-compact. Indeed, observe that $V_s$ is homeomorphic to $\omega^\omega$ itself, and $\omega^\omega$ is not $\sigma$-compact because that would imply that $\cov(\mathcal K_\sigma)=1$.
+\end{rem}
 
 We now work establish a key relationship between the cardinals $\non(\mathcal K_\sigma)$ and $\cov(\mathcal K_\sigma)$, and the combinatorics of the Baire space. To begin, we can partially order Baire space by $f\leq g$ iff for all $n$, we have $f(n)\leq g(n)$. We also have the more versatile \emph{eventual domination} order: $f\leq^*g$ if $f\leq g$ almost everywher, that is, there is some $N$ such that for all $n\geq N$ we have $f(n)\leq g(n)$. Of course eventual domination is not a partial order because $f\leq^*g\leq^*f$ only implies that $f$ and $g$ agree almost everywhere, which we denote by $f=^*g$.
 
@@ -753,9 +758,11 @@ We are now ready to state the connection between $\mathcal K_\sigma$ sets and th
 \end{thm}
 
 \begin{proof}
-  For the first equality, we show that if $\mathcal F\subset\omega^\omega$ then $\mathcal F$ is $\leq^*$-bounded if and only if $\mathcal F$ is a subset of a $\sigma$-compact set. For this we will use the following notation: for $g\in\omega^\omega$ we let $A_g=\prod_n\{0,\ldots,g(n)\}$. Observe that $f\leq g$ if and only if $f\in A_g$.
+  Let us say that a family $\mathcal F\subset\omega^\omega$ is $\leq$-bounded if there is an $h\in\omega^\omega$ such that $f\leq h$ for all $f\in\mathcal F$, and that $\mathcal F$ is $\leq^*$-bounded if there is an $h\in\omega^\omega$ such that $f\leq^*h$ for all $f\in\mathcal F$. Then it is clear from Lemma~\ref{lem:baire-compact} that a family $\mathcal F$ is $\leq$-bounded if and only if $\mathcal F$ is contained in a compact set. To establish the first equality in the theorem, it suffices to show that a family $\mathcal F$ is $\leq^*$-bounded if and only if $\mathcal F$ is contained in a $\sigma$-compact set.
 
-Now if $\mathcal F$ is bounded by $h\in\omega^\omega$ then let $h_i$ enumerate all finite modifications of $h$. Then for all $f$ there is some $i$ such that $f\leq h_i$, and hence $\mathcal F\subset\bigcup_iA_{h_i}$. Conversely, suppose that $\mathcal F\subset\bigcup A_i$, where each $A_i$ is compact. Then for each $i$ there exists some $h_i\in\omega^\omega$ such that $A_i\subset\prod_n\{0,\ldots,h_i(n)\}$, in other words $A_i\subset A_{h_i}$. Since $\aleph_1\leq\mathfrak b$, there exists $h$ such that $h_i\leq^*h$ for all $i$. It follows that $\mathcal F$ is $\leq^*$-bounded by $h$.  
+  For this, suppose that $\mathcal F$ is $\leq^*$-bounded by $h\in\omega^\omega$. Let $h_i$ enumerate all finite modifications of $h$, so that for all $f\in\mathcal F$ there is some $i$ such that $f\leq h_i$. It follows that $\mathcal F$ is contained in the $\sigma$-compact set of functions that are $\leq$-bounded by some $h_i$. Conversely, suppose that $\mathcal F\subset\bigcup A_i$, where each $A_i$ is compact. Then for each $i$ there exists some $h_i\in\omega^\omega$ such that $A_i$ is $\leq$-bounded by $h_i$. Since $\aleph_1\leq\mathfrak b$, there exists $h$ such that $h_i\leq^*h$ for all $i$. It follows that $\mathcal F$ is $\leq^*$-bounded by $h$.
+
+  The second equality is similar. If $\mathcal F$ is a dominating family then consider the collection of all $A_f=\set{g\mid g\leq f}$ for $f$ a finite modification of an element of $\mathcal F$. This latter collection is a family of compact sets that covers all of $\omega^\omega$. Conversely if $\mathcal F$ is a family of compact subsets of $\omega^\omega$ that covers all of $\omega^\omega$, then each $F\in\mathcal F$ is $\leq$-bounded by some $h_F\in\omega^\omega$. It follows that the collection of all $h_F$ is a dominating family.
 \end{proof}
 
 \begin{exerc}
