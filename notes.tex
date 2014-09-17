@@ -13,7 +13,7 @@
 \renewcommand{\labelenumi}{(\alph{enumi})}
 \usepackage{etoolbox}\makeatletter\pretocmd{\@seccntformat}{\S}{}{}\pretocmd{\@subseccntformat}{\S}{}{}\makeatother
 \usepackage{tikz}
-\usetikzlibrary{decorations.fractals}
+\usetikzlibrary{positioning,decorations.fractals}
 
 \newcommand{\set}[1]{\left\{\,#1\,\right\}}
 \DeclareMathOperator{\cl}{cl}
@@ -638,11 +638,7 @@ A subset $T\subset A^{<\omega}$ is said to be a \emph{tree} if it is closed down
 \end{prop}
 
 \begin{proof}
-  Given any set $B\subset A^\omega$, we let $T_B$ be the tree consisting of all $s$ such that $V_s\cap B\neq\emptyset$. We will show that the set $[T_B]$ of all branches through the tree $T_B$ is precisely the \emph{closure} of $B$, which implies the desired result.
-
-  To see that $\overline{B}\subset[T_B]$, if $x\in\overline{B}$ then every open neighborhood of of $x$ meets $B$. Thus every initial segment $s\subset x$ lies in $T_B$, that is, $x$ is a branch through $T_B$.
-
-  To see that $[T_B]\subset\overline{B}$, we need only show that $B\subset[T_B]$ and $[T_B]$ is closed. For $B\subset[T_B]$, if $x\in B$ then clearly every finite initial segment $s\subset x$ is an element of $T_B$ so $x\in\hat{B}$. For $[T_B]$ being closed, if $x\notin[T_B]$, then there must be some finite initial segment $s\subset x$ such that $s\notin T_B$. Then $V_s$ is disjoint from $[T_B]$, which shows that the complement of $[T_B]$ is open.
+  Given any set $B\subset A^\omega$, we let $T_B$ be the tree consisting of all $s$ such that $V_s\cap B\neq\emptyset$ (that is, all initial segments of elements of $B$). We will show that the set $[T_B]$ of all branches through the tree $T_B$ is precisely the \emph{closure} of $B$, which implies the desired result. For this, note that $x$ lies in the closure of $B$ if and only if every open neighborhood of of $x$ meets $B$. This is equivalent to the statement that for every initial segment $s\subset x$, $V_s\cap B\neq\emptyset$. Finally, this is equivalent to the statement that $x$ is a branch through $T_B$.
 \end{proof}
 
 In previous sections we have defined nowhere dense subsets of $\RR$ in terms of intervals. In fact we can define nowhere dense subsets of any topological space in terms of open sets: $S\subset X$ is \emph{nowhere dense} in $X$ if every open set has an open subset disjoint from $S$. This definition can even be made with basic open sets in place of open sets. Thus we have the following characterization.
@@ -774,6 +770,163 @@ We are now ready to state the connection between $\mathcal K_\sigma$ sets and th
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ideals and their cardinals}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%
+%%%	   Definition         %%%	   
+%%%%%%%%%%%%%%%%
+Recall the definition of an \textit{ideal}: a subset of the power set, closed under union and subsets. Now, we define cardinal characteristics related to proper ideals:
+\begin{defn} Let $\mathcal{I}$ be a proper ideal of subsets of a set $X$, containing all singletons from $X$. 
+		\begin{itemize}
+			\item{ The \underline{additivity} of $\mathcal{I}$, $\textbf{add}(\mathcal{I})$, is the smallest number of sets in $\mathcal{I}$ with union not in $\mathcal{I}$.\\}
+			\item{ The \underline{covering number} of $\mathcal{I}$, $\textbf{cov}(\mathcal{I})$, is the smallest number of sets in $\mathcal{I}$ with union $X$.\\}
+			\item{ The \underline{uniformity} of $\mathcal{I}$, $\textbf{unif}(\mathcal{I})=\textbf{non}(\mathcal{I})$, is the smallest cardinality of any subset of $X$ not in $\mathcal{I}$.\\}
+			\item{ The \underline{cofinality} of $\mathcal{I}$, $\textbf{cof}(\mathcal{I})$, is the smallest cardinality of any subset $\mathcal{B}$ of $\mathcal{I}$ such that every element of $\mathcal{I}$ is a subset of an element of $\mathcal{B}$. Such a $\mathcal{B}$ is called  a basis for $\mathcal{I}$.} \\
+		\end{itemize}
+\end{defn}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\noindent
+We now prove a fact about these cardinals which holds for any proper $\sigma$-ideal, $\mathcal{I}$:
+%%%%%%%%%%%%%%%%
+%%%	   Theorem         %%%	   
+%%%%%%%%%%%%%%%%
+\begin{lem} For any proper $\sigma-$ideal of $X$, $\mathcal{I}$, containing the singletons of $X$, the following relations hold:
+		\begin{align} 
+			\textbf{add}(\mathcal{I}) \leq^1	\textbf{cov}(\mathcal{I})   	\leq^2 		\textbf{cof}(\mathcal{I})\\
+			\textbf{add}(\mathcal{I})	\leq^3	\textbf{non}(\mathcal{I}) 	\leq^4		\textbf{cof}(\mathcal{I})
+		\end{align}
+\end{lem}
+
+
+	
+
+
+
+
+\noindent
+\textbf{Proof.} We work from left to right over (3.1), and follow similarly with (3.2).\\
+
+\noindent
+$(1)$ {Suppose $A\subset \mathcal{I}$ is of cardinality $\kappa$, such that $\cup A$ covers $X$. We need to exhibit a $B\subset \mathcal{I}$ of size $\kappa$, such that $\cup{B}\not\in \mathcal{I}$. Let $B=A$: then we have that $\cup B\supset X$ and since $\mathcal{I}$ is proper, it must be that $\kappa\geq \textbf{add}(\mathcal{I})$  }\\
+		
+\noindent		
+$(2)$  {Suppose $\mathcal{B}$ satisfies $\cof(\mathcal{I})$, and $|\mathcal{B}|=\kappa$. Recall that the ideal, $\mathcal{I}$, contains all singletons. Now, by definition, we know that each element of the ideal is a subset of some element of $\mathcal{B}$ and thus the singletons of $X$. So the union of the elements of $\mathcal{B}$ cover $X$, and we have a covering family of size $\kappa$, implying that $\cov(\mathcal{I})\leq \cof(\mathcal{I})$, as desired.  }\\
+	
+\noindent		
+$(3)$ {Let $N$ be a family of size $\kappa$ which satisfies $\non(\mathcal{I})$. We necessarily have that all elements of $N$ are elements of $\mathcal{I}$, and thus, the union over these elements of the ideal is not in the ideal. Thus, we have a family of size $\kappa$ satisfying $\add(\mathcal{I})$. So $\add(\mathcal{I})\leq \non(\mathcal{I})$, as desired.}\\
+
+\noindent		
+$(4)$ {Let $A\subset \mathcal{I}$, the cardinality of $A=\kappa$, and $A$ cofinal. For each $B_i\in A$ choose an $\{x_{B_i}\}\not\in B_i$.  Let $x_B=\bigcup_i \{x_{B_i}\}$. We claim that $x_B\not\in \mathcal{I}$: if $x_B\in \mathcal{I}$, we have that $x_B\subseteq B_i$ for some $B_i\in A$. From construction of $x_B$ this cannot happen, thus we have that $\{x_B\}\not\in \mathcal{I}$. Finally, note that $|x_B|=\kappa$, as we chose an $\{x_{B_i}\}$ for each element of $A$. This gives us a collection of size $\kappa$, not in the ideal. And we have that $\textbf{non}(\mathcal{I})\leq \textbf{cof}(\mathcal{I})$, as desired.} 
+
+\hfill $\qed$
+\\
+\\
+
+
+This result gives us the following relationship map (where $``\longleftarrow"=``\leq"$). 
+\begin{figure}[h]
+  \begin{tikzpicture}
+    \node (A1) {$\aleph_1$};
+    \node (Add) [right=of A1] {$\textbf{add}(\mathcal{I})$};
+    \node (Non) [above= of Add] {$\textbf{non}(\mathcal{I})$};
+    \node (Cov)	[right= of Add] {$\textbf{cov}(\mathcal{I})$};
+    \node (Cof) [above= of Cov] {$\textbf{cof}(\mathcal{I})$};
+    \node (C) [right=of Cof] {$\mathfrak{c}$};
+    \draw[<-] (A1) to node {} (Add);
+    \draw[<-] (Add) to node {} (Non);
+    \draw[<-] (Add) to node {} (Cov);
+    \draw[<-] (Cov) to node {} (Cof);
+    \draw[<-] (Non) to node {} (Cof);
+    \draw[<-, dashed] (Cof) to node {} (C);
+  \end{tikzpicture}
+\end{figure}
+One may notice, however, that the dotted arrow appearing above is included as a `trivial result' in B--J... It turns out the initial assumption on $\mathcal{I}$ is not enough to ensure that this inequality holds. In fact, another condition must be imposed on $\mathcal{I}$ in order for this inequality to hold; namely we must assume that $\mathcal{I}$ has a basis consisting of Borel sets (as there are only $\mathfrak{c}$ many borel sets, $\cof(\mathcal{I})\leq \mathfrak{c}$ is clear). Without this assumption, however, we may consider the ideal of $Strongly\; Null$ sets, for which it is consistent that $\cof(\mathcal{SN})\geq \mathfrak{c}$. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%
+%%%	   Definition         %%%	   
+%%%%%%%%%%%%%%%%
+\begin{defn} The following are ideals, which we use in the next section:
+	\begin{itemize}
+		\item[$\triangleright$]{ $\mathcal{L}=\textbf{null}$ is the ideal of Lebesgue null subsets of $\RR$. }
+		\item[$\triangleright$]{ $\mathcal{B}=\textbf{ meager}$ is the ideal of  ``first category" subsets of $\RR$.}
+	\end{itemize}
+Where $\mathcal{L},\mathcal{B}$  denote $\mathcal{L}$ebesgue, and $\mathcal{B}$aire.
+\end{defn}
+
+\vspace{0.05in}
+Lastly, we note that both $\mathcal{L}$ and $\mathcal{B}$ are closed under countable union. Giving us that $\textbf{add}(\mathcal{L}),\textbf{add}(\mathcal{B})\geq \aleph_1$. (We will see that this cardinal invariant is the ``smallest" that we consider in this paper, thus implying that all other invariants of these ideals are at least uncountable. \textbf{Lemma 3.2.} gives this for $\mathfrak{b}$ and $\mathfrak{d}$.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Cicho\'n's diagram}
