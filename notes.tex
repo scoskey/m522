@@ -771,97 +771,54 @@ We are now ready to state the connection between $\mathcal K_\sigma$ sets and th
 \section{Ideals and their cardinals}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+If $X$ is any set, then an \emph{ideal} on $X$ is a subset $\mathcal I\subset\mathcal P(X)$ which is closed under unions and subsets. An ideal $\mathcal I$ is called a \emph{$\sigma$-ideal} if it is additionally closed under countable unions. We have already discussed three key examples of $\sigma$-ideals.
+  \begin{itemize}
+  \item $\mathcal{M}$ is the ideal of meager subsets of $\RR$.
+  \item $\mathcal{N}$ is the ideal of Lebesgue null subsets of $\RR$.
+  \item $\mathcal K_\sigma$ is the ideal of subsets of $\omega^\omega$ which are contained in a $\sigma$-compact subset of $\omega^\omega$.
+  \end{itemize}
 
+Now, we define cardinal characteristics related to ideals.
 
-
-
-
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%
-%%%	   Definition         %%%	   
-%%%%%%%%%%%%%%%%
-Recall the definition of an \textit{ideal}: a subset of the power set, closed under union and subsets. Now, we define cardinal characteristics related to proper ideals:
-\begin{defn} Let $\mathcal{I}$ be a proper ideal of subsets of a set $X$, containing all singletons from $X$. 
-		\begin{itemize}
-			\item{ The \underline{additivity} of $\mathcal{I}$, $\textbf{add}(\mathcal{I})$, is the smallest number of sets in $\mathcal{I}$ with union not in $\mathcal{I}$.\\}
-			\item{ The \underline{covering number} of $\mathcal{I}$, $\textbf{cov}(\mathcal{I})$, is the smallest number of sets in $\mathcal{I}$ with union $X$.\\}
-			\item{ The \underline{uniformity} of $\mathcal{I}$, $\textbf{unif}(\mathcal{I})=\textbf{non}(\mathcal{I})$, is the smallest cardinality of any subset of $X$ not in $\mathcal{I}$.\\}
-			\item{ The \underline{cofinality} of $\mathcal{I}$, $\textbf{cof}(\mathcal{I})$, is the smallest cardinality of any subset $\mathcal{B}$ of $\mathcal{I}$ such that every element of $\mathcal{I}$ is a subset of an element of $\mathcal{B}$. Such a $\mathcal{B}$ is called  a basis for $\mathcal{I}$.} \\
-		\end{itemize}
+\begin{defn} Let $\mathcal{I}$ be an ideal of subsets of a set $X$, such that $\mathcal I$ contains all singletons of $X$. 
+  \begin{itemize}
+  \item The \emph{additivity} of $\mathcal{I}$, $\add(\mathcal{I})$, is the smallest number of sets in $\mathcal{I}$ whose union is not in $\mathcal{I}$.
+  \item The \emph{uniformity} of $\mathcal{I}$, $\non(\mathcal{I})$, is the smallest cardinality of any subset of $X$ that is not in $\mathcal{I}$.
+  \item The \emph{covering number} of $\mathcal{I}$, $\cov(\mathcal{I})$, is the smallest number of sets in $\mathcal{I}$ whose union covers all of $X$.
+  \item The \emph{cofinality} of $\mathcal{I}$, $\cof(\mathcal{I})$, is the smallest cardinality of any subset $\mathcal{B}$ of $\mathcal{I}$ such that every element of $\mathcal{I}$ is a subset of an element of $\mathcal{B}$.
+  \end{itemize}
 \end{defn}
 
+Like the cardinals we have seen in the last section, assuming $\mathcal I$ is reasonable, each of these cardinals gives an uncountable lower bound for the value of the continuum.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\noindent
-We now prove a fact about these cardinals which holds for any proper $\sigma$-ideal, $\mathcal{I}$:
-%%%%%%%%%%%%%%%%
-%%%	   Theorem         %%%	   
-%%%%%%%%%%%%%%%%
-\begin{lem} For any proper $\sigma-$ideal of $X$, $\mathcal{I}$, containing the singletons of $X$, the following relations hold:
-		\begin{align} 
-			\textbf{add}(\mathcal{I}) \leq^1	\textbf{cov}(\mathcal{I})   	\leq^2 		\textbf{cof}(\mathcal{I})\\
-			\textbf{add}(\mathcal{I})	\leq^3	\textbf{non}(\mathcal{I}) 	\leq^4		\textbf{cof}(\mathcal{I})
-		\end{align}
+\begin{lem}
+  Assume that $\mathcal I$ is a proper $\sigma$-ideal such that $\mathcal I$ contains the singletons and $\mathcal I$ has a basis of Borel sets. Then each of the four cardinals above is an uncountable lower bound for $\mathfrak c$.
 \end{lem}
 
+\begin{proof}
+  \ldots
+\end{proof}
 
-	
+We next establish the basic relationships between the four cardinal characteristics associated with $\mathcal I$.
 
+\begin{lem}
+  Suppose that $\mathcal I$ is proper a $\sigma$-ideal such that $\mathcal I$ contains the singletons. Then we have $\add(\mathcal I)\leq\non(\mathcal I)\leq\cof(\mathcal I)$, and also $\add(\mathcal I)\leq\cov(\mathcal I)\leq\cof(\mathcal I)$.
+\end{lem}
 
+\begin{proof}
+  We work from left to right over (3.1), and follow similarly with (3.2).
 
-
-\noindent
-\textbf{Proof.} We work from left to right over (3.1), and follow similarly with (3.2).\\
-
-\noindent
-$(1)$ {Suppose $A\subset \mathcal{I}$ is of cardinality $\kappa$, such that $\cup A$ covers $X$. We need to exhibit a $B\subset \mathcal{I}$ of size $\kappa$, such that $\cup{B}\not\in \mathcal{I}$. Let $B=A$: then we have that $\cup B\supset X$ and since $\mathcal{I}$ is proper, it must be that $\kappa\geq \textbf{add}(\mathcal{I})$  }\\
+$(1)$ {Suppose $A\subset \mathcal{I}$ is of cardinality $\kappa$, such that $\cup A$ covers $X$. We need to exhibit a $B\subset \mathcal{I}$ of size $\kappa$, such that $\cup{B}\not\in \mathcal{I}$. Let $B=A$: then we have that $\cup B\supset X$ and since $\mathcal{I}$ is proper, it must be that $\kappa\geq \add(\mathcal{I})$  }\\
 		
-\noindent		
 $(2)$  {Suppose $\mathcal{B}$ satisfies $\cof(\mathcal{I})$, and $|\mathcal{B}|=\kappa$. Recall that the ideal, $\mathcal{I}$, contains all singletons. Now, by definition, we know that each element of the ideal is a subset of some element of $\mathcal{B}$ and thus the singletons of $X$. So the union of the elements of $\mathcal{B}$ cover $X$, and we have a covering family of size $\kappa$, implying that $\cov(\mathcal{I})\leq \cof(\mathcal{I})$, as desired.  }\\
 	
-\noindent		
 $(3)$ {Let $N$ be a family of size $\kappa$ which satisfies $\non(\mathcal{I})$. We necessarily have that all elements of $N$ are elements of $\mathcal{I}$, and thus, the union over these elements of the ideal is not in the ideal. Thus, we have a family of size $\kappa$ satisfying $\add(\mathcal{I})$. So $\add(\mathcal{I})\leq \non(\mathcal{I})$, as desired.}\\
 
-\noindent		
-$(4)$ {Let $A\subset \mathcal{I}$, the cardinality of $A=\kappa$, and $A$ cofinal. For each $B_i\in A$ choose an $\{x_{B_i}\}\not\in B_i$.  Let $x_B=\bigcup_i \{x_{B_i}\}$. We claim that $x_B\not\in \mathcal{I}$: if $x_B\in \mathcal{I}$, we have that $x_B\subseteq B_i$ for some $B_i\in A$. From construction of $x_B$ this cannot happen, thus we have that $\{x_B\}\not\in \mathcal{I}$. Finally, note that $|x_B|=\kappa$, as we chose an $\{x_{B_i}\}$ for each element of $A$. This gives us a collection of size $\kappa$, not in the ideal. And we have that $\textbf{non}(\mathcal{I})\leq \textbf{cof}(\mathcal{I})$, as desired.} 
+$(4)$ {Let $A\subset \mathcal{I}$, the cardinality of $A=\kappa$, and $A$ cofinal. For each $B_i\in A$ choose an $\{x_{B_i}\}\not\in B_i$.  Let $x_B=\bigcup_i \{x_{B_i}\}$. We claim that $x_B\not\in \mathcal{I}$: if $x_B\in \mathcal{I}$, we have that $x_B\subseteq B_i$ for some $B_i\in A$. From construction of $x_B$ this cannot happen, thus we have that $\{x_B\}\not\in \mathcal{I}$. Finally, note that $|x_B|=\kappa$, as we chose an $\{x_{B_i}\}$ for each element of $A$. This gives us a collection of size $\kappa$, not in the ideal. And we have that $\non(\mathcal{I})\leq \cof(\mathcal{I})$, as desired.} 
+\end{proof}
 
-\hfill $\qed$
-\\
-\\
+The conclusions of the two lemmas are summarized in Figure~\ref{fig:ideal}
 
-
-This result gives us the following relationship map (where $``\longleftarrow"=``\leq"$). 
 \begin{figure}[h]
   \begin{tikzpicture}
     \node (A1) {$\aleph_1$};
@@ -875,56 +832,12 @@ This result gives us the following relationship map (where $``\longleftarrow"=``
     \draw[<-] (Add) to node {} (Cov);
     \draw[<-] (Cov) to node {} (Cof);
     \draw[<-] (Non) to node {} (Cof);
-    \draw[<-, dashed] (Cof) to node {} (C);
+    \draw[<-] (Cof) to node {} (C);
   \end{tikzpicture}
+  \caption{The relationships between the cardinal characteristics of $\mathcal I$, assuming $\mathcal I$ satisfies the hypotheses of the two lemmas. In the figure, $\leftarrow$ represents $\leq$.\label{fig:ideal}}
 \end{figure}
+
 One may notice, however, that the dotted arrow appearing above is included as a `trivial result' in B--J... It turns out the initial assumption on $\mathcal{I}$ is not enough to ensure that this inequality holds. In fact, another condition must be imposed on $\mathcal{I}$ in order for this inequality to hold; namely we must assume that $\mathcal{I}$ has a basis consisting of Borel sets (as there are only $\mathfrak{c}$ many borel sets, $\cof(\mathcal{I})\leq \mathfrak{c}$ is clear). Without this assumption, however, we may consider the ideal of $Strongly\; Null$ sets, for which it is consistent that $\cof(\mathcal{SN})\geq \mathfrak{c}$. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%
-%%%	   Definition         %%%	   
-%%%%%%%%%%%%%%%%
-\begin{defn} The following are ideals, which we use in the next section:
-	\begin{itemize}
-		\item[$\triangleright$]{ $\mathcal{L}=\textbf{null}$ is the ideal of Lebesgue null subsets of $\RR$. }
-		\item[$\triangleright$]{ $\mathcal{B}=\textbf{ meager}$ is the ideal of  ``first category" subsets of $\RR$.}
-	\end{itemize}
-Where $\mathcal{L},\mathcal{B}$  denote $\mathcal{L}$ebesgue, and $\mathcal{B}$aire.
-\end{defn}
-
-\vspace{0.05in}
-Lastly, we note that both $\mathcal{L}$ and $\mathcal{B}$ are closed under countable union. Giving us that $\textbf{add}(\mathcal{L}),\textbf{add}(\mathcal{B})\geq \aleph_1$. (We will see that this cardinal invariant is the ``smallest" that we consider in this paper, thus implying that all other invariants of these ideals are at least uncountable. \textbf{Lemma 3.2.} gives this for $\mathfrak{b}$ and $\mathfrak{d}$.)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
