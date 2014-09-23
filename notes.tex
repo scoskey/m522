@@ -798,7 +798,7 @@ The cofinality of an ideal is the least number of sets you need to generate the 
 As was the case with the cardinals we introduced in the previous section, assuming $\mathcal I$ is reasonable, all four of the cardinals characteristics associated with $\mathcal I$ provides an uncountable lower bound for the value of the continuum.
 
 \begin{lem}
-  Assume that $\mathcal I$ is a proper $\sigma$-ideal such that $\mathcal I$ contains the singletons and $\mathcal I$ has a basis consisting of Borel sets. Then each of the four cardinals above is uncountable and bounded above by $\mathfrak c$.
+  Suppose that $\mathcal I$ is a proper $\sigma$-ideal, $\mathcal I$ contains the singletons, and that $\mathcal I$ has a basis consisting of Borel sets. Then each of the four cardinals above is uncountable and bounded above by $\mathfrak c$.
 \end{lem}
 
 \begin{proof}
@@ -816,7 +816,7 @@ All three of the $\sigma$-ideals we have introduced have a basis of Borel sets. 
 We next establish the basic relationships between the four cardinal characteristics associated with $\mathcal I$.
 
 \begin{lem}
-  Suppose that $\mathcal I$ is proper a $\sigma$-ideal such that $\mathcal I$ contains the singletons. Then we have $\add(\mathcal I)\leq\non(\mathcal I)\leq\cof(\mathcal I)$, and also $\add(\mathcal I)\leq\cov(\mathcal I)\leq\cof(\mathcal I)$.
+  Suppose that $\mathcal I$ is a proper $\sigma$-ideal and that $\mathcal I$ contains the singletons. Then we have the inequalities $\add(\mathcal I)\leq\non(\mathcal I)\leq\cof(\mathcal I)$, and also $\add(\mathcal I)\leq\cov(\mathcal I)\leq\cof(\mathcal I)$.
 \end{lem}
 
 \begin{proof}
@@ -832,26 +832,22 @@ We next establish the basic relationships between the four cardinal characterist
 The conclusions of the two lemmas are summarized in Figure~\ref{fig:ideal}
 
 \begin{figure}[h]
-  \begin{tikzpicture}
-    \node (A1) {$\aleph_1$};
-    \node (Add) [right=of A1] {$\textbf{add}(\mathcal{I})$};
-    \node (Non) [above= of Add] {$\textbf{non}(\mathcal{I})$};
-    \node (Cov)	[right= of Add] {$\textbf{cov}(\mathcal{I})$};
-    \node (Cof) [above= of Cov] {$\textbf{cof}(\mathcal{I})$};
-    \node (C) [right=of Cof] {$\mathfrak{c}$};
-    \draw[<-] (A1) to node {} (Add);
-    \draw[<-] (Add) to node {} (Non);
-    \draw[<-] (Add) to node {} (Cov);
-    \draw[<-] (Cov) to node {} (Cof);
-    \draw[<-] (Non) to node {} (Cof);
-    \draw[<-] (Cof) to node {} (C);
+  \begin{tikzpicture}[->]
+    \node (a1) {$\aleph_1$};
+    \node (add) [right=of a1] {$\textbf{add}(\mathcal{I})$} edge (a1);
+    \node (non) [above=of add] {$\textbf{non}(\mathcal{I})$} edge (add);
+    \node (cov)	[right=of add] {$\textbf{cov}(\mathcal{I})$} edge (add);
+    \node (cof) [above=of cov] {$\textbf{cof}(\mathcal{I})$}
+      edge (non) edge (cov);
+    \node [right=of cof] {$\mathfrak{c}$} edge (cof);
   \end{tikzpicture}
-  \caption{The relationships between the cardinal characteristics of $\mathcal I$, assuming $\mathcal I$ satisfies the hypotheses of the two lemmas. In the figure, the $\leftarrow$ symbol represents $\leq$.\label{fig:ideal}}
+  \caption{The relationships between the cardinal characteristics of $\mathcal I$, assuming $\mathcal I$ satisfies the hypotheses of the two lemmas. In the figure, the arrow $\leftarrow$ represents the inequality $\leq$.\label{fig:ideal}}
 \end{figure}
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Category versus measure: Cicho\'n's diagram}
+\section{Asymmetry of category and measure: Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
