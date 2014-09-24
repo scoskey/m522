@@ -750,6 +750,7 @@ Finally, $\mathfrak d\leq\mathfrak c$ since $\mathcal F=\omega^\omega$ is itself
 We are now ready to state the connection between $\mathcal K_\sigma$ sets and the eventual domination ordering.
 
 \begin{thm}
+  \label{thm:bd-vs-ksigma}
   We have $\mathfrak b=\non(\mathcal K_\sigma)$ and $\mathfrak d=\cov(\mathcal K_\sigma)$.
 \end{thm}
 
@@ -851,8 +852,14 @@ In the previous section we introduced $\mathcal K_\sigma$, but we dealt only wit
 \end{prop}
 
 \begin{proof}
-  \ldots
+  We have already shown that $\add(\mathcal K_\sigma)\leq\non(\mathcal K_\sigma)=\mathfrak b$. For the reverse inequality, first recall from Theorem~\ref{thm:bd-vs-ksigma} that a subset of $\omega^\omega$ is unbounded if and only if it is not $\mathcal K_\sigma$. Now suppose that $\mathcal F$ is a family of $\mathcal K_\sigma$ subsets of $\omega^\omega$ such that $\bigcup\mathcal F$ is not $\mathcal K_\sigma$. For each $F\in\mathcal F$ let $g_F$ be a bound for $F$. Then $\{g_F\mid F\in\mathcal F\}$ is an unbounded family: Indeed, otherwise the set of things bounded by some $g_F$ would be bounded and hence so would $\bigcup\mathcal F$. This shows that $\add(\mathcal K_\sigma)\geq\mathfrak b$.
+
+The second equality is similar and left as an exercise.
 \end{proof}
+
+\begin{exerc}
+  Show that $\non(\mathcal K_\sigma)=\mathfrak d$.
+\end{exerc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Asymmetry of category and measure: Cicho\'n's diagram}
