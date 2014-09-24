@@ -844,11 +844,62 @@ The conclusions of the two lemmas are summarized in Figure~\ref{fig:ideal}
   \caption{The relationships between the cardinal characteristics of $\mathcal I$, assuming $\mathcal I$ satisfies the hypotheses of the two lemmas. In the figure, the arrow $\leftarrow$ represents the inequality $\leq$.\label{fig:ideal}}
 \end{figure}
 
+In the previous section we introduced $\mathcal K_\sigma$, but we dealt only with the characteristics $\non(\mathcal K_\sigma)$ and $\cov(\mathcal K_\sigma)$. We conclude this section by giving the values of $\add(\mathcal K_\sigma)$ and $\cof(\mathcal K_\sigma)$ as well.
 
+\begin{prop}
+  We have $\add(\mathcal K_\sigma)=\mathfrak b$ and $\non(\mathcal K_\sigma)=\mathfrak d$.
+\end{prop}
+
+\begin{proof}
+  \ldots
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Asymmetry of category and measure: Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+So far we have seen many similarities between the various size notions that we have discussed. The classes of meager sets, null sets, and $\mathcal K_\sigma$ sets are all ideals, all proper, all closed under countable unions, and so forth.
+
+\begin{prop}
+  $\RR$ can be decomposed into two complementary sets, $A$ and $B$, such that  $A$ is of first category and $B$ is of measure zero. 
+\end{prop}
+
+\begin{proof}
+  Let $Q$ be any countable dense subset of the reals. For sake of familiarity, we may imagine $Q=\QQ$, but the argument does not change. Since $Q$ is countable, we may enumerate it as follows:
+		$$Q=a_1, a_2, a_3, a_4, \hdots.$$
+Now let $I_{i,j}$ be the interval, centered at $a_i$, of length $\frac{1}{2^{i+j}}$ (where $j\in \omega$). We then construct the following:
+	\begin{itemize}
+		\item[$\triangleright$]{ $G_{j}=\bigcup_{i=1}^\infty I_{i,j}\;\; \text{(where } j=1,2,3,\hdots)$}
+		\item[$\triangleright$]{ $B= \bigcap_{j=1}^\infty G_j$}
+	\end{itemize}
+Now we note that, given $\epsilon>0$, we can find $j\in \omega$ such that $\frac{1}{2^j}<\epsilon$. It is clear that $B\subset \bigcup I_{i,j}$, and we have that $\sum_{i=1}^\infty \left| I_{i,j}\right|= \frac{1}{2^j}<\epsilon$. Thus, we have that $B$ is null (measure zero). Now, we want a set $A$ which is meager. 
+
+Notice that $G_j$ is a dense open subset of $\RR$, since it contains all points of $Q$, and thus $G_j^c$ is nowhere dense for all $j$. So letting $A=\bigcup_{j=1}^\infty G_j^c$ is a meager set, and infact $A=B^c$ by construction. Thus we have that $A\cup B=B^c\cup B=\RR$, as desired.
+\end{proof}
+
+The following result shows that there is a fundamental asymmetry between the notions of category and measure.
+
+\begin{thm}
+  The cardinal characteristics defined in the previous sections exhibit the pattern of inequalities depicted in Figure~\ref{fig:cichon}.
+\end{thm}
+
+\begin{figure}[h]
+  \begin{tikzpicture}[->]
+    \node (a1) {$\aleph_1$};
+    \node (addn) [right=of a1] {$\add(\mathcal N)$} edge (a1);
+    \node (covn) [above=2 of addn] {$\cov(\mathcal N)$} edge (addn);
+    \node (addm) [right=of addn] {$\add(\mathcal M)$} edge (addn);
+    \node (b) [above=.8 of addm] {$\mathfrak b$} edge (addm);
+    \node (nonm) [above=2 of addm] {$\non(\mathcal M)$} edge (covn) edge (b);
+    \node (covm) [right=of addm] {$\cov(\mathcal M)$} edge (addm);
+    \node (d) [above=.8 of covm] {$\mathfrak d$} edge (b) edge (covm);
+    \node (cofm) [above=2 of covm] {$\cof(\mathcal M)$} edge (nonm) edge (d);
+    \node (nonn) [right=of covm] {$\non(\mathcal N)$} edge (covm);
+    \node (cofn) [above=2 of nonn]{$\cof(\mathcal N)$} edge (cofm) edge (nonn);
+    \node (c) [right=of cofn] {$\mathfrak c$} edge (cofn);
+  \end{tikzpicture}
+  \caption{Cicho\'n's diagram of cardinal characteristics. Here as usual the arrow $\leftarrow$ represents the inequality $\leq$.\label{fig:cichon}}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Proof of inequalities in Cicho\'n's diagram}
