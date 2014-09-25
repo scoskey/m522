@@ -718,7 +718,7 @@ Our next result will generalize Cantor's theorem by showing that the cardinals $
 In fact we'll see shortly that $\non(\mathcal K_\sigma)\leq\cov(\mathcal K_\sigma)$.
 
 \begin{rem}
-  Theorem~\ref{thm:k-sigma} implies the analog of the Baire category theorem for $\sigma$-compact sets: if $V_s$ is any basic open set then $V_s$ is not $\sigma$-compact. Indeed, observe that $V_s$ is homeomorphic to $\omega^\omega$ itself, and $\omega^\omega$ is not $\sigma$-compact because that would imply that $\cov(\mathcal K_\sigma)=1$.
+  It follows from the proof of Theorem~\ref{thm:k-sigma} that every $\mathcal K_\sigma$ set in $\omega^\omega$ is meager. Indeed, compact sets are closed, and moreover since they are bounded they cannot contain any basic open sets $V_s$. It follows that compact sets are nowhere dense, and hence $\sigma$-compact sets are meager. This in turn implies the Baire category property for $\sigma$-compact sets: $\omega^\omega$ is not $\sigma$-compact and any basic open neighborhood $V_s$ is not $\sigma$-compact.
 \end{rem}
 
 We now work establish a key relationship between the cardinals $\non(\mathcal K_\sigma)$ and $\cov(\mathcal K_\sigma)$, and the combinatorics of the Baire space. To begin, we can partially order Baire space by $f\leq g$ iff for all $n$, we have $f(n)\leq g(n)$. We also have the more versatile \emph{eventual domination} order: $f\leq^*g$ if $f\leq g$ almost everywher, that is, there is some $N$ such that for all $n\geq N$ we have $f(n)\leq g(n)$. Of course eventual domination is not a partial order because $f\leq^*g\leq^*f$ only implies that $f$ and $g$ agree almost everywhere, which we denote by $f=^*g$.
@@ -865,23 +865,17 @@ The second equality is similar and left as an exercise.
 \section{Asymmetry of category and measure: Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-So far we have seen many similarities between the various size notions that we have discussed. The classes of meager sets, null sets, and $\mathcal K_\sigma$ sets are all ideals, all proper, all closed under countable unions, and so forth.
+So far we have seen many similarities between the various size notions that we have discussed. The classes of meager sets, null sets are both ideals, both proper, both closed under countable unions, and so on. It is natural to ask whether the meager and null sets are truly different notions. The following 
 
 \begin{prop}
-  $\RR$ can be decomposed into two complementary sets, $A$ and $B$, such that  $A$ is of first category and $B$ is of measure zero. 
-\end{prop}
+  There exists a null comeager set.  There exists a meager conull set.  \end{prop}
 
 \begin{proof}
-  Let $Q$ be any countable dense subset of the reals. For sake of familiarity, we may imagine $Q=\QQ$, but the argument does not change. Since $Q$ is countable, we may enumerate it as follows:
-		$$Q=a_1, a_2, a_3, a_4, \hdots.$$
-Now let $I_{i,j}$ be the interval, centered at $a_i$, of length $\frac{1}{2^{i+j}}$ (where $j\in \omega$). We then construct the following:
-	\begin{itemize}
-		\item[$\triangleright$]{ $G_{j}=\bigcup_{i=1}^\infty I_{i,j}\;\; \text{(where } j=1,2,3,\hdots)$}
-		\item[$\triangleright$]{ $B= \bigcap_{j=1}^\infty G_j$}
-	\end{itemize}
-Now we note that, given $\epsilon>0$, we can find $j\in \omega$ such that $\frac{1}{2^j}<\epsilon$. It is clear that $B\subset \bigcup I_{i,j}$, and we have that $\sum_{i=1}^\infty \left| I_{i,j}\right|= \frac{1}{2^j}<\epsilon$. Thus, we have that $B$ is null (measure zero). Now, we want a set $A$ which is meager. 
+  The key is that we can construct dense open sets of arbitrarily small measure. That is, for each $n$ we will construct a dense open set $A_n$ such that $m(A_n)<1/n$. Assuming we have done so, we let $A=\bigcap A_n$. Clearly the set $A$ is null. To see that it is comeager note that for all $n$, we have that $\RR\smallsetminus A_n$ is closed and nowhere dense. Thus $\RR\smallsetminus A=\bigcup\RR\smallsetminus A_n$ is meager.
 
-Notice that $G_j$ is a dense open subset of $\RR$, since it contains all points of $Q$, and thus $G_j^c$ is nowhere dense for all $j$. So letting $A=\bigcup_{j=1}^\infty G_j^c$ is a meager set, and infact $A=B^c$ by construction. Thus we have that $A\cup B=B^c\cup B=\RR$, as desired.
+  To construct the set $A_n$, let $q_0,q_1,\ldots$ be an enumeration of the rational numbers, and for each $i$ let $I_{n,i}$ be the open interval centered at $q_i$ of length $1/n2^{i+1}$. We then let $A_n=\bigcup_iI_{n,i}$. Clearly $A_n$ is dense and open, and $m(A_n)\leq\sum_i1/n2^{i+1}=1/n$.
+
+  Finally, since $A$ is null and comeager, we clearly have that $\RR\smallsetminus A$ is meager and conull.
 \end{proof}
 
 The following result shows that there is a fundamental asymmetry between the notions of category and measure.
@@ -908,9 +902,16 @@ The following result shows that there is a fundamental asymmetry between the not
   \caption{Cicho\'n's diagram of cardinal characteristics. Here as usual the arrow $\leftarrow$ represents the inequality $\leq$.\label{fig:cichon}}
 \end{figure}
 
+We will begin the proof of this theorem now, and continue it over the next few sections.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Proof of inequalities in Cicho\'n's diagram}
+\section{Morphisms and duality}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Further proofs of Cicho\'n's diagram}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 
