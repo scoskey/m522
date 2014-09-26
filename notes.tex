@@ -718,6 +718,7 @@ Our next result will generalize Cantor's theorem by showing that the cardinals $
 In fact we'll see shortly that $\non(\mathcal K_\sigma)\leq\cov(\mathcal K_\sigma)$.
 
 \begin{rem}
+  \label{rem:ksigma-meager}
   It follows from the proof of Theorem~\ref{thm:k-sigma} that every $\mathcal K_\sigma$ set in $\omega^\omega$ is meager. Indeed, compact sets are closed, and moreover since they are bounded they cannot contain any basic open sets $V_s$. It follows that compact sets are nowhere dense, and hence $\sigma$-compact sets are meager. This in turn implies the Baire category property for $\sigma$-compact sets: $\omega^\omega$ is not $\sigma$-compact and any basic open neighborhood $V_s$ is not $\sigma$-compact.
 \end{rem}
 
@@ -873,12 +874,13 @@ So far we have seen many similarities between the various size notions that we h
 To begin, it is natural to ask whether the meager and null sets are truly different notions. The following result shows that they are very different indeed: it is possible to be small according to either notion, and at the same time, large according to the other.
 
 \begin{prop}
+  \label{prop:null-comeager}
   There exists a null comeager set. There exists a meager conull set.  \end{prop}
 
 \begin{proof}
   The key is that we can construct dense open sets of arbitrarily small measure. That is, for each $n$ we will construct a dense open set $A_n$ such that $m(A_n)<1/n$. Assuming we have done so, we let $A=\bigcap A_n$. Clearly the set $A$ is null. To see that it is comeager note that for all $n$, we have that $\RR\smallsetminus A_n$ is closed and nowhere dense. Thus $\RR\smallsetminus A=\bigcup\RR\smallsetminus A_n$ is meager.
 
-  To construct the set $A_n$, let $q_0,q_1,\ldots$ be an enumeration of the rational numbers, and for each $i$ let $I_{n,i}$ be the open interval centered at $q_i$ of length $1/n2^{i+1}$. We then let $A_n=\bigcup_iI_{n,i}$. Clearly $A_n$ is dense and open, and $m(A_n)\leq\sum_i1/n2^{i+1}=1/n$.
+  To construct the set $A_n$, let $q_0,q_1,\ldots$ be an enumeration of the rational numbers, and for each $i$ let $I_{n,i}$ be the open interval centered at $q_i$ of length $1/(n2^{i+1})$. We then let $A_n=\bigcup_iI_{n,i}$. Clearly $A_n$ is dense and open, and $m(A_n)\leq\sum_i1/(n2^{i+1})=1/n$.
 
   Finally, since $A$ is null and comeager, we clearly have that $\RR\smallsetminus A$ is meager and conull.
 \end{proof}
@@ -916,15 +918,29 @@ Although this result shows that category and measure are very different in terms
   Theorem~\ref{thm:cichon} doesn't rule out the possibility that all or some of the cardinals in Cicho\'n's diagram are \emph{equal to each other}. And this is indeed possible: if CH is true then $\aleph_1=\mathfrak c$ and so all twelve of the cardinals are identical. So to truly break the symmetry between category and measure, we need some way to show that it is possible for these cardinals to be different. For that we will need the method of \emph{forcing}, which will be the focus of the second half of the course.
 \end{rem}
 
-For the rest of this section, and for the next few, we concern ourselves with the proof of Theorem~\ref{thm:cichon}. We have already established five out of the fifteen: $\aleph_1\leq\add(\mathcal N)$ and $\cof(\mathcal N)\leq\mathfrak c$ both follow from Lemma~\ref{lem:ideal-cards}, and $\add(\mathcal M)\leq\cov(\mathcal M)$ and $\non(\mathcal M)\leq\cof(\mathcal M)$ both follow from Lemma~\ref{lem:diamond}. Finally $\mathfrak b\leq\mathfrak d$ follows from Proposition~\ref{prop:bd}.
+For the rest of this section, and for the next few, we take up the proof of Theorem~\ref{thm:cichon}. We have already established seven out of the fifteen: $\mathfrak b\leq\mathfrak d$ follows from Proposition~\ref{prop:bd}. The two bounds $\aleph_1\leq\add(\mathcal N)$ and $\cof(\mathcal N)\leq\mathfrak c$ follow from Lemma~\ref{lem:ideal-cards}. And four more of the inequalities are special cases of Lemma~\ref{lem:diamond}. We conclude this section wih three more easy ones.
+
+\begin{lem}
+  We have $\mathfrak b\leq\non(\mathcal M)$.
+\end{lem}
+
+\begin{proof}
+  This is a direct consequence of our observation in Remark~\ref{rem:ksigma-meager} that $\mathcal K_\sigma\subset\mathcal M$.
+\end{proof}
 
 \begin{lem}
   We have $\cov(\mathcal N)\leq\non(\mathcal M)$, and $\cov(\mathcal M)\leq\non(\mathcal M)$.
 \end{lem}
 
 \begin{proof}
+  For the first inequality, we must show that given a nonmeager set $X$, we can find a family $\mathcal F$ of null sets of smaller or equal size such that $\bigcup F=\RR$. For this, we let $A$ be the null comeager set constructed in Proposition~\ref{prop:null-comeager}, and consider the family of null sets $\mathcal F=\set{x+A\mid x\in X}$.
 
+  To see that $\bigcup F=\RR$, suppose towards a contradiction that this is not the case. Then there exists $z\in\RR$ such that $z\notin x+A$ for all $x\in X$. It follows that $z-x\notin A$ for all $x\in X$, or in other words that $z-X$ is disjoint from $A$. But $A$ is comeager, so this would imply that $z-X$ is meager, which is a contradiction.
+
+  The proof of the second inequality is identical but with the terms meager and null exchanged. This time let $X$ be nonmeager, and let $A$ be meager conull. Then the same argument shows that the family $\mathcal F$ defined above covers $\RR$, since otherwise there would be a translate $z-X$ of $X$ which is null.
 \end{proof}
+
+The remaining five inequalities will be handled in the next several sections.
 
 \begin{exerc}
   \label{exerc:meager-bij}
@@ -936,12 +952,24 @@ For the rest of this section, and for the next few, we concern ourselves with th
   For $V_s$ a basic open set of $2^\omega$, let $m(V_s)=2^{-|s|-1}$. Then $m$ extends to a measure on the Borel sets of $2^\omega$ (take this for granted). Show that there is a measure-preserving bijection between conull subsets of $[0,1]$ and $2^\omega$.
 \end{exerc}
 
+\begin{exerc}
+  Show directly that $\cov(\mathcal M)\leq\mathfrak d$ (we will also prove it in the next section).
+\end{exerc}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Morphisms and duality}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Further proofs of Cicho\'n's diagram}
+\section{Category and matching}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Bartoszynski's theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Martin's axiom}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
