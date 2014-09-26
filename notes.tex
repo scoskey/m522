@@ -733,6 +733,7 @@ We now work establish a key relationship between the cardinals $\non(\mathcal K_
 The following result records the relationship between these two cardinal values.
 
 \begin{prop}
+  \label{prop:bd}
   We have $\aleph_1\leq\mathfrak{b}\leq\mathfrak{d}\leq\mathfrak{c}$.
 \end{prop}
 	
@@ -799,6 +800,7 @@ The cofinality of an ideal is the least number of sets you need to generate the 
 As was the case with the cardinals we introduced in the previous section, assuming $\mathcal I$ is reasonable, all four of the cardinals characteristics associated with $\mathcal I$ provides an uncountable lower bound for the value of the continuum.
 
 \begin{lem}
+  \label{lem:ideal-cards}
   Suppose that $\mathcal I$ is a proper $\sigma$-ideal, $\mathcal I$ contains the singletons, and that $\mathcal I$ has a basis consisting of Borel sets. Then each of the four cardinals above is uncountable and bounded above by $\mathfrak c$.
 \end{lem}
 
@@ -811,12 +813,13 @@ As was the case with the cardinals we introduced in the previous section, assumi
 All three of the $\sigma$-ideals we have introduced have a basis of Borel sets. For $\mathcal K_\sigma$ this is clear because $\sigma$-compact sets are Borel. For $\mathcal M$ any meager set is contained in a countable union of \emph{closed} nowhere dense sets, which are Borel. Finally for $\mathcal N$, note that if $A$ is null then for all $n$ there is a Borel set $A_n$ such that $A\subset A_n$ and $m(A_n)<1/n$. It follows that $A$ is contained in the Borel null set $\bigcap A_n$.
 
 \begin{rem}
-  There can exist proper $\sigma$-ideals containing the singletons that don't have a basis of size $\leq\mathfrak c$. For example, it is consistent that the ideal $\mathcal{SN}$ of \emph{strongly null} sets has $\cof(\mathcal{SN})=\aleph_2$ while $\mathfrak c=\aleph_1$. [ref]
+  There can exist proper $\sigma$-ideals containing the singletons that don't have a basis of size $\leq\mathfrak c$. For example, it is consistent that the ideal $\mathcal{SN}$ of \emph{strongly null} sets has $\cof(\mathcal{SN})=\aleph_2$ while $\mathfrak c=\aleph_1$. [ref] % yorioka
 \end{rem}
 
 We next establish the basic relationships between the four cardinal characteristics associated with $\mathcal I$.
 
 \begin{lem}
+  \label{lem:diamond}
   Suppose that $\mathcal I$ is a proper $\sigma$-ideal and that $\mathcal I$ contains the singletons. Then we have the inequalities $\add(\mathcal I)\leq\non(\mathcal I)\leq\cof(\mathcal I)$, and also $\add(\mathcal I)\leq\cov(\mathcal I)\leq\cof(\mathcal I)$.
 \end{lem}
 
@@ -865,10 +868,12 @@ The second equality is similar and left as an exercise.
 \section{Asymmetry of category and measure: Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-So far we have seen many similarities between the various size notions that we have discussed. The classes of meager sets, null sets are both ideals, both proper, both closed under countable unions, and so on. It is natural to ask whether the meager and null sets are truly different notions. The following 
+So far we have seen many similarities between the various size notions that we have discussed. The classes of meager sets and null sets are both ideals, both proper, both closed under countable unions, and so on. In this section we further investigate how far this comparison extends, and in the process we reveal a deep and intricate connection between measure and category.
+
+To begin, it is natural to ask whether the meager and null sets are truly different notions. The following result shows that they are very different indeed: it is possible to be small according to either notion, and at the same time, large according to the other.
 
 \begin{prop}
-  There exists a null comeager set.  There exists a meager conull set.  \end{prop}
+  There exists a null comeager set. There exists a meager conull set.  \end{prop}
 
 \begin{proof}
   The key is that we can construct dense open sets of arbitrarily small measure. That is, for each $n$ we will construct a dense open set $A_n$ such that $m(A_n)<1/n$. Assuming we have done so, we let $A=\bigcap A_n$. Clearly the set $A$ is null. To see that it is comeager note that for all $n$, we have that $\RR\smallsetminus A_n$ is closed and nowhere dense. Thus $\RR\smallsetminus A=\bigcup\RR\smallsetminus A_n$ is meager.
@@ -878,10 +883,11 @@ So far we have seen many similarities between the various size notions that we h
   Finally, since $A$ is null and comeager, we clearly have that $\RR\smallsetminus A$ is meager and conull.
 \end{proof}
 
-The following result shows that there is a fundamental asymmetry between the notions of category and measure.
+Although this result shows that category and measure are very different in terms of which sets they deem small, it also provides a certain symmetry between the two notions. The next result breaks this symmetry, and in its place provides an intricate structure of relationships between category and measure. This result is what we came all this way to see.
 
 \begin{thm}
-  The cardinal characteristics defined in the previous sections exhibit the pattern of inequalities depicted in Figure~\ref{fig:cichon}.
+  \label{thm:cichon}
+  The cardinal characteristics defined in the previous sections exhibit the pattern of inequalities known as \emph{Cicho\'n's diagram}, which is depicted in Figure~\ref{fig:cichon}.
 \end{thm}
 
 \begin{figure}[h]
@@ -902,10 +908,33 @@ The following result shows that there is a fundamental asymmetry between the not
   \caption{Cicho\'n's diagram of cardinal characteristics. Here as usual the arrow $\leftarrow$ represents the inequality $\leq$.\label{fig:cichon}}
 \end{figure}
 
-We will begin the proof of this theorem now, and continue it over the next few sections. We have already established several of the inequalities: $\add(\mathcal M)\leq\cov(\mathcal M)$ and $\non(\mathcal M)\leq\cof(\mathcal M)$ both follow from [ref] and $\mathfrak b\leq\mathfrak d$ follows from [ref].
+\begin{rem}
+  By Exercise~\ref{exerc:meager-bij}, the symbol $\mathcal M$ can stand for the meager sets on any one of the spaces $\RR$, $2^\omega$, or $\omega^\omega$. Similarly, in Exercise~\ref{exerc:null-bij} we give a natural measure on $2^\omega$, and again show that $\mathcal N$ can stand for the null sets on either $\RR$ or $2^\omega$. (We omit the definition of an appropriate measure on $\omega^\omega$ [ref].) % blass
+\end{rem}
 
+\begin{rem}
+  Theorem~\ref{thm:cichon} doesn't rule out the possibility that all or some of the cardinals in Cicho\'n's diagram are \emph{equal to each other}. And this is indeed possible: if CH is true then $\aleph_1=\mathfrak c$ and so all twelve of the cardinals are identical. So to truly break the symmetry between category and measure, we need some way to show that it is possible for these cardinals to be different. For that we will need the method of \emph{forcing}, which will be the focus of the second half of the course.
+\end{rem}
 
+For the rest of this section, and for the next few, we concern ourselves with the proof of Theorem~\ref{thm:cichon}. We have already established five out of the fifteen: $\aleph_1\leq\add(\mathcal N)$ and $\cof(\mathcal N)\leq\mathfrak c$ both follow from Lemma~\ref{lem:ideal-cards}, and $\add(\mathcal M)\leq\cov(\mathcal M)$ and $\non(\mathcal M)\leq\cof(\mathcal M)$ both follow from Lemma~\ref{lem:diamond}. Finally $\mathfrak b\leq\mathfrak d$ follows from Proposition~\ref{prop:bd}.
 
+\begin{lem}
+  We have $\cov(\mathcal N)\leq\non(\mathcal M)$, and $\cov(\mathcal M)\leq\non(\mathcal M)$.
+\end{lem}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{exerc}
+  \label{exerc:meager-bij}
+  There is a homeomorphism between comeager subsets of $\RR$ and $2^\omega$. There is a bijection between comeager subsets of $\RR$ and $\omega^\omega$.
+\end{exerc}
+
+\begin{exerc}
+  \label{exerc:null-bij}
+  For $V_s$ a basic open set of $2^\omega$, let $m(V_s)=2^{-|s|-1}$. Then $m$ extends to a measure on the Borel sets of $2^\omega$ (take this for granted). Show that there is a measure-preserving bijection between conull subsets of $[0,1]$ and $2^\omega$.
+\end{exerc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Morphisms and duality}
@@ -914,9 +943,6 @@ We will begin the proof of this theorem now, and continue it over the next few s
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Further proofs of Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
 
 
 \end{document}
