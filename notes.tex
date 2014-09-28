@@ -768,6 +768,10 @@ We are now ready to state the connection between $\mathcal K_\sigma$ sets and th
   Prove directly that a countable product of finite metric spaces is compact.
 \end{exerc}
 
+\begin{exerc}
+  Find an example of a meager subset of $\omega^\omega$ which is not $\mathcal K_\sigma$.
+\end{exerc}
+
 % Blass, section 2
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -918,17 +922,23 @@ Although this result shows that category and measure are very different in terms
   Theorem~\ref{thm:cichon} doesn't rule out the possibility that all or some of the cardinals in Cicho\'n's diagram are \emph{equal to each other}. And this is indeed possible: if CH is true then $\aleph_1=\mathfrak c$ and so all twelve of the cardinals are identical. So to truly break the symmetry between category and measure, we need some way to show that it is possible for these cardinals to be different. For that we will need the method of \emph{forcing}, which will be the focus of the second half of the course.
 \end{rem}
 
-For the rest of this section, and for the next few, we take up the proof of Theorem~\ref{thm:cichon}. We have already established seven out of the fifteen: $\mathfrak b\leq\mathfrak d$ follows from Proposition~\ref{prop:bd}. The two bounds $\aleph_1\leq\add(\mathcal N)$ and $\cof(\mathcal N)\leq\mathfrak c$ follow from Lemma~\ref{lem:ideal-cards}. And four more of the inequalities are special cases of Lemma~\ref{lem:diamond}. We conclude this section wih three more easy ones.
+For the rest of this section as well as the next few, we take up the proof of Theorem~\ref{thm:cichon}. We have already established seven out of the fifteen inequalities depicted: $\mathfrak b\leq\mathfrak d$ follows from Proposition~\ref{prop:bd}. The two bounds $\aleph_1\leq\add(\mathcal N)$ and $\cof(\mathcal N)\leq\mathfrak c$ follow from Lemma~\ref{lem:ideal-cards}. And four more of the inequalities are special cases of Lemma~\ref{lem:diamond}.
+
+We now present four more fairly easy inequaleties, leaving the remaining four for the next two sections.
 
 \begin{lem}
-  We have $\mathfrak b\leq\non(\mathcal M)$.
+  \label{lem:b-nonm}
+  We have $\mathfrak b\leq\non(\mathcal M)$, and $\cov(\mathcal M)\leq\mathfrak d$.
 \end{lem}
 
 \begin{proof}
-  This is a direct consequence of our observation in Remark~\ref{rem:ksigma-meager} that $\mathcal K_\sigma\subset\mathcal M$.
+  For the first inequality, recall our observation in Remark~\ref{rem:ksigma-meager} that $\mathcal K_\sigma\subset\mathcal M$, so any nonmeager subset of $\omega^\omega$ is certainly not $\mathcal K_\sigma$. But we also know that every non-$\mathcal K_\sigma$ set is unbounded. It follows that every nonmeager subset of $\omega^\omega$ is unbounded, which implies $\mathfrak b\leq\non(\mathcal M)$.
+
+  The second inequality again uses the fact that $\mathcal K_\sigma\subset\mathcal M$, and we leave it as Exercise~\ref{exerc:covm-d}.
 \end{proof}
 
 \begin{lem}
+  \label{lem:covn-nonm}
   We have $\cov(\mathcal N)\leq\non(\mathcal M)$, and $\cov(\mathcal M)\leq\non(\mathcal M)$.
 \end{lem}
 
@@ -939,8 +949,6 @@ For the rest of this section, and for the next few, we take up the proof of Theo
 
   The proof of the second inequality is identical but with the terms meager and null exchanged. This time let $X$ be nonmeager, and let $A$ be meager conull. Then the same argument shows that the family $\mathcal F$ defined above covers $\RR$, since otherwise there would be a translate $z-X$ of $X$ which is null.
 \end{proof}
-
-The remaining five inequalities will be handled in the next several sections.
 
 \begin{exerc}
   \label{exerc:meager-bij}
@@ -953,19 +961,65 @@ The remaining five inequalities will be handled in the next several sections.
 \end{exerc}
 
 \begin{exerc}
-  Show directly that $\cov(\mathcal M)\leq\mathfrak d$ (we will also prove it in the next section).
+  \label{exerc:covm-d}
+  Show that $\cov(\mathcal M)\leq\mathfrak d$.
 \end{exerc}
 
+% Bartoszynski
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Morphisms and duality}
+\section{Duality}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+At this point one might have observed that many of the proofs of inequalities between cardinal characteristics have come in pairs. This phenomenon is easy to spot in Lemmas~\ref{lem:b-nonm} and~\ref{lem:covn-nonm}, but if one examines the proof it is even present in Lemma~\ref{lem:diamond}. It turns out that there is a category-theoretic duality lurking behind all of these pairings. (Here we mean \emph{category} as in objects and morphisms, not as in Baire's theorem.)
+
+\begin{defn}
+  Let $R$ be a relation and $R\subset A\times B$ (that is, the domain of $R$ is $A$ and the codomain of $R$ is $B$).
+  \begin{itemize}
+  \item A subfamily $\mathcal F\subset B$ is an \emph{$R$-dominating family} if for every $a\in A$ there exists $b\in\mathcal F$ such that $a\mathrel{R}b$.
+  \item The \emph{dominating number} $\mathfrak d(R)$ of $R$ is the minimum cardinality of an $R$-dominating family.
+  \end{itemize}
+\end{defn}
+
+It is clear that the dominating number $\mathfrak d$ is the dominating number of the relation $\leq^*$. But it is also easy to check that the unbounding number $\mathfrak b$ can be expressed as the dominating number of the relation $\not\geq^*$. Moreover, if $\mathcal I$ is an ideal then all four of the cardinal characteristics of $\mathcal I$ can be expressed as dominating numbers.
+
+\begin{prop}
+  Let $\mathcal I$ be an ideal on $X$. Then we have:
+  \begin{itemize}
+  \item $\cof(\mathcal I)$ is the dominating number of the subset relation $\subset$ on $\mathcal I$.
+  \item $\cov(\mathcal I)$ is the dominating number of the $\in$ relation from $X$ to $\mathcal I$.
+  \item $\non(\mathcal I)$ is the dominating number of the $\not\ni$ relation from $\mathcal I$ to $X$.
+  \item $\add(\mathcal I)$ is the dominating number of the relation $\not\supset$ on $\mathcal I$.
+  \end{itemize}
+\end{prop}
+
+\begin{proof}
+  It is straightforward to see the characterizations of $\cof(\mathcal I)$ and $\cov(\mathcal I)$. The characterizations of $\non(\mathcal I)$ and $\add(\mathcal I)$ both use the downward closure property: $A$ lies in $\mathcal I$ if and only if $A$ is a subset of an element of $\mathcal I$.
+\end{proof}
+
+So far we have only described the objects of our category, namely the binary relations $R$. Next we describe the morphsims.
+
+\begin{defn}
+  Let $R\subset A\times B$ and $S\subset C\times D$ be relations. A \emph{morphism} from $R$ to $S$ is a pair of maps
+\[\begin{cases}\phi\colon C\to A\\\psi\colon B\to D\end{cases}
+\]
+such that for all $c\in C$ and $b\in B$ we have
+\[\phi(c)\mathrel{R}b\iff c\mathrel{S}\psi(b)
+\]
+\end{defn}
+
+\begin{prop}
+  If there is a morphism from $R$ to $S$, then $\mathfrak d(R)\geq\mathfrak d(S)$.
+\end{prop}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Category and matching}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Bartoszynski's theorem}
+\section{Bartoszynski's theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
