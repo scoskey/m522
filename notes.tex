@@ -1037,15 +1037,13 @@ The idea behind the chopped real terminology is that the real number $x$ has bee
 \end{lem}
 
 \begin{proof}
-  We begin by writing $A=\bigcup A_n$ where each $A_n$ is nowhere dense. As usual, replacing $A_n$ by its closure if necessary we may assume that each $A_n$ is closed. Moreover, taking successive unions we may assume that $A_n\subset A_{n+1}$. We define the chopped real $(x,\Pi)$ recursively. To begin, since $A_0$ isn't dense there exists $s\in2^{<\omega}$ such that $A_0\cap V_s=\emptyset$. We let $\Pi_0=\dom(s)$ and $x\restriction\Pi_0=s$.
+  We begin by writing $A=\bigcup A_n$ where each $A_n$ is nowhere dense and $A_n\subset A_{n+1}$ for all $n$. We will define the chopped real $(x,\Pi)$ recursively. To begin, since $A_0$ isn't dense there exists $s\in2^{<\omega}$ such that $A_0\cap V_s=\emptyset$. We let $\Pi_0=\dom(s)$ and $x\restriction\Pi_0=s$.
 
-  Now suppose that $\Pi_i$ and $x\restriction\Pi_i$ have been constructed for $i<n$ and let $s=x\restriction\bigcup_{i<n}\Pi_i$ be the segment built so far. Since $A_n$ is nowhere dense, we can find an extension $t$ of $s$ such that $A_n\cap V_t=\emptyset$. But we can do even better: let $s_0,\ldots,s_{k-1}$ enumerate all elements of $2^{<\omega}$ whose domain is exactly $\bigcup_{i<n}\Pi_i$. Then we can actually find an extension $t$ of $s$ such that for all $i<k$ we have $V_{s_i\cup(t\smallsetminus s)}\cap A_n=\emptyset$.
+  Now suppose that $\Pi_i$ and $x\restriction\Pi_i$ have been constructed for $i<n$ and let $s=x\restriction\bigcup_{i<n}\Pi_i$ be the segment built so far. Since $A_n$ is nowhere dense, we know we can find an extension $t$ of $s$ such that $A_n\cap V_t=\emptyset$. But we can do even better: we can find an extension $t$ of $s$ such that even if $y\in2^\omega$ only agrees with $t$ on $\dom(t)\smallsetminus\dom(s)$, then we still have $y\notin A_n$.
 
-  Such a $t$ is built in $k$ steps. \ldots
+  Such a $t$ is built in $k$ many steps: Let $s_0,\ldots,s_{k-1}$ enumerate all elements of $2^{<\omega}$ whose domain is exactly $\dom(s)$. Repeatedly using that $A_n$ is nowhere dense, we can find a sequence of $t_0,t_1,\ldots,t_{k-1}=t$  such that $A_n\cap V_{s_i\cup(t_i\smallsetminus s)}=\emptyset$. Then we let $\Pi_n=\dom(t\smallsetminus s)$ and $x_n=t\restriction\Pi_n$. This concludes the construction.
 
-  Now we let $\Pi_n=\dom(t\smallsetminus s)$ and $x_n=t\restriction\Pi_n$.
-
-  Finally if $a\in A_n$ and $n'\geq n$ then $a\restriction\Pi_{n'}$
+  To see that $A\subset\Diff(x,\Pi)$, observe that whenever $y\restriction\Pi_n=x\restriction\Pi_n$ we have $y\notin A_n$. In other words, whenever $y\in A_n$ we have that $y$ differs from $x$ on $\Pi_n$. Since the $A_n$ are increasing, any $a\in A$ lies in all but finitely many of the $A_n$. Thus we can conclude that any $a\in A$ strongly differs from $(x,\Pi)$.
 \end{proof}
 
 The lemma implies that the collection of sets $\Diff(x,\Pi)$ form a basis for the meager ideal on Cantor space.
@@ -1064,7 +1062,7 @@ The lemma implies that the collection of sets $\Diff(x,\Pi)$ form a basis for th
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Martin's axiom}
+\section{Martin's axiom}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
