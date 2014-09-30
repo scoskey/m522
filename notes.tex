@@ -13,7 +13,8 @@
 \renewcommand{\labelenumi}{(\alph{enumi})}
 \usepackage{etoolbox}\makeatletter\pretocmd{\@seccntformat}{\S}{}{}\pretocmd{\@subseccntformat}{\S}{}{}\makeatother
 \usepackage{tikz}
-\usetikzlibrary{positioning,decorations.fractals}
+\usetikzlibrary{positioning,decorations.fractals,decorations.pathmorphing}
+\usepackage{hyperref}
 
 \newcommand{\set}[1]{\left\{\,#1\,\right\}}
 \newcommand{\NN}{\mathbb N}
@@ -25,6 +26,7 @@
 \DeclareMathOperator{\cof}{\mathsf{cof}}
 \DeclareMathOperator{\Diff}{Diff}
 \DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\cod}{cod}
 \DeclareMathOperator{\cl}{cl}
 
 \theoremstyle{definition}
@@ -43,9 +45,12 @@
 \begin{document}
 \maketitle
 
+\tableofcontents
+
+\newpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setcounter{section}{-1}
-\section{Introduction}
+\section*{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 This course is about set theory, and its use in the study of the real line. By way of motivation, consider the question of measuring the \emph{size} of a given set of real numbers. The word ``size'' can mean many different things, depending on the context. To see what I mean, consider these three important examples.
@@ -66,6 +71,8 @@ Our investigation of measure and category will lead us to a number of statements
 In his proof of the latter half of the independence of CH, Cohen developed a tool for building models of set theory called \emph{forcing}. Far from being an isolated application, since then forcing has become a standard tool for establishing independence results. We will develop the machinery of forcing and give a number of such applications.
 
 With the tool of forcing in hand, we will return to the notions of measure and category. We will find that there are numerous cardinal numbers surrounding the zero length sets and the meager sets whose values, like the size of the set of all real numbers, are also independent of the axioms of set theory.
+
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The real number system}
@@ -173,7 +180,7 @@ Note that nowhere dense sets need not be countable. The classical Cantor middle 
                 (0,-2) -- (10,-2) }}}}}} node[anchor=west] {\ \ $C$};
   \end{tikzpicture}
 \end{center}
-\caption{The first few steps in the construction of the Cantor set.\label{fig:cantor-set}}
+\caption{The first few steps in the construction of the Cantor set, and a rough image of the Cantor set itself.\label{fig:cantor-set}}
 \end{figure}
 
 \begin{prop}
@@ -646,6 +653,7 @@ A subset $T\subset A^{<\omega}$ is said to be a \emph{tree} if it is closed down
 In previous sections we have defined nowhere dense subsets of $\RR$ in terms of intervals. In fact we can define nowhere dense subsets of any topological space in terms of open sets: $S\subset X$ is \emph{nowhere dense} in $X$ if every open set has an open subset disjoint from $S$. This definition can even be made with basic open sets in place of open sets. Thus we have the following characterization.
 
 \begin{prop}
+  \label{prop:cantor-space-nwd}
   $S\subset A^{<\omega}$ is nowhere dense if and only if for every $s\in A^{<\omega}$ there exists $t$ such that $s\subset t$ and $V_t$ is disjoint from $S$.\qed
 \end{prop}
 
@@ -989,9 +997,9 @@ It is clear that the dominating number $\mathfrak d$ is the dominating number of
 \begin{prop}
   Let $\mathcal I$ be an ideal on $X$. Then we have:
   \begin{itemize}
-  \item $\cof(\mathcal I)$ is the dominating number of the subset relation $\subset$ on $\mathcal I$.
-  \item $\cov(\mathcal I)$ is the dominating number of the $\in$ relation from $X$ to $\mathcal I$.
-  \item $\non(\mathcal I)$ is the dominating number of the $\not\ni$ relation from $\mathcal I$ to $X$.
+  \item $\cof(\mathcal I)$ is the dominating number of the subset relation $\subset$ on $\mathcal I$ (meaning $\mathcal I\times\mathcal I)$.
+  \item $\cov(\mathcal I)$ is the dominating number of the $\in$ relation on $X\times\mathcal I$.
+  \item $\non(\mathcal I)$ is the dominating number of the $\not\ni$ relation on $\mathcal I\times X$.
   \item $\add(\mathcal I)$ is the dominating number of the relation $\not\supset$ on $\mathcal I$.
   \end{itemize}
 \end{prop}
@@ -1000,53 +1008,88 @@ It is clear that the dominating number $\mathfrak d$ is the dominating number of
   It is straightforward to see the characterizations of $\cof(\mathcal I)$ and $\cov(\mathcal I)$. The characterizations of $\non(\mathcal I)$ and $\add(\mathcal I)$ both use the downward closure property: $A$ lies in $\mathcal I$ if and only if $A$ is a subset of an element of $\mathcal I$.
 \end{proof}
 
-So far we have only described the objects of our category, namely the binary relations $R$. Next we describe the morphsims.
+It is worth observing that the four cardinals come in two dual pairs. Here, if $R$ is a relation, then the \emph{dual} of $R$ is its negated transpose $\hat{R}$. That is, the dual of $R$ satisfies $a\mathrel{\hat{R}}b$ iff $\neg(b\mathrel Ra)$. Thus we see that $\add(\mathcal I)$ and $\cof(\mathcal I)$ arise from dual relations, as do $\non(\mathcal I)$ and $\cov(\mathcal I)$. Before we can exploit this duality, we need to describe the morphisms on the category of binary relations.
 
 \begin{defn}
-  Let $R\subset A\times B$ and $S\subset C\times D$ be relations. A \emph{morphism} from $R$ to $S$ is a pair of maps
-\[\begin{cases}\phi\colon C\to A\\\psi\colon B\to D\end{cases}
+  Let $R$ and $S$ be relations, and to avoid excessive notation, write $\dom(R)$ and $\cod(R)$ for the demain and codomain of $R$, and similarly for $S$. A \emph{morphism} from $R$ to $S$ is a pair of maps
+\[\begin{cases}\psi\colon\cod(R)\to\cod(S)\\\phi\colon\dom(S)\to\dom(R)\end{cases}
 \]
-such that for all $c\in C$ and $b\in B$ we have
-\[\phi(c)\mathrel{R}b\iff c\mathrel{S}\psi(b)
+such that for all $c\in\dom(S)$ and $d\in\cod(R)$ we have
+\[\phi(c)\mathrel{R}d\implies c\mathrel{S}\psi(d)
 \]
 \end{defn}
 
+The definition in a sense implies that the following diagram ``commutes.'' Of course, the $R$ and $S$ edges symbolize relations, not functions, so this is only a partial analogy.
+\begin{center}
+\begin{tikzpicture}
+  \node (domr) {$\dom(R)$};
+  \node (codr) [above=of domr] {$\cod(R)$}
+  edge[<-,dashed] node[left]{$R$} (domr);
+  \node (doms) [right=of domr] {$\dom(S)$}
+  edge[->] node[below]{$\phi$} (domr);
+  \node (cods) [above=of doms] {$\cod(S)$}
+  edge[<-] node[above]{$\psi$} (codr)
+  edge[<-,dashed] node[right]{$S$} (doms);
+\end{tikzpicture}
+\end{center}
+In any case, the definition of a morphism is custom-designed to give us the following result.
+
 \begin{prop}
-  If there is a morphism from $R$ to $S$, then $\mathfrak d(R)\geq\mathfrak d(S)$.
+  If $(\phi,\psi)$ is a morphism from $R$ to $S$, then $\mathfrak d(R)\geq\mathfrak d(S)$.
 \end{prop}
+
+\begin{proof}
+  It is enough to show that if $\mathcal F$ is an $R$-dominating family, then the image $\psi(\mathcal F)$ is an $S$-dominating family, since this image has the same or smaller cardinality than $\mathcal F$. To see this, if $d\in\dom(S)$ then since $\mathcal F$ is $R$-dominating we know there is $c\in\mathcal F$ such that $\phi(d)\mathrel{R}c$. Since $(\phi,\psi)$ is a morphism, we then know that $d\mathrel{S}\psi(c)$. This confirms that $\psi(\mathcal F)$ is an $S$-dominating family.
+\end{proof}
+
+For most of the inequalities between cardinal characteristics that we have seen, it is possible to extract a morphism hiding in the proof.
+
+\begin{example}
+  In our proof that $\cov(\mathcal I)\leq\cof(\mathcal I)$, we could have used the morphism from $\subset$ relation on $\mathcal I$ to the $\in$ relation on $X\times\mathcal I$ given by the maps
+\[\begin{cases}\phi(x)=\{x\}\\\psi(B)=B\end{cases}
+\]
+Indeed, it is trivial to see that $\phi(x)\subset B\implies x\in\psi(B)$.
+\end{example}
+
+\begin{example}
+  In Lemma~\ref{lem:covn-nonm}, where we showed that $\cov(\mathcal N)\leq\non(\mathcal M)$, we could have used the following morphism from the $\not\ni$ relation on $\mathcal M\times2^\omega$ to the $\in$ relation on $2^\omega\times\mathcal N$. Again we let $A$ be a fixed null comeager set.
+\[\begin{cases}\phi(x)=x-A^c\\\psi(x)=x+A\end{cases}
+\]
+This time, we have that $\phi(x)\not\ni y$ implies $x-y\in A$, which in turn implies that $x\in y+A=\psi(y)$, as required.
+\end{example}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Category and matching}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-An \emph{interval partition} is a partition $\Pi=(\Pi_n)$ of $\omega$ into finite nonempty intervals $\Pi_n$. We always assume that the $\Pi_n$ are enumerated in increasing order.
+An \emph{interval partition} is a partition $P=(I_n)$ of $\omega$ into finite nonempty intervals $I_n$. We always assume that the $I_n$ is adjacent to $I_{n+1}$, and hence also that they are enumerated in increasing order.
 
 \begin{defn}
   \begin{itemize}
-  \item A \emph{chopped real} is a pair $(x,\Pi)$ where $x\in2^\omega$ and $\Pi$ is an interval partition.
+  \item A \emph{chopped real} is a pair $(x,P)$ where $x\in2^\omega$ and $P$ is an interval partition.
 
-  \item If $(x,\Pi)$ is a chopped real, we say $y\in2^\omega$ \emph{strongly differs} from $(x,\Pi)$ if for all but finitely many $n$ we have $y\restriction\Pi_n\neq x\restriction\Pi_n$.
+  \item If $(x,P)$ is a chopped real, we say $y\in2^\omega$ \emph{strongly differs} from $(x,P)$ if for all but finitely many $n$ we have $y\restriction I_n\neq x\restriction I_n$.
   \end{itemize}
 \end{defn}
 
-The idea behind the chopped real terminology is that the real number $x$ has been chopped into countably many finite pieces $x\restriction\Pi_n$. If $(x,\Pi)$ is a chopped real, we define the set $\Diff(x,\Pi)$ to be the set of all $y\in2^\omega$ such that $y$ strongly differs from $(x,\Pi)$. The following result gives a new, combinatorial basis for the meager ideal on Cantor space.
+The idea behind the chopped real terminology is that the real number $x$ has been chopped into countably many finite pieces $x\restriction I_n$. If $(x,P)$ is a chopped real, we define the set $\Diff(x,P)$ to be the set of all $y\in2^\omega$ such that $y$ strongly differs from $(x,P)$. The following result gives a new, combinatorial basis for the meager ideal on Cantor space.
 
 \begin{lem}
-  A subset $A\subset2^\omega$ is meager if and only if there is some chopped real $(x,\Pi)$ such that $A\subset\Diff(x,\Pi)$.
+  A subset $A\subset2^\omega$ is meager if and only if there is some chopped real $(x,P)$ such that $A\subset\Diff(x,P)$.
 \end{lem}
 
 \begin{proof}
-  We begin by writing $A=\bigcup A_n$ where each $A_n$ is nowhere dense and $A_n\subset A_{n+1}$ for all $n$. We will define the chopped real $(x,\Pi)$ recursively. To begin, since $A_0$ isn't dense there exists $s\in2^{<\omega}$ such that $A_0\cap V_s=\emptyset$. We let $\Pi_0=\dom(s)$ and $x\restriction\Pi_0=s$.
+  We begin by writing $A=\bigcup A_n$ where each $A_n$ is nowhere dense and $A_n\subset A_{n+1}$ for all $n$. We will define the chopped real $(x,P)$ recursively. To begin, since $A_0$ isn't dense there exists $s\in2^{<\omega}$ such that $A_0\cap V_s=\emptyset$. We let $I_0=\dom(s)$ and $x\restriction I_0=s$.
 
-  Now suppose that $\Pi_i$ and $x\restriction\Pi_i$ have been constructed for $i<n$ and let $s=x\restriction\bigcup_{i<n}\Pi_i$ be the segment built so far. Since $A_n$ is nowhere dense, we know we can find an extension $t$ of $s$ such that $A_n\cap V_t=\emptyset$. But we can do even better: we can find an extension $t$ of $s$ such that even if $y\in2^\omega$ only agrees with $t$ on $\dom(t)\smallsetminus\dom(s)$, then we still have $y\notin A_n$.
+  Now suppose that $I_i$ and $x\restriction I_i$ have been constructed for $i<n$ and let $s=x\restriction\bigcup_{i<n}I_i$ be the segment built so far. Since $A_n$ is nowhere dense, by Proposition~\ref{prop:cantor-space-nwd} we can find an extension $t$ of $s$ such that $A_n\cap V_t=\emptyset$. But we can do even better: we can find an extension $t$ of $s$ such that even if $y\in2^\omega$ only agrees with $t$ on $\dom(t)\smallsetminus\dom(s)$, then we still have $y\notin A_n$.
 
-  Such a $t$ is built in $k$ many steps: Let $s_0,\ldots,s_{k-1}$ enumerate all elements of $2^{<\omega}$ whose domain is exactly $\dom(s)$. Repeatedly using that $A_n$ is nowhere dense, we can find a sequence of $t_0,t_1,\ldots,t_{k-1}=t$  such that $A_n\cap V_{s_i\cup(t_i\smallsetminus s)}=\emptyset$. Then we let $\Pi_n=\dom(t\smallsetminus s)$ and $x_n=t\restriction\Pi_n$. This concludes the construction.
+  Such a $t$ is built in $k$ many steps: Let $s_0,\ldots,s_{k-1}$ enumerate all elements of $2^{<\omega}$ whose domain is exactly $\dom(s)$. Repeatedly using that $A_n$ is nowhere dense, we can find a sequence of $t_0,t_1,\ldots,t_{k-1}=t$  such that $A_n\cap V_{s_i\cup(t_i\smallsetminus s)}=\emptyset$. Then we let $I_n=\dom(t\smallsetminus s)$ and $x_n=t\restriction I_n$. This concludes the construction.
 
-  To see that $A\subset\Diff(x,\Pi)$, observe that whenever $y\restriction\Pi_n=x\restriction\Pi_n$ we have $y\notin A_n$. In other words, whenever $y\in A_n$ we have that $y$ differs from $x$ on $\Pi_n$. Since the $A_n$ are increasing, any $a\in A$ lies in all but finitely many of the $A_n$. Thus we can conclude that any $a\in A$ strongly differs from $(x,\Pi)$.
+  To see that $A\subset\Diff(x,P)$, observe that whenever $y\restriction I_n=x\restriction I_n$ we have $y\notin A_n$. In other words, whenever $y\in A_n$ we have that $y$ differs from $x$ on $I_n$. Since the $A_n$ are increasing, any $a\in A$ lies in all but finitely many of the $A_n$. Thus we can conclude that any $a\in A$ strongly differs from $(x,P)$.
 \end{proof}
 
-The lemma implies that the collection of sets $\Diff(x,\Pi)$ form a basis for the meager ideal on Cantor space.
+The lemma implies that the collection of sets $\Diff(x,P)$ form a basis for the meager ideal on Cantor space.
 
 \begin{lem}
   We have $\add(\mathcal M)\leq\mathfrak b$.
@@ -1058,7 +1101,7 @@ The lemma implies that the collection of sets $\Diff(x,\Pi)$ form a basis for th
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Bartoszynski's theorem}
+\section{Bartoszy\'nski's theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
