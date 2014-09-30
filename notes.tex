@@ -57,14 +57,14 @@ This course is about set theory, and its use in the study of the real line. By w
 
 \begin{itemize}
 \item To a set theorist or combinatorist, the simplest notion of size is
-\emph{cardinality}, which asks for instance whether a set is finite, countably infinite, or uncountable. Of course if the set is uncountable, a set theorist would further ask whether it is of the first uncountable cardinality ($\aleph_1$), the second uncountable cardinality ($\aleph_2$), etc.
+\emph{cardinality}, which asks for instance whether a set is finite, countably infinite, or uncountable. Of course if the set is uncountable, a set theorist would further hope to distinguish whether it is of the first uncountable cardinality ($\aleph_1$), the second uncountable cardinality ($\aleph_2$), etc.
 
 \item To an analyst, one standard notion of size is \emph{measure}, which asks for instance whether a set has zero length or positive length.
 
-\item To a topologist, a key notion of size is \emph{category}, which asks whether a set is meager, comeager, or neither meager nor comeager.
+\item To a topologist, a key notion of size is \emph{category}, which asks whether a set is meager (topologically negligable), comeager, or else neither meager nor comeager.
 \end{itemize}
 
-In this course we will ask: how do these three kinds of size compare with one another? In answering this question, we will discover numerous relationships between measure and category, with the diagram of these relationships revealing a beautiful structure.
+In this course we will ask the natural question: How do these three kinds of size compare with one another? In answering this question, we will discover numerous relationships between measure and category, with the diagram of these relationships revealing a beautiful structure.
 
 Our investigation of measure and category will lead us to a number of statements that are \emph{independent} of the axioms of set theory. This means that such statements cannot be proved true or false using the usual axioms of set theory. The most central example of such a statement is the \emph{continuum hypothesis} (CH), which asserts that the set of all real numbers has cardinality equal to the first uncountable cardinal number. Cantor initially posed this problem in 1878. In 1940 G\"odel showed the axioms of set theory can't disprove CH, and in 1965 Cohen finally showed that the axioms of set theory can't prove CH.
 
@@ -1014,9 +1014,10 @@ It is worth observing that the four cardinals come in two dual pairs. Here, if $
   Let $R$ and $S$ be relations, and to avoid excessive notation, write $\dom(R)$ and $\cod(R)$ for the demain and codomain of $R$, and similarly for $S$. A \emph{morphism} from $R$ to $S$ is a pair of maps
 \[\begin{cases}\psi\colon\cod(R)\to\cod(S)\\\phi\colon\dom(S)\to\dom(R)\end{cases}
 \]
-such that for all $c\in\dom(S)$ and $d\in\cod(R)$ we have
+such that the following holds
 \[\phi(c)\mathrel{R}d\implies c\mathrel{S}\psi(d)
 \]
+for all $c\in\dom(S)$ and $d\in\cod(R)$.
 \end{defn}
 
 The definition in a sense implies that the following diagram ``commutes.'' Of course, the $R$ and $S$ edges symbolize relations, not functions, so this is only a partial analogy.
@@ -1032,64 +1033,86 @@ The definition in a sense implies that the following diagram ``commutes.'' Of co
   edge[<-,dashed] node[right]{$S$} (doms);
 \end{tikzpicture}
 \end{center}
-In any case, the definition of a morphism is custom-designed to give us the following result.
+In any case, the definition of a morphism is custom-designed to give us the following two key properties.
 
 \begin{prop}
-  If $(\phi,\psi)$ is a morphism from $R$ to $S$, then $\mathfrak d(R)\geq\mathfrak d(S)$.
+  \label{prop:morphism}
+  \begin{itemize}
+  \item If $(\phi,\psi)$ is a morphism from $R$ to $S$, then $\mathfrak d(R)\geq\mathfrak d(S)$.
+  \item If $(\phi,\psi)$ is a morphism from $R$ to $S$, then $(\psi,\phi)$ is a morphism from $\hat S$ to $\hat R$. Hence in this case we also have $\mathfrak d(\hat S)\geq\mathfrak d(\hat R)$.
+  \end{itemize}
 \end{prop}
 
 \begin{proof}
-  It is enough to show that if $\mathcal F$ is an $R$-dominating family, then the image $\psi(\mathcal F)$ is an $S$-dominating family, since this image has the same or smaller cardinality than $\mathcal F$. To see this, if $d\in\dom(S)$ then since $\mathcal F$ is $R$-dominating we know there is $c\in\mathcal F$ such that $\phi(d)\mathrel{R}c$. Since $(\phi,\psi)$ is a morphism, we then know that $d\mathrel{S}\psi(c)$. This confirms that $\psi(\mathcal F)$ is an $S$-dominating family.
+  For the first statement, it is enough to show that if $\mathcal F$ is an $R$-dominating family, then the image $\psi(\mathcal F)$ is an $S$-dominating family. Indeed, the image $\psi(\mathcal F)$ has the same or smaller cardinality than $\mathcal F$. To check this we simply chase the diagram: since $\mathcal F$ is $R$-dominating, for any $d\in\dom(S)$ there exists $f\in\mathcal F$ such that $\phi(d)\mathrel{R}f$. Since $(\phi,\psi)$ is a morphism, it follows that $d\mathrel{S}\psi(f)$. This confirms that $\psi(\mathcal F)$ is an $S$-dominating family.
+
+  For the second statement, just take the contrapositive of the morphism property, $\phi(c)\mathrel R d\implies c\mathrel S\psi(d)$, to arrive at the property required of a morphism from $\hat S$ to $\hat R$.
 \end{proof}
 
-For most of the inequalities between cardinal characteristics that we have seen, it is possible to extract a morphism hiding in the proof.
+For each of the inequalities between cardinal characteristics that we have seen, it is possible to extract a morphism hiding in the proof. 
 
 \begin{example}
-  In our proof that $\cov(\mathcal I)\leq\cof(\mathcal I)$, we could have used the morphism from $\subset$ relation on $\mathcal I$ to the $\in$ relation on $X\times\mathcal I$ given by the maps
-\[\begin{cases}\phi(x)=\{x\}\\\psi(B)=B\end{cases}
-\]
-Indeed, it is trivial to see that $\phi(x)\subset B\implies x\in\psi(B)$.
+  In Lemma~\ref{lem:diamond}, where we showed that $\cov(\mathcal I)\leq\cof(\mathcal I)$, we could have used the morphism from $\subset$ relation on $\mathcal I$ to the $\in$ relation on $X\times\mathcal I$ given by the maps
+  \[\begin{cases}\phi(x)=\{x\}\\\psi(B)=B\end{cases}
+  \]
+  Indeed, it is trivial to see that $\phi(x)\subset B\implies x\in\psi(B)$. The fact that $\psi$ can be taken to be the identity reflects the fact that if $\mathcal F$ is a basis for $\mathcal I$ then the very same $\mathcal F$ is also a covering family.
+
+  Moreover, if we exchange the roles of $\phi$ and $\psi$ we obtain a morphism from $\not\ni$ to $\not\supset$. This morphism lies behind the inequality $\add(\mathcal I)\leq\non(\mathcal I)$. Indeed, this inequality was proved by sending any $A\notin\mathcal I$ to the family of all $\{a\}$ for $a\in A$.
 \end{example}
 
 \begin{example}
   In Lemma~\ref{lem:covn-nonm}, where we showed that $\cov(\mathcal N)\leq\non(\mathcal M)$, we could have used the following morphism from the $\not\ni$ relation on $\mathcal M\times2^\omega$ to the $\in$ relation on $2^\omega\times\mathcal N$. Again we let $A$ be a fixed null comeager set.
-\[\begin{cases}\phi(x)=x-A^c\\\psi(x)=x+A\end{cases}
-\]
-This time, we have that $\phi(x)\not\ni y$ implies $x-y\in A$, which in turn implies that $x\in y+A=\psi(y)$, as required.
+  \[\begin{cases}\phi(x)=x-A^c\\\psi(x)=x+A\end{cases}
+  \]
+  To check that it is a morphism, $\phi(x)\not\ni y$ implies $x-y\in A$, which in turn implies that $x\in y+A=\psi(y)$, as required. Recall that the function $\psi(x)=x+A$ featured prominently in our original proof: for each $X\notin\mathcal M$ we formed the family of translates $\{x+A:x\in X\}$.
+  
+  Once again, if we exchange the roles of $\phi$ and $\psi$ we obtain a morphism witnessing the inequality $\cov(\mathcal M)\leq\non(\mathcal N)$. Recall that this proof was the same, but using translates of the comeager null set $A^c$. The minus sign in $x-A^c$ has no effect on the argument.
 \end{example}
+
+Beyond these two examples, we see that each arrow in Cicho\'n's diagram (Theorem~\ref{thm:cichon}) is potentially dual to the arrow that is positioned diametrically opposite to it. Assuming there is a morphism behind the proof of one of the inequalities, then the other inequality follows automatically from Proposition~\ref{prop:morphism}.
+
+\begin{rem}
+  True inequalities between cardinal characteristics are not always witnessed by morphisms. For example, it is true that $\cov(\mathcal M)\leq\non(\mathcal{SN}$, but it is consistent that the dual inequality fails. [ref]
+\end{rem}
+
+\begin{exerc}
+  Find a morphism behind the proof of the inequality $\non(\mathcal I)\leq\cof(\mathcal I)$ (Lemma~\ref{lem:diamond}). Check that it is dual to a morphism behind the inequality $\add(\mathcal I)\leq\cov(\mathcal I)$.
+\end{exerc}
+
+\begin{exerc}
+  Find a morphism behind the proof of the inequality $\mathfrak b\leq\non(\mathcal M)$ (Lemma~\ref{lem:b-nonm}). Check that it is dual to a morphism behind the inequality $\cov(\mathcal M)\leq\mathfrak d$.
+\end{exerc}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Category and matching}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+In this section\ldots
+
 An \emph{interval partition} is a partition $P=(I_n)$ of $\omega$ into finite nonempty intervals $I_n$. We always assume that the $I_n$ is adjacent to $I_{n+1}$, and hence also that they are enumerated in increasing order.
 
 \begin{defn}
-  \begin{itemize}
-  \item A \emph{chopped real} is a pair $(x,P)$ where $x\in2^\omega$ and $P$ is an interval partition.
-
-  \item If $(x,P)$ is a chopped real, we say $y\in2^\omega$ \emph{strongly differs} from $(x,P)$ if for all but finitely many $n$ we have $y\restriction I_n\neq x\restriction I_n$.
-  \end{itemize}
+  If $x,y\in2^\omega$ and $P$ is an interval partition, we say $x$ \emph{strongly differs} from $y$ on $P$ if for all but finitely many $n$ we have $x\restriction I_n\neq y\restriction I_n$.
 \end{defn}
 
-The idea behind the chopped real terminology is that the real number $x$ has been chopped into countably many finite pieces $x\restriction I_n$. If $(x,P)$ is a chopped real, we define the set $\Diff(x,P)$ to be the set of all $y\in2^\omega$ such that $y$ strongly differs from $(x,P)$. The following result gives a new, combinatorial basis for the meager ideal on Cantor space.
+If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $\Diff(x,P)$ to be the set of all $y\in2^\omega$ such that $y$ strongly differs from $x$ on $P$. Since an element $x\in2^\omega$ and an interval partition $P$ appear together very frequently, such a pair $(x,P)$ has been given the name \emph{chopped real}. The following result shows that the chopped reals give us a new, combinatorial basis for the meager ideal on Cantor space.
 
 \begin{lem}
-  A subset $A\subset2^\omega$ is meager if and only if there is some chopped real $(x,P)$ such that $A\subset\Diff(x,P)$.
+  A subset $A\subset2^\omega$ is meager if and only if there is some $x\in2^\omega$ and interval partition $P$ such that $A\subset\Diff(x,P)$.
 \end{lem}
 
 \begin{proof}
-  We begin by writing $A=\bigcup A_n$ where each $A_n$ is nowhere dense and $A_n\subset A_{n+1}$ for all $n$. We will define the chopped real $(x,P)$ recursively. To begin, since $A_0$ isn't dense there exists $s\in2^{<\omega}$ such that $A_0\cap V_s=\emptyset$. We let $I_0=\dom(s)$ and $x\restriction I_0=s$.
+  We begin by writing $A=\bigcup A_n$ where each $A_n$ is nowhere dense and $A_n\subset A_{n+1}$ for all $n$. We will define the element $x\in2^\omega$ and the interval partition $P=(I_n)$ recursively. To begin, since $A_0$ isn't dense there exists $s\in2^{<\omega}$ such that $A_0\cap V_s=\emptyset$. We let $I_0=\dom(s)$ and $x\restriction I_0=s$.
 
-  Now suppose that $I_i$ and $x\restriction I_i$ have been constructed for $i<n$ and let $s=x\restriction\bigcup_{i<n}I_i$ be the segment built so far. Since $A_n$ is nowhere dense, by Proposition~\ref{prop:cantor-space-nwd} we can find an extension $t$ of $s$ such that $A_n\cap V_t=\emptyset$. But we can do even better: we can find an extension $t$ of $s$ such that even if $y\in2^\omega$ only agrees with $t$ on $\dom(t)\smallsetminus\dom(s)$, then we still have $y\notin A_n$.
+  Now suppose that $I_i$ and $x\restriction I_i$ have been constructed for $i<n$ and let $s=x\restriction\bigcup_{i<n}I_i$ be the initial segment built so far. Since $A_n$ is nowhere dense, by Proposition~\ref{prop:cantor-space-nwd} we can find an extension $t$ of $s$ such that $A_n\cap V_t=\emptyset$. But we can do even better: we can find an extension $t$ of $s$ such that even if $y\in2^\omega$ only agrees with $t$ on $\dom(t\smallsetminus s)$, then we still have $y\notin A_n$.
 
-  Such a $t$ is built in $k$ many steps: Let $s_0,\ldots,s_{k-1}$ enumerate all elements of $2^{<\omega}$ whose domain is exactly $\dom(s)$. Repeatedly using that $A_n$ is nowhere dense, we can find a sequence of $t_0,t_1,\ldots,t_{k-1}=t$  such that $A_n\cap V_{s_i\cup(t_i\smallsetminus s)}=\emptyset$. Then we let $I_n=\dom(t\smallsetminus s)$ and $x_n=t\restriction I_n$. This concludes the construction.
+  Such a $t$ is built in $k$ many steps: Let $s_0,\ldots,s_{k-1}$ enumerate all elements of $2^{<\omega}$ whose domain is exactly $\dom(s)$. Repeatedly using that $A_n$ is nowhere dense, we can find a sequence of successive extensions $s\subset t_0\subset\ldots\subset t_{k-1}=t$ such that $A_n\cap V_{s_i\cup(t_i\smallsetminus s)}=\emptyset$. We then let $I_n=\dom(t\smallsetminus s)$ and $x_n=t\restriction I_n$. This concludes the construction of $x$ and $P$.
 
-  To see that $A\subset\Diff(x,P)$, observe that whenever $y\restriction I_n=x\restriction I_n$ we have $y\notin A_n$. In other words, whenever $y\in A_n$ we have that $y$ differs from $x$ on $I_n$. Since the $A_n$ are increasing, any $a\in A$ lies in all but finitely many of the $A_n$. Thus we can conclude that any $a\in A$ strongly differs from $(x,P)$.
+  To see that $A\subset\Diff(x,P)$, observe that whenever $y\restriction I_n=x\restriction I_n$ we have $y\notin A_n$. In other words, whenever $y\in A_n$ we have that $y$ differs from $x$ on $I_n$. Since the $A_n$ are increasing, any $a\in A$ lies in all but finitely many of the $A_n$. Thus we can conclude that any $a\in A$ strongly differs from $x$ on $P$.
 \end{proof}
 
-The lemma implies that the collection of sets $\Diff(x,P)$ form a basis for the meager ideal on Cantor space.
+The lemma implies that the collection of sets $\Diff(x,P)$ forms a basis for the meager ideal on Cantor space.
 
 \begin{lem}
   We have $\add(\mathcal M)\leq\mathfrak b$.
