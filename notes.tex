@@ -24,6 +24,9 @@
 \DeclareMathOperator{\non}{\mathsf{non}}
 \DeclareMathOperator{\cov}{\mathsf{cov}}
 \DeclareMathOperator{\cof}{\mathsf{cof}}
+\newcommand{\Null}{\mathcal N}
+\newcommand{\Meager}{\mathcal M}
+\newcommand{\Ksigma}{\mathcal K_\sigma}
 \DeclareMathOperator{\Diff}{Diff}
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
@@ -479,7 +482,7 @@ Finally we show that the cardinals are well-ordered. One technicality arises her
 
 \begin{proof}
   We argue very similarly to Theorem~\ref{thm:card-total}, but in order to apply Zorn's lemma we must first suppose that $\mathcal A$ really is a set. Fix any element $A\in\mathcal A$ and let
-\[\mathcal F=\set{(f_B)_{B\in\mathcal A}\mid \text{there is $A_0\subset A$ such that for all $B$, $f_B$ is an injection from $A_0$ to $B$}}
+\[\mathcal F=\set{(f_B)_{B\in\mathcal A}\mid\text{there is $A_0\subset A$ such that for all $B$, $f_B$ is an injection from $A_0$ to $B$}}
 \]
 This time $\mathcal F$ is partially ordered by \emph{coordinatewise} extension of functions. By Zorn's lemma there is a maximal element $(f_B)_{B\in\mathcal A}$, and since it is maximal either the domain $A_0$ is all of $A$ or the range of one of the functions $f_B$ is all of $B$. In the first case $f_B$ is an injection from $A$ to $B$ for all $B$. In the second case, fix $B$ such that $f_B(A_0)=B$. Then for any $C\in\mathcal A$, the composition $f_C\circ f_B^{-1}$ is an injection from $B$ to $C$, so $B$ is as desired.
 
@@ -694,16 +697,16 @@ Like the meager and null sets, the class of $\sigma$-compact sets is closed unde
   Among the spaces we've explored so far, the notion of $\sigma$-compactness only works in the Baire space. That's because both $2^\omega$ and $\RR$ both have the property that the whole space is $\sigma$-compact: $\RR$ is the union of closed bounded intervals, and $2^\omega$ is itself compact.
 \end{rem}
 
-We now introduce for the first time the process of associating \emph{cardinal characteristics} to a class of sets. First we denote by $\mathcal K_\sigma$ the class of all sets $A\subset\omega^\omega$ such that $A$ is a subset of some $\sigma$-compact set.
+We now introduce for the first time the process of associating \emph{cardinal characteristics} to a class of sets. First we denote by $\Ksigma$ the class of all sets $A\subset\omega^\omega$ such that $A$ is a subset of some $\sigma$-compact set.
 
 \begin{defn}
   \begin{itemize}
-  \item The cardinal $\non(\mathcal K_\sigma)$ is the least cardinality of any set $A\subset\omega^\omega$ which is not $K_\sigma$.
-  \item The cardinal $\cov(\mathcal K_\sigma)$ is the least cardinality of any family $\mathcal F$ of subsets of $\omega^\omega$ whose union covers all of $\omega^\omega$.
+  \item The cardinal $\non(\Ksigma)$ is the least cardinality of any set $A\subset\omega^\omega$ which is not $K_\sigma$.
+  \item The cardinal $\cov(\Ksigma)$ is the least cardinality of any family $\mathcal F$ of subsets of $\omega^\omega$ whose union covers all of $\omega^\omega$.
   \end{itemize}
 \end{defn}
 
-Our next result will generalize Cantor's theorem by showing that the cardinals $\non(\mathcal K_\sigma)$ and $\cov(\mathcal K_\sigma)$ are uncountable lower bounds for the value of the continuum. First we need the following characterizations of compact sets in Baire space.
+Our next result will generalize Cantor's theorem by showing that the cardinals $\non(\Ksigma)$ and $\cov(\Ksigma)$ are uncountable lower bounds for the value of the continuum. First we need the following characterizations of compact sets in Baire space.
 
 \begin{lem}
   \label{lem:baire-compact}
@@ -716,23 +719,23 @@ Our next result will generalize Cantor's theorem by showing that the cardinals $
 
 \begin{thm}
   \label{thm:k-sigma}
-  We have $\aleph_1\leq\non(\mathcal K_\sigma)\leq\mathfrak c$ and $\aleph_1\leq\cov(\mathcal K_\sigma)\leq\mathfrak c$.
+  We have $\aleph_1\leq\non(\Ksigma)\leq\mathfrak c$ and $\aleph_1\leq\cov(\Ksigma)\leq\mathfrak c$.
 \end{thm}
 
 \begin{proof}
-  It is clear that $\aleph_1\leq\non(\mathcal K_\sigma)$ because every countable set is $\mathcal K_\sigma$, being the union of its points. To see that $\non(\mathcal K_\sigma)\leq\mathfrak c$ it is enough to show that $\omega^\omega$ itself is not $\sigma$-compact. So suppose towards a contradiction that $\omega^\omega=\bigcup A_n$ where each $A_n$ is compact. Then by the Baire category theorem, at least one of the $A_n$ must have a nonempty interior, say $V_s\subset A_n$. But $V_s$ is not contained in a product of bounded intervals, so by Lemma~\ref{lem:baire-compact} this contradicts that $A_n$ is compact.
+  It is clear that $\aleph_1\leq\non(\Ksigma)$ because every countable set is $\Ksigma$, being the union of its points. To see that $\non(\Ksigma)\leq\mathfrak c$ it is enough to show that $\omega^\omega$ itself is not $\sigma$-compact. So suppose towards a contradiction that $\omega^\omega=\bigcup A_n$ where each $A_n$ is compact. Then by the Baire category theorem, at least one of the $A_n$ must have a nonempty interior, say $V_s\subset A_n$. But $V_s$ is not contained in a product of bounded intervals, so by Lemma~\ref{lem:baire-compact} this contradicts that $A_n$ is compact.
 
-  To show that $\aleph_1\leq\cov(\mathcal K_\sigma)$, suppose a countable family of $\sigma$-compact sets covered all of $\omega^\omega$. Then a countable family of compact sets would also cover all of $\omega^\omega$, again contradicting that $\omega^\omega$ is not $\sigma$-compact. Finally it is clear that $\cov(\mathcal K_\sigma)\leq\mathfrak c$, since the whole space $\omega^\omega$ is the union of its points and $|\omega^\omega|=\mathfrak c$.
+  To show that $\aleph_1\leq\cov(\Ksigma)$, suppose a countable family of $\sigma$-compact sets covered all of $\omega^\omega$. Then a countable family of compact sets would also cover all of $\omega^\omega$, again contradicting that $\omega^\omega$ is not $\sigma$-compact. Finally it is clear that $\cov(\Ksigma)\leq\mathfrak c$, since the whole space $\omega^\omega$ is the union of its points and $|\omega^\omega|=\mathfrak c$.
 \end{proof}
 
-In fact we'll see shortly that $\non(\mathcal K_\sigma)\leq\cov(\mathcal K_\sigma)$.
+In fact we'll see shortly that $\non(\Ksigma)\leq\cov(\Ksigma)$.
 
 \begin{rem}
   \label{rem:ksigma-meager}
-  It follows from the proof of Theorem~\ref{thm:k-sigma} that every $\mathcal K_\sigma$ set in $\omega^\omega$ is meager. Indeed, compact sets are closed, and moreover since they are bounded they cannot contain any basic open sets $V_s$. It follows that compact sets are nowhere dense, and hence $\sigma$-compact sets are meager. This in turn implies the Baire category property for $\sigma$-compact sets: $\omega^\omega$ is not $\sigma$-compact and any basic open neighborhood $V_s$ is not $\sigma$-compact.
+  It follows from the proof of Theorem~\ref{thm:k-sigma} that every $\Ksigma$ set in $\omega^\omega$ is meager. Indeed, compact sets are closed, and moreover since they are bounded they cannot contain any basic open sets $V_s$. It follows that compact sets are nowhere dense, and hence $\sigma$-compact sets are meager. This in turn implies the Baire category property for $\sigma$-compact sets: $\omega^\omega$ is not $\sigma$-compact and any basic open neighborhood $V_s$ is not $\sigma$-compact.
 \end{rem}
 
-We now work establish a key relationship between the cardinals $\non(\mathcal K_\sigma)$ and $\cov(\mathcal K_\sigma)$, and the combinatorics of the Baire space. To begin, we can partially order Baire space by $f\leq g$ iff for all $n$, we have $f(n)\leq g(n)$. We also have the more versatile \emph{eventual domination} order: $f\leq^*g$ if $f\leq g$ almost everywher, that is, there is some $N$ such that for all $n\geq N$ we have $f(n)\leq g(n)$. Of course eventual domination is not a partial order because $f\leq^*g\leq^*f$ only implies that $f$ and $g$ agree almost everywhere, which we denote by $f=^*g$.
+We now work establish a key relationship between the cardinals $\non(\Ksigma)$ and $\cov(\Ksigma)$, and the combinatorics of the Baire space. To begin, we can partially order Baire space by $f\leq g$ iff for all $n$, we have $f(n)\leq g(n)$. We also have the more versatile \emph{eventual domination} order: $f\leq^*g$ if $f\leq g$ almost everywher, that is, there is some $N$ such that for all $n\geq N$ we have $f(n)\leq g(n)$. Of course eventual domination is not a partial order because $f\leq^*g\leq^*f$ only implies that $f$ and $g$ agree almost everywhere, which we denote by $f=^*g$.
 
 \begin{defn}
   \begin{itemize}
@@ -759,11 +762,11 @@ To show that $\mathfrak{b}\leq\mathfrak{d}$, it is enough to show that every dom
 Finally, $\mathfrak d\leq\mathfrak c$ since $\mathcal F=\omega^\omega$ is itself a dominating family, and $|\omega^\omega|=\mathfrak c$.
 \end{proof}
 
-We are now ready to state the connection between $\mathcal K_\sigma$ sets and the eventual domination ordering.
+We are now ready to state the connection between $\Ksigma$ sets and the eventual domination ordering.
 
 \begin{thm}
   \label{thm:bd-vs-ksigma}
-  We have $\mathfrak b=\non(\mathcal K_\sigma)$ and $\mathfrak d=\cov(\mathcal K_\sigma)$.
+  We have $\mathfrak b=\non(\Ksigma)$ and $\mathfrak d=\cov(\Ksigma)$.
 \end{thm}
 
 \begin{proof}
@@ -779,7 +782,7 @@ We are now ready to state the connection between $\mathcal K_\sigma$ sets and th
 \end{exerc}
 
 \begin{exerc}
-  Find an example of a meager subset of $\omega^\omega$ which is not $\mathcal K_\sigma$.
+  Find an example of a meager subset of $\omega^\omega$ which is not $\Ksigma$.
 \end{exerc}
 
 \begin{exerc}
@@ -797,14 +800,14 @@ Let $X$ be any one of the three spaces $\RR$, $2^\omega$, or $\omega^\omega$. An
 
 An ideal $\mathcal I$ is called a \emph{$\sigma$-ideal} if it is additionally closed under countable unions. In the past several sections, we have discussed three key notions of smallness and each one is a $\sigma$-ideal.
 \begin{itemize}
-\item $\mathcal M$ is the ideal of meager subsets of $\RR$.
-\item $\mathcal N$ is the ideal of Lebesgue null subsets of $\RR$.
-\item $\mathcal K_\sigma$ is the ideal of subsets of $\omega^\omega$ which are contained in a $\sigma$-compact subset of $\omega^\omega$.
+\item $\Meager$ is the ideal of meager subsets of $\RR$.
+\item $\Null$ is the ideal of Lebesgue null subsets of $\RR$.
+\item $\Ksigma$ is the ideal of subsets of $\omega^\omega$ which are contained in a $\sigma$-compact subset of $\omega^\omega$.
 \end{itemize}
 
-As was the case with $\mathcal K_\sigma$, we can associate cardinal characteristics to any ideal. We will consider four key characteristics.
+As was the case with $\Ksigma$, we can associate cardinal characteristics to any ideal. We will consider four key characteristics.
 
-\begin{defn} Let $\mathcal{I}$ be an ideal of subsets of a set $X$, such that $\mathcal I$ contains all singletons of $X$. 
+\begin{defn} Let $\mathcal I$ be an ideal of subsets of a set $X$, such that $\mathcal I$ contains all singletons of $X$. 
   \begin{itemize}
   \item The \emph{additivity} of $\mathcal{I}$, $\add(\mathcal{I})$, is the smallest number of sets in $\mathcal{I}$ whose union is not in $\mathcal{I}$.
   \item The \emph{uniformity} of $\mathcal{I}$, $\non(\mathcal{I})$, is the smallest cardinality of any subset of $X$ that is not in $\mathcal{I}$.
@@ -830,7 +833,7 @@ As was the case with the cardinals we introduced in the previous section, assumi
   Next, it is easy to verify that for any proper $\sigma$-ideal $\mathcal I$ containing the singletons, the additivity, uniformity, and covering number of $\mathcal I$ are bounded above by $\mathfrak c$. If additionally $\mathcal I$ has a basis consisting of Borel sets, then since there are only $\mathfrak c$ many Borel sets, we have that the cofinality of $\mathcal I$ is bounded above by $\mathfrak c$ too.
 \end{proof}
 
-All three of the $\sigma$-ideals we have introduced have a basis of Borel sets. For $\mathcal K_\sigma$ this is clear because $\sigma$-compact sets are Borel. For $\mathcal M$ any meager set is contained in a countable union of \emph{closed} nowhere dense sets, which are Borel. Finally for $\mathcal N$, note that if $A$ is null then for all $n$ there is a Borel set $A_n$ such that $A\subset A_n$ and $m(A_n)<1/n$. It follows that $A$ is contained in the Borel null set $\bigcap A_n$.
+All three of the $\sigma$-ideals we have introduced have a basis of Borel sets. For $\Ksigma$ this is clear because $\sigma$-compact sets are Borel. For $\Meager$ any meager set is contained in a countable union of \emph{closed} nowhere dense sets, which are Borel. Finally for $\Null$, note that if $A$ is null then for all $n$ there is a Borel set $A_n$ such that $A\subset A_n$ and $m(A_n)<1/n$. It follows that $A$ is contained in the Borel null set $\bigcap A_n$.
 
 \begin{rem}
   There can exist proper $\sigma$-ideals containing the singletons that don't have a basis of size $\leq\mathfrak c$. For example, it is consistent that the ideal $\mathcal{SN}$ of \emph{strongly null} sets has $\cof(\mathcal{SN})=\aleph_2$ while $\mathfrak c=\aleph_1$. [ref] % yorioka
@@ -850,7 +853,7 @@ We next establish the basic relationships between the four cardinal characterist
 
   For the inequality $\add(\mathcal I)\leq\cov(\mathcal I)$, if $\mathcal F\subset\mathcal{I}$ satisfies $\bigcup\mathcal F=X$, then $\mathcal F$ itself satisfies $\bigcup\mathcal F\notin\mathcal I$.
 
-  For the inequality $\cov(\mathcal I)\leq\cof(\mathcal I)$, again suppose that $\mathcal{F}$ is a basis for $\mathcal I$. Since $\mathcal I$ contains the singletons, it follows that $\mathcal F$ itself covers $X$.
+  For the inequality $\cov(\mathcal I)\leq\cof(\mathcal I)$, again suppose that $\mathcal F$ is a basis for $\mathcal I$. Since $\mathcal I$ contains the singletons, it follows that $\mathcal F$ itself covers $X$.
 \end{proof}
 
 The conclusions of the two lemmas are summarized in Figure~\ref{fig:ideal}
@@ -858,31 +861,31 @@ The conclusions of the two lemmas are summarized in Figure~\ref{fig:ideal}
 \begin{figure}[h]
   \begin{tikzpicture}[->]
     \node (a1) {$\aleph_1$};
-    \node (add) [right=of a1] {$\textbf{add}(\mathcal{I})$} edge (a1);
-    \node (non) [above=of add] {$\textbf{non}(\mathcal{I})$} edge (add);
-    \node (cov)	[right=of add] {$\textbf{cov}(\mathcal{I})$} edge (add);
-    \node (cof) [above=of cov] {$\textbf{cof}(\mathcal{I})$}
+    \node (add) [right=of a1] {$\add(\mathcal I)$} edge (a1);
+    \node (non) [above=of add] {$\non(\mathcal I)$} edge (add);
+    \node (cov)	[right=of add] {$\cov(\mathcal I)$} edge (add);
+    \node (cof) [above=of cov] {$\cof(\mathcal I)$}
       edge (non) edge (cov);
     \node [right=of cof] {$\mathfrak{c}$} edge (cof);
   \end{tikzpicture}
   \caption{The relationships between the cardinal characteristics of $\mathcal I$, assuming $\mathcal I$ satisfies the hypotheses of the two lemmas. In the figure, the arrow $\leftarrow$ represents the inequality $\leq$.\label{fig:ideal}}
 \end{figure}
 
-In the previous section we introduced $\mathcal K_\sigma$, but we dealt only with the characteristics $\non(\mathcal K_\sigma)$ and $\cov(\mathcal K_\sigma)$. We conclude this section by giving the values of $\add(\mathcal K_\sigma)$ and $\cof(\mathcal K_\sigma)$ as well.
+In the previous section we introduced $\Ksigma$, but we dealt only with the characteristics $\non(\Ksigma)$ and $\cov(\Ksigma)$. We conclude this section by giving the values of $\add(\Ksigma)$ and $\cof(\Ksigma)$ as well.
 
 \begin{prop}
-  We have $\add(\mathcal K_\sigma)=\mathfrak b$ and $\non(\mathcal K_\sigma)=\mathfrak d$.
+  We have $\add(\Ksigma)=\mathfrak b$ and $\non(\Ksigma)=\mathfrak d$.
 \end{prop}
 
 \begin{proof}
-  We have already shown that $\add(\mathcal K_\sigma)\leq\non(\mathcal K_\sigma)=\mathfrak b$. For the reverse inequality, first recall from Theorem~\ref{thm:bd-vs-ksigma} that a subset of $\omega^\omega$ is unbounded if and only if it is not $\mathcal K_\sigma$. Now suppose that $\mathcal F$ is a family of $\mathcal K_\sigma$ subsets of $\omega^\omega$ such that $\bigcup\mathcal F$ is not $\mathcal K_\sigma$. For each $F\in\mathcal F$ let $g_F$ be a bound for $F$. Then $\{g_F\mid F\in\mathcal F\}$ is an unbounded family: Indeed, otherwise the set of things bounded by some $g_F$ would be bounded and hence so would $\bigcup\mathcal F$. This shows that $\add(\mathcal K_\sigma)\geq\mathfrak b$.
+  We have already shown that $\add(\Ksigma)\leq\non(\Ksigma)=\mathfrak b$. For the reverse inequality, first recall from Theorem~\ref{thm:bd-vs-ksigma} that a subset of $\omega^\omega$ is unbounded if and only if it is not $\Ksigma$. Now suppose that $\mathcal F$ is a family of $\Ksigma$ subsets of $\omega^\omega$ such that $\bigcup\mathcal F$ is not $\Ksigma$. For each $F\in\mathcal F$ let $g_F$ be a bound for $F$. Then $\{g_F\mid F\in\mathcal F\}$ is an unbounded family: Indeed, otherwise the set of things bounded by some $g_F$ would be bounded and hence so would $\bigcup\mathcal F$. This shows that $\add(\Ksigma)\geq\mathfrak b$.
 
 The second equality is similar and left as Exercise~\ref{exerc:non-ksigma-d}.
 \end{proof}
 
 \begin{exerc}
   \label{exerc:non-ksigma-d}
-  Show that $\non(\mathcal K_\sigma)=\mathfrak d$.
+  Show that $\non(\Ksigma)=\mathfrak d$.
 \end{exerc}
 
 \begin{exerc}
@@ -920,47 +923,47 @@ Although this result shows that category and measure are very different in terms
 \begin{figure}[h]
   \begin{tikzpicture}[->]
     \node (a1) {$\aleph_1$};
-    \node (addn) [right=of a1] {$\add(\mathcal N)$} edge (a1);
-    \node (covn) [above=2 of addn] {$\cov(\mathcal N)$} edge (addn);
-    \node (addm) [right=of addn] {$\add(\mathcal M)$} edge (addn);
+    \node (addn) [right=of a1] {$\add(\Null)$} edge (a1);
+    \node (covn) [above=2 of addn] {$\cov(\Null)$} edge (addn);
+    \node (addm) [right=of addn] {$\add(\Meager)$} edge (addn);
     \node (b) [above=.8 of addm] {$\mathfrak b$} edge (addm);
-    \node (nonm) [above=2 of addm] {$\non(\mathcal M)$} edge (covn) edge (b);
-    \node (covm) [right=of addm] {$\cov(\mathcal M)$} edge (addm);
+    \node (nonm) [above=2 of addm] {$\non(\Meager)$} edge (covn) edge (b);
+    \node (covm) [right=of addm] {$\cov(\Meager)$} edge (addm);
     \node (d) [above=.8 of covm] {$\mathfrak d$} edge (b) edge (covm);
-    \node (cofm) [above=2 of covm] {$\cof(\mathcal M)$} edge (nonm) edge (d);
-    \node (nonn) [right=of covm] {$\non(\mathcal N)$} edge (covm);
-    \node (cofn) [above=2 of nonn]{$\cof(\mathcal N)$} edge (cofm) edge (nonn);
+    \node (cofm) [above=2 of covm] {$\cof(\Meager)$} edge (nonm) edge (d);
+    \node (nonn) [right=of covm] {$\non(\Null)$} edge (covm);
+    \node (cofn) [above=2 of nonn]{$\cof(\Null)$} edge (cofm) edge (nonn);
     \node (c) [right=of cofn] {$\mathfrak c$} edge (cofn);
   \end{tikzpicture}
   \caption{Cicho\'n's diagram of cardinal characteristics. Here as usual the arrow $\leftarrow$ represents the inequality $\leq$.\label{fig:cichon}}
 \end{figure}
 
 \begin{rem}
-  By Exercise~\ref{exerc:meager-bij}, the symbol $\mathcal M$ can stand for the meager sets on any one of the spaces $\RR$, $2^\omega$, or $\omega^\omega$. Similarly, in Exercise~\ref{exerc:null-bij} we give a natural measure on $2^\omega$, and again show that $\mathcal N$ can stand for the null sets on either $\RR$ or $2^\omega$. (We omit the definition of an appropriate measure on $\omega^\omega$ [ref].) % blass
+  By Exercise~\ref{exerc:meager-bij}, the symbol $\Meager$ can stand for the meager sets on any one of the spaces $\RR$, $2^\omega$, or $\omega^\omega$. Similarly, in Exercise~\ref{exerc:null-bij} we give a natural measure on $2^\omega$, and again show that $\Null$ can stand for the null sets on either $\RR$ or $2^\omega$. (We omit the definition of an appropriate measure on $\omega^\omega$ [ref].) % blass
 \end{rem}
 
 \begin{rem}
   Theorem~\ref{thm:cichon} doesn't rule out the possibility that all or some of the cardinals in Cicho\'n's diagram are \emph{equal to each other}. And this is indeed possible: if CH is true then $\aleph_1=\mathfrak c$ and so all twelve of the cardinals are identical. So to truly break the symmetry between category and measure, we need some way to show that it is possible for these cardinals to be different. For that we will need the method of \emph{forcing}, which will be the focus of the second half of the course.
 \end{rem}
 
-For the rest of this section as well as the next few, we take up the proof of Theorem~\ref{thm:cichon}. We have already established seven out of the fifteen inequalities depicted: $\mathfrak b\leq\mathfrak d$ follows from Proposition~\ref{prop:bd}. The two bounds $\aleph_1\leq\add(\mathcal N)$ and $\cof(\mathcal N)\leq\mathfrak c$ follow from Lemma~\ref{lem:ideal-cards}. And four more of the inequalities are special cases of Lemma~\ref{lem:diamond}.
+For the rest of this section as well as the next few, we take up the proof of Theorem~\ref{thm:cichon}. We have already established seven out of the fifteen inequalities depicted: $\mathfrak b\leq\mathfrak d$ follows from Proposition~\ref{prop:bd}. The two bounds $\aleph_1\leq\add(\Null)$ and $\cof(\Null)\leq\mathfrak c$ follow from Lemma~\ref{lem:ideal-cards}. And four more of the inequalities are special cases of Lemma~\ref{lem:diamond}.
 
 We conclude this section with proofs of four more fairly easy inequaleties. The remaining four turn out to be be slightly more difficult. In the next section we will present a handy but abstract tool that will reduce our workload to just two more inequalities. The final two will be proved in the following two sections.
 
 \begin{lem}
   \label{lem:b-nonm}
-  We have $\mathfrak b\leq\non(\mathcal M)$, and $\cov(\mathcal M)\leq\mathfrak d$.
+  We have $\mathfrak b\leq\non(\Meager)$, and $\cov(\Meager)\leq\mathfrak d$.
 \end{lem}
 
 \begin{proof}
-  For the first inequality, recall our observation in Remark~\ref{rem:ksigma-meager} that $\mathcal K_\sigma\subset\mathcal M$, so any nonmeager subset of $\omega^\omega$ is certainly not $\mathcal K_\sigma$. But we also know that every non-$\mathcal K_\sigma$ set is unbounded. It follows that every nonmeager subset of $\omega^\omega$ is unbounded, which implies $\mathfrak b\leq\non(\mathcal M)$.
+  For the first inequality, recall our observation in Remark~\ref{rem:ksigma-meager} that $\Ksigma\subset\Meager$, so any nonmeager subset of $\omega^\omega$ is certainly not $\Ksigma$. But we also know that every non-$\Ksigma$ set is unbounded. It follows that every nonmeager subset of $\omega^\omega$ is unbounded, which implies $\mathfrak b\leq\non(\Meager)$.
 
-  The second inequality again uses the fact that $\mathcal K_\sigma\subset\mathcal M$, and we leave it as Exercise~\ref{exerc:covm-d}.
+  The second inequality again uses the fact that $\Ksigma\subset\Meager$, and we leave it as Exercise~\ref{exerc:covm-d}.
 \end{proof}
 
 \begin{lem}
   \label{lem:covn-nonm}
-  We have $\cov(\mathcal N)\leq\non(\mathcal M)$, and $\cov(\mathcal M)\leq\non(\mathcal M)$.
+  We have $\cov(\Null)\leq\non(\Meager)$, and $\cov(\Meager)\leq\non(\Meager)$.
 \end{lem}
 
 \begin{proof}
@@ -983,7 +986,7 @@ We conclude this section with proofs of four more fairly easy inequaleties. The 
 
 \begin{exerc}
   \label{exerc:covm-d}
-  Show that $\cov(\mathcal M)\leq\mathfrak d$.
+  Show that $\cov(\Meager)\leq\mathfrak d$.
 \end{exerc}
 
 % See Bartoszynski
@@ -1072,18 +1075,18 @@ For each of the inequalities between cardinal characteristics that we have seen,
 \end{example}
 
 \begin{example}
-  In Lemma~\ref{lem:covn-nonm}, where we showed that $\cov(\mathcal N)\leq\non(\mathcal M)$, we could have used the following morphism from the $\not\ni$ relation on $\mathcal M\times2^\omega$ to the $\in$ relation on $2^\omega\times\mathcal N$. Again we let $A$ be a fixed null comeager set.
+  In Lemma~\ref{lem:covn-nonm}, where we showed that $\cov(\Null)\leq\non(\Meager)$, we could have used the following morphism from the $\not\ni$ relation on $\Meager\times2^\omega$ to the $\in$ relation on $2^\omega\times\Null$. Again we let $A$ be a fixed null comeager set.
   \[\begin{cases}\phi(x)=x-A^c\\\psi(x)=x+A\end{cases}
   \]
-  To check that it is a morphism, $\phi(x)\not\ni y$ implies $x-y\in A$, which in turn implies that $x\in y+A=\psi(y)$, as required. Recall that the function $\psi(x)=x+A$ featured prominently in our original proof: for each $X\notin\mathcal M$ we formed the family of translates $\{x+A:x\in X\}$.
+  To check that it is a morphism, $\phi(x)\not\ni y$ implies $x-y\in A$, which in turn implies that $x\in y+A=\psi(y)$, as required. Recall that the function $\psi(x)=x+A$ featured prominently in our original proof: for each $X\notin\Meager$ we formed the family of translates $\{x+A\mid x\in X\}$.
   
-  Once again, if we exchange the roles of $\phi$ and $\psi$ we obtain a morphism witnessing the inequality $\cov(\mathcal M)\leq\non(\mathcal N)$. Recall that this proof was the same, but using translates of the comeager null set $A^c$. The minus sign in $x-A^c$ has no effect on the argument.
+  Once again, if we exchange the roles of $\phi$ and $\psi$ we obtain a morphism witnessing the inequality $\cov(\Meager)\leq\non(\Null)$. Recall that this proof was the same, but using translates of the comeager null set $A^c$. The minus sign in $x-A^c$ has no effect on the argument.
 \end{example}
 
 Beyond these two examples, we see that each arrow in Cicho\'n's diagram (Theorem~\ref{thm:cichon}) is potentially dual to the arrow that is positioned diametrically opposite to it. Assuming there is a morphism behind the proof of one of the inequalities, then the other inequality follows automatically from Proposition~\ref{prop:morphism}.
 
 \begin{rem}
-  True inequalities between cardinal characteristics are not always witnessed by morphisms. For example, it is true that $\cov(\mathcal M)\leq\non(\mathcal{SN}$, but it is consistent that the dual inequality fails. [ref]
+  True inequalities between cardinal characteristics are not always witnessed by morphisms. For example, it is true that $\cov(\Meager)\leq\non(\mathcal{SN}$, but it is consistent that the dual inequality fails. [ref]
 \end{rem}
 
 \begin{exerc}
@@ -1091,7 +1094,7 @@ Beyond these two examples, we see that each arrow in Cicho\'n's diagram (Theorem
 \end{exerc}
 
 \begin{exerc}
-  Find a morphism behind the proof of the inequality $\mathfrak b\leq\non(\mathcal M)$ (Lemma~\ref{lem:b-nonm}). Check that it is dual to a morphism behind the inequality $\cov(\mathcal M)\leq\mathfrak d$.
+  Find a morphism behind the proof of the inequality $\mathfrak b\leq\non(\Meager)$ (Lemma~\ref{lem:b-nonm}). Check that it is dual to a morphism behind the inequality $\cov(\Meager)\leq\mathfrak d$.
 \end{exerc}
 
 % blass section 4
@@ -1111,9 +1114,9 @@ An \emph{interval partition} is a partition $P=(I_n)$ of $\omega$ into finite no
 
 If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $\Diff_P(x)$ to be the set of all $y\in2^\omega$ such that $y$ strongly differs from $x$ on $P$. Since an element $x\in2^\omega$ and an interval partition $P$ appear together very frequently, such a pair $(x,P)$ has been given the name \emph{chopped real}. The following result shows that the chopped reals give us a new, combinatorial basis for the meager ideal on Cantor space.
 
-\begin{lem}
+\begin{prop}
   A subset $A\subset2^\omega$ is meager if and only if there is some $x\in2^\omega$ and interval partition $P$ such that $A\subset\Diff_P(x)$.
-\end{lem}
+\end{prop}
 
 \begin{proof}
   We begin by writing $A=\bigcup A_n$ where each $A_n$ is nowhere dense and $A_n\subset A_{n+1}$ for all $n$. We will define the element $x\in2^\omega$ and the interval partition $P=(I_n)$ recursively. To begin, since $A_0$ isn't dense there exists $s\in2^{<\omega}$ such that $A_0\cap V_s=\emptyset$. We let $I_0=\dom(s)$ and $x\restriction I_0=s$.
@@ -1125,17 +1128,17 @@ If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $
   To see that $A\subset\Diff_P(x)$, observe that whenever $y\restriction I_n=x\restriction I_n$ we have $y\notin A_n$. In other words, whenever $y\in A_n$ we have that $y$ differs from $x$ on $I_n$. Since the $A_n$ are increasing, any $a\in A$ lies in all but finitely many of the $A_n$. Thus we can conclude that any $a\in A$ strongly differs from $x$ on $P$.
 \end{proof}
 
-The lemma implies that the collection of sets $\Diff_P(x)$ forms a basis for the meager ideal on Cantor space. This basis is particularly useful because it is easy to see when two sets of the form $\Diff_P(x)$ are related by the subset relation. 
+The proposition implies that the collection of sets $\Diff_P(x)$ forms a basis for the meager ideal on Cantor space. This basis is particularly useful because it is easy to see when two sets of the form $\Diff_P(x)$ are related by the subset relation. 
 
 \begin{prop}
   \label{prop:engulf}
   If $P=(I_n)$ and $Q=(J_m)$ are interval partitions, then we have $\Diff_P(x)\subset\Diff_Q(y)$ if and only if for all but finitely many $J_m$ there exists $I_n$ such that $I_n\subset J_m$ and $x\restriction I_n=y\restriction I_n$.
 \end{prop}
 
-The proof is elementary (assuming I have not made a typo) and we leave it for Exercise~\ref{exerc:engulf}. Proposition~\ref{prop:engulf} provides characterization of $\cof(\mathcal M)$ as the dominating number of a simple combinatorial relation on chopped reals. The cardinals $\mathfrak b$ and $\mathfrak d$ can be characterized by a similar combinatorial relation just on interval partitions. First, if $P=(I_n)$ and $Q=(J_m)$ are interval partitions, we write $P\prec Q$ if for all but finitely many $J_m$ there exists $I_m$ such that $I_n\subset J_m$. 
+The proof is elementary (assuming I have not made a typo) and we leave it for Exercise~\ref{exerc:engulf}. Proposition~\ref{prop:engulf} provides characterization of $\cof(\Meager)$ as the dominating number of a simple combinatorial relation on chopped reals. The cardinals $\mathfrak b$ and $\mathfrak d$ can be characterized by a similar combinatorial relation just on interval partitions. First, if $P=(I_n)$ and $Q=(J_m)$ are interval partitions, we write $P\prec Q$ if for all but finitely many $J_m$ there exists $I_m$ such that $I_n\subset J_m$. 
 
 \begin{prop}
-  We have $\mathfrak d$ is the dominating number of the $\prec$ relation and $\mathfrak b$ is the dominating number of the $\not\succ$ relation. In fact, there is a morphism from $\leq^*$ to $\prec$ and vice versa.
+  We have $\mathfrak d$ is the dominating number of the $\prec$ relation on interval partitions and $\mathfrak b$ is the dominating number of the $\not\succ$ relation on interval partitions. In fact, there is a morphism from $\leq^*$ to $\prec$ and vice versa.
 \end{prop}
 
 \begin{proof}
@@ -1143,29 +1146,46 @@ The proof is elementary (assuming I have not made a typo) and we leave it for Ex
 \end{proof}
 
 \begin{lem}
-  We have $\add(\mathcal M)\leq\mathfrak b$ and $\mathfrak d\leq\cof(\mathcal M)$.
+  We have $\add(\Meager)\leq\mathfrak b$ and $\mathfrak d\leq\cof(\Meager)$.
 \end{lem}
 
 \begin{proof}
-  We prove the second inequality by finding a morphism from the $\subset$ relation on $\mathcal M$ to the $\prec$ relation on interval partitions. We therefore obtain the first inequality as a consequence of duality. For this it is enough to consider the $\subset$ relation just on the basis of meager sets of the form $A=\Diff_Q(y)$. We let:
+  We prove the second inequality by finding a morphism from the $\subset$ relation on $\Meager$ to the $\prec$ relation on interval partitions. We therefore obtain the first inequality as a consequence of duality. For this it is enough to consider the $\subset$ relation just on the basis of meager sets of the form $A=\Diff_Q(y)$. We let:
   \[\begin{cases}\phi(P)=\Diff_P(0)\\\psi(\Diff_Q(y))=Q\end{cases}
   \]
   Then by Proposition~\ref{prop:engulf}, $\Diff_P(0)\subset\Diff_Q(y)$ in particular implies that $P\prec Q$, and hence $\phi(P)\subset A\implies P\prec\psi(A)$, as desired.
 \end{proof}
 
 \begin{thm}
-  We have $\add(\mathcal M)=\min\{\mathfrak b,\cov(\mathcal M)\}$.
+  We have $\add(\Meager)=\min\{\mathfrak b,\cov(\Meager)\}$.
 \end{thm}
 
 \begin{proof}
-  We have already shown that $\add(\mathcal M)\leq\mathfrak b$ and $\add(\mathcal M)\leq\cov(\mathcal M)$. Hence it remains only to show that $\add(\mathcal M)\geq\min\{\mathfrak b,\cov(\mathcal M)\}$.
+  We have already shown that $\add(\Meager)\leq\mathfrak b$ and $\add(\Meager)\leq\cov(\Meager)$. Hence it remains only to show that $\add(\Meager)\geq\min\{\mathfrak b,\cov(\Meager)\}$. For this we must show that if $\mathcal F$ is a family of meager subsets of $\omega^\omega$ such that $|\mathcal F|<\min\{\mathfrak b,\cov(\Meager)\}$ then $\bigcup\mathcal F$ is meager. Without loss of generality, we can suppose that $\mathcal F$ consists of closed nowhere dense sets.
+
+  We begin by finding a countable dense subset $Q\subset\omega^\omega$ disjoint from $\bigcup\mathcal F$. Indeed, since $|\mathcal F|<\cov(\Meager)$ we have that $\bigcup\mathcal F\neq\omega^\omega$. In fact for any basic open set $V_s$ we must have that $\bigcup\mathcal F$ does not cover $I$, since otherwise we could use Exercise~\ref{exerc:homeo} to find a countable family of translates of $\bigcup(\mathcal F)$ which covers all oof $\omega^\omega$. This shows $\bigcup\mathcal F$ is co-dense, and therefore we can find $Q$ as required.
+
+  Now enumerate $Q=(q_n)_{n\in\NN}$. Then for each $F\in\mathcal F$ and $n\in\NN$, since $F$ is nowhere dense, we can find a finite initial segment $q_n\restriction g_F(n)$ such that $V_{q_n\restriction g_F(n)}$ is disjoint from $F$. Since $|\mathcal F|<\mathfrak b$, the family of functions $\set{g_F\mid F\in\mathcal F}$ is bounded by a single function $h\in\omega^\omega$. Finally we use this $h$ to define the set:
+  \[R=\bigcap_N\bigcup_{n\geq N}V_{q_n\restriction h(n)}
+  \]
+  Then $R$ is a countable intersection of dense open sets, and hence it is comeager. Moreover since for all $F\in\mathcal F$ we have $g_F\leq^*h$, we have that $R$ is disjoint from $\bigcup\mathcal F$. We can thus conclude that $\bigcup\mathcal F$ is meager, as desired.
 \end{proof}
+
+Although this last result was not a morphism-type proof, it is true that an analogous argument shows the dual property that $\add(\Meager)=\max\{\mathfrak d,\non(\Meager)\}$. This three-term duality is once again a part of an abstract morphism framework, but it is a little more involved than the morphisms we introduced in the previous section. [ref]
 
 \begin{exerc}
   \label{exerc:engulf}
   Prove Proposition~\ref{prop:engulf}.
 \end{exerc}
 
+\begin{exerc}
+  \label{exerc:homeo}
+  Let $n\in\NN$ and $s,s'\in\omega^n$. Show that there exists a homeomorphism $\phi\colon\omega^\omega\to\omega^\omega$ such that $s\subset x$ iff $s'\subset\phi(x)$.
+\end{exerc}
+
+% blass sec4
+% blass sec5
+% bartoszynski sec 2.2
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bartoszy\'nski's theorem}
