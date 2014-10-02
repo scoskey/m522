@@ -934,7 +934,7 @@ Although this result shows that category and measure are very different in terms
 
 For the rest of this section as well as the next few, we take up the proof of Theorem~\ref{thm:cichon}. We have already established seven out of the fifteen inequalities depicted: $\mathfrak b\leq\mathfrak d$ follows from Proposition~\ref{prop:bd}. The two bounds $\aleph_1\leq\add(\mathcal N)$ and $\cof(\mathcal N)\leq\mathfrak c$ follow from Lemma~\ref{lem:ideal-cards}. And four more of the inequalities are special cases of Lemma~\ref{lem:diamond}.
 
-We now present four more fairly easy inequaleties, leaving the remaining four for the next two sections.
+We conclude this section with proofs of four more fairly easy inequaleties. The remaining four turn out to be be slightly more difficult. In the next section we will present a handy but abstract tool that will reduce our workload to just two more inequalities. The final two will be proved in the following two sections.
 
 \begin{lem}
   \label{lem:b-nonm}
@@ -975,7 +975,7 @@ We now present four more fairly easy inequaleties, leaving the remaining four fo
   Show that $\cov(\mathcal M)\leq\mathfrak d$.
 \end{exerc}
 
-% Bartoszynski
+% See Bartoszynski
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1083,12 +1083,14 @@ Beyond these two examples, we see that each arrow in Cicho\'n's diagram (Theorem
   Find a morphism behind the proof of the inequality $\mathfrak b\leq\non(\mathcal M)$ (Lemma~\ref{lem:b-nonm}). Check that it is dual to a morphism behind the inequality $\cov(\mathcal M)\leq\mathfrak d$.
 \end{exerc}
 
+% blass section 4
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Category and matching}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this section\ldots
+Recall that we have only
 
 An \emph{interval partition} is a partition $P=(I_n)$ of $\omega$ into finite nonempty intervals $I_n$. We always assume that the $I_n$ is adjacent to $I_{n+1}$, and hence also that they are enumerated in increasing order.
 
@@ -1096,10 +1098,10 @@ An \emph{interval partition} is a partition $P=(I_n)$ of $\omega$ into finite no
   If $x,y\in2^\omega$ and $P$ is an interval partition, we say $x$ \emph{strongly differs} from $y$ on $P$ if for all but finitely many $n$ we have $x\restriction I_n\neq y\restriction I_n$.
 \end{defn}
 
-If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $\Diff(x,P)$ to be the set of all $y\in2^\omega$ such that $y$ strongly differs from $x$ on $P$. Since an element $x\in2^\omega$ and an interval partition $P$ appear together very frequently, such a pair $(x,P)$ has been given the name \emph{chopped real}. The following result shows that the chopped reals give us a new, combinatorial basis for the meager ideal on Cantor space.
+If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $\Diff_P(x)$ to be the set of all $y\in2^\omega$ such that $y$ strongly differs from $x$ on $P$. Since an element $x\in2^\omega$ and an interval partition $P$ appear together very frequently, such a pair $(x,P)$ has been given the name \emph{chopped real}. The following result shows that the chopped reals give us a new, combinatorial basis for the meager ideal on Cantor space.
 
 \begin{lem}
-  A subset $A\subset2^\omega$ is meager if and only if there is some $x\in2^\omega$ and interval partition $P$ such that $A\subset\Diff(x,P)$.
+  A subset $A\subset2^\omega$ is meager if and only if there is some $x\in2^\omega$ and interval partition $P$ such that $A\subset\Diff_P(x)$.
 \end{lem}
 
 \begin{proof}
@@ -1109,18 +1111,49 @@ If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $
 
   Such a $t$ is built in $k$ many steps: Let $s_0,\ldots,s_{k-1}$ enumerate all elements of $2^{<\omega}$ whose domain is exactly $\dom(s)$. Repeatedly using that $A_n$ is nowhere dense, we can find a sequence of successive extensions $s\subset t_0\subset\ldots\subset t_{k-1}=t$ such that $A_n\cap V_{s_i\cup(t_i\smallsetminus s)}=\emptyset$. We then let $I_n=\dom(t\smallsetminus s)$ and $x_n=t\restriction I_n$. This concludes the construction of $x$ and $P$.
 
-  To see that $A\subset\Diff(x,P)$, observe that whenever $y\restriction I_n=x\restriction I_n$ we have $y\notin A_n$. In other words, whenever $y\in A_n$ we have that $y$ differs from $x$ on $I_n$. Since the $A_n$ are increasing, any $a\in A$ lies in all but finitely many of the $A_n$. Thus we can conclude that any $a\in A$ strongly differs from $x$ on $P$.
+  To see that $A\subset\Diff_P(x)$, observe that whenever $y\restriction I_n=x\restriction I_n$ we have $y\notin A_n$. In other words, whenever $y\in A_n$ we have that $y$ differs from $x$ on $I_n$. Since the $A_n$ are increasing, any $a\in A$ lies in all but finitely many of the $A_n$. Thus we can conclude that any $a\in A$ strongly differs from $x$ on $P$.
 \end{proof}
 
-The lemma implies that the collection of sets $\Diff(x,P)$ forms a basis for the meager ideal on Cantor space.
+The lemma implies that the collection of sets $\Diff_P(x)$ forms a basis for the meager ideal on Cantor space. This basis is particularly useful because it is easy to see when two sets of the form $\Diff_P(x)$ are related by the subset relation. 
+
+\begin{prop}
+  \label{prop:engulf}
+  If $P=(I_n)$ and $Q=(J_m)$ are interval partitions, then we have $\Diff_P(x)\subset\Diff_Q(y)$ if and only if for all but finitely many $J_m$ there exists $I_n$ such that $I_n\subset J_m$ and $x\restriction I_n=y\restriction I_n$.
+\end{prop}
+
+The proof is elementary (assuming I have not made a typo) and we leave it for Exercise~\ref{exerc:engulf}. Proposition~\ref{prop:engulf} provides characterization of $\cof(\mathcal M)$ as the dominating number of a simple combinatorial relation on chopped reals. The cardinals $\mathfrak b$ and $\mathfrak d$ can be characterized by a similar combinatorial relation just on interval partitions. First, if $P=(I_n)$ and $Q=(J_m)$ are interval partitions, we write $P\prec Q$ if for all but finitely many $J_m$ there exists $I_m$ such that $I_n\subset J_m$. 
+
+\begin{prop}
+  We have $\mathfrak d$ is the dominating number of the $\prec$ relation and $\mathfrak b$ is the dominating number of the $\not\succ$ relation. In fact, there is a morphism from $\leq^*$ to $\prec$ and vice versa.
+\end{prop}
+
+\begin{proof}
+  \ldots
+\end{proof}
 
 \begin{lem}
-  We have $\add(\mathcal M)\leq\mathfrak b$.
+  We have $\add(\mathcal M)\leq\mathfrak b$ and $\mathfrak d\leq\cof(\mathcal M)$.
 \end{lem}
 
 \begin{proof}
-  
+  We prove the second inequality by finding a morphism from the $\subset$ relation on $\mathcal M$ to the $\prec$ relation on interval partitions. We therefore obtain the first inequality as a consequence of duality. For this it is enough to consider the $\subset$ relation just on the basis of meager sets of the form $A=\Diff_Q(y)$. We let:
+  \[\begin{cases}\phi(P)=\Diff_P(0)\\\psi(\Diff_Q(y))=Q\end{cases}
+  \]
+  Then by Proposition~\ref{prop:engulf}, $\Diff_P(0)\subset\Diff_Q(y)$ in particular implies that $P\prec Q$, and hence $\phi(P)\subset A\implies P\prec\psi(A)$, as desired.
 \end{proof}
+
+\begin{thm}
+  We have $\add(\mathcal M)=\min\{\mathfrak b,\cov(\mathcal M)\}$.
+\end{thm}
+
+\begin{proof}
+  We have already shown that $\add(\mathcal M)\leq\mathfrak b$ and $\add(\mathcal M)\leq\cov(\mathcal M)$. Hence it remains only to show that $\add(\mathcal M)\geq\min\{\mathfrak b,\cov(\mathcal M)\}$.
+\end{proof}
+
+\begin{exerc}
+  \label{exerc:engulf}
+  Prove Proposition~\ref{prop:engulf}.
+\end{exerc}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
