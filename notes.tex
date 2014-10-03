@@ -1138,11 +1138,15 @@ The proposition implies that the collection of sets $\Diff_P(x)$ forms a basis f
 The proof is elementary (assuming I have not made a typo) and we leave it for Exercise~\ref{exerc:engulf}. Proposition~\ref{prop:engulf} provides characterization of $\cof(\Meager)$ as the dominating number of a simple combinatorial relation on chopped reals. The cardinals $\mathfrak b$ and $\mathfrak d$ can be characterized by a similar combinatorial relation just on interval partitions. First, if $P=(I_n)$ and $Q=(J_m)$ are interval partitions, we write $P\prec Q$ if for all but finitely many $J_m$ there exists $I_m$ such that $I_n\subset J_m$. 
 
 \begin{prop}
-  We have $\mathfrak d$ is the dominating number of the $\prec$ relation on interval partitions and $\mathfrak b$ is the dominating number of the $\not\succ$ relation on interval partitions. In fact, there is a morphism from $\leq^*$ to $\prec$ and vice versa.
+  There is a morphism from $\prec$ to $\leq^*$, and there is a morphism from $\leq^*$ to $\prec$. Hence $\mathfrak d$ is equal to the dominating number of the $\prec$ relation on interval partitions, and $\mathfrak b$ is the dominating number of the $\not\succ$ relation on interval partitions.
 \end{prop}
 
 \begin{proof}
-  \ldots
+  We first construct a morphism from $\prec$ to $\leq^*$. Given any interval partition $P$ we define the element $\psi(P)\in\omega^\omega$ by $\psi(P)(n)=$ the right endpoint of the interval after the one containing $n$. Moreover for any function $f\in\omega^\omega$ define an interval partition $\phi(f)$ consisting of intervals $[a,b]$ such that $\max\{f(n)\mid n<a\}\leq b$.
+
+  Now, if $\phi(f)\prec P=(I_m)$, we must verify that $f\leq^*\psi(P)$. Indeed, given any $n$ we may find $I_m$ such that $n\in I_m$. Then if $n$ is large enough, since $\phi(f)\prec P$ we know there exists an interval $J\in\phi(f)$ such that $J\subset I_{n+1}$. Then by definition of $\phi$ we have $f(n)\leq\max J$. And by definition of $\psi$ we have $\max J\leq\psi(P)(n)$. Hence $f(n)\leq\psi(P)(n)$, as desired.
+
+  The morphism from $\prec$ to $\leq^*$ is the same, but with the roles of $\phi$ and $\psi$ reversed. We leave it to the reader to check that this is indeed the case.
 \end{proof}
 
 \begin{lem}
