@@ -1104,22 +1104,25 @@ Beyond these two examples, we see that each arrow in Cicho\'n's diagram (Theorem
 \section{Category and matching}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Recall that we have only
-
-An \emph{interval partition} is a partition $P=(I_n)$ of $\omega$ into finite nonempty intervals $I_n$. We always assume that the $I_n$ is adjacent to $I_{n+1}$, and hence also that they are enumerated in increasing order.
+In this section we will prove two of the four inequalities remaining in Theorem~\ref{thm:cichon}. We prove $\mathfrak d\leq\cof(\Meager)$ and $\add(\Meager)\leq\mathfrak b$ (actually thanks to duality only one proof is needed). Recall that $\mathfrak d$ is the dominating number of the $\leq^*$ relation on $\omega^\omega$, while $\cof(\Meager)$ is the dominating number of the $\subset$ relation on meager sets. Although the two relations don't seem directly comparable, we now introduce some technology to understand their relationship more clearly. An \emph{interval partition} is a partition $P=(I_n)$ of $\omega$ into finite nonempty intervals $I_n$. We always assume that the $I_n$ is adjacent to $I_{n+1}$, and hence also that they are enumerated in increasing order.
 
 \begin{defn}
   If $x,y\in2^\omega$ and $P$ is an interval partition, we say $x$ \emph{strongly differs} from $y$ on $P$ if for all but finitely many $n$ we have $x\restriction I_n\neq y\restriction I_n$.
 \end{defn}
 
-If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $\Diff_P(x)$ to be the set of all $y\in2^\omega$ such that $y$ strongly differs from $x$ on $P$. Since an element $x\in2^\omega$ and an interval partition $P$ appear together very frequently, such a pair $(x,P)$ has been given the name \emph{chopped real}. The following result shows that the chopped reals give us a new, combinatorial basis for the meager ideal on Cantor space.
+If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $\Diff_P(x)$ to be the set of all $y\in2^\omega$ such that $y$ strongly differs from $x$ on $P$.
 
 \begin{prop}
   A subset $A\subset2^\omega$ is meager if and only if there is some $x\in2^\omega$ and interval partition $P$ such that $A\subset\Diff_P(x)$.
 \end{prop}
 
 \begin{proof}
-  We begin by writing $A=\bigcup A_n$ where each $A_n$ is nowhere dense and $A_n\subset A_{n+1}$ for all $n$. We will define the element $x\in2^\omega$ and the interval partition $P=(I_n)$ recursively. To begin, since $A_0$ isn't dense there exists $s\in2^{<\omega}$ such that $A_0\cap V_s=\emptyset$. We let $I_0=\dom(s)$ and $x\restriction I_0=s$.
+  First suppose that $A\subset\Diff_P(x)$, we will show $A$ is meager. For this, let
+  \[A_N=\set{y\in2^\omega\mid(\forall n\geq N)\;y\restriction I_n\neq x\restriction I_n}
+  \]
+  Thus $A\subset\bigcup A_n$, and it is clear that $A_N$ contains no interior. Moreover $A_N$ is a countable intersection of boolean combinations of basic open sets, and hence $A_N$ is closed. Thus we have shown that $A$ is meager.
+
+  Conversely suppose $A=\bigcup A_n$ where each $A_n$ is nowhere dense, and suppose without loss of generality that $A_n\subset A_{n+1}$ for all $n$. We will define an interval partition $P=(I_n)$ and an element $x\in2^\omega$ recursively. To begin, since $A_0$ isn't dense there exists $s\in2^{<\omega}$ such that $A_0\cap V_s=\emptyset$. We let $I_0=\dom(s)$ and $x\restriction I_0=s$.
 
   Now suppose that $I_i$ and $x\restriction I_i$ have been constructed for $i<n$ and let $s=x\restriction\bigcup_{i<n}I_i$ be the initial segment built so far. Since $A_n$ is nowhere dense, by Proposition~\ref{prop:cantor-space-nwd} we can find an extension $t$ of $s$ such that $A_n\cap V_t=\emptyset$. But we can do even better: we can find an extension $t$ of $s$ such that even if $y\in2^\omega$ only agrees with $t$ on $\dom(t\smallsetminus s)$, then we still have $y\notin A_n$.
 
@@ -1128,14 +1131,14 @@ If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $
   To see that $A\subset\Diff_P(x)$, observe that whenever $y\restriction I_n=x\restriction I_n$ we have $y\notin A_n$. In other words, whenever $y\in A_n$ we have that $y$ differs from $x$ on $I_n$. Since the $A_n$ are increasing, any $a\in A$ lies in all but finitely many of the $A_n$. Thus we can conclude that any $a\in A$ strongly differs from $x$ on $P$.
 \end{proof}
 
-The proposition implies that the collection of sets $\Diff_P(x)$ forms a basis for the meager ideal on Cantor space. This basis is particularly useful because it is easy to see when two sets of the form $\Diff_P(x)$ are related by the subset relation. 
+The result implies that the collection of sets $\Diff_P(x)$ forms a basis for the meager ideal on Cantor space. This basis is particularly useful because it is easy to see when one set of the form $\Diff_P(x)$ is a subset of another.
 
 \begin{prop}
   \label{prop:engulf}
   If $P=(I_n)$ and $Q=(J_m)$ are interval partitions, then we have $\Diff_P(x)\subset\Diff_Q(y)$ if and only if for all but finitely many $J_m$ there exists $I_n$ such that $I_n\subset J_m$ and $x\restriction I_n=y\restriction I_n$.
 \end{prop}
 
-The proof is elementary (assuming I have not made a typo) and we leave it for Exercise~\ref{exerc:engulf}. Proposition~\ref{prop:engulf} provides characterization of $\cof(\Meager)$ as the dominating number of a simple combinatorial relation on chopped reals. The cardinals $\mathfrak b$ and $\mathfrak d$ can be characterized by a similar combinatorial relation just on interval partitions. First, if $P=(I_n)$ and $Q=(J_m)$ are interval partitions, we write $P\prec Q$ if for all but finitely many $J_m$ there exists $I_m$ such that $I_n\subset J_m$. 
+The proof is elementary (assuming I have not made a typo) and we leave it for Exercise~\ref{exerc:engulf}. Proposition~\ref{prop:engulf} provides characterization of $\cof(\Meager)$ as the dominating number of a simple combinatorial relation on pairs $(P,x)$. The cardinals $\mathfrak b$ and $\mathfrak d$ can be characterized by a similar combinatorial relation just on interval partitions. First, if $P=(I_n)$ and $Q=(J_m)$ are interval partitions, we write $P\prec Q$ if for all but finitely many $J_m$ there exists $I_m$ such that $I_n\subset J_m$. 
 
 \begin{prop}
   There is a morphism from $\prec$ to $\leq^*$, and there is a morphism from $\leq^*$ to $\prec$. Hence $\mathfrak d$ is equal to the dominating number of the $\prec$ relation on interval partitions, and $\mathfrak b$ is the dominating number of the $\not\succ$ relation on interval partitions.
@@ -1160,6 +1163,8 @@ The proof is elementary (assuming I have not made a typo) and we leave it for Ex
   Then by Proposition~\ref{prop:engulf}, $\Diff_P(0)\subset\Diff_Q(y)$ in particular implies that $P\prec Q$, and hence $\phi(P)\subset A\implies P\prec\psi(A)$, as desired.
 \end{proof}
 
+We conclude this section with a further result that gives a much more precise value for $\add(\Meager)$. The result will be used in the next section.
+
 \begin{thm}
   We have $\add(\Meager)=\min\{\mathfrak b,\cov(\Meager)\}$.
 \end{thm}
@@ -1175,7 +1180,9 @@ The proof is elementary (assuming I have not made a typo) and we leave it for Ex
   Then $R$ is a countable intersection of dense open sets, and hence it is comeager. Moreover since for all $F\in\mathcal F$ we have $g_F\leq^*h$, we have that $R$ is disjoint from $\bigcup\mathcal F$. We can thus conclude that $\bigcup\mathcal F$ is meager, as desired.
 \end{proof}
 
-Although this last result was not a morphism-type proof, it is true that an analogous argument shows the dual property that $\add(\Meager)=\max\{\mathfrak d,\non(\Meager)\}$. This three-term duality is once again a part of an abstract morphism framework, but it is a little more involved than the morphisms we introduced in the previous section. [ref]
+\begin{rem}
+  Although the last result does not apparently involve a morphism, it is true that an analogous argument shows the dual fact that $\add(\Meager)=\max\{\mathfrak d,\non(\Meager)\}$. This three-term duality is also part of an abstract morphism-like framework, which we omit. [ref]
+\end{rem}
 
 \begin{exerc}
   \label{exerc:engulf}
