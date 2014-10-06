@@ -1198,9 +1198,43 @@ We conclude this section with a further result that gives a much more precise va
 % blass sec5
 % bartoszynski sec 2.2
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bartoszy\'nski's theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this section we complete the proof of the two inequalities remaining in Theorem~\ref{thm:cichon}. For this we will need to introduce a new relation that sits between $\cof(\Null)$ and $\cof(\Meager)$. A \emph{slalom} is a sequence $S=(I_n)$ of subsets $I_n\subset\omega$ such that $|I_n|\leq2^n$. An element $f\in\omega^\omega$ is said to \emph{ski through} $S$, which we write $f\in^*S$, if $f(n)\in I_n$ for almost every $n$.
+
+\begin{lem}
+  There is a morphism from the $\subset$ relation on null subsets of $2^\omega$ to the $\in^*$ relation on $\omega^\omega\times SL$.
+\end{lem}
+
+\begin{proof}
+  Begin by letting $(F_{n,i})_{n,i\in\omega}$ be a partition of $\omega$ into subsets with $|F_{i,n}|=n$. Then the events $E_{n,i}=\set{x\in2^\omega\mid x\restriction I_{n,i}=0}$ are jointly independent and $m(E_{n,i})=2^{-n}$ for all $n,i$.
+
+  Given $f\in\omega^\omega$ we let $\phi(f)$ be the null set $\liminf E_{n,f(n)}$.
+
+  Given a null set $A$ we define the slalom $\psi(A)$ as follows.
+\end{proof}
+
+\begin{rem}
+  Although we shall not need it, there is also a morphism from $\in^*$ to the $\subset$ relation on $\Null$. Thus the ski-through relation on slaloms can be used to give complete combinatorial characterizations of both $\add(\Null)$ and $\cof(\Null)$.
+\end{rem}
+
+\begin{lem}
+  There is a morphism from the $\in^*$ relation to the $\subset$ relation on meager sets.
+\end{lem}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{cor}
+  We have $\add(\Null)\leq\add(Meager)$ and $\cof(Meager)\leq\cof(Null)$.
+\end{cor}
+
+% fremlin, measure theory v5p1 522P
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Martin's axiom}
