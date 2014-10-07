@@ -1219,21 +1219,30 @@ Before the proof, we will need the following fact about null sets.
 
 \begin{proof}[Proof of Lemma~\ref{lem:null-slalom}]
   Begin by letting $(F_{n,i})_{n,i\in\omega}$ be a partition of $\omega$ into subsets with $|F_{i,n}|=n$. Then the events $E_{n,i}=\set{x\in2^\omega\mid x\restriction F_{n,i}=0}$ are jointly independent and $m(E_{n,i})=2^{-n}$ for all $n,i$. Given $f\in\omega^\omega$ we define
-  \[\phi(f)=\bigcup_N\bigcap_{n\geq N} E_{n,f(n)}\;.
+  \[\phi(f)=\bigcap_N\bigcup_{n\geq N} E_{n,f(n)}\;.
   \]
   Then it is clear that $\phi(f)$ is a null set.
 
-  On the other hand given a null set $A\subset2^\omega$ we will define a slalom $\psi(A)$ in several steps. We first find a closed subset $K\subset2^\omega\smallsetminus A$ with the properties given in Proposition~\ref{prop:self-supporting}. We then let
-  \[I_n(s)=\set{i\in\omega\mid K\cap V_s\neq\emptyset\text{ and }K\cap V_s\cap E_{n,i}=\emptyset}
+  On the other hand given a null set $A\subset2^\omega$ we will define a slalom $\psi(A)$ in several steps. We first find a closed subset $K\subset2^\omega\smallsetminus A$ with the properties given in Proposition~\ref{prop:self-supporting}. Next, whenever $K\cap V_s\neq\emptyset$ we let
+  \[I_n(s)=\set{i\in\omega\mid K\cap V_s\cap E_{n,i}=\emptyset}
   \]
-  We claim that the sum $\sum|I_n(s)|/2^n<\infty$. Indeed, notice that $\prod>0$. Hence we can take a logarithm to obtain. Looking at the Taylor series we always have $-\log(1-x)>x$, so it follows that $\sum|I_n(s)|/2^n<\infty$, as claimed.
+  and otherwise we simply let $I_n(s)=\emptyset$.
 
-  The last step in the construction is to find a single slalom $\psi(A)=(I_n)$ that dominates all of the sequences $(I_n(s))$. For this fix an enumeration $s_1,s_2\ldots$ of the elements of $\omega^{<\omega}$. By the convergence shown in the previous paragraph we can find $k(s_j)$ such that for all $n\geq k(s_j)$ we have $|I_n(s)|\leq2^n/2^j$. We then let $I_n=\bigcup\set{I_n(s_j)\mid k(s_j)\leq n}$. Then clearly
-  \[|I_n|\leq\sum_{k(s_j)\leq n}|I_n(s_j)|\leq\sum2^n/2^j\leq2^n
+  We claim that the sum $\sum|I_n(s)|/2^n$ converges. Indeed, by the independence of the sets $E_{n,i}$ we have
+  \[m(K\cap V_s)\leq\prod_{n\in\NN}\prod_{i\in I_n(s)}m((E_{n,i})^c)
+  =\prod_{n\in\NN}(1-2^{-n})^{|I_n(s)|}\;.
+  \]
+  By our choice of $K$, the left-hand side is positive. Hence the right-hand side is positive too and taking a logarithm we obtain
+  \[\sum-|I_n(s)|\log(1-2^{-n})<\infty
+  \]
+  From the Taylor series expansion we always have $-\log(1-x)>x$, and the claim now follows.
+
+  The last step in the construction is to find a single slalom $\psi(A)=(I_n)$ that dominates all of the sequences $(I_n(s))$. For this fix an enumeration $s_1,s_2\ldots$ of the elements of $\omega^{<\omega}$. By the convergence shown in the previous paragraph we can find $k(s_j)$ such that for all $n\geq k(s_j)$ we have $|I_n(s_j)|\leq2^n/2^j$. We then let $I_n=\bigcup\set{I_n(s_j)\mid n\geq k(s_j)}$. Then clearly
+  \[|I_n|\leq\sum_{k(s_j)\leq n}|I_n(s_j)|\leq\sum_{j\in\NN}2^n/2^j\leq2^n\;.
   \]
   Thus $\psi(A)=(I_n)$ is a slalom, and this completes the construction of $\psi$.
 
-  To conclude we need to argue that for all $f\in\omega^\omega$ and $A\in\Null$ we have $\phi(f)\subset A$ implies $f\in^*\psi(S)$.
+  To conclude we need to argue that for all $f\in\omega^\omega$ and $A\in\Null$ we have $\phi(f)\subset A$ implies $f\in^*\psi(A)$. Indeed, given $f$ and $A$, let $\phi(f)$, $K$ and $\psi(A)=(I_n)$ be defined as above. If $\phi(f)\subset A$ then we have $K\subset\phi(f)^c=\bigcup_N\bigcap_{n\geq N}E_{n,f(n)}^c$. Since $K$ is complete and the sets $\bigcap_{n\geq N}E_{n,f(n)}^c$ are closed, the Baire category theorem implies that at least one of them has interior. Thus there is a basic open set $V_s$ such that $V_s\cap K\neq\emptyset$ and $V_s\cap\bigcup_{n\geq N}E_{n,f(n)}=\emptyset$. Thus for $n$ large enough we will have put $f(n)\in I_n$, which shows $f\in^*\psi(A)$ as desired.
 \end{proof}
 
 \begin{rem}
