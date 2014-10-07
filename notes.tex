@@ -1203,29 +1203,55 @@ We conclude this section with a further result that gives a much more precise va
 \section{Bartoszy\'nski's theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this section we complete the proof of the two inequalities remaining in Theorem~\ref{thm:cichon}. For this we will need to introduce a new relation that sits between $\cof(\Null)$ and $\cof(\Meager)$. A \emph{slalom} is a sequence $S=(I_n)$ of subsets $I_n\subset\omega$ such that $|I_n|\leq2^n$. An element $f\in\omega^\omega$ is said to \emph{ski through} $S$, which we write $f\in^*S$, if $f(n)\in I_n$ for almost every $n$.
+In this section we complete the proof of the two inequalities remaining in Theorem~\ref{thm:cichon}. For this we will need to introduce a new relation that sits between $\cof(\Null)$ and $\cof(\Meager)$. A \emph{slalom} is a sequence $S=(I_n)$ of subsets $I_n\subset\omega$ such that $|I_n|\leq2^n$. We write $SL$ for the set of slaloms. An element $f\in\omega^\omega$ is said to \emph{ski through} $S$, which we write $f\in^*S$, if $f(n)\in I_n$ for almost every $n$.
 
 \begin{lem}
+  \label{lem:null-slalom}
   There is a morphism from the $\subset$ relation on null subsets of $2^\omega$ to the $\in^*$ relation on $\omega^\omega\times SL$.
 \end{lem}
 
-\begin{proof}
-  Begin by letting $(F_{n,i})_{n,i\in\omega}$ be a partition of $\omega$ into subsets with $|F_{i,n}|=n$. Then the events $E_{n,i}=\set{x\in2^\omega\mid x\restriction I_{n,i}=0}$ are jointly independent and $m(E_{n,i})=2^{-n}$ for all $n,i$.
+Before the proof, we will need the following fact about null sets.
 
-  Given $f\in\omega^\omega$ we let $\phi(f)$ be the null set $\liminf E_{n,f(n)}$.
+\begin{prop}
+  \label{prop:self-supporting}
+  If $A\subset2^\omega$ is a null set, then there exists a closed subset $K\subset2^\omega\smallsetminus A$ with the property that whenever $K\cap V_s\neq\emptyset$ we have $K\cap V_s$ is nonnull.
+\end{prop}
 
-  Given a null set $A$ we define the slalom $\psi(A)$ as follows.
+\begin{proof}[Proof of Lemma~\ref{lem:null-slalom}]
+  Begin by letting $(F_{n,i})_{n,i\in\omega}$ be a partition of $\omega$ into subsets with $|F_{i,n}|=n$. Then the events $E_{n,i}=\set{x\in2^\omega\mid x\restriction F_{n,i}=0}$ are jointly independent and $m(E_{n,i})=2^{-n}$ for all $n,i$. Given $f\in\omega^\omega$ we define
+  \[\phi(f)=\bigcup_N\bigcap_{n\geq N} E_{n,f(n)}\;.
+  \]
+  Then it is clear that $\phi(f)$ is a null set.
+
+  On the other hand given a null set $A\subset2^\omega$ we will define a slalom $\psi(A)$ in several steps. We first find a closed subset $K\subset2^\omega\smallsetminus A$ with the properties given in Proposition~\ref{prop:self-supporting}. We then let
+  \[I_n(s)=\set{i\in\omega\mid K\cap V_s\neq\emptyset\text{ and }K\cap V_s\cap E_{n,i}=\emptyset}
+  \]
+  We claim that the sum $\sum|I_n(s)|/2^n<\infty$. Indeed, notice that $\prod>0$. Hence we can take a logarithm to obtain. Looking at the Taylor series we always have $-\log(1-x)>x$, so it follows that $\sum|I_n(s)|/2^n<\infty$, as claimed.
+
+  The last step in the construction is to find a single slalom $\psi(A)=(I_n)$ that dominates all of the sequences $(I_n(s))$. For this fix an enumeration $s_1,s_2\ldots$ of the elements of $\omega^{<\omega}$. By the convergence shown in the previous paragraph we can find $k(s_j)$ such that for all $n\geq k(s_j)$ we have $|I_n(s)|\leq2^n/2^j$. We then let $I_n=\bigcup\set{I_n(s_j)\mid k(s_j)\leq n}$. Then clearly
+  \[|I_n|\leq\sum_{k(s_j)\leq n}|I_n(s_j)|\leq\sum2^n/2^j\leq2^n
+  \]
+  Thus $\psi(A)=(I_n)$ is a slalom, and this completes the construction of $\psi$.
+
+  To conclude we need to argue that for all $f\in\omega^\omega$ and $A\in\Null$ we have $\phi(f)\subset A$ implies $f\in^*\psi(S)$.
 \end{proof}
 
 \begin{rem}
-  Although we shall not need it, there is also a morphism from $\in^*$ to the $\subset$ relation on $\Null$. Thus the ski-through relation on slaloms can be used to give complete combinatorial characterizations of both $\add(\Null)$ and $\cof(\Null)$.
+  Although we don't need it, there is also a morphism from $\in^*$ to the $\subset$ relation on $\Null$. Thus the ski-through relation on slaloms can be used to give complete combinatorial characterizations of both $\add(\Null)$ and $\cof(\Null)$.
 \end{rem}
 
 \begin{lem}
+  \label{lem:slalom-meager}
   There is a morphism from the $\in^*$ relation to the $\subset$ relation on meager sets.
 \end{lem}
 
-\begin{proof}
+Once again we will need a fact before the proof.
+
+\begin{prop}
+  Given any $n\in\NN$, there is a family $\mathcal U$ of subsets of $2^\omega$ such that any dense $G_\delta$ contains some set in $\mathcal U$.
+\end{prop}
+
+\begin{proof}[Proof of Lemma~\ref{lem:slalom-meager}]
 
 \end{proof}
 
