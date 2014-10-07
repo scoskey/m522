@@ -1209,8 +1209,7 @@ In this section we complete the proof of the two inequalities remaining in Theor
   \label{lem:null-slalom}
   There is a morphism from the $\subset$ relation on null subsets of $2^\omega$ to the $\in^*$ relation on $\omega^\omega\times SL$.
 \end{lem}
-
-Before the proof, we will need the following fact about null sets.
+Before the proof, we will need the following fact about null sets, which we leave for Exercise~\ref{exerc:self-supporting}.
 
 \begin{prop}
   \label{prop:self-supporting}
@@ -1218,31 +1217,39 @@ Before the proof, we will need the following fact about null sets.
 \end{prop}
 
 \begin{proof}[Proof of Lemma~\ref{lem:null-slalom}]
-  Begin by letting $(F_{n,i})_{n,i\in\omega}$ be a partition of $\omega$ into subsets with $|F_{i,n}|=n$. Then the events $E_{n,i}=\set{x\in2^\omega\mid x\restriction F_{n,i}=0}$ are jointly independent and $m(E_{n,i})=2^{-n}$ for all $n,i$. Given $f\in\omega^\omega$ we define
+  We must define $\phi\colon\omega^\omega\to\Null$ and $\psi\colon\Null\to SL$ such that for all $f\in\omega^\omega$ and null sets $A\subset2^\omega$ we have $\phi(f)\subset A$ implies $f\in^*\psi(A)$.
+
+  To define $\phi$, we fix a sequence of subsets $E_{n,i}\subset2^\omega$ such that $m(E_{n,i})=2^{-n}$. Given $f\in\omega^\omega$ we define
   \[\phi(f)=\bigcap_N\bigcup_{n\geq N} E_{n,f(n)}\;.
   \]
-  Then it is clear that $\phi(f)$ is a null set.
+  Then it is clear that $\phi(f)$ is a null set. For technical reasons later on, we will need to assume that the sets $E_{n,i}$ are mutually independent events (the measure of the intersection is the product of the measures).
 
-  On the other hand given a null set $A\subset2^\omega$ we will define a slalom $\psi(A)$ in several steps. We first find a closed subset $K\subset2^\omega\smallsetminus A$ with the properties given in Proposition~\ref{prop:self-supporting}. Next, whenever $K\cap V_s\neq\emptyset$ we let
-  \[I_n(s)=\set{i\in\omega\mid K\cap V_s\cap E_{n,i}=\emptyset}
+  Before defining $\psi$, given a null set $A\subset2^\omega$ let us preview what properties we will need of the slalom $\psi(A)$. So suppose that $f$ is given and $\phi(f)\subset A$. Let $K$ be chosen as in Proposition~\ref{prop:self-supporting}, so we have $K\cap\bigcap_N\bigcup_{n\geq N}E_{n,f(n)}=\emptyset$. Since $K$ is complete and the sets $\bigcup_{n\geq N}E_{n,f(n)}$ are open, the Baire category theorem implies that at least one of them is not dense. Thus there is a basic open set $V_s$ such that $V_s\cap K\neq\emptyset$ and eventually we have $V_s\cap K\cap E_{n,f(n)}=\emptyset$. We will define the slalom $\psi(A)=(I_n)$ so that for $n$ large enough, $I_n$ it includes all such $f(n)$. This will guarantee that $f\in^*\psi(A)$ as required.
+
+  As a first approximation to this, whenever $V_s\cap K\neq\emptyset$ we begin by letting
+  \[I_n(s)=\set{i\in\omega\mid V_s\cap K\cap E_{n,i}=\emptyset}
   \]
-  and otherwise we simply let $I_n(s)=\emptyset$.
+  and otherwise we simply let $I_n(s)=\emptyset$. We now have two issues to deal with:
+  \begin{itemize}
+  \item We need a slalom, that is, we need to ensure $|(I_n(s))|\leq2^n$
+  \item We need a single slalom $(I_n)$ that handles all $s$ at once.
+  \end{itemize}
 
-  We claim that the sum $\sum|I_n(s)|/2^n$ converges. Indeed, by the independence of the sets $E_{n,i}$ we have
-  \[m(K\cap V_s)\leq\prod_{n\in\NN}\prod_{i\in I_n(s)}m((E_{n,i})^c)
+  For the first issue, we claim that the sum $\sum2^{-n}|I_n(s)|$ converges. Indeed, by the independence of the sets $E_{n,i}$ we have
+  \[m(V_s\cap K)\leq\prod_{n\in\NN,i\in I_n(s)}m((E_{n,i})^c)
   =\prod_{n\in\NN}(1-2^{-n})^{|I_n(s)|}\;.
   \]
   By our choice of $K$, the left-hand side is positive. Hence the right-hand side is positive too and taking a logarithm we obtain
-  \[\sum-|I_n(s)|\log(1-2^{-n})<\infty
+  \[\sum-\log(1-2^{-n})|I_n(s)|<\infty
   \]
   From the Taylor series expansion we always have $-\log(1-x)>x$, and the claim now follows.
 
-  The last step in the construction is to find a single slalom $\psi(A)=(I_n)$ that dominates all of the sequences $(I_n(s))$. For this fix an enumeration $s_1,s_2\ldots$ of the elements of $\omega^{<\omega}$. By the convergence shown in the previous paragraph we can find $k(s_j)$ such that for all $n\geq k(s_j)$ we have $|I_n(s_j)|\leq2^n/2^j$. We then let $I_n=\bigcup\set{I_n(s_j)\mid n\geq k(s_j)}$. Then clearly
+  For the second issue we construct a single slalom $I_n$ such that for all $s$ we eventually have $I_n(s)\subset I_n$. To do this fix an enumeration $s_1,s_2\ldots$ of the elements of $\omega^{<\omega}$. By the convergence shown in the previous paragraph we can find $k(s_j)$ such that for all $n\geq k(s_j)$ we have $2^{-n}|I_n(s_j)|\leq1/2^j$. We then let $I_n=\bigcup\set{I_n(s_j)\mid n\geq k(s_j)}$. Then clearly
   \[|I_n|\leq\sum_{k(s_j)\leq n}|I_n(s_j)|\leq\sum_{j\in\NN}2^n/2^j\leq2^n\;.
   \]
   Thus $\psi(A)=(I_n)$ is a slalom, and this completes the construction of $\psi$.
 
-  To conclude we need to argue that for all $f\in\omega^\omega$ and $A\in\Null$ we have $\phi(f)\subset A$ implies $f\in^*\psi(A)$. Indeed, given $f$ and $A$, let $\phi(f)$, $K$ and $\psi(A)=(I_n)$ be defined as above. If $\phi(f)\subset A$ then we have $K\subset\phi(f)^c=\bigcup_N\bigcap_{n\geq N}E_{n,f(n)}^c$. Since $K$ is complete and the sets $\bigcap_{n\geq N}E_{n,f(n)}^c$ are closed, the Baire category theorem implies that at least one of them has interior. Thus there is a basic open set $V_s$ such that $V_s\cap K\neq\emptyset$ and $V_s\cap\bigcup_{n\geq N}E_{n,f(n)}=\emptyset$. Thus for $n$ large enough we will have put $f(n)\in I_n$, which shows $f\in^*\psi(A)$ as desired.
+  To quickly recapitulate why this works, again suppose that $\phi(f)\subset A$. By the above reasoning we can find $V_s$ such that $V_s\cap K\neq\emptyset$ and eventually we have $V_s\cap K\cap E_{n,f(n)}=\emptyset$. Thus for $n$ large enough we have $f(n)\in I_n(s)$ and $I_n(s)\subset I_n$. It follows that $f\in^*\psi(A)$.
 \end{proof}
 
 \begin{rem}
@@ -1254,26 +1261,44 @@ Before the proof, we will need the following fact about null sets.
   There is a morphism from the $\in^*$ relation to the $\subset$ relation on meager sets.
 \end{lem}
 
-Once again we will need a fact before the proof.
+This time we will need a topological fact before the proof.
 
 \begin{prop}
-  Given any $n\in\NN$, there is a family $\mathcal U$ of subsets of $2^\omega$ such that any dense $G_\delta$ contains some set in $\mathcal U$.
+  \label{prop:pi-base-meager}
+  Given any $n\in\NN$, there is a family $\mathcal U$ of subsets of $2^\omega$ such that if $U_1,\ldots,U_n\in\mathcal U$ then $A_1\cap\cdots\cap A_n\neq\emptyset$, and such that any meager set is disjoint from some set in $\mathcal U$.
 \end{prop}
 
 \begin{proof}[Proof of Lemma~\ref{lem:slalom-meager}]
 
 \end{proof}
 
-\begin{cor}
-  We have $\add(\Null)\leq\add(Meager)$ and $\cof(Meager)\leq\cof(Null)$.
+\begin{cor}[Bartoszynski]
+  We have $\add(\Null)\leq\add(\Meager)$ and $\cof(\Meager)\leq\cof(\Null)$.
 \end{cor}
+
+This concludes the proof of Theorem~\ref{thm:cichon}.
+
+\begin{exerc}
+  \label{exerc:self-supporting}
+  Prove Proposition~\ref{prop:self-supporting}. [maybe add hint]
+\end{exerc}
+
+\begin{exerc}
+  \label{exerc:pi-base-meager}
+  Prove Proposition~\ref{prop:pi-base-meager}.  [maybe add hint]
+\end{exerc}
 
 % fremlin, measure theory v5p1 522P
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The idea of forcing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Martin's axiom}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 \end{document}
