@@ -1203,12 +1203,15 @@ We conclude this section with a further result that gives a much more precise va
 \section{Bartoszy\'nski's theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this section we complete the proof of the two inequalities remaining in Theorem~\ref{thm:cichon}. For this we will need to introduce a new relation that sits between $\cof(\Null)$ and $\cof(\Meager)$. A \emph{slalom} is a sequence $S=(I_n)$ of subsets $I_n\subset\omega$ such that $|I_n|\leq2^n$. We write $SL$ for the set of slaloms. An element $f\in\omega^\omega$ is said to \emph{ski through} $S$, which we write $f\in^*S$, if $f(n)\in I_n$ for almost every $n$.
+In this section we complete the proof of the two inequalities remaining in Theorem~\ref{thm:cichon}. These inequalities were discovered later than the others; they are a little more difficult too. In fact I will need your help proving some of the preparatory facts given in the exercises. The proof we give is due to Bartoszy\'nski, although the result was discovered also by Raisonnier--Stern.
+
+We begin by introducing a new relation that sits between $\cof(\Null)$ and $\cof(\Meager)$. A \emph{slalom} is a sequence $S=(I_n)$ of subsets $I_n\subset\omega$ such that $|I_n|\leq2^n$. We write $SL$ for the set of slaloms. An element $f\in\omega^\omega$ is said to \emph{ski through} $S$, which we write $f\in^*S$, if for almost every $n$ we have $f(n)\in I_n$.
 
 \begin{lem}
   \label{lem:null-slalom}
   There is a morphism from the $\subset$ relation on null subsets of $2^\omega$ to the $\in^*$ relation on $\omega^\omega\times SL$.
 \end{lem}
+
 Before the proof, we will need the following fact about null sets, which we leave for Exercise~\ref{exerc:self-supporting}.
 
 \begin{prop}
@@ -1231,11 +1234,11 @@ Before the proof, we will need the following fact about null sets, which we leav
   \]
   and otherwise we simply let $I_n(s)=\emptyset$. We now have two issues to deal with:
   \begin{itemize}
-  \item We need a slalom, that is, we need to ensure $|(I_n(s))|\leq2^n$
   \item We need a single slalom $(I_n)$ that handles all $s$ at once.
+  \item The $I_n(s)$ don't necessarily satisfy $|I_n(s)|\leq2^n$; we need $|I_n|\leq2^n$.
   \end{itemize}
 
-  For the first issue, we claim that the sum $\sum2^{-n}|I_n(s)|$ converges. Indeed, by the independence of the sets $E_{n,i}$ we have
+  To the second issue, we claim that the sum $\sum2^{-n}|I_n(s)|$ converges. Indeed, by the independence of the sets $E_{n,i}$ we have
   \[m(V_s\cap K)\leq\prod_{n\in\NN,i\in I_n(s)}m((E_{n,i})^c)
   =\prod_{n\in\NN}(1-2^{-n})^{|I_n(s)|}\;.
   \]
@@ -1244,7 +1247,7 @@ Before the proof, we will need the following fact about null sets, which we leav
   \]
   From the Taylor series expansion we always have $-\log(1-x)>x$, and the claim now follows.
 
-  For the second issue we construct a single slalom $I_n$ such that for all $s$ we eventually have $I_n(s)\subset I_n$. To do this fix an enumeration $s_1,s_2,\ldots$ of the elements of $2^{<\omega}$. By the convergence shown in the previous paragraph we can find $k(s_j)$ such that for all $n\geq k(s_j)$ we have $2^{-n}|I_n(s_j)|\leq1/2^j$. We then let $I_n=\bigcup\set{I_n(s_j)\mid n\geq k(s_j)}$. Then clearly
+  To deal with the first issue we construct a single slalom $I_n$ such that for all $s$ we eventually have $I_n(s)\subset I_n$. To do this fix an enumeration $s_1,s_2,\ldots$ of the elements of $2^{<\omega}$. By the convergence shown in the previous paragraph we can find $k(s_j)$ such that for all $n\geq k(s_j)$ we have $2^{-n}|I_n(s_j)|\leq1/2^j$. We then let $I_n=\bigcup\set{I_n(s_j)\mid n\geq k(s_j)}$. Then clearly
   \[|I_n|\leq\sum_{k(s_j)\leq n}|I_n(s_j)|\leq\sum_{j}2^n/2^j\leq2^n\;.
   \]
   Thus $\psi(A)=(I_n)$ is a slalom, and this completes the construction of $\psi$.
