@@ -1316,7 +1316,28 @@ This concludes the proof of Theorem~\ref{thm:cichon}.
 \section{The idea of forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+A \emph{notion of forcing} is a partial order $\mathbb P$ with a maximum element $1_{\mathbb P}$.
+
+\begin{defn}
+  A subset $G\subset\mathbb P$ is a \emph{filter} if it satisfies the two properties:
+  \begin{itemize}
+  \item upwards closed: if $p\in G$ and $p\leq q$ then $q\in G$.
+  \item downwards directed: if $p,q\in G$ then there exists $r\in G$ such that $r\leq p,q$.
+  \end{itemize}
+\end{defn}
+
+\begin{example}
+  Let $T\subset\omega^{<\omega}$ be a tree. Then $T$ can be made into a notion of forcing by turning it upside-down, that is, letting $s\leq t$ if and only if $s\supset t$.
+\end{example}
+
+
+\begin{defn}
+  A subset $D\subset\mathbb P$ is \emph{dense} if for all
+\end{defn}
+
+The use of the word ``dense'' here may seem in conflict  with the use of the word in topology, but the two can be connected. If $\mathbb P$ is a partial order then it has a topology with a basis consisting of the downward cones $V_p=\set{q\in\mathbb P\mid q\leq p}$. A subset $D\subset\mathbb P$ is dense if and only if it is dense in this topology.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Martin's axiom}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
