@@ -1163,7 +1163,7 @@ The proof is elementary (assuming I have not made a typo) and we leave it for Ex
   Then by Proposition~\ref{prop:engulf}, $\Diff_P(0)\subset\Diff_Q(y)$ in particular implies that $P\prec Q$, and hence $\phi(P)\subset A\implies P\prec\psi(A)$, as desired.
 \end{proof}
 
-We conclude this section with a further result that gives a much more precise value for $\add(\Meager)$. The result will be used in the next section.
+We conclude this section with a further result that gives much more information about the relationship between $\add(\Meager)$ and the other cardinals.
 
 \begin{thm}
   We have $\add(\Meager)=\min\{\mathfrak b,\cov(\Meager)\}$.
@@ -1203,9 +1203,9 @@ We conclude this section with a further result that gives a much more precise va
 \section{Bartoszy\'nski's theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this section we complete the proof of the two inequalities remaining in Theorem~\ref{thm:cichon}. These inequalities were discovered later than the others; they are a little more difficult too. In fact I will need your help proving some of the preparatory facts given in the exercises. The proof we give is due to Bartoszy\'nski, although the result was discovered also by Raisonnier--Stern.
+In this section we complete the proof of the two inequalities remaining in Cicho'n's diagram: $\add(\Null)\leq\add(\Meager)$ and $\cof(\Meager)\leq\cof(\Null)$. By duality, the two inequalities are really one that was discovered independently by Bartoszy\'nski and Raissonier--Stern. The proof we give is mostly due to Bartoszy\'nski, and is markedly more difficult than our previous results. In fact I will need your help proving two of the preparatory facts (see the exercises).
 
-We begin by introducing a new relation that sits between $\cof(\Null)$ and $\cof(\Meager)$. A \emph{slalom} is a sequence $S=(I_n)$ of subsets $I_n\subset\omega$ such that $|I_n|\leq2^n$. We write $SL$ for the set of slaloms. An element $f\in\omega^\omega$ is said to \emph{ski through} $S$, which we write $f\in^*S$, if for almost every $n$ we have $f(n)\in I_n$.
+We begin by introducing a new relation that sits between $\cof(\Null)$ and $\cof(\Meager)$. A \emph{slalom} is a sequence $S=(I_n)$ of subsets $I_n\subset\omega$ such that $|I_n|\leq2^n$. We write $SL$ for the set of slaloms. An element $f\in\omega^\omega$ is said to \emph{ski through} $S$, which we denote by $f\in^*S$, if for almost every $n$ we have $f(n)\in I_n$.
 
 \begin{lem}
   \label{lem:null-slalom}
@@ -1222,10 +1222,10 @@ Before the proof, we will need the following fact about null sets, which we leav
 \begin{proof}[Proof of Lemma~\ref{lem:null-slalom}]
   We must define $\phi\colon\omega^\omega\to\Null$ and $\psi\colon\Null\to SL$ such that for all $f\in\omega^\omega$ and null sets $A\subset2^\omega$ we have $\phi(f)\subset A$ implies $f\in^*\psi(A)$.
 
-  To define $\phi$, we fix a sequence of subsets $E_{n,i}\subset2^\omega$ such that $m(E_{n,i})=2^{-n}$. Given $f\in\omega^\omega$ we define
+  To define $\phi$, we start with a sequence of subsets $E_{n,i}\subset2^\omega$ such that $m(E_{n,i})=2^{-n}$, and given $f\in\omega^\omega$ we let
   \[\phi(f)=\bigcap_N\bigcup_{n\geq N} E_{n,f(n)}\;.
   \]
-  Then it is clear that $\phi(f)$ is a null set. For technical reasons later on, we will need to assume that the sets $E_{n,i}$ are mutually independent events (the measure of the intersection is the product of the measures).
+  Then it is clear that $\phi(f)$ is a null set. For technical reasons later on, we will need to assume that the sets $E_{n,i}$ are mutually independent events (the measure of the intersection is the product of the measures). It is not difficult to write down such $E_{n,i}$ explicitly.
 
   Before defining $\psi$, given a null set $A\subset2^\omega$ let us preview what properties we will need of the slalom $\psi(A)$. So suppose that $f$ is given and $\phi(f)\subset A$. Let $K$ be chosen as in Proposition~\ref{prop:self-supporting}, so that we have $K\cap\bigcap_N\bigcup_{n\geq N}E_{n,f(n)}=\emptyset$. Since $K$ is complete and the sets $\bigcup_{n\geq N}E_{n,f(n)}$ are open, the Baire category theorem implies that at least one of them is non-dense in $K$. Thus there is a basic open set $V_s$ such that $V_s\cap K\neq\emptyset$ and eventually we have $V_s\cap K\cap E_{n,f(n)}=\emptyset$. We will define the slalom $\psi(A)=(I_n)$ so that for $n$ large enough, $I_n$ it includes all such $f(n)$. This will guarantee that $f\in^*\psi(A)$ as required.
 
@@ -1238,7 +1238,7 @@ Before the proof, we will need the following fact about null sets, which we leav
   \item The $I_n(s)$ don't necessarily satisfy $|I_n(s)|\leq2^n$; we need $|I_n|\leq2^n$.
   \end{itemize}
 
-  To the second issue, we claim that the sum $\sum2^{-n}|I_n(s)|$ converges. Indeed, by the independence of the sets $E_{n,i}$ we have
+  Tackling the second issue first, we will show that the sets $|I_n(s)|$ are not too large. More specifically we claim that the sum $\sum2^{-n}|I_n(s)|$ converges. Indeed, by the independence of the sets $E_{n,i}$ we have
   \[m(V_s\cap K)\leq\prod_{n\in\NN,i\in I_n(s)}m((E_{n,i})^c)
   =\prod_{n\in\NN}(1-2^{-n})^{|I_n(s)|}\;.
   \]
@@ -1252,7 +1252,7 @@ Before the proof, we will need the following fact about null sets, which we leav
   \]
   Thus $\psi(A)=(I_n)$ is a slalom, and this completes the construction of $\psi$.
 
-  To quickly recapitulate why this works, again suppose that $\phi(f)\subset A$. By the above reasoning we can find $V_s$ such that $V_s\cap K\neq\emptyset$ and eventually we have $V_s\cap K\cap E_{n,f(n)}=\emptyset$. Thus for $n$ large enough we have $f(n)\in I_n(s)$ and $I_n(s)\subset I_n$. It follows that $f\in^*\psi(A)$.
+  To quickly recapitulate why this works, again suppose that $\phi(f)\subset A$. By the above reasoning we can find $V_s$ such that $V_s\cap K\neq\emptyset$ and for almost all $n$, $V_s\cap K\cap E_{n,f(n)}=\emptyset$. Thus for $n$ large enough we have both $f(n)\in I_n(s)$ and $I_n(s)\subset I_n$. It follows that $f\in^*\psi(A)$.
 \end{proof}
 
 \begin{rem}
@@ -1264,7 +1264,7 @@ Before the proof, we will need the following fact about null sets, which we leav
   There is a morphism from the $\in^*$ relation on $\omega^\omega\times SL$ to the $\subset$ relation on meager subsets of $2^\omega$.
 \end{lem}
 
-This time we will need a topological fact before the proof.
+This time we will need a topological fact before the proof, and once again we leave it for Exercise~\ref{exerc:pi-base-meager}.
 
 \begin{prop}
   \label{prop:pi-base-meager}
