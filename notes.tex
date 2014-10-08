@@ -77,6 +77,8 @@ With the tool of forcing in hand, we will return to the notions of measure and c
 
 \newpage
 
+% Part I: Category and measure
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The real number system}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1222,7 +1224,7 @@ Before the proof, we will need the following fact about null sets, which we leav
 \begin{proof}[Proof of Lemma~\ref{lem:null-slalom}]
   We must define $\phi\colon\omega^\omega\to\Null$ and $\psi\colon\Null\to SL$ such that for all $f\in\omega^\omega$ and null sets $A\subset2^\omega$ we have $\phi(f)\subset A$ implies $f\in^*\psi(A)$.
 
-  To define $\phi$, we start with a sequence of subsets $E_{n,i}\subset2^\omega$ such that $m(E_{n,i})=2^{-n}$, and given $f\in\omega^\omega$ we let
+  To define $\phi$, we start with a sequence of open subsets $E_{n,i}\subset2^\omega$ such that $m(E_{n,i})=2^{-n}$, and given $f\in\omega^\omega$ we let
   \[\phi(f)=\bigcap_N\bigcup_{n\geq N} E_{n,f(n)}\;.
   \]
   Then it is clear that $\phi(f)$ is a null set. For technical reasons later on, we will need to assume that the sets $E_{n,i}$ are mutually independent events (the measure of the intersection is the product of the measures). It is not difficult to write down such $E_{n,i}$ explicitly.
@@ -1312,11 +1314,17 @@ This concludes the proof of Theorem~\ref{thm:cichon}.
 % bartoszynski, handbook
 
 
+% Part II: Forcing
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The idea of forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A \emph{notion of forcing} is a partial order $\mathbb P$ with a maximum element $1_{\mathbb P}$.
+In this section we introduce the basic combinatorial objects used in forcing, and give some idea of the role of each one.
+
+A \emph{notion of forcing} is a partial order $\mathbb P$ with a maximum element $\mathbb1$ (also written $\mathbb1_{\mathbb P}$). When we force with the notion $\mathbb P$, we add a new subset of $\mathbb P$ to the universe. We think of the elements of $\mathbb P$ as imposing conditions on the new set to be added. If $p,q\in\mathbb P$ we say that $p$ is \emph{stronger} than $q$ if $p\leq q$; lower elements hold more information.
+
+When we add a new subset of $\mathbb P$ to the universe, we don't add an arbitrary set. We add a filter:
 
 \begin{defn}
   A subset $G\subset\mathbb P$ is a \emph{filter} if it satisfies the two properties:
@@ -1326,20 +1334,39 @@ A \emph{notion of forcing} is a partial order $\mathbb P$ with a maximum element
   \end{itemize}
 \end{defn}
 
+Elements $p,q$ are said to be \emph{compatible} if there exists $r$ such that $r\leq p,q$. Thus a filter is simply a set of pairwise compatible elements, closed upwards for convenience.
+
 \begin{example}
-  Let $T\subset\omega^{<\omega}$ be a tree. Then $T$ can be made into a notion of forcing by turning it upside-down, that is, letting $s\leq t$ if and only if $s\supset t$.
+  Let $T\subset\omega^{<\omega}$ be a tree. Then $T$ can be made into a notion of forcing by turning it upside-down, that is, setting $s\leq t$ if and only if $s\supset t$. Since $T$ is a tree, this partial ordering has a maximal element $\mathbb1=$ the empty sequence.
+
+  In an upside-down tree such as $T$, the only way for two elements $s,t$ to be compatible is to actually be \emph{comparable}, that is, $s\subset t$ or $t\subset s$. Thus if $G\subset T$ is a filter, then the elements of $G$ actually form a path through $T$.
 \end{example}
 
+\ldots
 
 \begin{defn}
-  A subset $D\subset\mathbb P$ is \emph{dense} if for all
+  A subset $D\subset\mathbb P$ is \emph{dense} if for all $p\in\mathbb P$ there exists $q\in D$ such that $q\leq D$.
 \end{defn}
 
 The use of the word ``dense'' here may seem in conflict  with the use of the word in topology, but the two can be connected. If $\mathbb P$ is a partial order then it has a topology with a basis consisting of the downward cones $V_p=\set{q\in\mathbb P\mid q\leq p}$. A subset $D\subset\mathbb P$ is dense if and only if it is dense in this topology.
 
+\begin{defn}
+  A filter $G\subset\mathbb P$ is \emph{generic} if for every dense $D\subset\mathbb P$ we have $G\cap D\neq\emptyset$.
+\end{defn}
+
+Of course, generic filters don't exist---or do they???
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Martin's axiom}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A subset $A\subset\mathbb P$ is said to be an \emph{antichain} if for all $p,q\in A$ we have $p$ and $q$ are not compatible. Thus if $A$ is an antichain, a filter $G$ can only choose at most \emph{one} of the elements of $A$.
+
+\begin{defn}
+  A notion of forcing $\mathbb P$ is said to be \emph{ccc} (or satisfy the \emph{countable chain condition}) if every antichain $A\subset\mathbb P$ is countable.
+\end{defn}
+
+In some sense the ccc imposes a limitation on the number of different filters that may be added when forcing with $\mathbb P$.
 
 
 
