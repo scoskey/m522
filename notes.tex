@@ -1296,12 +1296,16 @@ This concludes the proof of Theorem~\ref{thm:cichon}.
 
 \begin{exerc}
   \label{exerc:self-supporting}
-  Prove Proposition~\ref{prop:self-supporting}. [Hint: First show that there exists set $C$ which is disjoint from $A$, closed, and nonnull. Now let $D$ be the union of all $V_s$ such that $m(V_s\cap C)=0$, and let $K=C\smallsetminus D$. Then $K$ is closed and has the desired property.]
+  Prove Proposition~\ref{prop:self-supporting}. [Hint: First show that there exists a closed subset $C\subset2^\omega\smallsetminus A$ which is nonnull. Let $D$ be the union of all basic open sets $V_s$ such that $m(V_s\cap C)=0$, and show that $m(D)=0$. Finally let $K=C\smallsetminus D$, and show that $K$ has the desired properties.]
 \end{exerc}
 
 \begin{exerc}
   \label{exerc:pi-base-meager}
-  Prove Proposition~\ref{prop:pi-base-meager}. [Hint: Wlog $O=2^\omega$ itself. Let $\mathcal U_1$ be any open basis. Proceed by induction. If $\mathcal U_n$ has been constructed, \ldots]
+  Prove Proposition~\ref{prop:pi-base-meager}. [Hint: Wlog $O=2^\omega$ itself, and wlog we can replace $2^n$ with $n$. Let $\mathcal U_1$ be an open basis, and show that $\mathcal U_1$ is as desired. If $\mathcal U_n$ has been defined, enumerate it as $V_1,V_2,\ldots$. For each $V_i$ consider all the clopen sets $V$ with the property:
+  \begin{itemize}
+  \item for all $J\subset i$, if $\bigcap_{j\in J}V_j\neq\emptyset$ then we have $V\cap\bigcap_{j\in\ J}V_j\neq\emptyset$.
+  \end{itemize}
+  Then let $\mathcal U_{n+1}$ be the collection of $V_i\cup V$ for all $i$ and $V$ with this property. Once again verify that any nowhere dense set is disjoint from an element of $\mathcal U_{n+1}$ and that the intersection of any $n+1$ elements of $\mathcal U_{n+1}$ is nonempty. It may help to start with the special case $n=2$.]
 \end{exerc}
 
 % fremlin, measure theory v5p1 522P
