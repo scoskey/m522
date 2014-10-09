@@ -1318,8 +1318,6 @@ This concludes the proof of Theorem~\ref{thm:cichon}.
 % fremlin, measure theory v5p1 522P
 % bartoszynski, handbook
 
-
-\newpage
 \chapter*{Part II: Forcing}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1332,11 +1330,11 @@ Forcing is a method of adding new sets to a given model $V$ of ZFC, to obtain a 
 
 For example, \ldots
 
-Note that forcing cannot do everything. For example, \ldots
+Note that forcing cannot do everything. For example, if $A\in V$ and $A\neq\emptyset$, then $A$ will remain nonempty after forcing. There is some $a$ such that $a\in A$ and this element will remain in $A$ forever. Moreover, if $A$ is a finite or even countable set, then it is not possible to add new elements to $A$ by any means.
 
 For the rest of this section we introduce the basic combinatorial objects used in forcing. The main object is very simple: a \emph{forcing notion} is simply a partial order $\mathbb P$ with a maximum element $\mathbb1$ (also written $\mathbb1_{\mathbb P}$). When we force with $\mathbb P$, we add a new subset of $\mathbb P$ to the universe. We think of the elements of $\mathbb P$ as imposing conditions on the new set to be added. If $p,q\in\mathbb P$ we say that $p$ is \emph{stronger} than $q$ if $p\leq q$; lower elements hold more information.
 
-When we add a new subset of $\mathbb P$ to the universe, we don't add an arbitrary set. We add a filter:
+When we force with $\mathbb P$, the partial order $\mathbb P$ can give fine control over the new subset that we add.
 
 \begin{defn}
   A subset $G\subset\mathbb P$ is a \emph{filter} if it satisfies the two properties:
@@ -1362,11 +1360,25 @@ Elements $p,q$ are said to be \emph{compatible} if there exists $r$ such that $r
 
 The use of the word ``dense'' here may seem in conflict  with the use of the word in topology, but the two can be connected. If $\mathbb P$ is a partial order then it has a topology with a basis consisting of the downward cones $V_p=\set{q\in\mathbb P\mid q\leq p}$. A subset $D\subset\mathbb P$ is dense if and only if it is dense in this topology.
 
+We think of the dense subsets of $\mathbb P$ as omnipresent---almost every element of $\mathbb P$ lies below some element of $D$. When we force with $\mathbb P$ we add a filter $G$ that is \emph{generic} in the sense that it meets these dense subsets of $\mathbb P$. The more dense sets that we demand that $G$ meets, the stronger a condition this imposes on $G$. The filter is fully generic if it meets \emph{every} dense set of $\mathbb P$.
+
+\begin{prop}
+Suppose that for every $p\in\mathbb P$ there exist incompatible  then $\mathbb P$ does not have a generic filter.
+\end{prop}
+
+\begin{proof}
+
+\end{proof}
+
+Such a partial order $\mathbb P$ is called \emph{atomless}; this nontriviality condition is necessary assumption for forcing with $\mathbb P$. Once we acknowledge that fully generic filters do not exist in the given universe of set theory, we arrive at the following definition.
+
 \begin{defn}
-  A filter $G\subset\mathbb P$ is \emph{generic} if for every dense $D\subset\mathbb P$ we have $G\cap D\neq\emptyset$.
+  If $V$ is a model of set theory and $\mathbb P\in V$, we say that $G$ is \emph{$V$-generic} if for every $D\in V$ such that $D\subset\mathbb P$ is dense, we have $G\cap D\neq\emptyset$.
 \end{defn}
 
-Of course, generic filters don't exist---or do they???
+\begin{example}
+  Returning to the example of the forcing $\mathbb P=\omega^\omega$ with the upside-down ordering, we have already said that a filter $G\subset\omega^\omega$ is actually a path through $\omega^\omega$.
+\end{example}
 
 % Kunen, IV.1
 
@@ -1381,6 +1393,11 @@ A subset $A\subset\mathbb P$ is said to be an \emph{antichain} if for all $p,q\i
 \end{defn}
 
 In some sense the ccc imposes a limitation on the number of different filters that may be added when forcing with $\mathbb P$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Nuts and bolts of forcing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
