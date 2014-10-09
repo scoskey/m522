@@ -1,7 +1,6 @@
-\documentclass[11pt,oneside]{amsart}
+\documentclass[11pt,oneside]{amsbook}
 
 \title{Math 522 Course Notes}
-% cardinal characteristics of the real numbers and forcing
 \author{Samuel Coskey}
 \author{Erik Holmes}
 
@@ -35,6 +34,7 @@
 \theoremstyle{definition}
 \newtheorem{exerc}{Exercise}[section]
 \swapnumbers
+\theoremstyle{theorem}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{lem}[thm]{Lemma}
@@ -44,16 +44,22 @@
 \theoremstyle{remark}
 \newtheorem{rem}[thm]{Remark}
 \newtheorem{example}[thm]{Example}
+\newtheorem*{notes}{Notes and further reading}
 
 \begin{document}
+
+\frontmatter
+
 \maketitle
 
 \tableofcontents
 
-\newpage
+\mainmatter
+
+\setcounter{page}{4}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Introduction}
+\chapter*{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 This course is about set theory, and its use in the study of the real line. By way of motivation, consider the question of measuring the \emph{size} of a given set of real numbers. The word ``size'' can mean many different things, depending on the context. To see what I mean, consider these three important examples.
@@ -75,9 +81,8 @@ In his proof of the latter half of the independence of CH, Cohen developed a too
 
 With the tool of forcing in hand, we will return to the notions of measure and category. We will find that there are numerous cardinal numbers surrounding the zero length sets and the meager sets whose values, like the size of the set of all real numbers, are also independent of the axioms of set theory.
 
-\newpage
 
-% Part I: Category and measure
+\chapter*{Part I: Category and measure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The real number system}
@@ -1314,15 +1319,22 @@ This concludes the proof of Theorem~\ref{thm:cichon}.
 % bartoszynski, handbook
 
 
-% Part II: Forcing
+\newpage
+\chapter*{Part II: Forcing}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The idea of forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this section we introduce the basic combinatorial objects used in forcing, and give some idea of the role of each one.
+Recall G\"odel's incompleteness theorem. The usual axioms of set theory cannot decide the truth of every statement. Any collection of axioms such as ZFC will have many models. The theorems of ZFC are the properties that hold in every model. But there are many statements, such as CH, which hold in some models and fail to hold in others. Such statements are called \emph{independent}.
 
-A \emph{notion of forcing} is a partial order $\mathbb P$ with a maximum element $\mathbb1$ (also written $\mathbb1_{\mathbb P}$). When we force with the notion $\mathbb P$, we add a new subset of $\mathbb P$ to the universe. We think of the elements of $\mathbb P$ as imposing conditions on the new set to be added. If $p,q\in\mathbb P$ we say that $p$ is \emph{stronger} than $q$ if $p\leq q$; lower elements hold more information.
+Forcing is a method of adding new sets to a given model $V$ of ZFC, to obtain a larger model $W$ of ZFC. By carefully choosing \emph{how} we add the new sets, we may be able to \emph{force} a given statement to hold in $W$.
+
+For example, \ldots
+
+Note that forcing cannot do everything. For example, \ldots
+
+For the rest of this section we introduce the basic combinatorial objects used in forcing. The main object is very simple: a \emph{forcing notion} is simply a partial order $\mathbb P$ with a maximum element $\mathbb1$ (also written $\mathbb1_{\mathbb P}$). When we force with $\mathbb P$, we add a new subset of $\mathbb P$ to the universe. We think of the elements of $\mathbb P$ as imposing conditions on the new set to be added. If $p,q\in\mathbb P$ we say that $p$ is \emph{stronger} than $q$ if $p\leq q$; lower elements hold more information.
 
 When we add a new subset of $\mathbb P$ to the universe, we don't add an arbitrary set. We add a filter:
 
@@ -1355,6 +1367,8 @@ The use of the word ``dense'' here may seem in conflict  with the use of the wor
 \end{defn}
 
 Of course, generic filters don't exist---or do they???
+
+% Kunen, IV.1
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Martin's axiom}
