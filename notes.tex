@@ -156,11 +156,11 @@ This argument appears in one form or another numerous times throughout elementar
   Let $A$ be a set of real numbers containing a positive-length interval. Show that $A$ is uncountable.
 \end{exerc}
 
-% Abbott section 1.3 completeness
-% Abbott section 1.4 cantor's theorem
-% Abbott section 8.4 dedekind cuts
+\begin{notes}
+  Although the material in this section is standard and can be located in most any analysis book, an excellent introduction is \emph{Understanding Analysis} by Stephen Abbott. For the completeness axiom see Abbott, Section~1.3. For Cantor's theorem see Abbott, Section~1.4. For Dedekind cuts see Abbott, Section~8.4.
+\end{notes}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Baire category theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -288,9 +288,9 @@ We should also verify that there exists sets of numbers that are neither meager 
   We have observed that unlike the nowhere dense property, the meager property is not necessarily preserved to the closure. Prove that if $\cl(A)$ is meager, then $A$ was nowhere dense to begin with.
 \end{exerc}
 
-% Abbott section 3.1 cantor set
-% Abbott section 3.5 baire category theorem
-% Oxtoby chapter 1 category
+\begin{notes}
+  For more on the Cantor set see Abbott, Section~3.1. For the Baire category theorem see Abbott, Section~3.5. For Baire category theory generally see Oxtoby, Chapter~1.
+\end{notes}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lebesgue measure theory}
@@ -1295,11 +1295,11 @@ This time we will need a topological fact before the proof, and once again we le
   Finally let $A$ and $S=(I_n)$ be given and suppose that $\phi(A)\in^*S$. Then for $n$ large enough we have that $I_n$ contains an element $i$ with $A_n\cap U_{n,i}=\emptyset$. Thus for $N$ large enough we have that $A_n$ is disjoint from $\bigcup_{n\geq N}\bigcap_{i\in I_n}U_{n,i}$. It follows that $A_n\subset\psi(S)$, and hence $A\subset\psi(S)$ as desired.
 \end{proof}
 
-\begin{cor}[Bartoszy\'nski]
+\begin{cor}
   We have $\add(\Null)\leq\add(\Meager)$ and $\cof(\Meager)\leq\cof(\Null)$.
 \end{cor}
 
-This concludes the proof of Theorem~\ref{thm:cichon}.
+This concludes the proof of Bartoszy\'nski's theorem, as well as Theorem~\ref{thm:cichon}.
 
 \begin{exerc}
   \label{exerc:self-supporting}
@@ -1326,11 +1326,13 @@ This concludes the proof of Theorem~\ref{thm:cichon}.
 
 Recall G\"odel's incompleteness theorem. The usual axioms of set theory cannot decide the truth of every statement. Any collection of axioms such as ZFC will have many models. The theorems of ZFC are the properties that hold in every model. But there are many statements, such as CH, which hold in some models and fail to hold in others. Such statements are called \emph{independent}.
 
-Forcing is a method of adding new sets to a given model $V$ of ZFC, to obtain a larger model $W$ of ZFC. By carefully choosing \emph{how} we add the new sets, we may be able to \emph{force} a given statement to hold in $W$.
+Forcing is a method of adding new sets to a given model $V$ of ZFC, to obtain a larger model $W$ of ZFC. By carefully choosing \emph{how} we add the new sets, we may be able to \emph{force} a given statement to hold in $W$. For example if $\mathcal F\subset\omega^\omega$, it is possible to add a new element $g\in\omega^\omega$ that is a bound for $\mathcal F$, even if $\mathcal F$ was unbounded to begin with. This is a powerful move, and when iterated it can have an effect on the value of the cardinal $\mathfrak b$.
 
-For example, \ldots
+But forcing cannot do just anything. For a very simple example, if $A\neq\emptyset$, then $A$ will remain nonempty after forcing. There is some element $a\in A$ and this element will remain in $A$ forever. More generally, we will see that a wide variety of statements are \emph{absolute}, meaning that their truth value cannot be changed by forcing. The Riemann hypothesis is an example of such a statement.
 
-Note that forcing cannot do everything. For example, if $A\in V$ and $A\neq\emptyset$, then $A$ will remain nonempty after forcing. There is some $a$ such that $a\in A$ and this element will remain in $A$ forever. Moreover, if $A$ is a finite or even countable set, then it is not possible to add new elements to $A$ by any means.
+The concept of absoluteness highlights the distinction between ordinals and cardinals. Recall that an ordinal is a set which is transitive and well-ordered by the $\in$ relation. Both of these properties are absolute, and therefore forcing can never add or change ordinals. On the other hand, $\aleph_1$ is defined to be the least ordinal that cannot be mapped injectively into $\omega$. So $\aleph_1$ is equal to some ordinal $\alpha$, but this ordinal value can be raised by a forcing which adds a new injection $\alpha\to\omega$!
+
+The situtation is even more fluid with an indirectly-defined cardinal such as $\mathfrak c$. Recall that $\mathfrak c$ is the unique cardinal number $\aleph_\alpha$ that is in bijection with $\mathcal P(\omega)$. This value can be raised by a forcing which adds at least $\aleph_{\alpha+1}$ many new subsets of $\omega$. The value can also be shrunk by a forcing which adds a new bijection between $\aleph_1$ and the old $\aleph_\alpha$ (while still preserving $\aleph_1$). Roughly speaking, this is how we will establish the independence of the continuum hypothesis.
 
 For the rest of this section we introduce the basic combinatorial objects used in forcing. The main object is very simple: a \emph{forcing notion} is simply a partial order $\mathbb P$ with a maximum element $\mathbb1$ (also written $\mathbb1_{\mathbb P}$). When we force with $\mathbb P$, we add a new subset of $\mathbb P$ to the universe. We think of the elements of $\mathbb P$ as imposing conditions on the new set to be added. If $p,q\in\mathbb P$ we say that $p$ is \emph{stronger} than $q$ if $p\leq q$; lower elements hold more information.
 
@@ -1352,7 +1354,7 @@ Elements $p,q$ are said to be \emph{compatible} if there exists $r$ such that $r
   In an upside-down tree such as $T$, the only way for two elements $s,t$ to be compatible is to actually be \emph{comparable}, that is, $s\subset t$ or $t\subset s$. Thus if $G\subset T$ is a filter, then the elements of $G$ actually form a path through $T$.
 \end{example}
 
-\ldots
+We encourage the reader to note the distinction between the two words comparable and compatible: pairwise comparable sets form a chain while pairwise compatible sets form a filter. Compatibility is what is needed in direct limit constructions. In a tree, the two concepts end up the same.
 
 \begin{defn}
   A subset $D\subset\mathbb P$ is \emph{dense} if for all $p\in\mathbb P$ there exists $q\in D$ such that $q\leq D$.
@@ -1360,24 +1362,27 @@ Elements $p,q$ are said to be \emph{compatible} if there exists $r$ such that $r
 
 The use of the word ``dense'' here may seem in conflict  with the use of the word in topology, but the two can be connected. If $\mathbb P$ is a partial order then it has a topology with a basis consisting of the downward cones $V_p=\set{q\in\mathbb P\mid q\leq p}$. A subset $D\subset\mathbb P$ is dense if and only if it is dense in this topology.
 
-We think of the dense subsets of $\mathbb P$ as omnipresent---almost every element of $\mathbb P$ lies below some element of $D$. When we force with $\mathbb P$ we add a filter $G$ that is \emph{generic} in the sense that it meets these dense subsets of $\mathbb P$. The more dense sets that we demand that $G$ meets, the stronger a condition this imposes on $G$. The filter is fully generic if it meets \emph{every} dense set of $\mathbb P$.
+We think of the dense subsets of $\mathbb P$ as omnipresent---almost every element of $\mathbb P$ lies below some element of $D$. When we force with $\mathbb P$ we add a filter $G$ that is \emph{generic} in the sense that it meets these dense subsets of $\mathbb P$. The more dense sets that we demand that $G$ meets, the stronger a condition this imposes on $G$. One might say that the filter is fully generic if it meets \emph{every} dense set of $\mathbb P$, but the next result shows that this is too strong.
 
 \begin{prop}
-Suppose that for every $p\in\mathbb P$ there exist incompatible  then $\mathbb P$ does not have a generic filter.
+  Suppose that for every $p\in\mathbb P$, there exist incompatible elements $q,r\leq p$. Then $\mathbb P$ does not have a fully generic filter.
 \end{prop}
 
 \begin{proof}
-
+  It is enough to show that if $G\subset\mathbb P$ is a filter then its complement $D=\mathbb P\smallsetminus G$ is dense. For this, let $p\in\mathbb P$ be arbitrary and by the hypothesis on $\mathbb P$ let $q,r$ be incompatible elements such that $q,r\leq p$. Since $G$ is a filter, it cannot contain both $q$ and $r$. Thus $D$ contains at least one of them, and this shows $D$ is dense.
 \end{proof}
 
-Such a partial order $\mathbb P$ is called \emph{atomless}; this nontriviality condition is necessary assumption for forcing with $\mathbb P$. Once we acknowledge that fully generic filters do not exist in the given universe of set theory, we arrive at the following definition.
+A partial order $\mathbb P$ satisfying the hypothesis of the proposition is called \emph{atomless}. The condition ensures that forcing with $\mathbb P$ is nontrivial. Once we acknowledge that fully generic filters do not exist in the given universe of set theory, we arrive at the following definition.
 
 \begin{defn}
   If $V$ is a model of set theory and $\mathbb P\in V$, we say that $G$ is \emph{$V$-generic} if for every $D\in V$ such that $D\subset\mathbb P$ is dense, we have $G\cap D\neq\emptyset$.
 \end{defn}
 
 \begin{example}
-  Returning to the example of the forcing $\mathbb P=\omega^\omega$ with the upside-down ordering, we have already said that a filter $G\subset\omega^\omega$ is actually a path through $\omega^\omega$.
+  Returning to the example of the forcing notion $\mathbb P=\omega^{<\omega}$ with the upside-down ordering, we have already said that a filter $G\subset\omega^\omega$ is actually a path through $\omega^\omega$. If $G$ is $V$-generic, then much more can be said of this path. First of all, consider the sets
+  \[D_n=\set{t\in\omega^{<\omega}\mid \dom(t)\geq n}\;.
+  \]
+  Clearly $D_n$ is dense, since any $s\in\omega^{<\omega}$ can be extended to an element with length at least $n$ (recall we are using the upside-down ordering). It follows that $G$ meets $D_n$ for all $n$, and hence that $G$ is an infinite path. Second, if $G$ is $V$-generic then we have already seen that $G\notin V$. Thus the union $g=\bigcup G$ is an element of $\omega^{<\omega}$ that wasn't there before, that is, $g$ is a new element of the Baire space!
 \end{example}
 
 % Kunen, IV.1
@@ -1389,11 +1394,32 @@ Such a partial order $\mathbb P$ is called \emph{atomless}; this nontriviality c
 A subset $A\subset\mathbb P$ is said to be an \emph{antichain} if for all $p,q\in A$ we have $p$ and $q$ are not compatible. Thus if $A$ is an antichain, a filter $G$ can only choose at most \emph{one} of the elements of $A$.
 
 \begin{defn}
-  A notion of forcing $\mathbb P$ is said to be \emph{ccc} (or satisfy the \emph{countable chain condition}) if every antichain $A\subset\mathbb P$ is countable.
+  A partial order $\mathbb P$ is said to be \emph{ccc} (or satisfy the \emph{countable chain condition}) if every antichain $A\subset\mathbb P$ is countable.
 \end{defn}
 
 In some sense the ccc imposes a limitation on the number of different filters that may be added when forcing with $\mathbb P$.
 
+\begin{defn}
+  Martin's axiom (MA) is the statement: For every ccc partial order $\mathbb P$ and every family $\mathcal F$ of fewer than continuum many dense subsets of $\mathbb P$ there exists an $\mathcal F$-generic filter $G\subset\mathbb P$.
+\end{defn}
+
+MA packages a great deal of forcing in one universe $V$. When MA is true, it is as if somebody has already performed forcing with all of the ccc partial orders. Of course since we can never find fully generic sets, there had to be some limitation on the genericity of $G$.
+
+\begin{prop}
+  In the definition of MA, we cannot in general allow $\mathcal F$ to be of size continuum.
+\end{prop}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{prop}
+  In the definition of MA, we cannot completely drop the condition that $\mathbb P$ be ccc.
+\end{prop}
+
+\begin{proof}
+  
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Nuts and bolts of forcing}
