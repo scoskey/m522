@@ -387,9 +387,10 @@ Corollary~\ref{cor:interval-non-null} is immediate from condition (a) of Theorem
   Give a proof directly from Definition ~\ref{defn:null} that the class of null sets is closed under countable union.
 \end{exerc}
 
-% Folland section 1.1 vitali set
-% Folland section 1.4 caratheodory
-% Oxtoby chapter 1 interval property (a)
+\begin{notes}
+  Our presentation of Vitali's construction follows Folland, Section~1.1. Our proof of Theorem~\ref{thm:caratheodory}, part (a) follows Oxtoby, Chapter~1. For a proof of part (c), see Folland, Section~1.4. 
+\end{notes}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sets, orderings, and cardinality}
@@ -444,25 +445,27 @@ Our first result confirms that there are many different uncountable cardinalitie
 In the next few results, we essentially show that the cardinals are well-ordered by $\leq$. Note that reflexivity holds because the identity function is an injection from $A$ into itself, and transitivity holds because the composition of two injections is an injection. The following result establishes antisymmetry.
 
 \begin{thm}[Cantor--Schr\"oder--Bernstein]
+  \label{thm:csb}
   If there are injections $i\colon A\to B$ and $j\colon B\to A$ then there is a bijection $f\colon A\to B$.
 \end{thm}
 
 \begin{proof}
   Replacing $B$ with $j(B)$, we may suppose that that $B\subset A$. Then we have
-\[A\supset B\supset i(A)\supset i(B)\supset i^2(A)\supset\cdots
-\]
-Now $A$ can be written as the union of the successive differences of these sets, together with the intersection of them all:
-\[A=(A\mathord{\smallsetminus}B)\cup(B\mathord{\smallsetminus}i(A))\cup(i(A)\mathord{\smallsetminus}i(B))\cup\cdots\cup \bigcap i^n(A)
-\]
-Meanwhile, $i$ gives bijections
-\[A\mathord{\smallsetminus}B\leftrightarrow i(A)\mathord{\smallsetminus}i(B)\leftrightarrow i^2(A)\mathord{\smallsetminus}i^2(B)\leftrightarrow\cdots
-\]
-It follows that the map
-\[f(a)=\begin{cases}i(a)&\text{if }a\in(A\mathord{\smallsetminus}B)\cup(i(A)\mathord{\smallsetminus}i(B))\cup(i^2(A)\mathord{\smallsetminus}i^2(B))\cup\cdots\\
-a&\text{otherwise}
-\end{cases}
-\]
-is a bijection from $A$ to $B$.
+  \[A\supset B\supset i(A)\supset i(B)\supset i^2(A)\supset\cdots
+  \]
+  Now $A$ can be written as the union of the successive differences of these sets, together with the intersection of them all:
+  \[A=(A\mathord{\smallsetminus}B)\cup(B\mathord{\smallsetminus}i(A))
+  \cup(i(A)\mathord{\smallsetminus}i(B))\cup\cdots\cup \bigcap i^n(A)
+  \]
+  Meanwhile, $i$ gives bijections
+  \[A\mathord{\smallsetminus}B\leftrightarrow i(A)\mathord{\smallsetminus}i(B)\leftrightarrow i^2(A)\mathord{\smallsetminus}i^2(B)\leftrightarrow\cdots
+  \]
+  It follows that the map
+  \[f(a)=\begin{cases}i(a)&\text{if }a\in(A\mathord{\smallsetminus}B)\cup(i(A)\mathord{\smallsetminus}i(B))\cup(i^2(A)\mathord{\smallsetminus}i^2(B))\cup\cdots\\
+    a&\text{otherwise}
+  \end{cases}
+  \]
+  is a bijection from $A$ to $B$.
 \end{proof}
 
 \begin{rem}
@@ -510,10 +513,12 @@ Although we still can't be fully rigorous about the meaning of the symbols $\ale
   We used the well-ordering principle together with Cantor's theorem to argue that there are uncountable ordinals. Here is another way: show that the set of isomorphism equivalence classes of well-orderings of $\omega$ is itself naturally well-ordered, and that this well-ordering is uncountable.
 \end{exerc}
 
-% Chaim Samuel H\"onig, \emph{Proof of the well-ordering of cardinal numbers}.
-% Kunen section I.10 CSB theorem
+\begin{notes}
+  Our proof of Theorem~\ref{thm:card-well} follows and extends the proof given in Chaim Samuel H\"onig, \emph{Proof of the well-ordering of cardinal numbers}. For a more detailed proof of Theorem~\ref{thm:csb}, see Kunen (Foundations), Section~I.10.
+\end{notes}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Ordinal numbers and cardinal numbers}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1393,7 +1398,8 @@ When we make forcing rigorous, we will show that under appropriate hypotheses, a
 
 This example brings us back to our discussion of forcing CH to be false in a forcing extension. We have just seen how to add one new element to $\omega^\omega$; if we were to repeat the process we can add many new elements to $\omega^\omega$.
 
-% Kunen, IV.1
+% Marker for basic logic and models
+% Kunen, IV.1 for forcing defs
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Martin's axiom}
@@ -1411,10 +1417,25 @@ In some sense the ccc imposes a limitation on the number of different filters th
   \emph{Martin's axiom} (or just \emph{MA}) is the statement: For every ccc partial order $\mathbb P$ and every family $\mathcal F$ of fewer than continuum many dense subsets of $\mathbb P$ there exists an $\mathcal F$-generic filter $G\subset\mathbb P$.
 \end{defn}
 
+We sometimes consider the refinements of MA defined as follows. The axiom MA$_\kappa$ is the same statement as MA, with $|\mathcal F|<\mathfrak c$ replaced by $|\mathcal F|=\kappa$.
+
+\begin{prop}
+  MA$_{\aleph_0}$ is true. Thus if CH holds, then MA is true.
+\end{prop}
+
+\begin{proof}
+
+\end{proof}
+
+
+\begin{thm}
+  It is consistent for both MA and $\neg$CH to hold simultaneously.
+\end{thm}
+
 The axiom MA packages a great deal of forcing into one universe $V$. When MA is true, it is as if somebody has already performed forcing with all of the ccc partial orders. Of course since we can never find fully generic sets, there had to be some limitation on the genericity of $G$.
 
 \begin{prop}
-  In the definition of MA, we cannot in general allow $\mathcal F$ to be of size continuum.
+  In the definition of MA, we cannot in general drop the condition that $\mathcal F$ have size less than continuum.
 \end{prop}
 
 \begin{proof}
@@ -1429,25 +1450,38 @@ The axiom MA packages a great deal of forcing into one universe $V$. When MA is 
   
 \end{proof}
 
-We sometimes consider the refinements of MA defined as follows. The axiom MA$_\kappa$ states
-
-\begin{prop}
-  
-\end{prop}
-
 \begin{thm}
-  Assuming MA, we have $\add(\Null)=\mathfrak c$. Hence all the cardinal characteristics in Cicho\'n's diagram are equal, but possibly larger than $\aleph_1$.
+  Assuming MA, we have $\cov(\Meager)=\mathfrak c$.
 \end{thm}
 
 \begin{proof}
 
 \end{proof}
 
-% kunen
+In the next section we will show that with a more clever partial ordering, we can in fact show MA pushes all the cardinal characteristics in Cicho\'n's diagram up to $\mathfrak c$.
+
+% kunen, III.1 for ccc
+% kunen, III.2 for MA
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Nuts and bolts of forcing}
+\section{Martin's axiom and Cicho\'n's diagram}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thm}
+  Assuming MA, we have $\add(\Null)=\mathfrak c$. In particular, all the cardinal characteristics in Cicho\'n's diagram (except possibly for $\aleph_1$) have the same value.
+\end{thm}
+
+\begin{proof}
+
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{The forcing relation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{The forcing theorems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
