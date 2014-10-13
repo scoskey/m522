@@ -1,6 +1,6 @@
 \documentclass[11pt,oneside]{amsbook}
 
-\title[Category, measure, and forcing]{Category, measure, and forcing\\Math 522 course notes}
+\title[Category, measure, and forcing]{Category, measure, and forcing\\Math 522 lecture notes\\Fall, 2014}
 \author{Samuel Coskey}
 \author{Erik Holmes}
 
@@ -30,6 +30,7 @@
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
 \DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\Fn}{Fn}
 
 \theoremstyle{definition}
 \newtheorem{exerc}{Exercise}[section]
@@ -1329,9 +1330,9 @@ This concludes the proof of Bartoszy\'nski's theorem, as well as Theorem~\ref{th
 \section{The idea of forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this part, we will assume familiarity with the notions of statement, theory, and model. A \emph{statement} is simply a mathematical assertion that can be expressed using the ordinary logical symbols (and, or, quantifiers, variables) and non-logical symbols (in our case, $\epsilon$, $\subset$, $\mathcal P$, etc). The statement is called a \emph{sentence} if all the variables are quantified. A \emph{theory} is any collection of sentences. If $T$ is a theory, then a \emph{model} of $T$ is a set, together with interpretations of the non-logical symbols of $T$, in which all the sentences in $T$ hold true.
+In this part, we will assume familiarity with the notions of statement, theory, and model. As a reminder, a \emph{formula} is simply a mathematical assertion that can be expressed using the ordinary logical symbols (and, or, not, quantifiers, variables) and non-logical symbols (in our case, $\in$, $\cup$, $\mathcal P$, etc). A \emph{sentence} is a formula in which every variable is quantified, and a \emph{theory} is a collection of sentences. If $T$ is a theory, then a \emph{model} of $T$ is a set, together with interpretations of the non-logical symbols of $T$, in which all the sentences in $T$ hold true.
 
-We are interested in the theory \emph{ZFC}, which consists of the standard axioms for set theory, that govern how the $\in$ relation behaves. G\"odel's incompleteness theorem implies that for some sentences, the models of ZFC do not all agree about whether it is true or false. A sentence is a \emph{theorem} of ZFC if it holds true in every model. A sentence is \emph{independent} of ZFC if it holds true in some models, and false in others. One example that we have mentioned already is CH, the statement that $\mathfrak c=\aleph_1$.
+We are interested in the theory \emph{ZFC}, which consists of the standard axioms for set theory, that govern how the $\in$ relation behaves. G\"odel's incompleteness theorem implies that for some sentences $\phi$, the models of ZFC do not all agree about whether $\phi$ is true or false. A \emph{theorem} is a sentence that holds true in every model of ZFC. A sentence is \emph{independent} of ZFC if it holds true in some models, and false in others. One example that we have mentioned already is CH, the sentence which says that $\mathfrak c=\aleph_1$.
 
 Forcing is a method of adding new sets to a given model $V$ of ZFC, to obtain a larger model $W$ of ZFC. By carefully choosing \emph{how} we add the new sets, we may be able to \emph{force} a given statement to hold true in $W$. For example if $\mathcal F\subset\omega^\omega$, it is possible to add a new element $g\in\omega^\omega$ that is a bound for $\mathcal F$, even if $\mathcal F$ was unbounded to begin with. This is a powerful move, and when iterated it can have an effect on the value of the cardinal $\mathfrak b$.
 
@@ -1411,7 +1412,17 @@ A subset $A\subset\mathbb P$ is said to be an \emph{antichain} if for all $p,q\i
   A partial order $\mathbb P$ is said to be \emph{ccc} (or satisfy the \emph{countable chain condition}) if every antichain $A\subset\mathbb P$ is countable.
 \end{defn}
 
-In some sense the ccc imposes a limitation on the number of different filters that may be added when forcing with $\mathbb P$.
+In some sense the ccc imposes a limitation on the number of different filters that may be added when forcing with $\mathbb P$. The partial order $\omega^{<\omega}$ considered in the previous section is obviously ccc because it is countable. Soon we will wish to consider the forcing that adds a new element to $\omega^\kappa$ using finite approximations. 
+
+This partial order is no longer countable, but it is still ccc.
+
+\begin{prop}
+  The partial order $\Fn(\kappa,\omega)$ is ccc.
+\end{prop}
+
+\begin{proof}
+
+\end{proof}
 
 \begin{defn}
   \emph{Martin's axiom} (or just \emph{MA}) is the statement: For every ccc partial order $\mathbb P$ and every family $\mathcal F$ of fewer than continuum many dense subsets of $\mathbb P$ there exists an $\mathcal F$-generic filter $G\subset\mathbb P$.
@@ -1424,9 +1435,10 @@ We sometimes consider the refinements of MA defined as follows. The axiom MA$_\k
 \end{prop}
 
 \begin{proof}
-
+  Let $\mathbb P$ be any partial order and let $D_0,D_1,\ldots$ be a countable family of dense subsets of $\mathbb P$. Fix $p_0\in D_0$, and inductively let $p_{n+1}\leq p_n$ be an element of $D_{n+1}$. Then the set $\{p_n\}$ is downwards directed, and hence closing it upwards generates a filter $G$ which meets each of the $D_i$.
 \end{proof}
 
+The next result states that MA is also consistent with a larger continuum.
 
 \begin{thm}
   It is consistent for both MA and $\neg$CH to hold simultaneously.
@@ -1458,7 +1470,7 @@ The axiom MA packages a great deal of forcing into one universe $V$. When MA is 
 
 \end{proof}
 
-In the next section we will show that with a more clever partial ordering, we can in fact show MA pushes all the cardinal characteristics in Cicho\'n's diagram up to $\mathfrak c$.
+In the next section we will see that with a more clever partial ordering, we can in fact show MA pushes all the cardinal characteristics in Cicho\'n's diagram up to $\mathfrak c$.
 
 % kunen, III.1 for ccc
 % kunen, III.2 for MA
@@ -1469,12 +1481,26 @@ In the next section we will show that with a more clever partial ordering, we ca
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{thm}
+  \label{thm:ma-addn}
   Assuming MA, we have $\add(\Null)=\mathfrak c$. In particular, all the cardinal characteristics in Cicho\'n's diagram (except possibly for $\aleph_1$) have the same value.
 \end{thm}
+
+The \emph{amoeba} partial ordering is\ldots
+
+\begin{lem}
+  The amoeba partial ordering is ccc.
+\end{lem}
 
 \begin{proof}
 
 \end{proof}
+
+We are now prepared to prove Theorem~\ref{thm:ma-addn}.
+
+\begin{proof}[Proof of Theorem~\ref{thm:ma-addn}]
+
+\end{proof}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{The forcing relation}
