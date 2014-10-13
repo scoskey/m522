@@ -1,6 +1,6 @@
 \documentclass[11pt,oneside]{amsbook}
 
-\title{Math 522 Course Notes}
+\title[Category, measure, and forcing]{Category, measure, and forcing\\Math 522 course notes}
 \author{Samuel Coskey}
 \author{Erik Holmes}
 
@@ -1324,9 +1324,11 @@ This concludes the proof of Bartoszy\'nski's theorem, as well as Theorem~\ref{th
 \section{The idea of forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Recall G\"odel's incompleteness theorem. The usual axioms of set theory cannot decide the truth of every statement. Any collection of axioms such as ZFC will have many models. The theorems of ZFC are the properties that hold in every model. But there are many statements, such as CH, which hold in some models and fail to hold in others. Such statements are called \emph{independent}.
+In this part, we will assume familiarity with the notions of statement, theory, and model. A \emph{statement} is simply a mathematical assertion that can be expressed using the ordinary logical symbols (and, or, quantifiers, variables) and non-logical symbols (in our case, $\epsilon$, $\subset$, $\mathcal P$, etc). The statement is called a \emph{sentence} if all the variables are quantified. A \emph{theory} is any collection of sentences. If $T$ is a theory, then a \emph{model} of $T$ is a set, together with interpretations of the non-logical symbols of $T$, in which all the sentences in $T$ hold true.
 
-Forcing is a method of adding new sets to a given model $V$ of ZFC, to obtain a larger model $W$ of ZFC. By carefully choosing \emph{how} we add the new sets, we may be able to \emph{force} a given statement to hold in $W$. For example if $\mathcal F\subset\omega^\omega$, it is possible to add a new element $g\in\omega^\omega$ that is a bound for $\mathcal F$, even if $\mathcal F$ was unbounded to begin with. This is a powerful move, and when iterated it can have an effect on the value of the cardinal $\mathfrak b$.
+We are interested in the theory \emph{ZFC}, which consists of the standard axioms for set theory, that govern how the $\in$ relation behaves. G\"odel's incompleteness theorem implies that for some sentences, the models of ZFC do not all agree about whether it is true or false. A sentence is a \emph{theorem} of ZFC if it holds true in every model. A sentence is \emph{independent} of ZFC if it holds true in some models, and false in others. One example that we have mentioned already is CH, the statement that $\mathfrak c=\aleph_1$.
+
+Forcing is a method of adding new sets to a given model $V$ of ZFC, to obtain a larger model $W$ of ZFC. By carefully choosing \emph{how} we add the new sets, we may be able to \emph{force} a given statement to hold true in $W$. For example if $\mathcal F\subset\omega^\omega$, it is possible to add a new element $g\in\omega^\omega$ that is a bound for $\mathcal F$, even if $\mathcal F$ was unbounded to begin with. This is a powerful move, and when iterated it can have an effect on the value of the cardinal $\mathfrak b$.
 
 But forcing cannot do just anything. For a very simple example, if $A\neq\emptyset$, then $A$ will remain nonempty after forcing. There is some element $a\in A$ and this element will remain in $A$ forever. More generally, we will see that a wide variety of statements are \emph{absolute}, meaning that their truth value cannot be changed by forcing. The Riemann hypothesis is an example of such a statement.
 
@@ -1362,7 +1364,9 @@ We encourage the reader to note the distinction between the two words comparable
 
 The use of the word ``dense'' here may seem in conflict  with the use of the word in topology, but the two can be connected. If $\mathbb P$ is a partial order then it has a topology with a basis consisting of the downward cones $V_p=\set{q\in\mathbb P\mid q\leq p}$. A subset $D\subset\mathbb P$ is dense if and only if it is dense in this topology.
 
-We think of the dense subsets of $\mathbb P$ as omnipresent---almost every element of $\mathbb P$ lies below some element of $D$. When we force with $\mathbb P$ we add a filter $G$ that is \emph{generic} in the sense that it meets these dense subsets of $\mathbb P$. The more dense sets that we demand that $G$ meets, the stronger a condition this imposes on $G$. One might say that the filter is fully generic if it meets \emph{every} dense set of $\mathbb P$, but the next result shows that this is too strong.
+We think of the dense subsets of $\mathbb P$ as omnipresent---almost every element of $\mathbb P$ lies below some element of $D$. When we force with $\mathbb P$ we add a filter $G$ that is \emph{generic} in the sense that it meets these dense subsets of $\mathbb P$. The more dense sets that we demand that $G$ meets, the stronger a condition this imposes on $G$.
+
+For example, if just countably many dense sets are given, then we will see in the next section that there is always a filter that meets them all. On the other extreme, we could say that a filter is fully generic if it meets \emph{every} dense set of $\mathbb P$, but the next result shows that this is too strong.
 
 \begin{prop}
   Suppose that for every $p\in\mathbb P$, there exist incompatible elements $q,r\leq p$. Then $\mathbb P$ does not have a fully generic filter.
@@ -1378,12 +1382,16 @@ A partial order $\mathbb P$ satisfying the hypothesis of the proposition is call
   If $V$ is a model of set theory and $\mathbb P\in V$, we say that $G$ is \emph{$V$-generic} if for every $D\in V$ such that $D\subset\mathbb P$ is dense, we have $G\cap D\neq\emptyset$.
 \end{defn}
 
+When we make forcing rigorous, we will show that under appropriate hypotheses, a $V$-generic filter $G$ can be found outside of $V$. We will then let $W=V[G]$ be the smallest model containing both $V$ and $G$, and call this the forcing extension with respect to the notion $\mathbb P$.
+
 \begin{example}
   Returning to the example of the forcing notion $\mathbb P=\omega^{<\omega}$ with the upside-down ordering, we have already said that a filter $G\subset\omega^\omega$ is actually a path through $\omega^\omega$. If $G$ is $V$-generic, then much more can be said of this path. First of all, consider the sets
   \[D_n=\set{t\in\omega^{<\omega}\mid \dom(t)\geq n}\;.
   \]
   Clearly $D_n$ is dense, since any $s\in\omega^{<\omega}$ can be extended to an element with length at least $n$ (recall we are using the upside-down ordering). It follows that $G$ meets $D_n$ for all $n$, and hence that $G$ is an infinite path. Second, if $G$ is $V$-generic then we have already seen that $G\notin V$. Thus the union $g=\bigcup G$ is an element of $\omega^{<\omega}$ that wasn't there before, that is, $g$ is a new element of the Baire space!
 \end{example}
+
+This example brings us back to our discussion of forcing CH to be false in a forcing extension. We have just seen how to add one new element to $\omega^\omega$; if we were to repeat the process we can add many new elements to $\omega^\omega$.
 
 % Kunen, IV.1
 
@@ -1400,10 +1408,10 @@ A subset $A\subset\mathbb P$ is said to be an \emph{antichain} if for all $p,q\i
 In some sense the ccc imposes a limitation on the number of different filters that may be added when forcing with $\mathbb P$.
 
 \begin{defn}
-  Martin's axiom (MA) is the statement: For every ccc partial order $\mathbb P$ and every family $\mathcal F$ of fewer than continuum many dense subsets of $\mathbb P$ there exists an $\mathcal F$-generic filter $G\subset\mathbb P$.
+  \emph{Martin's axiom} (or just \emph{MA}) is the statement: For every ccc partial order $\mathbb P$ and every family $\mathcal F$ of fewer than continuum many dense subsets of $\mathbb P$ there exists an $\mathcal F$-generic filter $G\subset\mathbb P$.
 \end{defn}
 
-MA packages a great deal of forcing in one universe $V$. When MA is true, it is as if somebody has already performed forcing with all of the ccc partial orders. Of course since we can never find fully generic sets, there had to be some limitation on the genericity of $G$.
+The axiom MA packages a great deal of forcing into one universe $V$. When MA is true, it is as if somebody has already performed forcing with all of the ccc partial orders. Of course since we can never find fully generic sets, there had to be some limitation on the genericity of $G$.
 
 \begin{prop}
   In the definition of MA, we cannot in general allow $\mathcal F$ to be of size continuum.
@@ -1420,6 +1428,23 @@ MA packages a great deal of forcing in one universe $V$. When MA is true, it is 
 \begin{proof}
   
 \end{proof}
+
+We sometimes consider the refinements of MA defined as follows. The axiom MA$_\kappa$ states
+
+\begin{prop}
+  
+\end{prop}
+
+\begin{thm}
+  Assuming MA, we have $\add(\Null)=\mathfrak c$. Hence all the cardinal characteristics in Cicho\'n's diagram are equal, but possibly larger than $\aleph_1$.
+\end{thm}
+
+\begin{proof}
+
+\end{proof}
+
+% kunen
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Nuts and bolts of forcing}
