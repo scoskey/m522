@@ -606,7 +606,10 @@ The pattern continues transfinitely as well, with $\aleph_\alpha$ defined for ev
   If $A$ is an infinite set, show that $|A|$ is equal to $\aleph_\alpha$ for some $\alpha$.
 \end{exerc}
 
-% Kunen, set theory.
+\begin{notes}
+  This material on ordinals and cardinals can be found in any introductory set theory textbook. For ordinals, see for instance Section~1.7 of Devlin's \emph{The joy of sets}. For cardinals, see Section~3.6 of the same text.
+\end{notes}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The topology of Cantor and Baire space}
@@ -695,8 +698,10 @@ In particular the notions of meager and comeager sets make perfect sense in both
   Show that the sequence space $A^\omega$ is homeomorphic to the cartesian product with itself $A^\omega\times A^\omega$.
 \end{exerc}
 
-% Arnie Miller, forcing and DST, section 1.
-% Kechris
+\begin{notes}
+  For introductory material on the combinatorics and topology of sequence space, see Kechris, Sections~2A and~2B. For another proof that the Baire space is homeomorphic to the irrationals, see Section~1 of Miller, \emph{Descriptive set theory and forcing}.
+\end{notes}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{$\sigma$-compactness in Baire space}
@@ -804,7 +809,9 @@ We are now ready to state the connection between $\Ksigma$ sets and the eventual
   Consider the space $\RR^\omega$ with the product topology. Is it $\sigma$-compact?
 \end{exerc}
 
-% Blass, section 2
+\begin{notes}
+  The conection between $\mathcal K_\sigma$ and the domination relation $\leq^*$ is presented in Section~2 of Blass, \emph{Combinatorial cardinal characteristics of the continuum}.
+\end{notes}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1112,7 +1119,9 @@ Beyond these two examples, we see that each arrow in Cicho\'n's diagram (Theorem
   Find a morphism behind the proof of the inequality $\mathfrak b\leq\non(\Meager)$ (Lemma~\ref{lem:b-nonm}). Check that it is dual to a morphism behind the inequality $\cov(\Meager)\leq\mathfrak d$.
 \end{exerc}
 
-% blass section 4
+\begin{notes}
+  The material of this section is borrowed from Blass, Section~4.
+\end{notes}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1416,9 +1425,13 @@ A subset $A\subset\mathbb P$ is said to be an \emph{antichain} if for all $p,q\i
   A partial order $\mathbb P$ is said to be \emph{ccc} (or satisfy the \emph{countable chain condition}) if every antichain $A\subset\mathbb P$ is countable.
 \end{defn}
 
-In some sense the ccc imposes a limitation on the number of different filters that may be added when forcing with $\mathbb P$. The partial order $\omega^{<\omega}$ considered in the previous section is obviously ccc because it is countable. Soon we will wish to consider the forcing that adds a new element to $\omega^\kappa$ using finite approximations. 
+In some sense the ccc imposes a limitation on the number of different filters that may be added when forcing with $\mathbb P$. The partial order $\omega^{<\omega}$ considered in the previous section is obviously ccc because it is countable. We now introduce a family of partial orders that are uncountable but still ccc.
 
-This partial order is no longer countable, but it is still ccc.
+\begin{defn}
+  For any cardinals $\kappa,\lambda$, we define the set $\Fn(\kappa,\lambda)$ to be the family of all functions $p\colon F\to\lambda$, where $F$ is a finite subset of $\kappa$. We partially order $\Fn(\kappa,\lambda)$ by function extension: $p\leq q$ if and only if $p\supset q$.
+\end{defn}
+
+Just as the forcing $\omega^{<\omega}$ uses finite approximations to add a new function $\omega\to\omega$, the forcing $\Fn(\kappa,\lambda)$ uses finite approximations to add a new function $\kappa\to\lambda$.
 
 \begin{prop}
   The partial order $\Fn(\kappa,\omega)$ is ccc.
@@ -1452,13 +1465,13 @@ We sometimes consider the refinements of MA defined as follows. The axiom MA$_\k
   Let $\mathbb P$ be any partial order and let $D_0,D_1,\ldots$ be a countable family of dense subsets of $\mathbb P$. Fix $p_0\in D_0$, and inductively let $p_{n+1}\leq p_n$ be an element of $D_{n+1}$. Then the set $\{p_n\}$ is downwards directed, and hence closing it upwards generates a filter $G$ which meets each of the $D_i$.
 \end{proof}
 
-The next result states that MA is also consistent with a larger continuum.
+The next result states that MA is also consistent with a larger continuum. For now we take this fact for granted and use it to derive several applications, as an introduction to the combinatorics of forcing. 
 
 \begin{thm}
   It is consistent for both MA and $\neg$CH to hold simultaneously.
 \end{thm}
 
-The axiom MA packages a great deal of forcing into one universe $V$. When MA is true, it is as if somebody has already performed forcing with all of the ccc partial orders. Of course since we can never find fully generic sets, there had to be some limitation on the genericity of $G$.
+The axiom MA packages a great deal of forcing into one universe $V$. When MA is true, it is as if somebody has already performed forcing with all of the ccc partial orders. In fact later we shall see that the consistency of MA can be established by repeatedly applying the forcing construction.
 
 \begin{prop}
   In the definition of MA, we cannot in general drop the condition that the family of dense sets $\mathcal F$ have size less than continuum.
