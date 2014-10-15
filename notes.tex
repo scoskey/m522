@@ -29,6 +29,7 @@
 \DeclareMathOperator{\Diff}{Diff}
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\rng}{rng}
 \DeclareMathOperator{\cl}{cl}
 \DeclareMathOperator{\Fn}{Fn}
 
@@ -510,6 +511,7 @@ Although we still can't be fully rigorous about the meaning of the symbols $\ale
   Which of the following categories satisfy the analog of the Cantor--Schr\"oder--Bernstein theorem? (That is, monomorphisms $A\to B\to A$ implies isomorphism $A\cong B$.) linear orders with order-preserving maps; groups with group homomorphisms; topological spaces with continuous maps; topological spaces with piecewise continuous maps.
 \end{exerc}
 
+% why not show the set of countable ordinals is an ordinal
 \begin{exerc}
   We used the well-ordering principle together with Cantor's theorem to argue that there are uncountable ordinals. Here is another way: show that the set of isomorphism equivalence classes of well-orderings of $\omega$ is itself naturally well-ordered, and that this well-ordering is uncountable.
 \end{exerc}
@@ -593,7 +595,7 @@ The pattern continues transfinitely as well, with $\aleph_\alpha$ defined for ev
 %   the continuum has uncountable cofinality
 
 \begin{exerc}
-  Show that if $\kappa$ is a cardinal, then $\kappa$ is a limit ordinal.
+  Show that if $\kappa$ is an infinite cardinal, then $\kappa$ is a limit ordinal.
 \end{exerc}
 
 \begin{exerc}
@@ -601,7 +603,7 @@ The pattern continues transfinitely as well, with $\aleph_\alpha$ defined for ev
 \end{exerc}
 
 \begin{exerc}
-  If $A$ is any set, show that $|A|$ is equal to $\aleph_\alpha$ for some $\alpha$.
+  If $A$ is an infinite set, show that $|A|$ is equal to $\aleph_\alpha$ for some $\alpha$.
 \end{exerc}
 
 % Kunen, set theory.
@@ -1126,6 +1128,7 @@ In this section we will prove two of the four inequalities remaining in Theorem~
 If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $\Diff_P(x)$ to be the set of all $y\in2^\omega$ such that $y$ strongly differs from $x$ on $P$.
 
 \begin{prop}
+  \label{prop:meager-diff}
   A subset $A\subset2^\omega$ is meager if and only if there is some $x\in2^\omega$ and interval partition $P$ such that $A\subset\Diff_P(x)$.
 \end{prop}
 
@@ -1394,13 +1397,14 @@ When we make forcing rigorous, we will show that under appropriate hypotheses, a
   Returning to the example of the forcing notion $\mathbb P=\omega^{<\omega}$ with the upside-down ordering, we have already said that a filter $G\subset\omega^\omega$ is actually a path through $\omega^\omega$. If $G$ is $V$-generic, then much more can be said of this path. First of all, consider the sets
   \[D_n=\set{t\in\omega^{<\omega}\mid \dom(t)\geq n}\;.
   \]
-  Clearly $D_n$ is dense, since any $s\in\omega^{<\omega}$ can be extended to an element with length at least $n$ (recall we are using the upside-down ordering). It follows that $G$ meets $D_n$ for all $n$, and hence that $G$ is an infinite path. Second, if $G$ is $V$-generic then we have already seen that $G\notin V$. Thus the union $g=\bigcup G$ is an element of $\omega^{<\omega}$ that wasn't there before, that is, $g$ is a new element of the Baire space!
+  Clearly $D_n$ is dense, since any $s\in\omega^{<\omega}$ can be extended to an element with length at least $n$ (recall we are using the upside-down ordering). It follows that $G$ meets $D_n$ for all $n$, and hence that $G$ is an infinite path. Second, if $G$ is $V$-generic then we have already seen that $G\notin V$. Thus the union $g=\bigcup G$ is an element of $\omega^{<\omega}$ that wasn't there before, that is, $g$ is a new element of the Baire space! We can do the same with $2^{<\omega}$ and Cantor space.
 \end{example}
 
 This example brings us back to our discussion of forcing CH to be false in a forcing extension. We have just seen how to add one new element to $\omega^\omega$; if we were to repeat the process we can add many new elements to $\omega^\omega$.
 
 % Marker for basic logic and models
 % Kunen, IV.1 for forcing defs
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Martin's axiom}
@@ -1421,8 +1425,18 @@ This partial order is no longer countable, but it is still ccc.
 \end{prop}
 
 \begin{proof}
+  It suffices to show that any uncountable $\mathcal F\subset\Fn(\kappa,\omega)$ contains two compatible elements. In fact we will show that it contains uncountably many pairwise compatible elements. For this we first consider the corresponding family of domains $\mathcal G=\set{\dom(f)\mid f\in\mathcal F}$. Then $\mathcal G$ is an uncountable family of finite subsets of $\kappa$. Since there are only countably many possible values of $|F|$ for $F\in\mathcal G$, by the pigeon-hole principle we can replace $\mathcal G$ with an uncountable subset of it such that $|F|=$ some fixed value $n$ for all $F\in\mathcal G$.
 
+  We now claim that there exists an uncountable subset $\mathcal G_0\subset G$ and a finite set $A\subset\kappa$ such that for every $F,F'\in\mathcal G_0$ we have $F\cap F'=A$. (For future notation, a family $\mathcal G_0$ with this property is called a \emph{delta system} with root $A$.) For this we use induction on $n$. If $n=1$, then $\mathcal G$ forms a delta system automatically.
+
+  Next suppose that the claim is true for families of sets of size $<n$. First consider the case that there is some $\alpha\in\kappa$ which lies in uncountably many of the $F\in\mathcal G$. Then by the inductive hypothesis we can find a delta system $\mathcal H_0$ contained in $\set{F\smallsetminus\{\alpha\}\mid F\in\mathcal G}$. It follows that the family $\mathcal G_0=\set{F_0\cup\{\alpha\}\mid F_0\in\mathcal H_0}$ is a delta system too.
+
+  Second consider the case that every $\alpha\in\kappa$, is contained in just countably many of the $F\in\mathcal G$. Then we can inductively find an uncountable subfamily $\mathcal G_0\subset\mathcal G$ that is pairwise disjoint, and hence a delta system with trivial root. Indeed, if countably many pairwise disjoint sets $F_0,F_1,\ldots$ have been found so far, then all the ordinals in $\bigcup F_n$ are still only contained in countably many of the $F\in\mathcal G$. This means that we can find an $F$ disjoint from them all, and completes the proof of the claim.
+
+  Finally, let $\mathcal F_0\subset\mathcal F$ be the subset of $\mathcal F$ consisting of functions $f$ such that $\dom(f)\in\mathcal G_0$. These functions may disagree on $A$, but never disagree elsewhere. However since there are only countably many possibilities for $f\restriction A$, by the pigeon-hole principle we can replace $\mathcal F_0$ with an uncountable subset of it such that $f\restriction A=$ some fixed function $f_0$ for all $f$. It follows from this that every pair of elements of $\mathcal F_0$ is compatible.
 \end{proof}
+
+The trick with the delta system arises frequently in the verification of the ccc property; it is called the \emph{delta system lemma}.
 
 \begin{defn}
   \emph{Martin's axiom} (or just \emph{MA}) is the statement: For every ccc partial order $\mathbb P$ and every family $\mathcal F$ of fewer than continuum many dense subsets of $\mathbb P$ there exists an $\mathcal F$-generic filter $G\subset\mathbb P$.
@@ -1447,19 +1461,25 @@ The next result states that MA is also consistent with a larger continuum.
 The axiom MA packages a great deal of forcing into one universe $V$. When MA is true, it is as if somebody has already performed forcing with all of the ccc partial orders. Of course since we can never find fully generic sets, there had to be some limitation on the genericity of $G$.
 
 \begin{prop}
-  In the definition of MA, we cannot in general drop the condition that $\mathcal F$ have size less than continuum.
+  In the definition of MA, we cannot in general drop the condition that the family of dense sets $\mathcal F$ have size less than continuum.
 \end{prop}
 
 \begin{proof}
-
+  We again go to our favorite partial ordering $\omega^{<\omega}$ with the upside-down order. This time we consider the sets:
+  \[D_f=\set{s\in\omega^{<\omega}\mid s\not\subset f}
+  \]
+  for all $f\in\omega^\omega$. It is easy to see that $D_f$ is dense: any sequence $s$ can be extended to a sequence $t$ that disagrees with $f$. Now if MA were to hold with respect to families of dense sets of size continuum, then there would be a filter $G$ that meets $D_f$ for \emph{every} $f\in\omega^\omega$. It follows from this that the function $g=\bigcup G$ is an element of $\omega^\omega$ which disagrees with every $f\in\omega^\omega$, a contradiction.
 \end{proof}
 
 \begin{prop}
-  In the definition of MA, we cannot completely drop the condition that $\mathbb P$ be ccc.
+  In the definition of MA, we cannot in general drop the condition that $\mathbb P$ is ccc.
 \end{prop}
 
 \begin{proof}
-  
+  This time we let use the partial order $\omega_1^{<\omega}$ with the upside-down order. It is clear that this partial order is not ccc, since even the family of elements $s\in\omega_1^{<\omega}$ such that $|s|=1$ is an uncountable antichain. Now we consider the sets
+  \[D_\alpha=\set{s\in\omega_1^{<\omega}\mid\alpha\in\rng(s)}
+  \]
+  for all $\alpha\in\omega_1$. Then $D_\alpha$ is dense: any $s\in\omega_1^{<\omega}$ can be extended to include $\alpha$ in its range. Now if MA were to hold with respect to this partial order, then there would be a filter $G\subset\omega_1^{<\omega}$ that meets $D_\alpha$ for all $\alpha$. It follows from this that there is an onto function $g=\bigcup G$ from $\omega$ to $\omega_1$, a contradiction.
 \end{proof}
 
 \begin{thm}
@@ -1467,13 +1487,21 @@ The axiom MA packages a great deal of forcing into one universe $V$. When MA is 
 \end{thm}
 
 \begin{proof}
+  First recall from Proposition~\ref{prop:meager-diff} that a subset $A\subset2^\omega$ is meager if and only if it is contained in a set of the form $\Diff(x,P)$ for $x\in2^\omega$ and $P$ an interval partition. It follows that $\cov(\Meager)$ is the least cardinality of a family $\mathcal F$ of pairs $(y,P)$ such that for all $x\in2^\omega$ there exists $(y,P)\in\mathcal F$ such that $x$ strongly differs from $y$ on $P$.
 
+  Now suppose towards a contradiction that $\cov(\Meager)<\mathfrak c$, and fix a family $\mathcal F$ of pairs $(y,P)$ as above. We will apply MA to the partial order $\mathbb P=2^{<\omega}$ to obtain a suitably generic filter $G$. Our goal will be to ensure that $G$ matches (doesn't strongly differ from) all of the $(y,P)$ pairs, which will be a contradiction. To this end, consider the subsets
+  \[D_{y,P,n}=\set{s\in2^{<\omega}\mid \text{there is $I\in P$ such that $n<I$ and $s\restriction I=y\restriction I$}}
+  \]
+  Then for any $y$ and $P$, the set $D_{y,P}$ is dense: given any $s$ we can find an interval $I$ of $P$ beyond both $n$ and $\dom(s)$, and extend $s$ to a sequence $t$ which agrees with $y$ on $I$. 
+
+  Thus by MA, there exists a filter $G\subset\mathbb P$ that meets the sets $D_{y,P,n}$ for all $(y,P)\in\mathcal F$, and we let $g=\bigcup G$ be the associated element of $2^\omega$. Given any $(y,P)\in\mathcal F$, since $G$ meets all dense sets $D_{y,P,n}$ it follows that $g$ does not strongly differ from $y$ on $P$. This contradicts our assumption about the family $\mathcal F$.
 \end{proof}
 
 In the next section we will see that with a more clever partial ordering, we can in fact show MA pushes all the cardinal characteristics in Cicho\'n's diagram up to $\mathfrak c$.
 
-% kunen, III.1 for ccc
-% kunen, III.2 for MA
+% kunen, III.2 for ccc
+% kunen, III.3 for MA
+% blass, forcing section for a generalization of "solving" forcing
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
