@@ -1486,6 +1486,16 @@ The axiom MA packages a great deal of forcing into one universe $V$. When MA is 
 The axiom MA has a lot to say about the combinatorics of the continuum, and specifically about the values of cardinal characteristics. We close this section with a sample application.
 
 \begin{thm}
+  Assuming MA, we have $\mathfrak d=\mathfrak c$.
+\end{thm}
+
+\begin{proof}
+  
+\end{proof}
+
+Using the machinery of interval partitions and the strong difference relation, the above result can be improved slightly.
+
+\begin{thm}
   Assuming MA, we have $\cov(\Meager)=\mathfrak c$.
 \end{thm}
 
@@ -1516,20 +1526,32 @@ In the next section we will see that with a more clever partial ordering, we can
   Assuming MA, we have $\add(\Null)=\mathfrak c$. In particular, all the cardinal characteristics in Cicho\'n's diagram (except possibly for $\aleph_1$) have the same value.
 \end{thm}
 
-The \emph{amoeba} partial ordering with parameter $\epsilon$ is\ldots
+For this proof, we need a new notion of forcing. The \emph{amoeba} partial ordering $\mathbb A_\epsilon$ with parameter $\epsilon>0$ consists of all open subsets $O\subset\RR$ such that $m(O)<\epsilon$. The ordering on $\mathbb A_\epsilon$ is defined by $O\leq O'$ iff $O\supset O'$. Thus the elements of $\mathbb A_\epsilon$ are inner approximations to an open set of measure $\leq\epsilon$.
 
 \begin{lem}
-  The amoeba partial ordering is ccc.
+  For any $\epsilon$, the amoeba partial ordering $\mathbb A_\epsilon$ is ccc.
 \end{lem}
 
 \begin{proof}
+  Assume otherwise, then there is a $p_\psi\in \mathbb{P}$, $\psi<\omega_1$ such that:
+		$$\psi\not=\nu \implies p_\psi\perp p_\nu.$$
+Since $p_\psi\in \mathbb{P}$ we have that $p_\psi$ is open and $|p_\psi|<\epsilon$ and also that $\psi\not=\nu$ implies that $|p_\psi\cup p_\nu|\geq \epsilon$, by definition $\mathbb{P}$. 
 
+Now, fix $\delta>0$ such that the set
+		$$E:=\{ \psi<\omega_1: |p_\psi|\leq \epsilon-2\delta\}$$
+is uncountable. 
+
+Let $\mathcal{B}$ be the set of all finite unions of rational intervals, (Note that $\mathcal{B}$ is countable). Now, for each $\psi\in E$, choose $W_\psi\subseteq p_\psi$ with $W\psi\in \mathcal{B}$ and $|p_\psi\setminus W_\psi|\leq \delta$. Then, for $\psi, \nu\in E$ with $\psi\not=\nu$, we have $|W_\psi\cup W\nu|\geq \epsilon-2\delta$ and $|W_\psi|\leq |p_\psi|\leq \epsilon - 2\delta$. But $\mathcal{B}$ is countable, so we fix $\psi, \nu\in E$ with $\psi\not=\nu$ but $W\psi=W_\nu$, a contradiction.
 \end{proof}
 
 We are now prepared to prove Theorem~\ref{thm:ma-addn}.
 
 \begin{proof}[Proof of Theorem~\ref{thm:ma-addn}]
+  Fix $\kappa<\mathfrak{m}$. We want to show that $\kappa<\add(\mathcal{L})$. Let $N_\alpha$, for $\alpha<\kappa$ denote Lebgsgue null sets. Note that, in this proof, we use $|\cdot|$ to denote the typical Lebesgue measure. Ultimately, we want to show that $N_\alpha$ is null. Thus, given $\epsilon>0$, we want to find a set $U$ such that $|U|<\epsilon$ and $U\supseteq \bigcup_{\alpha<\kappa} N_\alpha$. To this end, fix $\epsilon>0$. 
 
+  Next, for any filter $G$, let $U_G=\bigcup G$. $U_G$ is open, and we want to show that $|U_G|\leq \epsilon$ in order to prove $\kappa<\add(\mathcal{L})$. Since $U_G\subseteq \RR$, we have that $U_G$ is a second countable space, thus it is Lindel\"of. (i.e. there is a countable subset $G$, $\{p_j: j\in \omega\}$, whose union covers $U_G$.). By Lemma 5.15, $G$ is centered, so for each $n$ there is a $q\in\mathbb{P}$ such that $q\leq p_j$ for all $j<n$. Since $\leq$ is $\supseteq$, this implies that the measure of each $|\bigcup_{j<n}p_j|<\epsilon$. Since $U_G=\bigcup_{j\in\omega} p_j$ and the fact that measure is additive, we have $|\bigcup_{j\in\omega}|=|U_G|\leq \epsilon$. 
+
+  Next, to apply $MA_\mathbb{P}(\kappa)$, we need a dense set: $D_\alpha=\{q\in\mathbb{P}: q\supseteq N_\alpha\}$. If $G\cap D_\alpha\not= \emptyset$ for all $\alpha<\kappa$ then $U_G\supseteq \bigcup_{\alpha<\kappa} N_\alpha$ and so, applying Martin's Axiom we are done. Thus, it remains to prove that $D_\alpha$ is dense. Fix $\alpha$ and $p\in\mathbb{P}$. Let $V$ be an open set containing $N_\alpha$ and $|V|<\epsilon-|p|$, and let $q=p\cup V$. Then we have $|q|<\epsilon$ and $q\in\mathbb{P}$. We also have that $q$ extends $p$, $q\leq p$, and $q\in D_\alpha$.
 \end{proof}
 
 
