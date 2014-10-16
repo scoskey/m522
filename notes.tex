@@ -1430,11 +1430,11 @@ A subset $A\subset\mathbb P$ is said to be an \emph{antichain} if for all $p,q\i
 In some sense the ccc imposes a limitation on the number of different filters that may be added when forcing with $\mathbb P$. The partial order $\omega^{<\omega}$ considered in the previous section is obviously ccc because it is countable. However, there are many examples of ccc partial orders which are not countable.
 
 \begin{example}
-  The partial order $\mathbb P=$ is ccc, because\ldots
+  Consider the partial order $\mathbb P$ consisting of all nonempty open subsets of $\RR$, with the ordering $A\leq B$ iff $A\subset B$. Then $\mathbb P$ is ccc: indeed, two sets are incompatible in this ordering if and only if they are disjoint. Thus an antichain is a family of pairwise disjoint open sets, and since $\RR$ is separable, such a family must be countable.
 \end{example}
 
 \begin{example}
-  The partial order $\mathbb P=$ is not ccc, because\ldots
+  Consider the partial order $\mathbb P=\omega_1^{<\omega}$ with the usual upside-down tree ordering. Then this $\mathbb P$ is not ccc. Indeed, the set of sequences $s\in\mathbb P$ of length $1$ is an uncountable antichain in $\mathbb P$.
 \end{example}
 
 \begin{defn}
@@ -1477,7 +1477,7 @@ The axiom MA packages a great deal of forcing into one universe $V$. When MA is 
 \end{prop}
 
 \begin{proof}
-  This time we let use the partial order $\omega_1^{<\omega}$ with the upside-down order. It is clear that this partial order is not ccc, since even the family of elements $s\in\omega_1^{<\omega}$ such that $|s|=1$ is an uncountable antichain. Now we consider the sets
+  This time we let use the partial order $\mathbb P=\omega_1^{<\omega}$ with the upside-down order. We have already seen that $\mathbb P$ is not ccc. Now we consider the sets
   \[D_\alpha=\set{s\in\omega_1^{<\omega}\mid\alpha\in\rng(s)}
   \]
   for all $\alpha\in\omega_1$. Then $D_\alpha$ is dense: any $s\in\omega_1^{<\omega}$ can be extended to include $\alpha$ in its range. Now if MA were to hold with respect to this partial order, then there would be a filter $G\subset\omega_1^{<\omega}$ that meets $D_\alpha$ for all $\alpha$. It follows from this that there is an onto function $g=\bigcup G$ from $\omega$ to $\omega_1$, a contradiction.
@@ -1516,7 +1516,7 @@ In the next section we will see that with a more clever partial ordering, we can
   Assuming MA, we have $\add(\Null)=\mathfrak c$. In particular, all the cardinal characteristics in Cicho\'n's diagram (except possibly for $\aleph_1$) have the same value.
 \end{thm}
 
-The \emph{amoeba} partial ordering is\ldots
+The \emph{amoeba} partial ordering with parameter $\epsilon$ is\ldots
 
 \begin{lem}
   The amoeba partial ordering is ccc.
@@ -1541,6 +1541,8 @@ We are now prepared to prove Theorem~\ref{thm:ma-addn}.
 \section{Cohen and random forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+We begin with Cohen forcing.
+
 \begin{defn}
   For any cardinals $\kappa,\lambda$, we define the set $\Fn(\kappa,\lambda)$ to be the family of all functions $p\colon F\to\lambda$, where $F$ is a finite subset of $\kappa$. We partially order $\Fn(\kappa,\lambda)$ by function extension: $p\leq q$ if and only if $p\supset q$.
 \end{defn}
@@ -1548,22 +1550,35 @@ We are now prepared to prove Theorem~\ref{thm:ma-addn}.
 Just as the forcing $\omega^{<\omega}$ uses finite approximations to add a new function $\omega\to\omega$, the forcing $\Fn(\kappa,\lambda)$ uses finite approximations to add a new function $\kappa\to\lambda$.
 
 \begin{prop}
+  \label{prop:cohen-ccc}
   The partial order $\Fn(\kappa,\omega)$ is ccc.
 \end{prop}
 
+A family $\mathcal F$ of sets is called a \emph{delta system} if there exists a set $A$ such that for every $F,F'\in\mathcal G_0$ we have $F\cap F'=A$. The set $A$ is called the \emph{root} of the delta system.
+
+\begin{lem}[Delta system lemma]
+  \label{lem:delta-system}
+  Let $\kappa$ be any cardinal, and let $\mathcal F$ be an uncountable family of finite subsets of $\kappa$. Then there exists an uncountable subset $\mathcal F_0\subset F$ which forms a delta system.
+\end{lem}
+
 \begin{proof}
-  It suffices to show that any uncountable $\mathcal F\subset\Fn(\kappa,\omega)$ contains two compatible elements. In fact we will show that it contains uncountably many pairwise compatible elements. For this we first consider the corresponding family of domains $\mathcal G=\set{\dom(f)\mid f\in\mathcal F}$. Then $\mathcal G$ is an uncountable family of finite subsets of $\kappa$. Since there are only countably many possible values of $|F|$ for $F\in\mathcal G$, by the pigeon-hole principle we can replace $\mathcal G$ with an uncountable subset of it such that $|F|=$ some fixed value $n$ for all $F\in\mathcal G$.
+  Since there are only countably many possible values of $|F|$ for $F\in\mathcal F$, by the pigeon-hole principle we can replace $\mathcal F$ with an uncountable subset of it such that $|F|=$ some fixed value $n$ for all $F\in\mathcal G$.
 
-  We now claim that there exists an uncountable subset $\mathcal G_0\subset G$ and a finite set $A\subset\kappa$ such that for every $F,F'\in\mathcal G_0$ we have $F\cap F'=A$. (For future notation, a family $\mathcal G_0$ with this property is called a \emph{delta system} with root $A$.) For this we use induction on $n$. If $n=1$, then $\mathcal G$ forms a delta system automatically.
-
-  Next suppose that the claim is true for families of sets of size $<n$. First consider the case that there is some $\alpha\in\kappa$ which lies in uncountably many of the $F\in\mathcal G$. Then by the inductive hypothesis we can find a delta system $\mathcal H_0$ contained in $\set{F\smallsetminus\{\alpha\}\mid F\in\mathcal G}$. It follows that the family $\mathcal G_0=\set{F_0\cup\{\alpha\}\mid F_0\in\mathcal H_0}$ is a delta system too.
+  Now we use induction on $n$. If $n=1$, then $\mathcal G$ forms a delta system automatically. Next suppose that the claim is true for families of sets of size $<n$. First consider the case that there is some $\alpha\in\kappa$ which lies in uncountably many of the $F\in\mathcal G$. Then by the inductive hypothesis we can find a delta system $\mathcal H_0$ contained in $\set{F\smallsetminus\{\alpha\}\mid F\in\mathcal G}$. It follows that the family $\mathcal G_0=\set{F_0\cup\{\alpha\}\mid F_0\in\mathcal H_0}$ is a delta system too.
 
   Second consider the case that every $\alpha\in\kappa$, is contained in just countably many of the $F\in\mathcal G$. Then we can inductively find an uncountable subfamily $\mathcal G_0\subset\mathcal G$ that is pairwise disjoint, and hence a delta system with trivial root. Indeed, if countably many pairwise disjoint sets $F_0,F_1,\ldots$ have been found so far, then all the ordinals in $\bigcup F_n$ are still only contained in countably many of the $F\in\mathcal G$. This means that we can find an $F$ disjoint from them all, and completes the proof of the claim.
-
-  Finally, let $\mathcal F_0\subset\mathcal F$ be the subset of $\mathcal F$ consisting of functions $f$ such that $\dom(f)\in\mathcal G_0$. These functions may disagree on $A$, but never disagree elsewhere. However since there are only countably many possibilities for $f\restriction A$, by the pigeon-hole principle we can replace $\mathcal F_0$ with an uncountable subset of it such that $f\restriction A=$ some fixed function $f_0$ for all $f$. It follows from this that every pair of elements of $\mathcal F_0$ is compatible.
 \end{proof}
 
-The trick with the delta system arises frequently in the verification of the ccc property; it is called the \emph{delta system lemma}.
+\begin{proof}[Proof of Proposition~\ref{prop:cohen-ccc}]
+  It suffices to show that any uncountable $\mathcal G\subset\Fn(\kappa,\omega)$ contains two compatible elements. In fact we will show that it contains uncountably many pairwise compatible elements. For this we first consider the corresponding family of domains $\mathcal F=\set{\dom(f)\mid f\in\mathcal G}$. Then $\mathcal F$ is an uncountable family of finite subsets of $\kappa$. Thus by Lemma~\ref{lem:delta-system}, we can find an uncountable subset $\mathcal F_0\subset\mathcal F$ which forms a delta system with some root $A$.
 
+  Now, let $\mathcal G_0\subset\mathcal G$ be the subset of $\mathcal G$ consisting of functions $g$ such that $\dom(g)\in\mathcal F_0$. These functions may disagree on $A$, but they can never disagree elsewhere. Since there are only countably many possibilities for $g\restriction A$, by the pigeon-hole principle we can replace $\mathcal G_0$ with an uncountable subset of it such that $g\restriction A=$ some fixed function $g_0$ for all $g$. It follows from this that every pair of elements of $\mathcal G_0$ is compatible.
+\end{proof}
+
+Next we explore random forcing.
+
+\begin{defn}
+
+\end{defn}
 
 \end{document}
