@@ -772,7 +772,7 @@ The following result records the relationship between these two cardinal values.
 \end{prop}
 	
 \begin{proof}
-  We begin by showing that $\mathfrak{b}$ is uncountable. For this, it is enough to show that every countable family $\mathcal F\subset\omega^\omega$ is bounded by some $h\in\omega^\omega$. So let $\mathcal F\subset\omega^\omega$ be a countable family and enumerate its elements $f_0,f_2,\ldots$. To construct the bound $h$, we use a diagonalization process similar to the proof of Cantor's theorem. More specifically, we define $h(n)$ so that it dominates $f_0(n),\ldots,f_n(n)$:
+  We begin by showing that $\mathfrak{b}$ is uncountable. For this, it is enough to show that every countable family $\mathcal F\subset\omega^\omega$ is bounded by some $h\in\omega^\omega$. So let $\mathcal F\subset\omega^\omega$ be a countable family and enumerate its elements $f_0,f_1,\ldots$. To construct the bound $h$, we use a diagonalization process similar to the proof of Cantor's theorem. More specifically, we define $h(n)$ so that it dominates $f_0(n),\ldots,f_n(n)$:
 \[h(n)=\max\set{f_i(n)\mid 0\leq i\leq n}
 \]
 Then for each $i$ we have $f_i(n)\leq h(n)$ for all $n\geq i$, and therefore $f_i\leq^*h$, as desired.
@@ -1487,6 +1487,7 @@ The axiom MA packages a great deal of forcing into one universe $V$. When MA is 
 We close this section with a result showing the effect of MA on properties of the continuum. Recall that the Baire category theorem states that the set of all real numbers is not meager, that is, $\cov(\Meager)$ is uncountable. It turns out that MA implies $\cov(\Meager)$ is as large is possible.
 
 \begin{thm}
+  \label{thm:ma-covm}
   MA implies that the Baire category theorem holds for unions of length less than $\mathfrak c$, that is, $\cov(\Meager)=\mathfrak c$.
 \end{thm}
 
