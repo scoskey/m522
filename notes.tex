@@ -36,7 +36,7 @@
 \theoremstyle{definition}
 \newtheorem{exerc}{Exercise}[section]
 \swapnumbers
-\theoremstyle{theorem}
+\theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{lem}[thm]{Lemma}
@@ -359,10 +359,10 @@ From now on we will ignore the full power of measure theory to assign a real num
   The Cantor set $C$ is null. Indeed, we have already computed that the sum of the lengths of all intervals removed from $[0,1]$ in the construction of $C$ is equal to $1$. Since $[0,1]$ has measure $1$, it follows from additivity that $C$ must have measure $0$.
 \end{example}
 
-The notion of null set bears many similarities with the notion of meager set. As was the case with meager sets, the notion of a null set allows us to assign to any given set $A$ one of three simple ``sizes'': null, conull, or non-null and non-conull. Moreover, null sets satisfy an analog of the Baire category theorem and the preservation properties of meager sets.
+The notion of null set bears many similarities with the notion of meager set. As was the case with meager sets, the notion of a null set allows us to assign to any given set $A$ one of three simple ``sizes'': null, conull, or nonnull and non-conull. Moreover, null sets satisfy an analog of the Baire category theorem and the preservation properties of meager sets.
 
 \begin{cor}
-  \label{cor:interval-non-null}
+  \label{cor:interval-nonnull}
   The set $\RR$ of all real numbers is not null. In fact, if $I$ is any positive-length interval then $I$ is not null.
 \end{cor}
 
@@ -371,7 +371,7 @@ The notion of null set bears many similarities with the notion of meager set. As
   The class of null sets is closed under the operations of subset and countable union.
 \end{cor}
 
-Corollary~\ref{cor:interval-non-null} is immediate from condition (a) of Theorem~\ref{thm:caratheodory}. Corollary~\ref{cor:null-pres} is immediate from condition (c) of Theorem~\ref{thm:caratheodory}.
+Corollary~\ref{cor:interval-nonnull} is immediate from condition (a) of Theorem~\ref{thm:caratheodory}. Corollary~\ref{cor:null-pres} is immediate from condition (c) of Theorem~\ref{thm:caratheodory}.
 
 \begin{exerc}
   Prove that condition (c) of a measure implies \emph{monotonicity}: if $A\subset B$ then $m(A)\leq m(B)$.
@@ -1336,7 +1336,7 @@ This concludes the proof of Bartoszy\'nski's theorem, as well as Theorem~\ref{th
 % fremlin, measure theory v5p1 522P
 % bartoszynski, handbook
 
-\chapter*{Part II: Forcing}
+\chapter*{Part II: Le tour de forcing}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The idea of forcing}
@@ -1430,6 +1430,7 @@ A subset $A\subset\mathbb P$ is said to be an \emph{antichain} if for all $p,q\i
 In some sense the ccc imposes a limitation on the number of different filters that may be added when forcing with $\mathbb P$. The partial order $\omega^{<\omega}$ considered in the previous section is obviously ccc because it is countable. However, there are many examples of ccc partial orders which are not countable.
 
 \begin{example}
+  \label{ex:cohen-ccc}
   Consider the partial order $\mathbb P$ consisting of all nonempty open subsets of $\RR$, with the ordering $A\leq B$ iff $A\subset B$. Then $\mathbb P$ is ccc: indeed, two sets are incompatible in this ordering if and only if they are disjoint. Thus an antichain is a family of pairwise disjoint open sets, and since $\RR$ is separable, such a family must be countable.
 \end{example}
 
@@ -1483,43 +1484,82 @@ The axiom MA packages a great deal of forcing into one universe $V$. When MA is 
   for all $\alpha\in\omega_1$. Then $D_\alpha$ is dense: any $s\in\omega_1^{<\omega}$ can be extended to include $\alpha$ in its range. Now if MA were to hold with respect to this partial order, then there would be a filter $G\subset\omega_1^{<\omega}$ that meets $D_\alpha$ for all $\alpha$. It follows from this that there is an onto function $g=\bigcup G$ from $\omega$ to $\omega_1$, a contradiction.
 \end{proof}
 
-The axiom MA has a lot to say about the combinatorics of the continuum, and specifically about the values of cardinal characteristics. We close this section with a sample application.
+We close this section with a result showing the effect of MA on properties of the continuum. Recall that the Baire category theorem states that the set of all real numbers is not meager, that is, $\cov(\Meager)$ is uncountable. It turns out that MA implies $\cov(\Meager)$ is as large is possible.
 
 \begin{thm}
-  Assuming MA, we have $\mathfrak d=\mathfrak c$.
+  MA implies that the Baire category theorem holds for unions of length less than $\mathfrak c$, that is, $\cov(\Meager)=\mathfrak c$.
 \end{thm}
 
 \begin{proof}
-  
-\end{proof}
-
-Using the machinery of interval partitions and the strong difference relation, the above result can be improved slightly.
-
-\begin{thm}
-  Assuming MA, we have $\cov(\Meager)=\mathfrak c$.
-\end{thm}
-
-\begin{proof}
-  First recall from Proposition~\ref{prop:meager-diff} that a subset $A\subset2^\omega$ is meager if and only if it is contained in a set of the form $\Diff(x,P)$ for $x\in2^\omega$ and $P$ an interval partition. It follows that $\cov(\Meager)$ is the least cardinality of a family $\mathcal F$ of pairs $(y,P)$ such that for all $x\in2^\omega$ there exists $(y,P)\in\mathcal F$ such that $x$ strongly differs from $y$ on $P$.
-
-  Now suppose towards a contradiction that $\cov(\Meager)<\mathfrak c$, and fix a family $\mathcal F$ of pairs $(y,P)$ as above. We will apply MA to the partial order $\mathbb P=2^{<\omega}$ to obtain a suitably generic filter $G$. Our goal will be to ensure that $G$ matches (doesn't strongly differ from) all of the $(y,P)$ pairs, which will be a contradiction. To this end, consider the subsets
-  \[D_{y,P,n}=\set{s\in2^{<\omega}\mid \text{there is $I\in P$ such that $n<I$ and $s\restriction I=y\restriction I$}}
+  Suppose towards a contradiction that $\mathcal F$ is a family of nowhere dense subsets of $\RR$ of cardinality less than continuum, and that $\bigcup\mathcal F=\RR$. Let $\mathbb P$ be the partial order consisting of all bounded, positive-length intervals in $\RR$, ordered by $I'\leq I$ iff $I'\subset I$. Then $\mathbb P$ is easily seen to be ccc by the same argument as in Example~\ref{ex:cohen-ccc}. For each $A\in\mathcal F$, we consider the set
+  \[D_A=\set{I\in\mathbb P\mid \overline{I}\cap A=\emptyset}
   \]
-  Then for any $y$ and $P$, the set $D_{y,P}$ is dense: given any $s$ we can find an interval $I$ of $P$ beyond both $n$ and $\dom(s)$, and extend $s$ to a sequence $t$ which agrees with $y$ on $I$. 
+  Then $D_A$ is dense for any $A$: since $A$ is nowhere dense, for any positive-length interval $I$ there is a positive length $J\subset I$ such that $J\cap A=\emptyset$. We may then shrink $J$ further to suppose that $\overline{J}\subset I$.
 
-  Thus by MA, there exists a filter $G\subset\mathbb P$ that meets the sets $D_{y,P,n}$ for all $(y,P)\in\mathcal F$, and we let $g=\bigcup G$ be the associated element of $2^\omega$. Given any $(y,P)\in\mathcal F$, since $G$ meets all dense sets $D_{y,P,n}$ it follows that $g$ does not strongly differ from $y$ on $P$. This contradicts our assumption about the family $\mathcal F$.
+  Now by MA, we can find a filter $G\subset\mathbb P$ such that $G$ meets $D_A$ for every $A\in\mathcal F$. Then the sets $\overline{I}$ for $I\in G$ have the finite intersection property, and it follows from the completeness of $\RR$ that there is a point $x\in\bigcap\set{\overline{I}\mid I\in G}$. Then if $A\in\mathcal F$ then since $G\cap D_A\neq\emptyset$ we can find a positive-length interval $I$ such that $I\in G$ and $\overline{I}\cap A=\emptyset$. That is, we have $x\in\overline{I}$ and $\overline{I}\cap A=\emptyset$, and so $x\notin A$. We conclude that $x$ is not an element of $\bigcup\mathcal F$, contradicting that $\bigcup\mathcal F=\RR$.
 \end{proof}
 
-In the next section we will see that with a more clever partial ordering, we can in fact show MA pushes all the cardinal characteristics in Cicho\'n's diagram up to $\mathfrak c$.
+% \begin{proof}
+%   First recall from Proposition~\ref{prop:meager-diff} that a subset $A\subset2^\omega$ is meager if and only if it is contained in a set of the form $\Diff(x,P)$ for $x\in2^\omega$ and $P$ an interval partition. It follows that $\cov(\Meager)$ is the least cardinality of a family $\mathcal F$ of pairs $(y,P)$ such that for all $x\in2^\omega$ there exists $(y,P)\in\mathcal F$ such that $x$ strongly differs from $y$ on $P$.
+
+%   Now suppose towards a contradiction that $\cov(\Meager)<\mathfrak c$, and fix a family $\mathcal F$ of pairs $(y,P)$ as above. We will apply MA to the partial order $\mathbb P=2^{<\omega}$ to obtain a suitably generic filter $G$. Our goal will be to ensure that $G$ matches (that is, doesn't strongly differ from) all of the $(y,P)$ pairs, which will be a contradiction. To this end, consider the subsets
+%   \[D_{y,P,n}=\set{s\in2^{<\omega}\mid \text{there is $I\in P$ such that $I>n$ and $s\restriction I=y\restriction I$}}
+%   \]
+%   Then for any $y$, $P$, and $n$ the set $D_{y,P,n}$ is dense: given any $s$ we can find an interval $I$ of $P$ beyond both $n$ and $\dom(s)$, and extend $s$ to a sequence $t$ which agrees with $y$ on $I$. 
+
+%   Thus by MA, there exists a filter $G\subset\mathbb P$ that meets the sets $D_{y,P,n}$ for all $(y,P)\in\mathcal F$, and we let $g=\bigcup G$ be the associated element of $2^\omega$. Given any $(y,P)\in\mathcal F$, since $G$ meets all dense sets $D_{y,P,n}$ it follows that $g$ does not strongly differ from $y$ on $P$. This contradicts our assumption about the family $\mathcal F$.
+% \end{proof}
 
 % kunen, III.2 for ccc
 % kunen, III.3 for MA
+% jech, Sec16 for covm
 % blass, forcing section for a generalization of "solving" forcing
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Martin's axiom and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We have seen the effect of MA on properties of the continuum. We now explore the effect of MA on further cardinal characteristics found in Cicho\'n's diagram. We begin by showing that MA makes $\mathfrak d$ large. Although this already follows from Theorem~\ref{thm:ma-covm} together with all we have proved about Cicho\'n's diagram, here we give a direct proof.
+
+\begin{thm}
+  \label{thm:ma-d}
+  Assuming MA, we have $\mathfrak d=\mathfrak c$.
+\end{thm}
+
+\begin{proof}
+  Suppose towards a contradiction that $\mathfrak d<\mathfrak c$, and fix a dominating family $\mathcal F\subset\omega^\omega$. Let $\mathbb P$ be the partial order $\omega^{<\omega}$ with the upside-down ordering. For each $f\in\mathcal F$ we consider the family sets
+  \[D_{f,n}=\set{s\in\omega^{<\omega}\mid\text{there is $n'>n$ such that $s(n)>f(n)$}}
+  \]
+  Observe that $D_{f,n}$ is dense for all $f$ and $n$: if $s\in\omega^{<\omega}$ we can easily find $n'>n,|s|$ and find $t\supset s$ such that $t(n')>f(n)$. Thus by MA we can find a filter $G$ which meets $D_{f,n}$ for all $f\in\mathcal F$ and $n\in\NN$. Letting $g=\bigcup G$, it is clear that $g$ is not dominated by $f$ for any $f\in\mathcal F$, contradicting that $\mathcal F$ is a dominating family.
+\end{proof}
+
+The content of the above proof is that if $g$ is fully generic for $\omega^{<\omega}$, then in $V[g]$ none of the elements in the Baire space of $V$ dominate $g$. It falls short, however, of showing that $g$ actually dominates every element in the Baire space of $V$. ith a slightly more specialized partial order, this can be achieved as well.
+
+Given a family $\mathcal F\subset\omega^\omega$, the \emph{Hechler forcing} with respect to $\mathcal F$ is the partial order $\mathbb H_{\mathcal F}$ consisting of elements $(s,F)$ where $s\in\omega^{<\omega}$ and $F\subset\mathcal F$ is finite. We partially order $\mathbb H_{\mathcal F}$ by $(s',F')\leq(s,F)$ if the conditions hold:
+\begin{itemize}
+\item $s'\supset s$,
+\item $F'\supset F$, and
+\item $s'(n)>f(n)$ whenever $f\in F$ and $n\in\dom(s'\smallsetminus s)$.
+\end{itemize}
+If $(s,F)$ is an element of a Hechler forcing, then as usual the left coordinate $s$, called the stem, is a finite approximation for a new element of Baire space. The new coordinate $F$ can be thought of as a set of ``promises'', which ensures that stronger conditions will dominate the elements of $F$.
+
+Hechler forcing is always ccc, because incompatible conditions cannot have the same stem $s$, an there are only countably many possible stems $s$.
+
+\begin{thm}
+  Assuming MA, we have $\mathfrak b=\mathfrak c$.
+\end{thm}
+
+\begin{proof}
+  Suppose towards a contradiction that $\mathcal F$ is an unbounded family of size $<\mathfrak c$, and let $\mathbb P$ be the Hechler forcing $\mathbb H_{\mathcal F}$. For each $f\in\mathcal F$ we consider the set
+  \[D_f=\set{(s,F)\in\mathbb H_{\mathcal F}\mid f\in F}
+  \]
+  Then $D_f$ is dense, since any pair $(s,F)$ can be extended to the stronger element $(s,F\cup\{f\})$. Hence by MA we cand find a filter $G$ that meets $D_f$ for all $f\in\mathcal F$, and let
+\[g=\bigcup\set{s\mid(\exists F)\;(s,F)\in G}
+\]
+be the element of Baire space determined by $G$. The partial order on $\mathbb H_{\mathcal F}$ then ensures that $g$ dominates $f$ for all $f\in\mathcal F$, contradicting that $\mathcal F$ is unbounded.
+\end{proof}
+% don't forget D_n
 
 \begin{thm}
   \label{thm:ma-addn}
@@ -1554,16 +1594,52 @@ We are now prepared to prove Theorem~\ref{thm:ma-addn}.
   Next, to apply $MA_\mathbb{P}(\kappa)$, we need a dense set: $D_\alpha=\{q\in\mathbb{P}: q\supseteq N_\alpha\}$. If $G\cap D_\alpha\not= \emptyset$ for all $\alpha<\kappa$ then $U_G\supseteq \bigcup_{\alpha<\kappa} N_\alpha$ and so, applying Martin's Axiom we are done. Thus, it remains to prove that $D_\alpha$ is dense. Fix $\alpha$ and $p\in\mathbb{P}$. Let $V$ be an open set containing $N_\alpha$ and $|V|<\epsilon-|p|$, and let $q=p\cup V$. Then we have $|q|<\epsilon$ and $q\in\mathbb{P}$. We also have that $q$ extends $p$, $q\leq p$, and $q\in D_\alpha$.
 \end{proof}
 
+% jech, Sec16 for hechler
+% kunen for amoeba
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{The forcing theorems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Preservation of cardinals}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Cohen and random forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We begin with Cohen forcing.
+\begin{defn}
+  The partial order for \emph{Cohen forcing} $\mathbb C$ consists of all equivalence classes of nonmeager subsets of $2^\omega$, where sets $A,B$ are said to be equivalent if they differ by a meager set. The elements of $\mathbb C$ are ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is meager.
+\end{defn}
+
+\begin{lem}
+  The Cohen partial order $\mathbb C$ is ccc.
+\end{lem}
+
+\begin{thm}
+  The Cohen forcing partial order $\mathbb C$ is forcing equivalent to the partial order $2^{<\omega}$.
+\end{thm}
+
+\begin{defn}
+  The partial order for \emph{random forcing} $\mathbb B$ consists of all equivalence classes of nonnull subsets of $2^\omega$, where sets $A,B$ are equivalent if they differ by a null set. The elements of $\mathbb B$ are ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is null.
+\end{defn}
+
+\begin{lem}
+  The random partial order $\mathbb B$ is ccc.
+\end{lem}
+
+\begin{proof}
+  In $\mathbb B$, two elements $A,B$ are incompatible if and only if their intersection is null. Thus it suffices to show that any family $\mathcal F$ of pairwise disjoint subsets of $2^\omega$ is countable. Indeed, since $m(2^\omega)=1$, for each $n$ there can be just finitely many elements of $\mathcal F$ of measure $\geq1/n$. It follows that there can be just countably many elements of $\mathcal F$.
+\end{proof}
+
+The random partial order does not have such an elementary characterization as the Cohen partial order.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Iterated Cohen and random forcing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{defn}
   For any cardinals $\kappa,\lambda$, we define the set $\Fn(\kappa,\lambda)$ to be the family of all functions $p\colon F\to\lambda$, where $F$ is a finite subset of $\kappa$. We partially order $\Fn(\kappa,\lambda)$ by function extension: $p\leq q$ if and only if $p\supset q$.
@@ -1597,10 +1673,12 @@ A family $\mathcal F$ of sets is called a \emph{delta system} if there exists a 
   Now, let $\mathcal G_0\subset\mathcal G$ be the subset of $\mathcal G$ consisting of functions $g$ such that $\dom(g)\in\mathcal F_0$. These functions may disagree on $A$, but they can never disagree elsewhere. Since there are only countably many possibilities for $g\restriction A$, by the pigeon-hole principle we can replace $\mathcal G_0$ with an uncountable subset of it such that $g\restriction A=$ some fixed function $g_0$ for all $g$. It follows from this that every pair of elements of $\mathcal G_0$ is compatible.
 \end{proof}
 
-Next we explore random forcing.
-
 \begin{defn}
-
+  For any cardinal $\kappa$, we define the set $\mathbb B_\kappa$ to be the collection of all nonnull subsets of $2^\kappa$, where two such sets are identified if they differ only on a null set. The elements of $\mathbb B_\kappa$ are ordered by $A\leq B$ iff $A\subset B$.
 \end{defn}
+
+\begin{lem}
+  The partial order $\mathbb B_\kappa$ is ccc.
+\end{lem}
 
 \end{document}
