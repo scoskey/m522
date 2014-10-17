@@ -1578,10 +1578,10 @@ For this proof, we need a new notion of forcing. The \emph{amoeba} partial order
 Since $p_\psi\in \mathbb{P}$ we have that $p_\psi$ is open and $|p_\psi|<\epsilon$ and also that $\psi\not=\nu$ implies that $|p_\psi\cup p_\nu|\geq \epsilon$, by definition $\mathbb{P}$. 
 
 Now, fix $\delta>0$ such that the set
-		$$E:=\{ \psi<\omega_1: |p_\psi|\leq \epsilon-2\delta\}$$
+		$$E:=\{ \psi<\omega_1: |p_\psi|< \epsilon-2\delta\}$$
 is uncountable. 
 
-Let $\mathcal{B}$ be the set of all finite unions of rational intervals, (Note that $\mathcal{B}$ is countable). Now, for each $\psi\in E$, choose $W_\psi\subseteq p_\psi$ with $W\psi\in \mathcal{B}$ and $|p_\psi\setminus W_\psi|\leq \delta$. Then, for $\psi, \nu\in E$ with $\psi\not=\nu$, we have $|W_\psi\cup W\nu|\geq \epsilon-2\delta$ and $|W_\psi|\leq |p_\psi|\leq \epsilon - 2\delta$. But $\mathcal{B}$ is countable, so we fix $\psi, \nu\in E$ with $\psi\not=\nu$ but $W\psi=W_\nu$, a contradiction.
+Let $\mathcal{B}$ be the set of all finite unions of rational intervals, (Note that $\mathcal{B}$ is countable). Now, for each $\psi\in E$, choose $W_\psi\subseteq p_\psi$ with $W_\psi\in \mathcal{B}$ and $|p_\psi\setminus W_\psi|< \delta$. Then, for $\psi, \nu\in E$ with $\psi\not=\nu$, we have $|W_\psi\cup W_\nu|> \epsilon-2\delta$ and $|W_\psi|\leq |p_\psi|<\epsilon - 2\delta$. But $\mathcal{B}$ is countable, so we fix $\psi, \nu\in E$ with $\psi\not=\nu$ but $W_\psi=W_\nu$, a contradiction.
 \end{proof}
 
 We are now prepared to prove Theorem~\ref{thm:ma-addn}.
