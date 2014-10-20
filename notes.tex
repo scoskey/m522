@@ -378,6 +378,7 @@ Corollary~\ref{cor:interval-nonnull} is immediate from condition (a) of Theorem~
 \end{exerc}
 
 \begin{exerc}
+  \label{exerc:continuity-above}
   Prove that condition (c) of a measure implies \emph{continuity from above}: if $A_n$ is a decreasing sequence of sets, $m(A_n)$ is finite, and $A=\bigcap A_n$, then $m(A)=\inf m(A_n)$.
 \end{exerc}
 
@@ -1543,60 +1544,76 @@ Given a family $\mathcal F\subset\omega^\omega$, the \emph{Hechler forcing} with
 \item $F'\supset F$, and
 \item $s'(n)>f(n)$ whenever $f\in F$ and $n\in\dom(s'\smallsetminus s)$.
 \end{itemize}
-If $(s,F)$ is an element of a Hechler forcing, then as usual the left coordinate $s$, called the stem, is a finite approximation for a new element of Baire space. The new coordinate $F$ can be thought of as a set of ``promises'', which ensures that stronger conditions will dominate the elements of $F$.
+If $(s,F)$ is an element of a Hechler forcing, then as usual the left coordinate $s$, called the \emph{stem}, is a finite approximation for a new element of Baire space. The new coordinate $F$ can be thought of as a set of \emph{promises}, which ensures that stronger conditions will dominate the elements of $F$.
 
-Hechler forcing is always ccc, because incompatible conditions cannot have the same stem $s$, an there are only countably many possible stems $s$.
+Hechler forcing is always ccc, because incompatible conditions cannot have the same stem $s$, and there are only countably many possible stems $s$.
 
 \begin{thm}
   Assuming MA, we have $\mathfrak b=\mathfrak c$.
 \end{thm}
 
 \begin{proof}
-  Suppose towards a contradiction that $\mathcal F$ is an unbounded family of size $<\mathfrak c$, and let $\mathbb P$ be the Hechler forcing $\mathbb H_{\mathcal F}$. For each $f\in\mathcal F$ we consider the set
+  Suppose towards a contradiction that $\mathcal F$ is an unbounded family of size $<\mathfrak c$, and let $\mathbb P$ be the Hechler forcing $\mathbb H_{\mathcal F}$. We now consider two families of dense sets. First, for each $n$ we consider the set
+  \[D_n=\set{(s,F)\in\mathbb H_{\mathcal F}\mid\dom(s)\geq n}
+  \]
+  Then $D_n$ is dense\ldots
+
+  Next, for each $f\in\mathcal F$ we consider the set
   \[D_f=\set{(s,F)\in\mathbb H_{\mathcal F}\mid f\in F}
   \]
-  Then $D_f$ is dense, since any pair $(s,F)$ can be extended to the stronger element $(s,F\cup\{f\})$. Hence by MA we cand find a filter $G$ that meets $D_f$ for all $f\in\mathcal F$, and let
-\[g=\bigcup\set{s\mid(\exists F)\;(s,F)\in G}
-\]
-be the element of Baire space determined by $G$. The partial order on $\mathbb H_{\mathcal F}$ then ensures that $g$ dominates $f$ for all $f\in\mathcal F$, contradicting that $\mathcal F$ is unbounded.
+  Then $D_f$ is again dense, since given $(s,F)$ we have $(s,F\cup\{f\})\leq(s,F)$ (Observe that the promises $F$ are trivially satisfied since we have not lengthened the stem!)
+
+  Now by MA we cand find a filter $G$ that meets $D_n$ for all $n\in\NN$ and  $D_f$ for all $f\in\mathcal F$. We then let
+  \[g=\bigcup\set{s\mid(\exists F)\;(s,F)\in G}
+  \]
+  be the element of the Baire space determined by $G$. Given $f\in\mathcal F$ and $n\in\NN$ we first find an element $(s,F)\in G\cap D_f$, and then letting $n'=\max(n,\dom(s))+1$ we find an element $(s',F')\in G\cap D_{n'}$. Since $G$ is a filter we can find $(s'',F'')\in G$ which is stronger than both. Then by the definition of the ordering on $\mathbb H_{\mathcal F}$, there is some $n''>n$ such that $s''(n'')>f(n'')$ and hence $g(n'')>f(n'')$. Since $f$ and $n$ were arbitrary, it follows that $f\leq^*g$ for all $f\in\mathcal F$, contradicting that $\mathcal F$ is unbounded.
 \end{proof}
-% don't forget D_n
+
+We close this section by finding the effect of MA on the cardinal $\add(\Null)$. As we will see, MA once again implies that this cardinal has its maximum value of $\mathfrak c$. By the inequalities shown in Theorem~\ref{thm:cichon} and especially Bartoszy\'nski's theorem, this implies that assuming MA, \emph{all} the cardinal characteristics in Cicho\'n\'s diagram have the value $\mathfrak c$. At face value, this obviates the last three results which showed that individual characteristics are equal to $\mathfrak c$. But those arguments were more direct, and moreover introduced us to several forcings which will remain important outside of the MA context.
 
 \begin{thm}
   \label{thm:ma-addn}
   Assuming MA, we have $\add(\Null)=\mathfrak c$. In particular, all the cardinal characteristics in Cicho\'n's diagram (except possibly for $\aleph_1$) have the same value.
 \end{thm}
 
-For this proof, we need a new notion of forcing. The \emph{amoeba} partial ordering $\mathbb A_\epsilon$ with parameter $\epsilon>0$ consists of all open subsets $O\subset\RR$ such that $m(O)<\epsilon$. The ordering on $\mathbb A_\epsilon$ is defined by $O\leq O'$ iff $O\supset O'$. Thus the elements of $\mathbb A_\epsilon$ are inner approximations to an open set of measure $\leq\epsilon$.
+For this proof, we once again introduce a new and special notion of forcing. The \emph{amoeba} partial ordering $\mathbb A_\epsilon$ with parameter $\epsilon>0$ consists of all open subsets $O\subset\RR$ such that $m(O)<\epsilon$. The ordering on $\mathbb A_\epsilon$ is defined by $O\leq O'$ iff $O\supset O'$. Thus the elements of $\mathbb A_\epsilon$ are inner approximations to an open set of measure $\leq\epsilon$.
 
 \begin{lem}
   For any $\epsilon$, the amoeba partial ordering $\mathbb A_\epsilon$ is ccc.
 \end{lem}
 
 \begin{proof}
-  Assume otherwise, then there is a $p_\psi\in \mathbb{P}$, $\psi<\omega_1$ such that:
-		$$\psi\not=\nu \implies p_\psi\perp p_\nu.$$
-Since $p_\psi\in \mathbb{P}$ we have that $p_\psi$ is open and $|p_\psi|<\epsilon$ and also that $\psi\not=\nu$ implies that $|p_\psi\cup p_\nu|\geq \epsilon$, by definition $\mathbb{P}$. 
+  Given an uncountable family $\mathcal F\subset\mathbb A_\epsilon$ we must show that at least two elements $O,O'\in\mathcal F$ are compatible, that is, $m(O\cup O')<\epsilon$. We first give ourselves a little wiggle room as follows: since $\mathcal F$ is uncountable and there are only countably many values of $n\in\NN$, by the pigeon-hole principle we can find a fixed $n$ and an uncountable subset $\mathcal F_0\subset\mathcal F$ such that for all $O\in\mathcal F_0$ we have $m(O)<\epsilon-1/n$.
 
-Now, fix $\delta>0$ such that the set
-		$$E:=\{ \psi<\omega_1: |p_\psi|< \epsilon-2\delta\}$$
-is uncountable. 
+  Now for each $O\in\mathcal F_0$ we can find an open set $B_O\subset O$ which is a finite union of intervals with rational endpoints and such that $m(O\smallsetminus B_O)<1/2n$. Once again, since there are only countably many possible sets $B_O$, we can find a fixed set $B$ and an uncountable $\mathcal F_{00}\subset\mathcal F$ such that $B=B_O$ for every $O\in\mathcal F_{00}$.
 
-Let $\mathcal{B}$ be the set of all finite unions of rational intervals, (Note that $\mathcal{B}$ is countable). Now, for each $\psi\in E$, choose $W_\psi\subseteq p_\psi$ with $W_\psi\in \mathcal{B}$ and $|p_\psi\setminus W_\psi|< \delta$. Then, for $\psi, \nu\in E$ with $\psi\not=\nu$, we have $|W_\psi\cup W_\nu|> \epsilon-2\delta$ and $|W_\psi|\leq |p_\psi|<\epsilon - 2\delta$. But $\mathcal{B}$ is countable, so we fix $\psi, \nu\in E$ with $\psi\not=\nu$ but $W_\psi=W_\nu$, a contradiction.
+  We claim that any two elements $O,O'\mathcal F_{00}$ are compatible. Indeed, we compute:
+  \begin{align*}
+    m(O\cup O')&=m(B_O\cup(O\smallsetminus B_O)\cup B_{O'}\cup(O'\smallsetminus B_{O'}))\\
+    &=m(B\cup(O\smallsetminus B_O)\cup(O'\smallsetminus B_{O'}))\\
+    &\leq m(B)+2(1/2n)\\
+    &<(\epsilon-1/n)+1/n\\
+    &=\epsilon
+  \end{align*}
+  Thus we can conclude that $\mathcal F$ is not an antichain, as desired.
 \end{proof}
 
 We are now prepared to prove Theorem~\ref{thm:ma-addn}.
 
 \begin{proof}[Proof of Theorem~\ref{thm:ma-addn}]
-  Fix $\kappa<\mathfrak{m}$. We want to show that $\kappa<\add(\mathcal{L})$. Let $N_\alpha$, for $\alpha<\kappa$ denote Lebgsgue null sets. Note that, in this proof, we use $|\cdot|$ to denote the typical Lebesgue measure. Ultimately, we want to show that $N_\alpha$ is null. Thus, given $\epsilon>0$, we want to find a set $U$ such that $|U|<\epsilon$ and $U\supseteq \bigcup_{\alpha<\kappa} N_\alpha$. To this end, fix $\epsilon>0$. 
+  Given a family $\mathcal F$ of fewer than continuum many null sets, we wish to show that $\bigcup\mathcal F$ is again null. For this, it is sufficient to show that for any $\epsilon>0$ we have $\bigcup\mathcal F$ is contained in an open set of measure $\leq\epsilon$.
 
-  Next, for any filter $G$, let $U_G=\bigcup G$. $U_G$ is open, and we want to show that $|U_G|\leq \epsilon$ in order to prove $\kappa<\add(\mathcal{L})$. Since $U_G\subseteq \RR$, we have that $U_G$ is a second countable space, thus it is Lindel\"of. (i.e. there is a countable subset $G$, $\{p_j: j\in \omega\}$, whose union covers $U_G$.). By Lemma 5.15, $G$ is centered, so for each $n$ there is a $q\in\mathbb{P}$ such that $q\leq p_j$ for all $j<n$. Since $\leq$ is $\supseteq$, this implies that the measure of each $|\bigcup_{j<n}p_j|<\epsilon$. Since $U_G=\bigcup_{j\in\omega} p_j$ and the fact that measure is additive, we have $|\bigcup_{j\in\omega}|=|U_G|\leq \epsilon$. 
+  For this, let $\epsilon$ be given and let $\mathbb A_\epsilon$ be the corresponding amoeba forcing. For each $A\in\mathcal F$ we consider the set
+  \[D_A=\set{O\in\mathbb A_\epsilon\mid A\subset O}
+  \]
+  To see that $D_A$ is dense, let $O$ be a given open set with $m(O)<\epsilon$. Since $A$ is null we can find an open set $U$ such that $A\subset U$ and $m(U)<\epsilon-m(O)$. Then $m(O\cup U)<\epsilon$ and $A\subset O\cup U$, and so $O\cup U$ is stronger than $O$ and $O\cup U\in D_A$. (Kunen says: The amoeba $O$ reached out a pseudopod $U$ to engulf the morsel of food $A$.)
 
-  Next, to apply $MA_\mathbb{P}(\kappa)$, we need a dense set: $D_\alpha=\{q\in\mathbb{P}: q\supseteq N_\alpha\}$. If $G\cap D_\alpha\not= \emptyset$ for all $\alpha<\kappa$ then $U_G\supseteq \bigcup_{\alpha<\kappa} N_\alpha$ and so, applying Martin's Axiom we are done. Thus, it remains to prove that $D_\alpha$ is dense. Fix $\alpha$ and $p\in\mathbb{P}$. Let $V$ be an open set containing $N_\alpha$ and $|V|<\epsilon-|p|$, and let $q=p\cup V$. Then we have $|q|<\epsilon$ and $q\in\mathbb{P}$. We also have that $q$ extends $p$, $q\leq p$, and $q\in D_\alpha$.
+  Now by MA there is a filter $G\subset\mathbb A_\epsilon$ such that $G$ meets $D_A$ for all $A\in\mathcal F$. Letting $U=\bigcup G$ be the open set determined by $G$, we clearly have that $\bigcup\mathcal F\subset U$. To conclude, we claim that $m(U)\leq\epsilon$. For this, since $\mathbb R$ is second countable we can find countably many elements $O_1,O_2,\cdots\in G$ such that $U=\bigcup O_n$. Since measure is continuous from below (similar to Exercise~\ref{exerc:continuity-above}) for all $\delta>0$ there exists some $N$ such that $m(O_1\cup\cdots\cup O_N)\geq m(U)-\delta$. Since $G$ is downwards-directed we inductively have $O_1\cup\cdots\cup O_n\in G$, which implies that $m(O_1\cup\cdots\cup O_N)<\epsilon$. It follows that $m(U)\leq\epsilon+\delta$, and since $\delta$ was arbitrary we have $m(U)\leq\epsilon$, as desired.
 \end{proof}
 
+% blass for "solving" posets
 % jech, Sec16 for hechler
-% kunen for amoeba
+% kunen, III.3 for amoeba
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
