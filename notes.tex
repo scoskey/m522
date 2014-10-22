@@ -10,22 +10,21 @@
 \usepackage{setspace}\onehalfspacing\raggedbottom
 \renewcommand{\labelitemi}{$\circ$}
 \renewcommand{\labelenumi}{(\alph{enumi})}
-\usepackage{etoolbox}\makeatletter\pretocmd{\@seccntformat}{\S}{}{}\pretocmd{\@subseccntformat}{\S}{}{}\makeatother
-\usepackage{tikz}
-\usetikzlibrary{positioning,decorations.fractals,decorations.pathmorphing}
-\usepackage{hyperref}
+\usepackage{etoolbox}\makeatletter\pretocmd{\@seccntformat}{\S}{}{}\makeatother
+\usepackage{tikz}\usetikzlibrary{positioning,decorations.fractals,decorations.pathmorphing}\usepackage{hyperref}
 
 \newcommand{\set}[1]{\left\{\,#1\,\right\}}
 \newcommand{\NN}{\mathbb N}
+\newcommand{\PP}{\mathbb P}
 \newcommand{\QQ}{\mathbb Q}
 \newcommand{\RR}{\mathbb R}
+\newcommand{\Null}{\mathcal N}
+\newcommand{\Meager}{\mathcal M}
+\newcommand{\Ksigma}{\mathcal K_\sigma}
 \DeclareMathOperator{\add}{\mathsf{add}}
 \DeclareMathOperator{\non}{\mathsf{non}}
 \DeclareMathOperator{\cov}{\mathsf{cov}}
 \DeclareMathOperator{\cof}{\mathsf{cof}}
-\newcommand{\Null}{\mathcal N}
-\newcommand{\Meager}{\mathcal M}
-\newcommand{\Ksigma}{\mathcal K_\sigma}
 \DeclareMathOperator{\Diff}{Diff}
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
@@ -1356,12 +1355,12 @@ The concept of absoluteness highlights the distinction between ordinals and card
 
 The situtation is even more fluid with an indirectly-defined cardinal such as $\mathfrak c$. Recall that $\mathfrak c$ is the unique cardinal number $\aleph_\alpha$ that is in bijection with $\mathcal P(\omega)$. This value can be raised by a forcing which adds at least $\aleph_{\alpha+1}$ many new subsets of $\omega$. The value can also be shrunk by a forcing which adds a new bijection between $\aleph_1$ and the old $\aleph_\alpha$ (while still preserving $\aleph_1$). Roughly speaking, this is how we will establish the independence of the continuum hypothesis.
 
-For the rest of this section we introduce the basic combinatorial objects used in forcing. The main object is very simple: a \emph{forcing notion} is simply a partial order $\mathbb P$ with a maximum element $\mathbb1$ (also written $\mathbb1_{\mathbb P}$). When we force with $\mathbb P$, we add a new subset of $\mathbb P$ to the universe. We think of the elements of $\mathbb P$ as imposing conditions on the new set to be added. If $p,q\in\mathbb P$ we say that $p$ is \emph{stronger} than $q$ if $p\leq q$; lower elements hold more information.
+For the rest of this section we introduce the basic combinatorial objects used in forcing. The main object is very simple: a \emph{forcing notion} is simply a partial order $\PP$ with a maximum element $\mathbb1$ (also written $\mathbb1_\PP$). When we force with $\PP$, we add a new subset of $\PP$ to the universe. We think of the elements of $\PP$ as imposing conditions on the new set to be added. If $p,q\in\PP$ we say that $p$ is \emph{stronger} than $q$ if $p\leq q$; lower elements hold more information.
 
-When we force with $\mathbb P$, the partial order $\mathbb P$ can give fine control over the new subset that we add.
+When we force with $\PP$, the partial order $\PP$ can give fine control over the new subset that we add.
 
 \begin{defn}
-  A subset $G\subset\mathbb P$ is a \emph{filter} if it satisfies the two properties:
+  A subset $G\subset\PP$ is a \emph{filter} if it satisfies the two properties:
   \begin{itemize}
   \item upwards closed: if $p\in G$ and $p\leq q$ then $q\in G$.
   \item downwards directed: if $p,q\in G$ then there exists $r\in G$ such that $r\leq p,q$.
@@ -1379,33 +1378,33 @@ Elements $p,q$ are said to be \emph{compatible} if there exists $r$ such that $r
 We encourage the reader to note the distinction between the two words comparable and compatible: pairwise comparable sets form a chain while pairwise compatible sets form a filter. Compatibility is what is needed in direct limit constructions. In a tree, the two concepts end up the same.
 
 \begin{defn}
-  A subset $D\subset\mathbb P$ is \emph{dense} if for all $p\in\mathbb P$ there exists $q\in D$ such that $q\leq D$.
+  A subset $D\subset\PP$ is \emph{dense} if for all $p\in\PP$ there exists $q\in D$ such that $q\leq D$.
 \end{defn}
 
-The use of the word ``dense'' here may seem in conflict  with the use of the word in topology, but the two can be connected. If $\mathbb P$ is a partial order then it has a topology with a basis consisting of the downward cones $V_p=\set{q\in\mathbb P\mid q\leq p}$. A subset $D\subset\mathbb P$ is dense if and only if it is dense in this topology.
+The use of the word ``dense'' here may seem in conflict  with the use of the word in topology, but the two can be connected. If $\PP$ is a partial order then it has a topology with a basis consisting of the downward cones $V_p=\set{q\in\PP\mid q\leq p}$. A subset $D\subset\PP$ is dense if and only if it is dense in this topology.
 
-We think of the dense subsets of $\mathbb P$ as omnipresent---almost every element of $\mathbb P$ lies below some element of $D$. When we force with $\mathbb P$ we add a filter $G$ that is \emph{generic} in the sense that it meets these dense subsets of $\mathbb P$. The more dense sets that we demand that $G$ meets, the stronger a condition this imposes on $G$.
+We think of the dense subsets of $\PP$ as omnipresent---almost every element of $\PP$ lies below some element of $D$. When we force with $\PP$ we add a filter $G$ that is \emph{generic} in the sense that it meets these dense subsets of $\PP$. The more dense sets that we demand that $G$ meets, the stronger a condition this imposes on $G$.
 
-For example, if just countably many dense sets are given, then we will see in the next section that there is always a filter that meets them all. On the other extreme, we could say that a filter is fully generic if it meets \emph{every} dense set of $\mathbb P$, but the next result shows that this is too strong.
+For example, if just countably many dense sets are given, then we will see in the next section that there is always a filter that meets them all. On the other extreme, we could say that a filter is fully generic if it meets \emph{every} dense set of $\PP$, but the next result shows that this is too strong.
 
 \begin{prop}
-  Suppose that for every $p\in\mathbb P$, there exist incompatible elements $q,r\leq p$. Then $\mathbb P$ does not have a fully generic filter.
+  Suppose that for every $p\in\PP$, there exist incompatible elements $q,r\leq p$. Then $\PP$ does not have a fully generic filter.
 \end{prop}
 
 \begin{proof}
-  It is enough to show that if $G\subset\mathbb P$ is a filter then its complement $D=\mathbb P\smallsetminus G$ is dense. For this, let $p\in\mathbb P$ be arbitrary and by the hypothesis on $\mathbb P$ let $q,r$ be incompatible elements such that $q,r\leq p$. Since $G$ is a filter, it cannot contain both $q$ and $r$. Thus $D$ contains at least one of them, and this shows $D$ is dense.
+  It is enough to show that if $G\subset\PP$ is a filter then its complement $D=\PP\smallsetminus G$ is dense. For this, let $p\in\PP$ be arbitrary and by the hypothesis on $\PP$ let $q,r$ be incompatible elements such that $q,r\leq p$. Since $G$ is a filter, it cannot contain both $q$ and $r$. Thus $D$ contains at least one of them, and this shows $D$ is dense.
 \end{proof}
 
-A partial order $\mathbb P$ satisfying the hypothesis of the proposition is called \emph{atomless}. The condition ensures that forcing with $\mathbb P$ is nontrivial. Once we acknowledge that fully generic filters do not exist in the given universe of set theory, we arrive at the following definition.
+A partial order $\PP$ satisfying the hypothesis of the proposition is called \emph{atomless}. The condition ensures that forcing with $\PP$ is nontrivial. Once we acknowledge that fully generic filters do not exist in the given universe of set theory, we arrive at the following definition.
 
 \begin{defn}
-  If $V$ is a model of set theory and $\mathbb P\in V$, we say that $G$ is \emph{$V$-generic} if for every $D\in V$ such that $D\subset\mathbb P$ is dense, we have $G\cap D\neq\emptyset$.
+  If $V$ is a model of set theory and $\PP\in V$, we say that $G$ is \emph{$V$-generic} if for every $D\in V$ such that $D\subset\PP$ is dense, we have $G\cap D\neq\emptyset$.
 \end{defn}
 
-When we make forcing rigorous, we will show that under appropriate hypotheses, a $V$-generic filter $G$ can be found outside of $V$. We will then let $W=V[G]$ be the smallest model containing both $V$ and $G$, and call this the forcing extension with respect to the notion $\mathbb P$.
+When we make forcing rigorous, we will show that under appropriate hypotheses, a $V$-generic filter $G$ can be found outside of $V$. We will then let $W=V[G]$ be the smallest model containing both $V$ and $G$, and call this the forcing extension with respect to the notion $\PP$.
 
 \begin{example}
-  Returning to the example of the forcing notion $\mathbb P=\omega^{<\omega}$ with the upside-down ordering, we have already said that a filter $G\subset\omega^\omega$ is actually a path through $\omega^\omega$. If $G$ is $V$-generic, then much more can be said of this path. First of all, consider the sets
+  Returning to the example of the forcing notion $\PP=\omega^{<\omega}$ with the upside-down ordering, we have already said that a filter $G\subset\omega^\omega$ is actually a path through $\omega^\omega$. If $G$ is $V$-generic, then much more can be said of this path. First of all, consider the sets
   \[D_n=\set{t\in\omega^{<\omega}\mid \dom(t)\geq n}\;.
   \]
   Clearly $D_n$ is dense, since any $s\in\omega^{<\omega}$ can be extended to an element with length at least $n$ (recall we are using the upside-down ordering). It follows that $G$ meets $D_n$ for all $n$, and hence that $G$ is an infinite path. Second, if $G$ is $V$-generic then we have already seen that $G\notin V$. Thus the union $g=\bigcup G$ is an element of $\omega^{<\omega}$ that wasn't there before, that is, $g$ is a new element of the Baire space! We can do the same with $2^{<\omega}$ and Cantor space.
@@ -1423,38 +1422,39 @@ This example brings us back to our discussion of forcing CH to be false in a for
 
 We will make the ideas of the previous section more rigorous shortly. But before going into the technical details of this, we will introduce the combinatorics of forcing using forcing itself as a black box. Specifically, we will appeal to a statement called Martin's axiom, which roughly speaking says that the current universe of set theory $V$ already contains many highly generic filters $G$. The consistency of MA is itself proved using forcing, but we shall take this for granted for now. This will allow us to explore the effects of forcing using a number of partial orders without ever leaving $V$.
 
-There is unfortunately one major limitation on the variety of partial orders we will be able to explore using Martin's axiom. A subset $A\subset\mathbb P$ is said to be an \emph{antichain} if for all $p,q\in A$ we have $p$ and $q$ are not compatible. Thus if $A$ is an antichain, a filter $G$ can only choose at most \emph{one} of the elements of $A$.
+There is unfortunately one major limitation on the variety of partial orders we will be able to explore using Martin's axiom. A subset $A\subset\PP$ is said to be an \emph{antichain} if for all $p,q\in A$ we have $p$ and $q$ are not compatible. Thus if $A$ is an antichain, a filter $G$ can only choose at most \emph{one} of the elements of $A$.
 
 \begin{defn}
-  A partial order $\mathbb P$ is said to be \emph{ccc} (or satisfy the \emph{countable chain condition}) if every antichain $A\subset\mathbb P$ is countable.
+  A partial order $\PP$ is said to be \emph{ccc} (or satisfy the \emph{countable chain condition}) if every antichain $A\subset\PP$ is countable.
 \end{defn}
 
-In some sense the ccc imposes a limitation on the number of different filters that may be added when forcing with $\mathbb P$. The partial order $\omega^{<\omega}$ considered in the previous section is obviously ccc because it is countable. However, there are many examples of ccc partial orders which are not countable.
+In some sense the ccc imposes a limitation on the number of different filters that may be added when forcing with $\PP$. The partial order $\omega^{<\omega}$ considered in the previous section is obviously ccc because it is countable. However, there are many examples of ccc partial orders which are not countable.
 
 \begin{example}
   \label{ex:cohen-ccc}
-  Consider the partial order $\mathbb P$ consisting of all nonempty open subsets of $\RR$, with the ordering $A\leq B$ iff $A\subset B$. Then $\mathbb P$ is ccc: indeed, two sets are incompatible in this ordering if and only if they are disjoint. Thus an antichain is a family of pairwise disjoint open sets, and since $\RR$ is separable, such a family must be countable.
+  Consider the partial order $\PP$ consisting of all nonempty open subsets of $\RR$, with the ordering $A\leq B$ iff $A\subset B$. Then $\PP$ is ccc: indeed, two sets are incompatible in this ordering if and only if they are disjoint. Thus an antichain is a family of pairwise disjoint open sets, and since $\RR$ is separable, such a family must be countable.
 \end{example}
 
 \begin{example}
-  Consider the partial order $\mathbb P=\omega_1^{<\omega}$ with the usual upside-down tree ordering. Then this $\mathbb P$ is not ccc. Indeed, the set of sequences $s\in\mathbb P$ of length $1$ is an uncountable antichain in $\mathbb P$.
+  Consider the partial order $\PP=\omega_1^{<\omega}$ with the usual upside-down tree ordering. Then this $\PP$ is not ccc. Indeed, the set of sequences $s\in\PP$ of length $1$ is an uncountable antichain in $\PP$.
 \end{example}
 
 \begin{defn}
-  \emph{Martin's axiom} (or just \emph{MA}) is the statement: For every ccc partial order $\mathbb P$ and every family $\mathcal F$ of fewer than continuum many dense subsets of $\mathbb P$ there exists an $\mathcal F$-generic filter $G\subset\mathbb P$.
+  \emph{Martin's axiom} (or just \emph{MA}) is the statement: For every ccc partial order $\PP$ and every family $\mathcal F$ of fewer than continuum many dense subsets of $\PP$ there exists an $\mathcal F$-generic filter $G\subset\PP$.
 \end{defn}
 
 We sometimes consider the refinements of MA defined as follows. The axiom MA$_\kappa$ is the same statement as MA, with $|\mathcal F|<\mathfrak c$ replaced by $|\mathcal F|=\kappa$.
 
 \begin{prop}
+  \label{prop:ma-aleph0}
   MA$_{\aleph_0}$ is true. Thus if CH holds, then MA is true.
 \end{prop}
 
 \begin{proof}
-  Let $\mathbb P$ be any partial order and let $D_0,D_1,\ldots$ be a countable family of dense subsets of $\mathbb P$. Fix $p_0\in D_0$, and inductively let $p_{n+1}\leq p_n$ be an element of $D_{n+1}$. Then the set $\{p_n\}$ is downwards directed, and hence closing it upwards generates a filter $G$ which meets each of the $D_i$.
+  Let $\PP$ be any partial order and let $D_0,D_1,\ldots$ be a countable family of dense subsets of $\PP$. Fix $p_0\in D_0$, and inductively let $p_{n+1}\leq p_n$ be an element of $D_{n+1}$. Then the set $\{p_n\}$ is downwards directed, and hence closing it upwards generates a filter $G$ which meets each of the $D_i$.
 \end{proof}
 
-In fact, in this proof we did not even need $\mathbb P$ to be ccc. The next result states that MA is also consistent with a larger continuum. For now we take this fact for granted and use it to derive several applications, as an introduction to the combinatorics of forcing. 
+In fact, in this proof we did not even need $\PP$ to be ccc. The next result states that MA is also consistent with a larger continuum. For now we take this fact for granted and use it to derive several applications, as an introduction to the combinatorics of forcing. 
 
 \begin{thm}
   There is a model $V$ of set theory which satisfies both MA and $\neg$CH.
@@ -1476,11 +1476,11 @@ The axiom MA packages a great deal of forcing into one universe $V$. When MA is 
 \end{proof}
 
 \begin{prop}
-  In the definition of MA, we cannot in general drop the condition that $\mathbb P$ is ccc.
+  In the definition of MA, we cannot in general drop the condition that $\PP$ is ccc.
 \end{prop}
 
 \begin{proof}
-  This time we let use the partial order $\mathbb P=\omega_1^{<\omega}$ with the upside-down order. We have already seen that $\mathbb P$ is not ccc. Now we consider the sets
+  This time we let use the partial order $\PP=\omega_1^{<\omega}$ with the upside-down order. We have already seen that $\PP$ is not ccc. Now we consider the sets
   \[D_\alpha=\set{s\in\omega_1^{<\omega}\mid\alpha\in\rng(s)}
   \]
   for all $\alpha\in\omega_1$. Then $D_\alpha$ is dense: any $s\in\omega_1^{<\omega}$ can be extended to include $\alpha$ in its range. Now if MA were to hold with respect to this partial order, then there would be a filter $G\subset\omega_1^{<\omega}$ that meets $D_\alpha$ for all $\alpha$. It follows from this that there is an onto function $g=\bigcup G$ from $\omega$ to $\omega_1$, a contradiction.
@@ -1494,23 +1494,23 @@ We close this section with a result showing the effect of MA on properties of th
 \end{thm}
 
 \begin{proof}
-  Suppose towards a contradiction that $\mathcal F$ is a family of nowhere dense subsets of $\RR$ of cardinality less than continuum, and that $\bigcup\mathcal F=\RR$. Let $\mathbb P$ be the partial order consisting of all bounded, positive-length intervals in $\RR$, ordered by $I'\leq I$ iff $I'\subset I$. Then $\mathbb P$ is easily seen to be ccc by the same argument as in Example~\ref{ex:cohen-ccc}. For each $A\in\mathcal F$, we consider the set
-  \[D_A=\set{I\in\mathbb P\mid \overline{I}\cap A=\emptyset}
+  Suppose towards a contradiction that $\mathcal F$ is a family of nowhere dense subsets of $\RR$ of cardinality less than continuum, and that $\bigcup\mathcal F=\RR$. Let $\PP$ be the partial order consisting of all bounded, positive-length intervals in $\RR$, ordered by $I'\leq I$ iff $I'\subset I$. Then $\PP$ is easily seen to be ccc by the same argument as in Example~\ref{ex:cohen-ccc}. For each $A\in\mathcal F$, we consider the set
+  \[D_A=\set{I\in\PP\mid \overline{I}\cap A=\emptyset}
   \]
   Then $D_A$ is dense for any $A$: since $A$ is nowhere dense, for any positive-length interval $I$ there is a positive length $J\subset I$ such that $J\cap A=\emptyset$. We may then shrink $J$ further to suppose that $\overline{J}\subset I$.
 
-  Now by MA, we can find a filter $G\subset\mathbb P$ such that $G$ meets $D_A$ for every $A\in\mathcal F$. Then the sets $\overline{I}$ for $I\in G$ have the finite intersection property, and it follows from the completeness of $\RR$ that there is a point $x\in\bigcap\set{\overline{I}\mid I\in G}$. Then if $A\in\mathcal F$ then since $G\cap D_A\neq\emptyset$ we can find a positive-length interval $I$ such that $I\in G$ and $\overline{I}\cap A=\emptyset$. That is, we have $x\in\overline{I}$ and $\overline{I}\cap A=\emptyset$, and so $x\notin A$. We conclude that $x$ is not an element of $\bigcup\mathcal F$, contradicting that $\bigcup\mathcal F=\RR$.
+  Now by MA, we can find a filter $G\subset\PP$ such that $G$ meets $D_A$ for every $A\in\mathcal F$. Then the sets $\overline{I}$ for $I\in G$ have the finite intersection property, and it follows from the completeness of $\RR$ that there is a point $x\in\bigcap\set{\overline{I}\mid I\in G}$. Then if $A\in\mathcal F$ then since $G\cap D_A\neq\emptyset$ we can find a positive-length interval $I$ such that $I\in G$ and $\overline{I}\cap A=\emptyset$. That is, we have $x\in\overline{I}$ and $\overline{I}\cap A=\emptyset$, and so $x\notin A$. We conclude that $x$ is not an element of $\bigcup\mathcal F$, contradicting that $\bigcup\mathcal F=\RR$.
 \end{proof}
 
 % \begin{proof}
 %   First recall from Proposition~\ref{prop:meager-diff} that a subset $A\subset2^\omega$ is meager if and only if it is contained in a set of the form $\Diff(x,P)$ for $x\in2^\omega$ and $P$ an interval partition. It follows that $\cov(\Meager)$ is the least cardinality of a family $\mathcal F$ of pairs $(y,P)$ such that for all $x\in2^\omega$ there exists $(y,P)\in\mathcal F$ such that $x$ strongly differs from $y$ on $P$.
 
-%   Now suppose towards a contradiction that $\cov(\Meager)<\mathfrak c$, and fix a family $\mathcal F$ of pairs $(y,P)$ as above. We will apply MA to the partial order $\mathbb P=2^{<\omega}$ to obtain a suitably generic filter $G$. Our goal will be to ensure that $G$ matches (that is, doesn't strongly differ from) all of the $(y,P)$ pairs, which will be a contradiction. To this end, consider the subsets
+%   Now suppose towards a contradiction that $\cov(\Meager)<\mathfrak c$, and fix a family $\mathcal F$ of pairs $(y,P)$ as above. We will apply MA to the partial order $\PP=2^{<\omega}$ to obtain a suitably generic filter $G$. Our goal will be to ensure that $G$ matches (that is, doesn't strongly differ from) all of the $(y,P)$ pairs, which will be a contradiction. To this end, consider the subsets
 %   \[D_{y,P,n}=\set{s\in2^{<\omega}\mid \text{there is $I\in P$ such that $I>n$ and $s\restriction I=y\restriction I$}}
 %   \]
 %   Then for any $y$, $P$, and $n$ the set $D_{y,P,n}$ is dense: given any $s$ we can find an interval $I$ of $P$ beyond both $n$ and $\dom(s)$, and extend $s$ to a sequence $t$ which agrees with $y$ on $I$. 
 
-%   Thus by MA, there exists a filter $G\subset\mathbb P$ that meets the sets $D_{y,P,n}$ for all $(y,P)\in\mathcal F$, and we let $g=\bigcup G$ be the associated element of $2^\omega$. Given any $(y,P)\in\mathcal F$, since $G$ meets all dense sets $D_{y,P,n}$ it follows that $g$ does not strongly differ from $y$ on $P$. This contradicts our assumption about the family $\mathcal F$.
+%   Thus by MA, there exists a filter $G\subset\PP$ that meets the sets $D_{y,P,n}$ for all $(y,P)\in\mathcal F$, and we let $g=\bigcup G$ be the associated element of $2^\omega$. Given any $(y,P)\in\mathcal F$, since $G$ meets all dense sets $D_{y,P,n}$ it follows that $g$ does not strongly differ from $y$ on $P$. This contradicts our assumption about the family $\mathcal F$.
 % \end{proof}
 
 % kunen, III.2 for ccc
@@ -1531,7 +1531,7 @@ We have seen the effect of MA on properties of the continuum. We now explore the
 \end{thm}
 
 \begin{proof}
-  Suppose towards a contradiction that $\mathfrak d<\mathfrak c$, and fix a dominating family $\mathcal F\subset\omega^\omega$. Let $\mathbb P$ be the partial order $\omega^{<\omega}$ with the upside-down ordering. For each $f\in\mathcal F$ we consider the family sets
+  Suppose towards a contradiction that $\mathfrak d<\mathfrak c$, and fix a dominating family $\mathcal F\subset\omega^\omega$. Let $\PP$ be the partial order $\omega^{<\omega}$ with the upside-down ordering. For each $f\in\mathcal F$ we consider the family sets
   \[D_{f,n}=\set{s\in\omega^{<\omega}\mid\text{there is $n'>n$ such that $s(n)>f(n)$}}
   \]
   Observe that $D_{f,n}$ is dense for all $f$ and $n$: if $s\in\omega^{<\omega}$ we can easily find $n'>n,|s|$ and find $t\supset s$ such that $t(n')>f(n)$. Thus by MA we can find a filter $G$ which meets $D_{f,n}$ for all $f\in\mathcal F$ and $n\in\NN$. Letting $g=\bigcup G$, it is clear that $g$ is not dominated by $f$ for any $f\in\mathcal F$, contradicting that $\mathcal F$ is a dominating family.
@@ -1554,7 +1554,7 @@ Hechler forcing is always ccc, because incompatible conditions cannot have the s
 \end{thm}
 
 \begin{proof}
-  Suppose towards a contradiction that $\mathcal F$ is an unbounded family of size $<\mathfrak c$, and let $\mathbb P$ be the Hechler forcing $\mathbb H_{\mathcal F}$. We now consider two families of dense sets. First, for each $n$ we consider the set
+  Suppose towards a contradiction that $\mathcal F$ is an unbounded family of size $<\mathfrak c$, and let $\PP$ be the Hechler forcing $\mathbb H_{\mathcal F}$. We now consider two families of dense sets. First, for each $n$ we consider the set
   \[D_n=\set{(s,F)\in\mathbb H_{\mathcal F}\mid n\in\dom(s)}
   \]
   To see that $D_n$ is dense, let $(s,F)$ be a given element of $\mathbb H_{\mathcal F}$. If $n\notin\dom(s)$ then we extend the stem $s$ to a sequence $t$ defined by $t(i)=\max_{f\in F}f(i)+1$ for all $i\notin\dom(s)$ such that $i\leq n$. Then clearly $(t,F)\leq(s,F)$ and $(t,F)\in D_n$.
@@ -1613,7 +1613,7 @@ We are now prepared to prove Theorem~\ref{thm:ma-addn}.
 \end{proof}
 
 \begin{exerc}
-  Suppose that $\mathcal F$ is an \emph{almost disjoint} family of subsets of $\omega$: for all $A,A'\in\mathcal F$ we have that $A\cap A'$ is finite. Show that if $|\mathcal F|<\mathfrak c$ then there exists a single set $B$ such that $A\cap B$ is finite for all $A\in\mathcal F$. [Hint: consider the forcing $\mathbb P$ consisting of pairs $(s,F)$ where $s$ is a finite subset of $\omega$, $F$ is a finite subset of $\mathcal F$, and $(s',F')\leq(s,F)$ iff $s'\supset s$, $F'\supset F$, and whenever $A\in\mathcal F$ we have $A\cap s'\subset s$.]
+  Suppose that $\mathcal F$ is an \emph{almost disjoint} family of subsets of $\omega$: for all $A,A'\in\mathcal F$ we have that $A\cap A'$ is finite. Show that if $|\mathcal F|<\mathfrak c$ then there exists a single set $B$ such that $A\cap B$ is finite for all $A\in\mathcal F$. [Hint: consider the forcing $\PP$ consisting of pairs $(s,F)$ where $s$ is a finite subset of $\omega$, $F$ is a finite subset of $\mathcal F$, and $(s',F')\leq(s,F)$ iff $s'\supset s$, $F'\supset F$, and whenever $A\in\mathcal F$ we have $A\cap s'\subset s$.]
 \end{exerc}
 
 % blass for "solving" posets
@@ -1625,48 +1625,49 @@ We are now prepared to prove Theorem~\ref{thm:ma-addn}.
 \section{The machinery of forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-So far we have seen forcing only in the context of appeals to Martin's axiom. Now we will see how go outside a given model of set theory $V$ to obtain forcing extensions $V[G]$.
+So far we have seen forcing only in the context of appeals to Martin's axiom, which gives us highly generic filters $G$ in a single model $V$ of set theory. When we actually do forcing, we wish to find a fully generic filter $G$, even though we know this must lie outside of $V$. But what does it mean that a set $G$ lies outside of the universe of sets? In fact, to find ``new'' sets $G$ we will really assume that $V$ is a countable, transitive model of ZFC. In other words $V$ is a countable set lying in some larger universe $W$, $V$ it is closed downwards under $\in$, and the structure $(V,\in)$ satisfies all of the axioms of set theory.
 
-Well, that's the idea anyway. In fact, to find ``new'' sets $G$ we will really assume that $V$ is a countable, transitive model ZFC. In other words $V$ is a countable set lying in some larger universe $W$, $V$ it is closed downwards under $\in$, and the structure $(V,\in)$ satisfies all of the axioms of set theory. The payoff is this: since $V$ is countable, given a partial order $\mathbb P\in V$ it is easy to find a filter $G\subset\mathbb P$ that meets the dense subsets of $\mathbb P$ which lie in $V$. We will then form the smallest model $V[G]$ of ZFC which contains all the elements of $V$ together with the element $G$.
+The mild assumption that there is such a $V$ turns out to be very powerful. First of all, if $V$ is countable then given a partial order $\PP\in V$ we can easily find a filter $G\subset\PP$ that meets all the dense subsets of $\PP$ that actually lie in $V$. After all there are just countably many sets in $V$ and therefore just countably many dense subsets of $\mathbb P$ in $V$. Hence we can use the argument of Proposition~\ref{prop:ma-aleph0} to diagonalize and obtain a $V$-generic filter $G$.
 
-The assumption that there is a countable transitive model of ZFC is unfortunately a nontrivial one. The countability isn't the problem; recall that by the L\"owenheim--Skolem theorem if there is an infinite model of a theory $T$ then there is a countable one. Rather, the problem is assuming there is a model of ZFC at all. Indeed this amounts to assuming $\Con(ZFC)$, and we know from G\"odel's incompleteness theorem that this is a nontrivial assumption.
+Second of all, if $V$ is transitive then we can use the machinery of absoluteness to reason about the basic properties of $V$ and its forcing extensions $V[G]$. Recall that a formula $\phi$ in the language of set theory is $\Delta_0$ if all of its quantifiers are \emph{bounded}, that is, of the form $\exists x\in y$ or else $\forall x\in y$. We will use the well-known fact that if $\phi$ is a $\Delta_0$ formula with parameters in a transitive set $A$, then $\phi$ is true if and only if $\phi$ holds in $(A,\in)$.
 
-It is possible to work around this technicality by supposing only that $V$ satisfies a large but finite subsystem of ZFC. By the reflection theorem, it is possible to obtain transitive set models of such a subsystem, and it is not difficult to use such a model to get a countable transitive one. However, for simplicity we will simply assume for the rest of this section that
-$V$ is a countable, transitive model of all of ZFC.
+So just how mild is the assumption that there is a countable transitive model of ZFC? Unfortunatley it is not a totally nontrivial one. The countability isn't the problem; recall that by the L\"owenheim--Skolem theorem if there is an infinite model of a theory $T$ then there is a countable one. Rather, the problem is assuming there is a model of ZFC at all. Indeed this is equivalent to assuming that ZFC is \emph{consistent}, that is, ZFC does not entail any contradictions. But we know from G\"odel's incompleteness theorem that it is not possible to establish the consistency of ZFC using ZFC alone.
+
+It is possible to work around this technicality by supposing only that $V$ satisfies a large but finite subsystem of ZFC. By the reflection theorem, it is possible to obtain transitive set models of such a subsystem, and it is not difficult to use such a model to get a countable transitive one. However, for simplicity we will simply assume for the rest of this section that $V$ is a countable, transitive model of all of ZFC.
 
 The first problem we have to deal with when introducing forcing is that if one is working in $V$, then since $G$ is not available it is difficult to refer to elements of $V[G]$ (and hence difficult to prove facts about them). We need the following construction.
 
 \begin{defn}
-  If $\mathbb P$ is a partial order, then a set $\tau$ is called a \emph{$\mathbb P$-name} for an element of $V[G]$ if $\tau$ conists of elements $(\sigma,p)$ where $\sigma$ is a \emph{$\mathbb P$}-name and $p\in\mathbb P$.
+  If $\PP$ is a partial order, then a set $\tau$ is called a \emph{$\PP$-name} for an element of $V[G]$ if $\tau$ conists of elements $(\sigma,p)$ where $\sigma$ is a \emph{$\PP$}-name and $p\in\PP$.
 \end{defn}
 
-Like sets themselves, the definition is recursive. To explain it briefly, we can think of an ordinary set $x$ as a wellfounded tree with $x$ at the root, the elements of $x$ on the first level, the elements of elements of $x$ on the second level, and so on. A $\mathbb P$-name is similar, except the nodes of the tree are also $\mathbb P$-names, and each node is labelled with an element of $\mathbb P$.
+Like sets themselves, the definition is recursive. To explain it briefly, we can think of an ordinary set $x$ as a wellfounded tree with $x$ at the root, the elements of $x$ on the first level, the elements of elements of $x$ on the second level, and so on. A $\PP$-name is similar, except the nodes of the tree are also $\PP$-names, and each node is labelled with an element of $\PP$.
 
-If $\tau$ is a $\mathbb P$-name and we do gain access to a generic filter $G$, then we can use $G$ to resolve the name $\tau$ into an honest set as follows. Thinking of $\tau$ as a tree, we include only the nodes labelled with an element $p\in G$.
+If $\tau$ is a $\PP$-name and we do gain access to a generic filter $G$, then we can use $G$ to resolve the name $\tau$ into an honest set as follows. Thinking of $\tau$ as a tree, we include only the nodes labelled with an element $p\in G$.
 
 \begin{defn}
-  If $\mathbb P$ is a partial order in $V$, $\tau$ is a $\mathbb P$-name, and $G\subset\mathbb P$ is a filter, then we define $\tau_G$ recursively by
+  If $\PP$ is a partial order in $V$, $\tau$ is a $\PP$-name, and $G\subset\PP$ is a filter, then we define $\tau_G$ recursively by
   \[\tau_G=\set{\sigma_G\mid (\exists p)\;(\sigma,p)\in\tau\text{ and }p\in G}
   \]
   We then define the forcing extension of $V$ corresponding to $G$ by
-  \[V[G]=\set{\tau_G\mid\tau\in V\text{ is a $\mathbb P$-name}}
+  \[V[G]=\set{\tau_G\mid\tau\in V\text{ is a $\PP$-name}}
   \]
 \end{defn}
 
-The definitions of $\mathbb P$-name and of $\tau_G$ are heavily recursive, but one should expect this from such a general set-theoretic construction. In fact, it is amazing that such a short-winded construction actually works. But it will take us some time to prove everything we need.
+The definitions of $\PP$-name and of $\tau_G$ are heavily recursive, but one should expect this from such a general set-theoretic construction. In fact, it is amazing that such a short-winded construction actually works. But it will take us some time to prove everything we need.
 
 \begin{lem}
-  If $\mathbb P$ is a partial order and $G$ is a filter, then we have $V\subset V[G]$ and $G\in V[G]$. Moreover, $M[G]$ is the smallest transitive model with these two properties.
+  If $\PP$ is a partial order and $G$ is a filter, then we have $V\subset V[G]$ and $G\in V[G]$. Moreover, $M[G]$ is the smallest transitive model with these two properties.
 \end{lem}
 
 \begin{proof}
-  To prove the statements, we need only write down explicit $\mathbb P$-names for the objects in question. First recall that we are always assuming $\mathbb P$ has a maximum element $\mathbb 1$. Thus if $x\in V$ we can write the recursive definition
+  To prove the statements, we need only write down explicit $\PP$-names for the objects in question. First recall that we are always assuming $\PP$ has a maximum element $\mathbb 1$. Thus if $x\in V$ we can write the recursive definition
   \[\check x=\set{(\check y,\mathbb 1)\mid y\in x}
   \]
   The idea here is to take the tree of $x$ and label each node with a $\mathbb 1$. To see that $\check x_G=x$, suppose inductively that $\check y_G=y$ for all $y\in x$. Then since $\mathbb 1$ always lies in $G$, the definition implies that $\check x_G=\set{\check y_G\mid y\in x}=\set{y\mid y\in x}=x$.
 
   To see that $G\in V[G]$ we construct a single name
-  \[\Gamma=\set{(\check p,p)\mid p\in\mathbb P}
+  \[\Gamma=\set{(\check p,p)\mid p\in\PP}
   \]
   Then by the previous paragraph, we have that $\Gamma_G=\set{p\mid p\in G}=G$, as desired.
 
@@ -1678,11 +1679,11 @@ Names of the form $\check x$ for $x\in V$ are called \emph{check names}. For con
 Now that we can name elements of the forcing extension $V[G]$, we need a way to decide whether a given sentence holds in $V[G]$. But the truth value of a given setence may depend on the filter $G$, just as the set value $\tau_G$ of a name depends on $G$.
 
 \begin{defn}
-  Let $\mathbb P$ be a partial order.
+  Let $\PP$ be a partial order.
   \begin{itemize}
-  \item The \emph{forcing language} for $\mathbb P$ consists of the usual logical symbols, $\in$, and the $\mathbb P$-names as constant symbols.
-  \item If $\phi$ is a sentence of the forcing language for $\mathbb P$, we say $\phi$ holds in $V[G]$ if it holds with its names $\tau$ replaced by their values $\tau_G$.
-  \item If $p\in\mathbb P$ and $\phi$ is a sentence of the forcing language for $\mathbb P$, then we write $p\Vdash\phi$, read $p$ \emph{forces} $\phi$, if $p\in G$ implies $\phi$ holds in $V[G]$.
+  \item The \emph{forcing language} for $\PP$ consists of the usual logical symbols, $\in$, and the $\PP$-names as constant symbols.
+  \item If $\phi$ is a sentence of the forcing language for $\PP$, we say $\phi$ holds in $V[G]$ if it holds with its names $\tau$ replaced by their values $\tau_G$.
+  \item If $p\in\PP$ and $\phi$ is a sentence of the forcing language for $\PP$, then we write $p\Vdash\phi$, read $p$ \emph{forces} $\phi$, if $p\in G$ implies $\phi$ holds in $V[G]$.
   \end{itemize}
 \end{defn}
 
@@ -1700,6 +1701,21 @@ The following three results are the fundamental tools used in the development of
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Preservation of cardinals}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thm}
+  If $\PP$ is ccc, then $\PP$ preserves cardinals.
+\end{thm}
+
+\begin{lem}
+  Let $\PP$ be a ccc partial order, and $G\subset\PP$ a $V$-generic fliter. Given any function $f\in V[G]$, there exists a function $F\in V$ such that for all $a\in\dom(f)$ we have $F(a)$ is countable and $f(a)\in F(a)$.
+\end{lem}
+
+\begin{proof}
+  
+\end{proof}
+
+
+% Kunen, sec 4.3
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Cohen and random forcing}
