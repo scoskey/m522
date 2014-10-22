@@ -1420,9 +1420,9 @@ This example brings us back to our discussion of forcing CH to be false in a for
 \section{Martin's axiom}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Forcing as a black box\ldots
+We will make the ideas of the previous section more rigorous shortly. But before going into the technical details of this, we will introduce the combinatorics of forcing using forcing itself as a black box. Specifically, we will appeal to a statement called Martin's axiom, which roughly speaking says that the current universe of set theory $V$ already contains many highly generic filters $G$. The consistency of MA is itself proved using forcing, but we shall take this for granted for now. This will allow us to explore the effects of forcing using a number of partial orders without ever leaving $V$.
 
-A subset $A\subset\mathbb P$ is said to be an \emph{antichain} if for all $p,q\in A$ we have $p$ and $q$ are not compatible. Thus if $A$ is an antichain, a filter $G$ can only choose at most \emph{one} of the elements of $A$.
+There is unfortunately one major limitation on the variety of partial orders we will be able to explore using Martin's axiom. A subset $A\subset\mathbb P$ is said to be an \emph{antichain} if for all $p,q\in A$ we have $p$ and $q$ are not compatible. Thus if $A$ is an antichain, a filter $G$ can only choose at most \emph{one} of the elements of $A$.
 
 \begin{defn}
   A partial order $\mathbb P$ is said to be \emph{ccc} (or satisfy the \emph{countable chain condition}) if every antichain $A\subset\mathbb P$ is countable.
@@ -1554,9 +1554,9 @@ Hechler forcing is always ccc, because incompatible conditions cannot have the s
 
 \begin{proof}
   Suppose towards a contradiction that $\mathcal F$ is an unbounded family of size $<\mathfrak c$, and let $\mathbb P$ be the Hechler forcing $\mathbb H_{\mathcal F}$. We now consider two families of dense sets. First, for each $n$ we consider the set
-  \[D_n=\set{(s,F)\in\mathbb H_{\mathcal F}\mid\dom(s)\geq n}
+  \[D_n=\set{(s,F)\in\mathbb H_{\mathcal F}\mid n\in\dom(s)}
   \]
-  Then $D_n$ is dense\ldots
+  To see that $D_n$ is dense, let $(s,F)$ be a given element of $\mathbb H_{\mathcal F}$. If $n\notin\dom(s)$ then we extend the stem $s$ to a sequence $t$ defined by $t(i)=\max_{f\in F}f(i)+1$ for all $i\notin\dom(s)$ such that $i\leq n$. Then clearly $(t,F)\leq(s,F)$ and $(t,F)\in D_n$.
 
   Next, for each $f\in\mathcal F$ we consider the set
   \[D_f=\set{(s,F)\in\mathbb H_{\mathcal F}\mid f\in F}
@@ -1617,8 +1617,10 @@ We are now prepared to prove Theorem~\ref{thm:ma-addn}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{The forcing theorems}
+\section{The method of forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+So far we have seen forcing only in the context of an application of Martin's axiom.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Preservation of cardinals}
@@ -1656,7 +1658,7 @@ The random partial order does not have such an elementary characterization as th
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Iterated Cohen and random forcing}
+\section{Multiple Cohen and random forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{defn}
