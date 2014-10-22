@@ -32,6 +32,7 @@
 \DeclareMathOperator{\rng}{rng}
 \DeclareMathOperator{\cl}{cl}
 \DeclareMathOperator{\Fn}{Fn}
+\DeclareMathOperator{\Con}{Con}
 
 \theoremstyle{definition}
 \newtheorem{exerc}{Exercise}[section]
@@ -1620,7 +1621,34 @@ We are now prepared to prove Theorem~\ref{thm:ma-addn}.
 \section{The method of forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-So far we have seen forcing only in the context of an application of Martin's axiom.
+So far we have seen forcing only in the context of appeals to Martin's axiom. Now we will see how go outside a given model of set theory $V$ to obtain forcing extensions $V[G]$.
+
+Well, that's the idea anyway. In fact, to find ``new'' sets $G$ we will really assume that $V$ is a countable, transitive model ZFC. In other words $V$ is a countable set lying in some larger universe $W$, $V$ it is closed downwards under $\in$, and the structure $(V,\in)$ satisfies all of the axioms of set theory. The payoff is this: since $V$ is countable, given a partial order $\mathbb P\in V$ it is easy to find a filter $G\subset\mathbb P$ that meets the dense subsets of $\mathbb P$ which lie in $V$. We will then form the smallest model $V[G]$ of ZFC which contains all the elements of $V$ together with the element $G$.
+
+The assumption that there is a countable transitive model of ZFC is unfortunately a nontrivial one. The countability isn't the problem; recall that by the L\"owenheim--Skolem theorem if there is an infinite model of a theory $T$ then there is a countable one. Rather, the problem is assuming there is a model of ZFC at all. Indeed this amounts to assuming $\Con(ZFC)$, and we know from G\"odel's incompleteness theorem that this is a nontrivial assumption.
+
+It is possible to work around this technicality by supposing only that $V$ satisfies a large but finite subsystem of ZFC. By the reflection theorem, it is possible to obtain transitive set models of such a subsystem, and it is not difficult to use such a model to get a countable transitive one. However, for simplicity we will simply assume for the rest of this section that
+$V$ is a countable, transitive model of all of ZFC.
+
+The first problem we have to deal with when introducing forcing is that if one is working in $V$, then since $G$ is not available it is difficult to refer to elements of $V[G]$ (and hence difficult to prove facts about them). We need the following construction.
+
+\begin{defn}
+  If $\mathbb P$ is a partial order, then a set $\tau$ is called a \emph{$\mathbb P$-name} for an element of $V[G]$ if $\tau$ conists of elements $(\sigma,p)$ where $\sigma$ is a \emph{$\mathbb P$}-name and $p\in\mathbb P$.
+\end{defn}
+
+Like sets themselves, the definition is recursive. To explain it briefly, we can think of an ordinary set $x$ as a wellfounded tree with $x$ at the root, the elements of $x$ on the first level, the elements of elements of $x$ on the second level, and so on. A $\mathbb P$-name is similar, except the nodes of the tree are also $\mathbb P$-names, and each node is labelled with an element of $\mathbb P$.
+
+
+
+\ldots
+
+\begin{thm}[The forcing theorems]\
+\begin{enumerate}
+\item The relation $\Vdash$ is definable in $V$.
+\item A sentence $\phi$ is true in $M[G]$ if and only if there exists $p\in G$ such that $p\Vdash\phi$.
+\item If $V$ is a model of ZFC then $V[G]$ is a model of ZFC.
+\end{thm}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Preservation of cardinals}
