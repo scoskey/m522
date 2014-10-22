@@ -1645,7 +1645,7 @@ Like sets themselves, the definition is recursive. To explain it briefly, we can
 If $\tau$ is a $\mathbb P$-name and we do gain access to a generic filter $G$, then we can use $G$ to resolve the name $\tau$ into an honest set as follows. Thinking of $\tau$ as a tree, we include only the nodes labelled with an element $p\in G$.
 
 \begin{defn}
-  If $\mathbb P$ is a partial order in $V$, $\tau$ is a $\mathbb P$-name, and $G\subset\mathbb $ is a filter, then we define $\tau_G$ recursively by
+  If $\mathbb P$ is a partial order in $V$, $\tau$ is a $\mathbb P$-name, and $G\subset\mathbb P$ is a filter, then we define $\tau_G$ recursively by
   \[\tau_G=\set{\sigma_G\mid (\exists p)\;(\sigma,p)\in\tau\text{ and }p\in G}
   \]
   We then define the forcing extension of $V$ corresponding to $G$ by
@@ -1656,7 +1656,7 @@ If $\tau$ is a $\mathbb P$-name and we do gain access to a generic filter $G$, t
 The definitions of $\mathbb P$-name and of $\tau_G$ are heavily recursive, but one should expect this from such a general set-theoretic construction. In fact, it is amazing that such a short-winded construction actually works. But it will take us some time to prove everything we need.
 
 \begin{lem}
-  If $\mathbb P$ is a partial order and $G$ is a filter, then we have $V\subset V[G]$ and $G\in\V[G]$. Moreover, $M[G]$ is the smallest transitive model with these two properties.
+  If $\mathbb P$ is a partial order and $G$ is a filter, then we have $V\subset V[G]$ and $G\in V[G]$. Moreover, $M[G]$ is the smallest transitive model with these two properties.
 \end{lem}
 
 \begin{proof}
@@ -1680,7 +1680,7 @@ Now that we can name elements of the forcing extension $V[G]$, we need a way to 
 \begin{defn}
   Let $\mathbb P$ be a partial order.
   \begin{itemize}
-  \item The \emph{forcing language} for $\mathbb P$ consists of the usual logical symbols, $\in$, and the $\PP$-names as constant symbols.
+  \item The \emph{forcing language} for $\mathbb P$ consists of the usual logical symbols, $\in$, and the $\mathbb P$-names as constant symbols.
   \item If $\phi$ is a sentence of the forcing language for $\mathbb P$, we say $\phi$ holds in $V[G]$ if it holds with its names $\tau$ replaced by their values $\tau_G$.
   \item If $p\in\mathbb P$ and $\phi$ is a sentence of the forcing language for $\mathbb P$, then we write $p\Vdash\phi$, read $p$ \emph{forces} $\phi$, if $p\in G$ implies $\phi$ holds in $V[G]$.
   \end{itemize}
