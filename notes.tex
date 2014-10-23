@@ -25,13 +25,14 @@
 \DeclareMathOperator{\non}{\mathsf{non}}
 \DeclareMathOperator{\cov}{\mathsf{cov}}
 \DeclareMathOperator{\cof}{\mathsf{cof}}
+\DeclareMathOperator{\Con}{Con}
 \DeclareMathOperator{\Diff}{Diff}
-\DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\rng}{rng}
 \DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\Fn}{Fn}
-\DeclareMathOperator{\Con}{Con}
 
 \theoremstyle{definition}
 \newtheorem{exerc}{Exercise}[section]
@@ -1638,7 +1639,7 @@ It is possible to work around this technicality by supposing only that $V$ satis
 The first problem we have to deal with when introducing forcing is that if one is working in $V$, then since $G$ is not available it is difficult to refer to elements of $V[G]$ (and hence difficult to prove facts about them). We need the following construction.
 
 \begin{defn}
-  If $\PP$ is a partial order, then a set $\tau$ is called a \emph{$\PP$-name} for an element of $V[G]$ if $\tau$ conists of elements $(\sigma,p)$ where $\sigma$ is a \emph{$\PP$}-name and $p\in\PP$.
+  If $\PP$ is a partial order, then a set $\tau$ is called a \emph{$\PP$-name} for an element of the forcing extension by $\mathbb P$ if $\tau$ consists of elements $(\sigma,p)$ where $\sigma$ is a \emph{$\PP$}-name and $p\in\PP$.
 \end{defn}
 
 Like sets themselves, the definition is recursive. To explain it briefly, we can think of an ordinary set $x$ as a wellfounded tree with $x$ at the root, the elements of $x$ on the first level, the elements of elements of $x$ on the second level, and so on. A $\PP$-name is similar, except the nodes of the tree are also $\PP$-names, and each node is labelled with an element of $\PP$.
@@ -1646,7 +1647,7 @@ Like sets themselves, the definition is recursive. To explain it briefly, we can
 If $\tau$ is a $\PP$-name and we do gain access to a generic filter $G$, then we can use $G$ to resolve the name $\tau$ into an honest set as follows. Thinking of $\tau$ as a tree, we include only the nodes labelled with an element $p\in G$.
 
 \begin{defn}
-  If $\PP$ is a partial order in $V$, $\tau$ is a $\PP$-name, and $G\subset\PP$ is a filter, then we define $\tau_G$ recursively by
+  Let $\PP$ be a partial order in $V$ and $G\subset\PP$ be a filter. If $\tau$ is a $\mathbb P$-name, then we define $\tau_G$ recursively by
   \[\tau_G=\set{\sigma_G\mid (\exists p)\;(\sigma,p)\in\tau\text{ and }p\in G}
   \]
   We then define the forcing extension of $V$ corresponding to $G$ by
@@ -1657,7 +1658,7 @@ If $\tau$ is a $\PP$-name and we do gain access to a generic filter $G$, then we
 The definitions of $\PP$-name and of $\tau_G$ are heavily recursive, but one should expect this from such a general set-theoretic construction. In fact, it is amazing that such a short-winded construction actually works. But it will take us some time to prove everything we need.
 
 \begin{lem}
-  If $\PP$ is a partial order and $G$ is a filter, then we have $V\subset V[G]$ and $G\in V[G]$. Moreover, $M[G]$ is the smallest transitive model with these two properties.
+  If $\PP$ is a partial order and $G\subset\mathbb P$ is a filter, then we have $V\subset V[G]$ and $G\in V[G]$. Moreover, if $W$ is any other transitive model of ZFC with these two properties, then $V[G]\subset W$.
 \end{lem}
 
 \begin{proof}
@@ -1676,7 +1677,41 @@ The definitions of $\PP$-name and of $\tau_G$ are heavily recursive, but one sho
 
 Names of the form $\check x$ for $x\in V$ are called \emph{check names}. For convenience we will sometimes identify $x$ with its check name. The name $\Gamma$ is called the \emph{canonical name for the generic}, and we observe that it does not depend on $G$ at all. Still, when a filter $G$ is given we may again identify $G$ with this name.
 
-Now that we can name elements of the forcing extension $V[G]$, we need a way to decide whether a given sentence holds in $V[G]$. But the truth value of a given setence may depend on the filter $G$, just as the set value $\tau_G$ of a name depends on $G$.
+We next show that forcing doesn't enlarge $V$ very much.
+
+\begin{lem}
+  If $\mathbb P$ is a partial order in the countable transitive model $V$ and $G\subset\mathbb P$ is a filter, then $V[G]$ is countable and moreover $V$ and $V[G]$ contain the same ordinals.
+\end{lem}
+
+\begin{proof}
+  It is clear that $V[G]$ is countable is clear from its definition; each element of $V[G]$ is determined by a name which lies in $V$.
+
+  For the statement about ordinals, first recall that the property of being an ordinal is absolute to transitive models. Now suppose that $\alpha$ is an ordinal of $V[G]$ and let $\tau$ be a name such that $\alpha=\tau_G$. Recall that for any set $x$ we can define the $\in$-rank $\rk(x)=\sup\set{\rk(y)\mid y\in x}$. Then it is easy to see inductively that $\rk(\tau_G)\leq\rk(\tau)$, and hence $\alpha\leq\rk(\tau)$. Since $V$ is transitive it follows that $\alpha\in V$.
+\end{proof}
+
+The most important fact about the forcing extensionn $V[G]$ is that if $V$ is a model of ZFC, then so is $V[G]$. We will give just a partial proof of this fact, beginning with the following easier axioms.
+
+\begin{lem}
+  If $\mathbb P$ is a partial order in $V$ and $G\subset\mathbb P$ is a filter, then the extension $V[G]$ satisfies the axioms of foundation, extensionality, pairing, and union.
+\end{lem}
+
+\begin{proof}
+  Every set satisfies the axiom of foundation. To show $V[G]$ satisfies extensionality, it is enough to show that $V[G]$ is a transitive set. For this, let $\tau_G$ is an arbitrary element of $V[G]$ and $x\in\tau_G$. Then by definition of $\tau_G$, we have $x=\sigma_G$ for some $\sigma\in\dom(\tau)$. In particular, $x\in V[G]$.
+
+  For pairing and union, we simply must devise names for these constructions. First suppose $\sigma_G,\tau_G\in V[G]$ and let $\rho$ denote the name $\set{(\sigma,\mathbb 1),(\tau,\mathbb 1)}$. Then it is immediate to check that $\rho_G=\{\sigma_G,\tau_G\}$. Next suppose $\tau_G\in V[G]$, and let $\sigma=\set{}$. Then it is again straightforward to check that $\bigcup\tau_G\subset\sigma_G$. (To hit $\bigcup\tau_G$ exactly we can either refine this argument or appeal to the comprehension axiom after we have proved it.)
+\end{proof}
+
+% Kunen sec IV.2.
+% For the metamathematics of forcing see Kunen sec IV.5
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{The forcing theorems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We have been able to establish a number of facts about the forcing extension $V[G]$ using elementary manipulations of the definition of $\mathbb P$-name. For more complex axioms and properties of $V[G]$, we will need a way to decide whether a given sentence holds in $V[G]$. But just as the value $\tau_G$ of a name depends on the filter $G$, the truth value of a given sentence
+
+The truth value of a given setence may depend on the filter $G$, just as the set value $\tau_G$ of a name depends on $G$.
 
 \begin{defn}
   Let $\PP$ be a partial order.
@@ -1696,6 +1731,21 @@ The following three results are the fundamental tools used in the development of
 \item If $V$ is a model of ZFC then $V[G]$ is a model of ZFC.
 \end{enumerate}
 \end{thm}
+
+Let us first see the power of forcing theorems (a) and (b) to establish forcing theorem (b).
+
+\begin{thm}
+  Assuming forcing theorems (a) and (b), we show that $V[G]$ satisfies the comprehension axiom.
+\end{thm}
+
+\begin{proof}
+
+\end{proof}
+
+The remaining axioms of ZFC will be left to the reader :)
+
+% Kunen, sec IV.2
+% Laver's notes
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
