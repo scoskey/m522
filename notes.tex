@@ -14,6 +14,7 @@
 \usepackage{tikz}\usetikzlibrary{positioning,decorations.fractals,decorations.pathmorphing}\usepackage{hyperref}
 
 \newcommand{\set}[1]{\left\{\,#1\,\right\}}
+\newcommand{\forces}{\Vdash}
 \newcommand{\NN}{\mathbb N}
 \newcommand{\PP}{\mathbb P}
 \newcommand{\QQ}{\mathbb Q}
@@ -704,6 +705,8 @@ In particular the notions of meager and comeager sets make perfect sense in both
   For introductory material on the combinatorics and topology of sequence space, see Kechris, Sections~2A and~2B. For another proof that the Baire space is homeomorphic to the irrationals, see Section~1 of Miller, \emph{Descriptive set theory and forcing}.
 \end{notes}
 
+
+% could be a new chapter!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{$\sigma$-compactness in Baire space}
@@ -1644,7 +1647,7 @@ The first problem we have to deal with when introducing forcing is that if one i
 
 Like sets themselves, the definition is recursive. To explain it briefly, we can think of an ordinary set $x$ as a wellfounded tree with $x$ at the root, the elements of $x$ on the first level, the elements of elements of $x$ on the second level, and so on. A $\PP$-name is similar, except the nodes of the tree are also $\PP$-names, and each node is labelled with an element of $\PP$.
 
-If $\tau$ is a $\PP$-name and we do gain access to a generic filter $G$, then we can use $G$ to resolve the name $\tau$ into an honest set as follows. Thinking of $\tau$ as a tree, we include only the nodes labelled with an element $p\in G$.
+If $\tau$ is a $\PP$-name and we do gain access to a generic filter $G$, then we can use $G$ to evaluate the name $\tau$ as follows: Again thinking of $\tau$ as a tree, we include only the nodes whose label $p$ happens to lie in $G$.
 
 \begin{defn}
   Let $\PP$ be a partial order in $V$ and $G\subset\PP$ be a filter. If $\tau$ is a $\mathbb P$-name, then we define $\tau_G$ recursively by
@@ -1684,21 +1687,21 @@ We next show that forcing doesn't enlarge $V$ very much.
 \end{lem}
 
 \begin{proof}
-  It is clear that $V[G]$ is countable is clear from its definition; each element of $V[G]$ is determined by a name which lies in $V$.
+  It is clear that $V[G]$ is countable from its definition; each element of $V[G]$ is determined by a name which lies in $V$.
 
-  For the statement about ordinals, first recall that the property of being an ordinal is absolute to transitive models. Now suppose that $\alpha$ is an ordinal of $V[G]$ and let $\tau$ be a name such that $\alpha=\tau_G$. Recall that for any set $x$ we can define the $\in$-rank $\rk(x)=\sup\set{\rk(y)\mid y\in x}$. Then it is easy to see inductively that $\rk(\tau_G)\leq\rk(\tau)$, and hence $\alpha\leq\rk(\tau)$. Since $V$ is transitive it follows that $\alpha\in V$.
+  For the statement about ordinals, first recall that the property of being an ordinal is absolute to transitive models. Now suppose that $\alpha$ is an ordinal of $V[G]$ and let $\tau$ be a name such that $\alpha=\tau_G$. Note that when we construct $\tau_G$ from $\tau$ we essentially throw stuff away, and so $\tau$ is in a sense more complicated than $\tau_G$. We can make this precise using the notion of a rank: for any set $x$ we can define the $\in$-rank $\rk(x)=\sup\set{\rk(y)+1\mid y\in x}$. Then it is easy to see inductively that $\rk(\tau_G)\leq\rk(\tau)$. In our case, $\tau_G=\alpha$ and the rank of an ordinal $\alpha$ is always $\alpha$. We conclude that $\alpha\leq\rk(\tau)$, and since rank is an absolute notion and $V$ is transitive, we have $\alpha\in V$.
 \end{proof}
 
 The most important fact about the forcing extensionn $V[G]$ is that if $V$ is a model of ZFC, then so is $V[G]$. We will give just a partial proof of this fact, beginning with the following easier axioms.
 
 \begin{lem}
-  If $\mathbb P$ is a partial order in $V$ and $G\subset\mathbb P$ is a filter, then the extension $V[G]$ satisfies the axioms of foundation, extensionality, pairing, and union.
+  If $\mathbb P$ is a partial order in $V$ and $G\subset\mathbb P$ is a filter, then the extension $V[G]$ satisfies the axioms of extensionality, infinity, foundation, pairing, and union.
 \end{lem}
 
 \begin{proof}
-  Every set satisfies the axiom of foundation. To show $V[G]$ satisfies extensionality, it is enough to show that $V[G]$ is a transitive set. For this, let $\tau_G$ is an arbitrary element of $V[G]$ and $x\in\tau_G$. Then by definition of $\tau_G$, we have $x=\sigma_G$ for some $\sigma\in\dom(\tau)$. In particular, $x\in V[G]$.
+  Every set satisfies the axiom of foundation. Since $V[G]$ is tansitive and infinite, it must contain $\omega$ and therefore satisfies the axiom of infinity. To show $V[G]$ satisfies extensionality, it is enough to show that $V[G]$ is a transitive set. For this, let $\tau_G$ is an arbitrary element of $V[G]$ and $x\in\tau_G$. Then by definition of $\tau_G$, we have $x=\sigma_G$ for some $\sigma\in\dom(\tau)$. In particular, $x\in V[G]$.
 
-  For pairing and union, we simply must devise names for these constructions. First suppose $\sigma_G,\tau_G\in V[G]$ and let $\rho$ denote the name $\set{(\sigma,\mathbb 1),(\tau,\mathbb 1)}$. Then it is immediate to check that $\rho_G=\{\sigma_G,\tau_G\}$. Next suppose $\tau_G\in V[G]$, and let $\sigma=\set{}$. Then it is again straightforward to check that $\bigcup\tau_G\subset\sigma_G$. (To hit $\bigcup\tau_G$ exactly we can either refine this argument or appeal to the comprehension axiom after we have proved it.)
+  The pairing and union axioms are existence axioms, which means we must devise names for the two constructions. First suppose $\sigma_G,\tau_G\in V[G]$ and let $\rho$ denote the name $\set{(\sigma,\mathbb 1),(\tau,\mathbb 1)}$. Then it is immediate to check that $\rho_G=\{\sigma_G,\tau_G\}$. Next suppose $\tau_G\in V[G]$, and let $\sigma=\set{}$. Then it is again straightforward to check that $\bigcup\tau_G\subset\sigma_G$. (To hit $\bigcup\tau_G$ exactly we can either refine this argument or appeal to the comprehension axiom after we have proved it.)
 \end{proof}
 
 % Kunen sec IV.2.
@@ -1706,7 +1709,7 @@ The most important fact about the forcing extensionn $V[G]$ is that if $V$ is a 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{The forcing theorems}
+\section{The forcing language and forcing theorems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We have been able to establish a number of facts about the forcing extension $V[G]$ using elementary manipulations of the definition of $\mathbb P$-name. For more complex axioms and properties of $V[G]$, we will need a way to decide whether a given sentence holds in $V[G]$. But just as the value $\tau_G$ of a name depends on the filter $G$, the truth value of a given sentence
@@ -1717,39 +1720,58 @@ The truth value of a given setence may depend on the filter $G$, just as the set
   Let $\PP$ be a partial order.
   \begin{itemize}
   \item The \emph{forcing language} for $\PP$ consists of the usual logical symbols, $\in$, and the $\PP$-names as constant symbols.
-  \item If $\phi$ is a sentence of the forcing language for $\PP$, we say $\phi$ holds in $V[G]$ if it holds with its names $\tau$ replaced by their values $\tau_G$.
-  \item If $p\in\PP$ and $\phi$ is a sentence of the forcing language for $\PP$, then we write $p\Vdash\phi$, read $p$ \emph{forces} $\phi$, if $p\in G$ implies $\phi$ holds in $V[G]$.
+  \item If $\phi$ is a sentence of the forcing language for $\PP$, we say $V[G]$ \emph{satisfies} $\phi$ if, after replaceing the names $\tau$ in $\phi$ replaced by their values $\tau_G$, it is true in $V[G]$.
+  \item If $p\in\PP$ and $\phi$ is a sentence of the forcing language for $\PP$, then we say $p$ \emph{forces} $\phi$, written $p\Vdash\phi$, if $p\in G$ implies $V[G]$ satisfies $\phi$.
   \end{itemize}
 \end{defn}
+
+\begin{example}
+  Anything that we know for sure about $V[G]$ will be forced by the element $\mathbb 1$. So for instance since we have proved that $V[G]$ satisfies the axiom of pairing, we can say $\mathbb 1\forces$ ``the axiom of pairing''.
+
+  For a less trivial example, if $\mathbb P=\omega^{<\omega}$ we have already seen that adding a generic filter $G\subset\mathbb P$ adds a new element of Baire space $g=\bigcup G$. Moreover a simple dense set argument shows that $g$ will be surjective onto $\omega$. Thus we can say ``$\mathbb 1\forces$ ``$\bigcup\Gamma$ is a surjective function from $\check\omega\to\check\omega$.'' (Recall that we cannot use the symbol $G$, so we instead use $\Gamma$, which is the canonical name for $G$.)
+
+  On the other hand, different generic filters $G$ will yield different specific values for $g(17)$. Thus $\mathbb 1$ does not force any interesting properties of $g(17)$, other than that it is some natural number. But suppose that $s\in\mathbb P$ is a finite sequence with $s(17)=230$. Then if $G$ is a generic filter, then $s\in G$ implies $g(17)=230$. In other words we have $s\forces$ ``$(\bigcup\Gamma)(\check{17})=\check{230}$''. (Form now on, we will often neglect the checkmarks on things like natural numbers.)
+\end{example}
 
 The following three results are the fundamental tools used in the development of the theory of forcing. Essentially all further facts about forcing will be derived from these properties of the forcing machinery.
 
 \begin{thm}[The forcing theorems]\
 \begin{enumerate}
-\item The relation $\Vdash$ is definable in $V$.
-\item A sentence $\phi$ is true in $M[G]$ if and only if there exists $p\in G$ such that $p\Vdash\phi$.
+\item \textup{Definability theorem}: The relation $\Vdash$ is definable in $V$.
+\item \textup{Forcing theorem}: If $\phi$ is a sentence of the forcing language $M[G]$ satisfies $\phi$, then there exists $p\in G$ such that $p\Vdash\phi$.
 \item If $V$ is a model of ZFC then $V[G]$ is a model of ZFC.
 \end{enumerate}
 \end{thm}
 
-Let us first see the power of forcing theorems (a) and (b) to establish forcing theorem (b).
+Let us first see the power of forcing theorems (a) and (b) to establish forcing theorem (c). Recall that the \emph{comprehension axiom} states that if $\phi(x,y)$ is a formula, then for all sets $a,b$ we have that $\set{x\in a\mid\phi(x,b)}$ is a set.
 
 \begin{thm}
-  Assuming forcing theorems (a) and (b), we show that $V[G]$ satisfies the comprehension axiom.
+  Assume the definability and forcing theorems are true. Then $V[G]$ satisfies the comprehension axiom.
 \end{thm}
 
 \begin{proof}
+  If $\phi(x,y)$ and $a,b\in V[G]$ are as above, we need to cook up a name for the set $\set{x\in a\mid\phi(x,b)}$. To begin, find names $\sigma,\tau$ such that $\sigma_G=a$ and $\tau_G=b$. We wish to define a name for the set $a_0=\set{x\in a\mid\phi(x,b)}$. For this we let
+  \[\rho=\set{(\pi,p)\mid\pi\in\dom\sigma,\;p\in\mathbb P,\;p\forces\pi\in\sigma,\text{ and }p\forces\phi(\pi,\tau)}
+  \]
+  By the definability theorem, we clearly have that $\rho$ is a name in $V$. To see that $\rho_G=a_0$, first suppose that $\pi_G\in\rho_G$. Then there is $p\in G$ such that $p\forces\pi\in\sigma$ and $p\forces\phi(\pi,\tau)$. By definition of $\forces$, it follows that $\pi_G\in\sigma_G=a$ and $V[G]$ satisfies $\phi(\pi_G,\tau_G)$, i.e.,\ $\phi(\pi_G,b)$, and therefore $\pi_G\in a_0$.
 
+  Conversely if $\pi_G\in a_0$ then $V[G]$ satisfies the sentences of the forcing language $\pi\in\sigma$ and $\phi(\pi,\tau)$. By the forcing theorem there exist $q,r\in G$ such that $q\forces\pi\in\sigma$ and $r\forces\phi(\pi,\tau)$. Letting $p\in G$ be such that $p\leq q,r$ we clearly have $(\pi,p)\in\rho$ and also $\pi_G\in\rho_G$.
 \end{proof}
 
-The remaining axioms of ZFC will be left to the reader :)
+The remaining axioms of replacement, power set, and choice are also existence axioms, and they can once again be proved by coming up with clever names. As in this argument, the names are defined using the forcing relation.
 
 % Kunen, sec IV.2
 % Laver's notes
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Preservation of cardinals}
+\section{Highlights of the proof of the forcing theorems}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{CH and preservation of cardinals}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{thm}
