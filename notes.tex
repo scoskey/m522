@@ -1344,6 +1344,18 @@ This concludes the proof of Bartoszy\'nski's theorem, as well as Theorem~\ref{th
 \chapter*{Part II: Le tour de forcing}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Models of set theory}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Very brief tour of logic, axioms, and models of axioms
+
+% def of consistency, completeness theorem
+
+% Vrey brief tour of ZFC
+
+% reflection theorem
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The idea of forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1658,7 +1670,10 @@ If $\tau$ is a $\PP$-name and we do gain access to a generic filter $G$, then we
   \]
 \end{defn}
 
-The definitions of $\PP$-name and of $\tau_G$ are heavily recursive, but one should expect this from such a general set-theoretic construction. In fact, it is amazing that such a short-winded construction actually works. But it will take us some time to prove everything we need.
+The definitions of $\PP$-name and of $\tau_G$ are heavily recursive, but one should expect this from such a general set-theoretic construction. It is an amazing fact that such a short construction actually works, and it will take us some time to prove everything we need.
+
+% discuss meaning of name
+% mention the probability intuition thing
 
 \begin{lem}
   If $\PP$ is a partial order and $G\subset\mathbb P$ is a filter, then we have $V\subset V[G]$ and $G\in V[G]$. Moreover, if $W$ is any other transitive model of ZFC with these two properties, then $V[G]\subset W$.
@@ -1701,7 +1716,10 @@ The most important fact about the forcing extensionn $V[G]$ is that if $V$ is a 
 \begin{proof}
   Every set satisfies the axiom of foundation. Since $V[G]$ is tansitive and infinite, it must contain $\omega$ and therefore satisfies the axiom of infinity. To show $V[G]$ satisfies extensionality, it is enough to show that $V[G]$ is a transitive set. For this, let $\tau_G$ is an arbitrary element of $V[G]$ and $x\in\tau_G$. Then by definition of $\tau_G$, we have $x=\sigma_G$ for some $\sigma\in\dom(\tau)$. In particular, $x\in V[G]$.
 
-  The pairing and union axioms are existence axioms, which means we must devise names for the two constructions. First suppose $\sigma_G,\tau_G\in V[G]$ and let $\rho$ denote the name $\set{(\sigma,\mathbb 1),(\tau,\mathbb 1)}$. Then it is immediate to check that $\rho_G=\{\sigma_G,\tau_G\}$. Next suppose $\tau_G\in V[G]$, and let $\sigma=\set{}$. Then it is again straightforward to check that $\bigcup\tau_G\subset\sigma_G$. (To hit $\bigcup\tau_G$ exactly we can either refine this argument or appeal to the comprehension axiom after we have proved it.)
+  The pairing and union axioms are existence axioms, which means we must devise names for the two constructions. First suppose $\sigma_G,\tau_G\in V[G]$ and let $\rho$ denote the name $\set{(\sigma,\mathbb1),(\tau,\mathbb1)}$. Then it is immediate to see that $\rho_G=\{\sigma_G,\tau_G\}$. Next suppose $\tau_G\in V[G]$, and define the name:
+  \[\xi=\set{(\rho,\mathbb1)\mid(\exists\sigma)\;\rho\in\dom(\sigma)\text{ and }\sigma\in\dom(\tau)}
+  \]
+  Then since $\xi$ includes names for all conceivable elements of elements of $\tau_G$, we have that $\bigcup\tau_G\subset\xi_G$. (To hit $\bigcup\tau_G$ exactly we can either refine this argument or appeal to the comprehension axiom after we have proved it.)
 \end{proof}
 
 % Kunen sec IV.2.
