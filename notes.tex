@@ -338,7 +338,7 @@ The next result states that this rule for defining $m$ actually works for all se
 \geq\sum_0^N(b_n-a_n)
 \geq\sum_1^N(b_n-b_{n-1})-a
 \geq b-a
-= \ell(I)\;.
+= \ell(I)\text{.}
 \]
 
   If $I$ is not necessarily closed and the $I_n$ are not necessarily open, then we look instead at $I'=\cl(I)$ and $I_n'=(I_n)^\circ$. Then the $I_n'$ cover all but a countable subset of $I'$, so for any $\epsilon$ we can find additional open intervals $J_n$ with $\ell(J_n)\leq\epsilon/2^n$ covering these missing points. Now the previous argument shows that $\sum\ell(I_n)+\sum\ell(J_n)\geq\ell(I)$. Using the geometric series formula we obtain $\sum\ell(I_n)+\epsilon\geq\ell(I)$. Letting $\epsilon\to0$ we have the desired result.
@@ -905,7 +905,7 @@ In the previous section we introduced $\Ksigma$, but we dealt only with the char
 \end{prop}
 
 \begin{proof}
-  We have already shown that $\add(\Ksigma)\leq\non(\Ksigma)=\mathfrak b$. For the reverse inequality, first recall from Theorem~\ref{thm:bd-vs-ksigma} that a subset of $\omega^\omega$ is unbounded if and only if it is not $\Ksigma$. Now suppose that $\mathcal F$ is a family of $\Ksigma$ subsets of $\omega^\omega$ such that $\bigcup\mathcal F$ is not $\Ksigma$. For each $F\in\mathcal F$ let $g_F$ be a bound for $F$. Then $\{g_F\mid F\in\mathcal F\}$ is an unbounded family: Indeed, otherwise the set of things bounded by some $g_F$ would be bounded and hence so would $\bigcup\mathcal F$. This shows that $\add(\Ksigma)\geq\mathfrak b$.
+  We have already shown that $\add(\Ksigma)\leq\non(\Ksigma)=\mathfrak b$. For the reverse inequality, first recall from Theorem~\ref{thm:bd-vs-ksigma} that a subset of $\omega^\omega$ is unbounded if and only if it is not $\Ksigma$. Now suppose that $\mathcal F$ is a family of $\Ksigma$ subsets of $\omega^\omega$ such that $\bigcup\mathcal F$ is not $\Ksigma$. For each $F\in\mathcal F$ let $g_F$ be a bound for $F$. Then $\set{g_F\mid F\in\mathcal F}$ is an unbounded family: Indeed, otherwise the set of things bounded by some $g_F$ would be bounded and hence so would $\bigcup\mathcal F$. This shows that $\add(\Ksigma)\geq\mathfrak b$.
 
 The second equality is similar and left as Exercise~\ref{exerc:non-ksigma-d}.
 \end{proof}
@@ -918,6 +918,10 @@ The second equality is similar and left as Exercise~\ref{exerc:non-ksigma-d}.
 \begin{exerc}
   Let $\mathcal I$ be the ideal of all countable subsets of $\RR$. What are the values of the four cardinal characteristics of $\mathcal I$?
 \end{exerc}
+
+\begin{notes}
+  We have finally entered into the material covered in the book Bartoszy\'nski--Judah, \emph{Set theory: on the structure of the real line}. The basic properties of $\sigma$-ideals and their cardinals begins in Section~1.3.
+\end{notes}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -933,7 +937,7 @@ To begin, it is natural to ask whether the meager and null sets are truly differ
   There exists a null comeager set. There exists a meager conull set.  \end{prop}
 
 \begin{proof}
-  The key is that we can construct dense open sets of arbitrarily small measure. That is, for each $n$ we will construct a dense open set $A_n$ such that $m(A_n)<1/n$. Assuming we have done so, we let $A=\bigcap A_n$. Clearly the set $A$ is null. To see that it is comeager note that for all $n$, we have that $\RR\smallsetminus A_n$ is closed and nowhere dense. Thus $\RR\smallsetminus A=\bigcup\RR\smallsetminus A_n$ is meager.
+  The key is that we can construct dense open sets of arbitrarily small measure. That is, for each $n$ we will construct a dense open set $A_n$ such that $m(A_n)<1/n$. Assuming we have done so, we let $A=\bigcap A_n$. Clearly the set $A$ is null. To see that it is comeager note that for all $n$, we have that $\RR\smallsetminus A_n$ is closed and nowhere dense. Thus $\RR\smallsetminus A=\bigcup(\RR\smallsetminus A_n)$ is meager.
 
   To construct the set $A_n$, let $q_0,q_1,\ldots$ be an enumeration of the rational numbers, and for each $i$ let $I_{n,i}$ be the open interval centered at $q_i$ of length $1/(n2^{i+1})$. We then let $A_n=\bigcup_iI_{n,i}$. Clearly $A_n$ is dense and open, and $m(A_n)\leq\sum_i1/(n2^{i+1})=1/n$.
 
@@ -1125,7 +1129,7 @@ Beyond these two examples, we see that each arrow in Cicho\'n's diagram (Theorem
 \end{exerc}
 
 \begin{notes}
-  Much of the material of this section is borrowed from Blass, Section~4.
+  The category-theoretic presentation of relations, morphisms, and duality follows Section~4 of Blass.
 \end{notes}
 
 
@@ -1148,7 +1152,7 @@ If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $
 
 \begin{proof}
   First suppose that $A\subset\Diff_P(x)$, we will show $A$ is meager. For this, let
-  \[A_N=\set{y\in2^\omega\mid(\forall n\geq N)\;y\restriction I_n\neq x\restriction I_n}
+  \[A_N=\set{y\in2^\omega\mid(\forall n\geq N)\;y\restriction I_n\neq x\restriction I_n}\text{.}
   \]
   Thus $A\subset\bigcup A_n$, and it is clear that $A_N$ contains no interior. Moreover $A_N$ is a countable intersection of boolean combinations of basic open sets, and hence $A_N$ is closed. Thus we have shown that $A$ is meager.
 
@@ -1188,7 +1192,7 @@ The proof is elementary (assuming I have not made a typo) and we leave it for Ex
 
 \begin{proof}
   We prove the second inequality by finding a morphism from the $\subset$ relation on $\Meager$ to the $\prec$ relation on interval partitions. We therefore obtain the first inequality as a consequence of duality. For this it is enough to consider the $\subset$ relation just on the basis of meager sets of the form $A=\Diff_Q(y)$. We let:
-  \[\begin{cases}\phi(P)=\Diff_P(0)\\\psi(\Diff_Q(y))=Q\end{cases}
+  \[\begin{cases}\phi(P)=\Diff_P(0)\\\psi(\Diff_Q(y))=Q\text{.}\end{cases}
   \]
   Then by Proposition~\ref{prop:engulf}, $\Diff_P(0)\subset\Diff_Q(y)$ in particular implies that $P\prec Q$, and hence $\phi(P)\subset A\implies P\prec\psi(A)$, as desired.
 \end{proof}
@@ -1205,7 +1209,7 @@ We conclude this section with a further result that gives much more information 
   We begin by finding a countable dense subset $Q\subset\omega^\omega$ disjoint from $\bigcup\mathcal F$. Indeed, since $|\mathcal F|<\cov(\Meager)$ we have that $\bigcup\mathcal F\neq\omega^\omega$. In fact for any basic open set $V_s$ we must have that $\bigcup\mathcal F$ does not cover $I$, since otherwise we could use Exercise~\ref{exerc:homeo} to find a countable family of translates of $\bigcup(\mathcal F)$ which covers all oof $\omega^\omega$. This shows $\bigcup\mathcal F$ is co-dense, and therefore we can find $Q$ as required.
 
   Now enumerate $Q=(q_n)_{n\in\NN}$. Then for each $F\in\mathcal F$ and $n\in\NN$, since $F$ is nowhere dense, we can find a finite initial segment $q_n\restriction g_F(n)$ such that $V_{q_n\restriction g_F(n)}$ is disjoint from $F$. Since $|\mathcal F|<\mathfrak b$, the family of functions $\set{g_F\mid F\in\mathcal F}$ is bounded by a single function $h\in\omega^\omega$. Finally we use this $h$ to define the set:
-  \[R=\bigcap_N\bigcup_{n\geq N}V_{q_n\restriction h(n)}
+  \[R=\bigcap_N\bigcup_{n\geq N}V_{q_n\restriction h(n)}\text{.}
   \]
   Then $R$ is a countable intersection of dense open sets, and hence it is comeager. Moreover since for all $F\in\mathcal F$ we have $g_F\leq^*h$, we have that $R$ is disjoint from $\bigcup\mathcal F$. We can thus conclude that $\bigcup\mathcal F$ is meager, as desired.
 \end{proof}
@@ -1253,7 +1257,7 @@ Before the proof, we will need the following fact about null sets, which we leav
   We must define $\phi\colon\omega^\omega\to\Null$ and $\psi\colon\Null\to SL$ such that for all $f\in\omega^\omega$ and null sets $A\subset2^\omega$ we have $\phi(f)\subset A$ implies $f\in^*\psi(A)$.
 
   To define $\phi$, we start with a sequence of open subsets $E_{n,i}\subset2^\omega$ such that $m(E_{n,i})=2^{-n}$, and given $f\in\omega^\omega$ we let
-  \[\phi(f)=\bigcap_N\bigcup_{n\geq N} E_{n,f(n)}\;.
+  \[\phi(f)=\bigcap_N\bigcup_{n\geq N} E_{n,f(n)}\text{.}
   \]
   Then it is clear that $\phi(f)$ is a null set. For technical reasons later on, we will need to assume that the sets $E_{n,i}$ are mutually independent events (the measure of the intersection is the product of the measures). It is not difficult to write down such $E_{n,i}$ explicitly.
 
@@ -1270,7 +1274,7 @@ Before the proof, we will need the following fact about null sets, which we leav
 
   Tackling the second issue first, we will show that the sets $|I_n(s)|$ are not too large. More specifically we claim that the sum $\sum2^{-n}|I_n(s)|$ converges. Indeed, by the independence of the sets $E_{n,i}$ we have
   \[m(V_s\cap K)\leq\prod_{n\in\NN,i\in I_n(s)}m((E_{n,i})^c)
-  =\prod_{n\in\NN}(1-2^{-n})^{|I_n(s)|}\;.
+  =\prod_{n\in\NN}(1-2^{-n})^{|I_n(s)|}\text{.}
   \]
   By our choice of $K$, the left-hand side is positive. Hence the right-hand side is positive too and taking a logarithm we obtain
   \[\sum-\log(1-2^{-n})|I_n(s)|<\infty
@@ -1278,7 +1282,7 @@ Before the proof, we will need the following fact about null sets, which we leav
   From the Taylor series expansion we always have $-\log(1-x)>x$, and the claim now follows.
 
   To deal with the first issue we construct a single slalom $I_n$ such that for all $s$ we eventually have $I_n(s)\subset I_n$. To do this fix an enumeration $s_1,s_2,\ldots$ of the elements of $2^{<\omega}$. By the convergence shown in the previous paragraph we can find $k(s_j)$ such that for all $n\geq k(s_j)$ we have $2^{-n}|I_n(s_j)|\leq1/2^j$. We then let $I_n=\bigcup\set{I_n(s_j)\mid n\geq k(s_j)}$. Then clearly
-  \[|I_n|\leq\sum_{k(s_j)\leq n}|I_n(s_j)|\leq\sum_{j}2^n/2^j\leq2^n\;.
+  \[|I_n|\leq\sum_{k(s_j)\leq n}|I_n(s_j)|\leq\sum_{j}2^n/2^j\leq2^n\text{.}
   \]
   Thus $\psi(A)=(I_n)$ is a slalom, and this completes the construction of $\psi$.
 
@@ -1300,7 +1304,7 @@ This time we will need a topological fact before the proof, and once again we le
   \label{prop:pi-base-meager}
   Given $n\in\NN$ and an open subset $O\subset2^\omega$, there is a countable family $\mathcal U_n$ of open subsets of $O$ with the properties:
   \begin{itemize}
-  \item Whenever $U_1,\ldots,U_{2^n}\in\mathcal U_n$ we have $U_1\cap\cdots\cap U_{2^n}\neq\emptyset$.
+  \item Whenever $U_1,\ldots,U_{2^n}\in\mathcal U_n$ we have $U_1\cap\cdots\cap U_{2^n}\neq\emptyset$;
   \item Every nowhere dense set is disjoint from some set in $\mathcal U_n$.
   \end{itemize}
 \end{prop}
@@ -1309,7 +1313,7 @@ This time we will need a topological fact before the proof, and once again we le
   We must define $\phi\colon\Meager\to\omega^\omega$ and $\psi\colon SL\to\Meager$ such that whenever $\phi(A)\in^*S$ we have $A\subset\psi(S)$.
 
   To construct $\psi$, first let $s_1,s_2,\ldots$ be an enumeration of $2^{<\omega}$, and for each $n$ apply Proposition~\ref{prop:pi-base-meager} to $\mathcal O=V_{s_n}$ to obtain a family $\mathcal U_n=\{U_{n,i}\}$. Now if $S=(I_n)$ is a slalom we let
-  \[\psi(S)=2^\omega\smallsetminus\bigcap_N\bigcup_{n\geq N}\bigcap_{i\in I_n}U_{n,i}\;.
+  \[\psi(S)=2^\omega\smallsetminus\bigcap_N\bigcup_{n\geq N}\bigcap_{i\in I_n}U_{n,i}\text{.}
   \]
   Then by the first property of the $\mathcal U_n$, for all $n$ we have that $\bigcap_{i\in I_n}U_{n,i}$ is a nonempty subset of $V_{s_n}$. It follows that each set $\bigcup_{n\geq N}\bigcap_{i\in I_n}U_{n,i}$ is dense and open, and hence that $\psi(S)$ is meager.
 
@@ -1421,7 +1425,7 @@ When we make forcing rigorous, we will show that under appropriate hypotheses, a
 
 \begin{example}
   Returning to the example of the forcing notion $\PP=\omega^{<\omega}$ with the upside-down ordering, we have already said that a filter $G\subset\omega^\omega$ is actually a path through $\omega^\omega$. If $G$ is $V$-generic, then much more can be said of this path. First of all, consider the sets
-  \[D_n=\set{t\in\omega^{<\omega}\mid \dom(t)\geq n}\;.
+  \[D_n=\set{t\in\omega^{<\omega}\mid \dom(t)\geq n}\text{.}
   \]
   Clearly $D_n$ is dense, since any $s\in\omega^{<\omega}$ can be extended to an element with length at least $n$ (recall we are using the upside-down ordering). It follows that $G$ meets $D_n$ for all $n$, and hence that $G$ is an infinite path. Second, if $G$ is $V$-generic then we have already seen that $G\notin V$. Thus the union $g=\bigcup G$ is an element of $\omega^{<\omega}$ that wasn't there before, that is, $g$ is a new element of the Baire space! We can do the same with $2^{<\omega}$ and Cantor space.
 \end{example}
@@ -1485,10 +1489,10 @@ The axiom MA packages a great deal of forcing into one universe $V$. When MA is 
 \end{prop}
 
 \begin{proof}
-  We again go to our favorite partial ordering $\omega^{<\omega}$ with the upside-down order. This time we consider the sets:
-  \[D_f=\set{s\in\omega^{<\omega}\mid s\not\subset f}
+  We again go to our favorite partial ordering $\omega^{<\omega}$ with the upside-down order. This time, for each $f\in\omega^\omega$ we consider the set
+  \[D_f=\set{s\in\omega^{<\omega}\mid s\not\subset f}\text{.}
   \]
-  for all $f\in\omega^\omega$. It is easy to see that $D_f$ is dense: any sequence $s$ can be extended to a sequence $t$ that disagrees with $f$. Now if MA were to hold with respect to families of dense sets of size continuum, then there would be a filter $G$ that meets $D_f$ for \emph{every} $f\in\omega^\omega$. It follows from this that the function $g=\bigcup G$ is an element of $\omega^\omega$ which disagrees with every $f\in\omega^\omega$, a contradiction.
+  It is easy to see that $D_f$ is dense: any sequence $s$ can be extended to a sequence $t$ that disagrees with $f$. Now if MA were to hold with respect to families of dense sets of size continuum, then there would be a filter $G$ that meets $D_f$ for \emph{every} $f\in\omega^\omega$. It follows from this that the function $g=\bigcup G$ is an element of $\omega^\omega$ which disagrees with every $f\in\omega^\omega$, a contradiction.
 \end{proof}
 
 \begin{prop}
@@ -1496,10 +1500,10 @@ The axiom MA packages a great deal of forcing into one universe $V$. When MA is 
 \end{prop}
 
 \begin{proof}
-  This time we let use the partial order $\PP=\omega_1^{<\omega}$ with the upside-down order. We have already seen that $\PP$ is not ccc. Now we consider the sets
-  \[D_\alpha=\set{s\in\omega_1^{<\omega}\mid\alpha\in\rng(s)}
+  This time we let use the partial order $\PP=\omega_1^{<\omega}$ with the upside-down order. We have already seen that $\PP$ is not ccc. Now for each $\alpha\in\omega_1$ we consider the set
+  \[D_\alpha=\set{s\in\omega_1^{<\omega}\mid\alpha\in\rng(s)}\text{.}
   \]
-  for all $\alpha\in\omega_1$. Then $D_\alpha$ is dense: any $s\in\omega_1^{<\omega}$ can be extended to include $\alpha$ in its range. Now if MA were to hold with respect to this partial order, then there would be a filter $G\subset\omega_1^{<\omega}$ that meets $D_\alpha$ for all $\alpha$. It follows from this that there is an onto function $g=\bigcup G$ from $\omega$ to $\omega_1$, a contradiction.
+  Then $D_\alpha$ is dense: any $s\in\omega_1^{<\omega}$ can be extended to include $\alpha$ in its range. Now if MA were to hold with respect to this partial order, then there would be a filter $G\subset\omega_1^{<\omega}$ that meets $D_\alpha$ for all $\alpha$. It follows from this that there is an onto function $g=\bigcup G$ from $\omega$ to $\omega_1$, a contradiction.
 \end{proof}
 
 We close this section with a result showing the effect of MA on properties of the continuum. Recall that the Baire category theorem states that the set of all real numbers is not meager, that is, $\cov(\Meager)$ is uncountable. It turns out that MA implies $\cov(\Meager)$ is as large is possible.
@@ -1548,7 +1552,7 @@ We have seen the effect of MA on properties of the continuum. We now explore the
 
 \begin{proof}
   Suppose towards a contradiction that $\mathfrak d<\mathfrak c$, and fix a dominating family $\mathcal F\subset\omega^\omega$. Let $\PP$ be the partial order $\omega^{<\omega}$ with the upside-down ordering. For each $f\in\mathcal F$ we consider the family sets
-  \[D_{f,n}=\set{s\in\omega^{<\omega}\mid\text{there is $n'>n$ such that $s(n)>f(n)$}}
+  \[D_{f,n}=\set{s\in\omega^{<\omega}\mid\text{there is $n'>n$ such that $s(n)>f(n)$}}\text{.}
   \]
   Observe that $D_{f,n}$ is dense for all $f$ and $n$: if $s\in\omega^{<\omega}$ we can easily find $n'>n,|s|$ and find $t\supset s$ such that $t(n')>f(n)$. Thus by MA we can find a filter $G$ which meets $D_{f,n}$ for all $f\in\mathcal F$ and $n\in\NN$. Letting $g=\bigcup G$, it is clear that $g$ is not dominated by $f$ for any $f\in\mathcal F$, contradicting that $\mathcal F$ is a dominating family.
 \end{proof}
@@ -1571,12 +1575,12 @@ Hechler forcing is always ccc, because incompatible conditions cannot have the s
 
 \begin{proof}
   Suppose towards a contradiction that $\mathcal F$ is an unbounded family of size $<\mathfrak c$, and let $\PP$ be the Hechler forcing $\mathbb H_{\mathcal F}$. We now consider two families of dense sets. First, for each $n$ we consider the set
-  \[D_n=\set{(s,F)\in\mathbb H_{\mathcal F}\mid n\in\dom(s)}
+  \[D_n=\set{(s,F)\in\mathbb H_{\mathcal F}\mid n\in\dom(s)}\text{.}
   \]
   To see that $D_n$ is dense, let $(s,F)$ be a given element of $\mathbb H_{\mathcal F}$. If $n\notin\dom(s)$ then we extend the stem $s$ to a sequence $t$ defined by $t(i)=\max_{f\in F}f(i)+1$ for all $i\notin\dom(s)$ such that $i\leq n$. Then clearly $(t,F)\leq(s,F)$ and $(t,F)\in D_n$.
 
   Next, for each $f\in\mathcal F$ we consider the set
-  \[D_f=\set{(s,F)\in\mathbb H_{\mathcal F}\mid f\in F}
+  \[D_f=\set{(s,F)\in\mathbb H_{\mathcal F}\mid f\in F}\text{.}
   \]
   Then $D_f$ is again dense, since given $(s,F)$ we have $(s,F\cup\{f\})\leq(s,F)$ (Observe that the promises $F$ are trivially satisfied since we have not lengthened the stem!)
 
@@ -1610,7 +1614,7 @@ For this proof, we once again introduce a new and special notion of forcing. The
     &=m(B\cup(O\smallsetminus B_O)\cup(O'\smallsetminus B_{O'}))\\
     &\leq m(B)+2(1/2n)\\
     &<(\epsilon-1/n)+1/n\\
-    &=\epsilon
+    &=\epsilon\text{.}
   \end{align*}
   Thus we can conclude that $\mathcal F$ is not an antichain, as desired.
 \end{proof}
@@ -1651,29 +1655,26 @@ So just how mild is the assumption that there is a countable transitive model of
 
 It is possible to work around this technicality by supposing only that $V$ satisfies a large but finite subsystem of ZFC. By the reflection theorem, it is possible to obtain transitive set models of such a subsystem, and it is not difficult to use such a model to get a countable transitive one. However, for simplicity we will simply assume for the rest of this section that $V$ is a countable, transitive model of all of ZFC.
 
-The first problem we have to deal with when introducing forcing is that if one is working in $V$, then since $G$ is not available it is difficult to refer to elements of $V[G]$ (and hence difficult to prove facts about them). We need the following construction.
+The first problem we have to deal with when introducing forcing is that if one is working in $V$, then since $G$ is not available it is difficult to refer to elements of $V[G]$ (and hence difficult to prove facts about them). Instead we have the following notion of a name of a ``potential'' element in $V[G]$.
 
 \begin{defn}
   If $\PP$ is a partial order, then a set $\tau$ is called a \emph{$\PP$-name} for an element of the forcing extension by $\mathbb P$ if $\tau$ consists of elements $(\sigma,p)$ where $\sigma$ is a \emph{$\PP$}-name and $p\in\PP$.
 \end{defn}
 
-Like sets themselves, the definition is recursive. To explain it briefly, we can think of an ordinary set $x$ as a wellfounded tree with $x$ at the root, the elements of $x$ on the first level, the elements of elements of $x$ on the second level, and so on. A $\PP$-name is similar, except the nodes of the tree are also $\PP$-names, and each node is labelled with an element of $\PP$.
+Like sets themselves, the definition is recursive. To explain it briefly, we can think of an ordinary set $x$ as a wellfounded tree with $x$ at the root, the elements of $x$ on the first level, the elements of elements of $x$ on the second level, and so on. A $\PP$-name is similar, except the nodes of the tree are also $\PP$-names, and each node is labelled with an element of $\PP$. 
 
-If $\tau$ is a $\PP$-name and we do gain access to a generic filter $G$, then we can use $G$ to evaluate the name $\tau$ as follows: Again thinking of $\tau$ as a tree, we include only the nodes whose label $p$ happens to lie in $G$.
+The labels are the labels there for? In a moment we will show how to evaluate names $\tau$ to yield an element of the extension $V[G]$. When $(\sigma,p)$ is an element of $\tau$, we will think of the label $p$ as the ``probability'' that $\sigma$ will be included as an element of $\tau$. If $p$ is high in the ordering on $\PP$ then $\sigma$ is more likely to be included; if it is low then $\sigma$ is less likely to be included. Specifically, we include just those $\sigma$ whose label $p$ lies in the generic filter $G$.
 
 \begin{defn}
-  Let $\PP$ be a partial order in $V$ and $G\subset\PP$ be a filter. If $\tau$ is a $\mathbb P$-name, then we define $\tau_G$ recursively by
-  \[\tau_G=\set{\sigma_G\mid (\exists p)\;(\sigma,p)\in\tau\text{ and }p\in G}
+  Let $\PP$ be a partial order in $V$ and $G\subset\PP$ be a filter. If $\tau$ is a $\PP$-name, then the \emph{evaluation} of $\tau$ via $G$, denoted $\tau_G$, is defined recursively by
+  \[\tau_G=\set{\sigma_G\mid (\exists p)\;(\sigma,p)\in\tau\text{ and }p\in G}\text{.}
   \]
   We then define the forcing extension of $V$ corresponding to $G$ by
-  \[V[G]=\set{\tau_G\mid\tau\in V\text{ is a $\PP$-name}}
+  \[V[G]=\set{\tau_G\mid\text{$\tau\in V$ and $\tau$ is a $\PP$-name}}\text{.}
   \]
 \end{defn}
 
-The definitions of $\PP$-name and of $\tau_G$ are heavily recursive, but one should expect this from such a general set-theoretic construction. It is an amazing fact that such a short construction actually works, and it will take us some time to prove everything we need.
-
-% discuss meaning of name
-% mention the probability intuition thing
+The definitions of $\PP$-name and the evaluation $\tau_G$ are heavily recursive, but one should expect this from such a general set-theoretic construction. It is an amazing fact that such a short construction actually works, and it will take us some time to prove everything we need.
 
 \begin{lem}
   If $\PP$ is a partial order and $G\subset\mathbb P$ is a filter, then we have $V\subset V[G]$ and $G\in V[G]$. Moreover, if $W$ is any other transitive model of ZFC with these two properties, then $V[G]\subset W$.
@@ -1681,12 +1682,12 @@ The definitions of $\PP$-name and of $\tau_G$ are heavily recursive, but one sho
 
 \begin{proof}
   To prove the statements, we need only write down explicit $\PP$-names for the objects in question. First recall that we are always assuming $\PP$ has a maximum element $\mathbb 1$. Thus if $x\in V$ we can write the recursive definition
-  \[\check x=\set{(\check y,\mathbb 1)\mid y\in x}
+  \[\check x=\set{(\check y,\mathbb 1)\mid y\in x}\text{.}
   \]
   The idea here is to take the tree of $x$ and label each node with a $\mathbb 1$. To see that $\check x_G=x$, suppose inductively that $\check y_G=y$ for all $y\in x$. Then since $\mathbb 1$ always lies in $G$, the definition implies that $\check x_G=\set{\check y_G\mid y\in x}=\set{y\mid y\in x}=x$.
 
   To see that $G\in V[G]$ we construct a single name
-  \[\Gamma=\set{(\check p,p)\mid p\in\PP}
+  \[\Gamma=\set{(\check p,p)\mid p\in\PP}\text{.}
   \]
   Then by the previous paragraph, we have that $\Gamma_G=\set{p\mid p\in G}=G$, as desired.
 
@@ -1776,7 +1777,16 @@ Let us first see the power of forcing theorems (a) and (b) to establish forcing 
   Conversely if $\pi_G\in a_0$ then $V[G]$ satisfies the sentences of the forcing language $\pi\in\sigma$ and $\phi(\pi,\tau)$. By the forcing theorem there exist $q,r\in G$ such that $q\forces\pi\in\sigma$ and $r\forces\phi(\pi,\tau)$. Letting $p\in G$ be such that $p\leq q,r$ we clearly have $(\pi,p)\in\rho$ and also $\pi_G\in\rho_G$.
 \end{proof}
 
-The remaining axioms of replacement, power set, and choice are also existence axioms, and they can once again be proved by coming up with clever names. As in this argument, the names are defined using the forcing relation.
+The remaining axioms of replacement, power set, and choice are also existence axioms, and they can once again be proved by coming up with clever names. As with the above argument, the names are defined using the forcing relation.
+
+Properties of the forcing relation $\forces$\ldots
+
+\begin{itemize}
+\item If $p\forces\phi$ and $p'\leq p$ then $p'\forces\phi$
+\item 
+\item 
+\item 
+\end{itemize}
 
 % Kunen, sec IV.2
 % Laver's notes
@@ -1786,6 +1796,55 @@ The remaining axioms of replacement, power set, and choice are also existence ax
 \section{Highlights of the proof of the forcing theorems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+We define a relation $\forces_0$, definable in $V$, by closely following the properties of the true $\forces$ relation.
+
+\begin{defn}
+  $\forces_0$
+\end{defn}
+
+\begin{lem}
+  If $p\forces_0\phi$ and $p'\leq p$ then $p'\forces_0\phi$.
+\end{lem}
+
+\begin{proof}
+  \ldots
+\end{proof}
+
+Since we have defined $\forces_0$ within $V$, it is clear that the definability theorem holds for $\forces_0$. We now prove that the truth theorem (forcing theorem (b)) holds for $\forces_0$.
+
+\begin{lem}
+  Non-intuitive sublemma.
+\end{lem}
+
+\begin{lem}
+  If $V[G]\satisfies\phi$ then there is $p\in G$ such that $p\forces_0\phi$.
+\end{lem}
+
+\begin{proof}
+
+\end{proof}
+
+Next we establish the definability theorem for $\forces$ as follows.
+
+\begin{lem}
+  For all $\phi$ we have $p\forces\phi$ if and only if $p\forces_0\neg\neg\phi$. In particular, the forcing relation $\cdot\forces\phi$ is definable in $V$.
+\end{lem}
+
+\begin{proof}
+  
+\end{proof}
+
+Finally we conclude that 
+
+\begin{lem}
+  If $V[G]\satisfies\pi$ then tehre is $p\in\G$ such that $p\forces\phi$.
+\end{lem}
+
+\begin{proof}
+  
+\end{proof}
+
+% laver notes
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
