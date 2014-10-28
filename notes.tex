@@ -1812,7 +1812,18 @@ We conclude this section with some elementary properties of the forcing relation
 Recall that our definition of the $\forces$ relation cannot be carried out within $V$. In this section we give a definition of a variant of the $\forces$ relation, denoted $\forces_0$, which can be carried out entirely within $V$. The definition of $\forces_0$ closely follows the properties of the true $\forces$ relation which we know should follow from the forcing theorem.
 
 \begin{defn}
-  $\forces_0$
+  \label{defn:forces_0}
+  We first define $p\forces_0\phi$ for atomic and neg-atomic formulas by recursion on the complexity of the names $\sigma,\tau$.
+  \begin{alignat*}{2}
+    p&\forces_0\sigma\in\tau&&\iff (\exists(\sigma',q)\in\tau)\;p\leq q\text{ and }p\forces_0\sigma'=\sigma\\
+    p&\forces_0\tau\neq\tau'&&\iff (\exists(\sigma,q)\in\tau)\;p\leq q\text { and }p\forces_0\sigma\notin\tau'\text{,}\\
+    & &&\qquad\quad\text{or }(\exists(\sigma,q)\in\tau')\;p\leq q\text{ and }p\forces_0\sigma\notin\tau\\
+    p&\forces_0\neg\phi&&\iff(\forall q\leq p)\;q\not\forces_0\phi
+    \intertext{We now extend this to compound formulas using the rules}
+    p&\forces_0\phi\vee\psi&&\iff p\forces_0\phi\text{ or }p\forces_0\psi\\
+    p&\forces_0\exists x\phi(x)&&\iff(\exists\tau)\;p\forces_0\phi(\tau)
+  \end{alignat*}
+  and we again use the above rule for $\neg\phi$.
 \end{defn}
 
 \begin{lem}
@@ -1821,10 +1832,10 @@ Recall that our definition of the $\forces$ relation cannot be carried out withi
 \end{lem}
 
 \begin{proof}
-  \ldots
+  It is elementary to prove this by induction on the complexity of the formula $\phi$. If $\phi$ is of the form $\sigma\in\tau$ or $\tau\neq\tau'$ then this property is clear from the first two clauses of Definition~\ref{defn:forces_0}. Moreover it is clear from the remaining three clauses that it is preserved to compound formulas.
 \end{proof}
 
-We now prove that the forcing theorem (Theorem~\ref{thm:forcing}(b)) holds for $\forces_0$.
+We now prove that the analog of the forcing theorem (Theorem~\ref{thm:forcing}(b)) holds for $\forces_0$.
 
 \begin{lem}
   If $\phi$ is a sentence of the forcing language, then $V[G]$ satisfies $\phi$ if and only if there is $p\in G$ such that $p\forces_0\phi$.
