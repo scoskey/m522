@@ -1832,8 +1832,9 @@ Recall that our definition of the $\forces$ relation cannot be carried out withi
 \end{lem}
 
 \begin{proof}
-  It is elementary to prove this by induction on the complexity of the formula $\phi$. If $\phi$ is of the form $\sigma\in\tau$ or $\tau\neq\tau'$ then this property is clear from the first two clauses of Definition~\ref{defn:forces_0}. Moreover it is clear from the remaining three clauses that it is preserved to compound formulas.
+  We prove this by induction on the complexity of the formula $\phi$. For example, let us check that the induction passes through the first clause of Definition~\ref{defn:forces_0}. Suppose $\sigma,\tau$ are names and that the lemma holds for $\sigma'=\sigma$ for any $\sigma'\in\dom(\tau)$. Then if $p\forces_0\sigma\in\tau$, there is $(\sigma',q)\in\tau$ such that $p\leq q$ and $p\forces_0\sigma'=\sigma$. If also $p'\leq p$, then clearly also $p'\leq q$ and by inductive hypothesis $p'\forces_0\sigma'=\sigma$. Hence $p'\forces_0\sigma\in\tau$, as desired. The remaining four clauses are left for Exercise~\ref{exerc:forcing-proof-1}.
 \end{proof}
+
 
 We now prove that the analog of the forcing theorem (Theorem~\ref{thm:forcing}(b)) holds for $\forces_0$.
 
@@ -1870,6 +1871,11 @@ Finally we conclude that
 \begin{proof}
   
 \end{proof}
+
+\begin{exerc}
+  \label{exerc:forcing-proof-1}
+  Complete the proof of Lemma~\ref{lem:forcing-proof-1} by checking that in each of the five clauses of Definition~\ref{defn:forces_0}, if the lemma holds for the sentence on the right-hand side of the $\iff$, then the lemma holds for the sentence on the left-hand side.
+\end{exerc}
 
 \begin{notes}
   This version of the proof of the forcing and definability theorems was largely drawn from handwritten notes, written by Spencer Unger during a forcing course given by Richard Laver. A proof can also be found in Section~IV.2 of Kunen.
