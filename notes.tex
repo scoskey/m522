@@ -1342,6 +1342,10 @@ This concludes the proof of Bartoszy\'nski's theorem, as well as Theorem~\ref{th
   Then let $\mathcal U_{n+1}$ be the collection of $V_i\cup V$ for all $i$ and $V$ with this property. Once again verify that any nowhere dense set is disjoint from an element of $\mathcal U_{n+1}$ and that the intersection of any $n+1$ elements of $\mathcal U_{n+1}$ is nonempty. It may help to start with the special case $n=2$.]
 \end{exerc}
 
+\begin{notes}
+  The presentation of the proof of Bartoszy\'nski's theorem was largely taken from Section~522 of Fremlin, \emph{Measure theory}. A similar proof can also be found in Bartoszy\'nski's handbook article, \emph{Invariants of measure and category}.
+\end{notes}
+
 % fremlin, measure theory v5p1 522P
 % bartoszynski, handbook
 
@@ -1755,6 +1759,7 @@ The truth value of a given setence may depend on the filter $G$, just as the set
 The following three results are the fundamental tools used in the development of the theory of forcing. Essentially all further facts about forcing will be derived from these properties of the forcing machinery.
 
 \begin{thm}[The forcing theorems]\
+\label{thm:forcing}
 \begin{enumerate}
 \item \textup{Definability theorem}: The relation $\Vdash$ is definable in $V$.
 \item \textup{Forcing theorem}: If $\phi$ is a sentence of the forcing language $M[G]$ satisfies $\phi$, then there exists $p\in G$ such that $p\Vdash\phi$.
@@ -1779,30 +1784,39 @@ Let us first see the power of forcing theorems (a) and (b) to establish forcing 
 
 The remaining axioms of replacement, power set, and choice are also existence axioms, and they can once again be proved by coming up with clever names. As with the above argument, the names are defined using the forcing relation.
 
-Properties of the forcing relation $\forces$\ldots
+We conclude this section with some elementary properties of the forcing relation $\forces$ that will be used in the upcoming sections.
 
-\begin{itemize}
-\item If $p\forces\phi$ and $p'\leq p$ then $p'\forces\phi$
-\item 
-\item 
-\item 
-\end{itemize}
+\begin{lem}
+  If $p\forces\phi$ and $p'\leq p$ then $p'\forces\phi$.
+\end{lem}
+
+\begin{proof}
+  This is a straightforward consequence of the fact that if $p'\leq p$ and $p'\in G$, then since $G$ is closed upwards we have $p\in G$.
+\end{proof}
+
+\begin{lem}
+  If $p\forces\exists x\phi(x)$ then there is a name $\tau$ and some $q\leq p$ such that $q\forces\phi(\tau)$.
+\end{lem}
+
+\begin{proof}
+  Fix a $V$-generic filter $G$ with $p\in G$. Then $V[G]$ satisfies $\exists x\phi(x)$, and hence there is a name $\tau$ such that $V[G]$ satisfies $\phi(\tau_G)$. By the forcing theorem there is $p'\in G$ such that $p'\forces\phi(\tau)$. Letting $q\in G$ be such that $q\leq p,p'$, we have that $q$ is as desired.
+\end{proof}
 
 % Kunen, sec IV.2
-% Laver's notes
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Highlights of the proof of the forcing theorems}
+\section{The proof of the forcing theorems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We define a relation $\forces_0$, definable in $V$, by closely following the properties of the true $\forces$ relation.
+Recall that our definition of the $\forces$ relation cannot be carried out within $V$. In this section we give a definition of a variant of the $\forces$ relation, denoted $\forces_0$, which can be carried out entirely within $V$. The definition of $\forces_0$ closely follows the properties of the true $\forces$ relation which we know should follow from the forcing theorem.
 
 \begin{defn}
   $\forces_0$
 \end{defn}
 
 \begin{lem}
+  \label{lem:forcing-proof-1}
   If $p\forces_0\phi$ and $p'\leq p$ then $p'\forces_0\phi$.
 \end{lem}
 
@@ -1810,18 +1824,18 @@ We define a relation $\forces_0$, definable in $V$, by closely following the pro
   \ldots
 \end{proof}
 
-Since we have defined $\forces_0$ within $V$, it is clear that the definability theorem holds for $\forces_0$. We now prove that the truth theorem (forcing theorem (b)) holds for $\forces_0$.
+We now prove that the forcing theorem (Theorem~\ref{thm:forcing}(b)) holds for $\forces_0$.
 
 \begin{lem}
-  Non-intuitive sublemma.
-\end{lem}
-
-\begin{lem}
-  If $V[G]\satisfies\phi$ then there is $p\in G$ such that $p\forces_0\phi$.
+  If $\phi$ is a sentence of the forcing language, then $V[G]$ satisfies $\phi$ if and only if there is $p\in G$ such that $p\forces_0\phi$.
 \end{lem}
 
 \begin{proof}
+  Claim: Suppose that the lemma holds for $\phi$. Then for any $p\in\PP$ we have: $p\in G$ and $V[G]$ satisfies $\phi$ if and only if there exists $q\leq p$ in $G$ such that $q\forces_0\phi$.
 
+  Proof of claim: if $M[G]$ satisfies $\phi$, then by hypothesis on $\phi$ there is $p'\in G$ such that $p'\forces_0\phi$. Hence we may let $q\in G$ and $q\leq p,p'$, and Lemma~\ref{lem:forcing-proof-1} implies that $q\forces\phi$. Conversely if $q\in G$ and $q\forces_0\phi$ then by hypothesis on $\phi$ we have $V[G]$ satisfies $\phi$. And if $q\leq p$ then clearly $p\in G$.
+
+  \ldots
 \end{proof}
 
 Next we establish the definability theorem for $\forces$ as follows.
@@ -1831,20 +1845,24 @@ Next we establish the definability theorem for $\forces$ as follows.
 \end{lem}
 
 \begin{proof}
-  
+  Suppose that $p\forces\phi$.
+
+  Suppose that $p\forces_0\neg\neg\phi$.
 \end{proof}
 
 Finally we conclude that 
 
 \begin{lem}
-  If $V[G]\satisfies\pi$ then tehre is $p\in\G$ such that $p\forces\phi$.
+  If $V[G]$ satisfies $\phi$ then there is $p\in G$ such that $p\forces\phi$.
 \end{lem}
 
 \begin{proof}
   
 \end{proof}
 
-% laver notes
+\begin{notes}
+  This version of the proof of the forcing and definability theorems was largely drawn from handwritten notes, written by Spencer Unger during a forcing course given by Richard Laver. A proof can also be found in Section~IV.2 of Kunen.
+\end{notes}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
