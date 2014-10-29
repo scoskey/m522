@@ -1826,26 +1826,28 @@ Recall that our definition of the $\forces$ relation cannot be carried out withi
   and we again use the above rule for $\neg\phi$.
 \end{defn}
 
+The proof of the forcing theorems now proceeds in a series of lemmas.
+
 \begin{lem}
-  \label{lem:forcing-proof-1}
+  \label{lem:forcing-downward-0}
   If $p\forces_0\phi$ and $p'\leq p$ then $p'\forces_0\phi$.
 \end{lem}
 
 \begin{proof}
-  We prove this by induction on the complexity of the formula $\phi$. For example, let us check that the induction passes through the first clause of Definition~\ref{defn:forces_0}. Suppose $\sigma,\tau$ are names and that the lemma holds for $\sigma'=\sigma$ for any $\sigma'\in\dom(\tau)$. Then if $p\forces_0\sigma\in\tau$, there is $(\sigma',q)\in\tau$ such that $p\leq q$ and $p\forces_0\sigma'=\sigma$. If also $p'\leq p$, then clearly also $p'\leq q$ and by inductive hypothesis $p'\forces_0\sigma'=\sigma$. Hence $p'\forces_0\sigma\in\tau$, as desired. The remaining four clauses are left for Exercise~\ref{exerc:forcing-proof-1}.
+  We prove this by induction on the complexity of the formula $\phi$. For example, let us check that the induction passes through the first clause of Definition~\ref{defn:forces_0}. Suppose $\sigma,\tau$ are names and that the lemma holds for $\sigma'=\sigma$ for any $\sigma'\in\dom(\tau)$. Then if $p\forces_0\sigma\in\tau$, there is $(\sigma',q)\in\tau$ such that $p\leq q$ and $p\forces_0\sigma'=\sigma$. If also $p'\leq p$, then clearly also $p'\leq q$ and by inductive hypothesis $p'\forces_0\sigma'=\sigma$. Hence $p'\forces_0\sigma\in\tau$, as desired. The remaining four clauses are left for Exercise~\ref{exerc:forcing-downward-0}.
 \end{proof}
-
 
 We now prove that the analog of the forcing theorem (Theorem~\ref{thm:forcing}(b)) holds for $\forces_0$.
 
 \begin{lem}
+  \label{lem:forcing-theorem-0}
   If $\phi$ is a sentence of the forcing language, then $V[G]$ satisfies $\phi$ if and only if there is $p\in G$ such that $p\forces_0\phi$.
 \end{lem}
 
 \begin{proof}
   Claim: Suppose that the lemma holds for $\phi$. Then for any $p\in\PP$ we have: $p\in G$ and $V[G]$ satisfies $\phi$ if and only if there exists $q\leq p$ in $G$ such that $q\forces_0\phi$.
 
-  Proof of claim: if $M[G]$ satisfies $\phi$, then by hypothesis on $\phi$ there is $p'\in G$ such that $p'\forces_0\phi$. Hence we may let $q\in G$ and $q\leq p,p'$, and Lemma~\ref{lem:forcing-proof-1} implies that $q\forces\phi$. Conversely if $q\in G$ and $q\forces_0\phi$ then by hypothesis on $\phi$ we have $V[G]$ satisfies $\phi$. And if $q\leq p$ then clearly $p\in G$.
+  Proof of claim: if $M[G]$ satisfies $\phi$, then by hypothesis on $\phi$ there is $p'\in G$ such that $p'\forces_0\phi$. Hence we may let $q\in G$ and $q\leq p,p'$, and Lemma~\ref{lem:forcing-downward-0} implies that $q\forces\phi$. Conversely if $q\in G$ and $q\forces_0\phi$ then by hypothesis on $\phi$ we have $V[G]$ satisfies $\phi$. And if $q\leq p$ then clearly $p\in G$.
 
   \ldots
 \end{proof}
@@ -1853,28 +1855,29 @@ We now prove that the analog of the forcing theorem (Theorem~\ref{thm:forcing}(b
 Next we establish the definability theorem for $\forces$ as follows.
 
 \begin{lem}
-  For all $\phi$ we have $p\forces\phi$ if and only if $p\forces_0\neg\neg\phi$. In particular, the forcing relation $\cdot\forces\phi$ is definable in $V$.
+  \label{lem:forcing-definability}
+  For all $\phi$ we have $p\forces\phi$ if and only if $p\forces_0\neg\neg\phi$. In particular, the forcing relation is definable in $V$.
 \end{lem}
 
 \begin{proof}
-  Suppose that $p\forces\phi$.
+  First suppose that $p\forces_0\neg\neg\phi$, and let $G$ be a $V$-generic filter with $p\in G$. Then by Lemma~\ref{lem:forcing-theorem-0} we have $V[G]$ satisfies $\neg\neg\phi$, and hence $V[G]$ satisfies $\phi$. This shows that $p\forces\phi$.
 
-  Suppose that $p\forces_0\neg\neg\phi$.
+  Conversely, suppose that $p\forces\phi$. By Definition~\ref{defn:forces_0}, to show $p\forces_0\neg\neg\phi$ it is equivalent to show that for all $q\leq p$ there exists $r\leq q$ such that $r\forces_0\phi$. So let $q\leq p$ be given, and let $G$ be a $V$-generic filter such that $q\in G$. The since $q\forces\phi$ we have $V[G]$ satisfies $\phi$. By Lemma~\ref{lem:forcing-theorem-0} there exists $q'\in G$ such that $q'\forces_0\phi$. Finally we may let $r\in G$ with $r\leq q'q'$, and by Lemma~\ref{lem:forcing-downward-0} we have that $r\forces_0\phi$ too, as desired.
 \end{proof}
 
-Finally we conclude that 
+Finally we can conclude that the forcing theorem holds for the true $\forces$ relation as well. This completes our proof of the forcing theorems!
 
 \begin{lem}
   If $V[G]$ satisfies $\phi$ then there is $p\in G$ such that $p\forces\phi$.
 \end{lem}
 
 \begin{proof}
-  
+  If $V[G]$ satisfies $\phi$, then $V[G]$ satisfies $\neg\neg\phi$. Hence by Lemma~\ref{lem:forcing-theorem-0} there exists $p\in G$ such that $p\forces_0\neg\neg\phi$, and by Lemma~\ref{lem:forcing-definability} we have $p\forces\phi$.
 \end{proof}
 
 \begin{exerc}
-  \label{exerc:forcing-proof-1}
-  Complete the proof of Lemma~\ref{lem:forcing-proof-1} by checking that in each of the five clauses of Definition~\ref{defn:forces_0}, if the lemma holds for the sentence on the right-hand side of the $\iff$, then the lemma holds for the sentence on the left-hand side.
+  \label{exerc:forcing-downward-0}
+  Complete the proof of Lemma~\ref{lem:forcing-downward-0} by checking that in each of the five clauses of Definition~\ref{defn:forces_0}, if the lemma holds for the sentence on the right-hand side of the $\iff$, then the lemma holds for the sentence on the left-hand side.
 \end{exerc}
 
 \begin{notes}
