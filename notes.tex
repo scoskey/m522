@@ -1744,7 +1744,7 @@ The truth value of a given setence may depend on the filter $G$, just as the set
   \begin{itemize}
   \item The \emph{forcing language} for $\PP$ consists of the usual logical symbols, $\in$, and the $\PP$-names as constant symbols.
   \item If $\phi$ is a sentence of the forcing language for $\PP$, we say $V[G]$ \emph{satisfies} $\phi$ if, after replaceing the names $\tau$ in $\phi$ replaced by their values $\tau_G$, it is true in $V[G]$.
-  \item If $p\in\PP$ and $\phi$ is a sentence of the forcing language for $\PP$, then we say $p$ \emph{forces} $\phi$, written $p\Vdash\phi$, if $p\in G$ implies $V[G]$ satisfies $\phi$.
+  \item If $p\in\PP$ and $\phi$ is a sentence of the forcing language for $\PP$, then we say $p$ \emph{forces} $\phi$, written $p\forces\phi$, if $p\in G$ implies $V[G]$ satisfies $\phi$.
   \end{itemize}
 \end{defn}
 
@@ -1761,11 +1761,15 @@ The following three results are the fundamental tools used in the development of
 \begin{thm}[The forcing theorems]\
 \label{thm:forcing}
 \begin{enumerate}
-\item \textup{Definability theorem}: The relation $\Vdash$ is definable in $V$.
-\item \textup{Forcing theorem}: If $\phi$ is a sentence of the forcing language $M[G]$ satisfies $\phi$, then there exists $p\in G$ such that $p\Vdash\phi$.
+\item \textup{Definability theorem}: The relation $\forces$ is definable in $V$.
+\item \textup{Forcing theorem}: If $\phi$ is a sentence of the forcing language $M[G]$ satisfies $\phi$, then there exists $p\in G$ such that $p\forces\phi$.
 \item If $V$ is a model of ZFC then $V[G]$ is a model of ZFC.
 \end{enumerate}
 \end{thm}
+
+\begin{rem}
+  We remark that the sense in which $\forces$ is definable is somewhat technical. Technically it means that for each formula $\phi(x_1,\ldots,x_n)$ in the language of set theory, the relation on tuples $(p,\tau_1,\ldots,\tau_n)$ defined by $p\forces\phi(\tau_1,\ldots,\tau_n)$ is definable.
+\end{rem}
 
 Let us first see the power of forcing theorems (a) and (b) to establish forcing theorem (c). Recall that the \emph{comprehension axiom} states that if $\phi(x,y)$ is a formula, then for all sets $a,b$ we have that $\set{x\in a\mid\phi(x,b)}$ is a set.
 
@@ -1777,14 +1781,14 @@ Let us first see the power of forcing theorems (a) and (b) to establish forcing 
   If $\phi(x,y)$ and $a,b\in V[G]$ are as above, we need to cook up a name for the set $\set{x\in a\mid\phi(x,b)}$. To begin, find names $\sigma,\tau$ such that $\sigma_G=a$ and $\tau_G=b$. We wish to define a name for the set $a_0=\set{x\in a\mid\phi(x,b)}$. For this we let
   \[\rho=\set{(\pi,p)\mid\pi\in\dom\sigma,\;p\in\mathbb P,\;p\forces\pi\in\sigma,\text{ and }p\forces\phi(\pi,\tau)}
   \]
-  By the definability theorem, we clearly have that $\rho$ is a name in $V$. To see that $\rho_G=a_0$, first suppose that $\pi_G\in\rho_G$. Then there is $p\in G$ such that $p\forces\pi\in\sigma$ and $p\forces\phi(\pi,\tau)$. By definition of $\forces$, it follows that $\pi_G\in\sigma_G=a$ and $V[G]$ satisfies $\phi(\pi_G,\tau_G)$, i.e.,\ $\phi(\pi_G,b)$, and therefore $\pi_G\in a_0$.
+  Here we are using the definability theorem just to say $\rho$ is a name in $V$. To see that $\rho_G=a_0$, first suppose that $\pi_G\in\rho_G$. Then there is $p\in G$ such that $p\forces\pi\in\sigma$ and $p\forces\phi(\pi,\tau)$. By definition of $\forces$, it follows that $\pi_G\in\sigma_G=a$ and $V[G]$ satisfies $\phi(\pi_G,\tau_G)$, i.e.,\ $\phi(\pi_G,b)$, and therefore $\pi_G\in a_0$.
 
   Conversely if $\pi_G\in a_0$ then $V[G]$ satisfies the sentences of the forcing language $\pi\in\sigma$ and $\phi(\pi,\tau)$. By the forcing theorem there exist $q,r\in G$ such that $q\forces\pi\in\sigma$ and $r\forces\phi(\pi,\tau)$. Letting $p\in G$ be such that $p\leq q,r$ we clearly have $(\pi,p)\in\rho$ and also $\pi_G\in\rho_G$.
 \end{proof}
 
-The remaining axioms of replacement, power set, and choice are also existence axioms, and they can once again be proved by coming up with clever names. As with the above argument, the names are defined using the forcing relation.
+We omit the proofs of the remaining axioms: replacement, power set, and choice. All three are also existence axioms, and they can once again be proved by inventing clever names. In each case, the names are defined using the forcing relation.
 
-We conclude this section with some elementary properties of the forcing relation $\forces$ that will be used in the upcoming sections.
+We conclude this section with some elementary but frequently used properties of the forcing relation. These properties will also be used to guide the proof of the forcing theorems in the next section.
 
 \begin{lem}
   \label{lem:forcing-downward}
@@ -1800,7 +1804,7 @@ We conclude this section with some elementary properties of the forcing relation
 \end{lem}
 
 \begin{proof}
-  First suppose that $p\forces\neg\phi$ and let $q\leq p$. Then by Lemma~\ref{lem:forcing-downward} we have $q\forces\neg\phi$. Then we cannot have $q\forces\phi$, since then if $G$ is a $V$-generic filter with $q\in G$ we would have $V[G]$ satisfies both $\phi$ and $\neg\phi$.
+  First suppose that $p\forces\neg\phi$ and let $q\leq p$. Then by Lemma~\ref{lem:forcing-downward} we have $q\forces\neg\phi$. Now we cannot have $q\forces\phi$, since in that case if $G$ is a $V$-generic filter with $q\in G$ we would have that $V[G]$ satisfies both $\phi$ and $\neg\phi$.
 
   For the converse we proceed by contrapositive and suppose that $p\not\forces\neg\phi$. Then there is a $V$-generic filter $G$ with $p\in G$ such that $V[G]$ satisfies $\phi$. By the forcing theorem, there is $p'\in G$ such that $p'\forces\phi$. Letting $q\in G$ be such that $q\leq p,p'$ we have $q\forces\phi$ too, as desired.
 \end{proof}
@@ -1837,7 +1841,9 @@ Recall that our definition of the $\forces$ relation cannot be carried out withi
   and we again use the above rule for $\neg\phi$.
 \end{defn}
 
-The proof of the forcing theorems now proceeds in a series of lemmas. Our first lemma states that the analog of Lemma~\ref{lem:forcing-downward} holds for $\forces_0$. This simple fact will be used throughout the rest of the proof.
+It takes a moment to confirm for oneself that the above definition does indeed determine $p\forces_0\phi$ for arbitrary $\phi$.
+
+The proof of the forcing theorems will unfold over the next several lemmas. The first of these states that the analog of Lemma~\ref{lem:forcing-downward} holds for $\forces_0$.
 
 \begin{lem}
   \label{lem:forcing-downward-0}
