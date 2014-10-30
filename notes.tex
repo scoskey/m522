@@ -1914,12 +1914,9 @@ Finally we can conclude that the forcing theorem holds for the true forcing rela
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{CH and preservation of cardinals}
+\section{Cohen forcing and not-CH}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{thm}
-  If $\PP$ is ccc, then $\PP$ preserves cardinals.
-\end{thm}
 
 \begin{lem}
   Let $\PP$ be a ccc partial order, and $G\subset\PP$ a $V$-generic fliter. Given any function $f\in V[G]$, there exists a function $F\in V$ such that for all $a\in\dom(f)$ we have $F(a)$ is countable and $f(a)\in F(a)$.
@@ -1929,43 +1926,13 @@ Finally we can conclude that the forcing theorem holds for the true forcing rela
   
 \end{proof}
 
-
-% Kunen, sec 4.3
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Cohen and random forcing}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{defn}
-  The partial order for \emph{Cohen forcing} $\mathbb C$ consists of all equivalence classes of nonmeager subsets of $2^\omega$, where sets $A,B$ are said to be equivalent if they differ by a meager set. The elements of $\mathbb C$ are ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is meager.
-\end{defn}
-
-\begin{lem}
-  The Cohen partial order $\mathbb C$ is ccc.
-\end{lem}
-
 \begin{thm}
-  The Cohen forcing partial order $\mathbb C$ is forcing equivalent to the partial order $2^{<\omega}$.
+  If $\PP$ is ccc, then $\PP$ preserves cardinals.
 \end{thm}
 
-\begin{defn}
-  The partial order for \emph{random forcing} $\mathbb B$ consists of all equivalence classes of nonnull subsets of $2^\omega$, where sets $A,B$ are equivalent if they differ by a null set. The elements of $\mathbb B$ are ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is null.
-\end{defn}
-
-\begin{lem}
-  The random partial order $\mathbb B$ is ccc.
-\end{lem}
-
 \begin{proof}
-  In $\mathbb B$, two elements $A,B$ are incompatible if and only if their intersection is null. Thus it suffices to show that any family $\mathcal F$ of pairwise disjoint subsets of $2^\omega$ is countable. Indeed, since $m(2^\omega)=1$, for each $n$ there can be just finitely many elements of $\mathcal F$ of measure $\geq1/n$. It follows that there can be just countably many elements of $\mathcal F$.
+
 \end{proof}
-
-The random partial order does not have such an elementary characterization as the Cohen partial order.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Multiple Cohen and random forcing}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{defn}
   For any cardinals $\kappa,\lambda$, we define the set $\Fn(\kappa,\lambda)$ to be the family of all functions $p\colon F\to\lambda$, where $F$ is a finite subset of $\kappa$. We partially order $\Fn(\kappa,\lambda)$ by function extension: $p\leq q$ if and only if $p\supset q$.
@@ -1997,6 +1964,39 @@ A family $\mathcal F$ of sets is called a \emph{delta system} if there exists a 
   It suffices to show that any uncountable $\mathcal G\subset\Fn(\kappa,\omega)$ contains two compatible elements. In fact we will show that it contains uncountably many pairwise compatible elements. For this we first consider the corresponding family of domains $\mathcal F=\set{\dom(f)\mid f\in\mathcal G}$. Then $\mathcal F$ is an uncountable family of finite subsets of $\kappa$. Thus by Lemma~\ref{lem:delta-system}, we can find an uncountable subset $\mathcal F_0\subset\mathcal F$ which forms a delta system with some root $A$.
 
   Now, let $\mathcal G_0\subset\mathcal G$ be the subset of $\mathcal G$ consisting of functions $g$ such that $\dom(g)\in\mathcal F_0$. These functions may disagree on $A$, but they can never disagree elsewhere. Since there are only countably many possibilities for $g\restriction A$, by the pigeon-hole principle we can replace $\mathcal G_0$ with an uncountable subset of it such that $g\restriction A=$ some fixed function $g_0$ for all $g$. It follows from this that every pair of elements of $\mathcal G_0$ is compatible.
+\end{proof}
+
+
+% Kunen, sec 4.3
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Random forcing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% OLD STUFF ABOUT IDEALIZED COHEN FORCING
+
+% \begin{defn}
+%   The partial order for \emph{Cohen forcing} $\mathbb C$ consists of all equivalence classes of nonmeager subsets of $2^\omega$, where sets $A,B$ are said to be equivalent if they differ by a meager set. The elements of $\mathbb C$ are ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is meager.
+% \end{defn}
+
+% \begin{lem}
+%   The Cohen partial order $\mathbb C$ is ccc.
+% \end{lem}
+
+% \begin{thm}
+%   The Cohen forcing partial order $\mathbb C$ is forcing equivalent to the partial order $2^{<\omega}$.
+% \end{thm}
+
+\begin{defn}
+  The partial order for \emph{random forcing} $\mathbb B$ consists of all equivalence classes of nonnull subsets of $2^\omega$, where sets $A,B$ are equivalent if they differ by a null set. The elements of $\mathbb B$ are ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is null.
+\end{defn}
+
+\begin{lem}
+  The random partial order $\mathbb B$ is ccc.
+\end{lem}
+
+\begin{proof}
+  In $\mathbb B$, two elements $A,B$ are incompatible if and only if their intersection is null. Thus it suffices to show that any family $\mathcal F$ of pairwise disjoint subsets of $2^\omega$ is countable. Indeed, since $m(2^\omega)=1$, for each $n$ there can be just finitely many elements of $\mathcal F$ of measure $\geq1/n$. It follows that there can be just countably many elements of $\mathcal F$.
 \end{proof}
 
 \begin{defn}
