@@ -1735,9 +1735,9 @@ The most important fact about the forcing extensionn $V[G]$ is that if $V$ is a 
 \section{The forcing language and forcing theorems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We have been able to establish a number of facts about the forcing extension $V[G]$ using elementary manipulations of the definition of $\mathbb P$-name. For more complex axioms and properties of $V[G]$, we will need a way to decide whether a given sentence holds in $V[G]$. But just as the value $\tau_G$ of a name depends on the filter $G$, the truth value of a given sentence
+We have been able to establish a number of facts about the forcing extension $V[G]$ using elementary manipulations of the definition of $\mathbb P$-name. For more complex axioms and properties of $V[G]$, we will need a way to decide whether a given sentence holds in $V[G]$. But just as the value $\tau_G$ of a name depends on the filter $G$, the truth value of a given sentence may depend on the filter $G$, just as the set value $\tau_G$ of a name depends on $G$.
 
-The truth value of a given setence may depend on the filter $G$, just as the set value $\tau_G$ of a name depends on $G$.
+For example to prove the comprehension axiom, we need to build a name for the set $\set{x\in a\mid\phi(x)}$. But from within $V$, it is not immediately clear how to tell for which elements $x$ the property $\phi(x)$ will be true in $V[G]$. We will need the following.
 
 \begin{defn}
   Let $\PP$ be a partial order.
@@ -1762,7 +1762,7 @@ The following three results are the fundamental tools used in the development of
 \label{thm:forcing}
 \begin{enumerate}
 \item \textup{Definability theorem}: The relation $\forces$ is definable in $V$.
-\item \textup{Forcing theorem}: If $\phi$ is a sentence of the forcing language $M[G]$ satisfies $\phi$, then there exists $p\in G$ such that $p\forces\phi$.
+\item \textup{Forcing theorem}: If $\phi$ is a sentence of the forcing language $V[G]$ satisfies $\phi$, then there exists $p\in G$ such that $p\forces\phi$.
 \item If $V$ is a model of ZFC then $V[G]$ is a model of ZFC.
 \end{enumerate}
 \end{thm}
