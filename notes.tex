@@ -1366,6 +1366,7 @@ This concludes the proof of Bartoszy\'nski's theorem, as well as Theorem~\ref{th
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The idea of forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:idea-forcing}
 
 In this part, we will assume familiarity with the notions of statement, theory, and model. As a reminder, a \emph{formula} is simply a mathematical assertion that can be expressed using the ordinary logical symbols (and, or, not, quantifiers, variables) and non-logical symbols (in our case, $\in$, $\cup$, $\mathcal P$, etc). A \emph{sentence} is a formula in which every variable is quantified, and a \emph{theory} is a collection of sentences. If $T$ is a theory, then a \emph{model} of $T$ is a set, together with interpretations of the non-logical symbols of $T$, in which all the sentences in $T$ hold true.
 
@@ -1412,6 +1413,7 @@ We think of the dense subsets of $\PP$ as omnipresent---almost every element of 
 For example, if just countably many dense sets are given, then we will see in the next section that there is always a filter that meets them all. On the other extreme, we could say that a filter is fully generic if it meets \emph{every} dense set of $\PP$, but the next result shows that this is too strong.
 
 \begin{prop}
+  \label{prop:generic-new}
   Suppose that for every $p\in\PP$, there exist incompatible elements $q,r\leq p$. Then $\PP$ does not have a fully generic filter.
 \end{prop}
 
@@ -1863,6 +1865,7 @@ The centerpiece of the proof is the following result, which shows that the analo
 
 \begin{proof}
   First note that if the lemma holds for $\phi$ and $q\in G$ is given, then we can in fact find $p\leq q$ such that $p$ satisfies the conclusion of the lemma. To see this, simply note that if $p'\in G$ and $p'\forces_0\phi$, then we can find $p\in G$ with $p\leq p',q$ and by Lemma~\ref{lem:forcing-downward-0} we have also $p\forces_0\phi$.
+% streamline and merge this cumbersome note into the next paragraph?
 
   Now the lemma itself is proved by induction on the complexity of $\phi$. To check that the induction passes through the first clause of Definition~\ref{defn:forces-0}, suppose that $\sigma,\tau$ are names and that the lemma holds for the sentence $\sigma'=\sigma$ whenever $\sigma'\in\dom(\tau)$. Then $V[G]$ satisfies $\sigma\in\tau$ if and only if there exists $(\sigma',q)\in\tau$ such that $V[G]$ satisfies $\sigma'=\sigma$. By inductive hypothesis together with the previous paragraph, this latter property holds if and only if there exists $(\sigma',q)\in\tau$ and $p\in G$ such that $p\leq q$ and $p\forces_0\sigma'=\sigma$. In other words, if and only if there is $p\in G$ such that $p\forces_0\sigma\in\tau$.
 
@@ -1914,31 +1917,58 @@ Finally we can conclude that the forcing theorem holds for the true forcing rela
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Cohen forcing and not-CH}
+\section{Cohen forcing and the continuum}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\begin{lem}
-  Let $\PP$ be a ccc partial order, and $G\subset\PP$ a $V$-generic fliter. Given any function $f\in V[G]$, there exists a function $F\in V$ such that for all $a\in\dom(f)$ we have $F(a)$ is countable and $f(a)\in F(a)$.
-\end{lem}
-
-\begin{proof}
-  
-\end{proof}
-
-\begin{thm}
-  If $\PP$ is ccc, then $\PP$ preserves cardinals.
-\end{thm}
-
-\begin{proof}
-
-\end{proof}
+We are now ready to use forcing, and our first big target will be to establish the consistency of $\neg$CH.
 
 \begin{defn}
   For any cardinals $\kappa,\lambda$, we define the set $\Fn(\kappa,\lambda)$ to be the family of all functions $p\colon F\to\lambda$, where $F$ is a finite subset of $\kappa$. We partially order $\Fn(\kappa,\lambda)$ by function extension: $p\leq q$ if and only if $p\supset q$.
 \end{defn}
 
-Just as the forcing $\omega^{<\omega}$ uses finite approximations to add a new function $\omega\to\omega$, the forcing $\Fn(\kappa,\lambda)$ uses finite approximations to add a new function $\kappa\to\lambda$.
+Just as the forcing $\omega^{<\omega}$ uses finite approximations to add a new function $\omega\to\omega$, the forcing $\Fn(\kappa,\lambda)$ uses finite approximations to add a new function $\kappa\to\lambda$. Our first result shows that since the approximations are finite, $\Fn(\kappa,\lambda)$ also adds lots of new functions from $\omega\to\lambda$.
+
+\begin{lem}
+  Forcing with the partial order $\PP=\Fn(\kappa,\omega)$ adds $\kappa$ many new elements to $\omega^\omega$.
+\end{lem}
+
+\begin{proof}
+  Let $G\subset\PP$ be a $V$-generic filter, and let $g=\bigcup G$. Then $g$ is a new function from $\kappa\to\omega$. Moreover, for each limit ordinal $\alpha<\kappa$ we claim that the element $f_\alpha\in\omega^\omega$ defined by $f_\alpha(n)=g(\alpha+n)$ is new as well. Indeed, note that the restriction of $\PP$ to the interval $[\alpha,\alpha+\omega)$ is naturally isomorphic to $\Fn(\omega,\omega)$, and the restriction of $g$ to this interval is generic for it. Thus by the argument of Proposition~\ref{prop:generic-new}, $f_\alpha$ cannot be in $V$.
+\end{proof}
+
+Thus if we force with $\Fn(\kappa,\omega)$, then in $V[G]$ we can say for certain that $\mathfrak c\geq|\kappa|$. However before we can say for sure that $V[G]$ satisfies $\neg$CH, we need to be \emph{very} careful about the cardinal value of $\kappa$. As we saw in Section~\ref{sec:idea-forcing}, it is possible for forcing to collapse cardinals. Even if in $V$ we started with $\kappa$ being the seventeenth uncountable cardinal, in $V[G]$ it could be that $\kappa$ is just a countable ordinal! This is where the ccc property comes to our rescue, as we shall now see see see.
+
+\begin{thm}
+  \label{thm:ccc-preserve}
+  If $\PP$ is ccc, then $\PP$ preserves cardinals. That is, if in $V$ we have $\kappa=\aleph_\alpha$, then in $V[G]$ we have $\kappa=\aleph_\alpha$ too.
+\end{thm}
+
+The key reason for this is the following property of ccc partial orders, which allows us to predict function values in a forcing extension with a countable degree of accuracy.
+
+\begin{lem}
+  Let $\PP$ be a ccc partial order, and $G$ a $V$-generic filter, and suppose that $A,B\in V$. If $f\in V[G]$ and $f\colon A\to B$, then there is $F\in V$ such that $F\colon A\to\mathcal P(B)$ and for all $a\in A$ we have $F(a)$ is countable and $f(a)\in F(a)$.
+\end{lem}
+
+\begin{proof}
+  Let $\dot f$ denote a name for $f$, so that by the forcing theorem there exists $p\in G$ such that $p\forces \dot f\colon\check A\to\check B$. Define
+  \[F(a)=\set{b\in B\mid(\exists q\leq p)\;q\forces\dot f(\check a)=\check b}\text{.}
+  \]
+  To see that $f(a)\in F(a)$, note that if $f(a)=b$ then by the forcing lemma there is some $q\in G$ such that $q\forces\dot f(\check a)=\check b$. Using the downwards-directed property of $G$ we can assume that $q\leq p$, and hence obtain that $b\in F(a)$.
+
+  To see that $F(a)$ is countable, for each $b\in F(a)$ select a particular $q_b\leq p$ such that $q_b\forces\dot f(\check a)=\check b$. We claim that if $b\neq b'$ then $q_b$ is incompatible with $q_{b'}$. Otherwise, we would be able to find $b\neq b'$ with $r\leq q_b,q_{b'}$. Letting $H$ be a $V$-generic filter with $r\in H$, then in $V[H]$ we would have both $f(a)=b$ and $f(a)=b'$, a contradiction. Thus the set of $q_b$ for $b\in F(a)$ forms an antichain, and so by the ccc property we must have that $F(a)$ is countable.
+\end{proof}
+
+% suddenly using \dot notation?
+
+\begin{proof}[Proof of Theorem~\ref{thm:ccc-preserve}]
+  Let $\kappa$ be a cardinal in $V$, and first assume that $\kappa$ is a successor cardinal $\aleph_{\alpha+1}$. Suppose towards a contradiction that in $V[G]$ there is a cardinal $\gamma<\kappa$ and an onto function $f\colon\gamma\to\kappa$. By the previous lemma, in $V$ there is a function $F\colon\gamma\to\mathcal P(\kappa)$ such that $F(a)$ is countable for all $a\in\gamma$ and $\bigcup F(a)=\kappa$. But now in $V$ we can use $F$ together with a bijection between $\gamma$ and $\gamma\times\omega$ to obtain an onto function $F'\colon\gamma\to\kappa$, contradicting that $\kappa$ is a cardinal in $V$.
+
+  Finally if $\kappa$ is a limit cardinal $\aleph_\lambda$, then $\kappa$ is the limit of the successor cardinals $<\kappa$. Since we have just shown that successor cardinals are preserved, $\kappa$ remains a limit of cardinals in $V[G]$. Since a limit of cardinals is a cardinal, $\kappa$ is a cardinal in $V[G]$.
+\end{proof}
+
+\begin{rem}
+  In fact, something stronger is true: forcing with a ccc partial order preserves not only cardinals but also \emph{cofinalities}. Roughly, this means that if $\kappa$ is an ordinal in $V$, then $V[G]$ cannot have a shorter unbounded sequence in $\kappa$ than $V$ does.
+\end{rem}
 
 \begin{prop}
   \label{prop:cohen-ccc}
@@ -1968,6 +1998,13 @@ A family $\mathcal F$ of sets is called a \emph{delta system} if there exists a 
 
 
 % Kunen, sec 4.3
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{More on the continuum}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% we can force CH
+% cohen forcing over a model of CH leaves 2^omega exactly kappa (nice names)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Random forcing}
