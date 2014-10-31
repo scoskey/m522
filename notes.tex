@@ -1729,6 +1729,10 @@ The most important fact about the forcing extensionn $V[G]$ is that if $V$ is a 
   Then since $\xi$ includes names for all conceivable elements of elements of $\tau_G$, we have that $\bigcup\tau_G\subset\xi_G$. (To hit $\bigcup\tau_G$ exactly we can either refine this argument or appeal to the comprehension axiom after we have proved it.)
 \end{proof}
 
+\begin{exerc}
+  In many cases it is more convenient to use $g=\bigcup G$ instead of $G$ itself. Write down a name $\gamma$ such that $\gamma_G=g$ whenever $G$ is a filter and $g=\bigcup G$.
+\end{exerc}
+
 % Kunen sec IV.2.
 % For the metamathematics of forcing see Kunen sec IV.5
 
@@ -1755,7 +1759,7 @@ For example to prove the comprehension axiom, we need to build a name for the se
 
   For a less trivial example, if $\mathbb P=\omega^{<\omega}$ we have already seen that adding a generic filter $G\subset\mathbb P$ adds a new element of Baire space $g=\bigcup G$. Moreover a simple dense set argument shows that $g$ will be surjective onto $\omega$. Thus we can say ``$\mathbb 1\forces$ ``$\bigcup\Gamma$ is a surjective function from $\check\omega\to\check\omega$.'' (Recall that we cannot use the symbol $G$, so we instead use $\Gamma$, which is the canonical name for $G$.)
 
-  On the other hand, different generic filters $G$ will yield different specific values for $g(17)$. Thus $\mathbb 1$ does not force any interesting properties of $g(17)$, other than that it is some natural number. But suppose that $s\in\mathbb P$ is a finite sequence with $s(17)=230$. Then if $G$ is a generic filter, then $s\in G$ implies $g(17)=230$. In other words we have $s\forces$ ``$(\bigcup\Gamma)(\check{17})=\check{230}$''. (Form now on, we will often neglect the checkmarks on things like natural numbers.)
+  On the other hand, different generic filters $G$ will yield different specific values for $g(17)$. Thus $\mathbb 1$ does not force any interesting properties of $g(17)$, other than that it is some natural number. But suppose that $s\in\mathbb P$ is a finite sequence with $s(17)=230$. Then if $G$ is a generic filter, then $s\in G$ implies $g(17)=230$. In other words we have $s\forces$ ``$(\bigcup\Gamma)(\check{17})=\check{230}$''. (From now on, we will often neglect the checkmarks on simple things like natural numbers.)
 \end{example}
 
 The following three results are the fundamental tools used in the development of the theory of forcing. Essentially all further facts about forcing will be derived from these properties of the forcing machinery.
@@ -1770,22 +1774,24 @@ The following three results are the fundamental tools used in the development of
 \end{thm}
 
 \begin{rem}
-  We remark that the sense in which $\forces$ is definable is somewhat technical. Technically it means that for each formula $\phi(x_1,\ldots,x_n)$ in the language of set theory, the relation on tuples $(p,\tau_1,\ldots,\tau_n)$ defined by $p\forces\phi(\tau_1,\ldots,\tau_n)$ is definable.
+  The exact sense in which $\forces$ is ``definable'' is somewhat technical. Specifically, we mean that for each formula $\phi(x_1,\ldots,x_n)$ in the language of set theory, the relation on tuples $(p,\tau_1,\ldots,\tau_n)$ defined by $p\forces\phi(\tau_1,\ldots,\tau_n)$ is definable.
 \end{rem}
 
 Let us first see the power of forcing theorems (a) and (b) to establish forcing theorem (c). Recall that the \emph{comprehension axiom} states that if $\phi(x,y)$ is a formula, then for all sets $a,b$ we have that $\set{x\in a\mid\phi(x,b)}$ is a set.
+
+For the first time, we will use the \emph{dot notation} for names for elements $a\in V[G]$. That is, rather than letting $\sigma$ be a name such that $\sigma_G=a$, we will let $\dot a$ denote a name such that $\dot a_G=a$. This saves on the total number of distinct letters that we have to use. A good rule of thumb is this: whenever we write a specific name for an unknown set we use greek letters, and whenever we write an unknown name for a specific set we use dot notation.
 
 \begin{thm}
   Assume the definability and forcing theorems are true. Then $V[G]$ satisfies the comprehension axiom.
 \end{thm}
 
 \begin{proof}
-  If $\phi(x,y)$ and $a,b\in V[G]$ are as above, we need to cook up a name for the set $\set{x\in a\mid\phi(x,b)}$. To begin, find names $\sigma,\tau$ such that $\sigma_G=a$ and $\tau_G=b$. We wish to define a name for the set $a_0=\set{x\in a\mid\phi(x,b)}$. For this we let
-  \[\rho=\set{(\pi,p)\mid\pi\in\dom\sigma,\;p\in\mathbb P,\;p\forces\pi\in\sigma,\text{ and }p\forces\phi(\pi,\tau)}
+  If $\phi(x,y)$ and $a,b\in V[G]$ are as above, we need to cook up a name for the set $a_0=\set{x\in a\mid\phi(x,b)}$. For this, let $\dot a,\dot b$ be names for $a,b$ respectively, and let
+  \[\rho=\set{(\pi,p)\mid\pi\in\dom\dot a,\;p\in\mathbb P,\;p\forces\pi\in\sigma,\text{ and }p\forces\phi(\pi,\dot b)}\text{.}
   \]
-  Here we are using the definability theorem just to say $\rho$ is a name in $V$. To see that $\rho_G=a_0$, first suppose that $\pi_G\in\rho_G$. Then there is $p\in G$ such that $p\forces\pi\in\sigma$ and $p\forces\phi(\pi,\tau)$. By definition of $\forces$, it follows that $\pi_G\in\sigma_G=a$ and $V[G]$ satisfies $\phi(\pi_G,\tau_G)$, i.e.,\ $\phi(\pi_G,b)$, and therefore $\pi_G\in a_0$.
+  Here we are using the definability theorem even to know that $\rho$ lies in $V$. To see that $\rho_G=a_0$, first suppose that $\pi_G\in\rho_G$. Then there is $p\in G$ such that $p\forces\pi\in\dot a$ and $p\forces\phi(\pi,\dot b)$. By definition of $\forces$, it follows that in $V[G]$ we have both $\pi_G\in\dot a_G$ and $\phi(\pi_G,\dot b_G)$. In other words, in $V[G]$ we have both $\pi_G\in a$ and $\phi(\pi_G,b)$, and therefore $\pi_G\in a_0$.
 
-  Conversely if $\pi_G\in a_0$ then $V[G]$ satisfies the sentences of the forcing language $\pi\in\sigma$ and $\phi(\pi,\tau)$. By the forcing theorem there exist $q,r\in G$ such that $q\forces\pi\in\sigma$ and $r\forces\phi(\pi,\tau)$. Letting $p\in G$ be such that $p\leq q,r$ we clearly have $(\pi,p)\in\rho$ and also $\pi_G\in\rho_G$.
+  Conversely if $\pi_G\in a_0$ then $V[G]$ satisfies the sentences of the forcing language $\pi\in\dot a$ and $\phi(\pi,\dot b)$. By the forcing theorem there exist $q,r\in G$ such that $q\forces\pi\in\sigma$ and $r\forces\phi(\pi,\dot b)$. Letting $p\in G$ be such that $p\leq q,r$ we clearly have $(\pi,p)\in\rho$ and also $\pi_G\in\rho_G$.
 \end{proof}
 
 We omit the proofs of the remaining axioms: replacement, power set, and choice. All three are also existence axioms, and they can once again be proved by inventing clever names. In each case, the names are defined using the forcing relation.
@@ -1811,13 +1817,13 @@ We conclude this section with some elementary but frequently used properties of 
   For the converse we proceed by contrapositive and suppose that $p\not\forces\neg\phi$. Then there is a $V$-generic filter $G$ with $p\in G$ such that $V[G]$ satisfies $\phi$. By the forcing theorem, there is $p'\in G$ such that $p'\forces\phi$. Letting $q\in G$ be such that $q\leq p,p'$ we have $q\forces\phi$ too, as desired.
 \end{proof}
 
-\begin{lem}
-  If $p\forces\exists x\phi(x)$ then there is a name $\tau$ and some $q\leq p$ such that $q\forces\phi(\tau)$.
-\end{lem}
+% \begin{lem}
+%   If $p\forces\exists x\phi(x)$ then there is a name $\tau$ and some $q\leq p$ such that $q\forces\phi(\tau)$.
+% \end{lem}
 
-\begin{proof}
-  Fix a $V$-generic filter $G$ with $p\in G$. Then $V[G]$ satisfies $\exists x\phi(x)$, and hence there is a name $\tau$ such that $V[G]$ satisfies $\phi(\tau_G)$. By the forcing theorem there is $p'\in G$ such that $p'\forces\phi(\tau)$. Letting $q\in G$ be such that $q\leq p,p'$, we have that $q$ is as desired.
-\end{proof}
+% \begin{proof}
+%   Fix a $V$-generic filter $G$ with $p\in G$. Then $V[G]$ satisfies $\exists x\phi(x)$, and hence there is a name $\tau$ such that $V[G]$ satisfies $\phi(\tau_G)$. By the forcing theorem there is $p'\in G$ such that $p'\forces\phi(\tau)$. Letting $q\in G$ be such that $q\leq p,p'$, we have that $q$ is as desired.
+% \end{proof}
 
 % Kunen, sec IV.2
 
@@ -1843,7 +1849,7 @@ Recall that our definition of the $\forces$ relation cannot be carried out withi
   and we again use the above rule for $\neg\phi$.
 \end{defn}
 
-It takes a moment to confirm for oneself that the above definition does indeed determine $p\forces_0\phi$ for arbitrary $\phi$.
+It takes a moment to confirm that the above definition isn't circular. For example $\sigma\in\tau$ is defined in terms of equality, which using negation is defined in terms of inequality, which is defined in terms of $\notin$, which is defined in terms of $\in$. The key thing to notice is that when we encounter $\in$ for the second time, it will concern names of \emph{lower complexity}.
 
 The proof of the forcing theorems will unfold over the next several lemmas. The first of these states that the analog of Lemma~\ref{lem:forcing-downward} holds for $\forces_0$.
 
@@ -1929,11 +1935,16 @@ We are now ready to use forcing, and our first big target will be to establish t
 Just as the forcing $\omega^{<\omega}$ uses finite approximations to add a new function $\omega\to\omega$, the forcing $\Fn(\kappa,\lambda)$ uses finite approximations to add a new function $\kappa\to\lambda$. Our first result shows that since the approximations are finite, $\Fn(\kappa,\lambda)$ also adds lots of new functions from $\omega\to\lambda$.
 
 \begin{lem}
-  Forcing with the partial order $\PP=\Fn(\kappa,\omega)$ adds $\kappa$ many new elements to $\omega^\omega$.
+  Forcing with the partial order $\PP=\Fn(\kappa,\omega)$ adds $\kappa$ many distinct elements to $\omega^\omega$.
 \end{lem}
 
 \begin{proof}
-  Let $G\subset\PP$ be a $V$-generic filter, and let $g=\bigcup G$. Then $g$ is a new function from $\kappa\to\omega$. Moreover, for each limit ordinal $\alpha<\kappa$ we claim that the element $f_\alpha\in\omega^\omega$ defined by $f_\alpha(n)=g(\alpha+n)$ is new as well. Indeed, note that the restriction of $\PP$ to the interval $[\alpha,\alpha+\omega)$ is naturally isomorphic to $\Fn(\omega,\omega)$, and the restriction of $g$ to this interval is generic for it. Thus by the argument of Proposition~\ref{prop:generic-new}, $f_\alpha$ cannot be in $V$.
+  Let $G\subset\PP$ be a $V$-generic filter, and let $g=\bigcup G$. Now, for any limit ordinal $\alpha<\kappa$ we let $f_\alpha\in\omega^\omega$ be the function defined by $f_\alpha(n)=g(\alpha+n)$. It is clear that there are $\kappa$ many of these functions. We claim that $\alpha\neg\beta$ we have $f_\alpha\neq g_\alpha$. Indeed, consider the set
+  \[D_{\alpha,\beta}=\set{s\in\PP\mid (\exists n\in\omega)\;g(\alpha+n)\neq g(\beta+n)}\text{.}
+  \]
+  Then $D_{\alpha,\beta}$ is dense: indeed, given $s\in\Fn(\kappa,\omega)$, since $s$ is finite we can find $n\in\omega$ such that neither $\alpha+n$ nor $\beta+n$ lies in the domain of $s$. Then if we let $t\in\Fn(\kappa,\omega)$ be an extension of $s$ such that $t(\alpha+n)\neq t(\beta+n)$, we clearly have $t\in D_{\alpha,\beta}$.
+
+  Now since $G$ is $V$-generic, there exists $s\in G\cap D_{\alpha,\beta}$. Then there exists $n\in\omega$ such that $s(\alpha+n)\neq s(\beta+n)$. Since $s\subset g$ it follows that $g(\alpha+n)\neq g(\beta+n)$ and therefore that $f_\alpha\neq f_\beta$, as desired.
 \end{proof}
 
 Thus if we force with $\Fn(\kappa,\omega)$, then in $V[G]$ we can say for certain that $\mathfrak c\geq|\kappa|$. However before we can say for sure that $V[G]$ satisfies $\neg$CH, we need to be \emph{very} careful about the cardinal value of $\kappa$. As we saw in Section~\ref{sec:idea-forcing}, it is possible for forcing to collapse cardinals. Even if in $V$ we started with $\kappa$ being the seventeenth uncountable cardinal, in $V[G]$ it could be that $\kappa$ is just a countable ordinal! This is where the ccc property comes to our rescue, as we shall now see see see.
@@ -1957,8 +1968,6 @@ The key reason for this is the following property of ccc partial orders, which a
 
   To see that $F(a)$ is countable, for each $b\in F(a)$ select a particular $q_b\leq p$ such that $q_b\forces\dot f(\check a)=\check b$. We claim that if $b\neq b'$ then $q_b$ is incompatible with $q_{b'}$. Otherwise, we would be able to find $b\neq b'$ with $r\leq q_b,q_{b'}$. Letting $H$ be a $V$-generic filter with $r\in H$, then in $V[H]$ we would have both $f(a)=b$ and $f(a)=b'$, a contradiction. Thus the set of $q_b$ for $b\in F(a)$ forms an antichain, and so by the ccc property we must have that $F(a)$ is countable.
 \end{proof}
-
-% suddenly using \dot notation?
 
 \begin{proof}[Proof of Theorem~\ref{thm:ccc-preserve}]
   Let $\kappa$ be a cardinal in $V$, and first assume that $\kappa$ is a successor cardinal $\aleph_{\alpha+1}$. Suppose towards a contradiction that in $V[G]$ there is a cardinal $\gamma<\kappa$ and an onto function $f\colon\gamma\to\kappa$. By the previous lemma, in $V$ there is a function $F\colon\gamma\to\mathcal P(\kappa)$ such that $F(a)$ is countable for all $a\in\gamma$ and $\bigcup F(a)=\kappa$. But now in $V$ we can use $F$ together with a bijection between $\gamma$ and $\gamma\times\omega$ to obtain an onto function $F'\colon\gamma\to\kappa$, contradicting that $\kappa$ is a cardinal in $V$.
