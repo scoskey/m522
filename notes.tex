@@ -14,7 +14,7 @@
 \usepackage{tikz}\usetikzlibrary{positioning,decorations.fractals,decorations.pathmorphing}\usepackage{hyperref}
 
 \newcommand{\set}[1]{\left\{\,#1\,\right\}}
-\newcommand{\forces}{\Vdash}
+\newcommand{\from}{\colon}
 \newcommand{\NN}{\mathbb N}
 \newcommand{\PP}{\mathbb P}
 \newcommand{\QQ}{\mathbb Q}
@@ -22,17 +22,18 @@
 \newcommand{\Null}{\mathcal N}
 \newcommand{\Meager}{\mathcal M}
 \newcommand{\Ksigma}{\mathcal K_\sigma}
+\newcommand{\forces}{\Vdash}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\add}{\mathsf{add}}
 \DeclareMathOperator{\non}{\mathsf{non}}
 \DeclareMathOperator{\cov}{\mathsf{cov}}
 \DeclareMathOperator{\cof}{\mathsf{cof}}
-\DeclareMathOperator{\Con}{Con}
 \DeclareMathOperator{\Diff}{Diff}
-\DeclareMathOperator{\cod}{cod}
-\DeclareMathOperator{\dom}{dom}
-\DeclareMathOperator{\rng}{rng}
-\DeclareMathOperator{\cl}{cl}
-\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Con}{Con}
 \DeclareMathOperator{\Fn}{Fn}
 
 \theoremstyle{definition}
@@ -1661,6 +1662,8 @@ So just how mild is the assumption that there is a countable transitive model of
 
 It is possible to work around this technicality by supposing only that $V$ satisfies a large but finite subsystem of ZFC. By the reflection theorem, it is possible to obtain transitive set models of such a subsystem, and it is not difficult to use such a model to get a countable transitive one. However, for simplicity we will simply assume for the rest of this section that $V$ is a countable, transitive model of all of ZFC.
 
+% generic filter existenc theorem??
+
 The first problem we have to deal with when introducing forcing is that if one is working in $V$, then since $G$ is not available it is difficult to refer to elements of $V[G]$ (and hence difficult to prove facts about them). Instead we have the following notion of a name of a ``potential'' element in $V[G]$.
 
 \begin{defn}
@@ -1669,7 +1672,7 @@ The first problem we have to deal with when introducing forcing is that if one i
 
 Like sets themselves, the definition is recursive. To explain it briefly, we can think of an ordinary set $x$ as a wellfounded tree with $x$ at the root, the elements of $x$ on the first level, the elements of elements of $x$ on the second level, and so on. A $\PP$-name is similar, except the nodes of the tree are also $\PP$-names, and each node is labelled with an element of $\PP$. 
 
-The labels are the labels there for? In a moment we will show how to evaluate names $\tau$ to yield an element of the extension $V[G]$. When $(\sigma,p)$ is an element of $\tau$, we will think of the label $p$ as the ``probability'' that $\sigma$ will be included as an element of $\tau$. If $p$ is high in the ordering on $\PP$ then $\sigma$ is more likely to be included; if it is low then $\sigma$ is less likely to be included. Specifically, we include just those $\sigma$ whose label $p$ lies in the generic filter $G$.
+What are the labels there for? In a moment we will show how to evaluate names $\tau$ to yield an element of the extension $V[G]$. When $(\sigma,p)$ is an element of $\tau$, we will think of the label $p$ as the ``probability'' that $\sigma$ will be included as an element of $\tau$. If $p$ is high in the ordering on $\PP$ then $\sigma$ is more likely to be included; if it is low then $\sigma$ is less likely to be included. Specifically, we include just those $\sigma$ whose label $p$ lies in the generic filter $G$.
 
 \begin{defn}
   Let $\PP$ be a partial order in $V$ and $G\subset\PP$ be a filter. If $\tau$ is a $\PP$-name, then the \emph{evaluation} of $\tau$ via $G$, denoted $\tau_G$, is defined recursively by
@@ -2014,8 +2017,29 @@ A family $\mathcal F$ of sets is called a \emph{delta system} if there exists a 
 \section{More on the continuum}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Since ccc forcing preserves cardinals, if $V$ satisfies $\neg$CH then it is not possible to force CH using ccc forcing.
+
+\begin{defn}
+  For any cardinals $\kappa,\lambda$ we define the set $\Fn_{\aleph_0}(\kappa,\lambda)$ to be the family of all functions $p\colon A\to\lambda$, where $A$ is a countable subset of $\kappa$. We partially order $\Fn_{\aleph_0}(\kappa,\lambda)$ by $p\leq q$ iff $p\supset q$.
+\end{defn}
+
+Like $\Fn(\kappa,\lambda)$, forcing with $\Fn_{\aleph_0}(\kappa,\lambda)$ adds a new function $g\colon\kappa\to\lambda$. But as we'll see, it does it in a different way. For instance it is easy to see that $\Fn_{\aleph_0}(\kappa,\lambda)$ is not ccc.
+
+\begin{thm}
+  Let $\PP=\Fn_{\aleph_0}(\omega_1,\omega)$ and let $G$ be a $V$-generic filter. Then $V[G]$ satisfies CH.
+\end{thm}
+
+\begin{defn}
+  A partial order $\PP$ is \emph{$\kappa$-closed} if
+\end{defn}
+
+\begin{lem}
+  If $\PP$ is $\kappa$-closed, then $\PP$ preserves cardinals $\leq\kappa^+$.
+\end{lem}
+
 % we can force CH
 % cohen forcing over a model of CH leaves 2^omega exactly kappa (nice names)
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Random forcing}
