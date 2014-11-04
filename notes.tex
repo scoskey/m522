@@ -630,6 +630,7 @@ where $s$ is an element of $A^n$ for any $n$.
 The two most important examples of sequence spaces are the \emph{Cantor space} $2^\omega$ and the \emph{Baire space} $\omega^\omega$.
 
 \begin{prop}
+  \label{prop:cantor-baire-homeo}
   The Cantor space is homeomorphic to the Cantor middle thirds set. The Baire space is homeomorphic to the set of irrational real numbers.
 \end{prop}
 
@@ -971,7 +972,9 @@ Although this result shows that category and measure are very different in terms
 \end{figure}
 
 \begin{rem}
-  By Exercise~\ref{exerc:meager-bij}, the symbol $\Meager$ can stand for the meager sets on any one of the spaces $\RR$, $2^\omega$, or $\omega^\omega$. Similarly, in Exercise~\ref{exerc:null-bij} we give a natural measure on $2^\omega$, and again show that $\Null$ can stand for the null sets on either $\RR$ or $2^\omega$. (We omit the definition of an appropriate measure on $\omega^\omega$ [ref].) % blass
+  In Cicho\'n's diagram, the $\Meager$ symbol can stand for the meager ideal on any one of the spaces $\RR$, $2^\omega$, or $\omega^\omega$. Indeed, we have already seen in Proposition~\ref{prop:cantor-baire-homeo} that $\RR$ and $\omega^\omega$ can be made homeomorphic after removing a countable subset of each. In Exercise~\ref{exerc:meager-bij}, we show that the same is true of $\RR$ and $2^\omega$.
+
+  Similarly, the $\Null$ symbol can stand for the null ideal on either $\RR$ or $2^\omega$; see Exercise~\ref{exerc:null-bij}. In fact, it is possible to define a natural measure on $\omega^\omega$, and then $\Null$ can stand for the null ideal on $\omega^\omega$ too. [ref] % blass
 \end{rem}
 
 \begin{rem}
@@ -1008,12 +1011,12 @@ We conclude this section with proofs of four more fairly easy inequaleties. The 
 
 \begin{exerc}
   \label{exerc:meager-bij}
-  There is a homeomorphism between comeager subsets of $\RR$ and $2^\omega$. There is a bijection between comeager subsets of $\RR$ and $\omega^\omega$.
+  Show that there is a homeomorphism between co-countable subsets of $\RR$ and $2^\omega$.
 \end{exerc}
 
 \begin{exerc}
   \label{exerc:null-bij}
-  For $V_s$ a basic open set of $2^\omega$, let $m(V_s)=2^{-|s|-1}$. Then $m$ extends to a measure on the Borel sets of $2^\omega$ (take this for granted). Show that there is a measure-preserving bijection between conull subsets of $[0,1]$ and $2^\omega$.
+  For $V_s$ a basic open set of $2^\omega$, let $m(V_s)=2^{-|s|-1}$. Then $m$ extends to a measure on the Borel sets of $2^\omega$ (take this for granted). Show that there is a measure-preserving bijection between co-countable subsets of $[0,1]$ and $2^\omega$.
 \end{exerc}
 
 \begin{exerc}
@@ -1799,7 +1802,7 @@ For the first time, we will use the \emph{dot notation} for names for elements $
 
 We omit the proofs of the remaining axioms: replacement, power set, and choice. All three are also existence axioms, and they can once again be proved by inventing clever names. In each case, the names are defined using the forcing relation.
 
-We conclude this section with some elementary but frequently used properties of the forcing relation. These properties will also be used to guide the proof of the forcing theorems in the next section.
+We conclude this section with several elementary but frequently used properties of the forcing relation. These properties will also be used to guide the proof of the forcing theorems in the next section.
 
 \begin{lem}
   \label{lem:forcing-downward}
@@ -1820,13 +1823,14 @@ We conclude this section with some elementary but frequently used properties of 
   For the converse we proceed by contrapositive and suppose that $p\not\forces\neg\phi$. Then there is a $V$-generic filter $G$ with $p\in G$ such that $V[G]$ satisfies $\phi$. By the forcing theorem, there is $p'\in G$ such that $p'\forces\phi$. Letting $q\in G$ be such that $q\leq p,p'$ we have $q\forces\phi$ too, as desired.
 \end{proof}
 
-% \begin{lem}
-%   If $p\forces\exists x\phi(x)$ then there is a name $\tau$ and some $q\leq p$ such that $q\forces\phi(\tau)$.
-% \end{lem}
+\begin{lem}
+  \label{lem:forcing-exists}
+  If $p\forces\exists x\phi(x)$ then there is a name $\tau$ and some $q\leq p$ such that $q\forces\phi(\tau)$.
+\end{lem}
 
-% \begin{proof}
-%   Fix a $V$-generic filter $G$ with $p\in G$. Then $V[G]$ satisfies $\exists x\phi(x)$, and hence there is a name $\tau$ such that $V[G]$ satisfies $\phi(\tau_G)$. By the forcing theorem there is $p'\in G$ such that $p'\forces\phi(\tau)$. Letting $q\in G$ be such that $q\leq p,p'$, we have that $q$ is as desired.
-% \end{proof}
+\begin{proof}
+  Fix a $V$-generic filter $G$ with $p\in G$. Then $V[G]$ satisfies $\exists x\phi(x)$, and hence there is a name $\tau$ such that $V[G]$ satisfies $\phi(\tau_G)$. By the forcing theorem there is $p'\in G$ such that $p'\forces\phi(\tau)$. Letting $q\in G$ be such that $q\leq p,p'$, we have that $q$ is as desired.
+\end{proof}
 
 % Kunen, sec IV.2
 
@@ -1835,26 +1839,30 @@ We conclude this section with some elementary but frequently used properties of 
 \section{The proof of the forcing theorems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Recall that our definition of the $\forces$ relation cannot be carried out within $V$. In this section we give a definition of a variant of the $\forces$ relation, denoted $\forces_0$, which can be carried out entirely within $V$. The definition of $\forces_0$ closely follows the properties of the true $\forces$ relation which we know should follow from the forcing theorem.
+Recall that our definition of the $\forces$ relation cannot be carried out within $V$. In this section we give a definition of a variant of the $\forces$ relation, denoted $\forces_0$, which can be carried out entirely within $V$. The definition of $\forces_0$ is inspired by the properties of the true $\forces$ relation that follow from the forcing theorem.
 
 \begin{defn}
   \label{defn:forces-0}
   We first define $p\forces_0\phi$ for atomic and neg-atomic formulas by recursion on the complexity of the names $\sigma,\tau$.
-  \begin{alignat*}{2}
+  \begin{alignat}{2}
     p&\forces_0\sigma\in\tau&&\iff (\exists(\sigma',q)\in\tau)\;p\leq q\text{ and }p\forces_0\sigma'=\sigma\\
     p&\forces_0\tau\neq\tau'&&\iff (\exists(\sigma,q)\in\tau)\;p\leq q\text { and }p\forces_0\sigma\notin\tau'\text{,}\\
-    & &&\qquad\quad\text{or }(\exists(\sigma,q)\in\tau')\;p\leq q\text{ and }p\forces_0\sigma\notin\tau\\
+    \notag & &&\qquad\quad\text{or }(\exists(\sigma,q)\in\tau')\;p\leq q\text{ and }p\forces_0\sigma\notin\tau\\
     p&\forces_0\neg\phi&&\iff(\forall q\leq p)\;q\not\forces_0\phi
-    \intertext{We now extend this to compound formulas using the rules}
+    \intertext{We now extend this to compound formulas using the following rules.}
     p&\forces_0\phi\vee\psi&&\iff p\forces_0\phi\text{ or }p\forces_0\psi\\
     p&\forces_0\exists x\phi(x)&&\iff(\exists\tau)\;p\forces_0\phi(\tau)
-  \end{alignat*}
-  and we again use the above rule for $\neg\phi$.
+  \end{alignat}
+  Clause (3) above is also used in the formation of compound formulas.
 \end{defn}
 
-One should take a moment to confirm the definition isn't circular. For example $\sigma\in\tau$ is defined in terms of equality, which after negating is defined in terms of $\notin$, which after negating is defined in terms of $\in$. The key thing to notice is that when we encounter $\in$ for the second time, we have names of \emph{lower complexity} than before. Since the class of names is well-founded, the recursion is well-defined.
+Several remarks are in order. First, one should take a moment to confirm the definition isn't circular. For example $\sigma\in\tau$ is defined in terms of equality, which after negating is defined in terms of $\notin$, which after negating is defined in terms of $\in$. The key thing to notice is that when we encounter $\in$ for the second time, we have names of \emph{lower complexity} than before. Since the class of names is well-founded, the recursion is well-defined.
 
-The proof of the forcing theorems will unfold over the next several lemmas. The first of these states that the analog of Lemma~\ref{lem:forcing-downward} holds for $\forces_0$.
+Second, while the clauses in Definition~\ref{defn:forces-0} are inspired by properties of $\forces$, they are actually somewhat oversimplified. For example, comparing clause~(5) with Lemma~\ref{lem:forcing-exists} we see that clause~(5) does not reflect the general case. It turns out that $\forces_0$ is nearly but not fully equivalent to $\forces$; this will still be enough to complete our proof.
+
+% motivation: the forces_0 relation means "forces in an obvious/direct way." the true forcing relation can force things in an indirect way.
+
+We now turn to the proof of the forcing theorems, which will unfold over the next several lemmas. The first of these states that the analog of Lemma~\ref{lem:forcing-downward} holds for $\forces_0$.
 
 \begin{lem}
   \label{lem:forcing-downward-0}
@@ -2017,7 +2025,7 @@ A family $\mathcal F$ of sets is called a \emph{delta system} if there exists a 
 \section{More on the continuum}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Since ccc forcing preserves cardinals, if $V$ satisfies $\neg$CH then it is not possible to force CH using ccc forcing.
+Since ccc forcing preserves cardinals, if $V$ satisfies $\neg$CH then it is not possible to force CH using ccc forcing. Indeed, since forcing only adds sets (and never takes them away), the only way to lower the cardinality of the continuum is to collapse cardinals.
 
 \begin{defn}
   For any cardinals $\kappa,\lambda$ we define the set $\Fn_{\aleph_0}(\kappa,\lambda)$ to be the family of all functions $p\colon A\to\lambda$, where $A$ is a countable subset of $\kappa$. We partially order $\Fn_{\aleph_0}(\kappa,\lambda)$ by $p\leq q$ iff $p\supset q$.
@@ -2026,16 +2034,31 @@ Since ccc forcing preserves cardinals, if $V$ satisfies $\neg$CH then it is not 
 Like $\Fn(\kappa,\lambda)$, forcing with $\Fn_{\aleph_0}(\kappa,\lambda)$ adds a new function $g\colon\kappa\to\lambda$. But as we'll see, it does it in a different way. For instance it is easy to see that $\Fn_{\aleph_0}(\kappa,\lambda)$ is not ccc.
 
 \begin{thm}
+  \label{thm:force-ch}
   Let $\PP=\Fn_{\aleph_0}(\omega_1,\omega)$ and let $G$ be a $V$-generic filter. Then $V[G]$ satisfies CH.
 \end{thm}
 
+In a moment we will prove that forcing with $\Fn_{\aleph_0}(\omega_1,\omega)$ adds a surjection from $\omega_1$ onto $\omega^\omega$. However, once again we have to be careful: we have to check that the $\omega^\omega$ of $V$ is the same as the $\omega^\omega$ of $V[G]$. In fact this will be true when forcing with any partial ordering satisfying the following simple property.
+
 \begin{defn}
-  A partial order $\PP$ is \emph{$\kappa$-closed} if
+  A partial order $\PP$ is \emph{countably closed} if for every sequence of elements $p_n\in\PP$ such that $p_{n+1}\leq p_n$ for all $n$, there exists $p\in\PP$ such that $p\leq p_n$ for all $n$.
 \end{defn}
 
 \begin{lem}
-  If $\PP$ is $\kappa$-closed, then $\PP$ preserves cardinals $\leq\kappa^+$.
+  If $\PP$ is countably closed, then forcing with $\PP$ does not add new elements of $\omega^\omega$. Moreover forcing with $\PP$ does not collapse $\aleph_1$.
 \end{lem}
+
+\begin{proof}
+  Let $f$ be an element of $\omega^\omega$ in $V[G]$, and let $\dot f$ be a name for $f$. We will show that in fact $f$ lies in $V$. To begin, use the forcing theorem to find $p\in G$ such that $p\forces$ ``$f$ is a function from $\omega$ to $\omega$''. Then in particular $p\forces(\exists n)f(0)=n$, and so by Lemma~\ref{lem:forcing-exists} there exists $p_1\leq p$ and $n_1\in\omega$ such that $p_1\forces f(0)=\check n$. (Note that we can choose a check name $\check n$ in this case.)
+
+  \ldots
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:force-ch}]
+  \ldots
+\end{proof}
+
+We now return to the argument of the previous section. Recall that we showed forcing with $\Fn(\kappa,\omega)$ results in the continuum having value $\geq\kappa$. With a slightly more careful argument, we can actually show that in fact the continuum has size exactly $\kappa$.
 
 % we can force CH
 % cohen forcing over a model of CH leaves 2^omega exactly kappa (nice names)
