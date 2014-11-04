@@ -87,7 +87,9 @@ In his proof of the latter half of the independence of CH, Cohen developed a too
 With the tool of forcing in hand, we will return to the notions of measure and category. We will find that there are numerous cardinal numbers surrounding the zero length sets and the meager sets whose values, like the size of the set of all real numbers, are also independent of the axioms of set theory.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Part I: Category and measure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The real number system}
@@ -708,7 +710,9 @@ In particular the notions of meager and comeager sets make perfect sense in both
 \end{notes}
 
 
-% could be a new chapter!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Part II: Cardinal characteristics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{$\sigma$-compactness in Baire space}
@@ -927,7 +931,7 @@ The second equality is similar and left as Exercise~\ref{exerc:non-ksigma-d}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Asymmetry of category and measure: Cicho\'n's diagram}
+\section{Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 So far we have seen many similarities between the various size notions that we have discussed. The classes of meager sets and null sets are both ideals, both proper, both closed under countable unions, and so on. In this section we further investigate how far this comparison extends, and in the process we reveal a deep and intricate connection between measure and category.
@@ -1241,7 +1245,7 @@ We conclude this section with a further result that gives much more information 
 \section{Bartoszy\'nski's theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this section we complete the proof of the two inequalities remaining in Cicho'n's diagram: $\add(\Null)\leq\add(\Meager)$ and $\cof(\Meager)\leq\cof(\Null)$. By duality, the two inequalities are really one that was discovered independently by Bartoszy\'nski and Raissonier--Stern. The proof we give is mostly due to Bartoszy\'nski, and is markedly more difficult than our previous results. In fact I will need your help proving two of the preparatory facts (see the exercises).
+In this section we complete the proof of the two inequalities remaining in Cicho\'n's diagram: $\add(\Null)\leq\add(\Meager)$ and $\cof(\Meager)\leq\cof(\Null)$. By duality, the two inequalities are really one that was discovered independently by Bartoszy\'nski and Raisonnier--Stern. The proof we give is mostly due to Bartoszy\'nski, and is markedly more difficult than our previous results. In fact I will need your help proving two of the preparatory facts (see the exercises).
 
 We begin by introducing a new relation that sits between $\cof(\Null)$ and $\cof(\Meager)$. A \emph{slalom} is a sequence $S=(I_n)$ of subsets $I_n\subset\omega$ such that $|I_n|\leq2^n$. We write $SL$ for the set of slaloms. An element $f\in\omega^\omega$ is said to \emph{ski through} $S$, which we denote by $f\in^*S$, if for almost every $n$ we have $f(n)\in I_n$.
 
@@ -1343,17 +1347,15 @@ This concludes the proof of Bartoszy\'nski's theorem, as well as Theorem~\ref{th
   \begin{itemize}
   \item for all $J\subset i$, if $\bigcap_{j\in J}V_j\neq\emptyset$ then we have $V\cap\bigcap_{j\in\ J}V_j\neq\emptyset$.
   \end{itemize}
-  Then let $\mathcal U_{n+1}$ be the collection of $V_i\cup V$ for all $i$ and $V$ with this property. Once again verify that any nowhere dense set is disjoint from an element of $\mathcal U_{n+1}$ and that the intersection of any $n+1$ elements of $\mathcal U_{n+1}$ is nonempty. It may help to start with the special case $n=2$.]
+  Then let $\mathcal U_{n+1}$ be the collection of $V_i\cup V$ for all $i$ and $V$ with this property. Now verify that any nowhere dense set is disjoint from an element of $\mathcal U_{n+1}$ and that the intersection of any $n+1$ elements of $\mathcal U_{n+1}$ is nonempty. It may help to start with the special case $n=2$.]
 \end{exerc}
 
 \begin{notes}
-  The presentation of the proof of Bartoszy\'nski's theorem was largely taken from Section~522 of Fremlin, \emph{Measure theory}. A similar proof can also be found in Bartoszy\'nski's handbook article, \emph{Invariants of measure and category}.
+  The presentation of the proof of Bartoszy\'nski's theorem was largely taken from Sections 522K--522P of Fremlin, \emph{Measure theory}. A similar proof can also be found in Bartoszy\'nski's handbook article, \emph{Invariants of measure and category}.
 \end{notes}
 
-% fremlin, measure theory v5p1 522P
-% bartoszynski, handbook
 
-\chapter*{Part II: Le tour de forcing}
+\chapter*{Part III: Le tour de forcing}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\section{Models of set theory}
@@ -1934,6 +1936,10 @@ Finally we can conclude that the forcing theorem holds for the true forcing rela
   This version of the proof of the forcing and definability theorems was largely drawn from handwritten notes, written by Spencer Unger during a forcing course given by Richard Laver. A proof can also be found in Section~IV.2 of Kunen.
 \end{notes}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\chapter*{Part IV: Forcing and cardinal characteristics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Cohen forcing and the continuum}
