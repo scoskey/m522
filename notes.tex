@@ -4,17 +4,23 @@
 \author{Samuel Coskey}
 \author{Erik Holmes}
 
+\usepackage{amsmath,amsthm}
 \usepackage[vscale=.8,vmarginratio=4:3]{geometry}
 \usepackage{mathpazo}
 \usepackage{amssymb}
 \usepackage{setspace}\onehalfspacing\raggedbottom
 \renewcommand{\labelitemi}{$\circ$}
 \renewcommand{\labelenumi}{(\alph{enumi})}
-\usepackage{etoolbox}\makeatletter\pretocmd{\@seccntformat}{\S}{}{}\makeatother
-\usepackage{tikz}\usetikzlibrary{positioning,decorations.fractals,decorations.pathmorphing}\usepackage{hyperref}
+\renewcommand{\chaptername}{Part}
+\renewcommand{\thechapter}{\Roman{chapter}}
+\usepackage{remreset}
+\makeatletter\@removefromreset{section}{chapter}\makeatother
+\usepackage{etoolbox}
+\makeatletter\pretocmd{\@seccntformat}{\S}{}{}\makeatother
+\usepackage{hyperref}
+\usepackage{tikz}\usetikzlibrary{positioning,decorations.fractals,decorations.pathmorphing}
 
 \newcommand{\set}[1]{\left\{\,#1\,\right\}}
-\newcommand{\from}{\colon}
 \newcommand{\NN}{\mathbb N}
 \newcommand{\PP}{\mathbb P}
 \newcommand{\QQ}{\mathbb Q}
@@ -53,13 +59,13 @@
 
 \begin{document}
 
-\frontmatter
+%\frontmatter
 
 \maketitle
 
 \tableofcontents
 
-\mainmatter
+%\mainmatter
 
 \setcounter{page}{4}
 
@@ -88,7 +94,9 @@ With the tool of forcing in hand, we will return to the notions of measure and c
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter*{Part I: Category and measure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Category and measure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -711,7 +719,9 @@ In particular the notions of meager and comeager sets make perfect sense in both
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter*{Part II: Cardinal characteristics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Cardinal characteristics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1032,7 +1042,7 @@ We conclude this section with proofs of four more fairly easy inequaleties. The 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Duality}
+\section{Ideals and duality}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 At this point one might have observed that many of the proofs of inequalities between cardinal characteristics have come in pairs. This phenomenon is easy to spot in Lemmas~\ref{lem:b-nonm} and~\ref{lem:covn-nonm}, but if one examines the proof it is even present in Lemma~\ref{lem:diamond}. It turns out that there is a category-theoretic duality lurking behind all of these pairings. (Here we mean \emph{category} as in objects and morphisms, not as in Baire's theorem.)
@@ -1355,7 +1365,11 @@ This concludes the proof of Bartoszy\'nski's theorem, as well as Theorem~\ref{th
 \end{notes}
 
 
-\chapter*{Part III: Le tour de forcing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Le tour de forcing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\section{Models of set theory}
@@ -1938,8 +1952,10 @@ Finally we can conclude that the forcing theorem holds for the true forcing rela
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\chapter*{Part IV: Forcing and cardinal characteristics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\chapter{Forcing and cardinal characteristics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Cohen forcing and the continuum}
@@ -2028,7 +2044,7 @@ A family $\mathcal F$ of sets is called a \emph{delta system} if there exists a 
 % Kunen, sec 4.3
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{More on the continuum}
+\section{More tricks with the continuum}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Since ccc forcing preserves cardinals, if $V$ satisfies $\neg$CH then it is not possible to force CH using ccc forcing. Indeed, since forcing only adds sets (and never takes them away), the only way to lower the cardinality of the continuum is to collapse cardinals.
@@ -2037,7 +2053,7 @@ Since ccc forcing preserves cardinals, if $V$ satisfies $\neg$CH then it is not 
   For any cardinals $\kappa,\lambda$ we define the set $\Fn_{\aleph_0}(\kappa,\lambda)$ to be the family of all functions $p\colon A\to\lambda$, where $A$ is a countable subset of $\kappa$. We partially order $\Fn_{\aleph_0}(\kappa,\lambda)$ by $p\leq q$ iff $p\supset q$.
 \end{defn}
 
-Like $\Fn(\kappa,\lambda)$, forcing with $\Fn_{\aleph_0}(\kappa,\lambda)$ adds a new function $g\colon\kappa\to\lambda$. But as we'll see, it does it in a different way. For instance it is easy to see that $\Fn_{\aleph_0}(\kappa,\lambda)$ is not ccc.
+Like its sibling  $\Fn(\kappa,\omega)$, forcing with $\Fn_{\aleph_0}(\kappa,\omega)$ adds a new function $g\colon\kappa\to\omega$. But as we'll see, it does it in a different way. For example, we showed that $\Fn(\kappa,\omega)$ is ccc, but it is easy to see that $\Fn_{\aleph_0}(\kappa,\lambda)$ is not ccc. For another thing, $\Fn(\kappa,\omega)$ adds many new elements to $\omega^\omega$, but if $\kappa$ is uncountable $\Fn_{\aleph_0}(\kappa,\omega)$ adds no new elements to $\omega^\omega$.
 
 \begin{thm}
   \label{thm:force-ch}
@@ -2051,30 +2067,46 @@ In a moment we will prove that forcing with $\Fn_{\aleph_0}(\omega_1,\omega)$ ad
 \end{defn}
 
 \begin{lem}
+  \label{lem:forcing-closed-preserves}
   If $\PP$ is countably closed, then forcing with $\PP$ does not add new elements of $\omega^\omega$. Moreover forcing with $\PP$ does not collapse $\aleph_1$.
 \end{lem}
 
 \begin{proof}
-  Let $f$ be an element of $\omega^\omega$ in $V[G]$, and let $\dot f$ be a name for $f$. We will show that in fact $f$ lies in $V$. To begin, use the forcing theorem to find $p\in G$ such that $p\forces$ ``$f$ is a function from $\omega$ to $\omega$''. Then in particular $p\forces(\exists n)f(0)=n$, and so by Lemma~\ref{lem:forcing-exists} there exists $p_1\leq p$ and $n_1\in\omega$ such that $p_1\forces f(0)=\check n$. (Note that we can choose a check name $\check n$ in this case.)
+  Let $f$ be an element of $\omega^\omega$ in $V[G]$, and let $\dot f$ be a name for $f$. We will show that in fact $f$ lies in $V$. To begin, by the forcing theorem we can find some $q\in G$ such that $p\forces \dot f\colon\check\omega\to\check\omega$. Now, since $f(0)$ has some value in $\omega$, there is some $n_0\in\omega$ such that $V[G]$ satisfies $f(0)=\check n_0$. Hence we can find $p_0\in G$ and such that $p_0\forces\dot f(0)=\check n_0$. Moreover since $G$ is downwards directed, we can suppose without loss of generality that $p_0\leq q$.
 
-  \ldots
+  Repeating this argument inductivley, we can find $n_i\in\omega$ and $p_i\in G$ such that $p_i\forces f(\check i)=\check n_i$. Moreover we can assume that $p_i\leq p_{i-1}$ for all $i$. Since $\PP$ is countably closed, there exists $p\in\PP$ such that $p\leq p_i$ for all $i$. Then $p\forces\dot f(\check i)=\check n_i$ for all $i$, which means that $p$ ``knows'' every value of $f$. It follows that $f$ is definable in $V$ by $f(i)=n$ if and only if $p\forces\dot f(\check i)=\check n$.
+
+  To see that $\PP$ does not collapse $\aleph_1$, let $\kappa$ denote the ordinal such that in $V$ we have $\aleph_1=\kappa$, and suppose towards a contradiction that in $V[G]$ we have that $\kappa$ is countable. Then in $V[G]$ there is a surjective function $f\colon\omega\to\kappa$. Note that in the argument of the previous paragraph we only needed that the domain of $f$ was $\omega$ and the codomain of $f$ was a set in $V$. Hence we can use the same reasoning to conclude that $f$ is definable in $V$, contradicting that $\kappa$ is uncountable in $V$.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:force-ch}]
-  \ldots
+  By Lemma~\ref{lem:forcing-closed-preserves}, the notions of $\omega^\omega$ and $\aleph_1$ are identical in $V$ and $V[G]$. Thus in the rest of this argument we need not distinguish in which model they are computed.
+
+  To begin, it is clear that $g=\bigcup G$ is a new function from $\omega_1\to\omega$. Now for each $f\in\omega^\omega$ consider the set
+  \[D_f=\set{s\in G\mid (\exists\alpha<\omega_1)(\forall n\in\omega)\;s(\alpha+n)=f(n)}
+  \]
+  Then $D_f$ is dense: indeed, if $s$ is element of $\Fn_{\aleph_0}(\omega_1,\omega)$ then we can find some $\alpha$ such that $\dom(s)<\alpha$, and define an extension $t\supset s$ such that $t(\alpha+n)=s(n)$.
+
+  It follows that $g=\bigcup G$ has the property: for every $f\in\omega^\omega$ there exists $\alpha<\omega_1$ such that for all $n\in\omega$ we have $g(\alpha+n)=f(n)$. In other words, every element of the Baire space is coded in the values of $g$. Since there are only $\aleph_1$ many possible functions coded in this way, we have $|\omega^\omega|\leq\aleph_1$.
 \end{proof}
 
 We now return to the argument of the previous section. Recall that we showed forcing with $\Fn(\kappa,\omega)$ results in the continuum having value $\geq\kappa$. With a slightly more careful argument, we can actually show that in fact the continuum has size exactly $\kappa$.
 
-% we can force CH
-% cohen forcing over a model of CH leaves 2^omega exactly kappa (nice names)
+\ldots
+
+%\begin{def} nice names
+%\end{def}
+
+%\begin{lem} we can find nice names
+%\end{lem}
+
+%\begin{thm} cohen forcing leaves c exactly kappa
+%\end{thm}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Random forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% OLD STUFF ABOUT IDEALIZED COHEN FORCING
 
 % \begin{defn}
 %   The partial order for \emph{Cohen forcing} $\mathbb C$ consists of all equivalence classes of nonmeager subsets of $2^\omega$, where sets $A,B$ are said to be equivalent if they differ by a meager set. The elements of $\mathbb C$ are ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is meager.
