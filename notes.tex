@@ -21,7 +21,7 @@
 \patchcmd{\tocsection}{#2.}{\S#2.}{}{}
 \apptocmd{\tocsection}{\dotfill}{}{}
 \makeatother
-\usepackage{hyperref}
+\usepackage[linktoc=all]{hyperref}
 \usepackage{tikz}\usetikzlibrary{positioning,decorations.fractals,decorations.pathmorphing}
 
 \newcommand{\set}[1]{\left\{\,#1\,\right\}}
@@ -2096,16 +2096,19 @@ In a moment we will prove that forcing with $\Fn_{\aleph_0}(\omega_1,\omega)$ ad
 
 We now return to the argument of the previous section. Recall that we showed forcing with $\Fn(\kappa,\omega)$ results in the continuum having value $\geq\kappa$. With a slightly more careful argument, we can actually show that in fact the continuum has size exactly $\kappa$.
 
-\ldots
+\begin{thm}
+  Suppose that in $V$, CH is true and $\kappa$ is an uncountable successor cardinal. Let $\PP=\Fn(\kappa,\omega)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak c=\kappa$.
+\end{thm}
 
-%\begin{def} nice names
-%\end{def}
+\begin{proof}
+  We have alread shown that in $V[G]$ we have $\mathfrak c\geq\kappa$.
 
-%\begin{lem} we can find nice names
-%\end{lem}
+  \ldots
+\end{proof}
 
-%\begin{thm} cohen forcing leaves c exactly kappa
-%\end{thm}
+\begin{rem}
+  The above theorem is true if $\kappa$ is any cardinal with uncountable cofinality. Recall that by K\"onig's theorem, we know that $\mathfrak c$ always has uncountable cofinality. Thus the result implies that K\"onig's theorem is sharp.
+\end{rem}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
