@@ -16,7 +16,11 @@
 \usepackage{remreset}
 \makeatletter\@removefromreset{section}{chapter}\makeatother
 \usepackage{etoolbox}
-\makeatletter\pretocmd{\@seccntformat}{\S}{}{}\makeatother
+\makeatletter
+\pretocmd{\@seccntformat}{\S}{}{}
+\patchcmd{\tocsection}{#2.}{\S#2.}{}{}
+\apptocmd{\tocsection}{\dotfill}{}{}
+\makeatother
 \usepackage{hyperref}
 \usepackage{tikz}\usetikzlibrary{positioning,decorations.fractals,decorations.pathmorphing}
 
