@@ -2097,18 +2097,36 @@ In a moment we will prove that forcing with $\Fn_{\aleph_0}(\omega_1,\omega)$ ad
 We now return to the argument of the previous section. Recall that we showed forcing with $\Fn(\kappa,\omega)$ results in the continuum having value $\geq\kappa$. With a slightly more careful argument, we can actually show that in fact the continuum has size exactly $\kappa$.
 
 \begin{thm}
-  Suppose that in $V$, CH is true and $\kappa$ is an uncountable successor cardinal. Let $\PP=\Fn(\kappa,\omega)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak c=\kappa$.
+  \label{thm:ch-exact}
+  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal such that $k^{\aleph_0}=\kappa$. Let $\PP=\Fn(\kappa,\omega)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak c=\kappa$.
 \end{thm}
 
 \begin{proof}
-  We have alread shown that in $V[G]$ we have $\mathfrak c\geq\kappa$.
+  We have already shown that in $V[G]$ we have $\mathfrak c\geq\kappa$. To show that $\mathfrak c\leq\kappa$, it suffices to show that in $V[G]$ there are at most $\kappa$ many subsets of $\omega$. To this end, we claim that every subset of $\omega$ in $V[G]$ has a \emph{nice name}, that is, a name of the form
+  \[\tau=\set{(\check n,p)\mid p\in A_n}\text{,}
+  \]
+  where for each $n$, $A_n$ is an antichain of $\PP$.
 
-  \ldots
+  Admitting this claim, since $\PP$ is ccc, we know that each antichain $A_n$ is countable. It follows that there are only $\kappa^{\aleph_0}$ many possibilities for the name $\tau$, and hence only $\kappa^{\aleph_0}$ many possibilities for the set $S$. Since we have assumed that $\kappa^{\aleph_0}=\kappa$, this completes the proof.
+
+  To establish the claim, let $S\in V[G]$ be a subset of $\omega$ and let $\dot S$ be a name for $S$. By the forcing theorem there is some $q\in G$ such that $q\forces\dot S\subset\check\omega$. Using Zorn's Lemma, we can find an antichain $A_n$ which is maximal with respect to the property that for all $p\in A_n$ we have $p\leq q$ and $p\forces\check n\in\dot S$. We will show that the corresponding nice name $\tau$ is a name for $S$.
+
+  It is clear that $\tau_G\subset S$, since if $(\check n,p)\in G$ then $p\forces\check n\in\dot S$ and hence $V[G]$ satisfies $n\in S$. Conversely, if $V[G]$ satisfies $n\in S$ then there is some $q'\in G$ such that $q'\forces\check n\in\dot S$. As usual since $G$ is downwards directed we can suppose that $q'\leq q$. We now consider
+  \[D=\set{p\in\PP\mid p\perp q'\text{ or }(\exists a\in A_n)\;p\leq a}
+  \]
+  Then $D$ is dense: given any $p_0$, if $p_0$ is incompatible with $q'$, then $p_0\in D$. Otherwise $p_0$ is compatible with $q'$ and hence there is $p_1\leq p_0,q'$. Since $p_1\forces\check n\in\dot S$ and $A_n$ is maximal with respect to this property, $p_1$ must be compatible with some element $a\in A_n$. Hence we can find $p_2\leq p_1,a$, and then $p_2\in D$.
+
+  Finally, since $G$ is generic, there is some $p\in G$ and an element $a\in A_n$ with $p\leq a$. Since $G$ is closed upwards, $a\in G$ too, and since $(\check n,a)\in\tau$ we have $n\in\tau_G$. This shows that $S\subset\tau_G$, as desired.
 \end{proof}
 
 \begin{rem}
-  The above theorem is true if $\kappa$ is any cardinal with uncountable cofinality. Recall that by K\"onig's theorem, we know that $\mathfrak c$ always has uncountable cofinality. Thus the result implies that K\"onig's theorem is sharp.
+  If $\kappa$ satisfies $\kappa^{\aleph_0}=\kappa$ we say that $\kappa$ has \emph{uncountable cofinality}. For example, any successor cardinal has uncountable cofinality. K\"onig's theorem states that $\mathfrak c$ always has uncountable cofinality. Thus Theorem~\ref{thm:ch-exact} implies that K\"onig's theorem is sharp.
 \end{rem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Cohen forcing and Cicho\'n's diagram}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -2138,6 +2156,8 @@ We now return to the argument of the previous section. Recall that we showed for
 \begin{proof}
   In $\mathbb B$, two elements $A,B$ are incompatible if and only if their intersection is null. Thus it suffices to show that any family $\mathcal F$ of pairwise disjoint subsets of $2^\omega$ is countable. Indeed, since $m(2^\omega)=1$, for each $n$ there can be just finitely many elements of $\mathcal F$ of measure $\geq1/n$. It follows that there can be just countably many elements of $\mathcal F$.
 \end{proof}
+
+% differences between cohen and random forcing models
 
 \begin{defn}
   For any cardinal $\kappa$, we define the set $\mathbb B_\kappa$ to be the collection of all nonnull subsets of $2^\kappa$, where two such sets are identified if they differ only on a null set. The elements of $\mathbb B_\kappa$ are ordered by $A\leq B$ iff $A\subset B$.
