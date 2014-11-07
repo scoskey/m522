@@ -2109,12 +2109,15 @@ We now return to the argument of the previous section. Recall that we showed for
 
   Admitting this claim, since $\PP$ is ccc, we know that each antichain $A_n$ is countable. It follows that there are only $\kappa^{\aleph_0}$ many possibilities for the name $\tau$, and hence only $\kappa^{\aleph_0}$ many possibilities for the set $S$. Since we have assumed that $\kappa^{\aleph_0}=\kappa$, this completes the proof.
 
-  To establish the claim, let $S\in V[G]$ be a subset of $\omega$ and let $\dot S$ be a name for $S$. By the forcing theorem there is some $q\in G$ such that $q\forces\dot S\subset\check\omega$. Using Zorn's Lemma, we can find an antichain $A_n$ which is maximal with respect to the property that for all $p\in A_n$ we have $p\leq q$ and $p\forces\check n\in\dot S$. We will show that the corresponding nice name $\tau$ is a name for $S$.
-
-  It is clear that $\tau_G\subset S$, since if $(\check n,p)\in G$ then $p\forces\check n\in\dot S$ and hence $V[G]$ satisfies $n\in S$. Conversely, if $V[G]$ satisfies $n\in S$ then there is some $q'\in G$ such that $q'\forces\check n\in\dot S$. As usual since $G$ is downwards directed we can suppose that $q'\leq q$. We now consider
-  \[D=\set{p\in\PP\mid p\perp q'\text{ or }(\exists a\in A_n)\;p\leq a}
+  To establish the claim, let $S\in V[G]$ be a subset of $\omega$ and let $\dot S$ be a name for $S$. By the forcing theorem there is some $q\in G$ such that $q\forces\dot S\subset\check\omega$. Now consider the sets
+  \[B_n=\set{p\in\PP\mid p\leq q\text{ and }p\forces\check n\in\dot S}
   \]
-  Then $D$ is dense: given any $p_0$, if $p_0$ is incompatible with $q'$, then $p_0\in D$. Otherwise $p_0$ is compatible with $q'$ and hence there is $p_1\leq p_0,q'$. Since $p_1\forces\check n\in\dot S$ and $A_n$ is maximal with respect to this property, $p_1$ must be compatible with some element $a\in A_n$. Hence we can find $p_2\leq p_1,a$, and then $p_2\in D$.
+  Using Zorn's Lemma, we can find a maximal antichain $A_n\subset B_n$. We will show that the corresponding nice name $\tau$ is a name for $S$.
+
+  First, it is clear that $\tau_G\subset S$, since if $(\check n,p)\in G$ then $p\forces\check n\in\dot S$ and hence $V[G]$ satisfies $n\in S$. Conversely, suppose that $V[G]$ satisfies $n\in S$ and let $q'\in G$ be such that $q'\forces\check n\in\dot S$. As usual since $G$ is downwards directed we can suppose that $q'\leq q$. We now consider the set
+  \[D=\set{p\in\PP\mid p\perp q'\text{ or }(\exists a\in A_n)\;p\leq a}\text{.}
+  \]
+  Then $D$ is dense: given any $p_0\in\PP$, if $p_0$ is incompatible with $q'$, then $p_0$ itself lies in $D$. Otherwise $p_0$ is compatible with $q'$ and hence there is $p_1\leq p_0,q'$. Then $p_1$ lies in the set $B_n$, and since $A_n$ is a maximal antichain in $B_n$, we must have that $p_1$ is compatible with some $a\in A_n$. Hence we can find $p_2\leq p_1,a$, and then $p_2\in D$.
 
   Finally, since $G$ is generic, there is some $p\in G$ and an element $a\in A_n$ with $p\leq a$. Since $G$ is closed upwards, $a\in G$ too, and since $(\check n,a)\in\tau$ we have $n\in\tau_G$. This shows that $S\subset\tau_G$, as desired.
 \end{proof}
