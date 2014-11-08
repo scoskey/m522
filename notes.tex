@@ -2070,13 +2070,15 @@ In a moment we will prove that forcing with $\Fn_{\aleph_0}(\omega_1,\omega)$ ad
   A partial order $\PP$ is \emph{countably closed} if for every sequence of elements $p_n\in\PP$ such that $p_{n+1}\leq p_n$ for all $n$, there exists $p\in\PP$ such that $p\leq p_n$ for all $n$.
 \end{defn}
 
+It is clear that whenever $\kappa$ is uncountable, $\Fn_{\aleph_0}(\kappa,\lambda)$ is an example of a countably closed partial order.
+
 \begin{lem}
   \label{lem:forcing-closed-preserves}
   If $\PP$ is countably closed, then forcing with $\PP$ does not add new elements of $\omega^\omega$. Moreover forcing with $\PP$ does not collapse $\aleph_1$.
 \end{lem}
 
 \begin{proof}
-  Let $f$ be an element of $\omega^\omega$ in $V[G]$, and let $\dot f$ be a name for $f$. We will show that in fact $f$ lies in $V$. To begin, by the forcing theorem we can find some $q\in G$ such that $p\forces \dot f\colon\check\omega\to\check\omega$. Now, since $f(0)$ has some value in $\omega$, there is some $n_0\in\omega$ such that $V[G]$ satisfies $f(0)=\check n_0$. Hence we can find $p_0\in G$ and such that $p_0\forces\dot f(0)=\check n_0$. Moreover since $G$ is downwards directed, we can suppose without loss of generality that $p_0\leq q$.
+  Let $f$ be an element of $\omega^\omega$ in $V[G]$, and let $\dot f$ be a name for $f$. We will show that in fact $f$ lies in $V$. To begin, by the forcing theorem we can find some $q\in G$ such that $q\forces \dot f\colon\check\omega\to\check\omega$. Now, since $f(0)$ has some value in $\omega$, there is some $n_0\in\omega$ such that $V[G]$ satisfies $f(0)=\check n_0$. Hence we can find $p_0\in G$ and such that $p_0\forces\dot f(0)=\check n_0$. Moreover since $G$ is downwards directed, we can suppose without loss of generality that $p_0\leq q$.
 
   Repeating this argument inductivley, we can find $n_i\in\omega$ and $p_i\in G$ such that $p_i\forces f(\check i)=\check n_i$. Moreover we can assume that $p_i\leq p_{i-1}$ for all $i$. Since $\PP$ is countably closed, there exists $p\in\PP$ such that $p\leq p_i$ for all $i$. Then $p\forces\dot f(\check i)=\check n_i$ for all $i$, which means that $p$ ``knows'' every value of $f$. It follows that $f$ is definable in $V$ by $f(i)=n$ if and only if $p\forces\dot f(\check i)=\check n$.
 
