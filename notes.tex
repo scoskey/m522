@@ -2132,6 +2132,21 @@ We now return to the argument of the previous section. Recall that we showed for
 \section{Cohen forcing and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+	
+\begin{thm}
+	$\mathbb{P}=Fn(\kappa, 2)\models \mathfrak{d}=\kappa$
+\end{thm}
+
+\noindent
+\textbf{Proof.} Suppose, towards a contradiction, that $V[G]\models \mathfrak{d}<\kappa$. Then there exists $\Omega<\kappa$ and $\{h_\alpha\mid \alpha<\Omega\}$ such that for all $f\in (\omega^\omega)^{V^\mathbb{P}}$, there exists $\alpha$ with $f \leq^* h_\alpha$. In other words, all functions in the forcing extension are dominated by some $h_\alpha$'s. 
+
+Then, $\exists I\subseteq \kappa$ with $| I |<\kappa$ such that:
+		$$\mathbb{P}_1=F_n(I, 2)$$
+		$$\mathbb{P}_2=F_n(\kappa\setminus I, 2)$$
+and $\mathbb{P}\cong \mathbb{P}_1\times \mathbb{P}_2$, then $\{h_\alpha\}$ appears in $V[G_1]$. 
+But then, forcing with $\mathbb{P}_2$ adds a real \underline{not} dominated by $\{h_\alpha\}$, a contradiction. Thus, $F_n(\kappa, 2)\models \mathfrak{d}=\kappa$.
+
+\hfill $\qed$
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
