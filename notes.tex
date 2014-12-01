@@ -2044,8 +2044,8 @@ A family $\mathcal F$ of sets is called a \emph{delta system} if there exists a 
   Now, let $\mathcal G_0\subset\mathcal G$ be the subset of $\mathcal G$ consisting of functions $g$ such that $\dom(g)\in\mathcal F_0$. These functions may disagree on $A$, but they can never disagree elsewhere. Since there are only countably many possibilities for $g\restriction A$, by the pigeon-hole principle we can replace $\mathcal G_0$ with an uncountable subset of it such that $g\restriction A=$ some fixed function $g_0$ for all $g$. It follows from this that every pair of elements of $\mathcal G_0$ is compatible.
 \end{proof}
 
+% Kunen, sec IV.3
 
-% Kunen, sec 4.3
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{More tricks with the continuum}
@@ -2128,18 +2128,30 @@ We now return to the argument of the previous section. Recall that we showed for
   If $\kappa$ satisfies $\kappa^{\aleph_0}=\kappa$ we say that $\kappa$ has \emph{uncountable cofinality}. For example, any successor cardinal has uncountable cofinality. K\"onig's theorem states that $\mathfrak c$ always has uncountable cofinality. Thus Theorem~\ref{thm:ch-exact} implies that K\"onig's theorem is sharp.
 \end{rem}
 
+\begin{exerc}
+  Kunen, exercise IV.7.10.
+\end{exerc}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Cohen forcing and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In the previous sections we studied the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the continuum. Next, we study the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the other cardinal characteristics in Cicho\'n's diagram. Our first result improves Theorem~\ref{thm:ch-exact} to show that not only $\mathfrak c$ but also $\mathfrak d$ is enlarged to $\kappa$.
+In the previous sections we studied the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the continuum. Next, we study the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the other cardinal characteristics in Cicho\'n's diagram.
+
+\begin{thm}
+  \label{thm:cohen-cichon}
+  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal with $\kappa^{\aleph_0}=\kappa$. Then forcing with $\Fn(\kappa,\omega)$ results in all cardinals in the right half of Cicho\'n's diagram equal to $\kappa$, and all cardinals in the left half of Cicho\'n's diagram equal to $\aleph_1$.
+\end{thm}
+
+We begin by showing that $\Fn(\kappa,\omega)$ enlarges $\mathfrak d$ to $\kappa$. This improves the result of Theorem~\ref{thm:ch-exact}, which showed that $\mathfrak c$ was enlarged to $\kappa$.
 
 \begin{thm}
   \label{thm:cohen-b}
   Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal such that $\kappa^{\aleph_0}=\kappa$. Let $\PP=\Fn(\kappa,\omega)$ and $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak d=\kappa$.
 \end{thm}
 
-Before the proof we need the following fact about $\Fn(\kappa,\omega)$, which says essentially that the forcing can be broken up into two steps: an initial segment of the forcing followed by a tail segments of the forcing.
+Before the proof we need the following fact about $\Fn(\kappa,\omega)$, which says essentially that the forcing can be broken up into two stages: an initial segment of the forcing followed by a tail segments of the forcing.
 
 \begin{lem}
   Let $\PP=\Fn(\kappa,\omega)$ and let $G$ be a $V$-generic filter for $\PP$. Suppose that $I\subset\kappa$, and set $\PP_1=\Fn(I,\omega)$ and $G_1=G\cap\PP_1$; likewise set $\PP_2=\Fn(\kappa\smallsetminus I,\omega)$ and $G_2=G\cap\PP_2$. Then $G_1$ is $V$-generic for $\PP_1$, $G_2$ is $V[G_1]$-generic for $\PP_2$, and $V[G]=V[G_1][G_2]$.
@@ -2150,12 +2162,12 @@ We leave the combinatorial proof of this elementary result to the reader. [REF K
 \begin{proof}[Proof of Theorem~\ref{thm:cohen-b}]
   We already know that $\mathfrak d\leq\mathfrak c=\kappa$. Now suppose, towards a contradiction, that in $V[G]$ we have $\mathfrak d<\kappa$. Then in $V[G]$ there exists  a dominating family $\mathcal F$ such that $|\mathcal F|<\kappa$. We claim that there is some $I\subset\kappa$ such that $|I|<\kappa$ and $\mathcal F$ is added by the forcing $\Fn(I,\omega)$.
 
-  Assuming the claim is true, we can reach a contradiction as follows. As in the lemma, we let $PP_1=\Fn(I,\omega)$, $G_1=G\cap\PP_1$, $\PP_2=\Fn(\kappa\smallsetminusI,\omega)$, and $G_2=G\cap\PP_2$. Then the dominating family $\mathcal F$ lies in $V[G_1]$. But forcing with $\PP_2$ over $V[G_1]$ adds a generic element of Baire space $g_2=\bigcup G_2$, and an easy density argument shows that $g_2$ is not dominated by any real of $V[G_1]$. (See Exercise~\ref{exerc:cohen-nondom}.)
+  Assuming the claim is true, we can reach a contradiction as follows. As in the lemma, we let $PP_1=\Fn(I,\omega)$, $G_1=G\cap\PP_1$, $\PP_2=\Fn(\kappa\smallsetminus I,\omega)$, and $G_2=G\cap\PP_2$. Then the dominating family $\mathcal F$ lies in $V[G_1]$. But forcing with $\PP_2$ over $V[G_1]$ adds a generic element of Baire space $g_2=\bigcup G_2$, and an easy density argument shows that $g_2$ is not dominated by any real of $V[G_1]$. (See Exercise~\ref{exerc:cohen-nondom}.)
 
   To establish the claim, we first code $\mathcal F$ as a subset of $\lambda\times\omega\times\omega$ by enumerating $\mathcal F=\set{f_\alpha\mid\beta<\lambda}$ and letting
   \[S_{\mathcal F}=\set{(\beta,n,m)\mid f_\beta(n)=m}
   \]
-  Now let $\tau$ be a nice name for $S_{\mathcal F}$ (see the proof of Theorem~\ref{thm:ch-exact}), and note that since $\PP$ is ccc there are at most $\lambda$ many elements of $\PP$ mentioned in $\tau$. Each of these $\lambda$ many elements of $\PP$ in turn has just finitely many ordinals in its domain. Letting $I$ be the union of all these domains, we have $|I|\leq\lambda<\kappa$ and $I$ is as desired.
+  Now let $\tau$ be a nice name for $S_{\mathcal F}$ (see the proof of Theorem~\ref{thm:ch-exact}), and note that since $\PP$ is ccc there are at most $\lambda$ many elements of $\PP$ mentioned in $\tau$. Each of these $\lambda$ many elements of $\PP$ in turn has just finitely many ordinals in its domain. Letting $I$ be the union of all these domains, we have that $\tau$ is a $\Fn(I,\omega)$-name and hence is added by the forcing $\Fn(I,\omega)$.
 \end{proof}
 
 On the other hand, the forcing $\Fn(\kappa,\omega)$ does not raise the value of $\mathfrak b$.
@@ -2165,13 +2177,33 @@ On the other hand, the forcing $\Fn(\kappa,\omega)$ does not raise the value of 
 \end{thm}
 
 \begin{proof}
+  Since the Baire space of the ground model, $\omega^\omega\cap V$, is itself a family of size $\aleph_1$, it suffices to show that $\omega^\omega\cap V$ remains unbounded in $V[G]$. So suppose to the contrary that some $h\in V[G]$ is a bound for $\omega^\omega\cap V$.
 
+  We first show that we can suppose $h$ is added by a countable fragment of the forcing $\PP$. For this, let $\dot h$ be a nice name for $h\subset\omega\times\omega$. Then once again since $\PP$ is ccc, $\dot h$ mentions just countably many elements of $\PP$ and these elements each use just finitely many elements of the domain $\kappa$. Hence there exists a countable subset $I\subset\kappa$ such that $h$ is already added by the partial order $\PP_1=\Fn(I,\omega)$.
+
+  Next, using the forcing theorem, find an element $p\in\PP_1$ such that
+  \[p\forces (\forall f\in\omega^\omega\cap V)\;f\leq^*h\text{.}
+  \]
+  Since $\PP_1$ is countable, we can enumerate the elements $q\leq p$ in a list $\{q_i\}$. For each $i$ and $n$, we consider the set
+  \[S_{i,n}=\set{\check m\mid q_i\forces\check m\leq\dot h(\check n)}\text{.}
+  \]
+  Observe that since $q_i\forces h(n)\in\omega$, for each $i$ and $n$ the set $S_{i,n}$ is finite. Therefore we can diagonalize against these sets to define the function $f(n)=\max(S_{0,n}\cup\cdots\cup S_{n,n})+1$.
+
+  Now, since $f$ was defined entirely within $V$, we have that $p\forces \check f\leq^*\dot h$. In detail, this means that $p\forces(\exists N)(\forall n\geq N)\;\check f(n)\leq\dot h(n)$. By Lemma~\ref{lem:forcing-exists}, there exists $i$ and $N$ such that $q_i\forces (\forall n\geq\check N)\;\check f(n)\leq\dot h(n)$. 
+
+  Finally, letting $n\geq N,i$ and $m=f(n)$, we have $q_i\forces\check m\leq\dot h(\check n)$. It follows that $m\in S_{i,n}$, and by definition of $f$ this means we have let $f(n)>m$. This is a contradiction!
 \end{proof}
 
 \begin{exerc}
   \label{exerc:cohen-nondom}
-  Show that if $\PP=\Fn(\omega,\omega)$ and $G$ is $V$-generic, then $g=\bigcup G$ is not dominated by any element of $V$.
+  Show that if $\PP=\Fn(\omega,\omega)$ and $G$ is $V$-generic, then $g=\bigcup G$ is not dominated by any element of the Baire space of $V$.
 \end{exerc}
+
+\begin{exerc}
+  Kunen, exercise IV.4.11.
+\end{exerc}
+
+% Kunen, secs IV.4 and V.2
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
