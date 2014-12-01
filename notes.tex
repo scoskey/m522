@@ -2142,20 +2142,20 @@ In the previous sections we studied the effect of the forcing $\Fn(\kappa,\omega
 Before the proof we need the following fact about $\Fn(\kappa,\omega)$, which says essentially that the forcing can be broken up into two steps: an initial segment of the forcing followed by a tail segments of the forcing.
 
 \begin{lem}
-  Let $\PP=\Fn(\kappa,\omega)$ and let $G$ be a $V$-generic filter for $\PP$. Suppose that $\alpha$ is an ordinal less than $\kappa$, and set $\PP_1=\Fn(\alpha,\omega)$ and $G_1=G\cap\PP_1$; likewise set $\PP_2=\Fn(\kappa\smallsetminus\alpha,\omega)$ and $G_2=G\cap\PP_2$. Then $G_1$ is $V$-generic for $\PP_1$, $G_2$ is $V[G_1]$-generic for $\PP_2$, and $V[G]=V[G_1][G_2]$.
+  Let $\PP=\Fn(\kappa,\omega)$ and let $G$ be a $V$-generic filter for $\PP$. Suppose that $I\subset\kappa$, and set $\PP_1=\Fn(I,\omega)$ and $G_1=G\cap\PP_1$; likewise set $\PP_2=\Fn(\kappa\smallsetminus I,\omega)$ and $G_2=G\cap\PP_2$. Then $G_1$ is $V$-generic for $\PP_1$, $G_2$ is $V[G_1]$-generic for $\PP_2$, and $V[G]=V[G_1][G_2]$.
 \end{lem}
 
 We leave the combinatorial proof of this elementary result to the reader. [REF Kunen, Theorem~V.2.18]
 
 \begin{proof}[Proof of Theorem~\ref{thm:cohen-b}]
-  We already know that $\mathfrak d\leq\mathfrak c=\kappa$. Now suppose, towards a contradiction, that in $V[G]$ we have $\mathfrak d<\kappa$. Then in $V[G]$ there exists  a dominating family $\mathcal F$ such that $|\mathcal F|<\kappa$. We claim that there is some ordinal $\alpha$ in $\kappa$ such that $\mathcal F$ is already added by the $\Fn(\alpha,\omega)$.
+  We already know that $\mathfrak d\leq\mathfrak c=\kappa$. Now suppose, towards a contradiction, that in $V[G]$ we have $\mathfrak d<\kappa$. Then in $V[G]$ there exists  a dominating family $\mathcal F$ such that $|\mathcal F|<\kappa$. We claim that there is some $I\subset\kappa$ such that $|I|<\kappa$ and $\mathcal F$ is added by the forcing $\Fn(I,\omega)$.
 
-  Assuming the claim is true, we can reach a contradiction as follows. As in the lemma, we let $PP_1=\Fn(\alpha,\omega)$, $G_1=G\cap\PP_1$, $\PP_2=\Fn(\kappa\smallsetminus\alpha,\omega)$, and $G_2=G\cap\PP_2$. Then the dominating family $\mathcal F$ lies in $V[G_1]$. But forcing with $\PP_2$ over $V[G_1]$ adds a generic element of Baire space $g_2=\bigcup G_2$, and an easy density argument shows that $g_2$ is not dominated by any real of $V[G_1]$. (See Exercise~\ref{exerc:cohen-nondom}.)
+  Assuming the claim is true, we can reach a contradiction as follows. As in the lemma, we let $PP_1=\Fn(I,\omega)$, $G_1=G\cap\PP_1$, $\PP_2=\Fn(\kappa\smallsetminusI,\omega)$, and $G_2=G\cap\PP_2$. Then the dominating family $\mathcal F$ lies in $V[G_1]$. But forcing with $\PP_2$ over $V[G_1]$ adds a generic element of Baire space $g_2=\bigcup G_2$, and an easy density argument shows that $g_2$ is not dominated by any real of $V[G_1]$. (See Exercise~\ref{exerc:cohen-nondom}.)
 
   To establish the claim, we first code $\mathcal F$ as a subset of $\lambda\times\omega\times\omega$ by enumerating $\mathcal F=\set{f_\alpha\mid\beta<\lambda}$ and letting
   \[S_{\mathcal F}=\set{(\beta,n,m)\mid f_\beta(n)=m}
   \]
-  We then let $\tau$ be a nice name for $S_{\mathcal F}$, and note that since $\PP$ is ccc there are only $\lambda$ many elements of $\PP$ mentioned in $\tau$. Since $\lambda<\kappa$
+  Now let $\tau$ be a nice name for $S_{\mathcal F}$ (see the proof of Theorem~\ref{thm:ch-exact}), and note that since $\PP$ is ccc there are at most $\lambda$ many elements of $\PP$ mentioned in $\tau$. Each of these $\lambda$ many elements of $\PP$ in turn has just finitely many ordinals in its domain. Letting $I$ be the union of all these domains, we have $|I|\leq\lambda<\kappa$ and $I$ is as desired.
 \end{proof}
 
 On the other hand, the forcing $\Fn(\kappa,\omega)$ does not raise the value of $\mathfrak b$.
