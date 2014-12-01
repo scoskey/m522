@@ -1951,7 +1951,7 @@ Finally we can conclude that the forcing theorem holds for the true forcing rela
 \end{exerc}
 
 \begin{notes}
-  This version of the proof of the forcing and definability theorems was largely drawn from handwritten notes, written by Spencer Unger during a forcing course given by Richard Laver. A proof can also be found in Section~IV.2 of Kunen.
+  This version of the proof of the forcing and definability theorems was largely drawn from handwritten notes, written by Spencer Unger during a forcing course given by Richard Laver. A proof can also be found in [REF Kunen, Section~IV.2].
 \end{notes}
 
 
@@ -2132,28 +2132,30 @@ We now return to the argument of the previous section. Recall that we showed for
 \section{Cohen forcing and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In the previous sections we studied the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the continuum. Next, we study the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the other cardinal characteristics in Cicho\'n's diagram. Before we begin we need the following fact about $\Fn(\kappa,\omega)$, which says essentially that the forcing can be broken up into intermediate stages.
-
-\begin{lem}
-  Suppose that $\kappa$ is a cardinal, $I\subset\kappa$, and let $\PP=\Fn(\kappa,\omega)$, $\PP_1=\Fn(I,\omega)$ and $\PP_2=\Fn(\kappa\smallsetminus I,\omega)$. Let $G$ be a $\PP$-generic filter, and set $G_1=G\cap\PP_1$ and $G_2=G\cap\PP_2$. Then $G_1$ is $V$-generic for $\PP_1$, $G_2$ is $V[G_1]$-generic for $\PP_2$, and $V[G]=V[G_1][G_2]$.
-\end{lem}
-
-We leave the elementary proof of this result to the reader. [See Kunen, V.2.18]
-
-Returning to the effect of forcing on Cicho\'n's diagram, our first result improves Theorem~\ref{thm:ch-exact} to show that not only $\mathfrak c$ but also $\mathfrak d$ is enlarged to $\kappa$.
+In the previous sections we studied the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the continuum. Next, we study the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the other cardinal characteristics in Cicho\'n's diagram. Our first result improves Theorem~\ref{thm:ch-exact} to show that not only $\mathfrak c$ but also $\mathfrak d$ is enlarged to $\kappa$.
 
 \begin{thm}
+  \label{thm:cohen-b}
   Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal such that $\kappa^{\aleph_0}=\kappa$. Let $\PP=\Fn(\kappa,\omega)$ and $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak d=\kappa$.
 \end{thm}
 
-\begin{proof}
-  We already know that $\mathfrak d\leq\mathfrak c=\kappa$. Now suppose, towards a contradiction, that in $V[G]$ we have $\mathfrak d<\kappa$. Then in $V[G]$ there exists a dominating family $\mathcal F$ such that $|\mathcal F|<\kappa$.
+Before the proof we need the following fact about $\Fn(\kappa,\omega)$, which says essentially that the forcing can be broken up into two steps: an initial segment of the forcing followed by a tail segments of the forcing.
 
-Then, $\exists I\subseteq \kappa$ with $| I |<\kappa$ such that:
-		$$\mathbb{P}_1=F_n(I, 2)$$
-		$$\mathbb{P}_2=F_n(\kappa\setminus I, 2)$$
-$\mathcal F$ appears in $V[G_1]$. 
-But then, forcing with $\mathbb{P}_2$ adds a real \underline{not} dominated by $\{h_\alpha\}$, a contradiction.
+\begin{lem}
+  Let $\PP=\Fn(\kappa,\omega)$ and let $G$ be a $V$-generic filter for $\PP$. Suppose that $\alpha$ is an ordinal less than $\kappa$, and set $\PP_1=\Fn(\alpha,\omega)$ and $G_1=G\cap\PP_1$; likewise set $\PP_2=\Fn(\kappa\smallsetminus\alpha,\omega)$ and $G_2=G\cap\PP_2$. Then $G_1$ is $V$-generic for $\PP_1$, $G_2$ is $V[G_1]$-generic for $\PP_2$, and $V[G]=V[G_1][G_2]$.
+\end{lem}
+
+We leave the combinatorial proof of this elementary result to the reader. [REF Kunen, Theorem~V.2.18]
+
+\begin{proof}[Proof of Theorem~\ref{thm:cohen-b}]
+  We already know that $\mathfrak d\leq\mathfrak c=\kappa$. Now suppose, towards a contradiction, that in $V[G]$ we have $\mathfrak d<\kappa$. Then in $V[G]$ there exists  a dominating family $\mathcal F$ such that $|\mathcal F|<\kappa$. We claim that there is some ordinal $\alpha$ in $\kappa$ such that $\mathcal F$ is already added by the $\Fn(\alpha,\omega)$.
+
+  Assuming the claim is true, we can reach a contradiction as follows. As in the lemma, we let $PP_1=\Fn(\alpha,\omega)$, $G_1=G\cap\PP_1$, $\PP_2=\Fn(\kappa\smallsetminus\alpha,\omega)$, and $G_2=G\cap\PP_2$. Then the dominating family $\mathcal F$ lies in $V[G_1]$. But forcing with $\PP_2$ over $V[G_1]$ adds a generic element of Baire space $g_2=\bigcup G_2$, and an easy density argument shows that $g_2$ is not dominated by any real of $V[G_1]$. (See Exercise~\ref{exerc:cohen-nondom}.)
+
+  To establish the claim, we first code $\mathcal F$ as a subset of $\lambda\times\omega\times\omega$ by enumerating $\mathcal F=\set{f_\alpha\mid\beta<\lambda}$ and letting
+  \[S_{\mathcal F}=\set{(\beta,n,m)\mid f_\beta(n)=m}
+  \]
+  We then let $\tau$ be a nice name for $S_{\mathcal F}$, and note that since $\PP$ is ccc there are only $\lambda$ many elements of $\PP$ mentioned in $\tau$. Since $\lambda<\kappa$
 \end{proof}
 
 On the other hand, the forcing $\Fn(\kappa,\omega)$ does not raise the value of $\mathfrak b$.
@@ -2166,6 +2168,10 @@ On the other hand, the forcing $\Fn(\kappa,\omega)$ does not raise the value of 
 
 \end{proof}
 
+\begin{exerc}
+  \label{exerc:cohen-nondom}
+  Show that if $\PP=\Fn(\omega,\omega)$ and $G$ is $V$-generic, then $g=\bigcup G$ is not dominated by any element of $V$.
+\end{exerc}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
