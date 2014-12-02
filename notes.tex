@@ -1971,10 +1971,10 @@ We are now ready to use forcing, and our first big target will be to establish t
   For any cardinals $\kappa,\lambda$, we define the set $\Fn(\kappa,\lambda)$ to be the family of all functions $p\colon F\to\lambda$, where $F$ is a finite subset of $\kappa$. We partially order $\Fn(\kappa,\lambda)$ by function extension: $p\leq q$ if and only if $p\supset q$.
 \end{defn}
 
-Just as the forcing $\omega^{<\omega}$ uses finite approximations to add a new function $\omega\to\omega$, the forcing $\Fn(\kappa,\lambda)$ uses finite approximations to add a new function $\kappa\to\lambda$. Our first result shows that since the approximations are finite, $\Fn(\kappa,\lambda)$ also adds lots of new functions from $\omega\to\lambda$.
+Just as the forcing $\omega^{<\omega}$ uses finite approximations to add a new function $\omega\to\omega$, the forcing $\Fn(\kappa,\lambda)$ uses finite approximations to add a new function $\kappa\to\lambda$. Forcing of this type is often called \emph{Cohen forcing}, since Cohen essentially used this partial order in his original presentation of forcing. In this section we only have need for $\Fn(\kappa,\omega)$, which as we shall show, not only adds a new function from $\kappa\to\omega$, but also adds lots of new functions from $\omega\to\omega$.
 
 \begin{lem}
-  Forcing with the partial order $\PP=\Fn(\kappa,\omega)$ adds $\kappa$ many distinct elements to $\omega^\omega$.
+  Forcing with the partial order $\PP=\Fn(\kappa,\omega)$ adds $\kappa$ many (distinct) elements to $\omega^\omega$.
 \end{lem}
 
 \begin{proof}
@@ -2134,10 +2134,10 @@ We now return to the argument of the previous section. Recall that we showed for
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Cohen forcing and Cicho\'n's diagram}
+\section{Cohen forcing and the domination order}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In the previous sections we studied the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the continuum. Next, we study the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the other cardinal characteristics in Cicho\'n's diagram.
+In the previous sections we studied the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the continuum. Next, we study the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the other cardinal characteristics in Cicho\'n's diagram. In this section, we study only the effect of Cohen forcing on $\mathfrak b$ and $\mathfrak d$.
 
 \begin{thm}
   \label{thm:cohen-cichon}
@@ -2157,7 +2157,18 @@ Before the proof we need the following fact about $\Fn(\kappa,\omega)$, which sa
   Let $\PP=\Fn(\kappa,\omega)$ and let $G$ be a $V$-generic filter for $\PP$. Suppose that $I\subset\kappa$, and set $\PP_1=\Fn(I,\omega)$ and $G_1=G\cap\PP_1$; likewise set $\PP_2=\Fn(\kappa\smallsetminus I,\omega)$ and $G_2=G\cap\PP_2$. Then $G_1$ is $V$-generic for $\PP_1$, $G_2$ is $V[G_1]$-generic for $\PP_2$, and $V[G]=V[G_1][G_2]$.
 \end{lem}
 
-We leave the combinatorial proof of this elementary result to the reader. [REF Kunen, Theorem~V.2.18]
+\begin{proof}
+  It is straightforward to verify that $G_1$ and $G_2$ are filters. Moreover it is not difficult to verify that $G_1$ is $V$-generic for $\PP_1$. We will establish the slightly harder statement that $G_2$ is $V[G_1]$-generic for $\PP_2$.
+
+  For this let $D\in V[G_1]$ be a dense subset of $\PP_2$, and let $\dot D$ be a $\PP_1$-name for $D$. Using the forcing lemma, we can find $p_1\in G_1$ such that $p_1\forces$ ``$\dot D$ is dense in $\check\PP_2$''. Let
+  \[D'=\set{p\cup q\mid p\in\PP_1,\;q\in\PP_2,\text{ and either $p\perp p_1$ or else $p\leq p_1$ and $p\forces\check q\in\dot D$}}
+  \]
+  We claim that $D'$ is dense in $\PP$. Admitting this for the moment, it follows that there exists $r=p\cup q\in G\cap D'$. Then $q\in G_2$, and by definition of $D'$ we have that $q\in D$, which establishes the desired result that $G_2\cap D\neq\emptyset$.
+
+  To show that $D'$ is dense, let $p\cup q$ be an arbitrary element of $\PP$, where $p\in\PP_1$ and $q\in\PP_2$. If $p\perp p_1$ then we are done, so suppose instead that $p\leq p_1$. Since $D$ is dense in $\PP_2$, there exists $q'\leq q$ such that $q'\in D$. Then by the forcing theorem there exists $p'\in G_1$ such that $p'\forces\check q'\in\dot D$. Letting $p''\leq p,p'$, we have that $p''\cup q'\in D'$, as desired.
+\end{proof}
+
+We are now ready to establish the theorem.
 
 \begin{proof}[Proof of Theorem~\ref{thm:cohen-b}]
   We already know that $\mathfrak d\leq\mathfrak c=\kappa$. Now suppose, towards a contradiction, that in $V[G]$ we have $\mathfrak d<\kappa$. Then in $V[G]$ there exists  a dominating family $\mathcal F$ such that $|\mathcal F|<\kappa$. We claim that there is some $I\subset\kappa$ such that $|I|<\kappa$ and $\mathcal F$ is added by the forcing $\Fn(I,\omega)$.
@@ -2182,16 +2193,16 @@ On the other hand, the forcing $\Fn(\kappa,\omega)$ does not raise the value of 
   We first show that we can suppose $h$ is added by a countable fragment of the forcing $\PP$. For this, let $\dot h$ be a nice name for $h\subset\omega\times\omega$. Then once again since $\PP$ is ccc, $\dot h$ mentions just countably many elements of $\PP$ and these elements each use just finitely many elements of the domain $\kappa$. Hence there exists a countable subset $I\subset\kappa$ such that $h$ is already added by the partial order $\PP_1=\Fn(I,\omega)$.
 
   Next, using the forcing theorem, find an element $p\in\PP_1$ such that
-  \[p\forces (\forall f\in\omega^\omega\cap V)\;f\leq^*h\text{.}
+  \[p\forces (\forall f\in\omega^\omega\cap V)\;f\leq^*\dot h\text{.}
   \]
-  Since $\PP_1$ is countable, we can enumerate the elements $q\leq p$ in a list $\{q_i\}$. For each $i$ and $n$, we consider the set
-  \[S_{i,n}=\set{\check m\mid q_i\forces\check m\leq\dot h(\check n)}\text{.}
+  Since $\PP_1$ is countable, we can enumerate the elements $q\leq p$ in a list $\{q_i\}$. For each $i$ and $n$, we let
+  \[m_{i,n}=\max\set{m\mid q_i\forces\check m\leq\dot h(\check n)}\text{.}
   \]
-  Observe that since $q_i\forces h(n)\in\omega$, for each $i$ and $n$ the set $S_{i,n}$ is finite. Therefore we can diagonalize against these sets to define the function $f(n)=\max(S_{0,n}\cup\cdots\cup S_{n,n})+1$.
+  Observe that since $q_i\forces h(n)\in\omega$, this maximum is well-defined. Therefore we can diagonalize against these sets to define the function $f(n)=\max\set{m_{0,n},\ldots,m_{n,n}}+1$.
 
   Now, since $f$ was defined entirely within $V$, we have that $p\forces \check f\leq^*\dot h$. In detail, this means that $p\forces(\exists N)(\forall n\geq N)\;\check f(n)\leq\dot h(n)$. By Lemma~\ref{lem:forcing-exists}, there exists $i$ and $N$ such that $q_i\forces (\forall n\geq\check N)\;\check f(n)\leq\dot h(n)$. 
 
-  Finally, letting $n\geq N,i$ and $m=f(n)$, we have $q_i\forces\check m\leq\dot h(\check n)$. It follows that $m\in S_{i,n}$, and by definition of $f$ this means we have let $f(n)>m$. This is a contradiction!
+  Finally, letting $n\geq N,i$ and $m=f(n)$, we have $q_i\forces\check m\leq\dot h(\check n)$. It follows that $m\leq m_{i,n}$, and by definition of $f$ we also have $m_{i,n}<f(n)$. This is a contradiction!
 \end{proof}
 
 \begin{exerc}
@@ -2205,6 +2216,10 @@ On the other hand, the forcing $\Fn(\kappa,\omega)$ does not raise the value of 
 
 % Kunen, secs IV.4 and V.2
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Cohen forcing and Cicho\'n's diagram}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Random forcing}
