@@ -2137,25 +2137,46 @@ We now return to the argument of the previous section. Recall that we showed for
 \section{Cohen forcing and the domination order}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In the previous sections we studied the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the continuum. Next, we study the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the other cardinal characteristics in Cicho\'n's diagram. In this section, we study only the effect of Cohen forcing on $\mathfrak b$ and $\mathfrak d$.
+In the previous sections we studied the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the continuum. Next, we study the effect of the forcing with $\Fn(\kappa,\omega)$ on the value of the other cardinal characteristics in Cicho\'n's diagram. In this section, we study only the effect of Cohen forcing on $\mathfrak b$ and $\mathfrak d$.
 
-We begin by showing that $\Fn(\kappa,\omega)$ enlarges $\mathfrak d$ to $\kappa$. This improves the result of Theorem~\ref{thm:ch-exact}, which showed that $\Fn(\kappa,\omega)$ enlarges $\mathfrak c$ d to $\kappa$.
+For this, we first study the effect of adding just one element to the Baire space. The next result showcases the interesting role that Cohen reals play with respect to the domination order $\leq^*$.
 
-\begin{thm}
-  \label{thm:cohen-b}
-  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal such that $\kappa^{\aleph_0}=\kappa$. Let $\PP=\Fn(\kappa,\omega)$ and $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak d=\kappa$.
-\end{thm}
+\begin{lem}
+  \label{lem:cohen-dominating}
+  Let $\PP=\Fn(\omega,\omega)$, and let $G$ be a $V$-generic filter. Then we have:
+  \begin{itemize}
+  \item If $g=\bigcup G$, then $g$ is not dominated by any element of $V$.
+  \item If $h\in V[G]$, then $h$ does not dominate every element of $V$.
+  \end{itemize}
+\end{lem}
 
-Before the proof we need the following fact about $\Fn(\kappa,\omega)$, which says essentially that the forcing can be broken up into two stages: an initial segment of the forcing followed by a tail segments of the forcing.
+\begin{proof}
+  The proof of the first statement is a simple density argument, which we leave for Exercise~\ref{exerc:cohen-nondom}.
+
+  For the second statement, let $h\in V[G]$ and let $\dot h$ be a $\PP$-name for $h$. We wish to define a function $f\in V$ which is not dominated by $h$. For this, since $\PP$ is countable, we can enumerate $\PP=\{p_i\mid i\in\omega\}$. For each $i$, we then define the approximation to $h$ given by
+  \[h_i(n)=\max\set{m\mid p_i\forces\check m\leq\dot h(\check n)}\text{.}
+  \]
+  (If $p_i$ does not even force that $h(n)$ is an integer, then set $h_i(n)=0$ by default.) Now the $h_i$ are defined in $V$, so in $V$ we can diagonalize against them to define the function
+  \[f(n)=\max\set{h_0(n),\ldots,h_n(n)}+1\text{.}
+  \]
+
+  We aim to show that this $f$ is in fact not dominated by $h$. If it were, there would be some $p\in\PP$ such that $p\forces \check f\leq^*\dot h$. In detail, this means that $p\forces(\exists N)(\forall n\geq N)\;\check f(n)\leq\dot h(n)$. By Lemma~\ref{lem:forcing-exists}, there exists $i$ and $N$ such that $p_i\forces (\forall n\geq\check N)\;\check f(n)\leq\dot h(n)$. 
+
+  Finally, letting $n\geq N,i$ and $m=f(n)$, we have $q_i\forces\check m\leq\dot h(\check n)$. It follows that $m\leq m_{i,n}$, and by definition of $f$ we also have $m_{i,n}<f(n)$. This is a contradiction!
+\end{proof}
+
+In order to use the above result about $\Fn(\omega,\omega)$ to establish properties of the full forcing $\Fn(\kappa,\omega)$, we need the following fact which essentially says that the full forcing can be factored into smaller pieces.
 
 \begin{lem}
   Let $\PP=\Fn(\kappa,\omega)$ and let $G$ be a $V$-generic filter for $\PP$. Suppose that $I\subset\kappa$, and set $\PP_1=\Fn(I,\omega)$ and $G_1=G\cap\PP_1$; likewise set $\PP_2=\Fn(\kappa\smallsetminus I,\omega)$ and $G_2=G\cap\PP_2$. Then $G_1$ is $V$-generic for $\PP_1$, $G_2$ is $V[G_1]$-generic for $\PP_2$, and $V[G]=V[G_1][G_2]$.
 \end{lem}
 
 \begin{proof}
-  It is straightforward to verify that $G_1$ and $G_2$ are filters. Moreover it is not difficult to verify that $G_1$ is $V$-generic for $\PP_1$. We will establish the slightly harder statement that $G_2$ is $V[G_1]$-generic for $\PP_2$.
+  It is straightforward to verify that $G_1$ and $G_2$ are filters. Moreover, since $G_1$ and $G_2$ are defined from $G$, and $G$ can be recovered from $G_1$ and $G_2$, it follows easily that $V[G]=V[G_1][G_2]$.
 
-  For this let $D\in V[G_1]$ be a dense subset of $\PP_2$, and let $\dot D$ be a $\PP_1$-name for $D$. Using the forcing lemma, we can find $p_1\in G_1$ such that $p_1\forces$ ``$\dot D$ is dense in $\check\PP_2$''. Let
+  To show that $G_1$ is $V$-generic for $\PP_1$, \ldots
+
+  To show that $G_2$ is $V[G_1]$-generic for $\PP_2$ takes a little more work. For this, let $D\in V[G_1]$ be a dense subset of $\PP_2$, and let $\dot D$ be a $\PP_1$-name for $D$. Using the forcing lemma, we can find $p_1\in G_1$ such that $p_1\forces$ ``$\dot D$ is dense in $\check\PP_2$''. Let
   \[D'=\set{p\cup q\mid p\in\PP_1,\;q\in\PP_2,\text{ and either $p\perp p_1$ or else $p\leq p_1$ and $p\forces\check q\in\dot D$}}
   \]
   We claim that $D'$ is dense in $\PP$. Admitting this for the moment, it follows that there exists $r=p\cup q\in G\cap D'$. Then $q\in G_2$, and by definition of $D'$ we have that $q\in D$, which establishes the desired result that $G_2\cap D\neq\emptyset$.
@@ -2163,42 +2184,33 @@ Before the proof we need the following fact about $\Fn(\kappa,\omega)$, which sa
   To show that $D'$ is dense, let $p\cup q$ be an arbitrary element of $\PP$, where $p\in\PP_1$ and $q\in\PP_2$. If $p\perp p_1$ then we are done, so suppose instead that $p\leq p_1$. Since $D$ is dense in $\PP_2$, there exists $q'\leq q$ such that $q'\in D$. Then by the forcing theorem there exists $p'\in G_1$ such that $p'\forces\check q'\in\dot D$. Letting $p''\leq p,p'$, we have that $p''\cup q'\in D'$, as desired.
 \end{proof}
 
-We are now ready to establish the theorem.
+We are now ready to state the effect of forcing with $\Fn(\kappa,\omega)$ on the cardinals $\mathfrak b$ and $\mathfrak d$.
+
+\begin{thm}
+  \label{thm:cohen-b}
+  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal such that $\kappa^{\aleph_0}=\kappa$. Let $\PP=\Fn(\kappa,\omega)$ and $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak b=\aleph_1$ and $\mathfrak d=\kappa$.
+\end{thm}
 
 \begin{proof}[Proof of Theorem~\ref{thm:cohen-b}]
-  We already know that $\mathfrak d\leq\mathfrak c=\kappa$. Now suppose, towards a contradiction, that in $V[G]$ we have $\mathfrak d<\kappa$. Then in $V[G]$ there exists  a dominating family $\mathcal F$ such that $|\mathcal F|<\kappa$. We claim that there is some $I\subset\kappa$ such that $|I|<\kappa$ and $\mathcal F$ is added by the forcing $\Fn(I,\omega)$.
-
-  Assuming the claim is true, we can reach a contradiction as follows. As in the lemma, we let $PP_1=\Fn(I,\omega)$, $G_1=G\cap\PP_1$, $\PP_2=\Fn(\kappa\smallsetminus I,\omega)$, and $G_2=G\cap\PP_2$. Then the dominating family $\mathcal F$ lies in $V[G_1]$. But forcing with $\PP_2$ over $V[G_1]$ adds a generic element of Baire space $g_2=\bigcup G_2$, and an easy density argument shows that $g_2$ is not dominated by any real of $V[G_1]$. (See Exercise~\ref{exerc:cohen-nondom}.)
+  We first show that $\mathfrak d=\kappa$. Recall that we already know that $\mathfrak d\leq\mathfrak c=\kappa$. Now suppose, towards a contradiction, that in $V[G]$ we have $\mathfrak d<\kappa$. Then in $V[G]$ there exists  a dominating family $\mathcal F$ such that $|\mathcal F|<\kappa$. We claim that there is some $I\subset\kappa$ such that $|I|<\kappa$ and $\mathcal F$ is added by the forcing $\Fn(I,\omega)$.
 
   To establish the claim, we first code $\mathcal F$ as a subset of $\lambda\times\omega\times\omega$ by enumerating $\mathcal F=\set{f_\alpha\mid\beta<\lambda}$ and letting
   \[S_{\mathcal F}=\set{(\beta,n,m)\mid f_\beta(n)=m}
   \]
   Now let $\tau$ be a nice name for $S_{\mathcal F}$ (see the proof of Theorem~\ref{thm:ch-exact}), and note that since $\PP$ is ccc there are at most $\lambda$ many elements of $\PP$ mentioned in $\tau$. Each of these $\lambda$ many elements of $\PP$ in turn has just finitely many ordinals in its domain. Letting $I$ be the union of all these domains, we have that $\tau$ is a $\Fn(I,\omega)$-name and hence is added by the forcing $\Fn(I,\omega)$.
-\end{proof}
 
-On the other hand, the forcing $\Fn(\kappa,\omega)$ does not raise the value of $\mathfrak b$.
+  We now reach a contradiction as follows. Let $\PP_1=\Fn(I,\omega)$, $G_1=G\cap\PP_1$, $\PP_2=\Fn(\kappa\smallsetminus I,\omega)$, and $G_2=G\cap\PP_2$. Then the dominating family $\mathcal F$ lies in $V[G_1]$. But forcing with $\PP_2$ over $V[G_1]$ adds the generic element $g_2=\bigcup G_2$ to the Baire space. Applying Lemma~\ref{lem:cohen-dominating} to the ground model $V[G_1]$, we see that $g_2$ is not dominated by any element of $V[G_1]$, a contradiction.
 
-\begin{thm}
-  Suppose that in $V$, CH is true and $\kappa$ is a cardinal. Let $\PP=\Fn(\kappa,\omega)$ and $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak b=\aleph_1$.
-\end{thm}
-
-\begin{proof}
-  Since the Baire space of the ground model, $\omega^\omega\cap V$, is itself a family of size $\aleph_1$, it suffices to show that $\omega^\omega\cap V$ remains unbounded in $V[G]$. So suppose to the contrary that some $h\in V[G]$ is a bound for $\omega^\omega\cap V$.
+  We now turn to the proof that $\mathfrak b=\aleph_1$. Since the Baire space of the ground model, $\omega^\omega\cap V$, is itself a family of size $\aleph_1$, it suffices to show that $\omega^\omega\cap V$ remains unbounded in $V[G]$. So suppose to the contrary that some $h\in V[G]$ is a bound for $\omega^\omega\cap V$.
 
   We first show that we can suppose $h$ is added by a countable fragment of the forcing $\PP$. For this, let $\dot h$ be a nice name for $h\subset\omega\times\omega$. Then once again since $\PP$ is ccc, $\dot h$ mentions just countably many elements of $\PP$ and these elements each use just finitely many elements of the domain $\kappa$. Hence there exists a countable subset $I\subset\kappa$ such that $h$ is already added by the partial order $\PP_1=\Fn(I,\omega)$.
 
-  Next, using the forcing theorem, find an element $p\in\PP_1$ such that
-  \[p\forces (\forall f\in\omega^\omega\cap V)\;f\leq^*\dot h\text{.}
-  \]
-  Since $\PP_1$ is countable, we can enumerate the elements $q\leq p$ in a list $\{q_i\}$. For each $i$ and $n$, we let
-  \[m_{i,n}=\max\set{m\mid q_i\forces\check m\leq\dot h(\check n)}\text{.}
-  \]
-  Observe that since $q_i\forces h(n)\in\omega$, this maximum is well-defined. Therefore we can diagonalize against these sets to define the function $f(n)=\max\set{m_{0,n},\ldots,m_{n,n}}+1$.
-
-  Now, since $f$ was defined entirely within $V$, we have that $p\forces \check f\leq^*\dot h$. In detail, this means that $p\forces(\exists N)(\forall n\geq N)\;\check f(n)\leq\dot h(n)$. By Lemma~\ref{lem:forcing-exists}, there exists $i$ and $N$ such that $q_i\forces (\forall n\geq\check N)\;\check f(n)\leq\dot h(n)$. 
-
-  Finally, letting $n\geq N,i$ and $m=f(n)$, we have $q_i\forces\check m\leq\dot h(\check n)$. It follows that $m\leq m_{i,n}$, and by definition of $f$ we also have $m_{i,n}<f(n)$. This is a contradiction!
+  Now, since $\PP_1\cong\Fn(\omega,\omega)$, by Lemma~\ref{lem:cohen-dominating} we have that $h$ does not dominate the Baire space of $V$. This is a contradiction!
 \end{proof}
+
+\begin{rem}
+  The second claim of the theorem improves the result of Theorem~\ref{thm:ch-exact}, which showed that $\Fn(\kappa,\omega)$ enlarges $\mathfrak c$ d to $\kappa$.
+\end{rem}
 
 \begin{exerc}
   \label{exerc:cohen-nondom}
