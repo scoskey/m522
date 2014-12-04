@@ -2139,7 +2139,7 @@ We now return to the argument of the previous section. Recall that we showed for
 
 In the previous sections we studied the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the continuum. Next, we study the effect of the forcing with $\Fn(\kappa,\omega)$ on the value of the other cardinal characteristics in Cicho\'n's diagram. In this section, we study only the effect of Cohen forcing on $\mathfrak b$ and $\mathfrak d$.
 
-For this, we first study the effect of adding just one element to the Baire space. The next result showcases the interesting role that Cohen reals play with respect to the domination order $\leq^*$.
+Before we study the effect of the $\kappa$-sized Cohen forcing $\Fn(\kappa,\omega)$, we first examine the effect of the countable Cohen forcing $\Fn(\omega,\omega)$. The next result showcases the two-sided role that Cohen forcing plays with respect to the domination order $\leq^*$.
 
 \begin{lem}
   \label{lem:cohen-dominating}
@@ -2154,15 +2154,14 @@ For this, we first study the effect of adding just one element to the Baire spac
   The proof of the first statement is a simple density argument, which we leave for Exercise~\ref{exerc:cohen-nondom}.
 
   For the second statement, let $h\in V[G]$ and let $\dot h$ be a $\PP$-name for $h$. We wish to define a function $f\in V$ which is not dominated by $h$. For this, since $\PP$ is countable, we can enumerate $\PP=\{p_i\mid i\in\omega\}$. For each $i$, we then define the approximation to $h$ given by
-  \[h_i(n)=\max\set{m\mid p_i\forces\check m\leq\dot h(\check n)}\text{.}
+  \[h_i(n)=\max\set{m\in\omega\mid p_i\forces\check m\leq\dot h(\check n)}\text{.}
   \]
-  (If $p_i$ does not even force that $h(n)$ is an integer, then set $h_i(n)=0$ by default.) Now the $h_i$ are defined in $V$, so in $V$ we can diagonalize against them to define the function
-  \[f(n)=\max\set{h_0(n),\ldots,h_n(n)}+1\text{.}
+  (If the above maximum is undefined, then set $h_i(n)=0$ by default.) We now diagonalize against these approximations to $h$ to define a function $f$ such that $h_i<^*f$ for all $i$. Specifically we let
+  \[f(n)=\max\set{h_0(n),\ldots,h_n(n)}+1\text{,}
   \]
+  and observe that $f$ lies in $V$ by the definability theorem. We claim that this $f$ is in fact not dominated by $h$.
 
-  We aim to show that this $f$ is in fact not dominated by $h$. If it were, there would be some $p\in\PP$ such that $p\forces \check f\leq^*\dot h$. In detail, this means that $p\forces(\exists N)(\forall n\geq N)\;\check f(n)\leq\dot h(n)$. By Lemma~\ref{lem:forcing-exists}, there exists $i$ and $N$ such that $p_i\forces (\forall n\geq\check N)\;\check f(n)\leq\dot h(n)$. 
-
-  Finally, letting $n\geq N,i$ and $m=f(n)$, we have $q_i\forces\check m\leq\dot h(\check n)$. It follows that $m\leq m_{i,n}$, and by definition of $f$ we also have $m_{i,n}<f(n)$. This is a contradiction!
+  For this, if we have $f\leq^*h$ then we can find $N$ such that for all $n\geq N$ we have $f(n)\leq h(n)$. By the forcing theorem, we can find $p_i\in\PP$ such that $p_i\forces(\forall n\geq\check N)\;\check f(n)\leq\dot h(n)$. But now if we choose any $n\geq N,i$, then by definition of $h_i$ we have $f(n)\leq h_i(n)$, and by definition of $f$ we have $h_i(n)<f(n)$. This is a contradiction!
 \end{proof}
 
 In order to use the above result about $\Fn(\omega,\omega)$ to establish properties of the full forcing $\Fn(\kappa,\omega)$, we need the following fact which essentially says that the full forcing can be factored into smaller pieces.
@@ -2174,14 +2173,17 @@ In order to use the above result about $\Fn(\omega,\omega)$ to establish propert
 \begin{proof}
   It is straightforward to verify that $G_1$ and $G_2$ are filters. Moreover, since $G_1$ and $G_2$ are defined from $G$, and $G$ can be recovered from $G_1$ and $G_2$, it follows easily that $V[G]=V[G_1][G_2]$.
 
-  To show that $G_1$ is $V$-generic for $\PP_1$, \ldots
+  To show that $G_1$ is $V$-generic for $\PP_1$, let $D\in V$ be a dense subset of $\PP_1$. Letting
+  \[D'=\set{p\cup q\mid p\in\PP_1,\;q\in\PP_2,\text{ and }p\in D}\text{,}
+  \]
+  it is trivial to see that $D'$ is dense in $\PP$. Since $G$ is $V$-generic for $\PP$, there exists an element $p\cup q\in G\cap D'$. Then $p\in D$, and since $G$ is closed upwards, we have $p\in G$ too. Thus $G\cap D\neq\emptyset$, as desired.
 
-  To show that $G_2$ is $V[G_1]$-generic for $\PP_2$ takes a little more work. For this, let $D\in V[G_1]$ be a dense subset of $\PP_2$, and let $\dot D$ be a $\PP_1$-name for $D$. Using the forcing lemma, we can find $p_1\in G_1$ such that $p_1\forces$ ``$\dot D$ is dense in $\check\PP_2$''. Let
+  To show that $G_2$ is $V[G_1]$-generic for $\PP_2$ is analogous but slightly trickier. For this, let $D\in V[G_1]$ be a dense subset of $\PP_2$, and let $\dot D$ be a $\PP_1$-name for $D$. Using the forcing theorem, we can find $p_1\in G_1$ such that $p_1\forces$ ``$\dot D$ is dense in $\check\PP_2$''. Let
   \[D'=\set{p\cup q\mid p\in\PP_1,\;q\in\PP_2,\text{ and either $p\perp p_1$ or else $p\leq p_1$ and $p\forces\check q\in\dot D$}}
   \]
-  We claim that $D'$ is dense in $\PP$. Admitting this for the moment, it follows that there exists $r=p\cup q\in G\cap D'$. Then $q\in G_2$, and by definition of $D'$ we have that $q\in D$, which establishes the desired result that $G_2\cap D\neq\emptyset$.
+  We claim that $D'$ is dense in $\PP$. Indeed, let $p\cup q$ be an arbitrary element of $\PP$, where $p\in\PP_1$ and $q\in\PP_2$. If $p\perp p_1$ then we are done, so suppose instead that $p\leq p_1$. Since $D$ is dense in $\PP_2$, there exists $q'\leq q$ such that $q'\in D$. Then by the forcing theorem there exists $p'\in G_1$ such that $p'\forces\check q'\in\dot D$. Letting $p''\leq p,p'$, we have that $p''\cup q'\in D'$, as desired.
 
-  To show that $D'$ is dense, let $p\cup q$ be an arbitrary element of $\PP$, where $p\in\PP_1$ and $q\in\PP_2$. If $p\perp p_1$ then we are done, so suppose instead that $p\leq p_1$. Since $D$ is dense in $\PP_2$, there exists $q'\leq q$ such that $q'\in D$. Then by the forcing theorem there exists $p'\in G_1$ such that $p'\forces\check q'\in\dot D$. Letting $p''\leq p,p'$, we have that $p''\cup q'\in D'$, as desired.
+  Now, since $G$ is $V$-generic for $\PP$, there exists an element $p\cup q\in G\cap D'$. Then $q\in G_2$, and by definition of $D'$ we have that $q\in D$ too. Thus again we have $G_2\cap D\neq\emptyset$, as desired.
 \end{proof}
 
 We are now ready to state the effect of forcing with $\Fn(\kappa,\omega)$ on the cardinals $\mathfrak b$ and $\mathfrak d$.
