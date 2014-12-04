@@ -60,6 +60,7 @@
 \newtheorem{rem}[thm]{Remark}
 \newtheorem{example}[thm]{Example}
 \newtheorem*{notes}{Notes and further reading}
+%\numberwithin{figure}{section}
 
 \begin{document}
 
@@ -1156,7 +1157,7 @@ Beyond these two examples, we see that each arrow in Cicho\'n's diagram (Theorem
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Category and matching}
+\section{Category and difference sets}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In this section we will prove two of the four inequalities remaining in Theorem~\ref{thm:cichon}. We prove $\mathfrak d\leq\cof(\Meager)$ and $\add(\Meager)\leq\mathfrak b$ (actually thanks to duality only one proof is needed). Recall that $\mathfrak d$ is the dominating number of the $\leq^*$ relation on $\omega^\omega$, while $\cof(\Meager)$ is the dominating number of the $\subset$ relation on meager sets. Although the two relations don't seem directly comparable, we now introduce some technology to understand their relationship more clearly. An \emph{interval partition} is a partition $P=(I_n)$ of $\omega$ into finite nonempty intervals $I_n$. We always assume that the $I_n$ is adjacent to $I_{n+1}$, and hence also that they are enumerated in increasing order.
@@ -1194,7 +1195,7 @@ The result implies that the collection of sets $\Diff_P(x)$ forms a basis for th
   If $P=(I_n)$ and $Q=(J_m)$ are interval partitions, then we have $\Diff_P(x)\subset\Diff_Q(y)$ if and only if for all but finitely many $J_m$ there exists $I_n$ such that $I_n\subset J_m$ and $x\restriction I_n=y\restriction I_n$.
 \end{prop}
 
-The proof is elementary (assuming I have not made a typo) and we leave it for Exercise~\ref{exerc:engulf}. Proposition~\ref{prop:engulf} provides characterization of $\cof(\Meager)$ as the dominating number of a simple combinatorial relation on pairs $(P,x)$. The cardinals $\mathfrak b$ and $\mathfrak d$ can be characterized by a similar combinatorial relation just on interval partitions. First, if $P=(I_n)$ and $Q=(J_m)$ are interval partitions, we write $P\prec Q$ if for all but finitely many $J_m$ there exists $I_m$ such that $I_n\subset J_m$. 
+The proof is elementary (though slightly technical), and we leave it for Exercise~\ref{exerc:engulf}. Proposition~\ref{prop:engulf} provides characterization of $\cof(\Meager)$ as the dominating number of a simple combinatorial relation on pairs $(P,x)$. The cardinals $\mathfrak b$ and $\mathfrak d$ can be characterized by a similar combinatorial relation just on interval partitions. First, if $P=(I_n)$ and $Q=(J_m)$ are interval partitions, we write $P\prec Q$ if for all but finitely many $J_m$ there exists $I_m$ such that $I_n\subset J_m$. 
 
 \begin{prop}
   There is a morphism from $\prec$ to $\leq^*$, and there is a morphism from $\leq^*$ to $\prec$. Hence $\mathfrak d$ is equal to the dominating number of the $\prec$ relation on interval partitions, and $\mathfrak b$ is the dominating number of the $\not\succ$ relation on interval partitions.
@@ -2145,8 +2146,8 @@ Before we study the effect of the $\kappa$-sized Cohen forcing $\Fn(\kappa,\omeg
   \label{lem:cohen-dominating}
   Let $\PP=\Fn(\omega,\omega)$, and let $G$ be a $V$-generic filter. Then we have:
   \begin{itemize}
-  \item If $g=\bigcup G$, then $g$ is not dominated by any element of $V$.
-  \item If $h\in V[G]$, then $h$ does not dominate every element of $V$.
+  \item If $g=\bigcup G$, then $g$ is not $\leq^*$-dominated by any element of $\omega^\omega\cap V$.
+  \item If $h\in V[G]$, then not every element of $\omega^\omega\cap V$ is $\leq^*$-dominated by $h$.
   \end{itemize}
 \end{lem}
 
@@ -2232,8 +2233,43 @@ We are now ready to state the effect of forcing with $\Fn(\kappa,\omega)$ on the
 
 \begin{thm}
   \label{thm:cohen-cichon}
-  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal with $\kappa^{\aleph_0}=\kappa$. Then forcing with $\Fn(\kappa,\omega)$ results in all cardinals in the right half of Cicho\'n's diagram equal to $\kappa$, and all cardinals in the left half of Cicho\'n's diagram equal to $\aleph_1$.
+  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal with $\kappa^{\aleph_0}=\kappa$. Then forcing with $\Fn(\kappa,\omega)$ results in all cardinals in the left half of Cicho\'n's diagram equal to $\aleph_1$, and all cardinals in the right half of Cicho\'n's diagram equal to $\mathfrak c=\kappa$.
 \end{thm}
+
+\begin{figure}[h]
+  \begin{tikzpicture}[->]
+    \node (addn) [right=of a1] {$\aleph_1$};
+    \node (covn) [above=1.85 of addn] {$\aleph_1$} edge (addn);
+    \node (addm) [right=of addn] {$\aleph_1$} edge (addn);
+    \node (b) [above=.65 of addm] {$\aleph_1$} edge (addm);
+    \node (nonm) [above=1.85 of addm] {$\aleph_1$} edge (covn) edge (b);
+    \node (covm) [right=of addm] {$\mathfrak c$} edge (addm);
+    \node (d) [above=.8 of covm] {$\mathfrak c$} edge (b) edge (covm);
+    \node (cofm) [above=2 of covm] {$\mathfrak c$} edge (nonm) edge (d);
+    \node (nonn) [right=of covm] {$\mathfrak c$} edge (covm);
+    \node (cofn) [above=2 of nonn]{$\mathfrak c$} edge (cofm) edge (nonn);
+  \end{tikzpicture}
+  \caption{Values of the cardinal characteristics in Cicho\'n's diagram after Cohen forcing. Refer to Figure~\ref{fig:cichon} for the template of cardinal characteristics.}
+\end{figure}
+
+We have the following analogs of the statements in Lemma~\ref{lem:cohen-dominating}. For the statement we need our combinatorial characterization of meager sets by difference sets. Recall that if $P$ is a partition of $\omega$ into intervals and $x\in\omega^\omega$, then $\Diff_P(x)$ denotes the set of all $y$ which differ from $x$ on almost every interval of $P$. Recall also that a set $A$ is meager if and only if $A$ is contained in some set of the form $\Diff_P(x)$.
+
+\begin{lem}
+  \label{lem:cohen-meager}
+  Let $\PP=\Fn(\omega,\omega)$, and let $G$ be a $V$-generic filter. Then we have:
+  \begin{itemize}
+  \item If $g=\bigcup G$, then $g$ does not lie in any set of the  form $\Diff_P(x)$ where $P,x\in V$. In other words, the generic $g$ does not lie in in any meager set coded in $V$.
+  \item If $Q,y\in V[G]$, then not every element of $\omega^\omega\cap V$ lies in $\Diff_Q(y)$. In other words, the Baire space of the ground model does not become meager after the forcing.
+  \end{itemize}
+\end{lem}
+
+\begin{proof}
+  
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:cohen-cichon}]
+  
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Random forcing}
