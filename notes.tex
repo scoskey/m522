@@ -2138,9 +2138,9 @@ We now return to the argument of the previous section. Recall that we showed for
 \section{Cohen forcing and the domination order}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In the previous sections we studied the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the continuum. Next, we study the effect of the forcing with $\Fn(\kappa,\omega)$ on the value of the other cardinal characteristics in Cicho\'n's diagram. In this section, we study only the effect of Cohen forcing on $\mathfrak b$ and $\mathfrak d$.
+In the previous sections we studied the effect of the forcing $\Fn(\kappa,\omega)$ on the value of the continuum $\mathfrak c$. For the next two sections, we generalize our previous results by exploring the effect of forcing with $\Fn(\kappa,\omega)$ on the values of the other cardinal characteristics in Cicho\'n's diagram. In this section, we consider just the cardinals associtaed with the domination order $\leq^*$, namely $\mathfrak b$ and $\mathfrak d$.
 
-Before we study the effect of the $\kappa$-sized Cohen forcing $\Fn(\kappa,\omega)$, we first examine the effect of the countable Cohen forcing $\Fn(\omega,\omega)$. The next result showcases the two-sided role that Cohen forcing plays with respect to the domination order $\leq^*$.
+Before we study the effect of the $\kappa$-sized Cohen forcing $\Fn(\kappa,\omega)$, we first examine the effect of the countable Cohen forcing $\Fn(\omega,\omega)$. The key result is the following lemma, which showcases the narrow window that Cohen forcing occupies with respect to the domination order $\leq^*$.
 
 \begin{lem}
   \label{lem:cohen-dominating}
@@ -2190,12 +2190,12 @@ In order to use the above result about $\Fn(\omega,\omega)$ to establish propert
 We are now ready to state the effect of forcing with $\Fn(\kappa,\omega)$ on the cardinals $\mathfrak b$ and $\mathfrak d$.
 
 \begin{thm}
-  \label{thm:cohen-b}
+  \label{thm:cohen-bd}
   Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal such that $\kappa^{\aleph_0}=\kappa$. Let $\PP=\Fn(\kappa,\omega)$ and $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak b=\aleph_1$ and $\mathfrak d=\kappa$.
 \end{thm}
 
-\begin{proof}[Proof of Theorem~\ref{thm:cohen-b}]
-  We first show that $\mathfrak d=\kappa$. Recall that we already know that $\mathfrak d\leq\mathfrak c=\kappa$. Now suppose, towards a contradiction, that in $V[G]$ we have $\mathfrak d<\kappa$. Then in $V[G]$ there exists  a dominating family $\mathcal F$ such that $|\mathcal F|<\kappa$. We claim that there is some $I\subset\kappa$ such that $|I|<\kappa$ and $\mathcal F$ is added by the forcing $\Fn(I,\omega)$.
+\begin{proof}
+  We first show that $\mathfrak d=\kappa$. Recall that we already know that $\mathfrak d\leq\mathfrak c=\kappa$. Now suppose, towards a contradiction, that $\mathfrak d<\kappa$. That is, in $V[G]$ there exists a dominating family $\mathcal F$ such that $|\mathcal F|<\kappa$. We claim that there is some $I\subset\kappa$ such that $|I|<\kappa$ and $\mathcal F$ is added by the forcing $\Fn(I,\omega)$.
 
   To establish the claim, we first code $\mathcal F$ as a subset of $\lambda\times\omega\times\omega$ by enumerating $\mathcal F=\set{f_\alpha\mid\beta<\lambda}$ and letting
   \[S_{\mathcal F}=\set{(\beta,n,m)\mid f_\beta(n)=m}
@@ -2210,10 +2210,6 @@ We are now ready to state the effect of forcing with $\Fn(\kappa,\omega)$ on the
 
   Now, since $\PP_1\cong\Fn(\omega,\omega)$, by Lemma~\ref{lem:cohen-dominating} we have that $h$ does not dominate the Baire space of $V$. This is a contradiction!
 \end{proof}
-
-\begin{rem}
-  The second claim of the theorem improves the result of Theorem~\ref{thm:ch-exact}, which showed that $\Fn(\kappa,\omega)$ enlarges $\mathfrak c$ d to $\kappa$.
-\end{rem}
 
 \begin{exerc}
   \label{exerc:cohen-nondom}
@@ -2231,9 +2227,11 @@ We are now ready to state the effect of forcing with $\Fn(\kappa,\omega)$ on the
 \section{Cohen forcing and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+In the previous section we began to study the effect of Cohen forcing on the values of the cardinals in Cicho\'n's diagram. In this section we complete this study by establishing the following result.
+
 \begin{thm}
   \label{thm:cohen-cichon}
-  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal with $\kappa^{\aleph_0}=\kappa$. Then forcing with $\Fn(\kappa,\omega)$ results in all cardinals in the left half of Cicho\'n's diagram equal to $\aleph_1$, and all cardinals in the right half of Cicho\'n's diagram equal to $\mathfrak c=\kappa$.
+  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal with $\kappa^{\aleph_0}=\kappa$. Then forcing with $\Fn(\kappa,\omega)$ results in all cardinals in the left half of Cicho\'n's diagram equal to $\aleph_1$, and all cardinals in the right half of Cicho\'n's diagram equal to $\mathfrak c=\kappa$ (see Figure~\ref{fig:cichon-cohen}).
 \end{thm}
 
 \begin{figure}[h]
@@ -2249,27 +2247,55 @@ We are now ready to state the effect of forcing with $\Fn(\kappa,\omega)$ on the
     \node (nonn) [right=of covm] {$\mathfrak c$} edge (covm);
     \node (cofn) [above=2 of nonn]{$\mathfrak c$} edge (cofm) edge (nonn);
   \end{tikzpicture}
-  \caption{Values of the cardinal characteristics in Cicho\'n's diagram after Cohen forcing. Refer to Figure~\ref{fig:cichon} for the template of cardinal characteristics.}
+  \caption{Values of the cardinal characteristics in Cicho\'n's diagram after Cohen forcing. Refer to Figure~\ref{fig:cichon} for the template of cardinal characteristics.\label{fig:cichon-cohen}}
 \end{figure}
 
-We have the following analogs of the statements in Lemma~\ref{lem:cohen-dominating}. For the statement we need our combinatorial characterization of meager sets by difference sets. Recall that if $P$ is a partition of $\omega$ into intervals and $x\in\omega^\omega$, then $\Diff_P(x)$ denotes the set of all $y$ which differ from $x$ on almost every interval of $P$. Recall also that a set $A$ is meager if and only if $A$ is contained in some set of the form $\Diff_P(x)$.
+The key to the proof of this theorem is to establish the analogs of the statements in Lemma~\ref{lem:cohen-dominating}. For the statements we need our combinatorial characterization of meager sets by difference sets. Recall from Proposition~\label{prop:meager-diff} that a subset $A\subset\omega^\omega$ is meager if and only if $A$ is contained in some set of the form $\Diff_P(x)$. Here, $P$ is a partition of $\omega$ into intervals, $x\in\omega^\omega$, and $\Diff_P(x)$ denotes the set of all $y$ which differ from $x$ on almost every interval of $P$.
 
 \begin{lem}
   \label{lem:cohen-meager}
   Let $\PP=\Fn(\omega,\omega)$, and let $G$ be a $V$-generic filter. Then we have:
   \begin{itemize}
-  \item If $g=\bigcup G$, then $g$ does not lie in any set of the  form $\Diff_P(x)$ where $P,x\in V$. In other words, the generic $g$ does not lie in in any meager set coded in $V$.
-  \item If $Q,y\in V[G]$, then not every element of $\omega^\omega\cap V$ lies in $\Diff_Q(y)$. In other words, the Baire space of the ground model does not become meager after the forcing.
+  \item If $g=\bigcup G$, then $g$ does not lie in any set of the form $\Diff_P(x)$ where $P,x\in V$.
+  \item If $Q,y\in V[G]$, then not every element of $\omega^\omega\cap V$ lies in $\Diff_Q(y)$.
   \end{itemize}
 \end{lem}
 
+In other words, the first statement says that the generic $g$ does not lie in in any meager set coded in $V$, and the second statement says that the Baire space of the ground model remains nonmeager after the forcing.
+
 \begin{proof}
-  
+  The proofs of the two statements can be viewed as slight improvements to the arguments of Lemma~\ref{lem:cohen-dominating}. For the first statement, let $P=(I_n)$ be an interval partition and $x\in\omega^\omega$, with $P,x\in V$. For each $N\in\omega$ let
+  \[D_N=\set{s\in\PP\mid(\exists n\geq N)\;s\restriction I_n=x\restriction I_n}\text{.}
+  \]
+  Then it is easy to see that $D_N$ is dense: given $s\in\PP$ one can choose $n$ large enough so that $I_n\cap\dom(s)=\emptyset$, and then extend $s$ to $I_n$ as required. It follows that $g$ has the property that for all $N$ there exists $n\geq N$ such that $g\restriction I_n=x\restriction I_n$. This means precisely that $g$ does \emph{not} lie in $\Diff_P(x)$.
+
+  For the second statement, let $Q=(J_n)$ be an interval partition and $y\in\omega^\omega$, with both $Q,y\in V[G]$. Let $\dot Q$ and $\dot y$ be $\PP$-names for $Q$ and $y$ respectively. We will recursively construct an element $x\in\omega^\omega\cap V$ which does not lie in $\Diff_Q(y)$.
+
+  To do this, first enumerate the set of pairs $\PP\times\omega$ as $\set{(p_i,N_i)\mid i\in\omega}$. We will construct $x$ as the union of approximations $x_i\in\omega^{<\omega}$ as follows. Assuming $x_{i-1}$ has already been defined, choose $n>N_i$ large enough that $J_n>\dom(x_{i-1})$. Using Lemma~\ref{lem:forcing-exists} we can find $q\leq p_i$ and a fixed sequence $s$ such that $q\forces \dot y\restriction J_n=\check s$. We now define $x_i$ to be an extension of $x_{i-1}$ such that $x_i\restriction J_n=s$ too.
+
+  Finally, we let $x=\bigcup x_i$ and claim that $x\notin\Diff_Q(y)$. To see this, suppose towards a contradiction that $x\in\Diff_Q(y)$. Then by the forcing theorem we could find $p\in\PP$ and $N\in\omega$ such that $p\forces(\forall n\geq N)\;x\restriction J_n\neq y\restriction J_n$. But now if $i$ is such that $(p_i,N_i)=(p,N)$, then by construction there exists $n\geq N$ and $q\leq p$ such that $q\forces\dot y\restriction J_n=\check x\restriction J_n$. This is a contradiction, since $q$ is an extension of $p$ that forces something contrary to $p$!
 \end{proof}
 
+% can we rewrite the proof of the previous section in this same way, with a recursion on pairs?
+
+We are now ready to complete the proof of the main result of the section.
+
 \begin{proof}[Proof of Theorem~\ref{thm:cohen-cichon}]
-  
+  Referring to the ZFC-provable inequalities of Figure~\ref{fig:cichon}, to establish this result it suffices to prove that just two equalities in $V[G]$: $\non(\Meager)=\aleph_1$ and $\cov(\Meager)=\kappa$. Once again, the proofs of these two statements are similar to the arguments of Theorem~\ref{thm:cohen-bd}.
+
+  We first show that $\cov(\Meager)=\kappa$. So suppose, towards a contradiction, that $\cov(\Meager)<\kappa$. That is, in $V[G]$ there exists a family $\mathcal F$ of meager subsets of $\omega^\omega$ such that $|\mathcal F|<\kappa$ and $\bigcup F=\omega^\omega$.  Note that we can suppose without loss of generality that every element of $\mathcal F$ is of the form $\Diff_P(x)$.
+
+  We again claim that there is some $I\subset\kappa$ such that $|I|<\kappa$ and $\mathcal F$ is added by the forcing $\Fn(I,\omega)$. To see this, observe that an interval partition can be coded by its sequence of endpoints, and hence $\mathcal F$ can be coded as a subset of $\lambda\times\omega^4$. Thus we can use a nice name argument as in the proof of Theorem~\ref{thm:cohen-bd} to find $I$ as required.
+
+  Now let $\PP_1=\Fn(I,\omega)$, $G_1=G\cap\PP_1$, $\PP_2=\Fn(\kappa\smallsetminus I,\omega)$, and $G_2=G\cap\PP_2$. Then the covering family $\mathcal F$ lies in $V[G_1]$. But now by Lemma~\ref{lem:cohen-meager}, $g_2=\bigcup G_2$ does not lie in any set of the form $\Diff_P(x)$ of $V[G_1]$, a contradiction.
+
+  To show that $\non(\Meager)=\aleph_1$, it suffices to show that $\omega^\omega\cap V$ itself remains nonmeager in $V[G]$. So suppose to the contrary that $\omega^\omega\cap V$ is meager in $V[G]$. Then there exist some $Q,y\in V[G]$ such that $\omega^\omega\cap V\subset\Diff_Q(y)$.
+
+  Using a nice name argument, we can as usual suppose that the countable objects $Q$ and $y$ are added by a countable fragment of the forcing $\PP_1=\Fn(I,\omega)$. But now $\omega^\omega\cap V$ is becomes meager after forcing with $\PP_1$, contradicting Lemma~\ref{lem:cohen-meager}.
 \end{proof}
+
+% blass section 11.3, kunen 5.2
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Random forcing}
