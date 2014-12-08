@@ -29,6 +29,7 @@
 \newcommand{\PP}{\mathbb P}
 \newcommand{\QQ}{\mathbb Q}
 \newcommand{\RR}{\mathbb R}
+\newcommand{\BB}{\mathbb B}
 \newcommand{\Null}{\mathcal N}
 \newcommand{\Meager}{\mathcal M}
 \newcommand{\Ksigma}{\mathcal K_\sigma}
@@ -45,6 +46,7 @@
 \DeclareMathOperator{\Diff}{Diff}
 \DeclareMathOperator{\Con}{Con}
 \DeclareMathOperator{\Fn}{Fn}
+\DeclareMathOperator{\Nonnull}{Nonnull}
 
 \theoremstyle{definition}
 \newtheorem{exerc}{Exercise}[section]
@@ -336,14 +338,16 @@ This is a contradiction because an infinite sum of a single constant value $m(A)
 
 The contradiction described above is typically resolved not by dropping one of the conditions (a)--(c), but rather by dropping the requirement that $m$ is defined on \emph{all} sets of real numbers. The justification for this decision is that sets like the $A$ constructed above should be regarded as pathological, and we don't usually need to measure them in applications.
 
-Let us na\"ively begin to construct a measure $m$ that is at least defined on reasonable sets. First, condition (a) implies we should let $m(I)=\ell(I)$ for any interval $I$. Next, if $A=\bigcup I_n$ is a union of disjoint intervals $I_n$, then condition (c) implies we should let $m(A)=\sum\ell(I_n)$. Third, if $A=\bigcap A_n$ is an intersection of sets where $m$ is defined and finite, then it is natural to define $m(A)=\inf m(A_n)$. We now observe that all three of the above simple cases fall under the following formula:
-\[m(A)=\inf\set{\sum\ell(I_n)\mid A\subset\bigcup I_n}
-\]
+Let us na\"ively begin to construct a measure $m$ that is at least defined on reasonable sets. First, condition (a) implies we should let $m(I)=\ell(I)$ for any interval $I$. Next, if $A=\bigcup I_n$ is a union of disjoint intervals $I_n$, then condition (c) implies we should let $m(A)=\sum\ell(I_n)$. Third, if $A=\bigcap A_n$ is an intersection of sets where $m$ is defined and finite, then it is natural to define $m(A)=\inf m(A_n)$. We now observe that all three of the above simple cases fit into the rule given by the following key formula:
+\begin{equation}
+  \label{eq:measure}
+  m(A)=\inf\set{\sum\ell(I_n)\mid A\subset\bigcup I_n}
+\end{equation}
 The next result states that this rule for defining $m$ actually works for all sets that are reasonably constructible. Recall that a \emph{Borel set} is one that can be constructed by beginning with the intervals and then executing countably many countable unions or intersections.
 
 \begin{thm}[Carath\'eodory's extension theorem]
   \label{thm:caratheodory}
-  The measure $m$ defined above satisfies conditions (a) and (b), and additionally satisfies condition (c) when applied to Borel sets.
+  The measure $m$ defined in Equation~\eqref{eq:measure} satisfies conditions (a) and (b), and additionally satisfies condition (c) when applied to Borel sets.
 \end{thm}
 
 \begin{proof}[Proof of conditions (a) and (b) only]
@@ -2298,7 +2302,7 @@ We are now ready to complete the proof of the main result of the section.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Random forcing}
+\section{Random forcing and the domination order}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \begin{defn}
@@ -2313,26 +2317,51 @@ We are now ready to complete the proof of the main result of the section.
 %   The Cohen forcing partial order $\mathbb C$ is forcing equivalent to the partial order $2^{<\omega}$.
 % \end{thm}
 
+The random forcing partial order can be defined on any of the spaces $\RR$, $2^\omega$, or $\omega^\omega$, but for technical reasons it will be most convenient to define it on $2^\omega$. Recall that the null ideal $\Null$ on $2^\omega$ is defined by analogy with Definition~\ref{defn:null} with the length $\ell$ replaced by the ``coin-tossing'' measure. That is, $A\subset2^\omega$ is \emph{null} if for all $\epsilon>0$ there exists a sequence of basic open sets $(V_{s_n})$ such that $A\subset\bigcup V_{s_n}$ and $\sum2^{-|s_n|}<\epsilon$.
+
 \begin{defn}
-  The partial order for \emph{random forcing} $\mathbb B$ consists of all equivalence classes of nonnull subsets of $2^\omega$, where sets $A,B$ are equivalent if they differ by a null set. The elements of $\mathbb B$ are ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is null.
+  The \emph{random forcing} partial order $\Nonnull(2^\omega)$ consists of all equivalence classes of nonnull (Borel) subsets of $2^\omega$, where two sets $A$ and $B$ are equivalent if they differ by a null set. The elements of $\Nonnull(2^\omega)$ are ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is null.
 \end{defn}
 
 \begin{lem}
-  The random partial order $\mathbb B$ is ccc.
+  \label{lem:random-ccc}
+  The random forcing partial order $\Nonnull(2^\omega)$ is ccc.
 \end{lem}
 
 \begin{proof}
-  In $\mathbb B$, two elements $A,B$ are incompatible if and only if their intersection is null. Thus it suffices to show that any family $\mathcal F$ of pairwise disjoint subsets of $2^\omega$ is countable. Indeed, since $m(2^\omega)=1$, for each $n$ there can be just finitely many elements of $\mathcal F$ of measure $\geq1/n$. It follows that there can be just countably many elements of $\mathcal F$.
+  In $\BB$, two elements $[A],[B]$ are incompatible if and only if $A\cap B$ is null. Thus it suffices to show that if $\mathcal F$ is a family pairwise disjoint, nonnull subsets of $2^\omega$, then $\mathcal F$ is countable. For this, since the full space $2^\omega$ has measure $1$, for each $n$ there can be just finitely many elements of $\mathcal F$ of measure $\geq1/n$. It follows that there can be just countably many elements of $\mathcal F$ in total.
 \end{proof}
 
 % differences between cohen and random forcing models
 
+Just as Cohen forcing $\Fn(\omega,\omega)$ has a $\kappa$-sized version $\Fn(\kappa,\omega)$, random forcing has a $\kappa$-length version $\Nonnull(2^\kappa)$.
+
 \begin{defn}
-  For any cardinal $\kappa$, we define the set $\mathbb B_\kappa$ to be the collection of all nonnull subsets of $2^\kappa$, where two such sets are identified if they differ only on a null set. The elements of $\mathbb B_\kappa$ are ordered by $A\leq B$ iff $A\subset B$.
+  For any cardinal $\kappa$, the $\kappa$-length random forcing partial order $\Nonnull(2^\kappa)$ consists of all nonnull subsets of $2^\kappa$, where two such sets are identified if they differ only on a null set. The elements of $\Nonnull(2^\kappa)$ are ordered by $A\leq B$ iff $A\subset B$.
 \end{defn}
 
+Like the $\kappa$-sized Cohen forcing, the $\kappa$-length random forcing is ccc. This time, no delta system lemma is needed; one can simply apply the same reasoning as in the proof of Lemma~\ref{lem:random-ccc}. Also like the $\kappa$-sized Cohen forcing, the $\kappa$-sized random forcing adds $\kappa$ many new elements to Cantor space and therefore pushes the value of the continuum up to $\kappa$.
+
+\begin{thm}
+  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal such that $\kappa^{\aleph_0}=\kappa$. Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak c=\kappa$.
+\end{thm}
+
+\begin{proof}
+  We first show that $\PP$ adds $\kappa$ many distinct elements to $2^\omega$.
+\end{proof}
+
+So far we have seen similar outcomes from the Cohen and random forcing partial orders. But the following result shows that the two forcing extensions are not the same.
+
+\begin{thm}
+  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal. Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak b=\mathfrak d=\aleph_1$.
+\end{thm}
+
 \begin{lem}
-  The partial order $\mathbb B_\kappa$ is ccc.
+
 \end{lem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Random forcing and Cicho\'n's diagram}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
