@@ -978,18 +978,18 @@ Although this result shows that category and measure are very different in terms
 \end{thm}
 
 \begin{figure}[h]
-  \begin{tikzpicture}[->]
+  \begin{tikzpicture}[every node/.style={minimum size=20pt},->]
     \node (a1) {$\aleph_1$};
     \node (addn) [right=of a1] {$\add(\Null)$} edge (a1);
     \node (covn) [above=2 of addn] {$\cov(\Null)$} edge (addn);
     \node (addm) [right=of addn] {$\add(\Meager)$} edge (addn);
-    \node (b) [above=.8 of addm] {$\mathfrak b$} edge (addm);
+    \node (b) [above=.7 of addm] {$\mathfrak b$} edge (addm);
     \node (nonm) [above=2 of addm] {$\non(\Meager)$} edge (covn) edge (b);
     \node (covm) [right=of addm] {$\cov(\Meager)$} edge (addm);
-    \node (d) [above=.8 of covm] {$\mathfrak d$} edge (b) edge (covm);
+    \node (d) [above=.7 of covm] {$\mathfrak d$} edge (b) edge (covm);
     \node (cofm) [above=2 of covm] {$\cof(\Meager)$} edge (nonm) edge (d);
     \node (nonn) [right=of covm] {$\non(\Null)$} edge (covm);
-    \node (cofn) [above=2 of nonn]{$\cof(\Null)$} edge (cofm) edge (nonn);
+    \node (cofn) [above=2 of nonn] {$\cof(\Null)$} edge (cofm) edge (nonn);
     \node (c) [right=of cofn] {$\mathfrak c$} edge (cofn);
   \end{tikzpicture}
   \caption{Cicho\'n's diagram of cardinal characteristics. Here as usual the arrow $\leftarrow$ represents the inequality $\leq$.\label{fig:cichon}}
@@ -2242,17 +2242,17 @@ In the previous section we began to study the effect of Cohen forcing on the val
 \end{thm}
 
 \begin{figure}[h]
-  \begin{tikzpicture}[->]
+  \begin{tikzpicture}[every node/.style={minimum size=20pt},->]
     \node (addn) [right=of a1] {$\aleph_1$};
-    \node (covn) [above=1.85 of addn] {$\aleph_1$} edge (addn);
+    \node (covn) [above=2 of addn] {$\aleph_1$} edge (addn);
     \node (addm) [right=of addn] {$\aleph_1$} edge (addn);
-    \node (b) [above=.65 of addm] {$\aleph_1$} edge (addm);
-    \node (nonm) [above=1.85 of addm] {$\aleph_1$} edge (covn) edge (b);
+    \node (b) [above=.7 of addm] {$\aleph_1$} edge (addm);
+    \node (nonm) [above=2 of addm] {$\aleph_1$} edge (covn) edge (b);
     \node (covm) [right=of addm] {$\mathfrak c$} edge (addm);
-    \node (d) [above=.8 of covm] {$\mathfrak c$} edge (b) edge (covm);
+    \node (d) [above=.7 of covm] {$\mathfrak c$} edge (b) edge (covm);
     \node (cofm) [above=2 of covm] {$\mathfrak c$} edge (nonm) edge (d);
     \node (nonn) [right=of covm] {$\mathfrak c$} edge (covm);
-    \node (cofn) [above=2 of nonn]{$\mathfrak c$} edge (cofm) edge (nonn);
+    \node (cofn) [above=2 of nonn] {$\mathfrak c$} edge (cofm) edge (nonn);
   \end{tikzpicture}
   \caption{Values of the cardinal characteristics in Cicho\'n's diagram after Cohen forcing. Refer to Figure~\ref{fig:cichon} for the template of cardinal characteristics.\label{fig:cichon-cohen}}
 \end{figure}
@@ -2328,9 +2328,7 @@ The random forcing partial order can be defined on any of the spaces $\RR$, $2^\
   The \emph{random forcing} partial order $\Nonnull(2^\omega)$ consists of equivalence classes $[A]$ of nonnull (Borel) subsets $A\subset2^\omega$. Here, two subsets $A$ and $B$ are called \emph{equivalent} iff the symmetric difference $A\triangle B$ is null. The elements of $\Nonnull(2^\omega)$ are ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is null.
 \end{defn}
 
-\begin{rem}
-  We could as well consider the partial order consisting of equivalence classes of \emph{nonmeager} subsets of $2^\omega$, where sets are equivalent if their symmetric difference is \emph{meager}. This partial order is forcing equivalent to Cohen forcing $\Fn(\omega,\omega)$!
-\end{rem}
+The random forcing partial order is also a \emph{Boolean algebra}, which means that we can take pairwise joins (unions), meets (intersections), and complements. Although we will not develop the theory here, it turns out that any partial order is forcing equivalent to a Boolean algebra. For example, Cohen forcing $\Fn(\omega,2)$ is equivalent to the partial order consisting of equivalence classes of \emph{nonmeager} subsets of $2^\omega$, where sets are equivalent if their symmetric difference is \emph{meager}.
 
 Like Cohen forcing, if $G$ is a $V$-generic filter for random forcing then there is a corresponding generic element $g\in2^\omega$. To define the value of $g(n)$ we let:
 \[D_n=\set{[A]\mid A\subset\{x:x(n)=0\}\text{ or }A\subset\{x:x(n)=1\}}\text{.}
@@ -2346,11 +2344,12 @@ Like the $\kappa$-sized Cohen forcing, the $\kappa$-sized random forcing adds $\
 \end{thm}
 
 \begin{proof}
-  We first claim that $\PP$ is ccc, and hence $\kappa$ remains a cardinal in $V[G]$. To see this, first note that two elements $[A],[B]$ of $\Nonnull(2^\kappa)$ are incompatible if and only if $A\cap B$ is null. Thus it suffices to show that if $\mathcal F$ is a family pairwise disjoint, nonnull subsets of $2^\kappa$, then $\mathcal F$ is countable. For this, since the full space $2^\kappa$ has measure $1$, for each $n$ there can be just finitely many elements of $\mathcal F$ of measure $\geq1/n$. It follows that there can be just countably many elements of $\mathcal F$ in total.
+  We first claim that $\PP$ is ccc, and hence $\kappa$ remains a cardinal in $V[G]$. To see this, first note that two elements $[A],[B]$ of $\Nonnull(2^\kappa)$ are incompatible if and only if $A\cap B$ is null. Thus it suffices to show that if $\mathcal F$ is a family pairwise disjoint, nonnull subsets of $2^\kappa$, then $\mathcal F$ is countable. For this, since the full space $2^\kappa$ has measure $1$, for each $n$ there can be just finitely many elements of $\mathcal F$ of measure $\geq1/n$. It follows that there can be just countably many elements of $\mathcal F$ in total, and so $\PP$ is ccc.
 
-  We next claim that $\PP$ adds $\kappa$ many distinct elements to $2^\omega$. 
-
-  \ldots
+  Next, we claim that $\PP$ adds $\kappa$ many distinct elements to $2^\omega$. First, by the definition given above in the case of $\Nonnull(2^\omega)$, we can use $G$ to define a corresponding function $g\in2^\kappa$. We then define a family of $\kappa$ many elements of $2^\omega$ by letting $g_\alpha(n)=g(\alpha+n)$ for every limit ordinal $\alpha<\kappa$. To see that the $g_\alpha$ are pairwise distinct, for any distinct limit ordinals $\alpha,\beta<\kappa$ let
+  \[A_{\alpha,\beta}=\set{x\in2^\omega\mid(\exists n)\;x(\alpha+n)\neq x(\beta+n)}
+  \]
+  Observe that $m(A_{\alpha,\beta})=1$, which implies that $[A]$ is the $\mathbb1$ element of $\PP$ and so $[A]\in G$. Moreover it is clear that $[A]\forces\dot g_\alpha\neq\dot g_\beta$. Thus in $V[G]$ it must be the case that $g_\alpha\neq g_\beta$.
 
   We can now conclude that in $V[G]$ we have $\mathfrak c\geq\kappa$. Finally by the nice name argument of Theorem~\ref{thm:ch-exact}, it is also easy to argue that $\mathfrak c\leq\kappa$.
 \end{proof}
@@ -2362,10 +2361,10 @@ So far we have seen similar outcomes from the Cohen and random forcing partial o
   Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal. Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak b=\mathfrak d=\aleph_1$.
 \end{thm}
 
-Before the proof we need to explore the effect of the countable-length random forcing on the domination order. The following result should be compared with Lemma~\ref{lem:cohen-dominating}.
+For the proof, it suffices to show that the Cantor space of the ground model $2^\omega\cap V$ is an unbounded family in $V[G]$. This is a consequence of the following result, which should be compared with Lemma~\ref{lem:cohen-dominating}.
 
 \begin{lem}
-  Let $\PP=\Nonnull(2^\omega)$ and let $G$ be a $V$-generic filter. Then in $V[G]$ we have that for all $h\in\omega^\omega$ there exists $f\in \omega^\omega\cap V$ such that $h\leq f$.
+  Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$ we have that for all $h\in\omega^\omega$ there exists $f\in \omega^\omega\cap V$ such that $h\leq f$.
 \end{lem}
 
 \begin{proof}
@@ -2383,13 +2382,17 @@ Before the proof we need to explore the effect of the countable-length random fo
   It follows that $m(q)>0$, and this completes the proof.
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:random-bd}]
-
-\end{proof}
+\begin{exerc}
+  Show that the random forcing partial order, together with $[\emptyset]$, forms a complete Boolean algebra. Here, a Boolean algebra $B$ is \emph{complete} if every subset $X\subset B$ has a least upper bound.
+\end{exerc}
 
 \begin{exerc}
-  Show that the random forcing partial order, together with $[\emptyset]$, forms a complete Boolean algebra. [def]
+  Suppose that $g$ is the generic element of $2^\kappa$ added by random forcing. Suppose that for each $n$, $s_n\in2^{<\omega}$ and the sequence $\langle s_n\rangle\in V$. Show that if $\bigcup V_{s_n}$ is conull, then $g\in\bigcup V_{s_n}$.
 \end{exerc}
+
+% kunen, IV.7
+
+% for boolean algebras see Jech
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -2399,7 +2402,7 @@ Before the proof we need to explore the effect of the countable-length random fo
 Just as Cohen reals lie in every comeager set coded in the ground model, random reals lie in every conull set coded in the ground model.  As a consequence, the effect of Cohen forcing on the characteristics of $\Meager$ is analogous to the effect random forcing on the characteristics of $\Null$.
 
 \begin{figure}[h]
-  \begin{tikzpicture}[->]
+  \begin{tikzpicture}[every node/.style={minimum size=20pt},->]
     \node (addn) [right=of a1] {$\aleph_1$};
     \node (covn) [above=2 of addn] {$\mathfrak c$} edge (addn);
     \node (addm) [right=of addn] {$\aleph_1$} edge (addn);
@@ -2414,10 +2417,28 @@ Just as Cohen reals lie in every comeager set coded in the ground model, random 
   \caption{Values of the cardinal characteristics in Cicho\'n's diagram after random forcing. Refer to Figure~\ref{fig:cichon} for the template of cardinal characteristics.\label{fig:cichon-random}}
 \end{figure}
 
+% Kunen, V.4
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Hechler forcing and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{figure}[h]
+  \begin{tikzpicture}[every node/.style={minimum size=20pt},->]
+    \node (addn) [right=of a1] {$\aleph_1$};
+    \node (covn) [above=2 of addn] {$\aleph_1$} edge (addn);
+    \node (addm) [right=of addn] {$\mathfrak c$} edge (addn);
+    \node (b) [above=.7 of addm] {$\mathfrak c$} edge (addm);
+    \node (nonm) [above=2 of addm] {$\mathfrak c$} edge (covn) edge (b);
+    \node (covm) [right=of addm] {$\mathfrak c$} edge (addm);
+    \node (d) [above=.7 of covm] {$\mathfrak c$} edge (b) edge (covm);
+    \node (cofm) [above=2 of covm] {$\mathfrak c$} edge (nonm) edge (d);
+    \node (nonn) [right=of covm] {$\mathfrak c$} edge (covm);
+    \node (cofn) [above=2 of nonn]{$\mathfrak c$} edge (cofm) edge (nonn);
+  \end{tikzpicture}
+  \caption{Values of the cardinal characteristics in Cicho\'n's diagram after Hechler forcing. Refer to Figure~\ref{fig:cichon} for the template of cardinal characteristics.\label{fig:cichon-hechler}}
+\end{figure}
 
 
 \end{document}
