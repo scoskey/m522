@@ -62,7 +62,8 @@
 \newtheorem{rem}[thm]{Remark}
 \newtheorem{example}[thm]{Example}
 \newtheorem*{notes}{Notes and further reading}
-%\numberwithin{figure}{section}
+\numberwithin{figure}{section}
+\renewcommand{\thefigure}{\arabic{section}\Alph{figure}}
 
 \begin{document}
 
@@ -1401,13 +1402,15 @@ In this part, we will assume familiarity with the notions of statement, theory, 
 
 We are interested in the theory \emph{ZFC}, which consists of the standard axioms for set theory, that govern how the $\in$ relation behaves. G\"odel's incompleteness theorem implies that for some sentences $\phi$, the models of ZFC do not all agree about whether $\phi$ is true or false. A \emph{theorem} is a sentence that holds true in every model of ZFC. A sentence is \emph{independent} of ZFC if it holds true in some models, and false in others. One example that we have mentioned already is CH, the sentence which says that $\mathfrak c=\aleph_1$.
 
+% In the following (and rest of the chapter) should we use cantor space instead?
+
 Forcing is a method of adding new sets to a given model $V$ of ZFC, to obtain a larger model $W$ of ZFC. By carefully choosing \emph{how} we add the new sets, we may be able to \emph{force} a given statement to hold true in $W$. For example if $\mathcal F\subset\omega^\omega$, it is possible to add a new element $g\in\omega^\omega$ that is a bound for $\mathcal F$, even if $\mathcal F$ was unbounded to begin with. This is a powerful move, and when iterated it can have an effect on the value of the cardinal $\mathfrak b$.
 
 But forcing cannot do just anything. For a very simple example, if $A\neq\emptyset$, then $A$ will remain nonempty after forcing. There is some element $a\in A$ and this element will remain in $A$ forever. More generally, we will see that a wide variety of statements are \emph{absolute}, meaning that their truth value cannot be changed by forcing. The Riemann hypothesis is an example of such a statement.
 
-The concept of absoluteness highlights the distinction between ordinals and cardinals. Recall that an ordinal is a set which is transitive and well-ordered by the $\in$ relation. Both of these properties are absolute, and therefore forcing can never add or change ordinals. On the other hand, $\aleph_1$ is defined to be the least ordinal that cannot be mapped injectively into $\omega$. So $\aleph_1$ is equal to some ordinal $\alpha$, but this ordinal value can be raised by a forcing which adds a new injection $\alpha\to\omega$!
+The concept of absoluteness highlights the distinction between ordinals and cardinals. Recall that an ordinal is a set which is transitive and well-ordered by the $\in$ relation. Both of these properties are absolute, and therefore forcing can never add or change ordinals. On the other hand, $\aleph_1$ is defined to be the least ordinal that cannot be mapped injectively into $\omega$. So $\aleph_1$ is equal to some ordinal $\alpha$, but this ordinal value can be raised by a forcing which adds a new injection from $\alpha$ to $\omega$.
 
-The situtation is even more fluid with an indirectly-defined cardinal such as $\mathfrak c$. Recall that $\mathfrak c$ is the unique cardinal number $\aleph_\alpha$ that is in bijection with $\mathcal P(\omega)$. This value can be raised by a forcing which adds at least $\aleph_{\alpha+1}$ many new subsets of $\omega$. The value can also be shrunk by a forcing which adds a new bijection between $\aleph_1$ and the old $\aleph_\alpha$ (while still preserving $\aleph_1$). Roughly speaking, this is how we will establish the independence of the continuum hypothesis.
+The situtation is even more fluid with an indirectly-defined cardinal such as $\mathfrak c$. Recall that $\mathfrak c$ is the unique cardinal number $\aleph_\alpha$ that is in bijection with $2^\omega$. This value can be raised by a forcing which adds at least $\aleph_{\alpha+1}$ many new subsets of $\omega$. The value can also be shrunk by a forcing which adds a new bijection between $\aleph_1$ and the old $\aleph_\alpha$ (while still preserving $\aleph_1$). Roughly speaking, this is how we will establish the independence of the continuum hypothesis.
 
 For the rest of this section we introduce the basic combinatorial objects used in forcing. The main object is very simple: a \emph{forcing notion} is simply a partial order $\PP$ with a maximum element $\mathbb1$ (also written $\mathbb1_\PP$). When we force with $\PP$, we add a new subset of $\PP$ to the universe. We think of the elements of $\PP$ as imposing conditions on the new set to be added. If $p,q\in\PP$ we say that $p$ is \emph{stronger} than $q$ if $p\leq q$; lower elements hold more information.
 
@@ -2317,51 +2320,104 @@ We are now ready to complete the proof of the main result of the section.
 %   The Cohen forcing partial order $\mathbb C$ is forcing equivalent to the partial order $2^{<\omega}$.
 % \end{thm}
 
-The random forcing partial order can be defined on any of the spaces $\RR$, $2^\omega$, or $\omega^\omega$, but for technical reasons it will be most convenient to define it on $2^\omega$. Recall that the null ideal $\Null$ on $2^\omega$ is defined by analogy with Definition~\ref{defn:null} with the length $\ell$ replaced by the ``coin-tossing'' measure. That is, $A\subset2^\omega$ is \emph{null} if for all $\epsilon>0$ there exists a sequence of basic open sets $(V_{s_n})$ such that $A\subset\bigcup V_{s_n}$ and $\sum2^{-|s_n|}<\epsilon$.
+The previous section provided one possible picture of Cicho\'n's diagram after forcing: the left half of the diagram is small, the right half large. It turns out that many other configurations can be achieved with more creative forcing partial orders. In this section we begin to explore the effect of random forcing which, as we will see, does for measure what Cohen forcing did for category.
+
+The random forcing partial order can be defined on any of the spaces $\RR$, $2^\omega$, or $\omega^\omega$, but for technical reasons it will be most convenient to define it on $2^\omega$. Recall that the null ideal $\Null$ on $2^\omega$ is defined by analogy with Definition~\ref{defn:null} with the length $\ell$ replaced by the ``coin-tossing'' measure $m$. Specifically, $A\subset2^\omega$ is \emph{null} if for all $\epsilon>0$ there exists a sequence of basic open sets $(V_{s_n})$ such that $A\subset\bigcup V_{s_n}$ and $\sum2^{-|s_n|}<\epsilon$.
 
 \begin{defn}
-  The \emph{random forcing} partial order $\Nonnull(2^\omega)$ consists of all equivalence classes of nonnull (Borel) subsets of $2^\omega$, where two sets $A$ and $B$ are equivalent if they differ by a null set. The elements of $\Nonnull(2^\omega)$ are ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is null.
+  The \emph{random forcing} partial order $\Nonnull(2^\omega)$ consists of equivalence classes $[A]$ of nonnull (Borel) subsets $A\subset2^\omega$. Here, two subsets $A$ and $B$ are called \emph{equivalent} iff the symmetric difference $A\triangle B$ is null. The elements of $\Nonnull(2^\omega)$ are ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is null.
 \end{defn}
 
-\begin{lem}
-  \label{lem:random-ccc}
-  The random forcing partial order $\Nonnull(2^\omega)$ is ccc.
-\end{lem}
+\begin{rem}
+  We could as well consider the partial order consisting of equivalence classes of \emph{nonmeager} subsets of $2^\omega$, where sets are equivalent if their symmetric difference is \emph{meager}. This partial order is forcing equivalent to Cohen forcing $\Fn(\omega,\omega)$!
+\end{rem}
 
-\begin{proof}
-  In $\BB$, two elements $[A],[B]$ are incompatible if and only if $A\cap B$ is null. Thus it suffices to show that if $\mathcal F$ is a family pairwise disjoint, nonnull subsets of $2^\omega$, then $\mathcal F$ is countable. For this, since the full space $2^\omega$ has measure $1$, for each $n$ there can be just finitely many elements of $\mathcal F$ of measure $\geq1/n$. It follows that there can be just countably many elements of $\mathcal F$ in total.
-\end{proof}
+Like Cohen forcing, if $G$ is a $V$-generic filter for random forcing then there is a corresponding generic element $g\in2^\omega$. To define the value of $g(n)$ we let:
+\[D_n=\set{[A]\mid A\subset\{x:x(n)=0\}\text{ or }A\subset\{x:x(n)=1\}}\text{.}
+\]
+Then $D_n$ is dense, since any nonnull set has nonnull intersection with either $\{x:x(n)=0\}$ or $\{x:x(n)=1\}$. Hence there exists $[A]\in G\cap D_n$, and we define $g(n)=0$ or $1$ depending on which of the two cases is satisfied. 
 
-% differences between cohen and random forcing models
+Just as Cohen forcing $\Fn(\omega,\omega)$ has a $\kappa$-sized version $\Fn(\kappa,\omega)$, random forcing has a $\kappa$-length version $\Nonnull(2^\kappa)$. Here, the null sets of $2^\kappa$ are defined in exactly the same way as in $2^\omega$, except that the basic open subsets of $2^\kappa$ are of the form $V_s$ where $s$ is a finite partial function from $\kappa$ to $2$.
 
-Just as Cohen forcing $\Fn(\omega,\omega)$ has a $\kappa$-sized version $\Fn(\kappa,\omega)$, random forcing has a $\kappa$-length version $\Nonnull(2^\kappa)$.
-
-\begin{defn}
-  For any cardinal $\kappa$, the $\kappa$-length random forcing partial order $\Nonnull(2^\kappa)$ consists of all nonnull subsets of $2^\kappa$, where two such sets are identified if they differ only on a null set. The elements of $\Nonnull(2^\kappa)$ are ordered by $A\leq B$ iff $A\subset B$.
-\end{defn}
-
-Like the $\kappa$-sized Cohen forcing, the $\kappa$-length random forcing is ccc. This time, no delta system lemma is needed; one can simply apply the same reasoning as in the proof of Lemma~\ref{lem:random-ccc}. Also like the $\kappa$-sized Cohen forcing, the $\kappa$-sized random forcing adds $\kappa$ many new elements to Cantor space and therefore pushes the value of the continuum up to $\kappa$.
+Like the $\kappa$-sized Cohen forcing, the $\kappa$-sized random forcing adds $\kappa$ many new elements to Cantor space and therefore pushes the value of the continuum up to $\kappa$.
 
 \begin{thm}
   Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal such that $\kappa^{\aleph_0}=\kappa$. Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak c=\kappa$.
 \end{thm}
 
 \begin{proof}
-  We first show that $\PP$ adds $\kappa$ many distinct elements to $2^\omega$.
+  We first claim that $\PP$ is ccc, and hence $\kappa$ remains a cardinal in $V[G]$. To see this, first note that two elements $[A],[B]$ of $\Nonnull(2^\kappa)$ are incompatible if and only if $A\cap B$ is null. Thus it suffices to show that if $\mathcal F$ is a family pairwise disjoint, nonnull subsets of $2^\kappa$, then $\mathcal F$ is countable. For this, since the full space $2^\kappa$ has measure $1$, for each $n$ there can be just finitely many elements of $\mathcal F$ of measure $\geq1/n$. It follows that there can be just countably many elements of $\mathcal F$ in total.
+
+  We next claim that $\PP$ adds $\kappa$ many distinct elements to $2^\omega$. 
+
+  \ldots
+
+  We can now conclude that in $V[G]$ we have $\mathfrak c\geq\kappa$. Finally by the nice name argument of Theorem~\ref{thm:ch-exact}, it is also easy to argue that $\mathfrak c\leq\kappa$.
 \end{proof}
 
-So far we have seen similar outcomes from the Cohen and random forcing partial orders. But the following result shows that the two forcing extensions are not the same.
+So far we have seen similar outcomes from the Cohen and random forcing partial orders. But comparing the the following result with Theorem~\ref{thm:cohen-bd}, we see that the two forcing extensions are not the same.
 
 \begin{thm}
+  \label{thm:random-bd}
   Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal. Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak b=\mathfrak d=\aleph_1$.
 \end{thm}
 
-\begin{lem}
+Before the proof we need to explore the effect of the countable-length random forcing on the domination order. The following result should be compared with Lemma~\ref{lem:cohen-dominating}.
 
+\begin{lem}
+  Let $\PP=\Nonnull(2^\omega)$ and let $G$ be a $V$-generic filter. Then in $V[G]$ we have that for all $h\in\omega^\omega$ there exists $f\in \omega^\omega\cap V$ such that $h\leq f$.
 \end{lem}
+
+\begin{proof}
+  It suffices to define a function $f$ in $V$ with the property that for every $p\in\PP$ there exists $q\leq p$ such that $q\forces(\forall n)\;\dot h(n)\leq\check f(n)$. Indeed, if this is the case then the set of such $q$ is dense, and so there is such a $q$ in $G$. Then by the forcing theorem we will have that $V[G]$ satisfies $h\leq f$.
+  
+  For each fixed $n\in\omega$, we define $f(n)$ as follows. For each $m$, let $p_m\leq p$ be such that $p_m\forces\dot h\in\omega^\omega\wedge\dot h(\check n)=\check m$. If there is no such $p_m$, simply let $p_m=[\emptyset]$. Then the collection of $p_m$ is pairwise incompatible, in other words, pairwise disjoint up to null sets. Letting $p'=\bigcup p_m$, choose $f(n)$ to be large enough so that $q_n=\bigcup_{m\leq f(n)}p_m$ has at measure at least $(1-2^{-n-2})m(p)$.
+
+  Now clearly $q_n\forces\dot h(\check n)\leq\check f(\check n)$. Therefore, if $q=\bigcap q_n$ then $q\forces(\forall n)\;\dot h(n)\leq\check f(n)$ as desired. However, we must check that $q$ is not null, and this follows from our choice of the $f(n)$:
+  \begin{align*}
+    m(p'\smallsetminus q)&=m(\bigcup p'\smallsetminus q_n)\\
+                        &\leq\sum m(p'\smallsetminus q_n)\\
+                        &\leq\sum 2^{-n-2}m(p')\\
+                        &<m(p')
+  \end{align*}
+  It follows that $m(q)>0$, and this completes the proof.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:random-bd}]
+
+\end{proof}
+
+\begin{exerc}
+  Show that the random forcing partial order, together with $[\emptyset]$, forms a complete Boolean algebra. [def]
+\end{exerc}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Random forcing and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Just as Cohen reals lie in every comeager set coded in the ground model, random reals lie in every conull set coded in the ground model.  As a consequence, the effect of Cohen forcing on the characteristics of $\Meager$ is analogous to the effect random forcing on the characteristics of $\Null$.
+
+\begin{figure}[h]
+  \begin{tikzpicture}[->]
+    \node (addn) [right=of a1] {$\aleph_1$};
+    \node (covn) [above=2 of addn] {$\mathfrak c$} edge (addn);
+    \node (addm) [right=of addn] {$\aleph_1$} edge (addn);
+    \node (b) [above=.7 of addm] {$\aleph_1$} edge (addm);
+    \node (nonm) [above=2 of addm] {$\mathfrak c$} edge (covn) edge (b);
+    \node (covm) [right=of addm] {$\aleph_1$} edge (addm);
+    \node (d) [above=.7 of covm] {$\aleph_1$} edge (b) edge (covm);
+    \node (cofm) [above=2 of covm] {$\mathfrak c$} edge (nonm) edge (d);
+    \node (nonn) [right=of covm] {$\aleph_1$} edge (covm);
+    \node (cofn) [above=2 of nonn]{$\mathfrak c$} edge (cofm) edge (nonn);
+  \end{tikzpicture}
+  \caption{Values of the cardinal characteristics in Cicho\'n's diagram after random forcing. Refer to Figure~\ref{fig:cichon} for the template of cardinal characteristics.\label{fig:cichon-random}}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Hechler forcing and Cicho\'n's diagram}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \end{document}
