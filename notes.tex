@@ -2175,6 +2175,7 @@ Before we study the effect of the $\kappa$-sized Cohen forcing $\Fn(\kappa,\omeg
 In order to use the above result about $\Fn(\omega,\omega)$ to establish properties of the full forcing $\Fn(\kappa,\omega)$, we need the following fact which essentially says that the full forcing can be factored into smaller pieces.
 
 \begin{lem}
+  \label{lem:product}
   Let $\PP=\Fn(\kappa,\omega)$ and let $G$ be a $V$-generic filter for $\PP$. Suppose that $I\subset\kappa$, and set $\PP_1=\Fn(I,\omega)$ and $G_1=G\cap\PP_1$; likewise set $\PP_2=\Fn(\kappa\smallsetminus I,\omega)$ and $G_2=G\cap\PP_2$. Then $G_1$ is $V$-generic for $\PP_1$, $G_2$ is $V[G_1]$-generic for $\PP_2$, and $V[G]=V[G_1][G_2]$.
 \end{lem}
 
@@ -2285,10 +2286,15 @@ In other words, the first statement says that the generic $g$ does not lie in in
 
 % can we rewrite the proof of the previous section in this same way, with a recursion on pairs?
 
-We are now ready to complete the proof of the main result of the section.
+We are now ready to complete the proof of Theorem~\ref{thm:cohen-cichon}. Referring to the ZFC-provable inequalities of Figure~\ref{fig:cichon}, to establish this result it suffices to prove that just the following two equalities in $V[G]$.
 
-\begin{proof}[Proof of Theorem~\ref{thm:cohen-cichon}]
-  Referring to the ZFC-provable inequalities of Figure~\ref{fig:cichon}, to establish this result it suffices to prove that just two equalities in $V[G]$: $\non(\Meager)=\aleph_1$ and $\cov(\Meager)=\kappa$. Once again, the proofs of these two statements are similar to the arguments of Theorem~\ref{thm:cohen-bd}.
+\begin{thm}
+  \label{thm:cohen-cichon-equalities}
+  Under the hypotheses of Theorem~\ref{thm:cohen-cichon}, in $V[G]$ we have $\non(\Meager)=\aleph_1$ and $\cov(\Meager)=\kappa$.
+\end{thm}
+
+\begin{proof}
+ Once again, the proofs of these two statements are similar to the arguments of Theorem~\ref{thm:cohen-bd}.
 
   We first show that $\cov(\Meager)=\kappa$. So suppose, towards a contradiction, that $\cov(\Meager)<\kappa$. That is, in $V[G]$ there exists a family $\mathcal F$ of meager subsets of $\omega^\omega$ such that $|\mathcal F|<\kappa$ and $\bigcup F=\omega^\omega$.  Note that we can suppose without loss of generality that every element of $\mathcal F$ is of the form $\Diff_P(x)$.
 
@@ -2307,18 +2313,6 @@ We are now ready to complete the proof of the main result of the section.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Random forcing and the domination order}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \begin{defn}
-%   The partial order for \emph{Cohen forcing} $\mathbb C$ consists of all equivalence classes of nonmeager subsets of $2^\omega$, where sets $A,B$ are said to be equivalent if they differ by a meager set. The elements of $\mathbb C$ are ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is meager.
-% \end{defn}
-
-% \begin{lem}
-%   The Cohen partial order $\mathbb C$ is ccc.
-% \end{lem}
-
-% \begin{thm}
-%   The Cohen forcing partial order $\mathbb C$ is forcing equivalent to the partial order $2^{<\omega}$.
-% \end{thm}
 
 The previous section provided one possible picture of Cicho\'n's diagram after forcing: the left half of the diagram is small, the right half large. It turns out that many other configurations can be achieved with more creative forcing partial orders. In this section we begin to explore the effect of random forcing which, as we will see, does for measure what Cohen forcing did for category.
 
@@ -2401,6 +2395,11 @@ For the proof, it suffices to show that the Cantor space of the ground model $2^
 
 Just as Cohen reals lie in every comeager set coded in the ground model, random reals lie in every conull set coded in the ground model.  As a consequence, the effect of Cohen forcing on the characteristics of $\Meager$ is analogous to the effect random forcing on the characteristics of $\Null$.
 
+\begin{thm}
+  \label{thm:random-cichon}
+  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal. Then forcing with $\Nonnull(2^\kappa)$ results in all cardinals in the bottom two lines of Cicho\'n's diagram equal to $\aleph_1$ and all cadrinals in the top line of Cicho\'n's diagram equal to $\mathfrak c=\kappa$ (see Figure~\ref{fig:cichon-random}).
+\end{thm}
+
 \begin{figure}[h]
   \begin{tikzpicture}[every node/.style={minimum size=20pt},->]
     \node (addn) [right=of a1] {$\aleph_1$};
@@ -2417,7 +2416,28 @@ Just as Cohen reals lie in every comeager set coded in the ground model, random 
   \caption{Values of the cardinal characteristics in Cicho\'n's diagram after random forcing. Refer to Figure~\ref{fig:cichon} for the template of cardinal characteristics.\label{fig:cichon-random}}
 \end{figure}
 
+\begin{lem}
+  Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be $V$-generic. If $A$ is a $G_\delta$ subset of $2^\omega$, then the measure of $A$ is the same whether interpreted in $V$ or $V[G]$.
+\end{lem}
+
+The following factorization result is analogous to Lemma~\ref{lem:product}, but with one important difference. This time the forcing $\PP_2$ must be defined in the extension after forcing with $\PP_1$.
+
+\begin{lem}
+  Let $\PP=\Nonnull(2^\kappa)$, and let $G\subset\PP$ be $V$-generic. Let $I\subset\kappa$, $\PP_1=\Nonnull(2^I)$, $G_1$ be $V$-generic for $\PP_1$. Now in $V[G_1]$ define $\PP_2=\Nonnull(2^{\kappa\smallsetminus I})$ and $G_2$ be $V[G_1]$-generic for $\PP_2$. Then $V[G]=V[G_1][G_2]$.
+\end{lem}
+
+We are now ready to establish Theorem~\ref{thm:random-cichon}. We have already shown that $\mathfrak b=\mathfrak d=\aleph_1$. Referring to the known inequalities in Theorem~\ref{thm:cichon}, it remains only to show the following two equalities.
+
+\begin{thm}
+  Under the hypotheses of Theorem~\ref{thm:random-cichon}, in $V[G]$ we have $\non(\Null)=\aleph_1$ and $\cov(\Null)=\kappa$.
+\end{thm}
+
+\begin{proof}
+  The proofs are analogous to the proofs of the two equalities in Theorem~\ref{thm:cohen-cichon-equalities}
+\end{proof}
+
 % Kunen, V.4
+% Monk, ch 22
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
