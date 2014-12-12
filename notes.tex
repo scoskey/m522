@@ -2291,7 +2291,7 @@ In other words, the first statement says that the generic $g$ does not lie in in
 We are now ready to complete the proof of Theorem~\ref{thm:cohen-cichon}. Referring to the ZFC-provable inequalities of Figure~\ref{fig:cichon}, to establish this result it suffices to prove that just the following two equalities in $V[G]$.
 
 \begin{thm}
-  \label{thm:cohen-cichon-equalities}
+  \label{thm:cohen-meager}
   Under the hypotheses of Theorem~\ref{thm:cohen-cichon}, in $V[G]$ we have $\non(\Meager)=\aleph_1$ and $\cov(\Meager)=\kappa$.
 \end{thm}
 
@@ -2340,23 +2340,25 @@ Recall that a subset of $2^\omega$ is called $G_\delta$ if it is a countable int
 
 \begin{lem}
   \label{lem:random-conull}
-  Let $\PP=\Nonnull(2^\omega)$, let $G$ be $V$-generic, and $g$ the corresponding generic element of $2^\omega$. Suppose $A$ is a $G_\delta$ set of $V$, and let $A^*$ be the interpretation of $A$ in $V[G]$. If $A$ is conull, then $g$ lies in $A^*$.
+  Let $\PP=\Nonnull(2^\omega)$, let $G$ be $V$-generic, and $g$ the corresponding generic element of $2^\omega$. Suppose $A$ is a $G_\delta$ set of $V$, and let $A^*$ be the interpretation of $A$ in $V[G]$. Then if $A$ is conull then $g$ lies in $A^*$, and if $A$ is null then $g$ lies in the complement of $A^*$.
 \end{lem}
 
 \begin{proof}
-  First suppose that $A$ is open, that is, has the form $A=\bigcup_nV_{s_n}$, and assume that $A$ is conull. We consider the set
+  First suppose that $A$ is open, that is, has the form $A=\bigcup_nV_{s_n}$, and assume that $A$ is conull. Then the set
   \[D=\set{[B]\in\PP\mid (\exists n)\;B\subset V_{s_n}}
   \]
-  This set $D$ is dense: any set $B$ has nonnull intersection with some $V_{s_n}$ and therefore has an extension $B\cap V_{s_n}$ such that $[B\cap V_{s_n}]$ lies in $D$. Since $G$ is generic, there is some $n$ such that $[V_{s_n}]$ lies in $G$. By definition of $g$, it follows that $g\in V_{s_n}$ and therefore $g\in A$.
+  is dense: any nonnull $B$ has nonnull intersection with some $V_{s_n}$ and therefore $[B\cap V_{s_n}]$ is an element of $\PP$ which lies in $D$. Since $G$ is generic, there is some $n$ such that $[V_{s_n}]$ lies in $G$. By definition of $g$, it follows that $g\in V_{s_n}$ and therefore $g\in A$.
 
-  Now if $A$ has the form $\bigcap_m\bigcup_nV_{s_{n,m}}$ and $A$ is conull, then each of the sets $A_m=\bigcup_nV_{s_{n,m}}$ is conull too. By the previous argument, $g$ lies in $A_m$ for all $m$. Thus $g\in A$, as desired.
+  Now suppose that $A$ is $G_\delta$, so $A$ has the form $\bigcap_m\bigcup_nV_{s_{n,m}}$, and that $A$ is conull. Then each of the sets $A_m=\bigcup_nV_{s_{n,m}}$ is conull too. By the previous argument, $g$ lies in $A_m$ for all $m$. Thus $g\in A$, as desired.
+
+  Finally if $A$ is null then $A^c$ has the form $\bigcup_m\bigcap_nV_{s_{n,m}}$ and $A^c$ is conull. By a similar dense set argument, one of the sets $A_m=\bigcap_nV_{s_{n,m}}$ must satisfy $[A_m]\in G$. Thus for this $m$ we have that for all $n$, $[V_{s_{n,m}}]\in G$ and hence $g\in V_{s_{n,m}}$. Therefore we have that for some $m$, $g\in A_m$, in other words, $g\in A^c$.
 \end{proof}
 
 As we mentioned, this result can be stated for Borel sets $A$ as well; one simply uses induction to reach sets with more complex codes. Meanwhile it follows from Lemma~\ref{lem:random-conull} that the random real $g$ is \emph{new}. Indeed, if $y$ is any element of the ground model $V$, then $A=2^\omega\smallsetminus\{y\}$ is a conull $G_\delta$ set (in fact it is open). Thus $g$ lies in this set (interpreted in $V[G]$, and in particular $g\neq y$.
 
 Just as Cohen forcing $\Fn(\omega,\omega)$ has a $\kappa$-sized version $\Fn(\kappa,\omega)$, random forcing has a $\kappa$-length version $\Nonnull(2^\kappa)$. Like the $\kappa$-sized Cohen forcing, the $\kappa$-sized random forcing adds $\kappa$ many new elements to Cantor space and therefore pushes the value of the continuum up to $\kappa$.
 
-Before proving this, recall that the \emph{product} topology on $2^\kappa$ has a basis consisting of the sets $V_s=\set{x\in2^\kappa\mid s\subset x}$, where $s$ is a function from a finite subset of $\kappa$ to $\{0,1\}$. The measure on $2^\kappa$ is again defined by assigning to each $V_s$ the measure $2^{-|s|}$ and extending it as before.
+To make the definition of $\Nonnull(2^\kappa)$ precise, we recall that the \emph{product} topology on $2^\kappa$ has a basis consisting of the sets $V_s=\set{x\in2^\kappa\mid s\subset x}$, where $s$ is a function from a finite subset of $\kappa$ to $\{0,1\}$. The measure on $2^\kappa$ is again defined by assigning to each $V_s$ the measure $2^{-|s|}$ and extending it as before.
 
 \begin{thm}
   Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal such that $\kappa^{\aleph_0}=\kappa$. Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak c=\kappa$.
@@ -2365,15 +2367,16 @@ Before proving this, recall that the \emph{product} topology on $2^\kappa$ has a
 \begin{proof}
   We first claim that $\PP$ is ccc, and hence $\kappa$ remains a cardinal in $V[G]$. To see this, first note that two elements $[A],[B]$ of $\Nonnull(2^\kappa)$ are incompatible if and only if $A\cap B$ is null. Thus it suffices to show that if $\mathcal F$ is a family pairwise disjoint, nonnull subsets of $2^\kappa$, then $\mathcal F$ is countable. For this, since the full space $2^\kappa$ has measure $1$, for each $n$ there can be just finitely many elements of $\mathcal F$ of measure $\geq1/n$. It follows that there can be just countably many elements of $\mathcal F$ in total, and so $\PP$ is ccc.
 
-  Next, we claim that $\PP$ adds $\kappa$ many distinct elements to $2^\omega$. First, by the definition given above in the case of $\Nonnull(2^\omega)$, we can use $G$ to define a corresponding function $g\in2^\kappa$. We then define a family of $\kappa$ many elements of $2^\omega$ by letting $g_\alpha(n)=g(\alpha+n)$ for every limit ordinal $\alpha<\kappa$. To see that the $g_\alpha$ are pairwise distinct, for any distinct limit ordinals $\alpha,\beta<\kappa$ let
-  \[A_{\alpha,\beta}=\set{x\in2^\omega\mid(\exists n)\;x(\alpha+n)\neq x(\beta+n)}
+  Next, we claim that $\PP$ adds $\kappa$ many distinct elements to $2^\omega$. First, by the definition given above in the case of $\Nonnull(2^\omega)$, we can use $G$ to define a corresponding function $g\in2^\kappa$. We then define a family of $\kappa$ many elements of $2^\omega$ by letting $g_\alpha(n)=g(\alpha+n)$ for every limit ordinal $\alpha<\kappa$. Then the $g_\alpha$ are pairwise distinct because this happens with probability one. More percisely, for any distinct limit ordinals $\alpha,\beta<\kappa$ let
+  \[A_{\alpha,\beta}=\set{x\in2^\omega\mid(\forall n)\;x(\alpha+n)=x(\beta+n)}\text{.}
   \]
-  Observe that $m(A_{\alpha,\beta})=1$, which implies that $[A]$ is the $\mathbb1$ element of $\PP$ and so $[A]\in G$. Moreover it is clear that $[A]\forces\dot g_\alpha\neq\dot g_\beta$. Thus in $V[G]$ it must be the case that $g_\alpha\neq g_\beta$.
+  Then $A_{\alpha,\beta}$ is $G_\delta$ and null. To see that it is null, note that $A_{\alpha,\beta}$ is the intersection of the independent events
+  \[A_{\alpha,\beta,n}=\set{x\in2^\omega\mid x(\alpha+n)=x(\beta+n)}\text{,}
+  \]
+  Since each of these events has probability $1/2$, we have $m(A_{\alpha,\beta})=\prod_n\frac12=0$ and so $A_{\alpha,\beta}$ is null. It now follows from Lemma~\ref{lem:random-conull} that $g$ lies in the complement of $A_{\alpha,\beta}$ (interpreted in $V[G]$) and therefore that $g_\alpha\neq g_\beta$.
 
   We can now conclude that in $V[G]$ we have $\mathfrak c\geq\kappa$. Finally by the nice name argument of Theorem~\ref{thm:ch-exact}, it is also easy to argue that $\mathfrak c\leq\kappa$.
 \end{proof}
-
-So far we have seen similar outcomes from the Cohen and random forcing partial orders. But comparing the the following result with Theorem~\ref{thm:cohen-bd}, we see that the two forcing extensions are not the same.
 
 \begin{exerc}
   Show that the random forcing partial order, together with $[\emptyset]$, forms a complete Boolean algebra. Here, a Boolean algebra $B$ is \emph{complete} if every subset $X\subset B$ has a least upper bound.
@@ -2413,12 +2416,7 @@ So far we have seen only similarities between the effects of Cohen and random fo
   \caption{Values of the cardinal characteristics in Cicho\'n's diagram after random forcing. Refer to Figure~\ref{fig:cichon} for the template of cardinal characteristics.\label{fig:cichon-random}}
 \end{figure}
 
-\begin{thm}
-  \label{thm:random-bd}
-  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal. Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak b=\mathfrak d=\aleph_1$.
-\end{thm}
-
-For the proof, it suffices to show that the Cantor space of the ground model $2^\omega\cap V$ is an unbounded family in $V[G]$. This is a consequence of the following result, which should be compared with Lemma~\ref{lem:cohen-dominating}.
+We begin by addressing the effect of random forcing on the domination order. The following result shows that a much stronger property holds than in the case of Cohen forcing; compare it with Lemma~\ref{lem:cohen-dominating}.
 
 \begin{lem}
   Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$ we have that for all $h\in\omega^\omega$ there exists $f\in \omega^\omega\cap V$ such that $h\leq f$.
@@ -2427,7 +2425,7 @@ For the proof, it suffices to show that the Cantor space of the ground model $2^
 \begin{proof}
   It suffices to define a function $f$ in $V$ with the property that for every $p\in\PP$ there exists $q\leq p$ such that $q\forces(\forall n)\;\dot h(n)\leq\check f(n)$. Indeed, if this is the case then the set of such $q$ is dense, and so there is such a $q$ in $G$. Then by the forcing theorem we will have that $V[G]$ satisfies $h\leq f$.
   
-  For each fixed $n\in\omega$, we define $f(n)$ as follows. For each $m$, let $p_m\leq p$ be such that $p_m\forces\dot h\in\omega^\omega\wedge\dot h(\check n)=\check m$. If there is no such $p_m$, simply let $p_m=[\emptyset]$. Then the collection of $p_m$ is pairwise incompatible, or in terms of representing sets, pairwise disjoint. Letting $p'=\bigcup p_m$, choose $f(n)$ to be large enough so that $q_n=\bigcup_{m\leq f(n)}p_m$ has at measure at least $(1-2^{-n-2})m(p)$.
+  For each fixed $n\in\omega$, we define $f(n)$ as follows. For each $m$, let $p_m\leq p$ be such that $p_m\forces\dot h\in\omega^\omega\wedge\dot h(\check n)=\check m$. If there is no such $p_m$, simply let $p_m=[\emptyset]$. Then the collection of $p_m$ is pairwise incompatible, or in terms of representing sets, pairwise disjoint. Letting $p'=\bigcup p_m$, choose $f(n)$ to be large enough so that the measure of $q_n=\bigcup_{m\leq f(n)}p_m$ is at least $(1-2^{-n-2})m(p)$.
 
   Now clearly $q_n\forces\dot h(\check n)\leq\check f(\check n)$. Therefore, if $q=\bigcap q_n$ then $q\forces(\forall n)\;\dot h(n)\leq\check f(n)$ as desired. However, we must check that $q$ is not null, and this follows from our choice of the $f(n)$:
   \begin{align*}
@@ -2439,31 +2437,61 @@ For the proof, it suffices to show that the Cantor space of the ground model $2^
   It follows that $m(q)>0$, and this completes the proof.
 \end{proof}
 
-\begin{lem}
-  Let $\PP$ be any forcing and let $G$ be $V$-generic. Suppose $A$ is a $G_\delta$ set of $V$, and let $A^*$ be the interpretation of $A$ in $V[G]$. If $A$ is null, then $A^*$ is null.
-\end{lem}
-
-\begin{proof}
-  
-\end{proof}
-
-The following factorization result is analogous to Lemma~\ref{lem:product}, but with one important difference. This time the forcing $\PP_2$ must be defined in the extension after forcing with $\PP_1$.
-
-\begin{lem}
-  Let $\PP=\Nonnull(2^\kappa)$, and let $G\subset\PP$ be $V$-generic. Let $I\subset\kappa$, $\PP_1=\Nonnull(2^I)$, $G_1$ be $V$-generic for $\PP_1$. Now in $V[G_1]$ define $\PP_2=\Nonnull(2^{\kappa\smallsetminus I})$ and $G_2$ be $V[G_1]$-generic for $\PP_2$. Then $V[G]=V[G_1][G_2]$.
-\end{lem}
-
-We are now ready to establish Theorem~\ref{thm:random-cichon}. We have already shown that $\mathfrak b=\mathfrak d=\aleph_1$. Referring to the known inequalities in Theorem~\ref{thm:cichon}, it remains only to show the following two equalities.
+We can use this result directly to compute the values of $\mathfrak b$ and $\mathfrak d$ in the random forcing extension.
 
 \begin{thm}
-  Under the hypotheses of Theorem~\ref{thm:random-cichon}, in $V[G]$ we have $\non(\Null)=\aleph_1$ and $\cov(\Null)=\kappa$.
+  \label{thm:random-bd}
+  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal. Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak b=\mathfrak d=\aleph_1$.
 \end{thm}
 
 \begin{proof}
-  The proofs are analogous to the proofs of the two equalities in Theorem~\ref{thm:cohen-cichon-equalities}
+  By the previous lemma, the ground model $V\cap\omega^\omega$ is a dominating family of size $\aleph_1$ in $V[G]$.
 \end{proof}
 
-% Kunen, V.4
+We now continue the proof of Theorem`\ref{thm:random-cichon}. Referring to the known inequalities in Theorem~\ref{thm:cichon}, it remains only to show the following two equalities.
+
+\begin{thm}
+  \label{thm:random-null}
+  Under the hypotheses of Theorem~\ref{thm:random-cichon}, in $V[G]$ we have $\non(\Null)=\aleph_1$ and $\cov(\Null)=\kappa$.
+\end{thm}
+
+% As was the case with Lemma~\ref{lem:random-conull}, the following result can be stated for Borel sets.
+
+% \begin{lem}
+%   Let $\PP$ be any forcing and let $G$ be $V$-generic. Suppose $A$ is a $G_\delta$ set of $V$, and let $A^*$ be the interpretation of $A$ in $V[G]$. If $A$ is null, then $A^*$ is null.
+% \end{lem}
+
+% \begin{proof}
+%   First suppose that $A$ is open. Clearly such a set cannot be null, but we will show that $A$ and $A^*$ have the same measure. First, express $A$ as a union $\bigcup V_{s_n}$. By throwing away any summands that are contained in another, we can suppose without loss of generality that the $V_{s_n}$ are disjoint. Thus the measure of both $A$ and $A^*$ are equal to $\sum2^{-|s_n|}$, as desired.
+
+%   Now suppose that $A=\bigcap_m\bigcup A_m$ where $A_m$ are open, and suppose that $A$ is null. By continuity from above (see Exercise~\ref{exerc:continuity-above}), we have $m(A)=\inf m(A_m)=0$. By the same reasoning in $V[G]$, we have $m(A^*)=\inf m(A_m^*)$, and by the result of the previous paragraph, the latter quantity equals $\inf m(A_m)=0$, as desired.
+% \end{proof}
+
+Before the proof, we need a factorization lemma to take the place of Lemma~\ref{lem:product}. The following result is similar, but with one important difference. Whereas in Lemma~\ref{lem:product} the two factors $\PP_1$ and $\PP_2$ were defined in $V$, this time the second factor $\PP_2$ must be defined in the extension $V[G_1]$ after the forcing with $\PP_1$.
+
+\begin{lem}
+  Let $\PP=\Nonnull(2^\kappa)$, and let $G\subset\PP$ be $V$-generic. Let $I\subset\kappa$, $\PP_1=\Nonnull(2^I)$, and $G_1=\set{A\restriction2^I\mid A\in G}$. Now in $V[G_1]$ define $\PP_2=\Nonnull(2^{\kappa\smallsetminus I})$ and $G_2=\set{q\in\PP_2\mid(\exists p\in\PP_1)\;p\times q\in G}$. Then $G_1$ is $V$-generic for $\PP_1$, $G_2$ is $V[G_1]$-generic for $\PP_2$, and $V[G]=V[G_1][G_2]$.
+\end{lem}
+
+We omit the proof [temporarily].
+
+\begin{proof}[Proof of Theorem~\ref{thm:random-null}]
+  The proofs are analogous to the proofs of the two equalities in Theorem~\ref{thm:cohen-meager}. To show that $\cov(\Null)=\kappa$, assume to the contrary that $\cov(\Null)<\kappa$. Then there exists a cardinal $\lambda<\kappa$ and a family $\mathcal F$ of null sets such that $|\mathcal F|=\lambda$ and $\bigcup F=2^\omega$.
+
+  Since every null set is contained in a null $G_\delta$ set, we can suppose that every element of $\mathcal F$ is a $G_\delta$ set. Thus every $A\in\mathcal F$ has a code, which is a countable collection binary sequences on a finite subset of $\kappa$. Using a now-familiar nice name argument, we can find a set $I\subset\kappa$ with $|I|=\lambda$ such that if $\PP_1=\Nonnull(2^I)$ and $G_1$ is as above, then the codes for all elements of $\mathcal F$ appear in $V[G_1]$.
+
+  But now, the forcing $\PP_2$ adds a random real $g$. By Lemma~\ref{lem:random-conull} we know that $g$ does not lie in any null set coded in $V[G_1]$. This contradicts that $\mathcal F$ is a covering family in $V[G]$.
+
+  To see that $\non(\Null)=\aleph_1$, one can argue that the ground model reals form a nonnull set in the forcing extension. Alternatively we may let $g_\alpha$ be the sequence of random reals added by the forcing, and show that the set $\mathcal F=\set{g_\alpha\mid\alpha<\omega_1}$ is nonnull in $V[G]$.
+
+  For this, suppose to the contrary that $\mathcal F$ is null. Then there is some $G_\delta$ null set $A$ such that $\mathcal F\subset A$. Once again using a nice name argument, we can find a countable set $I\subset\kappa$ such that if $\PP_1=\Nonnull(2^I)$ and $G_1$ is as above, then $c$ appears in $V[G_1]$.
+
+  Finally, since $\mathcal F$ is uncountable we can find some element $g_\alpha\in\mathcal F$ which is not added by $\PP_1$, and instead added over $V[G_1]$ by the forcing $\PP_2$. Once again using Lemma~\ref{lem:random-conull}, since $A$ is a null $G_\delta$ set in $V[G_1]$ we have that $g_\alpha$ lies in the complement of $A^*$. In particular, $g_\alpha$ doesn't lie in $\mathcal F$, a contradiction.
+\end{proof}
+
+\begin{notes}
+  Some of the results of this section are proved in Kunen, Section~IV.7. Others appear as exercises in Section~V.4. The ideas of the proofs are also summarized in Blass, Subsection~11.4.
+\end{notes}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -2485,6 +2513,17 @@ We are now ready to establish Theorem~\ref{thm:random-cichon}. We have already s
   \end{tikzpicture}
   \caption{Values of the cardinal characteristics in Cicho\'n's diagram after Hechler forcing. Refer to Figure~\ref{fig:cichon} for the template of cardinal characteristics.\label{fig:cichon-hechler}}
 \end{figure}
+
+%\backmatter
+
+%\appendix
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\chapter{Conclusions and further reading}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 
 
 \end{document}
