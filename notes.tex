@@ -62,8 +62,10 @@
 \newtheorem{rem}[thm]{Remark}
 \newtheorem{example}[thm]{Example}
 \newtheorem*{notes}{Notes and further reading}
+\numberwithin{equation}{section}
 \numberwithin{figure}{section}
-\renewcommand{\thefigure}{\arabic{section}\Alph{figure}}
+\renewcommand{\theequation}{\arabic{section}.e\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{section}.f\arabic{figure}}
 
 \begin{document}
 
@@ -2311,27 +2313,50 @@ We are now ready to complete the proof of Theorem~\ref{thm:cohen-cichon}. Referr
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Random forcing and the domination order}
+\section{Random forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The previous section provided one possible picture of Cicho\'n's diagram after forcing: the left half of the diagram is small, the right half large. It turns out that many other configurations can be achieved with more creative forcing partial orders. In this section we begin to explore the effect of random forcing which, as we will see, does for measure what Cohen forcing did for category.
 
-The random forcing partial order can be defined on any of the spaces $\RR$, $2^\omega$, or $\omega^\omega$, but for technical reasons it will be most convenient to define it on $2^\omega$. Recall that the null ideal $\Null$ on $2^\omega$ is defined by analogy with Definition~\ref{defn:null} with the length $\ell$ replaced by the ``coin-tossing'' measure $m$. Specifically, $A\subset2^\omega$ is \emph{null} if for all $\epsilon>0$ there exists a sequence of basic open sets $(V_{s_n})$ such that $A\subset\bigcup V_{s_n}$ and $\sum2^{-|s_n|}<\epsilon$.
+The random forcing partial order can be defined on any of the spaces $\RR$, $2^\omega$, or $\omega^\omega$, but in order to generalize it later we will define it on Cantor space $2^\omega$. Recall that we use the ``coin-tossing'' measure on $2^\omega$, which is defined analogously to the Lebesgue measure of Equation~\eqref{eq:measure} but with the length $\ell$ replaced by the probability $m(V_s)=2^{-|s|}$. Thus we have
+\[m(A)=\inf\set{\sum2^{-|s_n|}\mid A\subset\bigcup V_{s_n}}
+\]
+As usual, the function $m$ has the properties of a measure on a class of sets containing all Borel sets. The null ideal $\Null$ on $2^\omega$ consists of those $A$ for which $m(A)=0$.
 
 \begin{defn}
-  The \emph{random forcing} partial order $\Nonnull(2^\omega)$ consists of equivalence classes $[A]$ of nonnull (Borel) subsets $A\subset2^\omega$. Here, two subsets $A$ and $B$ are called \emph{equivalent} iff the symmetric difference $A\triangle B$ is null. The elements of $\Nonnull(2^\omega)$ are ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is null.
+  The \emph{random forcing} partial order $\Nonnull(2^\omega)$ consists of equivalence classes $[A]$ of nonnull (Borel) subsets $A\subset2^\omega$. Here, two subsets $A$ and $B$ are called \emph{equivalent} iff the symmetric difference $A\mathbin{\vartriangle} B$ is null. The set $\Nonnull(2^\omega)$ is partially ordered by $[A]\leq[B]$ iff $A\smallsetminus B$ is null.
 \end{defn}
 
 The random forcing partial order is also a \emph{Boolean algebra}, which means that we can take pairwise joins (unions), meets (intersections), and complements. Although we will not develop the theory here, it turns out that any partial order is forcing equivalent to a Boolean algebra. For example, Cohen forcing $\Fn(\omega,2)$ is equivalent to the partial order consisting of equivalence classes of \emph{nonmeager} subsets of $2^\omega$, where sets are equivalent if their symmetric difference is \emph{meager}.
 
-Like Cohen forcing, if $G$ is a $V$-generic filter for random forcing then there is a corresponding generic element $g\in2^\omega$. To define the value of $g(n)$ we let:
-\[D_n=\set{[A]\mid A\subset\{x:x(n)=0\}\text{ or }A\subset\{x:x(n)=1\}}\text{.}
+Like Cohen forcing, if $G$ is a $V$-generic filter for random forcing then there is a corresponding generic element $g\in2^\omega$. In order to define $g$, first observe that for each $n$ the elements $[V_s]$ for $|s|=n$ form a maximal antichain of $\Nonnull(2^\omega)$. It follows that for each $n$, there is exactly one $[V_s]\in G$ with $|s|=n$. We may then let
+\[g=\bigcup\set{s\mid [V_s]\in G}
 \]
-Then $D_n$ is dense, since any nonnull set has nonnull intersection with either $\{x:x(n)=0\}$ or $\{x:x(n)=1\}$. Hence there exists $[A]\in G\cap D_n$, and we define $g(n)=0$ or $1$ depending on which of the two cases is satisfied. 
+This is well-defined since the elements of $G$ are pairwise compatible.
 
-Just as Cohen forcing $\Fn(\omega,\omega)$ has a $\kappa$-sized version $\Fn(\kappa,\omega)$, random forcing has a $\kappa$-length version $\Nonnull(2^\kappa)$. Here, the null sets of $2^\kappa$ are defined in exactly the same way as in $2^\omega$, except that the basic open subsets of $2^\kappa$ are of the form $V_s$ where $s$ is a finite partial function from $\kappa$ to $2$.
+Just as the Cohen generic real lies in every comeager set coded in the ground model, this generic $g$ is ``random'' in the sense that it lies in every conull set coded in the ground model. Before showing this, we should say precisely what we mean by this coding. While it is possible to code arbitrary Borel sets, for simplicity we will state the result only for $G_\delta$ sets. 
 
-Like the $\kappa$-sized Cohen forcing, the $\kappa$-sized random forcing adds $\kappa$ many new elements to Cantor space and therefore pushes the value of the continuum up to $\kappa$.
+Recall that a subset of $2^\omega$ is called $G_\delta$ if it is a countable intersection of open sets. Thus any $G_\delta$ set $A$ can be expressed as $\bigcap_m\bigcup_nV_{s_{n,m}}$, and we say that the sequence $\{s_{n,m}\}$ is a \emph{code} for $A$. If $V[G]$ is a forcing extension of $V$ and $A$ is a $G_\delta$ set of $V$ coded by $\{s_{n,m}\}$, then we let $A^*$ be the $G_\delta$ set in $V[G]$ with the same code.
+
+\begin{lem}
+  \label{lem:random-conull}
+  Let $\PP=\Nonnull(2^\omega)$, let $G$ be $V$-generic, and $g$ the corresponding generic element of $2^\omega$. Suppose $A$ is a $G_\delta$ set of $V$, and let $A^*$ be the interpretation of $A$ in $V[G]$. If $A$ is conull, then $g$ lies in $A^*$.
+\end{lem}
+
+\begin{proof}
+  First suppose that $A$ is open, that is, has the form $A=\bigcup_nV_{s_n}$, and assume that $A$ is conull. We consider the set
+  \[D=\set{[B]\in\PP\mid (\exists n)\;B\subset V_{s_n}}
+  \]
+  This set $D$ is dense: any set $B$ has nonnull intersection with some $V_{s_n}$ and therefore has an extension $B\cap V_{s_n}$ such that $[B\cap V_{s_n}]$ lies in $D$. Since $G$ is generic, there is some $n$ such that $[V_{s_n}]$ lies in $G$. By definition of $g$, it follows that $g\in V_{s_n}$ and therefore $g\in A$.
+
+  Now if $A$ has the form $\bigcap_m\bigcup_nV_{s_{n,m}}$ and $A$ is conull, then each of the sets $A_m=\bigcup_nV_{s_{n,m}}$ is conull too. By the previous argument, $g$ lies in $A_m$ for all $m$. Thus $g\in A$, as desired.
+\end{proof}
+
+As we mentioned, this result can be stated for Borel sets $A$ as well; one simply uses induction to reach sets with more complex codes. Meanwhile it follows from Lemma~\ref{lem:random-conull} that the random real $g$ is \emph{new}. Indeed, if $y$ is any element of the ground model $V$, then $A=2^\omega\smallsetminus\{y\}$ is a conull $G_\delta$ set (in fact it is open). Thus $g$ lies in this set (interpreted in $V[G]$, and in particular $g\neq y$.
+
+Just as Cohen forcing $\Fn(\omega,\omega)$ has a $\kappa$-sized version $\Fn(\kappa,\omega)$, random forcing has a $\kappa$-length version $\Nonnull(2^\kappa)$. Like the $\kappa$-sized Cohen forcing, the $\kappa$-sized random forcing adds $\kappa$ many new elements to Cantor space and therefore pushes the value of the continuum up to $\kappa$.
+
+Before proving this, recall that the \emph{product} topology on $2^\kappa$ has a basis consisting of the sets $V_s=\set{x\in2^\kappa\mid s\subset x}$, where $s$ is a function from a finite subset of $\kappa$ to $\{0,1\}$. The measure on $2^\kappa$ is again defined by assigning to each $V_s$ the measure $2^{-|s|}$ and extending it as before.
 
 \begin{thm}
   Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal such that $\kappa^{\aleph_0}=\kappa$. Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak c=\kappa$.
@@ -2350,50 +2375,22 @@ Like the $\kappa$-sized Cohen forcing, the $\kappa$-sized random forcing adds $\
 
 So far we have seen similar outcomes from the Cohen and random forcing partial orders. But comparing the the following result with Theorem~\ref{thm:cohen-bd}, we see that the two forcing extensions are not the same.
 
-\begin{thm}
-  \label{thm:random-bd}
-  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal. Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak b=\mathfrak d=\aleph_1$.
-\end{thm}
-
-For the proof, it suffices to show that the Cantor space of the ground model $2^\omega\cap V$ is an unbounded family in $V[G]$. This is a consequence of the following result, which should be compared with Lemma~\ref{lem:cohen-dominating}.
-
-\begin{lem}
-  Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$ we have that for all $h\in\omega^\omega$ there exists $f\in \omega^\omega\cap V$ such that $h\leq f$.
-\end{lem}
-
-\begin{proof}
-  It suffices to define a function $f$ in $V$ with the property that for every $p\in\PP$ there exists $q\leq p$ such that $q\forces(\forall n)\;\dot h(n)\leq\check f(n)$. Indeed, if this is the case then the set of such $q$ is dense, and so there is such a $q$ in $G$. Then by the forcing theorem we will have that $V[G]$ satisfies $h\leq f$.
-  
-  For each fixed $n\in\omega$, we define $f(n)$ as follows. For each $m$, let $p_m\leq p$ be such that $p_m\forces\dot h\in\omega^\omega\wedge\dot h(\check n)=\check m$. If there is no such $p_m$, simply let $p_m=[\emptyset]$. Then the collection of $p_m$ is pairwise incompatible, in other words, pairwise disjoint up to null sets. Letting $p'=\bigcup p_m$, choose $f(n)$ to be large enough so that $q_n=\bigcup_{m\leq f(n)}p_m$ has at measure at least $(1-2^{-n-2})m(p)$.
-
-  Now clearly $q_n\forces\dot h(\check n)\leq\check f(\check n)$. Therefore, if $q=\bigcap q_n$ then $q\forces(\forall n)\;\dot h(n)\leq\check f(n)$ as desired. However, we must check that $q$ is not null, and this follows from our choice of the $f(n)$:
-  \begin{align*}
-    m(p'\smallsetminus q)&=m(\bigcup p'\smallsetminus q_n)\\
-                        &\leq\sum m(p'\smallsetminus q_n)\\
-                        &\leq\sum 2^{-n-2}m(p')\\
-                        &<m(p')
-  \end{align*}
-  It follows that $m(q)>0$, and this completes the proof.
-\end{proof}
-
 \begin{exerc}
   Show that the random forcing partial order, together with $[\emptyset]$, forms a complete Boolean algebra. Here, a Boolean algebra $B$ is \emph{complete} if every subset $X\subset B$ has a least upper bound.
-\end{exerc}
-
-\begin{exerc}
-  Suppose that $g$ is the generic element of $2^\kappa$ added by random forcing. Suppose that for each $n$, $s_n\in2^{<\omega}$ and the sequence $\langle s_n\rangle\in V$. Show that if $\bigcup V_{s_n}$ is conull, then $g\in\bigcup V_{s_n}$.
 \end{exerc}
 
 % kunen, IV.7
 
 % for boolean algebras see Jech
 
+% Monk, ch 22
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Random forcing and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Just as Cohen reals lie in every comeager set coded in the ground model, random reals lie in every conull set coded in the ground model.  As a consequence, the effect of Cohen forcing on the characteristics of $\Meager$ is analogous to the effect random forcing on the characteristics of $\Null$.
+So far we have seen only similarities between the effects of Cohen and random forcing. In this section we investigate the effect of random forcing on Cicho\'n's diagram, and in the process we'll see that the two forcing notions are not the same. In fact the effect random forcing on the characteristics of $\Null$.  is analogous to the effect of Cohen forcing on the characteristics of $\Meager$
 
 \begin{thm}
   \label{thm:random-cichon}
@@ -2416,9 +2413,39 @@ Just as Cohen reals lie in every comeager set coded in the ground model, random 
   \caption{Values of the cardinal characteristics in Cicho\'n's diagram after random forcing. Refer to Figure~\ref{fig:cichon} for the template of cardinal characteristics.\label{fig:cichon-random}}
 \end{figure}
 
+\begin{thm}
+  \label{thm:random-bd}
+  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal. Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak b=\mathfrak d=\aleph_1$.
+\end{thm}
+
+For the proof, it suffices to show that the Cantor space of the ground model $2^\omega\cap V$ is an unbounded family in $V[G]$. This is a consequence of the following result, which should be compared with Lemma~\ref{lem:cohen-dominating}.
+
 \begin{lem}
-  Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be $V$-generic. If $A$ is a $G_\delta$ subset of $2^\omega$, then the measure of $A$ is the same whether interpreted in $V$ or $V[G]$.
+  Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$ we have that for all $h\in\omega^\omega$ there exists $f\in \omega^\omega\cap V$ such that $h\leq f$.
 \end{lem}
+
+\begin{proof}
+  It suffices to define a function $f$ in $V$ with the property that for every $p\in\PP$ there exists $q\leq p$ such that $q\forces(\forall n)\;\dot h(n)\leq\check f(n)$. Indeed, if this is the case then the set of such $q$ is dense, and so there is such a $q$ in $G$. Then by the forcing theorem we will have that $V[G]$ satisfies $h\leq f$.
+  
+  For each fixed $n\in\omega$, we define $f(n)$ as follows. For each $m$, let $p_m\leq p$ be such that $p_m\forces\dot h\in\omega^\omega\wedge\dot h(\check n)=\check m$. If there is no such $p_m$, simply let $p_m=[\emptyset]$. Then the collection of $p_m$ is pairwise incompatible, or in terms of representing sets, pairwise disjoint. Letting $p'=\bigcup p_m$, choose $f(n)$ to be large enough so that $q_n=\bigcup_{m\leq f(n)}p_m$ has at measure at least $(1-2^{-n-2})m(p)$.
+
+  Now clearly $q_n\forces\dot h(\check n)\leq\check f(\check n)$. Therefore, if $q=\bigcap q_n$ then $q\forces(\forall n)\;\dot h(n)\leq\check f(n)$ as desired. However, we must check that $q$ is not null, and this follows from our choice of the $f(n)$:
+  \begin{align*}
+    m(p'\smallsetminus q)&=m(\bigcup p'\smallsetminus q_n)\\
+                        &\leq\sum m(p'\smallsetminus q_n)\\
+                        &\leq\sum 2^{-n-2}m(p')\\
+                        &<m(p')
+  \end{align*}
+  It follows that $m(q)>0$, and this completes the proof.
+\end{proof}
+
+\begin{lem}
+  Let $\PP$ be any forcing and let $G$ be $V$-generic. Suppose $A$ is a $G_\delta$ set of $V$, and let $A^*$ be the interpretation of $A$ in $V[G]$. If $A$ is null, then $A^*$ is null.
+\end{lem}
+
+\begin{proof}
+  
+\end{proof}
 
 The following factorization result is analogous to Lemma~\ref{lem:product}, but with one important difference. This time the forcing $\PP_2$ must be defined in the extension after forcing with $\PP_1$.
 
@@ -2437,7 +2464,6 @@ We are now ready to establish Theorem~\ref{thm:random-cichon}. We have already s
 \end{proof}
 
 % Kunen, V.4
-% Monk, ch 22
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
