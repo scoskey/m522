@@ -702,7 +702,7 @@ In previous sections we have defined nowhere dense subsets of $\RR$ in terms of 
 
 \begin{prop}
   \label{prop:cantor-space-nwd}
-  $S\subset A^{<\omega}$ is nowhere dense if and only if for every $s\in A^{<\omega}$ there exists $t$ such that $s\subset t$ and $V_t$ is disjoint from $S$.\qed
+  $S\subset A^\omega$ is nowhere dense if and only if for every $s\in A^{<\omega}$ there exists $t$ such that $s\subset t$ and $V_t$ is disjoint from $S$.
 \end{prop}
 
 Meager sets are now defined in the same way as before: $X\subset A^{<\omega}$ is \emph{meager} if it is the union of countably many nowhere dense sets. Our proof of the Baire category theorem for the real numbers naturally extends to arbitrary complete metric spaces.
@@ -1437,7 +1437,7 @@ Elements $p,q$ are said to be \emph{compatible} if there exists $r$ such that $r
 We encourage the reader to note the distinction between the two words comparable and compatible: pairwise comparable sets form a chain while pairwise compatible sets form a filter. Compatibility is what is needed in direct limit constructions. In a tree, the two concepts end up the same.
 
 \begin{defn}
-  A subset $D\subset\PP$ is \emph{dense} if for all $p\in\PP$ there exists $q\in D$ such that $q\leq D$.
+  A subset $D\subset\PP$ is \emph{dense} if for all $p\in\PP$ there exists $q\in D$ such that $q\leq p$.
 \end{defn}
 
 The use of the word ``dense'' here may seem in conflict  with the use of the word in topology, but the two can be connected. If $\PP$ is a partial order then it has a topology with a basis consisting of the downward cones $V_p=\set{q\in\PP\mid q\leq p}$. A subset $D\subset\PP$ is dense if and only if it is dense in this topology.
