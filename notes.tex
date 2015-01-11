@@ -1793,7 +1793,7 @@ For example to prove the comprehension axiom, we need to build a name for the se
 \begin{example}
   Anything that we know for sure about $V[G]$ will be forced by the element $\mathbb 1$. So for instance since we have proved that $V[G]$ satisfies the axiom of pairing, we can say $\mathbb 1\forces$ ``the axiom of pairing''.
 
-  For a less trivial example, if $\mathbb P=\omega^{<\omega}$ we have already seen that adding a generic filter $G\subset\mathbb P$ adds a new element of Baire space $g=\bigcup G$. Moreover a simple dense set argument shows that $g$ will be surjective onto $\omega$. Thus we can say ``$\mathbb 1\forces$ ``$\bigcup\Gamma$ is a surjective function from $\check\omega\to\check\omega$.'' (Recall that we cannot use the symbol $G$, so we instead use $\Gamma$, which is the canonical name for $G$.)
+  For a less trivial example, if $\mathbb P=\omega^{<\omega}$ we have already seen that adding a generic filter $G\subset\mathbb P$ adds a new element of Baire space $g=\bigcup G$. Moreover a simple dense set argument shows that $g$ will be surjective onto $\omega$. Thus we can say $\mathbb 1\forces$ ``$\bigcup\Gamma$ is a surjective function from $\check\omega\to\check\omega$.'' (Recall that we cannot use the symbol $G$, so we instead use $\Gamma$, which is the canonical name for $G$.)
 
   On the other hand, different generic filters $G$ will yield different specific values for $g(17)$. Thus $\mathbb 1$ does not force any interesting properties of $g(17)$, other than that it is some natural number. But suppose that $s\in\mathbb P$ is a finite sequence with $s(17)=230$. Then if $G$ is a generic filter, then $s\in G$ implies $g(17)=230$. In other words we have $s\forces$ ``$(\bigcup\Gamma)(\check{17})=\check{230}$''. (From now on, we will often neglect the checkmarks on simple things like natural numbers.)
 \end{example}
@@ -2470,10 +2470,10 @@ We now continue the proof of Theorem`\ref{thm:random-cichon}. Referring to the k
 Before the proof, we need a factorization lemma to take the place of Lemma~\ref{lem:product}. The following result is similar, but with one important difference. Whereas in Lemma~\ref{lem:product} the two factors $\PP_1$ and $\PP_2$ were defined in $V$, this time the second factor $\PP_2$ must be defined in the extension $V[G_1]$ after the forcing with $\PP_1$.
 
 \begin{lem}
-  Let $\PP=\Nonnull(2^\kappa)$, and let $G\subset\PP$ be $V$-generic. Let $I\subset\kappa$, $\PP_1=\Nonnull(2^I)$, and $G_1=\set{A\restriction2^I\mid A\in G}$. Now in $V[G_1]$ define $\PP_2=\Nonnull(2^{\kappa\smallsetminus I})$ and $G_2=\set{q\in\PP_2\mid(\exists p\in\PP_1)\;p\times q\in G}$. Then $G_1$ is $V$-generic for $\PP_1$, $G_2$ is $V[G_1]$-generic for $\PP_2$, and $V[G]=V[G_1][G_2]$.
+  Let $\PP=\Nonnull(2^\kappa)$, and let $G\subset\PP$ be $V$-generic. Let $I\subset\kappa$, $\PP_1=\Nonnull(2^I)$, and $G_1=\set{A\restriction2^I\mid A\in G}$. Now in $V[G_1]$ define $\PP_2=\Nonnull(2^{\kappa\smallsetminus I})$ and $G_2=\set{q\in\PP_2\mid(\exists p\in\PP_1)\;p\hat{\times} q\in G}$. Then $G_1$ is $V$-generic for $\PP_1$, $G_2$ is $V[G_1]$-generic for $\PP_2$, and $V[G]=V[G_1][G_2]$.
 \end{lem}
 
-We omit the proof [temporarily].
+We omit the proof [temporarily]. [We also need the definition of $p\hat{\times}q$, see Kunen.]
 
 \begin{proof}[Proof of Theorem~\ref{thm:random-null}]
   The proofs are analogous to the proofs of the two equalities in Theorem~\ref{thm:cohen-meager}. To show that $\cov(\Null)=\kappa$, assume to the contrary that $\cov(\Null)<\kappa$. Then there exists a cardinal $\lambda<\kappa$ and a family $\mathcal F$ of null sets such that $|\mathcal F|=\lambda$ and $\bigcup F=2^\omega$.
