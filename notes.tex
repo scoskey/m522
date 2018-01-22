@@ -1464,7 +1464,7 @@ A partial order $\PP$ satisfying the hypothesis of the proposition is called \em
 When we make forcing rigorous, we will show that under appropriate hypotheses, a $V$-generic filter $G$ can be found outside of $V$. We will then let $W=V[G]$ be the smallest model containing both $V$ and $G$, and call this the forcing extension with respect to the notion $\PP$.
 
 \begin{example}
-  Returning to the example of the forcing notion $\PP=\omega^{<\omega}$ with the upside-down ordering, we have already said that a filter $G\subset\omega^\omega$ is actually a path through $\omega^\omega$. If $G$ is $V$-generic, then much more can be said of this path. First of all, consider the sets
+  Returning to the example of the forcing notion $\PP=\omega^{<\omega}$ with the upside-down ordering, we have already said that a filter $G\subset\PP$ is actually a path through $\omega^{<\omega}$. If $G$ is $V$-generic, then much more can be said of this path. First of all, consider the sets
   \[D_n=\set{t\in\omega^{<\omega}\mid \dom(t)\geq n}\text{.}
   \]
   Clearly $D_n$ is dense, since any $s\in\omega^{<\omega}$ can be extended to an element with length at least $n$ (recall we are using the upside-down ordering). It follows that $G$ meets $D_n$ for all $n$, and hence that $G$ is an infinite path. Second, if $G$ is $V$-generic then we have already seen that $G\notin V$. Thus the union $g=\bigcup G$ is an element of $\omega^{<\omega}$ that wasn't there before, that is, $g$ is a new element of the Baire space! We can do the same with $2^{<\omega}$ and Cantor space.
@@ -1554,12 +1554,12 @@ We close this section with a result showing the effect of MA on properties of th
 \end{thm}
 
 \begin{proof}
-  Suppose towards a contradiction that $\mathcal F$ is a family of nowhere dense subsets of $\RR$ of cardinality less than continuum, and that $\bigcup\mathcal F=\RR$. Let $\PP$ be the partial order consisting of all bounded, positive-length intervals in $\RR$, ordered by $I'\leq I$ iff $I'\subset I$. Then $\PP$ is easily seen to be ccc by the same argument as in Example~\ref{ex:cohen-ccc}. For each $A\in\mathcal F$, we consider the set
+  Let $\mathcal F$ be a family of nowhere dense subsets of $\RR$ of cardinality less than continuum. We will construct $x\in\RR$ such that $x\notin\bigcup\mathcal F$. Let $\PP$ be the partial order consisting of all bounded, positive-length intervals in $\RR$, ordered by $I'\leq I$ iff $I'\subset I$. Then $\PP$ is easily seen to be ccc by the same argument as in Example~\ref{ex:cohen-ccc}. For each $A\in\mathcal F$, we consider the set
   \[D_A=\set{I\in\PP\mid \overline{I}\cap A=\emptyset}
   \]
   Then $D_A$ is dense for any $A$: since $A$ is nowhere dense, for any positive-length interval $I$ there is a positive length $J\subset I$ such that $J\cap A=\emptyset$. We may then shrink $J$ further to suppose that $\overline{J}\subset I$.
 
-  Now by MA, we can find a filter $G\subset\PP$ such that $G$ meets $D_A$ for every $A\in\mathcal F$. Then the sets $\overline{I}$ for $I\in G$ have the finite intersection property, and it follows from the completeness of $\RR$ that there is a point $x\in\bigcap\set{\overline{I}\mid I\in G}$. Then if $A\in\mathcal F$ then since $G\cap D_A\neq\emptyset$ we can find a positive-length interval $I$ such that $I\in G$ and $\overline{I}\cap A=\emptyset$. That is, we have $x\in\overline{I}$ and $\overline{I}\cap A=\emptyset$, and so $x\notin A$. We conclude that $x$ is not an element of $\bigcup\mathcal F$, contradicting that $\bigcup\mathcal F=\RR$.
+  Now by MA, we can find a filter $G\subset\PP$ such that $G$ meets $D_A$ for every $A\in\mathcal F$. Then the sets $\overline{I}$ for $I\in G$ have the finite intersection property, and it follows from the completeness of $\RR$ that there is a point $x\in\bigcap\set{\overline{I}\mid I\in G}$. Then if $A\in\mathcal F$, since $G\cap D_A\neq\emptyset$ we can find a positive-length interval $I$ such that $I\in G$ and $\overline{I}\cap A=\emptyset$. That is, we have $x\in\overline{I}$ and $\overline{I}\cap A=\emptyset$, and so $x\notin A$. We conclude that $x$ is not an element of $\bigcup\mathcal F$, as desired.
 \end{proof}
 
 % \begin{proof}
@@ -1597,7 +1597,7 @@ We have seen the effect of MA on properties of the continuum. We now explore the
   Observe that $D_{f,n}$ is dense for all $f$ and $n$: if $s\in\omega^{<\omega}$ we can easily find $n'>n,|s|$ and find $t\supset s$ such that $t(n')>f(n)$. Thus by MA we can find a filter $G$ which meets $D_{f,n}$ for all $f\in\mathcal F$ and $n\in\NN$. Letting $g=\bigcup G$, it is clear that $g$ is not dominated by $f$ for any $f\in\mathcal F$, contradicting that $\mathcal F$ is a dominating family.
 \end{proof}
 
-The content of the above proof is that if $g$ is fully generic for $\omega^{<\omega}$, then in $V[g]$ none of the elements in the Baire space of $V$ dominate $g$. It falls short, however, of showing that $g$ actually dominates every element in the Baire space of $V$. ith a slightly more specialized partial order, this can be achieved as well.
+The content of the above proof is that if $g$ is fully generic for $\omega^{<\omega}$, then in $V[g]$ none of the elements in the Baire space of $V$ dominate $g$. It falls short, however, of showing that $g$ actually dominates every element in the Baire space of $V$. With a slightly more specialized partial order, this can be achieved as well.
 
 Given a family $\mathcal F\subset\omega^\omega$, the \emph{Hechler forcing} with respect to $\mathcal F$ is the partial order $\mathbb H_{\mathcal F}$ consisting of elements $(s,F)$ where $s\in\omega^{<\omega}$ and $F\subset\mathcal F$ is finite. We partially order $\mathbb H_{\mathcal F}$ by $(s',F')\leq(s,F)$ if the conditions hold:
 \begin{itemize}
@@ -1646,7 +1646,7 @@ For this proof, we once again introduce a new and special notion of forcing. The
 \begin{proof}
   Given an uncountable family $\mathcal F\subset\mathbb A_\epsilon$ we must show that at least two elements $O,O'\in\mathcal F$ are compatible, that is, $m(O\cup O')<\epsilon$. We first give ourselves a little wiggle room as follows: since $\mathcal F$ is uncountable and there are only countably many values of $n\in\NN$, by the pigeon-hole principle we can find a fixed $n$ and an uncountable subset $\mathcal F_0\subset\mathcal F$ such that for all $O\in\mathcal F_0$ we have $m(O)<\epsilon-1/n$.
 
-  Now for each $O\in\mathcal F_0$ we can find an open set $B_O\subset O$ which is a finite union of intervals with rational endpoints and such that $m(O\smallsetminus B_O)<1/2n$. Once again, since there are only countably many possible sets $B_O$, we can find a fixed set $B$ and an uncountable $\mathcal F_{00}\subset\mathcal F$ such that $B=B_O$ for every $O\in\mathcal F_{00}$.
+  Now for each $O\in\mathcal F_0$ we can find an open set $B_O\subset O$ which is a finite union of intervals with rational endpoints and such that $m(O\smallsetminus B_O)<1/2n$. Once again, since there are only countably many possible sets $B_O$, we can find a fixed set $B$ and an uncountable $\mathcal F_{00}\subset\mathcal F_0$ such that $B=B_O$ for every $O\in\mathcal F_{00}$.
 
   We claim that any two elements $O,O'\mathcal F_{00}$ are compatible. Indeed, we compute:
   \begin{align*}
