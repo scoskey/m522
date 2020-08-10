@@ -2,12 +2,12 @@
 
 ## Course information
 
-Meeting times: W,F from 9:00 to 10:15am  
-Meeting place: M 124  
+Meeting times: M,W from 3:00 to 4:10pm  
+Meeting place: In the waves  
 Text: Kunen, *Set Theory* (Studies in Logic edition)  
 My email: `scoskey@boisestate`  
-My office: MG 237-A  
-Office hours: W 12pm, Th 1pm, and by appointment
+My office: In the waves  
+Office hours: TBA
 
 ## Course topics
 
@@ -17,10 +17,15 @@ Our investigation of mesaure and category will lead us to a number of *independe
 
 Once we have developed the machinery of forcing, we will return to the notions of measure and category. We will find that there are numerous cardinal numbers surrounding the zero length sets and the meager sets whose values, like the size of the set of all real numbers, are also independent of set theory.
 
+## Anticipated learning outcomes
+
+* Possess a working knowledge of cardinal characteristics of measure and category
+* Possess an appreciation for forcing and modern set theory
+
 ## Homework
 
 Homework problems will be assigned regularly. To receive a passing grade, you must attempt all problems. To receive an A or B, your solutions should be correct and complete. You may correct and resubmit homework problems within two weeks of receiving them back.
 
 ## Attendance and participation
 
-Your attendance and participation are required (a few exceptions are of course allowed). Finally you may be asked to give short presentations about homework solutions or other class material.
+Attendance and participation are encouraged. Additionally you may be asked to give short presentations about homework solutions or other class material.
