@@ -5,7 +5,7 @@
 Meeting times: M,W from 3:00 to 4:10pm  
 Text: Kunen, *Set Theory* (Studies in Logic edition)  
 Notes: [View notes](https://github.com/scoskey/m522/raw/master/notes.pdf) (will be updated as the course evolves)  
-Homework: [View homework](homework)
+Homework: [View homework](homework)  
 My email: `scoskey@boisestate.edu`  
 Office hours: TBA
 

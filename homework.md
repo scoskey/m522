@@ -5,7 +5,7 @@ header-includes: |
   \def\lt{<}
 ---
 
-# Math 287 homework
+# Math 522 homework
 
 [Submit with gradescope](https://www.gradescope.com/courses/170391)
 
