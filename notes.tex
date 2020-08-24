@@ -86,21 +86,19 @@
 This course is about set theory, and its use in the study of the real line. By way of motivation, consider the question of measuring the \emph{size} of a given set of real numbers. The word ``size'' can mean many different things, depending on the context. To see what I mean, consider these three important examples.
 
 \begin{itemize}
-\item To a set theorist or combinatorist, the simplest notion of size is
+  \item To a combinatorist or set theorist, the simplest notion of size is
 \emph{cardinality}, which asks for instance whether a set is finite, countably infinite, or uncountable. Of course if the set is uncountable, a set theorist would further hope to distinguish whether it is of the first uncountable cardinality ($\aleph_1$), the second uncountable cardinality ($\aleph_2$), etc.
-
-\item To an analyst, one standard notion of size is \emph{measure}, which asks for instance whether a set has zero length or positive length.
-
-\item To a topologist, a key notion of size is \emph{category}, which asks whether a set is meager (topologically negligable), comeager, or else neither meager nor comeager.
+  \item To an analyst, one standard notion of size is \emph{measure}, which asks for instance whether a set has zero length or positive length.
+  \item To a topologist, a key notion of size is \emph{category}, which asks whether a set is meager (topologically negligable), comeager, or else neither meager nor comeager.
 \end{itemize}
 
-In this course we will ask the natural question: How do these three kinds of size compare with one another? In answering this question, we will discover numerous relationships between measure and category, with the diagram of these relationships revealing a beautiful structure.
+In this course we will ask the natural question: How do these three kinds of size compare with one another? In answering this question, we will discover numerous relationships between measure and category, with the diagram of these relationships revealing an intricate structure.
 
-Our investigation of measure and category will lead us to a number of statements that are \emph{independent} of the axioms of set theory. This means that such statements cannot be proved true or false using the usual axioms of set theory. The most central example of such a statement is the \emph{continuum hypothesis} (CH), which asserts that the set of all real numbers has cardinality equal to the first uncountable cardinal number. Cantor initially posed this problem in 1878. In 1940 G\"odel showed the axioms of set theory can't disprove CH, and in 1965 Cohen finally showed that the axioms of set theory can't prove CH.
+Our investigation of measure and category will lead us to a number of statements that are \emph{independent} of the axioms of set theory. Such statements cannot be proved true or false using the usual axioms of set theory. The most central example of such a statement is the \emph{continuum hypothesis} (CH), which asserts that the set of all real numbers has cardinality equal to the first uncountable cardinal number. Cantor initially posed this problem in 1878. In 1940 G\"odel showed the axioms of set theory can't disprove CH, and in 1965 Cohen finally showed that the axioms of set theory can't prove CH.
 
-In his proof of the latter half of the independence of CH, Cohen developed a tool for building models of set theory called \emph{forcing}. Far from being an isolated application, since then forcing has become a standard tool for establishing independence results. We will develop the machinery of forcing and give a number of such applications.
+In his proof, Cohen developed a tool for building models of set theory called \emph{forcing}. Far from being an isolated application, Cohen's contemporaries developed forcind into a general tool for proving independence results. We will develop the machinery of forcing and give a number of such applications.
 
-With the tool of forcing in hand, we will return to the notions of measure and category. We will find that there are numerous cardinal numbers surrounding the zero length sets and the meager sets whose values, like the size of the set of all real numbers, are also independent of the axioms of set theory.
+With the tool of forcing in hand, we will return to the notions of measure and category. We will find that there are numerous cardinal numbers surrounding the zero length sets and the meager sets whose values, like the size of the set of all real numbers, are independent of the axioms of set theory.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -113,44 +111,51 @@ With the tool of forcing in hand, we will return to the notions of measure and c
 \section{The real number system}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Since we will be working with real numbers, we should begin with a definition of the real number system. First we need some vocabulary surrounding fields.
+
 \begin{defn}
-  The \emph{real number system} is a complete ordered field. That is, it is a set $\RR$ together with distinguished elements $0,1$, operations $+,\times$ and an ordering $<$ satisfying the following rules.
-\begin{itemize}
-\item It is a \emph{field}: it satisfies the associative, commutative, and distributive laws, $0$ is the additive identity and $1$ is the multiplicative identity;
-\item It is an \emph{ordered} field: $<$ is a strict total order, $a<b$ implies $a+c<b+c$, and if $c$ is positive then $a<b$ implies $ac<bc$;
-\item It is \emph{complete}: if $A\subset\RR$ has an upper bound, then it has a least upper bound (supremum).
-\end{itemize}
+  \begin{itemize}
+    \item \emph{Field}: A set $F$ together with distinguished elements $0,1$, operations $+,\times$, satisfying the associative, commutative, and distributive laws, $0$ is the additive identity and $1$ is the multiplicative identity;
+    \item \emph{Ordered field}: A field with a linear ordering $<$ satisfying $a<b$ implies $a+c<b+c$, and if $c$ is positive then $a<b$ implies $ac<bc$;
+    \item \emph{Complete field}: if $A\subset F$ has an upper bound, then it has a least upper bound (supremum).
+  \end{itemize}
 \end{defn}
 
-\begin{rem}
-  It is not difficult to prove that any two complete ordered fields are isomorphic to each other, so it makes sense to define the real number system as the unique such object.
-\end{rem}
+It is not difficult to prove that any two complete ordered fields are isomorphic to each other, which means it makes sense for us to define the real number system as the unique such object.
 
-\begin{rem}
-  The above definition of the real number system is an abstract, axiomatic definition. That is, it tells you how real numbers behave, but it leaves it up to your imagination what a real number really is. In fact, we have some choice in this matter. For example we can view the real numbers as decimal strings or binary strings. For our set-theoretic purposes, all that matters is that we give one construction of the real numbers that works.
-\end{rem}
+\begin{defn}
+  The \emph{real number system} is the unique complete ordered field. 
+\end{defn}
 
-The first to give an explicit and rigorous construction of the real number system was Dedekind, who did so in the 19th century. Here is how his construction worked. First we will take the construction of the rational number system for granted. It is simply the set of fractions whose numerator is an integer and whose denominator is a nonzero natural number.
+Now this definition of the real number system is axiomatic---it tells you how real numbers behave, but it leaves it up to your imagination what a real number really is. In fact, we have some choice in this matter. One can construct real numbers using decimal strings, binary strings, or even Cauchy sequences. For our set-theoretic purposes, all that matters is that we give one construction of the real numbers that works.
 
-The key insight is to realize that each real number $r$ has a \emph{cut} in the rational numbers associated with it: the set of rational numbers that are strictly less than $r$. This association should be bijective: If the least upper bound property is true, then any such cut gives rise to a real number as the supremum of the cut. And if two real numbers are different, then they should give rise to different cuts.
+We will give the construction of the real numbers using cuts, which was proposed by Dedekind in the 19th century. First, let's take the construction of the rational number system for granted. It is simply the set of fractions whose numerator is an integer and whose denominator is a nonzero natural number.
 
-So all we have to do to define real numbers was to define cuts. To avoid circularity, we should axiomatize cuts without referring to real numbers at all. A \emph{cut} in the rational numbers is a subset $r\subset\QQ$ satisfying three properties:
+Now observe that each real number $r$ \emph{cuts} the rational numbers into two pieces: the set of rational numbers that are strictly less than $r$, and the set of rational numbers that are greater than or equal to $r$. Conversely, if I cut the rational numbers into two pieces, there is a real number just in the middle of the cut (the supremum of the left piece).
+
+This means that all we have to do to define real numbers is to define cuts. To avoid circularity, we should axiomatize cuts without referring to real numbers at all. A \emph{cut} in the rational numbers is a subset $C\subset\QQ$ satisfying three properties:
+
 \begin{itemize}
-\item nontriviality: $r\neq\emptyset$ and $r\neq\QQ$
-\item downward closure: if $q\in r$ and $q'<q$ then $q'\in r$
-\item no last element: if $q\in r$ then there is $q'>q$ such that $q'\in r$
+  \item (nontriviality) $C\neq\emptyset$ and $C\neq\QQ$
+  \item (downwards closure) if $q\in C$ and $q'<q$ then $q'\in C$
+  \item (no last element) if $q\in C$ then there is $q'>q$ such that $q'\in C$
 \end{itemize}
-To complete the construction one must say how the $+,\times$ operations and $<$ relation can be defined just in terms of cuts, and then prove that they satisfy the axioms of a complete ordered field. For example, one defines $r+r'$ to be the supremum of the set $\set{q+q'\mid q\in r,q'\in r'}$, and one defines $r<r'$ if and only if $r\subset r'$ and $r\neq r'$. We omit the details of verifying that these definitions work.
+
+To complete the construction one must say how the $+,\times$ operations and $<$ relation can be defined purely in terms of cuts, and then prove that they satisfy all the axioms of a complete ordered field. For example, one defines $C+C'$ to be the supremum of the set $\set{q+q'\mid q\in C,q'\in C'}$, and one defines $C<C'$ if and only if $C\subset C'$ and $C\neq C'$. We omit the details verifying that these definitions work.
 
 \begin{rem}
-  It is interesting to compare Dedekind's construction with the modern decimal number construction (which we omit). The decimal number construction is practical for calculations, but has some oddities. For example some numbers have two decimal representations, like $.999\cdots$ and $1$. Also we made an arbitrary decision to use decimal expansions as opposed to any other base. Dedekind's construction is beautiful because it is completely uniform and does not involve any arbitrary decisions.
+  It is interesting to compare Dedekind's construction with the modern decimal number construction. The decimal number construction is practical for calculations, but has some oddities. For example some numbers have two decimal representations, like $.999\cdots$ and $1.000\cdots$. Also we made an arbitrary decision to use decimal expansions over other bases. Dedekind's construction is beautiful because it is uniform and doesn't involve any arbitrary decisions.
 \end{rem}
+
+When studying the foundations of numbers, one often starts with the natural numbers, uses differences to construct integers, then fractions to construct rational numbers, and finally constructs the real numbers as above. It may seem as if these steps are all similar to one another, but the final step is different. To see why we must introduce the idea of set size.
 
 \begin{defn}
   A set $A$ of real numbers is said to be \emph{countable} if its elements can be enumerated using natural number indices. In other words, $A$ is countable if there exists a sequence $(a_n)_{n\in\NN}$ such that $A=\set{a_n\mid n\in\NN}$.
 \end{defn}
 
-Note that this definition implies that finite sets are countable. If we wish to emphasize that a particular countable set is infinite, we will use the term \emph{countably infinite}. A set that is not countable is called \emph{uncountable}. We now give Cantor's famous proof of the fact that the set of all real numbers is uncountable. The argument goes by contradiction and uses a recursive construction to reach a contradiction one step at a time. Such arguments are often called ``diagonal'', for reasons we shall see later on.
+Note that in this terminology, a finite set is officially countable. If we wish to emphasize that a particular countable set is infinite, we will use the term \emph{countably infinite}. A set that is not countable is called \emph{uncountable}.
+
+The natural numbers, the integers, and the rational numbers are all countable using well-known argument. We now give Cantor's famous proof of the fact that the set of all real numbers is uncountable. The argument goes by contradiction and uses a recursive construction to reach a contradiction one step at a time. Such arguments are often called ``diagonal'', for reasons we shall see later on.
 
 \begin{thm}[Cantor]
   \label{thm:cantor}
@@ -167,24 +172,25 @@ We can now find a point in the intersection of the $I_n$ using the completeness 
 Since $x$ lies in $I_n$ for all $n$, and since we chose $I_n$ in such a way that it omits $a_n$, we know that $x\neq a_n$ for all $n$. This contradicts the hypothesis that $\RR=\set{a_n\mid n\in\NN}$, and concludes the proof.
 \end{proof}
 
-This argument appears in one form or another numerous times throughout elementary analysis and set theory. We shall next see it in the proof of the Baire category theorem.
+This style argument appears in one form or another numerous times throughout elementary analysis and set theory. We shall next see it in the proof of the Baire category theorem.
 
 \begin{exerc}
-  With the definition of $r+r'$ for Dedekind cuts, show that addition is commutative and associative.
+  With the definition of $C+C'$ for Dedekind cuts, show that addition is commutative and associative.
 \end{exerc}
 
 \begin{exerc}
-  Define multiplication $r\times r'$ for Dedekind cuts, and show that it agrees with multiplication for rational numbers. [Hint: consider four cases when $r,r'$ are negative or nonnegative.]
+  Define multiplication $C\times C'$ for Dedekind cuts, and show that it agrees with multiplication for rational numbers. [Hint: consider four cases when $C,C'$ are negative or nonnegative.]
 \end{exerc}
 
 \begin{exerc}
-  Let $A$ be a set of real numbers containing a positive-length interval. Show that $A$ is uncountable.
+  Let $A$ be a set of real numbers, and assume $A$ contains an interval of nonzero length. Show that $A$ is uncountable.
 \end{exerc}
 
 \begin{notes}
   Although the material in this section is standard and can be located in most any analysis book, an excellent introduction is \emph{Understanding Analysis} by Stephen Abbott. For the completeness axiom see Abbott, Section~1.3. For Cantor's theorem see Abbott, Section~1.4. For Dedekind cuts see Abbott, Section~8.4.
 \end{notes}
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Baire category theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
