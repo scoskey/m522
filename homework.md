@@ -13,7 +13,7 @@ header-includes: |
 
 1. (1.1) With the definition of $C+C'$ for Dedekind cuts, show that addition is commutative and associative.
 
-2. (1.4) Show that any two complete ordered fields are isomorphic as ordered fields. [Hint: observe that both must contain a copy of $\Q$ which is dense.]
+2. (1.4) Show that any two complete ordered fields are isomorphic as ordered fields. [Hint: observe that both must contain a copy of $\mathbb Q$ which is dense.]
 
 3. (2.1) Compute the sum of the lengths of all of the intervals removed from $[0,1]$ in the construction of the Cantor set. What if some fraction other than $1/3$ is removed at each stage?
 
