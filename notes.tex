@@ -26,11 +26,11 @@
 \usepackage{tikz}\usetikzlibrary{positioning,decorations.fractals,decorations.pathmorphing}
 
 \newcommand{\set}[1]{\left\{\,#1\,\right\}}
-\newcommand{\NN}{\mathbb N}
-\newcommand{\PP}{\mathbb P}
-\newcommand{\QQ}{\mathbb Q}
-\newcommand{\RR}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
 \newcommand{\BB}{\mathbb B}
+\newcommand{\PP}{\mathbb P}
 \newcommand{\Null}{\mathcal N}
 \newcommand{\Meager}{\mathcal M}
 \newcommand{\Ksigma}{\mathcal K_\sigma}
@@ -130,10 +130,10 @@ We will give the construction of the real numbers using cuts, which was proposed
 
 Now observe that each real number $r$ \emph{cuts} the rational numbers into two pieces: the set of rational numbers that are strictly less than $r$, and the set of rational numbers that are greater than or equal to $r$. Conversely, if I cut the rational numbers into two pieces, there is a real number just in the middle of the cut (the supremum of the left piece).
 
-This means that all we have to do to define real numbers is to define cuts. To avoid circularity, we should axiomatize cuts without referring to real numbers at all. A \emph{cut} in the rational numbers is a subset $C\subset\QQ$ satisfying three properties:
+This means that all we have to do to define real numbers is to define cuts. To avoid circularity, we should axiomatize cuts without referring to real numbers at all. A \emph{cut} in the rational numbers is a subset $C\subset\Q$ satisfying three properties:
 
 \begin{itemize}
-  \item (nontriviality) $C\neq\emptyset$ and $C\neq\QQ$
+  \item (nontriviality) $C\neq\emptyset$ and $C\neq\Q$
   \item (downwards closure) if $q\in C$ and $q'<q$ then $q'\in C$
   \item (no last element) if $q\in C$ then there is $q'>q$ such that $q'\in C$
 \end{itemize}
@@ -147,7 +147,7 @@ To complete the construction one must say how the $+,\times$ operations and $<$ 
 When studying the foundations of numbers, one often starts with the natural numbers, uses differences to construct integers, then fractions to construct rational numbers, and finally constructs the real numbers as above. It may seem as if these steps are all similar to one another, but the final step is different. To see why we must introduce the idea of set size.
 
 \begin{definition}
-  A set $A$ of real numbers is said to be \emph{countable} if its elements can be enumerated using natural number indices. In other words, $A$ is countable if there exists a sequence $(a_n)_{n\in\NN}$ such that $A=\set{a_n\mid n\in\NN}$.
+  A set $A$ of real numbers is said to be \emph{countable} if its elements can be enumerated using natural number indices. In other words, $A$ is countable if there exists a sequence $(a_n)_{n\in\N}$ such that $A=\set{a_n\mid n\in\N}$.
 \end{definition}
 
 Note that in this terminology, a finite set is officially countable. If we wish to emphasize that a particular countable set is infinite, we will use the term \emph{countably infinite}. A set that is not countable is called \emph{uncountable}.
@@ -160,13 +160,13 @@ The natural numbers, the integers, and the rational numbers are all countable us
 \end{theorem}
 
 \begin{proof}
-  Suppose towards a contradiction that the set of all real numbers is countable. Then there exists a sequence $(a_n)_{n\in\NN}$ such that $\RR=\set{a_n\mid n\in\NN}$. Our strategy will be to inductively construct a decreasing sequence of closed intervals $I_n=[l_n,r_r]$ such that for all $n$, $a_n\notin I_n$. Then if $r$ lies in the intersection of these intervals, $r$ cannot be equal to $a_n$ for any $n$, a contradiction.
+  Suppose towards a contradiction that the set of all real numbers is countable. Then there exists a sequence $(a_n)_{n\in\N}$ such that $\R=\set{a_n\mid n\in\N}$. Our strategy will be to inductively construct a decreasing sequence of closed intervals $I_n=[l_n,r_r]$ such that for all $n$, $a_n\notin I_n$. Then if $r$ lies in the intersection of these intervals, $r$ cannot be equal to $a_n$ for any $n$, a contradiction.
 
 The construction itself is straightforward. For the base case let $I_1=[l_1,r_1]$ be any interval which omits $a_1$. For the inductive step, if $I_{n-1}$ has been defined, let $I_n=[l_n,r_n]$ be any subinterval of $I_{n-1}$ which omits $a_n$.
 
-We can now find a point in the intersection of the $I_n$ using the completeness property. First observe that since $I_n\subset I_{n-1}$ for all $n$, the set of left endpoints $\set{l_n\mid n\in\NN}$ is bounded above by any and all of the right endpoints $r_n$. By the completeness property, the set of left endpoints has a least upper bound $x$. Since $x$ is an upper bound for $\set{l_n\mid n\in\NN}$, we have $l_n\leq x$ for all $n$. Since $x$ is the least possible upper bound for $\set{l_n\mid n\in\NN}$, we have $x\leq r_n$ for all $n$. Therefore we have $x\in[l_n,r_n]=I_n$ for all $n$.
+We can now find a point in the intersection of the $I_n$ using the completeness property. First observe that since $I_n\subset I_{n-1}$ for all $n$, the set of left endpoints $\set{l_n\mid n\in\N}$ is bounded above by any and all of the right endpoints $r_n$. By the completeness property, the set of left endpoints has a least upper bound $x$. Since $x$ is an upper bound for $\set{l_n\mid n\in\N}$, we have $l_n\leq x$ for all $n$. Since $x$ is the least possible upper bound for $\set{l_n\mid n\in\N}$, we have $x\leq r_n$ for all $n$. Therefore we have $x\in[l_n,r_n]=I_n$ for all $n$.
 
-Since $x$ lies in $I_n$ for all $n$, and since we chose $I_n$ in such a way that it omits $a_n$, we know that $x\neq a_n$ for all $n$. This contradicts the hypothesis that $\RR=\set{a_n\mid n\in\NN}$, and concludes the proof.
+Since $x$ lies in $I_n$ for all $n$, and since we chose $I_n$ in such a way that it omits $a_n$, we know that $x\neq a_n$ for all $n$. This contradicts the hypothesis that $\R=\set{a_n\mid n\in\N}$, and concludes the proof.
 \end{proof}
 
 This style argument appears in one form or another numerous times throughout elementary analysis and set theory. We shall next see it in the proof of the Baire category theorem.
@@ -183,6 +183,10 @@ This style argument appears in one form or another numerous times throughout ele
   Let $A$ be a set of real numbers, and assume $A$ contains an interval of nonzero length. Show that $A$ is uncountable.
 \end{exerc}
 
+\begin{exerc}
+  Show that any two complete ordered fields are isomorphic as ordered fields. [Hint: observe that both must contain a copy of $\Q$ which is dense.]
+\end{exerc}
+
 \begin{notes}
   Although the material in this section is standard and can be located in most any analysis book, an excellent introduction is \emph{Understanding Analysis} by Stephen Abbott. For the completeness axiom see Abbott, Section~1.3. For Cantor's theorem see Abbott, Section~1.4. For Dedekind cuts see Abbott, Section~8.4.
 \end{notes}
@@ -192,12 +196,14 @@ This style argument appears in one form or another numerous times throughout ele
 \section{Baire category theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+In the previous section we introduced the real numbers, and a cardinality-based notion of size (countable and uncountable). In this section we introduce a topological notion of size. Intuitively one might try to begin with denseness, but it doesn't quite work. The reason is that some very small sets are dense (like the rationals) and some very large sets are not dense (like the half-line $[0,\infty)$). Instead we need the following.
+
 \begin{definition}
   A set of real numbers $A$ is said to be \emph{nowhere dense} if every positive-length interval $I$ contains a positive-length interval $J$ such that $J$ is disjoint from $A$.
 \end{definition}
 
 \begin{example}
-  Any finite subset of $\RR$ is nowhere dense. The set $\set{1/n\mid n\in\NN}$ is nowhere dense. In fact, any \emph{discrete} set is nowhere dense (here, $A$ is discrete if every point of $A$ is isolated). The set of rational numbers whose numerator is $1$ and whose denominator is a power of $2$ is \emph{not} nowhere dense, because such a number can be found in every positive-length subinterval of $[0,1]$.
+  Any finite subset of $\R$ is nowhere dense. The set $\set{1/n\mid n\in\N}$ is nowhere dense. In fact, any \emph{discrete} set is nowhere dense (here, $A$ is discrete if every point of $A$ is isolated). The set of rational numbers whose numerator is $1$ and whose denominator is a power of $2$ is \emph{not} nowhere dense, because such a number can be found in every positive-length subinterval of $[0,1]$.
 \end{example}
 
 Note that nowhere dense sets need not be countable. The classical Cantor middle thirds set is an archetypal example of a nowhere dense set. Recall that the \emph{Cantor set} is defined as follows. Begin with the set $C_1=[0,1]$. Let $C_2=[0,1/3]\cup[2/3,1]$ be the set $C_1$ with its open middle third removed. Let $C_3=[1,1/9]\cup[2/9,1/3]\cup[2/3,7/9]\cup[8/9,1]$ be the set $C_2$ with the open middle third removed from each component of $C_2$. Refer to Figure~\ref{fig:cantor-set} for a picture of these first few sets. Recursively, let $C_{n+1}$ be constructed from $C_n$ by removing the open middle third from each component of $C_n$. Finally the Cantor set $C$ is defined to be $C=\bigcap C_n$. We will see in a later section that the Cantor set is uncountable. % add ref
@@ -226,7 +232,7 @@ Note that nowhere dense sets need not be countable. The classical Cantor middle 
 \end{proposition}
 
 \begin{proof}
-  First compute that the sum of the lengths of all of those middle thirds removed in the construction of the cantor set is exactly $1$ (Exercise~\ref{exerc:cantor}). It follows from this that $C$ does not contain any positive-length intervals. Now if $I$ is any positive-length interval, then $I$ must contain a point $x\notin C$. Now note that $C$ is closed because it is an intersection of closed sets, and hence $\RR\smallsetminus C$ is open. Thus there is an open interval $J$ centered at $x$ such that $J\subset\RR\smallsetminus C$. Shrinking the radius of $J$ if necessary, we can suppose that $J\subset I$. This shows that $C$ is nowhere dense.
+  Let $I$ be a given positive-length interval. Observe that for each $n$, the set $C_n$ consists of intervals of length $1/3^n$ which are all at least $1/3^{n-1}$ units apart from one another. Since $1/3^n\to0$, we can find some value $N$ such that $C_N$ consists of intervals that are strictly shorter than the length of $I$. It follows that $I\cap (C_N)^c$ contains a positive-length interval $J$, as desired.
 \end{proof}
 
 The terminology ``nowhere dense'' may sound strange at first, but it is justified by the following fact.
@@ -234,77 +240,75 @@ The terminology ``nowhere dense'' may sound strange at first, but it is justifie
 \begin{proposition}
   \label{prop:nwd-equiv}
   Let $A$ be a set of real numbers. The following are equivalent.
-\begin{enumerate}
-\item $A$ is nowhere dense;
-\item $\cl(A)$ (the topological closure of $A$) has no interior;
-\item for every nonempty open set $O$, we have that $A$ is not dense in $O$.
-\end{enumerate}
+  \begin{enumerate}
+    \item $A$ is nowhere dense;
+    \item $\cl(A)$ (the topological closure of $A$) has no interior;
+    \item for every nonempty open set $O$, we have that $A$ is not dense in $O$.
+  \end{enumerate}
 \end{proposition}
 
 The proof is requested in Exercise~\ref{exerc:nwd-equiv}.
 
 \begin{theorem}
-  The class of nowhere dense sets is closed under the operations of subset, union, and closure.
+  The collection of nowhere dense sets is closed under the operations of subset, union, and closure.
 \end{theorem}
 
 \begin{proof}
   Preservation to subsets is immediate from the definition.
 
   For preservation to unions, suppose that $A,B$ are nowhere dense and let $I$ be a positive-length interval. Since $A$ is nowhere dense, there is a positive-length interval $J\subset I\smallsetminus A$. Since $B$ is nowhere dense there is a further positive-length interval $J'\subset J\smallsetminus B$. It follows that
-\[J'\subset (I\smallsetminus A)\smallsetminus B=I\smallsetminus (A\cup B)
-\]
-This establishes that $A\cup B$ is again nowhere dense.
+  \[J'\subset (I\smallsetminus A)\smallsetminus B=I\smallsetminus (A\cup B)
+  \]
+  This establishes that $A\cup B$ is again nowhere dense.
 
-Preservation to closures is immediate from condition (b) of Proposition~\ref{prop:nwd-equiv}, but we can also give a direct argument. Let $A$ be nowhere dense and let $I$ be a given positive-length interval. Since $A$ is nowhere dense there is a positive-length interval $J$ such that $J\subset\RR\smallsetminus A$. Removing endpoints if necessary, we may suppose that $J$ is open. It follows that $J\subset\RR\smallsetminus\cl(A)$ (recall that since $\cl(A)$ is the intersection of all closed sets containing $A$, we have that $\RR\smallsetminus\cl(A)$ is the union of all open sets disjoint from $A$). This shows that $\cl(A)$ is nowhere dense.
+  Preservation to closures is immediate from condition (b) of Proposition~\ref{prop:nwd-equiv}, but we can also give a direct argument. Let $A$ be nowhere dense and let $I$ be a given positive-length interval. Since $A$ is nowhere dense there is a positive-length interval $J$ such that $J\subset\R\smallsetminus A$. Removing endpoints if necessary, we may suppose that $J$ is open. It follows that $J\subset\R\smallsetminus\cl(A)$ (recall that since $\cl(A)$ is the intersection of all closed sets containing $A$, we have that $\R\smallsetminus\cl(A)$ is the union of all open sets disjoint from $A$). This shows that $\cl(A)$ is nowhere dense.
 \end{proof}
 
-\begin{remark}
-  It is easy to see that the class of nowhere dense sets is \emph{not} preserved to infinite unions, even countably infinite ones. For example, the set of rational numbers is countable, and therefore it is a countable unions of singletons: $\QQ=\bigcup_{q\in\QQ}\{q\}$. Each singleton $\{q\}$ is clearly nowhere dense, so $\QQ$ is a countable union of nowhere dense sets, but $\QQ$ is dense.
-\end{remark}
+It is easy to see that the collection of nowhere dense sets is \emph{not} preserved to infinite unions, even countably infinite ones. For example, the set of rational numbers is countable, and therefore it is a countable unions of singletons: $\Q=\bigcup_{q\in\Q}\{q\}$. Each singleton $\{q\}$ is clearly nowhere dense, so $\Q$ is a countable union of nowhere dense sets, but $\Q$ is dense.
 
 \begin{definition}
-  A set of real numbers $A$ is called \emph{meager} if it is a union of countably many nowhere dense sets. A set $A$ is called \emph{comeager} if $\RR\smallsetminus A$ is meager.
+  A set of real numbers $A$ is called \emph{meager} if it is a union of countably many nowhere dense sets. A set $A$ is called \emph{comeager} if $\R\smallsetminus A$ is meager.
 \end{definition}
 
-In principal it is possible that this notion is completely moot in the sense that maybe every set of real numbers is meager according to this definition. The Baire category theorem says that this is not the case. In fact, we will soon see that meager sets are rather paltry as the name implies.
+At this point it is still conceivable that the concept of meagerness is completely trivial---maybe every set of real numbers turns out meager according to this definition. The Baire category theorem says that this is not the case. In fact, we will soon see that meager sets really are ``small'', as the name implies.
 
 \begin{theorem}[Baire category theorem]
   \label{thm:baire}
-  The set of all real numbers $\RR$ is nonmeager. In fact, if $I$ is a positive-length interval then $I$ is nonmeager.
+  The set of all real numbers $\R$ is nonmeager. In fact, if $I$ is a positive-length interval then $I$ is nonmeager.
 \end{theorem}
 
 \begin{proof}
-  The proof is very similar to Cantor's proof of Theorem~\ref{thm:cantor}. Let $I$ be a positive-length interval and suppose towards a contradiction that $I$ is meager. Then there exists a sequence $(A_n)_{n\in\NN}$ of nowhere dense sets such that $\bigcup A_n=I$. We will inductively construct a decreasing sequence of closed subintervals $J_n\subset I$ such that for all $n$, $J_n\cap N_n=\emptyset$.
+  The proof is very similar to Cantor's proof of Theorem~\ref{thm:cantor}. Let $I$ be a positive-length interval and suppose towards a contradiction that $I$ is meager. Then there exists a sequence $(A_n)_{n\in\N}$ of nowhere dense sets such that $\bigcup A_n=I$. We will inductively construct a decreasing sequence of closed subintervals $J_n\subset I$ such that for all $n$, $J_n\cap N_n=\emptyset$.
 
   The induction is again straightforward. First apply the definition of $A_1$ being nowhere dense to obtain $J_1$. Inductively apply the definition of $A_n$ being nowhere dense to $J_n$ to obtain $J_{n+1}$. (Each time we may shrink the newly obtained interval slightly to suppose that it is closed.)
 
   We can now argue just as in the proof of Theorem~\ref{thm:cantor} that there exists a point $x\in\bigcap J_n$. It follows that $x\notin\bigcup A_n$, which contradicts the assumption that $I=\bigcup A_n$, and completes the proof.
 \end{proof}
 
-\begin{remark}
-  Baire category theory gets its name from the above theorem, and the fact that meager sets used to be called ``first category''. Nonmeager sets used to be called ``second category''.
-\end{remark}
+Baire category theory gets its name from the above theorem, and the fact that meager sets used to be called ``first category''. Nonmeager sets used to be called ``second category''.
 
 \begin{theorem}
   \label{thm:meager-pres}
   The class of meager sets is closed under the operations of subset and countable union.
 \end{theorem}
 
-We remark that the meager property is not necessarily preserved to the closure. In fact $\cl(A)$ is meager if and only if $A$ is nowhere dense.
+We remark that the meager property is not necessarily preserved to the closure. For example the closure of $\Q$ is $\R$. In fact $\cl(A)$ is meager if and only if $A$ is nowhere dense.
 
 As a consequence of the Baire category theorem, for any set $A$ it is possible to assign $A$ one of three distinct ``sizes'':
-\begin{itemize}
-\item $A$ is meager (small)
-\item $A$ is comeager (large)
-\item $A$ neither meager nor comeager (intermediate)
-\end{itemize}
-We should verify that no set of numbers can be both meager and comeager. Indeed, suppose that both $A$ and $\RR\smallsetminus A$ were meager. Then by Theorem~\ref{thm:meager-pres} their union $\RR$ would be meager, contradicting the Baire category theorem.
 
-We should also verify that there exists sets of numbers that are neither meager nor comeager. Indeed, if $I$ is any bounded positive-length interval then by the Baire category theorem $I$ is nonmeager, and since $\RR\smallsetminus I$ also contains a bounded interval, $I$ is also non-comeager.
+\begin{itemize}
+  \item $A$ is meager (small)
+  \item $A$ is comeager (large)
+  \item $A$ neither meager nor comeager (intermediate)
+\end{itemize}
+
+We should verify that no set of numbers can be both meager and comeager. Indeed, suppose that both $A$ and $\R\smallsetminus A$ were meager. Then by Theorem~\ref{thm:meager-pres} their union $\R$ would be meager, contradicting the Baire category theorem.
+
+We should also verify that there exists sets of numbers that are neither meager nor comeager. Indeed, if $I$ is any bounded positive-length interval then by the Baire category theorem $I$ is nonmeager, and since $\R\smallsetminus I$ also contains a bounded interval, $I$ is also non-comeager.
 
 \begin{exerc}
   \label{exerc:cantor}
-  Compute the sum of the lengths of all of the intervals removed from $[0,1]$ in the construction of the Cantor set. What if some other fraction is removed at each stage?
+  Compute the sum of the lengths of all of the intervals removed from $[0,1]$ in the construction of the Cantor set. What if some fraction other than $1/3$ is removed at each stage?
 \end{exerc}
 
 \begin{exerc}
@@ -320,6 +324,7 @@ We should also verify that there exists sets of numbers that are neither meager 
   For more on the Cantor set see Abbott, Section~3.1. For the Baire category theorem see Abbott, Section~3.5. For Baire category theory generally see Oxtoby, Chapter~1.
 \end{notes}
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lebesgue measure theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -328,12 +333,12 @@ Classical measure theory aims to try to extend the length function on intervals 
 \begin{enumerate}
 \item $m$ agrees with length: if $I$ is an interval then $m(I)=\ell(I)$
 \item translation invariance: $m(x+A)=m(A)$ for all sets $A$ and real numbers $x$
-\item countably additivity: if $(A_n)_{n\in\NN}$ is a sequence pairwise disjoint sets then $m(\bigcup A_n)=\sum m(A_n)$
+\item countably additivity: if $(A_n)_{n\in\N}$ is a sequence pairwise disjoint sets then $m(\bigcup A_n)=\sum m(A_n)$
 \end{enumerate}
 
-Perhaps surprisingly, the conditions (a)--(c) are mutually contradictory and so no such measurement function $m$ exists! Here is Vitali's simple example of a contradiction arising from these requirements. Regard $\QQ$ as an additive subgroup of $\RR$ and consider the cosets of $\QQ$, that is, sets of the form $x+\QQ$. Let $A\subset[0,1]$ be a set of coset representatives, that is, $A$ contains exactly one element from each of the cosets. (It is always possible to choose a coset representative in $[0,1]$ because $\QQ$ is dense.)
+Perhaps surprisingly, the conditions (a)--(c) are mutually contradictory and so no such measurement function $m$ exists! Here is Vitali's simple example of a contradiction arising from these requirements. Regard $\Q$ as an additive subgroup of $\R$ and consider the cosets of $\Q$, that is, sets of the form $x+\Q$. Let $A\subset[0,1]$ be a set of coset representatives, that is, $A$ contains exactly one element from each of the cosets. (It is always possible to choose a coset representative in $[0,1]$ because $\Q$ is dense.)
 
-Then the translations $q+A$ for $q\in\QQ$ form a countable sequence of pairwise disjoint sets that cover all of $\RR$. In fact, if we let $S=\QQ\cap[-1,1]$ then the translations $q+A$ for $q\in S$ already cover all of $[0,1]$. We can then infer from (a) and (c) that $m[\bigcup_{q\in S}(q+A)]$ lies between $1$ and $4$. But on the other hand, by (b) and (c) we have that 
+Then the translations $q+A$ for $q\in\Q$ form a countable sequence of pairwise disjoint sets that cover all of $\R$. In fact, if we let $S=\Q\cap[-1,1]$ then the translations $q+A$ for $q\in S$ already cover all of $[0,1]$. We can then infer from (a) and (c) that $m[\bigcup_{q\in S}(q+A)]$ lies between $1$ and $4$. But on the other hand, by (b) and (c) we have that 
 \[m\left(\bigcup_{q\in S}(q+A)\right)=\sum_{q\in S}m(q+A)=\sum_{q\in S}m(A)
 \]
 This is a contradiction because an infinite sum of a single constant value $m(A)$ can be equal only to either $0$ or $\infty$, and so cannot lie between $1$ and $4$.
@@ -380,7 +385,7 @@ From now on we will ignore the full power of measure theory to assign a real num
 
 \begin{definition}
   \label{defn:null}
-  A set of real numbers $A$ is \emph{null} if for all $\epsilon>0$ there exists a sequence of intervals $(I_n)_{n\in\NN}$ such that $A\subset\bigcup I_n$ and $\sum\ell(I_n)<\epsilon$.
+  A set of real numbers $A$ is \emph{null} if for all $\epsilon>0$ there exists a sequence of intervals $(I_n)_{n\in\N}$ such that $A\subset\bigcup I_n$ and $\sum\ell(I_n)<\epsilon$.
 \end{definition}
 
 \begin{example}
@@ -391,7 +396,7 @@ The notion of null set bears many similarities with the notion of meager set. As
 
 \begin{corollary}
   \label{cor:interval-nonnull}
-  The set $\RR$ of all real numbers is not null. In fact, if $I$ is any positive-length interval then $I$ is not null.
+  The set $\R$ of all real numbers is not null. In fact, if $I$ is any positive-length interval then $I$ is not null.
 \end{corollary}
 
 \begin{corollary}
@@ -533,7 +538,7 @@ In the general case when $\mathcal A$ is a class, we can reduce to the set case 
 Although we still can't be fully rigorous about the meaning of the symbols $\aleph_1,\aleph_2,\ldots$, the well-ordering property helps justify the use of these symbols. Essentially $\aleph_1$ is the least cardinality greater than $\aleph_0$, $\aleph_2$ is the least cardinality greater than $\aleph_1$, and so forth. In the next section, we will make this fully precise.
 
 \begin{exerc}
-  Show that there is a bijection between $\mathcal P(\NN)$ and $\RR$.
+  Show that there is a bijection between $\mathcal P(\N)$ and $\R$.
 \end{exerc}
 
 \begin{exerc}
@@ -673,7 +678,7 @@ The map is continuous: if $f(x)\in(a,b)$ then there exists $n$ such that if we r
 With some elementary number theory, it is possible to verify that this map is a bijection onto the set of irrational numbers, and even a homeomorphism.
 \end{proof}
 
-This result also implies that $2^\omega$ admits a complete metric, because the Cantor set is a closed and hence complete subspace of $\RR$. In fact, any sequence space $A^\omega$ is completely metrizable. For an example of a complete metric, given $x,y\in A^\omega$ such that $x\neq y$, let $n$ be the least natural number such that $x(n)\neq y(n)$ and set $d(x,y)=1/n$. 
+This result also implies that $2^\omega$ admits a complete metric, because the Cantor set is a closed and hence complete subspace of $\R$. In fact, any sequence space $A^\omega$ is completely metrizable. For an example of a complete metric, given $x,y\in A^\omega$ such that $x\neq y$, let $n$ be the least natural number such that $x(n)\neq y(n)$ and set $d(x,y)=1/n$. 
 
 \begin{proposition}
   The metric on $A^\omega$ defined above is complete.
@@ -701,7 +706,7 @@ A subset $T\subset A^{<\omega}$ is said to be a \emph{tree} if it is closed down
   Given any set $B\subset A^\omega$, we let $T_B$ be the tree consisting of all $s$ such that $V_s\cap B\neq\emptyset$ (that is, all initial segments of elements of $B$). We will show that the set $[T_B]$ of all branches through the tree $T_B$ is precisely the \emph{closure} of $B$, which implies the desired result. For this, note that $x$ lies in the closure of $B$ if and only if every open neighborhood of of $x$ meets $B$. This is equivalent to the statement that for every initial segment $s\subset x$, $V_s\cap B\neq\emptyset$. Finally, this is equivalent to the statement that $x$ is a branch through $T_B$.
 \end{proof}
 
-In previous sections we have defined nowhere dense subsets of $\RR$ in terms of intervals. In fact we can define nowhere dense subsets of any topological space in terms of open sets: $S\subset X$ is \emph{nowhere dense} in $X$ if every open set has an open subset disjoint from $S$. This definition can even be made with basic open sets in place of open sets. Thus we have the following characterization.
+In previous sections we have defined nowhere dense subsets of $\R$ in terms of intervals. In fact we can define nowhere dense subsets of any topological space in terms of open sets: $S\subset X$ is \emph{nowhere dense} in $X$ if every open set has an open subset disjoint from $S$. This definition can even be made with basic open sets in place of open sets. Thus we have the following characterization.
 
 \begin{proposition}
   \label{prop:cantor-space-nwd}
@@ -743,14 +748,14 @@ In particular the notions of meager and comeager sets make perfect sense in both
 \section{$\sigma$-compactness in Baire space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-As we have discussed in the introduction, the exact cardinal value of the size of the set of all real numbers is independent of the axioms of set theory. That is, if we write $\mathfrak c=|\RR|$ then we know $\mathfrak c=\aleph_\alpha$ for some $\alpha\geq1$, but we do not know which one. Here $\mathfrak c$ stands for \emph{continuum}. Since $\mathfrak c$ is also equal to the cardinality of Cantor space, it is also often denoted $2^{\aleph_0}$. In this section we discuss several cardinal values other than $\mathfrak c$ that arise from the special topology of the Baire space $\omega^\omega$.
+As we have discussed in the introduction, the exact cardinal value of the size of the set of all real numbers is independent of the axioms of set theory. That is, if we write $\mathfrak c=|\R|$ then we know $\mathfrak c=\aleph_\alpha$ for some $\alpha\geq1$, but we do not know which one. Here $\mathfrak c$ stands for \emph{continuum}. Since $\mathfrak c$ is also equal to the cardinality of Cantor space, it is also often denoted $2^{\aleph_0}$. In this section we discuss several cardinal values other than $\mathfrak c$ that arise from the special topology of the Baire space $\omega^\omega$.
 
 We have measured the size of sets of real numbers using cardinality, category, and measure. We now introduce a fourth notion in the Baire space. A set $A\subset\omega^\omega$ is said to be \emph{$\sigma$-compact} if it is the union of countably many compact sets.
 
 Like the meager and null sets, the class of $\sigma$-compact sets is closed under countable unions. While the class of $\sigma$-compact sets is not closed under subsets, if one wishes they can simply consider instead the class of subsets of $\sigma$-compact sets instead. In a moment we shall show that the whole Baire space $\omega^\omega$ is not $\sigma$-compact, so that $\sigma$-compactness really is a good notion of a small set.
 
 \begin{remark}
-  Among the spaces we've explored so far, the notion of $\sigma$-compactness only works in the Baire space. That's because both $2^\omega$ and $\RR$ both have the property that the whole space is $\sigma$-compact: $\RR$ is the union of closed bounded intervals, and $2^\omega$ is itself compact.
+  Among the spaces we've explored so far, the notion of $\sigma$-compactness only works in the Baire space. That's because both $2^\omega$ and $\R$ both have the property that the whole space is $\sigma$-compact: $\R$ is the union of closed bounded intervals, and $2^\omega$ is itself compact.
 \end{remark}
 
 We now introduce for the first time the process of associating \emph{cardinal characteristics} to a class of sets. First we denote by $\Ksigma$ the class of all sets $A\subset\omega^\omega$ such that $A$ is a subset of some $\sigma$-compact set.
@@ -842,7 +847,7 @@ We are now ready to state the connection between $\Ksigma$ sets and the eventual
 \end{exerc}
 
 \begin{exerc}
-  Consider the space $\RR^\omega$ with the product topology. Is it $\sigma$-compact?
+  Consider the space $\R^\omega$ with the product topology. Is it $\sigma$-compact?
 \end{exerc}
 
 \begin{notes}
@@ -854,12 +859,12 @@ We are now ready to state the connection between $\Ksigma$ sets and the eventual
 \section{Ideals and their cardinals}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Let $X$ be any one of the three spaces $\RR$, $2^\omega$, or $\omega^\omega$. An \emph{ideal} on $X$ is a subset $\mathcal I\subset\mathcal P(X)$ which is closed under subsets and (finite) unions. We think of an ideal as any collection of sets that captures some quality of smallness in subsets of $X$. Of course, the whole space $X$ should not be small, so we are only interested in \emph{proper} ideals, i.e.\ those do not contain $X$.
+Let $X$ be any one of the three spaces $\R$, $2^\omega$, or $\omega^\omega$. An \emph{ideal} on $X$ is a subset $\mathcal I\subset\mathcal P(X)$ which is closed under subsets and (finite) unions. We think of an ideal as any collection of sets that captures some quality of smallness in subsets of $X$. Of course, the whole space $X$ should not be small, so we are only interested in \emph{proper} ideals, i.e.\ those do not contain $X$.
 
 An ideal $\mathcal I$ is called a \emph{$\sigma$-ideal} if it is additionally closed under countable unions. In the past several sections, we have discussed three key notions of smallness and each one is a $\sigma$-ideal.
 \begin{itemize}
-\item $\Meager$ is the ideal of meager subsets of $\RR$.
-\item $\Null$ is the ideal of Lebesgue null subsets of $\RR$.
+\item $\Meager$ is the ideal of meager subsets of $\R$.
+\item $\Null$ is the ideal of Lebesgue null subsets of $\R$.
 \item $\Ksigma$ is the ideal of subsets of $\omega^\omega$ which are contained in a $\sigma$-compact subset of $\omega^\omega$.
 \end{itemize}
 
@@ -947,7 +952,7 @@ The second equality is similar and left as Exercise~\ref{exerc:non-ksigma-d}.
 \end{exerc}
 
 \begin{exerc}
-  Let $\mathcal I$ be the ideal of all countable subsets of $\RR$. What are the values of the four cardinal characteristics of $\mathcal I$?
+  Let $\mathcal I$ be the ideal of all countable subsets of $\R$. What are the values of the four cardinal characteristics of $\mathcal I$?
 \end{exerc}
 
 \begin{notes}
@@ -968,11 +973,11 @@ To begin, it is natural to ask whether the meager and null sets are truly differ
   There exists a null comeager set. There exists a meager conull set.  \end{proposition}
 
 \begin{proof}
-  The key is that we can construct dense open sets of arbitrarily small measure. That is, for each $n$ we will construct a dense open set $A_n$ such that $m(A_n)<1/n$. Assuming we have done so, we let $A=\bigcap A_n$. Clearly the set $A$ is null. To see that it is comeager note that for all $n$, we have that $\RR\smallsetminus A_n$ is closed and nowhere dense. Thus $\RR\smallsetminus A=\bigcup(\RR\smallsetminus A_n)$ is meager.
+  The key is that we can construct dense open sets of arbitrarily small measure. That is, for each $n$ we will construct a dense open set $A_n$ such that $m(A_n)<1/n$. Assuming we have done so, we let $A=\bigcap A_n$. Clearly the set $A$ is null. To see that it is comeager note that for all $n$, we have that $\R\smallsetminus A_n$ is closed and nowhere dense. Thus $\R\smallsetminus A=\bigcup(\R\smallsetminus A_n)$ is meager.
 
   To construct the set $A_n$, let $q_0,q_1,\ldots$ be an enumeration of the rational numbers, and for each $i$ let $I_{n,i}$ be the open interval centered at $q_i$ of length $1/(n2^{i+1})$. We then let $A_n=\bigcup_iI_{n,i}$. Clearly $A_n$ is dense and open, and $m(A_n)\leq\sum_i1/(n2^{i+1})=1/n$.
 
-  Finally, since $A$ is null and comeager, we clearly have that $\RR\smallsetminus A$ is meager and conull.
+  Finally, since $A$ is null and comeager, we clearly have that $\R\smallsetminus A$ is meager and conull.
 \end{proof}
 
 Although this result shows that category and measure are very different in terms of which sets they deem small, it also provides a certain symmetry between the two notions. The next result breaks this symmetry, and in its place provides an intricate structure of relationships between category and measure. This result is what we came all this way to see.
@@ -1001,9 +1006,9 @@ Although this result shows that category and measure are very different in terms
 \end{figure}
 
 \begin{remark}
-  In Cicho\'n's diagram, the $\Meager$ symbol can stand for the meager ideal on any one of the spaces $\RR$, $2^\omega$, or $\omega^\omega$. Indeed, we have already seen in Proposition~\ref{prop:cantor-baire-homeo} that $\RR$ and $\omega^\omega$ can be made homeomorphic after removing a countable subset of each. In Exercise~\ref{exerc:meager-bij}, we show that the same is true of $\RR$ and $2^\omega$.
+  In Cicho\'n's diagram, the $\Meager$ symbol can stand for the meager ideal on any one of the spaces $\R$, $2^\omega$, or $\omega^\omega$. Indeed, we have already seen in Proposition~\ref{prop:cantor-baire-homeo} that $\R$ and $\omega^\omega$ can be made homeomorphic after removing a countable subset of each. In Exercise~\ref{exerc:meager-bij}, we show that the same is true of $\R$ and $2^\omega$.
 
-  Similarly, the $\Null$ symbol can stand for the null ideal on either $\RR$ or $2^\omega$; see Exercise~\ref{exerc:null-bij}. In fact, it is possible to define a natural measure on $\omega^\omega$, and then $\Null$ can stand for the null ideal on $\omega^\omega$ too. [ref] % blass
+  Similarly, the $\Null$ symbol can stand for the null ideal on either $\R$ or $2^\omega$; see Exercise~\ref{exerc:null-bij}. In fact, it is possible to define a natural measure on $\omega^\omega$, and then $\Null$ can stand for the null ideal on $\omega^\omega$ too. [ref] % blass
 \end{remark}
 
 \begin{remark}
@@ -1031,16 +1036,16 @@ We conclude this section with proofs of four more fairly easy inequaleties. The 
 \end{lemma}
 
 \begin{proof}
-  For the first inequality, we must show that given a nonmeager set $X$, we can find a family $\mathcal F$ of null sets of smaller or equal size such that $\bigcup F=\RR$. For this, we let $A$ be the null comeager set constructed in Proposition~\ref{prop:null-comeager}, and consider the family of null sets $\mathcal F=\set{x+A\mid x\in X}$.
+  For the first inequality, we must show that given a nonmeager set $X$, we can find a family $\mathcal F$ of null sets of smaller or equal size such that $\bigcup F=\R$. For this, we let $A$ be the null comeager set constructed in Proposition~\ref{prop:null-comeager}, and consider the family of null sets $\mathcal F=\set{x+A\mid x\in X}$.
 
-  To see that $\bigcup F=\RR$, suppose towards a contradiction that this is not the case. Then there exists $z\in\RR$ such that $z\notin x+A$ for all $x\in X$. It follows that $z-x\notin A$ for all $x\in X$, or in other words that $z-X$ is disjoint from $A$. But $A$ is comeager, so this would imply that $z-X$ is meager, which is a contradiction.
+  To see that $\bigcup F=\R$, suppose towards a contradiction that this is not the case. Then there exists $z\in\R$ such that $z\notin x+A$ for all $x\in X$. It follows that $z-x\notin A$ for all $x\in X$, or in other words that $z-X$ is disjoint from $A$. But $A$ is comeager, so this would imply that $z-X$ is meager, which is a contradiction.
 
-  The proof of the second inequality is identical but with the terms meager and null exchanged. This time let $X$ be nonmeager, and let $A$ be meager conull. Then the same argument shows that the family $\mathcal F$ defined above covers $\RR$, since otherwise there would be a translate $z-X$ of $X$ which is null.
+  The proof of the second inequality is identical but with the terms meager and null exchanged. This time let $X$ be nonmeager, and let $A$ be meager conull. Then the same argument shows that the family $\mathcal F$ defined above covers $\R$, since otherwise there would be a translate $z-X$ of $X$ which is null.
 \end{proof}
 
 \begin{exerc}
   \label{exerc:meager-bij}
-  Show that there is a homeomorphism between co-countable subsets of $\RR$ and $2^\omega$.
+  Show that there is a homeomorphism between co-countable subsets of $\R$ and $2^\omega$.
 \end{exerc}
 
 \begin{exerc}
@@ -1241,7 +1246,7 @@ We conclude this section with a further result that gives much more information 
 
   We begin by finding a countable dense subset $Q\subset\omega^\omega$ disjoint from $\bigcup\mathcal F$. Indeed, since $|\mathcal F|<\cov(\Meager)$ we have that $\bigcup\mathcal F\neq\omega^\omega$. In fact for any basic open set $V_s$ we must have that $\bigcup\mathcal F$ does not cover $I$, since otherwise we could use Exercise~\ref{exerc:homeo} to find a countable family of translates of $\bigcup(\mathcal F)$ which covers all oof $\omega^\omega$. This shows $\bigcup\mathcal F$ is co-dense, and therefore we can find $Q$ as required.
 
-  Now enumerate $Q=(q_n)_{n\in\NN}$. Then for each $F\in\mathcal F$ and $n\in\NN$, since $F$ is nowhere dense, we can find a finite initial segment $q_n\restriction g_F(n)$ such that $V_{q_n\restriction g_F(n)}$ is disjoint from $F$. Since $|\mathcal F|<\mathfrak b$, the family of functions $\set{g_F\mid F\in\mathcal F}$ is bounded by a single function $h\in\omega^\omega$. Finally we use this $h$ to define the set:
+  Now enumerate $Q=(q_n)_{n\in\N}$. Then for each $F\in\mathcal F$ and $n\in\N$, since $F$ is nowhere dense, we can find a finite initial segment $q_n\restriction g_F(n)$ such that $V_{q_n\restriction g_F(n)}$ is disjoint from $F$. Since $|\mathcal F|<\mathfrak b$, the family of functions $\set{g_F\mid F\in\mathcal F}$ is bounded by a single function $h\in\omega^\omega$. Finally we use this $h$ to define the set:
   \[R=\bigcap_N\bigcup_{n\geq N}V_{q_n\restriction h(n)}\text{.}
   \]
   Then $R$ is a countable intersection of dense open sets, and hence it is comeager. Moreover since for all $F\in\mathcal F$ we have $g_F\leq^*h$, we have that $R$ is disjoint from $\bigcup\mathcal F$. We can thus conclude that $\bigcup\mathcal F$ is meager, as desired.
@@ -1258,7 +1263,7 @@ We conclude this section with a further result that gives much more information 
 
 \begin{exerc}
   \label{exerc:homeo}
-  Let $n\in\NN$ and $s,s'\in\omega^n$. Show that there exists a homeomorphism $\phi\colon\omega^\omega\to\omega^\omega$ such that $s\subset x$ iff $s'\subset\phi(x)$.
+  Let $n\in\N$ and $s,s'\in\omega^n$. Show that there exists a homeomorphism $\phi\colon\omega^\omega\to\omega^\omega$ such that $s\subset x$ iff $s'\subset\phi(x)$.
 \end{exerc}
 
 % blass sec4
@@ -1306,8 +1311,8 @@ Before the proof, we will need the following fact about null sets, which we leav
   \end{itemize}
 
   Tackling the second issue first, we will show that the sets $|I_n(s)|$ are not too large. More specifically we claim that the sum $\sum2^{-n}|I_n(s)|$ converges. Indeed, by the independence of the sets $E_{n,i}$ we have
-  \[m(V_s\cap K)\leq\prod_{n\in\NN,i\in I_n(s)}m((E_{n,i})^c)
-  =\prod_{n\in\NN}(1-2^{-n})^{|I_n(s)|}\text{.}
+  \[m(V_s\cap K)\leq\prod_{n\in\N,i\in I_n(s)}m((E_{n,i})^c)
+  =\prod_{n\in\N}(1-2^{-n})^{|I_n(s)|}\text{.}
   \]
   By our choice of $K$, the left-hand side is positive. Hence the right-hand side is positive too and taking a logarithm we obtain
   \[\sum-\log(1-2^{-n})|I_n(s)|<\infty
@@ -1335,7 +1340,7 @@ This time we will need a topological fact before the proof, and once again we le
 
 \begin{proposition}
   \label{prop:pi-base-meager}
-  Given $n\in\NN$ and an open subset $O\subset2^\omega$, there is a countable family $\mathcal U_n$ of open subsets of $O$ with the properties:
+  Given $n\in\N$ and an open subset $O\subset2^\omega$, there is a countable family $\mathcal U_n$ of open subsets of $O$ with the properties:
   \begin{itemize}
   \item Whenever $U_1,\ldots,U_{2^n}\in\mathcal U_n$ we have $U_1\cap\cdots\cap U_{2^n}\neq\emptyset$;
   \item Every nowhere dense set is disjoint from some set in $\mathcal U_n$.
@@ -1495,7 +1500,7 @@ In some sense the ccc imposes a limitation on the number of different filters th
 
 \begin{example}
   \label{ex:cohen-ccc}
-  Consider the partial order $\PP$ consisting of all nonempty open subsets of $\RR$, with the ordering $A\leq B$ iff $A\subset B$. Then $\PP$ is ccc: indeed, two sets are incompatible in this ordering if and only if they are disjoint. Thus an antichain is a family of pairwise disjoint open sets, and since $\RR$ is separable, such a family must be countable.
+  Consider the partial order $\PP$ consisting of all nonempty open subsets of $\R$, with the ordering $A\leq B$ iff $A\subset B$. Then $\PP$ is ccc: indeed, two sets are incompatible in this ordering if and only if they are disjoint. Thus an antichain is a family of pairwise disjoint open sets, and since $\R$ is separable, such a family must be countable.
 \end{example}
 
 \begin{example}
@@ -1557,12 +1562,12 @@ We close this section with a result showing the effect of MA on properties of th
 \end{theorem}
 
 \begin{proof}
-  Let $\mathcal F$ be a family of nowhere dense subsets of $\RR$ of cardinality less than continuum. We will construct $x\in\RR$ such that $x\notin\bigcup\mathcal F$. Let $\PP$ be the partial order consisting of all bounded, positive-length intervals in $\RR$, ordered by $I'\leq I$ iff $I'\subset I$. Then $\PP$ is easily seen to be ccc by the same argument as in Example~\ref{ex:cohen-ccc}. For each $A\in\mathcal F$, we consider the set
+  Let $\mathcal F$ be a family of nowhere dense subsets of $\R$ of cardinality less than continuum. We will construct $x\in\R$ such that $x\notin\bigcup\mathcal F$. Let $\PP$ be the partial order consisting of all bounded, positive-length intervals in $\R$, ordered by $I'\leq I$ iff $I'\subset I$. Then $\PP$ is easily seen to be ccc by the same argument as in Example~\ref{ex:cohen-ccc}. For each $A\in\mathcal F$, we consider the set
   \[D_A=\set{I\in\PP\mid \overline{I}\cap A=\emptyset}
   \]
   Then $D_A$ is dense for any $A$: since $A$ is nowhere dense, for any positive-length interval $I$ there is a positive length $J\subset I$ such that $J\cap A=\emptyset$. We may then shrink $J$ further to suppose that $\overline{J}\subset I$.
 
-  Now by MA, we can find a filter $G\subset\PP$ such that $G$ meets $D_A$ for every $A\in\mathcal F$. Then the sets $\overline{I}$ for $I\in G$ have the finite intersection property, and it follows from the completeness of $\RR$ that there is a point $x\in\bigcap\set{\overline{I}\mid I\in G}$. Then if $A\in\mathcal F$, since $G\cap D_A\neq\emptyset$ we can find a positive-length interval $I$ such that $I\in G$ and $\overline{I}\cap A=\emptyset$. That is, we have $x\in\overline{I}$ and $\overline{I}\cap A=\emptyset$, and so $x\notin A$. We conclude that $x$ is not an element of $\bigcup\mathcal F$, as desired.
+  Now by MA, we can find a filter $G\subset\PP$ such that $G$ meets $D_A$ for every $A\in\mathcal F$. Then the sets $\overline{I}$ for $I\in G$ have the finite intersection property, and it follows from the completeness of $\R$ that there is a point $x\in\bigcap\set{\overline{I}\mid I\in G}$. Then if $A\in\mathcal F$, since $G\cap D_A\neq\emptyset$ we can find a positive-length interval $I$ such that $I\in G$ and $\overline{I}\cap A=\emptyset$. That is, we have $x\in\overline{I}$ and $\overline{I}\cap A=\emptyset$, and so $x\notin A$. We conclude that $x$ is not an element of $\bigcup\mathcal F$, as desired.
 \end{proof}
 
 % \begin{proof}
@@ -1597,7 +1602,7 @@ We have seen the effect of MA on properties of the continuum. We now explore the
   Suppose towards a contradiction that $\mathfrak d<\mathfrak c$, and fix a dominating family $\mathcal F\subset\omega^\omega$ of cardinality $\mathfrak d$. Let $\PP$ be the partial order $\omega^{<\omega}$ with the upside-down ordering. For each $f\in\mathcal F$ we consider the family of sets
   \[D_{f,n}=\set{s\in\omega^{<\omega}\mid\text{there is $n'>n$ such that $s(n')>f(n')$}}\text{.}
   \]
-  Observe that $D_{f,n}$ is dense for all $f$ and $n$: if $s\in\omega^{<\omega}$ we can easily find $n'>n,|s|$ and find $t\supset s$ such that $t(n')>f(n)$. Thus by MA we can find a filter $G$ which meets $D_{f,n}$ for all $f\in\mathcal F$ and $n\in\NN$. Letting $g=\bigcup G$, it is clear that $g$ is not dominated by $f$ for any $f\in\mathcal F$, contradicting that $\mathcal F$ is a dominating family.
+  Observe that $D_{f,n}$ is dense for all $f$ and $n$: if $s\in\omega^{<\omega}$ we can easily find $n'>n,|s|$ and find $t\supset s$ such that $t(n')>f(n)$. Thus by MA we can find a filter $G$ which meets $D_{f,n}$ for all $f\in\mathcal F$ and $n\in\N$. Letting $g=\bigcup G$, it is clear that $g$ is not dominated by $f$ for any $f\in\mathcal F$, contradicting that $\mathcal F$ is a dominating family.
 \end{proof}
 
 The content of the above proof is that if $g$ is fully generic for $\omega^{<\omega}$, then in $V[g]$ none of the elements in the Baire space of $V$ dominate $g$. It falls short, however, of showing that $g$ actually dominates every element in the Baire space of $V$. With a slightly more specialized partial order, this can be achieved as well.
@@ -1627,10 +1632,10 @@ Hechler forcing is always ccc, because incompatible conditions cannot have the s
   \]
   Then $D_f$ is again dense, since given $(s,F)$ we have $(s,F\cup\{f\})\leq(s,F)$ (Observe that the promises $F$ are trivially satisfied since we have not lengthened the stem!)
 
-  Now by MA we cand find a filter $G$ that meets $D_n$ for all $n\in\NN$ and  $D_f$ for all $f\in\mathcal F$. We then let
+  Now by MA we cand find a filter $G$ that meets $D_n$ for all $n\in\N$ and  $D_f$ for all $f\in\mathcal F$. We then let
   \[g=\bigcup\set{s\mid(\exists F)\;(s,F)\in G}
   \]
-  be the element of the Baire space determined by $G$. Given $f\in\mathcal F$ and $n\in\NN$ we first find an element $(s,F)\in G\cap D_f$, and then letting $n'=\max(n,\dom(s))+1$ we find an element $(s',F')\in G\cap D_{n'}$. Since $G$ is a filter we can find $(s'',F'')\in G$ which is stronger than both. Then by the definition of the ordering on $\mathbb H_{\mathcal F}$, there is some $n''>n$ such that $s''(n'')>f(n'')$ and hence $g(n'')>f(n'')$. Since $f$ and $n$ were arbitrary, it follows that $f\leq^*g$ for all $f\in\mathcal F$, contradicting that $\mathcal F$ is unbounded.
+  be the element of the Baire space determined by $G$. Given $f\in\mathcal F$ and $n\in\N$ we first find an element $(s,F)\in G\cap D_f$, and then letting $n'=\max(n,\dom(s))+1$ we find an element $(s',F')\in G\cap D_{n'}$. Since $G$ is a filter we can find $(s'',F'')\in G$ which is stronger than both. Then by the definition of the ordering on $\mathbb H_{\mathcal F}$, there is some $n''>n$ such that $s''(n'')>f(n'')$ and hence $g(n'')>f(n'')$. Since $f$ and $n$ were arbitrary, it follows that $f\leq^*g$ for all $f\in\mathcal F$, contradicting that $\mathcal F$ is unbounded.
 \end{proof}
 
 We close this section by finding the effect of MA on the cardinal $\add(\Null)$. As we will see, MA once again implies that this cardinal has its maximum value of $\mathfrak c$. By the inequalities shown in Theorem~\ref{thm:cichon} and especially Bartoszy\'nski's theorem, this implies that assuming MA, \emph{all} the cardinal characteristics in Cicho\'n\'s diagram have the value $\mathfrak c$. At face value, this obviates the last three results which showed that individual characteristics are equal to $\mathfrak c$. But those arguments were more direct, and moreover introduced us to several forcings which will remain important outside of the MA context.
@@ -1640,14 +1645,14 @@ We close this section by finding the effect of MA on the cardinal $\add(\Null)$.
   Assuming MA, we have $\add(\Null)=\mathfrak c$. In particular, all the cardinal characteristics in Cicho\'n's diagram (except possibly for $\aleph_1$) have the same value.
 \end{theorem}
 
-For this proof, we once again introduce a new and special notion of forcing. The \emph{amoeba} partial ordering $\mathbb A_\epsilon$ with parameter $\epsilon>0$ consists of all open subsets $O\subset\RR$ such that $m(O)<\epsilon$. The ordering on $\mathbb A_\epsilon$ is defined by $O\leq O'$ iff $O\supset O'$. Thus the elements of $\mathbb A_\epsilon$ are inner approximations to an open set of measure $\leq\epsilon$.
+For this proof, we once again introduce a new and special notion of forcing. The \emph{amoeba} partial ordering $\mathbb A_\epsilon$ with parameter $\epsilon>0$ consists of all open subsets $O\subset\R$ such that $m(O)<\epsilon$. The ordering on $\mathbb A_\epsilon$ is defined by $O\leq O'$ iff $O\supset O'$. Thus the elements of $\mathbb A_\epsilon$ are inner approximations to an open set of measure $\leq\epsilon$.
 
 \begin{lemma}
   For any $\epsilon$, the amoeba partial ordering $\mathbb A_\epsilon$ is ccc.
 \end{lemma}
 
 \begin{proof}
-  Given an uncountable family $\mathcal F\subset\mathbb A_\epsilon$ we must show that at least two elements $O,O'\in\mathcal F$ are compatible, that is, $m(O\cup O')<\epsilon$. We first give ourselves a little wiggle room as follows: since $\mathcal F$ is uncountable and there are only countably many values of $n\in\NN$, by the pigeon-hole principle we can find a fixed $n$ and an uncountable subset $\mathcal F_0\subset\mathcal F$ such that for all $O\in\mathcal F_0$ we have $m(O)<\epsilon-1/n$.
+  Given an uncountable family $\mathcal F\subset\mathbb A_\epsilon$ we must show that at least two elements $O,O'\in\mathcal F$ are compatible, that is, $m(O\cup O')<\epsilon$. We first give ourselves a little wiggle room as follows: since $\mathcal F$ is uncountable and there are only countably many values of $n\in\N$, by the pigeon-hole principle we can find a fixed $n$ and an uncountable subset $\mathcal F_0\subset\mathcal F$ such that for all $O\in\mathcal F_0$ we have $m(O)<\epsilon-1/n$.
 
   Now for each $O\in\mathcal F_0$ we can find an open set $B_O\subset O$ which is a finite union of intervals with rational endpoints and such that $m(O\smallsetminus B_O)<1/2n$. Once again, since there are only countably many possible sets $B_O$, we can find a fixed set $B$ and an uncountable $\mathcal F_{00}\subset\mathcal F_0$ such that $B=B_O$ for every $O\in\mathcal F_{00}$.
 
@@ -2321,7 +2326,7 @@ We are now ready to complete the proof of Theorem~\ref{thm:cohen-cichon}. Referr
 
 The previous section provided one possible picture of Cicho\'n's diagram after forcing: the left half of the diagram is small, the right half large. It turns out that many other configurations can be achieved with more creative forcing partial orders. In this section we begin to explore the effect of random forcing which, as we will see, does for measure what Cohen forcing did for category.
 
-The random forcing partial order can be defined on any of the spaces $\RR$, $2^\omega$, or $\omega^\omega$, but in order to generalize it later we will define it on Cantor space $2^\omega$. Recall that we use the ``coin-tossing'' measure on $2^\omega$, which is defined analogously to the Lebesgue measure of Equation~\eqref{eq:measure} but with the length $\ell$ replaced by the probability $m(V_s)=2^{-|s|}$. Thus we have
+The random forcing partial order can be defined on any of the spaces $\R$, $2^\omega$, or $\omega^\omega$, but in order to generalize it later we will define it on Cantor space $2^\omega$. Recall that we use the ``coin-tossing'' measure on $2^\omega$, which is defined analogously to the Lebesgue measure of Equation~\eqref{eq:measure} but with the length $\ell$ replaced by the probability $m(V_s)=2^{-|s|}$. Thus we have
 \[m(A)=\inf\set{\sum2^{-|s_n|}\mid A\subset\bigcup V_{s_n}}
 \]
 As usual, the function $m$ has the properties of a measure on a class of sets containing all Borel sets. The null ideal $\Null$ on $2^\omega$ consists of those $A$ for which $m(A)=0$.
