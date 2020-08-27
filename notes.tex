@@ -138,7 +138,10 @@ This means that all we have to do to define real numbers is to define cuts. To a
   \item (no last element) if $q\in C$ then there is $q'>q$ such that $q'\in C$
 \end{itemize}
 
-To complete the construction one must say how the $+,\times$ operations and $<$ relation can be defined purely in terms of cuts, and then prove that they satisfy all the axioms of a complete ordered field. For example, one defines $C+C'$ to be the supremum of the set $\set{q+q'\mid q\in C,q'\in C'}$, and one defines $C<C'$ if and only if $C\subset C'$ and $C\neq C'$. We omit the details verifying that these definitions work.
+To complete the construction one must say how the $+,\times$ operations and $<$ relation can be defined purely in terms of cuts, and then prove that they satisfy all the axioms of a complete ordered field. For example, one defines $C+C'$ as follows:
+\[C+C'=\set{q+q'\in\Q\mid q\in C,q'\in C'}
+\]
+Similarly one defines $C<C'$ if and only if $C\subset C'$ and $C\neq C'$. We omit the details verifying that these definitions work.
 
 \begin{remark}
   It is interesting to compare Dedekind's construction with the modern decimal number construction. The decimal number construction is practical for calculations, but has some oddities. For example some numbers have two decimal representations, like $.999\cdots$ and $1.000\cdots$. Also we made an arbitrary decision to use decimal expansions over other bases. Dedekind's construction is beautiful because it is uniform and doesn't involve any arbitrary decisions.
@@ -172,7 +175,7 @@ Since $x$ lies in $I_n$ for all $n$, and since we chose $I_n$ in such a way that
 This style argument appears in one form or another numerous times throughout elementary analysis and set theory. We shall next see it in the proof of the Baire category theorem.
 
 \begin{exerc}
-  With the definition of $C+C'$ for Dedekind cuts, show that addition is commutative and associative.
+  With the definition of $C+C'$ we gave for Dedekind cuts, show that addition is commutative and associative.
 \end{exerc}
 
 \begin{exerc}
