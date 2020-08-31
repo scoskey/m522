@@ -333,21 +333,22 @@ We should also verify that there exists sets of numbers that are neither meager 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Classical measure theory aims to try to extend the length function on intervals to be defined on more complicated sets. For example, if a given set is a finite or even countable union of intervals, then it is appropriate to take the sum of the lengths of the components. But what about more unwieldy sets like the Cantor set? This was known as the \emph{measure problem}: to construct a measurement function $m$, defined on sets of real numbers and valued in $[0,\infty]$, satisfying:
+
 \begin{enumerate}
-\item $m$ agrees with length: if $I$ is an interval then $m(I)=\ell(I)$
-\item translation invariance: $m(x+A)=m(A)$ for all sets $A$ and real numbers $x$
-\item countably additivity: if $(A_n)_{n\in\N}$ is a sequence pairwise disjoint sets then $m(\bigcup A_n)=\sum m(A_n)$
+  \item $m$ agrees with length: if $I$ is an interval then $m(I)=\ell(I)$
+  \item translation invariance: $m(x+A)=m(A)$ for all sets $A$ and real numbers $x$
+  \item countable additivity: if $(A_n)_{n\in\N}$ is a sequence pairwise disjoint sets then $m(\bigcup A_n)=\sum m(A_n)$
 \end{enumerate}
 
-Perhaps surprisingly, the conditions (a)--(c) are mutually contradictory and so no such measurement function $m$ exists! Here is Vitali's simple example of a contradiction arising from these requirements. Regard $\Q$ as an additive subgroup of $\R$ and consider the cosets of $\Q$, that is, sets of the form $x+\Q$. Let $A\subset[0,1]$ be a set of coset representatives, that is, $A$ contains exactly one element from each of the cosets. (It is always possible to choose a coset representative in $[0,1]$ because $\Q$ is dense.)
+Perhaps surprisingly, the conditions (a)--(c) are mutually contradictory and so no such measurement function $m$ exists! Here is Vitali's clever example of a contradiction arising from these requirements. Regard $\Q$ as an additive subgroup of $\R$ and consider the cosets of $\Q$, that is, sets of the form $x+\Q$. Let $A\subset[0,1]$ be a set of coset representatives, that is, $A$ contains exactly one element from each of the cosets. (It is always possible to choose a coset representative in $[0,1]$ because $\Q$ is dense.)
 
-Then the translations $q+A$ for $q\in\Q$ form a countable sequence of pairwise disjoint sets that cover all of $\R$. In fact, if we let $S=\Q\cap[-1,1]$ then the translations $q+A$ for $q\in S$ already cover all of $[0,1]$. We can then infer from (a) and (c) that $m[\bigcup_{q\in S}(q+A)]$ lies between $1$ and $4$. But on the other hand, by (b) and (c) we have that 
+Then the translations $q+A$ for $q\in\Q$ form a countable sequence of pairwise disjoint sets that cover all of $\R$. In fact, if we let $S=\Q\cap[-1,1]$ then the translations $q+A$ for $q\in S$ already cover all of $[0,1]$. We can then infer from (a) and (c) that $m[\bigcup_{q\in S}(q+A)]$ lies between $1$ and $3$. But on the other hand, by (b) and (c) we have that
 \[m\left(\bigcup_{q\in S}(q+A)\right)=\sum_{q\in S}m(q+A)=\sum_{q\in S}m(A)
 \]
-This is a contradiction because an infinite sum of a single constant value $m(A)$ can be equal only to either $0$ or $\infty$, and so cannot lie between $1$ and $4$.
+This is a contradiction because an infinite sum of a single constant value $m(A)$ must equal either $0$ or $\infty$, and so cannot lie between $1$ and $3$.
 
 \begin{remark}
-  We observe that the axiom of choice was explicitly used in Vitali's construction of the set $A$ above. In fact, it is known that the use of the axiom of choice is necessary to build a counterexample.
+  We observe that the axiom of choice was explicitly used in Vitali's construction of the set $A$ above. In fact, it is known that the use of the axiom of choice is necessary to build a nonmeasurable set.
 \end{remark}
 
 The contradiction described above is typically resolved not by dropping one of the conditions (a)--(c), but rather by dropping the requirement that $m$ is defined on \emph{all} sets of real numbers. The justification for this decision is that sets like the $A$ constructed above should be regarded as pathological, and we don't usually need to measure them in applications.
@@ -355,7 +356,7 @@ The contradiction described above is typically resolved not by dropping one of t
 Let us na\"ively begin to construct a measure $m$ that is at least defined on reasonable sets. First, condition (a) implies we should let $m(I)=\ell(I)$ for any interval $I$. Next, if $A=\bigcup I_n$ is a union of disjoint intervals $I_n$, then condition (c) implies we should let $m(A)=\sum\ell(I_n)$. Third, if $A=\bigcap A_n$ is an intersection of sets where $m$ is defined and finite, then it is natural to define $m(A)=\inf m(A_n)$. We now observe that all three of the above simple cases fit into the rule given by the following key formula:
 \begin{equation}
   \label{eq:measure}
-  m(A)=\inf\set{\sum\ell(I_n)\mid A\subset\bigcup I_n}
+  m(A)=\inf\set{\sum\ell(I_n)\mid \text{$I_n$ are intervals and }A\subset\bigcup I_n}
 \end{equation}
 The next result states that this rule for defining $m$ actually works for all sets that are reasonably constructible. Recall that a \emph{Borel set} is one that can be constructed by beginning with the intervals and then executing countably many countable unions or intersections.
 
@@ -431,6 +432,7 @@ Corollary~\ref{cor:interval-nonnull} is immediate from condition (a) of Theorem~
 \end{notes}
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sets, orderings, and cardinality}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -558,6 +560,7 @@ Although we still can't be fully rigorous about the meaning of the symbols $\ale
 \end{notes}
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Ordinal numbers and cardinal numbers}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -648,6 +651,7 @@ The pattern continues transfinitely as well, with $\aleph_\alpha$ defined for ev
 \end{notes}
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The topology of Cantor and Baire space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -858,6 +862,7 @@ We are now ready to state the connection between $\Ksigma$ sets and the eventual
 \end{notes}
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ideals and their cardinals}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -963,6 +968,7 @@ The second equality is similar and left as Exercise~\ref{exerc:non-ksigma-d}.
 \end{notes}
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1064,6 +1070,7 @@ We conclude this section with proofs of four more fairly easy inequaleties. The 
 % See Bartoszynski
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ideals and duality}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1174,6 +1181,7 @@ Beyond these two examples, we see that each arrow in Cicho\'n's diagram (Theorem
 \end{notes}
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Category and difference sets}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1274,6 +1282,7 @@ We conclude this section with a further result that gives much more information 
 % bartoszynski sec 2.2
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bartoszy\'nski's theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1487,6 +1496,7 @@ This example brings us back to our discussion of forcing CH to be false in a for
 % Kunen, IV.1 for forcing defs
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Martin's axiom}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1590,6 +1600,7 @@ We close this section with a result showing the effect of MA on properties of th
 % blass, forcing section for a generalization of "solving" forcing
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Martin's axiom and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1692,6 +1703,7 @@ We are now prepared to prove Theorem~\ref{thm:ma-addn}.
 % kunen, III.3 for amoeba
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{The machinery of forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1784,6 +1796,7 @@ The most important fact about the forcing extensionn $V[G]$ is that if $V$ is a 
 % For the metamathematics of forcing see Kunen sec IV.5
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{The forcing language and forcing theorems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1876,6 +1889,7 @@ We conclude this section with several elementary but frequently used properties 
 % Kunen, sec IV.2
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{The proof of the forcing theorems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2068,6 +2082,7 @@ A family $\mathcal F$ of sets is called a \emph{delta system} if there exists a 
 % Kunen, sec IV.3
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{More tricks with the continuum}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2154,6 +2169,7 @@ We now return to the argument of the previous section. Recall that we showed for
 \end{exerc}
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Cohen forcing and the domination order}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2244,6 +2260,7 @@ We are now ready to state the effect of forcing with $\Fn(\kappa,\omega)$ on the
 % Kunen, secs IV.4 and V.2
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Cohen forcing and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2323,6 +2340,7 @@ We are now ready to complete the proof of Theorem~\ref{thm:cohen-cichon}. Referr
 % blass section 11.3, kunen 5.2
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Random forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2400,6 +2418,7 @@ To make the definition of $\Nonnull(2^\kappa)$ precise, we recall that the \emph
 % Monk, ch 22
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Random forcing and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2505,6 +2524,7 @@ We omit the proof [temporarily]. [We also need the definition of $p\hat{\times}q
 \end{notes}
 
 
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Hechler forcing and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
