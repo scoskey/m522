@@ -11,7 +11,7 @@ header-includes: |
 
 ## Week 2 (Due Thursday, September 10)
 
-1. (3.2) Prove that the properties (a)--(c) of a measure imply \emph{continuity from below}: if $A\_n$ is an increasing sequence of sets and $A=\bigcap A\_n$, then $m(A)=\sup m(A\_n)$. Then prove \emph{continuity from above}: if $A\_n$ is a decreasing sequence of sets, $m(A\_n)$ is finite, and $A=\bigcap A\_n$, then $m(A)=\inf m(A\_n)$.
+1. (3.2) Prove that the properties (a)--(c) of a measure imply \emph{continuity from below}: if $A\_n$ is an increasing sequence of sets and $A=\bigcup A\_n$, then $m(A)=\sup m(A\_n)$. Then prove \emph{continuity from above}: if $A\_n$ is a decreasing sequence of sets, $m(A\_n)$ is finite, and $A=\bigcap A\_n$, then $m(A)=\inf m(A\_n)$.
 2. (3.4) Prove directly from the definition of null set that the null sets are closed under countable unions. (The definition of $A$ is null: for all $\epsilon>0$ there exist intervals $I\_n$ such that $A\subset\bigcup I\_n$ and $\sum l(I\_n)\lt\epsilon$.)
 3. (4.1) Show that the following sets are all in bijection with one another: $\mathbb R$, $(0,1)$, $(0,\infty)$, $\mathcal P(\mathbb N)$, and $\set{A\in P(\mathbb N)\mid A\text{ is infinite}\}$.
 4. (4.2) Which of the following categories satisfy the analog of the Cantor--Schroder--Bernstein theorem? (That is, monomorphisms $A\to B\to A$ implies isomorphism $A\cong B$.) linear orders with order-preserving maps; groups with group homomorphisms; topological spaces with continuous maps; topological spaces with piecewise continuous maps.
