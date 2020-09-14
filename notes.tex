@@ -563,7 +563,9 @@ Although we still can't be fully rigorous about the meaning of the symbols $\ale
 \section{Ordinal numbers and cardinal numbers}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Ordinal numbers play a central role in set theory, including both cardinality theory and forcing. While cardinal numbers are needed to measure the \emph{size} of an infinite set, ordinal numbers are needed to measure the \emph{length} of an infinite well-ordered set. The ordinals can be used to extend the notion of \emph{counting} into the infinite, and also to give a formal definition of the $\aleph$ cardinals described in the previous section.
+In the previous section we defined cardinal equality $|A|=|B|$ and studied the order structure $\leq$ of the cardinal equality equivalence classes. In this section we finally define $|A|$ by choosing a single representative of $A$'s equivalence class. Specifically, we will define $|A|$ to be the least ordinal number in $A$'s equivalence class.
+
+Ordinal numbers play a central role in set theory, including both cardinality theory and forcing. While cardinal numbers are needed to measure the \emph{size} of an infinite set, ordinal numbers are needed to measure the \emph{length} of an infinite well-ordered set. The ordinals can be used to extend the notion of \emph{counting} into the infinite, and thus are an excellent choice to help us define the cardinal numbers or $\aleph$'s.
 
 The initial goal in defining the ordinals is to provide a collection of well-ordered sets such that for any given well-ordered set $A$ there is one and only one ordinal $\alpha$ such that $A$ is isomorphic to $\alpha$. For finite well-ordered sets, we can write such a definition explicitly:
 \begin{align*}
@@ -632,6 +634,8 @@ The pattern continues transfinitely as well, with $\aleph_\alpha$ defined for ev
 % konig's lemma limiting the value of |R|:
 %   the continuum has uncountable cofinality
 
+Recall that Cantor proved $|\R|$ is uncountable. Now that we have names for the uncountable cardinals, it is interesting to ask which one $|\R|$ is equal to. Is it $\aleph_1$? Or $\aleph_{17}$? The method of forcing, discussed in Part~III, was invented to answer questions like this one.
+
 \begin{exerc}
   Show that if $\kappa$ is an infinite cardinal, then $\kappa$ is a limit ordinal.
 \end{exerc}
@@ -654,13 +658,13 @@ The pattern continues transfinitely as well, with $\aleph_\alpha$ defined for ev
 \section{The topology of Cantor and Baire space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-If $A$ is a countable set then $A^\omega$ denotes the space of all sequences with values in $A$, that is, functions from $\omega$ to $A$. We can endow $A^\omega$ with a topology by regarding $A$ as discrete, $A^\omega$ as a product of countably many copies of $A$, and using the \emph{product topology}. Officially a basic set in the product topology has the form
-\[\set{x\in A^\omega\mid x(i_0)\in A_0,\ldots,x(i_{n-1})\in A_{n-1}}
+If $A$ is a countable set then $A^\omega$ denotes the space of all sequences with values in $A$, that is, functions from $\omega$ to $A$. We can endow $A^\omega$ with a topology by regarding $A$ as discrete, $A^\omega$ as a product of countably many copies of $A$, and using the \emph{product topology}. The official definition of the product topology on $A^B$ states a basis consists of sets of the form
+\[\set{x\in A^B\mid x(b_0)\in A_0,\ldots,x(b_{n-1})\in A_{n-1}}
 \]
-where $i_j\in\omega$ are distinct and $A_j\subset A$ are open. However in our case we can make two simplifications: since $\omega$ is countable we can replace $i_0,\ldots i_{n-1}$ with $0,\ldots,n-1$, and since $A$ is discrete we can suppose the $A_j$ are singletons. Putting this all together, we obtain a basis consisting of all
+where $b_i\in B$ are distinct and $A_i\subset A$ are open. In the case of $A^\omega$ we can make two simplifications: since $\omega$ is countable we can replace $i_0,\ldots i_{n-1}$ with $0,\ldots,n-1$, and since $A$ is discrete we can assume the $A_i$ are singletons. Putting this all together, $A^\omega$ has a basis consisting of all
 \[V_s=\set{x\in A^\omega\mid s\subset x}
 \]
-where $s$ is an element of $A^n$ for any $n$.
+where $s$ is an element of $A^n$ for some $n$.
 
 The two most important examples of sequence spaces are the \emph{Cantor space} $2^\omega$ and the \emph{Baire space} $\omega^\omega$.
 
@@ -675,7 +679,7 @@ The two most important examples of sequence spaces are the \emph{Cantor space} $
   The Cantor middle thirds set $C$ has a natural description in terms of ternary expansions. If $a\in[0,1]$ then $a$ lies in the Cantor set if and only if it has a ternary expansion that does not contain the digit $1$. Thus there is a simple bijection $2^\omega\to C$ given by replacing the $1$'s in $x$ with $2$'s:
 \[f(x)=0.(2x(0))(2x(1))(2x(2))\cdots
 \]
-The map is continuous: if $f(x)\in(a,b)$ then there exists $n$ such that if we round $f(x)$ down at its $n$th digit then it is still $>a$ and if we round it up at its $n$th digit then it is still $<b$. It follows that if $s=x\restriction n$, then we have $f(V_s)>a$. Finally recall that a continuous bijection between compact spaces is always ahomeomorphism.
+The map is continuous: if $f(x)\in(a,b)$ then there exists $n$ such that if we round $f(x)$ down at its $n$th digit then it is still $>a$ and if we round it up at its $n$th digit then it is still $<b$. It follows that if $s=x\restriction n$, then we have $f(V_s)>a$. Finally recall that a continuous bijection between compact spaces is always a homeomorphism.
 
   For the Baire space, it is common to use the values of $x\in(\omega\smallsetminus\{0\})^\omega$ as the entries in a continued fraction:
 \[f(x)=x(0)+\cfrac{1}{x(1)+\cfrac{1}{x(2)+\cdots}}
@@ -690,16 +694,14 @@ This result also implies that $2^\omega$ admits a complete metric, because the C
 \end{proposition}
 
 \begin{proof}
-  Let $x_i$ be a Cauchy sequence in $A^\omega$. We can inductively construct an increasing sequence of indices $i_0,i_1,\ldots$ such that for all $n$ and $i\geq i_n$ we have $d(x_i,x_{i_n})<1/n$. In other words for $i\geq i_0$ the $x_i(0)$ all agree, for $i\geq i_1$ the $x_i(1)$ all agree, etc. Thus we may define an element $x$ by letting $x(i)=$ this agreed upon value. Now it is easy to check that $x_i\to x$.
+  Let $x_i$ be a Cauchy sequence in $A^\omega$. We can inductively construct an increasing sequence of indices $i_0,i_1,\ldots$ such that for all $n$ and $i\geq i_n$ we have $d(x_{i_n},x_i)<1/n$. In other words for $i\geq i_0$ the $x_i(0)$ all agree, for $i\geq i_1$ the $x_i(1)$ all agree, etc. Thus we may define an element $x$ by letting $x(i)=$ this agreed upon value. Now it is easy to check that $x_i\to x$.
 \end{proof}
 
-\begin{remark}
-  While the metric on $A^\omega$ defined above is fairly natural, it is not canonical. For example, any reordering $\omega$ would give rise to a different compatible metric.
-\end{remark}
+It is not difficult to check this metric on $A^\omega$ gives the same topology as the product topology described above. While this metric was fairly natural, it is not canonical. For example, any reordering of $\omega$ would give rise to a different metric compatible with the toplogy.
 
 We now discuss a variety of topological properties in the context of sequence space. The closed sets, nowhere dense sets, and compact sets all have special descriptions in sequence space.
 
-To begin, let $A^{<\omega}=\bigcup A^n$ denote the set of finite sequences of elements of $A$. This set is partially ordered by the subset relation, but we emplay special terminology in this case. If $s\subset t$ we say that $s$ is an \emph{initial segment} of $t$ or alternatively that $t$ is an \emph{extension} of $s$. We use the same terminology if $s\in A^{<\omega}$, $x\in A^\omega$, and $s\subset x$: $s$ is a finite initial segment of $x$, or $x$ is an infinite extension of $s$.
+To begin, let $A^{<\omega}=\bigcup A^n$ denote the set of finite sequences of elements of $A$. This set is partially ordered by the subset relation, but we employ special terminology in this case. If $s\subset t$ we say that $s$ is an \emph{initial segment} of $t$ or alternatively that $t$ is an \emph{extension} of $s$. We use the same terminology if $s\in A^{<\omega}$, $x\in A^\omega$, and $s\subset x$: $s$ is a finite initial segment of $x$, or $x$ is an infinite extension of $s$.
 
 A subset $T\subset A^{<\omega}$ is said to be a \emph{tree} if it is closed downward, that is, closed under initial segments. An element $x\in A^\omega$ is said to be a \emph{branch} through $T$ if all of its finite initial segments $x\restriction n$ lie in $T$. We denote by $[T]$ the subset of $A^\omega$ consisting of all branches through $T$.
 
@@ -727,7 +729,7 @@ Meager sets are now defined in the same way as before: $X\subset A^{<\omega}$ is
 In particular the notions of meager and comeager sets make perfect sense in both $2^\omega$ and $\omega^\omega$. The proof of this general Baire category theorem is nearly identical to the proof of Theorem~\ref{thm:baire} with closed intervals replaced by closures of basic open sets $\overline{O_n}$. The completeness of $X$ is used to verify there is a point $x\in\bigcap\overline{O_n}$.
 
 \begin{exerc}
-  Check that the topology on $A^\omega$ with basis consisting of all $V_s$ is really the same as the product topology.
+  Check that the metric on $A^\omega$ defined by $d(x,y)=1/{n+1}$, where $n$ is least such that $x(n)=y(n)$, gives rise to the same topology as the product topology with basis consisting of all $V_s$.
 \end{exerc}
 
 \begin{exerc}

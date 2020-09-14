@@ -9,6 +9,13 @@ header-includes: |
 
 [Submit with gradescope](https://www.gradescope.com/courses/170391)
 
+## Weeks 3-4 (Due Tuesday, September 22)
+
+1. (5.2) Prove the well-ordering principle: If $A$ is any set, then there exists a binary relation $\leq$ which is a well-order of $A$. [Use Zorn's Lemma!]
+2. (5.3) If $A$ is an infinite set, show that $\abs{A}$ is equal to $\aleph\_\alpha$ for some ordinal $\alpha$.
+3. (6.2) Give an example of an open subset of $\omega^\omega$ which is not closed.
+4. (6.3) Show that $\omega^\omega$ is homeomorphic to its product with itself $\omega^\omega\times\omega^\omega$.
+
 ## Week 2 (Due Thursday, September 10)
 
 1. (3.2) Prove that the properties (a)--(c) of a measure imply *continuity from below*: if $A\_n$ is an increasing sequence of sets and $A=\bigcup A\_n$, then $m(A)=\sup m(A\_n)$. Then prove *continuity from above*: if $A\_n$ is a decreasing sequence of sets, $m(A\_n)$ is finite, and $A=\bigcap A\_n$, then $m(A)=\inf m(A\_n)$.
