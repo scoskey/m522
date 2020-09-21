@@ -281,7 +281,7 @@ At this point it is still conceivable that the concept of meagerness is complete
 \end{theorem}
 
 \begin{proof}
-  The proof is very similar to Cantor's proof of Theorem~\ref{thm:cantor}. Let $I$ be a positive-length interval and suppose towards a contradiction that $I$ is meager. Then there exists a sequence $(A_n)_{n\in\N}$ of nowhere dense sets such that $\bigcup A_n=I$. We will inductively construct a decreasing sequence of closed subintervals $J_n\subset I$ such that for all $n$, $J_n\cap N_n=\emptyset$.
+  The proof is very similar to Cantor's proof of Theorem~\ref{thm:cantor}. Let $I$ be a positive-length interval and suppose towards a contradiction that $I$ is meager. Then there exists a sequence $(A_n)_{n\in\N}$ of nowhere dense sets such that $\bigcup A_n=I$. We will inductively construct a decreasing sequence of closed subintervals $J_n\subset I$ such that for all $n$, $J_n\cap A_n=\emptyset$.
 
   The induction is again straightforward. First apply the definition of $A_1$ being nowhere dense to obtain $J_1$. Inductively apply the definition of $A_n$ being nowhere dense to $J_n$ to obtain $J_{n+1}$. (Each time we may shrink the newly obtained interval slightly to suppose that it is closed.)
 
@@ -602,7 +602,7 @@ The following fundamental facts about ordinals together imply that Definition~\r
   \end{itemize}
 \end{theorem}
 
-An ordinal $\alpha$ is said to be \emph{successor} ordinal if it is of the form $\beta+1$ for some ordinal $\beta$. Otherwise $\alpha$ is said to be \emph{limit} ordinal. The first part of Theorem~\ref{thm:ordinals} allows us to show that successor and limit are appropriate names.
+An ordinal $\alpha$ is said to be \emph{successor} ordinal if it is of the form $\beta+1$ for some ordinal $\beta$. Otherwise $\alpha$ is said to be \emph{limit} ordinal. The following result confirms that our initial intuitive construction of the ordinals, though it involved circular reasoning, was nonetheless correct in hindsight.
 
 \begin{proposition}
   If $\alpha=\beta+1$ then $\alpha$ is the least ordinal greater than $\beta$. If $\alpha$ is a limit ordinal then $\alpha$ is the union of the ordinals that came before it.
@@ -694,24 +694,26 @@ This result also implies that $2^\omega$ admits a complete metric, because the C
 \end{proposition}
 
 \begin{proof}
-  Let $x_i$ be a Cauchy sequence in $A^\omega$. We can inductively construct an increasing sequence of indices $i_0,i_1,\ldots$ such that for all $n$ and $i\geq i_n$ we have $d(x_{i_n},x_i)<1/n$. In other words for $i\geq i_0$ the $x_i(0)$ all agree, for $i\geq i_1$ the $x_i(1)$ all agree, etc. Thus we may define an element $x$ by letting $x(i)=$ this agreed upon value. Now it is easy to check that $x_i\to x$.
+  Let $x_i$ be a Cauchy sequence in $A^\omega$. We can inductively construct an increasing sequence of indices $i_0,i_1,\ldots$ such that for all $n$ and $i\geq i_n$ we have $d(x_{i_n},x_i)<1/n$. In other words for $i\geq i_0$ the $x_i(0)$ all agree, for $i\geq i_1$ the $x_i(1)$ all agree, etc. Thus we may define an element $x$ by letting $x(n)=$ this agreed upon value. Now it is easy to check that $x_i\to x$.
 \end{proof}
 
 It is not difficult to check this metric on $A^\omega$ gives the same topology as the product topology described above. While this metric was fairly natural, it is not canonical. For example, any reordering of $\omega$ would give rise to a different metric compatible with the toplogy.
 
-We now discuss a variety of topological properties in the context of sequence space. The closed sets, nowhere dense sets, and compact sets all have special descriptions in sequence space.
+We now discuss a variety of topological properties in the context of sequence space. The closed sets, nowhere dense sets, and compact sets all have special descriptions in sequence space (compact sets are discussed in the next section).
 
 To begin, let $A^{<\omega}=\bigcup A^n$ denote the set of finite sequences of elements of $A$. This set is partially ordered by the subset relation, but we employ special terminology in this case. If $s\subset t$ we say that $s$ is an \emph{initial segment} of $t$ or alternatively that $t$ is an \emph{extension} of $s$. We use the same terminology if $s\in A^{<\omega}$, $x\in A^\omega$, and $s\subset x$: $s$ is a finite initial segment of $x$, or $x$ is an infinite extension of $s$.
 
-A subset $T\subset A^{<\omega}$ is said to be a \emph{tree} if it is closed downward, that is, closed under initial segments. An element $x\in A^\omega$ is said to be a \emph{branch} through $T$ if all of its finite initial segments $x\restriction n$ lie in $T$. We denote by $[T]$ the subset of $A^\omega$ consisting of all branches through $T$.
+A subset $T\subset A^{<\omega}$ is said to be a \emph{tree} if it is closed under initial segments. An element $x\in A^\omega$ is said to be a \emph{branch} through $T$ if all of its finite initial segments $x\restriction n$ lie in $T$. We denote by $[T]$ the subset of $A^\omega$ consisting of all branches through $T$.
 
 \begin{proposition}
   A subset $C\subset A^\omega$ is closed if and only if there exists a tree $T\subset A^{<\omega}$ such that $C=[T]$.
 \end{proposition}
 
 \begin{proof}
-  Given any set $B\subset A^\omega$, we let $T_B$ be the tree consisting of all $s$ such that $V_s\cap B\neq\emptyset$ (that is, all initial segments of elements of $B$). We will show that the set $[T_B]$ of all branches through the tree $T_B$ is precisely the \emph{closure} of $B$, which implies the desired result. For this, note that $x$ lies in the closure of $B$ if and only if every open neighborhood of of $x$ meets $B$. This is equivalent to the statement that for every initial segment $s\subset x$, $V_s\cap B\neq\emptyset$. Finally, this is equivalent to the statement that $x$ is a branch through $T_B$.
+  Conversely given any set $B\subset A^\omega$, we let $T_B$ be the tree consisting of all $s$ such that $V_s\cap B\neq\emptyset$ (that is, all initial segments of elements of $B$). We will show that the set $[T_B]$ of all branches through the tree $T_B$ is precisely the \emph{closure} of $B$, which implies the desired result. For this, note that $x$ lies in the closure of $B$ if and only if every open neighborhood of of $x$ meets $B$. This is equivalent to the statement that for every initial segment $s\subset x$, $V_s\cap B\neq\emptyset$. Finally, this is equivalent to the statement that $x$ is a branch through $T_B$.
 \end{proof}
+
+% Don't you have to check that $[T]$ is always closed?
 
 In previous sections we have defined nowhere dense subsets of $\R$ in terms of intervals. In fact we can define nowhere dense subsets of any topological space in terms of open sets: $S\subset X$ is \emph{nowhere dense} in $X$ if every open set has an open subset disjoint from $S$. This definition can even be made with basic open sets in place of open sets. Thus we have the following characterization.
 
@@ -726,7 +728,9 @@ Meager sets are now defined in the same way as before: $X\subset A^{<\omega}$ is
   If $X$ is a complete metric space then $X$ is not meager. Moreover if $O$ is a nonempty open subset of $X$ then $O$ is not meager.\qed
 \end{theorem}
 
-In particular the notions of meager and comeager sets make perfect sense in both $2^\omega$ and $\omega^\omega$. The proof of this general Baire category theorem is nearly identical to the proof of Theorem~\ref{thm:baire} with closed intervals replaced by closures of basic open sets $\overline{O_n}$. The completeness of $X$ is used to verify there is a point $x\in\bigcap\overline{O_n}$.
+In particular in Cantor space and Baire space we can divide the subsets into three sizes, meager, comeager, and neither. The proof of this general Baire category theorem is nearly identical to the proof of Theorem~\ref{thm:baire} with closed intervals replaced by closures of basic open sets $\overline{O_n}$. The completeness of $X$ is used to verify there is a point $x\in\bigcap\overline{O_n}$.
+
+% compact sets next section
 
 \begin{exerc}
   Check that the metric on $A^\omega$ defined by $d(x,y)=1/{n+1}$, where $n$ is least such that $x(n)=y(n)$, gives rise to the same topology as the product topology with basis consisting of all $V_s$.
@@ -755,11 +759,11 @@ In particular the notions of meager and comeager sets make perfect sense in both
 \section{$\sigma$-compactness in Baire space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-As we have discussed in the introduction, the exact cardinal value of the size of the set of all real numbers is independent of the axioms of set theory. That is, if we write $\mathfrak c=|\R|$ then we know $\mathfrak c=\aleph_\alpha$ for some $\alpha\geq1$, but we do not know which one. Here $\mathfrak c$ stands for \emph{continuum}. Since $\mathfrak c$ is also equal to the cardinality of Cantor space, it is also often denoted $2^{\aleph_0}$. In this section we discuss several cardinal values other than $\mathfrak c$ that arise from the special topology of the Baire space $\omega^\omega$.
+As we have discussed in the previous part, the exact cardinal value of the size of the set of all real numbers is independent of the axioms of set theory. That is, if we write $\mathfrak c=|\R|$ then we know $\mathfrak c=\aleph_\alpha$ for some $\alpha\geq1$, but we do not know which one. The letter $\mathfrak c$ with its German font stands for \emph{continuum}. Since $\mathfrak c$ is also equal to the cardinality of Cantor space $2^\omega$, it is also often denoted $2^{\aleph_0}$. In this section we discuss several cardinal values other than $\mathfrak c$ that arise from the special topology of the Baire space $\omega^\omega$.
 
 We have measured the size of sets of real numbers using cardinality, category, and measure. We now introduce a fourth notion in the Baire space. A set $A\subset\omega^\omega$ is said to be \emph{$\sigma$-compact} if it is the union of countably many compact sets.
 
-Like the meager and null sets, the class of $\sigma$-compact sets is closed under countable unions. While the class of $\sigma$-compact sets is not closed under subsets, if one wishes they can simply consider instead the class of subsets of $\sigma$-compact sets instead. In a moment we shall show that the whole Baire space $\omega^\omega$ is not $\sigma$-compact, so that $\sigma$-compactness really is a good notion of a small set.
+Like the meager and null sets, the class of $\sigma$-compact sets is closed under countable unions. While the class of $\sigma$-compact sets is not closed under subsets, if we wish we can instead consider the class of subsets of $\sigma$-compact sets. In a moment we will show that the whole Baire space $\omega^\omega$ is not $\sigma$-compact, so that $\sigma$-compactness really is a meaningful notion of a small set.
 
 \begin{remark}
   Among the spaces we've explored so far, the notion of $\sigma$-compactness only works in the Baire space. That's because both $2^\omega$ and $\R$ both have the property that the whole space is $\sigma$-compact: $\R$ is the union of closed bounded intervals, and $2^\omega$ is itself compact.
@@ -782,7 +786,7 @@ Our next result will generalize Cantor's theorem by showing that the cardinals $
 \end{lemma}
 
 \begin{proof}
-  We will use the fact that a countable product of finite metric is compact (this follows from Tychonoff's theorem, but it's easy to check directly too). Since a closed subspace of a compact metric space is again compact, it follows that any closed subset of a product $\prod_{n\in\omega}\{0,\ldots,K_n\}$ is compact. For the converse suppose that $A\subset\omega^\omega$ is compact, and suppose towards a contradiction that $A$ is not contained in a product of bounded intervals. Then there exists some coordinate $n$ such that $A$ contains a sequence of elements $f_i$ with $f_i(n)\to\infty$. Then $f_i$ clearly does not have any convergent subsequence, contradicting that $A$ was compact.
+  We will use the fact that a countable product of finite metric is compact (this follows from Tychonoff's theorem, but it's easy to check directly too). Since a closed subspace of a compact metric space is again compact, it follows that any closed subset of a product $\prod_{n\in\omega}\{0,\ldots,K_n\}$ is compact. For the converse suppose that $A\subset\omega^\omega$ is compact, and suppose towards a contradiction that $A$ is not contained in a product of bounded intervals. Then there exists some coordinate $n$ such that $A$ contains a sequence of elements $f_i$ with $f_i(n)\to\infty$. Then any subsequence of $f_i$ fails to converge on coordinate $n$, so $f_i$ does not have a convergent subsequence. This contradicts that $A$ was compact.
 \end{proof}
 
 \begin{theorem}
@@ -803,7 +807,7 @@ In fact we'll see shortly that $\non(\Ksigma)\leq\cov(\Ksigma)$.
   It follows from the proof of Theorem~\ref{thm:k-sigma} that every $\Ksigma$ set in $\omega^\omega$ is meager. Indeed, compact sets are closed, and moreover since they are bounded they cannot contain any basic open sets $V_s$. It follows that compact sets are nowhere dense, and hence $\sigma$-compact sets are meager. This in turn implies the Baire category property for $\sigma$-compact sets: $\omega^\omega$ is not $\sigma$-compact and any basic open neighborhood $V_s$ is not $\sigma$-compact.
 \end{remark}
 
-We now work establish a key relationship between the cardinals $\non(\Ksigma)$ and $\cov(\Ksigma)$, and the combinatorics of the Baire space. To begin, we can partially order Baire space by $f\leq g$ iff for all $n$, we have $f(n)\leq g(n)$. We also have the more versatile \emph{eventual domination} order: $f\leq^*g$ if $f\leq g$ almost everywher, that is, there is some $N$ such that for all $n\geq N$ we have $f(n)\leq g(n)$. Of course eventual domination is not a partial order because $f\leq^*g\leq^*f$ only implies that $f$ and $g$ agree almost everywhere, which we denote by $f=^*g$.
+We now work establish a key relationship between the cardinals $\non(\Ksigma)$ and $\cov(\Ksigma)$, and the combinatorics of the Baire space. To begin, we can partially order Baire space by $f\leq g$ iff for all $n$, we have $f(n)\leq g(n)$. We also have the more versatile \emph{eventual domination} order: $f\leq^*g$ if $f\leq g$ almost everywher, that is, there is some $N$ such that for all $n\geq N$ we have $f(n)\leq g(n)$. Note that eventual domination is a quasi-order not a partial order, because $f\leq^*g\leq^*f$ only implies that $f$ and $g$ agree almost everywhere (denoted by $f=^*g$).
 
 \begin{definition}
   \begin{itemize}

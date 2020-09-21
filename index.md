@@ -24,7 +24,7 @@ Once we have developed the machinery of forcing, we will return to the notions o
 
 ## Homework
 
-Homework problems will be assigned regularly. To receive a passing grade, you must attempt all problems. To receive an A or B, your solutions should be correct and complete. You may correct and resubmit homework problems within two weeks of receiving them back.
+Homework problems will be assigned weekly and collected the following week (Tuesday night). To receive a C, you must achieve a base level of success on every single problem. To receive a B, most of solutions should be correct and complete. To receive an A, at least 3/4 of your solutions should be correct and complete. You may correct and resubmit homework problems within a couple weeks of receiving them back.
 
 ## Attendance and participation
 
