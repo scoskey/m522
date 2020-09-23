@@ -9,6 +9,13 @@ header-includes: |
 
 [Submit with gradescope](https://www.gradescope.com/courses/170391)
 
+## Week 5 (Due Tuesday, September 29)
+
+1. (7.2) Find an example of a meager subset of $\omega^\omega$ which is not in $\mathcal K\_\sigma$.
+2. (7.3) Let $X$ be the space $\mathbb R^\omega$ with the product topology. Decide whether $X$ is $\sigma$-compact.
+3. (8.1) Show that $\mathrm{cof}(\mathcal K\_\sigma)=\mathfrak d$.
+4. (8.2) Let $\mathcal I$ be the ideal of countable subsets of $\mathbb R$. Find the values of the four cardinal characteristics of $\mathcal I$.
+
 ## Weeks 3-4 (Due Tuesday, September 22)
 
 1. (5.2) Prove the well-ordering principle: If $A$ is any set, then there exists a binary relation $\leq$ which is a well-order of $A$. [Use Zorn's Lemma!]
