@@ -763,13 +763,51 @@ As we have discussed in the previous part, the exact cardinal value of the size 
 
 We have measured the size of sets of real numbers using cardinality, category, and measure. We now introduce a fourth notion in the Baire space. A set $A\subset\omega^\omega$ is said to be \emph{$\sigma$-compact} if it is the union of countably many compact sets.
 
-Like the meager and null sets, the class of $\sigma$-compact sets is closed under countable unions. While the class of $\sigma$-compact sets is not closed under subsets, if we wish we can instead consider the class of subsets of $\sigma$-compact sets. In a moment we will show that the whole Baire space $\omega^\omega$ is not $\sigma$-compact, so that $\sigma$-compactness really is a meaningful notion of a small set.
+Like the meager and null sets, the class of $\sigma$-compact sets is closed under countable unions. While the class of $\sigma$-compact sets is not closed under subsets, we instead consider the class of subsets of $\sigma$-compact sets.
+
+\begin{definition}
+  Let $\mathcal K_\sigma$ denote the set of subsets of $\omega^\omega$ which are contained in a $\sigma$-compact set.
+\end{definition}
+
+In a moment we will show that the whole Baire space $\omega^\omega$ is not in $\mathcal K_\sigma$, so that $\sigma$-compactness really is a meaningful notion of a small set. First we provide a sequence of characterizations to help us better understand which subsets of Baire space are compact and which are $\sigma$-compact. First we define the natural partial ordering $\leq$ on $\omega^\omega$ by $f\leq g$ if for all $n$, we have $f(n)\leq g(n)$.
+
+% Among the spaces we've explored so far, the notion of $\sigma$-compactness only works in the Baire space. That's because both $2^\omega$ and $\R$ both have the property that the whole space is $\sigma$-compact: $\R$ is the union of closed bounded intervals, and $2^\omega$ is itself compact. On the other hand, the Baire space $\omega^\omega$ is not $\sigma$-compact, as we now aim to show.
+
+\begin{lemma}
+  \label{lem:baire-compact}
+  A subset $A\subset\omega^\omega$ is compact if and only if it is a closed and $\leq$-bounded.
+\end{lemma}
+
+\begin{proof}
+  Let $A\subset\omega^\omega$ be compact, and suppose towards a contradiction that $A$ is not $\leq$-bounded. Then there exists some coordinate $n$ such that $A$ contains a sequence of elements $f_i$ with $f_i(n)\to\infty$. Then any subsequence of $f_i$ fails to converge on coordinate $n$, so $f_i$ does not have a convergent subsequence. This contradicts that $A$ is compact.
+
+  Conversely note that if $h\in\omega^\omega$ then the set $B_h=\{f\in\omega^\omega\mid f\leq h\}$ of elements $\leq$-bounded by $h$ is compact, because it is a product of finite sets. (This follows from Tychonoff's theorem, but can easily be checked directly.) The result now follows from the fact that any closed subset of a compact set is compact.
+\end{proof}
+
+Next we defnie the \emph{eventual domination} order on Baire space: $f\leq^*g$ if $f\leq g$ almost everywhere, that is, there is some $N$ such that for all $n\geq N$ we have $f(n)\leq g(n)$. Note that eventual domination is a quasi-order not a partial order, because $f\leq^*g\leq^*f$ only implies that $f$ and $g$ agree almost everywhere (denoted $f=^*g$).
+
+\begin{lemma}
+  \label{lem:sigma-compact-bounded}
+  A subset $A\subset\omega^\omega$ is in $\mathcal K_\sigma$ if and only if it is $\leq^*$-bounded.
+\end{lemma}
+
+\begin{proof}
+  Suppose $A$ is in $\mathcal K_\sigma$. Then there exist compact sets $A_i$ such that $A\subset\bigcup A_i$. By the previous lemma, each $A_i$ is $\leq$-bounded by some $h_i$. Let $h$ be a single function such that for all $n$ we have $h_i\leq^* h$ (for instance, let $h(n)=\max_{i\leq n}h_i(n)$). Then $A$ is $\leq^*$-bounded by $h$.
+  
+  Conversely suppose that $A$ is $\leq^*$-bounded by $h$. Let $h_n$ enumerate all possible finite modifications of $h$. Then letting $B_n=\{f\in\omega^\omega\mid f\leq h_n\}$, the previous lemma implies $B_n$ are compact sets, and we have $A\subset\bigcup B_n$.
+\end{proof}
+
+Since the Baire space $\omega^\omega$ is not $\leq^*$-bounded, we may now conclude that $\omega^\omega$ itself is not in $\mathcal K_\sigma$.
 
 \begin{remark}
-  Among the spaces we've explored so far, the notion of $\sigma$-compactness only works in the Baire space. That's because both $2^\omega$ and $\R$ both have the property that the whole space is $\sigma$-compact: $\R$ is the union of closed bounded intervals, and $2^\omega$ is itself compact.
+  \label{rem:ksigma-meager}
+  It follows from Lemma~\ref{lem:sigma-compact-bounded} that every $\Ksigma$ subset of $\omega^\omega$ is meager. Indeed, compact sets are closed, and moreover since they are bounded they cannot contain any basic open sets $V_s$. It follows that compact sets are nowhere dense, and hence $\sigma$-compact sets are meager.
+  % This in turn implies the Baire category property for $\sigma$-compact sets: $\omega^\omega$ is not $\sigma$-compact and any basic open neighborhood $V_s$ is not $\sigma$-compact.
 \end{remark}
 
-We now introduce for the first time the process of associating \emph{cardinal characteristics} to a class of sets. First we denote by $\Ksigma$ the class of all sets $A\subset\omega^\omega$ such that $A$ is a subset of some $\sigma$-compact set.
+% Suppose towards a contradictoin that $\omega^\omega=\bigcup A_n$ where each $A_n$ is compact. Then by the Baire category theorem, at least one of the $A_n$ must have a nonempty interior, say $V_s\subset A_n$. But $V_s$ is not contained in a product of bounded intervals, so by Lemma~\ref{lem:baire-compact} this contradicts that $A_n$ is compact.
+
+We now introduce for the first time the concept of associating \emph{cardinal characteristics} to a collection of sets, in this case $\mathcal K_\sigma$.
 
 \begin{definition}
   \begin{itemize}
@@ -778,16 +816,7 @@ We now introduce for the first time the process of associating \emph{cardinal ch
   \end{itemize}
 \end{definition}
 
-Our next result will generalize Cantor's theorem by showing that the cardinals $\non(\Ksigma)$ and $\cov(\Ksigma)$ are uncountable lower bounds for the value of the continuum. First we need the following characterizations of compact sets in Baire space.
-
-\begin{lemma}
-  \label{lem:baire-compact}
-  A subset $A\subset\omega^\omega$ is compact if and only if it is a closed subset of some product of bounded intervals $\prod_{n\in\omega}\{0,\ldots,K_n\}$.
-\end{lemma}
-
-\begin{proof}
-  We will use the fact that a countable product of finite metric is compact (this follows from Tychonoff's theorem, but it's easy to check directly too). Since a closed subspace of a compact metric space is again compact, it follows that any closed subset of a product $\prod_{n\in\omega}\{0,\ldots,K_n\}$ is compact. For the converse suppose that $A\subset\omega^\omega$ is compact, and suppose towards a contradiction that $A$ is not contained in a product of bounded intervals. Then there exists some coordinate $n$ such that $A$ contains a sequence of elements $f_i$ with $f_i(n)\to\infty$. Then any subsequence of $f_i$ fails to converge on coordinate $n$, so $f_i$ does not have a convergent subsequence. This contradicts that $A$ was compact.
-\end{proof}
+Our next result generalizes Cantor's theorem by showing that the cardinals $\non(\Ksigma)$ and $\cov(\Ksigma)$ are uncountable lower bounds for the value of the continuum.
 
 \begin{theorem}
   \label{thm:k-sigma}
@@ -795,24 +824,17 @@ Our next result will generalize Cantor's theorem by showing that the cardinals $
 \end{theorem}
 
 \begin{proof}
-  It is clear that $\aleph_1\leq\non(\Ksigma)$ because every countable set is $\Ksigma$, being the union of its points. To see that $\non(\Ksigma)\leq\mathfrak c$ it is enough to show that $\omega^\omega$ itself is not $\sigma$-compact. So suppose towards a contradiction that $\omega^\omega=\bigcup A_n$ where each $A_n$ is compact. Then by the Baire category theorem, at least one of the $A_n$ must have a nonempty interior, say $V_s\subset A_n$. But $V_s$ is not contained in a product of bounded intervals, so by Lemma~\ref{lem:baire-compact} this contradicts that $A_n$ is compact.
+  It is clear that $\aleph_1\leq\non(\Ksigma)$ because every countable set is $\Ksigma$, being the union of its points. The inequality $\non(\Ksigma)\leq\mathfrak c$ follows from the fact that $\omega^\omega$ itself is not $\sigma$-compact.
 
   To show that $\aleph_1\leq\cov(\Ksigma)$, suppose a countable family of $\sigma$-compact sets covered all of $\omega^\omega$. Then a countable family of compact sets would also cover all of $\omega^\omega$, again contradicting that $\omega^\omega$ is not $\sigma$-compact. Finally it is clear that $\cov(\Ksigma)\leq\mathfrak c$, since the whole space $\omega^\omega$ is the union of its points and $|\omega^\omega|=\mathfrak c$.
 \end{proof}
 
-In fact we'll see shortly that $\non(\Ksigma)\leq\cov(\Ksigma)$.
-
-\begin{remark}
-  \label{rem:ksigma-meager}
-  It follows from the proof of Theorem~\ref{thm:k-sigma} that every $\Ksigma$ set in $\omega^\omega$ is meager. Indeed, compact sets are closed, and moreover since they are bounded they cannot contain any basic open sets $V_s$. It follows that compact sets are nowhere dense, and hence $\sigma$-compact sets are meager. This in turn implies the Baire category property for $\sigma$-compact sets: $\omega^\omega$ is not $\sigma$-compact and any basic open neighborhood $V_s$ is not $\sigma$-compact.
-\end{remark}
-
-We now work establish a key relationship between the cardinals $\non(\Ksigma)$ and $\cov(\Ksigma)$, and the combinatorics of the Baire space. To begin, we can partially order Baire space by $f\leq g$ iff for all $n$, we have $f(n)\leq g(n)$. We also have the more versatile \emph{eventual domination} order: $f\leq^*g$ if $f\leq g$ almost everywher, that is, there is some $N$ such that for all $n\geq N$ we have $f(n)\leq g(n)$. Note that eventual domination is a quasi-order not a partial order, because $f\leq^*g\leq^*f$ only implies that $f$ and $g$ agree almost everywhere (denoted by $f=^*g$).
+In the rest of this section we show that the cardinals $\non(\Ksigma)$ and $\cov(\Ksigma)$ may be characterized using the $\leq^*$ quasi-ordering alone, and use this to establish that $\non(\Ksigma)\leq\cov(\Ksigma)$.
 
 \begin{definition}
   \begin{itemize}
-  \item A subset $\mathcal F\subset\omega^\omega$ is said to be a \emph{dominating family} if for all $h\in\omega^\omega$ there exists $f\in\mathcal F$ such that $h\leq^*f$. The \emph{dominating number} $\mathfrak d$, is the smallest cardinality of any dominating family.
   \item A subset $\mathcal F\subset\omega^\omega$ is said to be an \emph{unbounded family} if there is no single $h\in\omega^\omega$ such that $f\leq^*h$ for all $f\in\mathcal F$. The \emph{unbounding number} $\mathfrak b$ is the smallest cardinality of any unbounded family.
+  \item A subset $\mathcal F\subset\omega^\omega$ is said to be a \emph{dominating family} if for all $h\in\omega^\omega$ there exists $f\in\mathcal F$ such that $h\leq^*f$. The \emph{dominating number} $\mathfrak d$, is the smallest cardinality of any dominating family.
   \end{itemize}
 \end{definition}
 
@@ -820,33 +842,22 @@ The following result records the relationship between these two cardinal values.
 
 \begin{proposition}
   \label{prop:bd}
-  We have $\aleph_1\leq\mathfrak{b}\leq\mathfrak{d}\leq\mathfrak{c}$.
+  We have $\mathfrak{b}\leq\mathfrak{d}$.
 \end{proposition}
 	
 \begin{proof}
-  We begin by showing that $\mathfrak{b}$ is uncountable. For this, it is enough to show that every countable family $\mathcal F\subset\omega^\omega$ is bounded by some $h\in\omega^\omega$. So let $\mathcal F\subset\omega^\omega$ be a countable family and enumerate its elements $f_0,f_1,\ldots$. To construct the bound $h$, we use a diagonalization process similar to the proof of Cantor's theorem. More specifically, we define $h(n)$ so that it dominates $f_0(n),\ldots,f_n(n)$:
-\[h(n)=\max\set{f_i(n)\mid 0\leq i\leq n}
-\]
-Then for each $i$ we have $f_i(n)\leq h(n)$ for all $n\geq i$, and therefore $f_i\leq^*h$, as desired.
-
-To show that $\mathfrak{b}\leq\mathfrak{d}$, it is enough to show that every dominating family is unbounded. Let us establish the contrapositive: if $\mathcal F$ is bounded, say by $h\in\omega^\omega$, then every $f\in\mathcal F$ satisfies $f\leq^*h$. Letting $h'(n)=h(n+1)$, it follows that every $f\in\mathcal F$ satisfies $h'\not\leq^*f$, and hence that $\mathcal F$ is not a dominating family.
-
-Finally, $\mathfrak d\leq\mathfrak c$ since $\mathcal F=\omega^\omega$ is itself a dominating family, and $|\omega^\omega|=\mathfrak c$.
+  It is enough to show that every dominating family is unbounded. Let us establish the contrapositive: if $\mathcal F$ is bounded, say by $h\in\omega^\omega$, then every $f\in\mathcal F$ satisfies $f\leq^*h$. Letting $h'(n)=h(n+1)$, it follows that every $f\in\mathcal F$ satisfies $h'\not\leq^*f$, and hence that $\mathcal F$ is not a dominating family.
 \end{proof}
-
-We are now ready to state the connection between $\Ksigma$ sets and the eventual domination ordering.
 
 \begin{theorem}
   \label{thm:bd-vs-ksigma}
-  We have $\mathfrak b=\non(\Ksigma)$ and $\mathfrak d=\cov(\Ksigma)$.
+  We have $\mathfrak b=\non(\Ksigma)$ and $\mathfrak d=\cov(\Ksigma)$. As a consequence we have $\non(\Ksigma)\leq\cov(\Ksigma)$.
 \end{theorem}
 
 \begin{proof}
-  Let us say that a family $\mathcal F\subset\omega^\omega$ is $\leq$-bounded if there is an $h\in\omega^\omega$ such that $f\leq h$ for all $f\in\mathcal F$, and that $\mathcal F$ is $\leq^*$-bounded if there is an $h\in\omega^\omega$ such that $f\leq^*h$ for all $f\in\mathcal F$. Then it is clear from Lemma~\ref{lem:baire-compact} that a family $\mathcal F$ is $\leq$-bounded if and only if $\mathcal F$ is contained in a compact set. To establish the first equality in the theorem, it suffices to show that a family $\mathcal F$ is $\leq^*$-bounded if and only if $\mathcal F$ is contained in a $\sigma$-compact set.
+  The first equality follows directly from Lemma~\ref{lem:sigma-compact-bounded}.
 
-  For this, suppose that $\mathcal F$ is $\leq^*$-bounded by $h\in\omega^\omega$. Let $h_i$ enumerate all finite modifications of $h$, so that for all $f\in\mathcal F$ there is some $i$ such that $f\leq h_i$. It follows that $\mathcal F$ is contained in the $\sigma$-compact set of functions that are $\leq$-bounded by some $h_i$. Conversely, suppose that $\mathcal F\subset\bigcup A_i$, where each $A_i$ is compact. Then for each $i$ there exists some $h_i\in\omega^\omega$ such that $A_i$ is $\leq$-bounded by $h_i$. Since $\aleph_1\leq\mathfrak b$, there exists $h$ such that $h_i\leq^*h$ for all $i$. It follows that $\mathcal F$ is $\leq^*$-bounded by $h$.
-
-  The second equality is similar. If $\mathcal F$ is a dominating family then consider the collection of all $A_f=\set{g\mid g\leq f}$ for $f$ a finite modification of an element of $\mathcal F$. This latter collection is a family of compact sets that covers all of $\omega^\omega$. Conversely if $\mathcal F$ is a family of compact subsets of $\omega^\omega$ that covers all of $\omega^\omega$, then each $F\in\mathcal F$ is $\leq$-bounded by some $h_F\in\omega^\omega$. It follows that the collection of all $h_F$ is a dominating family.
+  The second equality uses the same ideas again. If $\mathcal F$ is a dominating family then consider the collection of all $A_f=\set{g\mid g\leq f}$ for $f$ a finite modification of an element of $\mathcal F$. This latter collection is a family of compact sets that covers all of $\omega^\omega$. Conversely if $\mathcal F$ is a family of compact subsets of $\omega^\omega$ that covers all of $\omega^\omega$, then each $F\in\mathcal F$ is $\leq$-bounded by some $h_F\in\omega^\omega$. It follows that the collection of all $h_F$ is a dominating family.
 \end{proof}
 
 \begin{exerc}
@@ -977,9 +988,9 @@ The second equality is similar and left as Exercise~\ref{exerc:non-ksigma-d}.
 \section{Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-So far we have seen many similarities between the various size notions that we have discussed. The classes of meager sets and null sets are both ideals, both proper, both closed under countable unions, and so on. In this section we further investigate how far this comparison extends, and in the process we reveal a deep and intricate connection between measure and category.
+So far we have seen many similarities between the various size notions that we have discussed. The classes of meager sets and null sets are both ideals, both proper, both closed under countable unions, and so on. In this section we further investigate how far this comparison extends, and in the process we reveal a deep connection between measure and category.
 
-To begin, it is natural to ask whether the meager and null sets are truly different notions. The following result shows that they are very different indeed: it is possible to be small according to either notion, and at the same time, large according to the other.
+To begin, it is natural to ask whether the meager and null sets are truly different notions. The following result shows that they are very different indeed: it is possible to be small according to one of the notions, and at the same time, large according to the other.
 
 \begin{proposition}
   \label{prop:null-comeager}
@@ -1015,7 +1026,7 @@ Although this result shows that category and measure are very different in terms
     \node (cofn) [above=2 of nonn] {$\cof(\Null)$} edge (cofm) edge (nonn);
     \node (c) [right=of cofn] {$\mathfrak c$} edge (cofn);
   \end{tikzpicture}
-  \caption{Cicho\'n's diagram of cardinal characteristics. Here as usual the arrow $\leftarrow$ represents the inequality $\leq$.\label{fig:cichon}}
+  \caption{Cicho\'n's diagram of cardinal characteristics. Here an arrow $\leftarrow$ represents the inequality $\leq$.\label{fig:cichon}}
 \end{figure}
 
 \begin{remark}
