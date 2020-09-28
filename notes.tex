@@ -886,9 +886,9 @@ Let $X$ be any one of the three spaces $\R$, $2^\omega$, or $\omega^\omega$. An 
 
 An ideal $\mathcal I$ is called a \emph{$\sigma$-ideal} if it is additionally closed under countable unions. In the past several sections, we have discussed three key notions of smallness and each one is a $\sigma$-ideal.
 \begin{itemize}
-\item $\Meager$ is the ideal of meager subsets of $\R$.
-\item $\Null$ is the ideal of Lebesgue null subsets of $\R$.
-\item $\Ksigma$ is the ideal of subsets of $\omega^\omega$ which are contained in a $\sigma$-compact subset of $\omega^\omega$.
+  \item $\Meager$ is the ideal of meager subsets of $\R$.
+  \item $\Null$ is the ideal of Lebesgue null subsets of $\R$.
+  \item $\Ksigma$ is the ideal of subsets of $\omega^\omega$ which are contained in a $\sigma$-compact subset of $\omega^\omega$.
 \end{itemize}
 
 As was the case with $\Ksigma$, we can associate cardinal characteristics to any ideal. We will consider four key characteristics.
@@ -922,7 +922,8 @@ As was the case with the cardinals we introduced in the previous section, assumi
 All three of the $\sigma$-ideals we have introduced have a basis of Borel sets. For $\Ksigma$ this is clear because $\sigma$-compact sets are Borel. For $\Meager$ any meager set is contained in a countable union of \emph{closed} nowhere dense sets, which are Borel. Finally for $\Null$, note that if $A$ is null then for all $n$ there is a Borel set $A_n$ such that $A\subset A_n$ and $m(A_n)<1/n$. It follows that $A$ is contained in the Borel null set $\bigcap A_n$.
 
 \begin{remark}
-  There can exist proper $\sigma$-ideals containing the singletons that don't have a basis of size $\leq\mathfrak c$. For example, it is consistent that the ideal $\mathcal{SN}$ of \emph{strongly null} sets has $\cof(\mathcal{SN})=\aleph_2$ while $\mathfrak c=\aleph_1$. [ref] % yorioka
+  There can exist proper $\sigma$-ideals containing the singletons that don't have a basis of size $\leq\mathfrak c$. For example, it is consistent that the ideal $\mathcal{SN}$ of \emph{strongly null} sets has $\cof(\mathcal{SN})=\aleph_2$ while $\mathfrak c=\aleph_1$.
+  [ref] % yorioka
 \end{remark}
 
 We next establish the basic relationships between the four cardinal characteristics associated with $\mathcal I$.
@@ -1031,22 +1032,21 @@ Although this result shows that category and measure are very different in terms
 
 \begin{remark}
   In Cicho\'n's diagram, the $\Meager$ symbol can stand for the meager ideal on any one of the spaces $\R$, $2^\omega$, or $\omega^\omega$. Indeed, we have already seen in Proposition~\ref{prop:cantor-baire-homeo} that $\R$ and $\omega^\omega$ can be made homeomorphic after removing a countable subset of each. In Exercise~\ref{exerc:meager-bij}, we show that the same is true of $\R$ and $2^\omega$.
-
-  Similarly, the $\Null$ symbol can stand for the null ideal on either $\R$ or $2^\omega$; see Exercise~\ref{exerc:null-bij}. In fact, it is possible to define a natural measure on $\omega^\omega$, and then $\Null$ can stand for the null ideal on $\omega^\omega$ too. [ref] % blass
+  
+  Similarly, the $\Null$ symbol can stand for the null ideal on either $\R$ or $2^\omega$; see Exercise~\ref{exerc:null-bij}. In fact, it is possible to define a natural measure on $\omega^\omega$, and then $\Null$ can stand for the null ideal on $\omega^\omega$ too.
+  [ref] % blass
 \end{remark}
 
-\begin{remark}
-  Theorem~\ref{thm:cichon} doesn't rule out the possibility that all or some of the cardinals in Cicho\'n's diagram are \emph{equal to each other}. And this is indeed possible: if CH is true then $\aleph_1=\mathfrak c$ and so all twelve of the cardinals are identical. So to truly break the symmetry between category and measure, we need some way to show that it is possible for these cardinals to be different. For that we will need the method of \emph{forcing}, which will be the focus of the second half of the course.
-\end{remark}
+Theorem~\ref{thm:cichon} doesn't rule out the possibility that all or some of the cardinals in Cicho\'n's diagram are \emph{equal to each other}. And this is indeed possible: if CH is true then $\aleph_1=\mathfrak c$ and so all twelve of the cardinals are identical. So to truly break the symmetry between category and measure, we need some way to show that it is possible for these cardinals to be different. For that we will need the method of \emph{forcing}, which will be the focus of the second half of the course.
 
 For the rest of this section as well as the next few, we take up the proof of Theorem~\ref{thm:cichon}. We have already established seven out of the fifteen inequalities depicted: $\mathfrak b\leq\mathfrak d$ follows from Proposition~\ref{prop:bd}. The two bounds $\aleph_1\leq\add(\Null)$ and $\cof(\Null)\leq\mathfrak c$ follow from Lemma~\ref{lem:ideal-cards}. And four more of the inequalities are special cases of Lemma~\ref{lem:diamond}.
 
 We conclude this section with proofs of four more fairly easy inequaleties. The remaining four turn out to be be slightly more difficult. In the next section we will present a handy but abstract tool that will reduce our workload to just two more inequalities. The final two will be proved in the following two sections.
 
-\begin{lemma}
-  \label{lem:b-nonm}
+\begin{theorem}
+  \label{thm:b-nonm}
   We have $\mathfrak b\leq\non(\Meager)$, and $\cov(\Meager)\leq\mathfrak d$.
-\end{lemma}
+\end{theorem}
 
 \begin{proof}
   For the first inequality, recall our observation in Remark~\ref{rem:ksigma-meager} that $\Ksigma\subset\Meager$, so any nonmeager subset of $\omega^\omega$ is certainly not $\Ksigma$. But we also know that every non-$\Ksigma$ set is unbounded. It follows that every nonmeager subset of $\omega^\omega$ is unbounded, which implies $\mathfrak b\leq\non(\Meager)$.
@@ -1054,10 +1054,10 @@ We conclude this section with proofs of four more fairly easy inequaleties. The 
   The second inequality again uses the fact that $\Ksigma\subset\Meager$, and we leave it as Exercise~\ref{exerc:covm-d}.
 \end{proof}
 
-\begin{lemma}
-  \label{lem:covn-nonm}
+\begin{theorem}
+  \label{thm:covn-nonm}
   We have $\cov(\Null)\leq\non(\Meager)$, and $\cov(\Meager)\leq\non(\Meager)$.
-\end{lemma}
+\end{theorem}
 
 \begin{proof}
   For the first inequality, we must show that given a nonmeager set $X$, we can find a family $\mathcal F$ of null sets of smaller or equal size such that $\bigcup F=\R$. For this, we let $A$ be the null comeager set constructed in Proposition~\ref{prop:null-comeager}, and consider the family of null sets $\mathcal F=\set{x+A\mid x\in X}$.
@@ -1074,7 +1074,7 @@ We conclude this section with proofs of four more fairly easy inequaleties. The 
 
 \begin{exerc}
   \label{exerc:null-bij}
-  For $V_s$ a basic open set of $2^\omega$, let $m(V_s)=2^{-|s|-1}$. Then $m$ extends to a measure on the Borel sets of $2^\omega$ (take this for granted). Show that there is a measure-preserving bijection between co-countable subsets of $[0,1]$ and $2^\omega$.
+  For $V_s$ a basic open set of $2^\omega$, let $m(V_s)=2^{-|s|-1}$. Then $m$ extends to a measure on the Borel sets of $2^\omega$ (take this for granted). Show that there is a measure-preserving bijection between $[0,1]$ and $2^\omega$, after possibly throwing away countable subsets of each.
 \end{exerc}
 
 \begin{exerc}
@@ -1082,7 +1082,9 @@ We conclude this section with proofs of four more fairly easy inequaleties. The 
   Show that $\cov(\Meager)\leq\mathfrak d$.
 \end{exerc}
 
-% See Bartoszynski
+\begin{notes}
+  ... mostly from Bartoszy\'nski--Judah.
+\end{notes}
 
 
 \newpage
@@ -1090,7 +1092,7 @@ We conclude this section with proofs of four more fairly easy inequaleties. The 
 \section{Ideals and duality}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-At this point one might have observed that many of the proofs of inequalities between cardinal characteristics have come in pairs. This phenomenon is easy to spot in Lemmas~\ref{lem:b-nonm} and~\ref{lem:covn-nonm}, but if one examines the proof it is even present in Lemma~\ref{lem:diamond}. It turns out that there is a category-theoretic duality lurking behind all of these pairings. (Here we mean \emph{category} as in objects and morphisms, not as in Baire's theorem.)
+At this point one might have observed that many of the proofs of inequalities between cardinal characteristics have come in pairs. This phenomenon is easy to spot in Theorems~\ref{thm:b-nonm} and~\ref{thm:covn-nonm}, but if one examines the proof it is even present in Lemma~\ref{lem:diamond}. It turns out that there is a category-theoretic duality lurking behind all of these pairings. (Here we mean \emph{category} as in objects and morphisms, not as in Baire's theorem.)
 
 \begin{definition}
   Let $R$ be a relation and $R\subset A\times B$ (that is, the domain of $R$ is $A$ and the codomain of $R$ is $B$).
@@ -1169,7 +1171,7 @@ For each of the inequalities between cardinal characteristics that we have seen,
 \end{example}
 
 \begin{example}
-  In Lemma~\ref{lem:covn-nonm}, where we showed that $\cov(\Null)\leq\non(\Meager)$, we could have used the following morphism from the $\not\ni$ relation on $\Meager\times2^\omega$ to the $\in$ relation on $2^\omega\times\Null$. Again we let $A$ be a fixed null comeager set.
+  In Theorem~\ref{thm:covn-nonm}, where we showed that $\cov(\Null)\leq\non(\Meager)$, we could have used the following morphism from the $\not\ni$ relation on $\Meager\times2^\omega$ to the $\in$ relation on $2^\omega\times\Null$. Again we let $A$ be a fixed null comeager set.
   \[\begin{cases}\phi(x)=x-A^c\\\psi(x)=x+A\end{cases}
   \]
   To check that it is a morphism, $\phi(x)\not\ni y$ implies $x-y\in A$, which in turn implies that $x\in y+A=\psi(y)$, as required. Recall that the function $\psi(x)=x+A$ featured prominently in our original proof: for each $X\notin\Meager$ we formed the family of translates $\{x+A\mid x\in X\}$.
@@ -1188,7 +1190,7 @@ Beyond these two examples, we see that each arrow in Cicho\'n's diagram (Theorem
 \end{exerc}
 
 \begin{exerc}
-  Find a morphism behind the proof of the inequality $\mathfrak b\leq\non(\Meager)$ (Lemma~\ref{lem:b-nonm}). Check that it is dual to a morphism behind the inequality $\cov(\Meager)\leq\mathfrak d$.
+  Find a morphism behind the proof of the inequality $\mathfrak b\leq\non(\Meager)$ (Theorem~\ref{thm:b-nonm}). Check that it is dual to a morphism behind the inequality $\cov(\Meager)\leq\mathfrak d$.
 \end{exerc}
 
 \begin{notes}
@@ -1250,9 +1252,10 @@ The proof is elementary (though slightly technical), and we leave it for Exercis
   The morphism from $\prec$ to $\leq^*$ is the same, but with the roles of $\phi$ and $\psi$ reversed. We leave it to the reader to check that this is indeed the case.
 \end{proof}
 
-\begin{lemma}
+\begin{theorem}
+  \label{thm:addm-b}
   We have $\add(\Meager)\leq\mathfrak b$ and $\mathfrak d\leq\cof(\Meager)$.
-\end{lemma}
+\end{theorem}
 
 \begin{proof}
   We prove the second inequality by finding a morphism from the $\subset$ relation on $\Meager$ to the $\prec$ relation on interval partitions. We therefore obtain the first inequality as a consequence of duality. For this it is enough to consider the $\subset$ relation just on the basis of meager sets of the form $A=\Diff_Q(y)$. We let:
