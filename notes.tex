@@ -1118,7 +1118,7 @@ It is clear that the dominating number $\mathfrak d$ is the dominating number of
   It is straightforward to see the characterizations of $\cof(\mathcal I)$ and $\cov(\mathcal I)$. The characterizations of $\non(\mathcal I)$ and $\add(\mathcal I)$ both use the downward closure property: $A$ lies in $\mathcal I$ if and only if $A$ is a subset of an element of $\mathcal I$.
 \end{proof}
 
-It is worth observing that the four cardinals come in two dual pairs. Here, if $R$ is a relation, then the \emph{dual} of $R$ is its negated transpose $\hat{R}$. That is, the dual of $R$ satisfies $a\mathrel{\hat{R}}b$ iff $\neg(b\mathrel Ra)$. Thus we see that $\add(\mathcal I)$ and $\cof(\mathcal I)$ arise from dual relations, as do $\non(\mathcal I)$ and $\cov(\mathcal I)$. Before we can exploit this duality, we need to describe the morphisms on the category of binary relations.
+The four characteristics of an ideal come in two dual pairs. Here, if $R$ is a relation, then the \emph{dual} of $R$ is its negated transpose. That is, the dual of the relation $R$ is the relation $\hat R$ defined by $a\mathrel{\hat{R}}b$ iff $\neg(b\mathrel Ra)$. Thus we see that $\add(\mathcal I)$ and $\cof(\mathcal I)$ arise from dual relations, as do $\non(\mathcal I)$ and $\cov(\mathcal I)$. Before we can exploit this duality, we need to describe the morphisms on the category of binary relations.
 
 \begin{definition}
   Let $R$ and $S$ be relations, and to avoid excessive notation, write $\dom(R)$ and $\cod(R)$ for the demain and codomain of $R$, and similarly for $S$. A \emph{morphism} from $R$ to $S$ is a pair of maps
@@ -1130,7 +1130,7 @@ such that the following holds
 for all $c\in\dom(S)$ and $d\in\cod(R)$.
 \end{definition}
 
-The definition in a sense implies that the following diagram ``commutes.'' Of course, the $R$ and $S$ edges symbolize relations, not functions, so this is only a partial analogy.
+We can use the following memory device to help us understand morphisms. The pair $(\phi,\psi)$ is a morphism if the following diagram ``commutes.'' The word ``comutes'' is used loosely, since the $R$ and $S$ edges symbolize relations, not functions.
 \begin{center}
 \begin{tikzpicture}
   \node (domr) {$\dom(R)$};
@@ -1159,7 +1159,7 @@ In any case, the definition of a morphism is custom-designed to give us the foll
   For the second statement, just take the contrapositive of the morphism property, $\phi(c)\mathrel R d\implies c\mathrel S\psi(d)$, to arrive at the property required of a morphism from $\hat S$ to $\hat R$.
 \end{proof}
 
-For each of the inequalities between cardinal characteristics that we have seen, it is possible to extract a morphism hiding in the proof. 
+It is possible to extract a morphism hiding in the proof of each of the inequalities between cardinal characteristics that we have seen so far.
 
 \begin{example}
   In Lemma~\ref{lem:diamond}, where we showed that $\cov(\mathcal I)\leq\cof(\mathcal I)$, we could have used the morphism from $\subset$ relation on $\mathcal I$ to the $\in$ relation on $X\times\mathcal I$ given by the maps
@@ -1181,9 +1181,8 @@ For each of the inequalities between cardinal characteristics that we have seen,
 
 Beyond these two examples, we see that each arrow in Cicho\'n's diagram (Theorem~\ref{thm:cichon}) is potentially dual to the arrow that is positioned diametrically opposite to it. Assuming there is a morphism behind the proof of one of the inequalities, then the other inequality follows automatically from Proposition~\ref{prop:morphism}.
 
-\begin{remark}
-  True inequalities between cardinal characteristics are not always witnessed by morphisms. For example, it is true that $\cov(\Meager)\leq\non(\mathcal{SN})$, but it is consistent that the dual inequality fails. [ref]
-\end{remark}
+We close by remarking that unfortunately, true inequalities between cardinal characteristics are not always witnessed by morphisms. For example, it is true that $\cov(\Meager)\leq\non(\mathcal{SN})$, but it is consistent that the dual inequality fails.
+[ref] % i guess the same as before about SN, but also blass with simpler examples
 
 \begin{exerc}
   Find a morphism behind the proof of the inequality $\non(\mathcal I)\leq\cof(\mathcal I)$ (Lemma~\ref{lem:diamond}). Check that it is dual to a morphism behind the inequality $\add(\mathcal I)\leq\cov(\mathcal I)$.

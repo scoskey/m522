@@ -9,6 +9,13 @@ header-includes: |
 
 [Submit with gradescope](https://www.gradescope.com/courses/170391)
 
+## Week 6 (Due Tuesday, October 6)
+
+1. (9.1) Show that there is a homeomorphism between co-countable subsets of $\mathbb R$ and $2^\omega$.
+2. (9.2) For $V\_s$ a basic open set of $2^\omega$, let $m(V\_s)=2^{-|s|-1}$. Then $m$ extends to a measure on the Borel sets of $2^\omega$ (take this for granted). Show that there is a measure-preserving bijection between $[0,1]$ and $2^\omega$, after possibly throwing away countable subsets of each.
+3. (10.1) Find a morphism behind the proof of the inequality $non(\mathcal I)\leq cof(\mathcal I)$ (Lemma 8.5). Check that it is dual to a morphism behind the inequality $add(\mathcal I)\leq cov(\mathcal I)$.
+4. (10.2) Find a morphism behind the proof of the inequality $\mathfrak b\leq non(\mathcal M)$ (Theorem 9.4). Check that it is dual to a morphism behind the inequality $cov(\mathcal M)\leq\mathfrak d$.
+
 ## Week 5 (Due Tuesday, September 29)
 
 1. (7.2) Find an example of a meager subset of $\omega^\omega$ which is not in $\mathcal K\_\sigma$.
