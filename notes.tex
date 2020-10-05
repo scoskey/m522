@@ -1223,12 +1223,12 @@ If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $
 \end{proposition}
 
 \begin{proof}
-  First suppose that $A\subset\Diff_P(x)$, we will show $A$ is meager. For this, let
+  Beginning with the implication $(\Leftarrow)$, we will show $\Diff_P(x)$ is meager. For this, let
   \[A_N=\set{y\in2^\omega\mid(\forall n\geq N)\;y\restriction I_n\neq x\restriction I_n}\text{.}
   \]
-  Thus $A\subset\bigcup A_n$, and it is clear that $A_N$ contains no interior. Moreover $A_N$ is a countable intersection of boolean combinations of basic open sets, and hence $A_N$ is closed. Thus we have shown that $A$ is meager.
+  The set $A_N$ is a countable intersection of boolean combinations of basic open sets, and hence closed. Moreover, $A_N$ contains no nonempty basic open sets, and so $A_N$ is nowhere dense. Finally $\Diff_P(x)\subset\bigcup A_N$, and thus $\Diff_P(x)$ is meager.
 
-  Conversely suppose $A=\bigcup A_n$ where each $A_n$ is nowhere dense, and suppose without loss of generality that $A_n\subset A_{n+1}$ for all $n$. We will define an interval partition $P=(I_n)$ and an element $x\in2^\omega$ recursively. To begin, since $A_0$ isn't dense there exists $s\in2^{<\omega}$ such that $A_0\cap V_s=\emptyset$. We let $I_0=\dom(s)$ and $x\restriction I_0=s$.
+  For $(\Rightarrow)$, suppose $A=\bigcup A_n$ where each $A_n$ is nowhere dense, and suppose without loss of generality that $A_n\subset A_{n+1}$ for all $n$. We will define an interval partition $P=(I_n)$ and an element $x\in2^\omega$ recursively. To begin, since $A_0$ isn't dense there exists $s\in2^{<\omega}$ such that $A_0\cap V_s=\emptyset$. We let $I_0=\dom(s)$ and $x\restriction I_0=s$.
 
   Now suppose that $I_i$ and $x\restriction I_i$ have been constructed for $i<n$ and let $s=x\restriction\bigcup_{i<n}I_i$ be the initial segment built so far. Since $A_n$ is nowhere dense, by Proposition~\ref{prop:cantor-space-nwd} we can find an extension $t$ of $s$ such that $A_n\cap V_t=\emptyset$. But we can do even better: we can find an extension $t$ of $s$ such that even if $y\in2^\omega$ only agrees with $t$ on $\dom(t\smallsetminus s)$, then we still have $y\notin A_n$.
 
@@ -1279,7 +1279,7 @@ We conclude this section with a further result that gives much more information 
 \begin{proof}
   We have already shown that $\add(\Meager)\leq\mathfrak b$ and $\add(\Meager)\leq\cov(\Meager)$. Hence it remains only to show that $\add(\Meager)\geq\min\{\mathfrak b,\cov(\Meager)\}$. For this we must show that if $\mathcal F$ is a family of meager subsets of $\omega^\omega$ such that $|\mathcal F|<\min\{\mathfrak b,\cov(\Meager)\}$ then $\bigcup\mathcal F$ is meager. Without loss of generality, we can suppose that $\mathcal F$ consists of closed nowhere dense sets.
 
-  We begin by finding a countable dense subset $Q\subset\omega^\omega$ disjoint from $\bigcup\mathcal F$. Indeed, since $|\mathcal F|<\cov(\Meager)$ we have that $\bigcup\mathcal F\neq\omega^\omega$. In fact for any basic open set $V_s$ we must have that $\bigcup\mathcal F$ does not cover $I$, since otherwise we could use Exercise~\ref{exerc:homeo} to find a countable family of translates of $\bigcup(\mathcal F)$ which covers all oof $\omega^\omega$. This shows $\bigcup\mathcal F$ is co-dense, and therefore we can find $Q$ as required.
+  We begin by finding a countable dense subset $Q\subset\omega^\omega$ disjoint from $\bigcup\mathcal F$. Indeed, since $|\mathcal F|<\cov(\Meager)$ we have that $\bigcup\mathcal F\neq\omega^\omega$. In fact for any basic open set $V_s$ we must have that $\bigcup\mathcal F$ does not cover $I$, since otherwise we could use Exercise~\ref{exerc:homeo} to find a countable family of translates of $\bigcup(\mathcal F)$ which covers all of $\omega^\omega$. This shows $\bigcup\mathcal F$ is co-dense, and therefore we can find $Q$ as required.
 
   Now enumerate $Q=(q_n)_{n\in\N}$. Then for each $F\in\mathcal F$ and $n\in\N$, since $F$ is nowhere dense, we can find a finite initial segment $q_n\restriction g_F(n)$ such that $V_{q_n\restriction g_F(n)}$ is disjoint from $F$. Since $|\mathcal F|<\mathfrak b$, the family of functions $\set{g_F\mid F\in\mathcal F}$ is bounded by a single function $h\in\omega^\omega$. Finally we use this $h$ to define the set:
   \[R=\bigcap_N\bigcup_{n\geq N}V_{q_n\restriction h(n)}\text{.}
@@ -1287,9 +1287,8 @@ We conclude this section with a further result that gives much more information 
   Then $R$ is a countable intersection of dense open sets, and hence it is comeager. Moreover since for all $F\in\mathcal F$ we have $g_F\leq^*h$, we have that $R$ is disjoint from $\bigcup\mathcal F$. We can thus conclude that $\bigcup\mathcal F$ is meager, as desired.
 \end{proof}
 
-\begin{remark}
-  Although the last result does not apparently involve a morphism, it is true that an analogous argument shows the dual fact that $\add(\Meager)=\max\{\mathfrak d,\non(\Meager)\}$. This three-term duality is also part of an abstract morphism-like framework, which we omit. [ref]
-\end{remark}
+Although the last result does not apparently involve a morphism, it is true that an analogous argument shows the dual fact that $\add(\Meager)=\max\{\mathfrak d,\non(\Meager)\}$. This three-term duality can also be expressed in terms of our abstract categorical framework of relations and morphisms, but we omit the details. [ref]
+% blass somewhere
 
 \begin{exerc}
   \label{exerc:engulf}
@@ -1301,9 +1300,9 @@ We conclude this section with a further result that gives much more information 
   Let $n\in\N$ and $s,s'\in\omega^n$. Show that there exists a homeomorphism $\phi\colon\omega^\omega\to\omega^\omega$ such that $s\subset x$ iff $s'\subset\phi(x)$.
 \end{exerc}
 
-% blass sec4
-% blass sec5
-% bartoszynski sec 2.2
+\begin{notes}
+  See Blass, Sections 4 and 5, and Bartoszynski, Section 2.2
+\end{notes}
 
 
 \newpage
