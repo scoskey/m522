@@ -1125,12 +1125,12 @@ The four characteristics of an ideal come in two dual pairs. Here, if $R$ is a r
 \[\begin{cases}\psi\colon\cod(R)\to\cod(S)\\\phi\colon\dom(S)\to\dom(R)\end{cases}
 \]
 such that the following holds
-\[\phi(c)\mathrel{R}d\implies c\mathrel{S}\psi(d)
+\[\phi(a)\mathrel{R}b\implies a\mathrel{S}\psi(b)
 \]
-for all $c\in\dom(S)$ and $d\in\cod(R)$.
+for all $a\in\dom(S)$ and $b\in\cod(R)$.
 \end{definition}
 
-We can use the following memory device to help us understand morphisms. The pair $(\phi,\psi)$ is a morphism if the following diagram ``commutes.'' The word ``comutes'' is used loosely, since the $R$ and $S$ edges symbolize relations, not functions.
+We can use the following memory device to help us understand morphisms. The pair $(\phi,\psi)$ is a morphism if the following diagram ``commutes.'' The word ``commutes'' is used loosely, since the $R$ and $S$ edges symbolize relations, not functions.
 \begin{center}
 \begin{tikzpicture}
   \node (domr) {$\dom(R)$};
@@ -1147,16 +1147,23 @@ In any case, the definition of a morphism is custom-designed to give us the foll
 
 \begin{proposition}
   \label{prop:morphism}
+  Suppose $(\phi,\psi)$ is a morphism from $R$ to $S$. Then the following hold:
   \begin{itemize}
-  \item If $(\phi,\psi)$ is a morphism from $R$ to $S$, then $\mathfrak d(R)\geq\mathfrak d(S)$.
-  \item If $(\phi,\psi)$ is a morphism from $R$ to $S$, then $(\psi,\phi)$ is a morphism from $\hat S$ to $\hat R$. Hence in this case we also have $\mathfrak d(\hat S)\geq\mathfrak d(\hat R)$.
+    \item $\psi$ maps $R$-dominating families $\mathcal F$ to $S$-dominating families $\psi(\mathcal F)$;
+    \item $\mathfrak d(R)\geq\mathfrak d(S)$;
+    \item $(\psi,\phi)$ is a morphism from $\hat S$ to $\hat R$;
+    \item $\mathfrak d(\hat S)\geq\mathfrak d(\hat R)$.
   \end{itemize}
 \end{proposition}
 
 \begin{proof}
-  For the first statement, it is enough to show that if $\mathcal F$ is an $R$-dominating family, then the image $\psi(\mathcal F)$ is an $S$-dominating family. Indeed, the image $\psi(\mathcal F)$ has the same or smaller cardinality than $\mathcal F$. To check this we simply chase the diagram: since $\mathcal F$ is $R$-dominating, for any $d\in\dom(S)$ there exists $f\in\mathcal F$ such that $\phi(d)\mathrel{R}f$. Since $(\phi,\psi)$ is a morphism, it follows that $d\mathrel{S}\psi(f)$. This confirms that $\psi(\mathcal F)$ is an $S$-dominating family.
+  For the first statement, we simply chase the diagram: since $\mathcal F$ is $R$-dominating, for any $d\in\dom(S)$ there exists $f\in\mathcal F$ such that $\phi(d)\mathrel{R}f$. Since $(\phi,\psi)$ is a morphism, it follows that $d\mathrel{S}\psi(f)$. This confirms that $\psi(\mathcal F)$ is an $S$-dominating family.
+  
+  The second statement follows from the first, together with the fact that the image $\psi(\mathcal F)$ has the same or smaller cardinality than $\mathcal F$.
 
-  For the second statement, just take the contrapositive of the morphism property, $\phi(c)\mathrel R d\implies c\mathrel S\psi(d)$, to arrive at the property required of a morphism from $\hat S$ to $\hat R$.
+  For the third statement, just take the contrapositive of the morphism property, $\phi(a)\mathrel R b\implies a\mathrel S\psi(d)$, to arrive at the property required of a morphism from $\hat S$ to $\hat R$.
+  
+  The fourth statement follows from the third in the same way that the second followed from the first.
 \end{proof}
 
 It is possible to extract a morphism hiding in the proof of each of the inequalities between cardinal characteristics that we have seen so far.
