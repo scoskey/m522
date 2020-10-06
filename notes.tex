@@ -1209,13 +1209,16 @@ We close by remarking that unfortunately, true inequalities between cardinal cha
 \section{Category and difference sets}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this section we will prove two of the four inequalities remaining in Theorem~\ref{thm:cichon}. We prove $\mathfrak d\leq\cof(\Meager)$ and $\add(\Meager)\leq\mathfrak b$ (actually thanks to duality only one proof is needed). Recall that $\mathfrak d$ is the dominating number of the $\leq^*$ relation on $\omega^\omega$, while $\cof(\Meager)$ is the dominating number of the $\subset$ relation on meager sets. Although the two relations don't seem directly comparable, we now introduce some technology to understand their relationship more clearly. An \emph{interval partition} is a partition $P=(I_n)$ of $\omega$ into finite nonempty intervals $I_n$. We always assume that the $I_n$ is adjacent to $I_{n+1}$, and hence also that they are enumerated in increasing order.
+In this section we will prove two of the four inequalities remaining in Theorem~\ref{thm:cichon}. We prove $\mathfrak d\leq\cof(\Meager)$ and $\add(\Meager)\leq\mathfrak b$ (actually thanks to duality only one proof is needed). Recall that $\mathfrak d$ is the dominating number of the $\leq^*$ relation on $\omega^\omega$, while $\cof(\Meager)$ is the dominating number of the $\subset$ relation on meager sets. Although the two relations don't seem directly comparable, we now introduce some technology to understand their relationship more clearly. An \emph{interval partition} is a partition $P=(I_n)$ of $\omega$ into finite nonempty intervals $I_n$. We always assume that each $I_n$ is adjacent to $I_{n+1}$, that is, they are enumerated in increasing order.
 
 \begin{definition}
-  If $x,y\in2^\omega$ and $P$ is an interval partition, we say $x$ \emph{strongly differs} from $y$ on $P$ if for all but finitely many $n$ we have $x\restriction I_n\neq y\restriction I_n$.
+  Given an interval partition $P$ and $x\in2^\omega$, we let
+  \[\Diff_P(x)=\set{y\in2^\omega\mid (\exists N)(\forall n\geq N)\;y\restriction I_n\neq x\restriction I_n}
+  \]
+  That is, $\Diff_P(x)$ is the set of all $y$ which disagree with $x$ on all but finitely many intervals of $P$.
 \end{definition}
 
-If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $\Diff_P(x)$ to be the set of all $y\in2^\omega$ such that $y$ strongly differs from $x$ on $P$.
+The next result shows that the sets of the form $\Diff_P(x)$ form a basis for the meager ideal $\mathcal M$ of $2^\omega$.
 
 \begin{proposition}
   \label{prop:meager-diff}
@@ -1223,12 +1226,12 @@ If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $
 \end{proposition}
 
 \begin{proof}
-  Beginning with the implication $(\Leftarrow)$, we will show $\Diff_P(x)$ is meager. For this, let
+  Beginning with the implication $(\Leftarrow)$, it is enough to show any set of the form $\Diff_P(x)$ is meager. For this, let
   \[A_N=\set{y\in2^\omega\mid(\forall n\geq N)\;y\restriction I_n\neq x\restriction I_n}\text{.}
   \]
-  The set $A_N$ is a countable intersection of boolean combinations of basic open sets, and hence closed. Moreover, $A_N$ contains no nonempty basic open sets, and so $A_N$ is nowhere dense. Finally $\Diff_P(x)\subset\bigcup A_N$, and thus $\Diff_P(x)$ is meager.
+  Then $\Diff_P(x)=\bigcup A_N$, and it is not difficult to check that the $A_N$ are closed and have empty interior.
 
-  For $(\Rightarrow)$, suppose $A=\bigcup A_n$ where each $A_n$ is nowhere dense, and suppose without loss of generality that $A_n\subset A_{n+1}$ for all $n$. We will define an interval partition $P=(I_n)$ and an element $x\in2^\omega$ recursively. To begin, since $A_0$ isn't dense there exists $s\in2^{<\omega}$ such that $A_0\cap V_s=\emptyset$. We let $I_0=\dom(s)$ and $x\restriction I_0=s$.
+  For $(\Rightarrow)$, suppose $A=\bigcup A_n$ where each $A_n$ is nowhere dense, and assume without loss of generality that $A_n\subset A_{n+1}$ for all $n$. We will define an interval partition $P=(I_n)$ and an element $x\in2^\omega$ recursively. To begin, since $A_0$ isn't dense there exists $s\in2^{<\omega}$ such that $A_0\cap V_s=\emptyset$. We let $I_0=\dom(s)$ and $x\restriction I_0=s$.
 
   Now suppose that $I_i$ and $x\restriction I_i$ have been constructed for $i<n$ and let $s=x\restriction\bigcup_{i<n}I_i$ be the initial segment built so far. Since $A_n$ is nowhere dense, by Proposition~\ref{prop:cantor-space-nwd} we can find an extension $t$ of $s$ such that $A_n\cap V_t=\emptyset$. But we can do even better: we can find an extension $t$ of $s$ such that even if $y\in2^\omega$ only agrees with $t$ on $\dom(t\smallsetminus s)$, then we still have $y\notin A_n$.
 
@@ -1237,7 +1240,7 @@ If $x\in2^\omega$ is fixed and $P$ is an interval partition, we define the set $
   To see that $A\subset\Diff_P(x)$, observe that whenever $y\restriction I_n=x\restriction I_n$ we have $y\notin A_n$. In other words, whenever $y\in A_n$ we have that $y$ differs from $x$ on $I_n$. Since the $A_n$ are increasing, any $a\in A$ lies in all but finitely many of the $A_n$. Thus we can conclude that any $a\in A$ strongly differs from $x$ on $P$.
 \end{proof}
 
-The result implies that the collection of sets $\Diff_P(x)$ forms a basis for the meager ideal on Cantor space. This basis is particularly useful because it is easy to see when one set of the form $\Diff_P(x)$ is a subset of another.
+The sets $\Diff_P(x)$ are useful for studying the meager ideal because we have the following combinatorial description of when one is a subset of another.
 
 \begin{proposition}
   \label{prop:engulf}
@@ -1279,7 +1282,7 @@ We conclude this section with a further result that gives much more information 
 \begin{proof}
   We have already shown that $\add(\Meager)\leq\mathfrak b$ and $\add(\Meager)\leq\cov(\Meager)$. Hence it remains only to show that $\add(\Meager)\geq\min\{\mathfrak b,\cov(\Meager)\}$. For this we must show that if $\mathcal F$ is a family of meager subsets of $\omega^\omega$ such that $|\mathcal F|<\min\{\mathfrak b,\cov(\Meager)\}$ then $\bigcup\mathcal F$ is meager. Without loss of generality, we can suppose that $\mathcal F$ consists of closed nowhere dense sets.
 
-  We begin by finding a countable dense subset $Q\subset\omega^\omega$ disjoint from $\bigcup\mathcal F$. Indeed, since $|\mathcal F|<\cov(\Meager)$ we have that $\bigcup\mathcal F\neq\omega^\omega$. In fact for any basic open set $V_s$ we must have that $\bigcup\mathcal F$ does not cover $I$, since otherwise we could use Exercise~\ref{exerc:homeo} to find a countable family of translates of $\bigcup(\mathcal F)$ which covers all of $\omega^\omega$. This shows $\bigcup\mathcal F$ is co-dense, and therefore we can find $Q$ as required.
+  We begin by finding a countable dense subset $Q\subset\omega^\omega$ disjoint from $\bigcup\mathcal F$. Indeed, since $|\mathcal F|<\cov(\Meager)$ we have that $\bigcup\mathcal F\neq\omega^\omega$. In fact for any basic open set $V_s$ we must have that $\bigcup\mathcal F$ does not cover $I$, since otherwise we could use Exercise~\ref{exerc:homeo} to find a countable family of translates of $\bigcup\mathcal F$ which covers all of $\omega^\omega$. This shows $\bigcup\mathcal F$ is co-dense, and therefore we can find $Q$ as required.
 
   Now enumerate $Q=(q_n)_{n\in\N}$. Then for each $F\in\mathcal F$ and $n\in\N$, since $F$ is nowhere dense, we can find a finite initial segment $q_n\restriction g_F(n)$ such that $V_{q_n\restriction g_F(n)}$ is disjoint from $F$. Since $|\mathcal F|<\mathfrak b$, the family of functions $\set{g_F\mid F\in\mathcal F}$ is bounded by a single function $h\in\omega^\omega$. Finally we use this $h$ to define the set:
   \[R=\bigcap_N\bigcup_{n\geq N}V_{q_n\restriction h(n)}\text{.}
