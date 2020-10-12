@@ -11,7 +11,7 @@ header-includes: |
 
 ## Week 7 (Due Tuesday, October 13)
 
-1. (11.1) Let $P=(I\_n)$ and $Q=(J\_n)$ be interval partitions of $\omega$, and let $x,y\in2^\omega$. Prove that $\mathrm{Diff}(P,x)\subset \mathrm{Diff}(Q,y)$ if and only if for all $m$ there exists $n$ such that $I\_n\subset J\_m$ and $x\restriction I\_n=y\restriction I\_n$.
+1. (11.1) Let $P=(I\_n)$ and $Q=(J\_n)$ be interval partitions of $\omega$, and let $x,y\in2^\omega$. Prove that $\mathrm{Diff}(P,x)\subset \mathrm{Diff}(Q,y)$ if and only if for all but finitely many $m$ there exists $n$ such that $I\_n\subset J\_m$ and $x\restriction I\_n=y\restriction I\_n$.
 2. (12.1) If $A\subset 2^\omega$ is null, then there exists a closed set $K\subset 2^\omega\setminus A$ with the property that whenever $V\_s\cap K\neq\emptyset$ we have $V\_s\cap K$ is nonnull.  
    Hint: First show that there exists a closed set $C\subset 2^\omega\setminus A$ which is non-null. Let $D$ be the union of all basic open sets $V\_s$ such that $m(V\_s\cap C)=0$, and show that $m(D)=0$. Finally let $K=C\setminus D$ and show that $K$ has the desired properties.]
 
