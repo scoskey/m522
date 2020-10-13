@@ -9,6 +9,12 @@ header-includes: |
 
 [Submit with gradescope](https://www.gradescope.com/courses/170391)
 
+## Week 8 (Due Tuesday, October 20)
+
+1. (Jech 14.1) Show that in the definition of generic filter, we can replace "for all $p,q\in G$ there exists $r\in G$ with $r\leq p,q$" with "for all $p,q\in G$ there exists $r$ with $r\leq p,q$". [Hint: show the set $\set{r\mid (r\leq p,q)\vee (r\text{ is incompatible with }p)\vee (r\text{ is incompatible with }q)}$ is dense.]
+2. (Jech 14.3) Show that a filter $G$ meets every dense set (in $V$) if and only if $G$ meets every dense open set (in $V$).
+3. ...
+
 ## Week 7 (Due Tuesday, October 13)
 
 1. (11.1) Let $P=(I\_n)$ and $Q=(J\_n)$ be interval partitions of $\omega$, and let $x,y\in2^\omega$. Prove that $\mathrm{Diff}(P,x)\subset \mathrm{Diff}(Q,y)$ if and only if for all but finitely many $m$ there exists $n$ such that $I\_n\subset J\_m$ and $x\restriction I\_n=y\restriction I\_n$.
