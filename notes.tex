@@ -1437,7 +1437,7 @@ This also concludes the proof of Theorem~\ref{thm:cichon}.
 
 % def of consistency, completeness theorem
 
-% Vrey brief tour of ZFC
+% Very brief tour of ZFC
 
 % reflection theorem
 
@@ -1448,7 +1448,7 @@ This also concludes the proof of Theorem~\ref{thm:cichon}.
 
 In this part, we will assume familiarity with the notions of statement, theory, and model. As a reminder, a \emph{formula} is simply a mathematical assertion that can be expressed using the ordinary logical symbols (and, or, not, quantifiers, variables) and non-logical symbols (in our case, $\in$, $\cup$, $\mathcal P$, etc). A \emph{sentence} is a formula in which every variable is quantified, and a \emph{theory} is a collection of sentences. If $T$ is a theory, then a \emph{model} of $T$ is a set, together with interpretations of the non-logical symbols of $T$, in which all the sentences in $T$ hold true.
 
-We are interested in the theory \emph{ZFC}, which consists of the standard axioms for set theory, that govern how the $\in$ relation behaves. G\"odel's incompleteness theorem implies that for some sentences $\phi$, the models of ZFC do not all agree about whether $\phi$ is true or false. A \emph{theorem} is a sentence that holds true in every model of ZFC. A sentence is \emph{independent} of ZFC if it holds true in some models, and false in others. One example that we have mentioned already is CH, the sentence which says that $\mathfrak c=\aleph_1$.
+We are interested in the theory \emph{ZFC}, which consists of the standard axioms for set theory, that govern how the $\in$ relation behaves. G\"odel's incompleteness theorem implies that for some sentences $\phi$, the models of ZFC do not all agree about whether $\phi$ is true or false. A \emph{theorem} is a sentence that is true in every model of ZFC. An \emph{independent statement} is a sentence that is true in some models, and false in others. One example that we have mentioned already is CH, the sentence which says that $\mathfrak c=\aleph_1$.
 
 % In the following (and rest of the chapter) should we use cantor space instead?
 
@@ -1456,7 +1456,7 @@ Forcing is a method of adding new sets to a given model $V$ of ZFC, to obtain a 
 
 But forcing cannot do just anything. For a very simple example, if $A\neq\emptyset$, then $A$ will remain nonempty after forcing. There is some element $a\in A$ and this element will remain in $A$ forever. More generally, we will see that a wide variety of statements are \emph{absolute}, meaning that their truth value cannot be changed by forcing. The Riemann hypothesis is an example of such a statement.
 
-The concept of absoluteness highlights the distinction between ordinals and cardinals. Recall that an ordinal is a set which is transitive and well-ordered by the $\in$ relation. Both of these properties are absolute, and therefore forcing can never add or change ordinals. On the other hand, $\aleph_1$ is defined to be the least ordinal that cannot be mapped injectively into $\omega$. So $\aleph_1$ is equal to some ordinal $\alpha$, but this ordinal value can be raised by a forcing which adds a new injection from $\alpha$ to $\omega$.
+The concept of absoluteness highlights the distinction between ordinals and cardinals. Recall that an ordinal is a set which is transitive and well-ordered by the $\in$ relation. Both of these properties are absolute, and therefore forcing can never change what is and isn't an ordinal. On the other hand, $\aleph_1$ is defined to be the least ordinal that cannot be mapped injectively into $\omega$. So $\aleph_1$ is equal to some ordinal $\alpha$, but it may change to be equal to some other ordinal $\beta$ after a forcing which adds a new injection from $\alpha$ to $\omega$.
 
 The situtation is even more fluid with an indirectly-defined cardinal such as $\mathfrak c$. Recall that $\mathfrak c$ is the unique cardinal number $\aleph_\alpha$ that is in bijection with $2^\omega$. This value can be raised by a forcing which adds at least $\aleph_{\alpha+1}$ many new subsets of $\omega$. The value can also be shrunk by a forcing which adds a new bijection between $\aleph_1$ and the old $\aleph_\alpha$ (while still preserving $\aleph_1$). Roughly speaking, this is how we will establish the independence of the continuum hypothesis.
 
@@ -1472,7 +1472,7 @@ When we force with $\PP$, the partial order $\PP$ can give fine control over the
   \end{itemize}
 \end{definition}
 
-Elements $p,q$ are said to be \emph{compatible} if there exists $r$ such that $r\leq p,q$. Thus a filter is simply a set of pairwise compatible elements, closed upwards for convenience.
+Elements $p,q$ are said to be \emph{compatible} if there exists $r$ such that $r\leq p,q$. Thus in particular a filter is a set of pairwise compatible elements. The upwards closure is largely a convenience.
 
 \begin{example}
   Let $T\subset\omega^{<\omega}$ be a tree. Then $T$ can be made into a notion of forcing by turning it upside-down, that is, setting $s\leq t$ if and only if $s\supset t$. Since $T$ is a tree, this partial ordering has a maximal element $\mathbb1=$ the empty sequence.
@@ -1488,9 +1488,9 @@ We encourage the reader to note the distinction between the two words comparable
 
 The use of the word ``dense'' here may seem in conflict  with the use of the word in topology, but the two can be connected. If $\PP$ is a partial order then it has a topology with a basis consisting of the downward cones $V_p=\set{q\in\PP\mid q\leq p}$. A subset $D\subset\PP$ is dense if and only if it is dense in this topology.
 
-We think of the dense subsets of $\PP$ as omnipresent---almost every element of $\PP$ lies below some element of $D$. When we force with $\PP$ we add a filter $G$ that is \emph{generic} in the sense that it meets these dense subsets of $\PP$. The more dense sets that we demand that $G$ meets, the stronger a condition this imposes on $G$.
+We think of the dense subsets $D\subset\PP$ as omnipresent---every element of $\PP$ lies above some element of $D$. When we force with $\PP$ we add a filter $G$ that is \emph{generic} in the sense that it meets these dense subsets of $\PP$. The more dense sets that we demand that $G$ meet, the stronger a condition this imposes on $G$.
 
-For example, if just countably many dense sets are given, then we will see in the next section that there is always a filter that meets them all. On the other extreme, we could say that a filter is fully generic if it meets \emph{every} dense set of $\PP$, but the next result shows that this is too strong.
+For example, if just countably many dense sets are given, then we will see in the next section that there is always a filter that meets them all. On the other extreme, we could say that a filter is fully generic if it meets \emph{every} dense set of $\PP$, but the next result shows that this is usually too strong to ask.
 
 \begin{proposition}
   \label{prop:generic-new}
@@ -1507,7 +1507,7 @@ A partial order $\PP$ satisfying the hypothesis of the proposition is called \em
   If $V$ is a model of set theory and $\PP\in V$, we say that $G$ is \emph{$V$-generic} if for every $D\in V$ such that $D\subset\PP$ is dense, we have $G\cap D\neq\emptyset$.
 \end{definition}
 
-When we make forcing rigorous, we will show that under appropriate hypotheses, a $V$-generic filter $G$ can be found outside of $V$. We will then let $W=V[G]$ be the smallest model containing both $V$ and $G$, and call this the forcing extension with respect to the notion $\PP$.
+When we make forcing rigorous, we will show that under appropriate hypotheses, a $V$-generic filter $G$ can be found outside of $V$. We will then let $W=V[G]$ be the smallest model containing both $V$ and $G$, and call this the forcing extension with respect to the forcing qnotion $\PP$.
 
 \begin{example}
   Returning to the example of the forcing notion $\PP=\omega^{<\omega}$ with the upside-down ordering, we have already said that a filter $G\subset\PP$ is actually a path through $\omega^{<\omega}$. If $G$ is $V$-generic, then much more can be said of this path. First of all, consider the sets

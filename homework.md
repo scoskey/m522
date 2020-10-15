@@ -13,7 +13,8 @@ header-includes: |
 
 1. (Jech 14.1) Show that in the definition of generic filter, we can replace "for all $p,q\in G$ there exists $r\in G$ with $r\leq p,q$" with "for all $p,q\in G$ there exists $r$ with $r\leq p,q$". [Hint: show the set $\set{r\mid (r\leq p,q)\vee (r\text{ is incompatible with }p)\vee (r\text{ is incompatible with }q)}$ is dense.]
 2. (Jech 14.3) Show that a filter $G$ meets every dense set (in $V$) if and only if $G$ meets every dense open set (in $V$).
-3. ...
+3. Suppose that $\mathbb P$ is not atomless. Show that there is a generic filter $G\subset\mathbb P$. (Recall $\mathbb P$ is atomless if for every $p\in\mathbb P$ there exist $q,r\leq p$ such that $q,r$ are incompatible.)
+4. Suppose that $\mathbb P$ is atomless. Show that $\mathbb P$ has an infinite antichain.
 
 ## Week 7 (Due Tuesday, October 13)
 
