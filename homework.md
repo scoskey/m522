@@ -9,6 +9,11 @@ header-includes: |
 
 [Submit with gradescope](https://www.gradescope.com/courses/170391)
 
+## Week 9 (Due Tuesday, October 27)
+
+1. ...
+2. (15.1) Suppose that $\mathcal F$ is an \emph{almost disjoint} family of infinite subsets of $\omega$: for all $A,A'\in\mathcal F$ we have that $A\cap A'$ is finite. Show that if $|\mathcal F|<\mathfrak c$ then there exists a single infinite set $B$ such that $A\cap B$ is finite for all $A\in\mathcal F$. [Hint: consider the forcing $\PP$ consisting of pairs $(s,F)$ where $s$ is a finite subset of $\omega$, $F$ is a finite subset of $\mathcal F$, and $(s',F')\leq(s,F)$ iff $s'\supset s$, $F'\supset F$, and whenever $A\in F$ we have $A\cap s'\subset s$.]
+
 ## Week 8 (Due Tuesday, October 20)
 
 1. (Jech 14.1) Show that in the definition of generic filter, we can replace "for all $p,q\in G$ there exists $r\in G$ with $r\leq p,q$" with "for all $p,q\in G$ there exists $r$ with $r\leq p,q$". [Hint: show the set $\set{r\mid (r\leq p,q)\vee (r\text{ is incompatible with }p)\vee (r\text{ is incompatible with }q)}$ is dense.]
@@ -25,7 +30,7 @@ header-includes: |
 ## Week 6 (Due Tuesday, October 6)
 
 1. (9.1) Show that there is a homeomorphism between co-countable subsets of $\mathbb R$ and $2^\omega$.
-2. (9.2) For $V\_s$ a basic open set of $2^\omega$, let $m(V\_s)=2^{-\abs{s}-1}$. Then $m$ extends to a measure on the Borel sets of $2^\omega$ (take this for granted). Show that there is a measure-preserving bijection between $[0,1]$ and $2^\omega$, after possibly throwing away countable subsets of each.
+2. (9.2) For $V\_s$ a basic open set of $2^\omega$, let $m(V\_s)=2^{-\abs{s}}$. Then $m$ extends to a measure on the Borel sets of $2^\omega$ (take this for granted). Show that there is a measure-preserving bijection between $[0,1]$ and $2^\omega$, after possibly throwing away countable subsets of each.
 3. (10.1) Find a morphism behind the proof of the inequality $non(\mathcal I)\leq cof(\mathcal I)$ (Lemma 8.5). Check that it is dual to a morphism behind the inequality $add(\mathcal I)\leq cov(\mathcal I)$.
 4. (10.2) Find a morphism behind the proof of the inequality $\mathfrak b\leq non(\mathcal M)$ (Theorem 9.4). Check that it is dual to a morphism behind the inequality $cov(\mathcal M)\leq\mathfrak d$.
 

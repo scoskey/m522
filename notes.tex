@@ -1536,7 +1536,7 @@ There is unfortunately one major limitation on the variety of partial orders we 
   A partial order $\PP$ is said to be \emph{ccc} (or satisfy the \emph{countable chain condition}) if every antichain $A\subset\PP$ is countable.
 \end{definition}
 
-In some sense the ccc imposes a limitation on the number of different filters that may be added when forcing with $\PP$. The partial order $\omega^{<\omega}$ considered in the previous section is obviously ccc because it is countable. However, there are many examples of ccc partial orders which are not countable.
+We will see later that the ccc imposes a limitation on the number of different filters that may be added when forcing with $\PP$. The partial order $\omega^{<\omega}$ considered in the previous section is obviously ccc because it is countable. However, there are many examples of ccc partial orders which are not countable.
 
 \begin{example}
   \label{ex:cohen-ccc}
@@ -1555,7 +1555,7 @@ We sometimes consider the refinements of MA defined as follows. The axiom MA$_\k
 
 \begin{proposition}
   \label{prop:ma-aleph0}
-  MA$_{\aleph_0}$ is true. Thus if CH holds, then MA is true.
+  MA$_{\aleph_0}$ is true. Thus CH implies MA.
 \end{proposition}
 
 \begin{proof}
@@ -1570,10 +1570,10 @@ In fact, in this proof we did not even need $\PP$ to be ccc. The next result sta
 
 We say that a set of axioms is \emph{consistent}, or consistent with ZFC, if there is a model of ZFC which satisfying those axioms. Thus the above result can be rephrased: MA+$\neg$CH is consistent.
 
-The axiom MA packages a great deal of forcing into one universe $V$. When MA is true, it is as if somebody has already performed forcing with all of the ccc partial orders. In fact later we shall see that the consistency of MA can be established by repeatedly applying the forcing construction.
+The axiom MA packages a great deal of forcing into one universe $V$. When MA is true, it is as if somebody has already performed forcing with all of the ccc partial orders. In fact later we will see that the consistency of MA can be established by repeatedly applying the forcing construction.
 
 \begin{proposition}
-  In the definition of MA, we cannot in general drop the condition that the family of dense sets $\mathcal F$ have size less than continuum.
+  In the definition of MA, we cannot completely drop the condition that the family of dense sets $\mathcal F$ have size less than continuum.
 \end{proposition}
 
 \begin{proof}
@@ -1584,21 +1584,21 @@ The axiom MA packages a great deal of forcing into one universe $V$. When MA is 
 \end{proof}
 
 \begin{proposition}
-  In the definition of MA, we cannot in general drop the condition that $\PP$ is ccc.
+  In the definition of MA, we cannot completely drop the condition that $\PP$ is ccc.
 \end{proposition}
 
 \begin{proof}
-  This time we let use the partial order $\PP=\omega_1^{<\omega}$ with the upside-down order. We have already seen that $\PP$ is not ccc. Now for each $\alpha\in\omega_1$ we consider the set
+  Assume CH is false, since we have seen CH implies MA holds with respect to all partial orders. We use the partial order $\PP=\omega_1^{<\omega}$ with the upside-down order. We have already seen that $\PP$ is not ccc. Now for each $\alpha\in\omega_1$ we let
   \[D_\alpha=\set{s\in\omega_1^{<\omega}\mid\alpha\in\rng(s)}\text{.}
   \]
   Then $D_\alpha$ is dense: any $s\in\omega_1^{<\omega}$ can be extended to include $\alpha$ in its range. Now if MA were to hold with respect to this partial order, then there would be a filter $G\subset\omega_1^{<\omega}$ that meets $D_\alpha$ for all $\alpha$. It follows from this that there is an onto function $g=\bigcup G$ from $\omega$ to $\omega_1$, a contradiction.
 \end{proof}
 
-We close this section with a result showing the effect of MA on properties of the continuum. Recall that the Baire category theorem states that the set of all real numbers is not meager, that is, $\cov(\Meager)$ is uncountable. It turns out that MA implies $\cov(\Meager)$ is as large is possible.
+We close this section with a result showing the effect of MA on properties of the continuum. Recall that the Baire category theorem states that $\R$ is nonmeager, that is, cannot be expressed as a countable union of nowhere dense sets. In other words, $\cov(\Meager)$ is uncountable. It turns out that MA implies $\cov(\Meager)$ is as large is possible.
 
 \begin{theorem}
   \label{thm:ma-covm}
-  MA implies that the Baire category theorem holds for unions of length less than $\mathfrak c$, that is, $\cov(\Meager)=\mathfrak c$.
+  MA implies that $\R$ cannot be expressed as a union of less than $\mathfrak c$ many nowhere dense sets. In other words, MA implies $\cov(\Meager)=\mathfrak c$.
 \end{theorem}
 
 \begin{proof}
