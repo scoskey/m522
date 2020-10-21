@@ -1643,7 +1643,7 @@ We have seen the effect of MA on properties of the continuum. We now explore the
   Suppose towards a contradiction that $\mathfrak d<\mathfrak c$, and fix a dominating family $\mathcal F\subset\omega^\omega$ of cardinality $\mathfrak d$. Let $\PP$ be the partial order $\omega^{<\omega}$ with the upside-down ordering. For each $f\in\mathcal F$ we consider the family of sets
   \[D_{f,n}=\set{s\in\omega^{<\omega}\mid\text{there is $n'>n$ such that $s(n')>f(n')$}}\text{.}
   \]
-  Observe that $D_{f,n}$ is dense for all $f$ and $n$: if $s\in\omega^{<\omega}$ we can easily find $n'>n,|s|$ and find $t\supset s$ such that $t(n')>f(n)$. Thus by MA we can find a filter $G$ which meets $D_{f,n}$ for all $f\in\mathcal F$ and $n\in\N$. Letting $g=\bigcup G$, it is clear that $g$ is not dominated by $f$ for any $f\in\mathcal F$, contradicting that $\mathcal F$ is a dominating family.
+  Observe that $D_{f,n}$ is dense for all $f$ and $n$: if $s\in\omega^{<\omega}$ we can easily find $n'>\max(n,|s|)$ and find $t\supset s$ such that $t(n')>f(n')$. Thus by MA we can find a filter $G$ which meets $D_{f,n}$ for all $f\in\mathcal F$ and $n\in\N$. Letting $g=\bigcup G$, it is clear that $g$ is not dominated by $f$ for any $f\in\mathcal F$, contradicting that $\mathcal F$ is a dominating family.
 \end{proof}
 
 The content of the above proof is that if $g$ is fully generic for $\omega^{<\omega}$, then in $V[g]$ none of the elements in the Baire space of $V$ dominate $g$. It falls short, however, of showing that $g$ actually dominates every element in the Baire space of $V$. With a slightly more specialized partial order, this can be achieved as well.
@@ -1676,7 +1676,7 @@ Hechler forcing is always ccc, because incompatible conditions cannot have the s
   Now by MA we cand find a filter $G$ that meets $D_n$ for all $n\in\N$ and  $D_f$ for all $f\in\mathcal F$. We then let
   \[g=\bigcup\set{s\mid(\exists F)\;(s,F)\in G}
   \]
-  be the element of the Baire space determined by $G$. Given $f\in\mathcal F$ and $N\in\N$ we first find an element $(s,F)\in G\cap D_f$, and then letting $n=\max(N,\dom(s))+1$ we find an element $(s',F')\in G\cap D_n$. Since $G$ is a filter we can find $(s'',F'')\in G$ which is stronger than both. Then by the definition of the ordering on $\mathbb H_{\mathcal F}$, $s''(n)>f(n)$ and hence $g(n)>f(n)$. Since $f$ and $N$ were arbitrary, it follows that $f\leq^*g$ for all $f\in\mathcal F$, contradicting that $\mathcal F$ is unbounded.
+  be the element of the Baire space determined by $G$. Given $f\in\mathcal F$ and $N\in\N$ we first find an element $(s,F)\in G\cap D_f$, and then letting $n=\max(N,|s|)$ we find an element $(s',F')\in G\cap D_n$. Since $G$ is a filter we can find $(s'',F'')\in G$ which is stronger than both. Then by the definition of the ordering on $\mathbb H_{\mathcal F}$, $s''(n)>f(n)$ and hence $g(n)>f(n)$. Since $f$ and $N$ were arbitrary, it follows that $f\leq^*g$ for all $f\in\mathcal F$, contradicting that $\mathcal F$ is unbounded.
 \end{proof}
 
 We close this section by finding the effect of MA on the cardinal $\add(\Null)$. As we will see, MA once again implies that this cardinal has its maximum value of $\mathfrak c$. By the inequalities shown in Theorem~\ref{thm:cichon} and especially Bartoszy\'nski's theorem, this implies that assuming MA, \emph{all} the cardinal characteristics in Cicho\'n\'s diagram have the value $\mathfrak c$. At face value, this obviates the last three results which showed that individual characteristics are equal to $\mathfrak c$. But those arguments were more direct, and moreover introduced us to several forcings which will remain important outside of the MA context.
@@ -1711,7 +1711,7 @@ For this proof, we once again introduce a new and special notion of forcing. The
 We are now prepared to prove Theorem~\ref{thm:ma-addn}.
 
 \begin{proof}[Proof of Theorem~\ref{thm:ma-addn}]
-  Given a family $\mathcal F$ of fewer than continuum many null sets, we wish to show that $\bigcup\mathcal F$ is again null. For this, it is sufficient to show that for any $\epsilon>0$ we have $\bigcup\mathcal F$ is contained in an open set of measure $\leq\epsilon$.
+  Given a family $\mathcal F$ of fewer than continuum many null sets, we wish to show that $\bigcup\mathcal F$ is again null. It is sufficient to show that for any $\epsilon>0$ we have $\bigcup\mathcal F$ is contained in an open set of measure $\leq\epsilon$.
 
   For this, let $\epsilon$ be given and let $\mathbb A_\epsilon$ be the corresponding amoeba forcing. For each $A\in\mathcal F$ we consider the set
   \[D_A=\set{O\in\mathbb A_\epsilon\mid A\subset O}
@@ -1735,7 +1735,7 @@ We are now prepared to prove Theorem~\ref{thm:ma-addn}.
 \section{The machinery of forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-So far we have seen forcing only in the context of appeals to Martin's axiom, which gives us highly generic filters $G$ in a single model $V$ of set theory. When we actually do forcing, we wish to find a fully generic filter $G$, even though we know this must lie outside of $V$. But what does it mean that a set $G$ lies outside of the universe of sets? In fact, to find ``new'' sets $G$ we will really assume that $V$ is a countable, transitive model of ZFC. In other words $V$ is a countable set lying in some larger universe $W$, $V$ it is closed downwards under $\in$, and the structure $(V,\in)$ satisfies all of the axioms of set theory.
+So far we have seen forcing only in the context of appeals to Martin's axiom, which gives us highly generic filters $G$ in a single model $V$ of set theory. When we actually do forcing, we wish to find a fully generic filter $G$, even though we know this must lie outside of $V$. But what does it mean that a set $G$ lies outside of the universe of sets? In fact, to find ``new'' sets $G$ we will really assume that $V$ is a countable, transitive model of ZFC. In other words $V$ is a countable set lying in some larger universe $W$, $V$ is closed downwards under $\in$, and the structure $(V,\in)$ satisfies all of the axioms of set theory.
 
 The mild assumption that there is such a $V$ turns out to be very powerful. First of all, if $V$ is countable then given a partial order $\PP\in V$ we can easily find a filter $G\subset\PP$ that meets all the dense subsets of $\PP$ that actually lie in $V$. After all there are just countably many sets in $V$ and therefore just countably many dense subsets of $\mathbb P$ in $V$. Hence we can use the argument of Proposition~\ref{prop:ma-aleph0} to diagonalize and obtain a $V$-generic filter $G$.
 
@@ -1743,7 +1743,7 @@ Second of all, if $V$ is transitive then we can use the machinery of absolutenes
 
 So just how mild is the assumption that there is a countable transitive model of ZFC? Unfortunatley it is not a totally nontrivial one. The countability isn't the problem; recall that by the L\"owenheim--Skolem theorem if there is an infinite model of a theory $T$ then there is a countable one. Rather, the problem is assuming there is a model of ZFC at all. Indeed this is equivalent to assuming that ZFC is \emph{consistent}, that is, ZFC does not entail any contradictions. But we know from G\"odel's incompleteness theorem that it is not possible to establish the consistency of ZFC using ZFC alone.
 
-It is possible to work around this technicality by supposing only that $V$ satisfies a large but finite subsystem of ZFC. By the reflection theorem, it is possible to obtain transitive set models of such a subsystem, and it is not difficult to use such a model to get a countable transitive one. However, for simplicity we will simply assume for the rest of this section that $V$ is a countable, transitive model of all of ZFC.
+It is possible to work around this technicality by supposing only that $V$ satisfies a large but finite subsystem of ZFC. By the reflection theorem, one may obtain transitive set models of such a subsystem, and it is not difficult to use such a model to get a countable transitive one. However, for simplicity we will simply assume for the rest of this section that $V$ is a countable, transitive model of all of ZFC.
 
 % generic filter existenc theorem??
 
