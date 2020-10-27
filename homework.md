@@ -19,7 +19,7 @@ header-includes: |
 ## Week 9 (Due Tuesday, October 27)
 
 1. (Jech 14.5) Show that a filter $G\subset\mathbb P$ meets every dense set of $\mathbb P$ (in $V$) if and only if $G$ meets every maximal antichain of $\mathbb P$ (in $V$).
-2. (15.1) Suppose that $\mathcal F$ is an \emph{almost disjoint} family of infinite subsets of $\omega$: for all $A,A'\in\mathcal F$ we have that $A\cap A'$ is finite. Show that if $\abs{\mathcal F}<\mathfrak c$ then there exists a single infinite set $B$ such that $A\cap B$ is finite for all $A\in\mathcal F$. [Hint: consider the forcing $\mathbb P$ consisting of pairs $(s,F)$ where $s$ is a finite subset of $\omega$, $F$ is a finite subset of $\mathcal F$, and $(s',F')\leq(s,F)$ iff $s'\supset s$, $F'\supset F$, and whenever $A\in F$ we have $A\cap s'\subset s$.]
+2. (15.1) Assume MA. Let $\mathcal F$ be an \emph{almost disjoint} family of infinite subsets of $\omega$: for all $A,A'\in\mathcal F$ we have that $A\cap A'$ is finite. Show that if $\abs{\mathcal F}<\mathfrak c$ then there exists a single infinite set $B$ such that $A\cap B$ is finite for all $A\in\mathcal F$. [Hint: consider the forcing $\mathbb P$ consisting of pairs $(s,F)$ where $s$ is a finite subset of $\omega$, $F$ is a finite subset of $\mathcal F$, and $(s',F')\leq(s,F)$ iff $s'\supset s$, $F'\supset F$, and whenever $A\in F$ we have $A\cap s'\subset s$.]
 
 ## Week 8 (Due Tuesday, October 20)
 
