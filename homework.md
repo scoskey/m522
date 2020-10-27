@@ -9,6 +9,13 @@ header-includes: |
 
 [Submit with gradescope](https://www.gradescope.com/courses/170391)
 
+## Week 10 (Due Thursday, November 5)
+
+1. (16.1) In many cases it is more convenient to use $g=\bigcup G$ instead of $G$ itself. Write down a name $\gamma$ such that $\gamma_G=g$ whenever $G$ is a filter and $g=\bigcup G$.
+2. (Kunen IV.2.8) Let $\tau=\set{(\emptyset,p),(\set{(\emptyset,q)},r)}$. There are eight possibilities for whether $p,q,r$ are $\in G$ or $\notin G$. Compute $\tau\_G$ in all eight cases.
+3. (Kunen IV.2.16) Given $a\in V[G]$ we showed how to produce a name for $b\in V[G]$ such that $\bigcup a\subset b$. Show how to produce a name for $b\in V[G]$ such that $\bigcup a=b$. Hint: Let $\tau$ be a name for $a$ and define the name $\pi=\set{(\theta,p):(\exists(\sigma,q)\in\tau)(\exists r)\;(\theta,r)\in\sigma\wedge p\leq r\wedge p\leq q}$.
+4. (Kunen IV.2.28) Give an example of $\mathbb P$, a sentence $\psi$ of the forcing language, and distinct generic filters $G,H$ such that $V[G]=V[H]$ and $V[G]\models\psi$ and $V[H]\models\neg\psi$. Hint: Use a finite $\mathbb P$ so that $V[G]=V[H]=V$, and write a sentence about the canonical name $\Gamma$ for the generic filter.
+
 ## Week 9 (Due Tuesday, October 27)
 
 1. (Jech 14.5) Show that a filter $G\subset\mathbb P$ meets every dense set of $\mathbb P$ (in $V$) if and only if $G$ meets every maximal antichain of $\mathbb P$ (in $V$).
