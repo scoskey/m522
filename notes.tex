@@ -1722,13 +1722,14 @@ We are now prepared to prove Theorem~\ref{thm:ma-addn}.
 \end{proof}
 
 \begin{exerc}
-  Suppose that $\mathcal F$ is an \emph{almost disjoint} family of infinite subsets of $\omega$: for all $A,A'\in\mathcal F$ we have that $A\cap A'$ is finite. Show that if $|\mathcal F|<\mathfrak c$ then there exists a single infinite set $B$ such that $A\cap B$ is finite for all $A\in\mathcal F$. [Hint: consider the forcing $\PP$ consisting of pairs $(s,F)$ where $s$ is a finite subset of $\omega$, $F$ is a finite subset of $\mathcal F$, and $(s',F')\leq(s,F)$ iff $s'\supset s$, $F'\supset F$, and whenever $A\in F$ we have $A\cap s'\subset s$.]
+  Let $\mathcal F$ be an \emph{almost disjoint} family of infinite subsets of $\omega$: for all $A,A'\in\mathcal F$ we have that $A\cap A'$ is finite. Show that assuming MA, if $|\mathcal F|<\mathfrak c$ then there exists a single infinite set $B$ such that $A\cap B$ is finite for all $A\in\mathcal F$. [Hint: consider the forcing $\PP$ consisting of pairs $(s,F)$ where $s$ is a finite subset of $\omega$, $F$ is a finite subset of $\mathcal F$, and $(s',F')\leq(s,F)$ iff $s'\supset s$, $F'\supset F$, and whenever $A\in F$ we have $A\cap s'\subset s$.]
 \end{exerc}
 
-% blass for "solving" posets
-% jech, Sec16 for hechler
-% kunen, III.3 for amoeba
+\begin{notes}
+  The application of Hechler forcing may be found in Jech, Theorem 16.24. The application of amoeba forcing may be found in Kunen, Lemma III.3.28.
+\end{notes}
 
+% blass for "solving" posets
 
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -1828,7 +1829,7 @@ The most important fact about the forcing extension $V[G]$ is that if $V$ is a m
 \section{The forcing language and forcing theorems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We have been able to establish a number of facts about the forcing extension $V[G]$ using elementary manipulations of the definition of $\mathbb P$-name. For more complex axioms and properties of $V[G]$, we will need a way to decide whether a given sentence holds in $V[G]$. But just as the value $\tau_G$ of a name depends on the filter $G$, the truth value of a given sentence may depend on the filter $G$, just as the set value $\tau_G$ of a name depends on $G$.
+We have been able to establish a number of facts about the forcing extension $V[G]$ using elementary manipulations of the definition of $\mathbb P$-name. For more complex axioms and properties of $V[G]$, we will need a way to decide whether a given sentence holds in $V[G]$. But just as the value $\tau_G$ of a name depends on the filter $G$, the truth value of a given sentence may depend on the filter $G$.
 
 For example to prove the comprehension axiom, we need to build a name for the set $\set{x\in a\mid\phi(x)}$. But from within $V$, it is not immediately clear how to tell for which elements $x$ the property $\phi(x)$ will be true in $V[G]$. We will need the following.
 
@@ -1836,7 +1837,7 @@ For example to prove the comprehension axiom, we need to build a name for the se
   Let $\PP$ be a partial order.
   \begin{itemize}
   \item The \emph{forcing language} for $\PP$ consists of the usual logical symbols, $\in$, and the $\PP$-names as constant symbols.
-  \item If $\phi$ is a sentence of the forcing language for $\PP$, we say $V[G]$ \emph{satisfies} $\phi$ if, after replaceing the names $\tau$ in $\phi$ replaced by their values $\tau_G$, it is true in $V[G]$.
+  \item If $\phi$ is a sentence of the forcing language for $\PP$, we say $V[G]$ \emph{satisfies} $\phi$ if, after replacing the names $\tau$ in $\phi$ replaced by their values $\tau_G$, $\phi$ is true in $V[G]$.
   \item If $p\in\PP$ and $\phi$ is a sentence of the forcing language for $\PP$, then we say $p$ \emph{forces} $\phi$, written $p\forces\phi$, if $p\in G$ implies $V[G]$ satisfies $\phi$.
   \end{itemize}
 \end{definition}
@@ -1844,27 +1845,27 @@ For example to prove the comprehension axiom, we need to build a name for the se
 \begin{example}
   Anything that we know for sure about $V[G]$ will be forced by the element $\mathbb 1$. So for instance since we have proved that $V[G]$ satisfies the axiom of pairing, we can say $\mathbb 1\forces$ ``the axiom of pairing''.
 
-  For a less trivial example, if $\mathbb P=\omega^{<\omega}$ we have already seen that adding a generic filter $G\subset\mathbb P$ adds a new element of Baire space $g=\bigcup G$. Moreover a simple dense set argument shows that $g$ will be surjective onto $\omega$. Thus we can say $\mathbb 1\forces$ ``$\bigcup\Gamma$ is a surjective function from $\check\omega\to\check\omega$.'' (Recall that we cannot use the symbol $G$, so we instead use $\Gamma$, which is the canonical name for $G$.)
+  For a less trivial example, if $\mathbb P=\omega^{<\omega}$ we have already seen that adding a generic filter $G\subset\mathbb P$ adds a new element of Baire space $g=\bigcup G$. Moreover an easy argument using dense sets shows that $g$ will be surjective onto $\omega$. Thus we can say $\mathbb 1\forces$ ``$\bigcup\Gamma$ is a surjective function from $\check\omega\to\check\omega$.'' (Recall that we cannot use the symbol $G$, so we instead use $\Gamma$, which is the canonical name for $G$.)
 
   On the other hand, different generic filters $G$ will yield different specific values for $g(17)$. Thus $\mathbb 1$ does not force any interesting properties of $g(17)$, other than that it is some natural number. But suppose that $s\in\mathbb P$ is a finite sequence with $s(17)=230$. Then if $G$ is a generic filter, then $s\in G$ implies $g(17)=230$. In other words we have $s\forces$ ``$(\bigcup\Gamma)(\check{17})=\check{230}$''. (From now on, we will often neglect the checkmarks on simple things like natural numbers.)
 \end{example}
 
-The following three results are the fundamental tools used in the development of the theory of forcing. Essentially all further facts about forcing will be derived from these properties of the forcing machinery.
+The following three results are the foundation of the rest of the theory of forcing. Essentially all further facts about forcing will be derived from these properties of the forcing machinery.
 
 \begin{theorem}[The forcing theorems]\
-\label{thm:forcing}
-\begin{enumerate}
-\item \textup{Definability theorem}: The relation $\forces$ is definable in $V$.
-\item \textup{Forcing theorem}: If $\phi$ is a sentence of the forcing language $V[G]$ satisfies $\phi$, then there exists $p\in G$ such that $p\forces\phi$.
-\item If $V$ is a model of ZFC then $V[G]$ is a model of ZFC.
-\end{enumerate}
+  \label{thm:forcing}
+  \begin{enumerate}
+    \item \textup{Definability theorem}: The relation $\forces$ is definable in $V$.
+    \item \textup{Forcing theorem}: If $\phi$ is a sentence of the forcing language and $V[G]$ satisfies $\phi$, then there exists $p\in G$ such that $p\forces\phi$.
+    \item If $V$ is a model of ZFC then $V[G]$ is a model of ZFC.
+  \end{enumerate}
 \end{theorem}
 
 \begin{remark}
   The exact sense in which $\forces$ is ``definable'' is somewhat technical. Specifically, we mean that for each formula $\phi(x_1,\ldots,x_n)$ in the language of set theory, the relation on tuples $(p,\tau_1,\ldots,\tau_n)$ defined by $p\forces\phi(\tau_1,\ldots,\tau_n)$ is definable.
 \end{remark}
 
-Let us first see the power of forcing theorems (a) and (b) to establish forcing theorem (c). Recall that the \emph{comprehension axiom} states that if $\phi(x,y)$ is a formula, then for all sets $a,b$ we have that $\set{x\in a\mid\phi(x,b)}$ is a set.
+Let us first use the power of forcing theorems~(a) and~(b) to show how to establish forcing theorem~(c). Recall that the \emph{comprehension axiom} states that if $\phi(x,y)$ is a formula, then for all sets $a,b$ we have that $\set{x\in a\mid\phi(x,b)}$ is a set.
 
 For the first time, we will use the \emph{dot notation} for names for elements $a\in V[G]$. That is, rather than letting $\sigma$ be a name such that $\sigma_G=a$, we will let $\dot a$ denote a name such that $\dot a_G=a$. This saves on the total number of distinct letters that we have to use. A good rule of thumb is this: whenever we write a specific name for an unknown set we use greek letters, and whenever we write an unknown name for a specific set we use dot notation.
 
@@ -1873,12 +1874,12 @@ For the first time, we will use the \emph{dot notation} for names for elements $
 \end{theorem}
 
 \begin{proof}
-  If $\phi(x,y)$ and $a,b\in V[G]$ are as above, we need to cook up a name for the set $a_0=\set{x\in a\mid\phi(x,b)}$. For this, let $\dot a,\dot b$ be names for $a,b$ respectively, and let
-  \[\rho=\set{(\pi,p)\mid\pi\in\dom\dot a,\;p\in\mathbb P,\;p\forces\pi\in\sigma,\text{ and }p\forces\phi(\pi,\dot b)}\text{.}
+  Let $\phi(x,y)$ be a formula with two free variables, and let $a,b\in V[G]$. We need to cook up a name for the set $a_0=\set{x\in a\mid\phi(x,b)}$. For this, let $\dot a,\dot b$ be names for $a,b$ respectively, and let
+  \[\rho=\set{(\pi,p)\mid\pi\in\dom\dot a,\;p\in\mathbb P,\;p\forces\pi\in\dot a,\text{ and }p\forces\phi(\pi,\dot b)}\text{.}
   \]
   Here we are using the definability theorem even to know that $\rho$ lies in $V$. To see that $\rho_G=a_0$, first suppose that $\pi_G\in\rho_G$. Then there is $p\in G$ such that $p\forces\pi\in\dot a$ and $p\forces\phi(\pi,\dot b)$. By definition of $\forces$, it follows that in $V[G]$ we have both $\pi_G\in\dot a_G$ and $\phi(\pi_G,\dot b_G)$. In other words, in $V[G]$ we have both $\pi_G\in a$ and $\phi(\pi_G,b)$, and therefore $\pi_G\in a_0$.
 
-  Conversely if $\pi_G\in a_0$ then $V[G]$ satisfies the sentences of the forcing language $\pi\in\dot a$ and $\phi(\pi,\dot b)$. By the forcing theorem there exist $q,r\in G$ such that $q\forces\pi\in\sigma$ and $r\forces\phi(\pi,\dot b)$. Letting $p\in G$ be such that $p\leq q,r$ we clearly have $(\pi,p)\in\rho$ and also $\pi_G\in\rho_G$.
+  Conversely if $\pi_G\in a_0$ then $V[G]$ satisfies the sentences of the forcing language $\pi\in\dot a$ and $\phi(\pi,\dot b)$. By the forcing theorem there exist $q,r\in G$ such that $q\forces\pi\in\dot a$ and $r\forces\phi(\pi,\dot b)$. Letting $p\in G$ be such that $p\leq q,r$ we clearly have $(\pi,p)\in\rho$ and also $\pi_G\in\rho_G$.
 \end{proof}
 
 We omit the proofs of the remaining axioms: replacement, power set, and choice. All three are also existence axioms, and they can once again be proved by inventing clever names. In each case, the names are defined using the forcing relation.
@@ -1891,7 +1892,7 @@ We conclude this section with several elementary but frequently used properties 
 \end{lemma}
 
 \begin{proof}
-  This is a straightforward consequence of the fact that if $p'\leq p$ and $p'\in G$, then since $G$ is closed upwards we have $p\in G$.
+  Assume $p'\in G$. Then since $G$ is upwards closed, $p\in G$ too. By definition of $p\forces\phi$, we have $V[G]$ satisfies $\phi$. We have thus shown that $p'\forces\phi$.
 \end{proof}
 
 \begin{lemma}
@@ -1921,7 +1922,7 @@ We conclude this section with several elementary but frequently used properties 
 \section{The proof of the forcing theorems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Recall that our definition of the $\forces$ relation cannot be carried out within $V$. In this section we give a definition of a variant of the $\forces$ relation, denoted $\forces_0$, which can be carried out entirely within $V$. The definition of $\forces_0$ is inspired by the properties of the true $\forces$ relation that follow from the forcing theorem.
+Recall that our definition of the $\forces$ relation cannot be carried out within $V$. In this section we give a definition of a variant of the $\forces$ relation, denoted $\forces_0$, which can be carried out entirely within $V$. The definition of $\forces_0$ is inspired by the lemmas from the previous section which describe the mechanics of the true $\forces$ relation.
 
 \begin{definition}
   \label{defn:forces-0}
@@ -1935,7 +1936,7 @@ Recall that our definition of the $\forces$ relation cannot be carried out withi
     p&\forces_0\phi\vee\psi&&\iff p\forces_0\phi\text{ or }p\forces_0\psi\\
     p&\forces_0\exists x\phi(x)&&\iff(\exists\tau)\;p\forces_0\phi(\tau)
   \end{alignat}
-  Clause (3) above is also used in the formation of compound formulas.
+  Clause (e3) above is also used in the formation of compound formulas.
 \end{definition}
 
 Several remarks are in order. First, one should take a moment to confirm the definition isn't circular. For example $\sigma\in\tau$ is defined in terms of equality, which after negating is defined in terms of $\notin$, which after negating is defined in terms of $\in$. The key thing to notice is that when we encounter $\in$ for the second time, we have names of \emph{lower complexity} than before. Since the class of names is well-founded, the recursion is well-defined.
@@ -1974,7 +1975,7 @@ The centerpiece of the proof is the following result, which shows that the analo
   Conversely suppose that $V[G]$ satisfies $\neg\phi$. Then $V[G]$ does not satisfy $\phi$, so by inductive hypothesis, for all $p\in G$ we have $p\not\forces_0\phi$. We now consider the set
 \[D=\set{p\in\PP\mid p\forces_0\phi\text{ or }p\forces_0\neg\phi}\text{.}
 \]
-Then $D$ is dense: given any $p$, if $p\forces_0\phi$ then $p$ itself lies in $D$. Otherwise $p\not\forces_0\phi$, so by Definition~\ref{defn:forces-0} there is $q\leq p$ such that $q\forces_0\neg\phi$. Thus in this case $q\in D$, and we have verified $D$ is dense. Finally, since $G$ is $V$-generic there exists $p\in G\cap D$. Since we know $p\not\forces_0\phi$, we must have instead that $p\forces_0\neg\phi$, as desired.
+Then $D$ is dense: given any $p$, if $p\forces_0\neg\phi$ then $p$ itself lies in $D$. Otherwise $p\not\forces_0\neg\phi$, so by the third clause of Definition~\ref{defn:forces-0}, there is $q\leq p$ such that $q\forces_0\phi$. Thus in this case $q\in D$, and we have verified $D$ is dense. Finally, since $G$ is $V$-generic there exists $p\in G\cap D$. Since we know $p\not\forces_0\phi$, we must have instead that $p\forces_0\neg\phi$, as desired.
 \end{proof}
 
 We observe that the key use of the genericity of $G$ is in the above very clever verification that the induction goes through the third clause of Definition~\ref{defn:forces-0}.
