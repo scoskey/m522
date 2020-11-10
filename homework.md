@@ -9,6 +9,12 @@ header-includes: |
 
 [Submit with gradescope](https://www.gradescope.com/courses/170391)
 
+## Week 12 (Due Thursday, November 19)
+
+1. (19.1) Let $\mathcal G\subset Fn(\kappa,\omega)$ be uncountable. Show that if $\mathcal F=\set{dom(f)\mid f\in\mathcal G}$ is countable, then $\mathcal G$ contains a pair of compatible elements.
+2. (Kunen III.2.7) If $\kappa$ is a singular cardinal, show that there is a family $\mathcal F$ of $2$-element subsets of $\kappa$ with no subfamily of size $\kappa$ that forms a Delta system. Hint: Let $\theta$ be the cofinality of $\kappa$. Elements of $\mathcal F$ will contain one element below $\theta$ and one element above $\theta$.
+3. (Kunen IV.3.18) Let $\mathbb P$ be a countable partial order and let $J$ be a set of size $\aleph\_1$ in $V$. Let $G$ be generic, and let $E$ be an uncountable subset of $J$ in $V[G]$. Prove that there is an uncountable subset $E'\subset E$ in $V$. Hint: $E'=\set{j\in J\mid p\Vdash \check j\in\dot E}$.
+
 ## Week 10 (Due Thursday, November 5)
 
 1. (16.1) In many cases it is more convenient to use $g=\bigcup G$ instead of $G$ itself. Write down a name $\gamma$ such that $\gamma_G=g$ whenever $G$ is a filter and $g=\bigcup G$.
