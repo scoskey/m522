@@ -11,7 +11,7 @@ header-includes: |
 
 ## Week 12 (Due Thursday, November 19)
 
-1. (19.1) Let $\mathcal G\subset Fn(\kappa,\omega)$ be uncountable. Show that if $\mathcal F=\set{dom(f)\mid f\in\mathcal G}$ is countable, then $\mathcal G$ contains a pair of compatible elements.
+1. (19.1) Let $\mathcal G\subset Fn(\kappa,\omega)$ be uncountable. Show that $\mathcal F=\set{dom(f)\mid f\in\mathcal G}$ is countable.
 2. (Kunen III.2.7) If $\kappa$ is a singular cardinal, show that there is a family $\mathcal F$ of $2$-element subsets of $\kappa$ with no subfamily of size $\kappa$ that forms a Delta system. Hint: Let $\theta$ be the cofinality of $\kappa$. Elements of $\mathcal F$ will contain one element below $\theta$ and one element above $\theta$.
 3. (Kunen IV.3.18) Let $\mathbb P$ be a countable partial order and let $J$ be a set of size $\aleph\_1$ in $V$. Let $G$ be generic, and let $E$ be an uncountable subset of $J$ in $V[G]$. Prove that there is an uncountable subset $E'\subset E$ in $V$. Hint: $E'=\set{j\in J\mid p\Vdash \check j\in\dot E}$.
 
