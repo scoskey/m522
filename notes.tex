@@ -2102,7 +2102,7 @@ A family $\mathcal F$ of sets is called a \emph{delta system} if there exists a 
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\ref{prop:cohen-ccc}]
-  It suffices to show that any uncountable $\mathcal G\subset\Fn(\kappa,\omega)$ contains two (or more) compatible elements. For this we first consider the family of domains $\mathcal F=\set{\dom(f)\mid f\in\mathcal G}$. By exercise~\ref{ex:domcountable}, we may assume that $\mathcal F$ is uncountable. Now by Lemma~\ref{lem:delta-system}, we can find an uncountable subset $\mathcal F_0\subset\mathcal F$ which forms a delta system with some root $A$.
+  It suffices to show that any uncountable $\mathcal G\subset\Fn(\kappa,\omega)$ contains two (or more) compatible elements. For this we first consider the family of domains $\mathcal F=\set{\dom(f)\mid f\in\mathcal G}$. By exercise~\ref{ex:domuncountable}, $\mathcal F$ is uncountable too. Now by Lemma~\ref{lem:delta-system}, we can find an uncountable subset $\mathcal F_0\subset\mathcal F$ which forms a delta system with some root $A$.
 
   Now, let $\mathcal G_0\subset\mathcal G$ be a subset of $\mathcal G$ such that for every $F\in\mathcal F_0$ there is a single $g\in\mathcal G_0$ such that $\dom(g)=F$. These functions may disagree on $A$, but they can never disagree elsewhere. Since there are just countably many possibilities for $g\restriction A$, we may use the pigeonhole principle to find $g_1,g_2\in\mathcal G_0$ such that $g_1\restriction A=g_2\restriction A$. In particular, $g_1,g_2$ are compatible.
 \end{proof}
@@ -2110,8 +2110,8 @@ A family $\mathcal F$ of sets is called a \emph{delta system} if there exists a 
 This concludes the proof that we can force to create models of ZFC in which the value of $\mathfrak c$ as large as we like, and in particular that $\neg$CH is consistent!
 
 \begin{exercise}
-  \label{ex:domcountable}
-  Let $\mathcal G\subset\Fn(\kappa,\omega)$ be uncountable. Show that if $\mathcal F=\set{\dom(f)\mid f\in\mathcal G}$ is countable, then $\mathcal G$ contains a pair of compatible elements.
+  \label{ex:domuncountable}
+  Let $\mathcal G\subset\Fn(\kappa,\omega)$ be uncountable. Show that $\mathcal F=\set{\dom(f)\mid f\in\mathcal G}$ is countable.
 \end{exercise}
 
 \begin{notes}
