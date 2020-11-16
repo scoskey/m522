@@ -2072,9 +2072,11 @@ The key reason for this is the following property of ccc partial orders, which a
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:ccc-preserve}]
-  Let $\kappa$ be a cardinal in $V$, and first assume that $\kappa$ is a successor cardinal $\aleph_{\alpha+1}$. Suppose towards a contradiction that in $V[G]$ there is a cardinal $\gamma<\kappa$ and an onto function $f\colon\gamma\to\kappa$. By the previous lemma, in $V$ there is a function $F\colon\gamma\to\mathcal P(\kappa)$ such that $F(a)$ is countable for all $a\in\gamma$ and $\bigcup F(a)=\kappa$. But now in $V$ we can use $F$ together with a bijection between $\gamma$ and $\gamma\times\omega$ to obtain an onto function $F'\colon\gamma\to\kappa$, contradicting that $\kappa$ is a cardinal in $V$.
-
-  Finally if $\kappa$ is a limit cardinal $\aleph_\lambda$, then $\kappa$ is the limit of the successor cardinals $<\kappa$. Since we have just shown that successor cardinals are preserved, $\kappa$ remains a limit of cardinals in $V[G]$. Since a limit of cardinals is a cardinal, $\kappa$ is a cardinal in $V[G]$.
+  If $\kappa=\aleph_0$ then $\kappa$ clearly remains $\aleph_0$ in $V[G]$ because the definition of $\aleph_0$ is absolute.
+  
+  Let $\kappa$ be an uncountable cardinal in $V$. Suppose towards a contradiction that in $V[G]$ there exists an ordinal $\gamma<\kappa$ and an onto function $f\colon\gamma\to\kappa$. By the previous lemma, in $V$ there is a function $F\colon\gamma\to\mathcal P(\kappa)$ such that $F(a)$ is countable for all $a\in\gamma$ and $\bigcup F(a)=\kappa$. But now in $V$ we can use $F$ together with a bijection between $\gamma$ and $\gamma\times\omega$ to obtain an onto function $F'\colon\gamma\to\kappa$, contradicting that $\kappa$ is a cardinal in $V$.
+  % 
+  % Finally if $\kappa$ is a limit cardinal $\aleph_\lambda$, then $\kappa$ is the limit of the successor cardinals $<\kappa$. Since we have just shown that successor cardinals are preserved, $\kappa$ remains a limit of cardinals in $V[G]$. Since a limit of cardinals is a cardinal, $\kappa$ is a cardinal in $V[G]$.
 \end{proof}
 
 \begin{remark}
