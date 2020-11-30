@@ -9,6 +9,13 @@ header-includes: |
 
 [Submit with gradescope](https://www.gradescope.com/courses/170391)
 
+## Weeks 13-14 (Due Thursday, December 10)
+
+1. (Kunen IV.7.10, part 1) Let $\aleph\_0\leq\kappa\lt\lambda$ and let $\mathbb P=Fn(\kappa,\lambda)$. Show that $\lambda$ is countable in $V[G]$, and all cardinals of $V$ above $\lambda$ remain cardinals in $V[G]$.
+2. (Kunen IV.7.10, part 2) With $\mathbb P$ as above, show that if $V$ satisfies the GCH then $V[G]$ satisfies the GCH.
+3. (Kunen IV.4.11, modified) Show that Hechler forcing is $\sigma$-centered. Show that every $\sigma$-centered partial order is ccc. (A subset $S\subset\mathbb P$ is centered if for every finite sequence $s\_1,\ldots,s\_n\in S$ there is $s\in S$ such that $s\leq s\_i$ for all $i$. A set is $\sigma$-centered if it is the union of countably many centered sets.)
+4. Show that random forcing, together with $[\emptyset]$, forms a complete Boolean algebra. (A Boolean algebra $B$ is complete if every subset $X\subset B$ has a least upper bound.)
+
 ## Week 12 (Due Thursday, November 19)
 
 1. (19.1) Let $\mathcal G\subset Fn(\kappa,\omega)$ be uncountable. Show that $\mathcal F=\set{dom(f)\mid f\in\mathcal G}$ is uncountable.
