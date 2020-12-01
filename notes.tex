@@ -2305,8 +2305,10 @@ In the previous section we began to study the effect of Cohen forcing on the val
 
 \begin{theorem}
   \label{thm:cohen-cichon}
-  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal with $\kappa^{\aleph_0}=\kappa$. Then forcing with $\Fn(\kappa,\omega)$ results in all cardinals in the left half of Cicho\'n's diagram equal to $\aleph_1$, and all cardinals in the right half of Cicho\'n's diagram equal to $\mathfrak c=\kappa$ (see Figure~\ref{fig:cichon-cohen}).
+  Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal with $\kappa^{\aleph_0}=\kappa$. Then forcing with $\Fn(\kappa,2)$ results in all cardinals in the left half of Cicho\'n's diagram equal to $\aleph_1$, and all cardinals in the right half of Cicho\'n's diagram equal to $\mathfrak c=\kappa$ (see Figure~\ref{fig:cichon-cohen}).
 \end{theorem}
+
+% Remark about switching from omega to 2
 
 \begin{figure}[h]
   \begin{tikzpicture}[every node/.style={minimum size=20pt},->]
@@ -2327,23 +2329,23 @@ In the previous section we began to study the effect of Cohen forcing on the val
 To prove the theorem we need our combinatorial characterization of meager sets using difference sets. Recall that if $P$ is an interval partition of $\omega$, $x\in\omega^\omega$, and $\Diff_P(x)$ denotes the set of all $y$ which differ from $x$ on all but finitely many intervals of $P$:
 \[\Diff_P(x)=\set{y\in2^\omega\mid (\exists N)(\forall n\geq N)\;y\restriction I_n\neq x\restriction I_n}
 \]
-Proposition~\ref{prop:meager-diff} states that a subset $A\subset\omega^\omega$ is meager if and only if $A$ is contained in some set of the form $\Diff_P(x)$.
-
-The key to the proof of the main theorem is the following lemma, which can be thought of as the analog of Lemma~\ref{lem:cohen-dominating}, where the $\leq^*$ relation is replaced by the ``different'' relation.
+Proposition~\ref{prop:meager-diff} stated that a subset $A\subset\omega^\omega$ is meager if and only if $A$ is contained in some set of the form $\Diff_P(x)$. The following is the key to the proof of the main theorem.
 
 \begin{lemma}
   \label{lem:cohen-meager}
-  Let $\PP=\Fn(\omega,\omega)$, and let $G$ be a $V$-generic filter. Then we have:
+  Let $\PP=\Fn(\omega,2)$, and let $G$ be a $V$-generic filter. Then we have:
   \begin{itemize}
-  \item If $g=\bigcup G$, then $g$ does not lie in any set of the form $\Diff_P(x)$ where $P,x\in V$.
-  \item If $Q,y\in V[G]$, then not every element of $\omega^\omega\cap V$ lies in $\Diff_Q(y)$.
+    \item If $g=\bigcup G$, then $g$ does not lie in any set of the form $\Diff_P(x)$ where $P,x\in V$.
+    \item If $Q,y\in V[G]$, then not every element of $\omega^\omega\cap V$ lies in $\Diff_Q(y)$.
   \end{itemize}
 \end{lemma}
 
 The first part of the lemma says that the generic $g$ does not lie in in any meager set coded in $V$, and the second part says that the Baire space of the ground model remains nonmeager after the forcing.
 
 \begin{proof}
-  The proofs of the two statements can be viewed as slight improvements to the arguments of Lemma~\ref{lem:cohen-dominating}. For the first statement, let $P=(I_n)$ be an interval partition and $x\in\omega^\omega$, with $P,x\in V$. For each $N\in\omega$ let
+  The proofs of the two statements can be viewed as improvements on the two parts of Lemma~\ref{lem:cohen-dominating}, where the $\leq^*$ relation is replaced by the ``different'' relation.
+  
+  For the first statement, let $P=(I_n)$ be an interval partition and $x\in\omega^\omega$, with $P,x\in V$. For each $N\in\omega$ let
   \[D_N=\set{s\in\PP\mid(\exists n\geq N)\;s\restriction I_n=x\restriction I_n}\text{.}
   \]
   Then it is easy to see that $D_N$ is dense: given $s\in\PP$ one can choose $n$ large enough so that $I_n\cap\dom(s)=\emptyset$, and then extend $s$ to $I_n$ as required. It follows that $g$ has the property that for all $N$ there exists $n\geq N$ such that $g\restriction I_n=x\restriction I_n$. This means precisely that $g$ does \emph{not} lie in $\Diff_P(x)$.
@@ -2367,15 +2369,15 @@ We are now ready to complete the proof of Theorem~\ref{thm:cohen-cichon}. Referr
 \begin{proof}
  Once again, the proofs of these two statements are similar to the arguments of Theorem~\ref{thm:cohen-bd}.
 
-  We first show that $\cov(\Meager)=\kappa$. So suppose, towards a contradiction, that $\cov(\Meager)<\kappa$. That is, in $V[G]$ there exists a family $\mathcal F$ of meager subsets of $\omega^\omega$ such that $|\mathcal F|<\kappa$ and $\bigcup F=\omega^\omega$.  Note that we can suppose without loss of generality that every element of $\mathcal F$ is of the form $\Diff_P(x)$.
+  We first show that $\cov(\Meager)=\kappa$. So suppose, towards a contradiction, that $\cov(\Meager)<\kappa$. That is, in $V[G]$ there exists a family $\mathcal F$ of meager subsets of $\omega^\omega$ such that $|\mathcal F|=\lambda<\kappa$ and $\bigcup F=\omega^\omega$.  Note that we can suppose without loss of generality that every element of $\mathcal F$ is of the form $\Diff_P(x)$.
 
-  We again claim that there is some $I\subset\kappa$ such that $|I|<\kappa$ and $\mathcal F$ is added by the forcing $\Fn(I,\omega)$. To see this, observe that an interval partition can be coded by its sequence of endpoints, and hence $\mathcal F$ can be coded as a subset of $\lambda\times\omega^4$. Thus we can use a nice name argument as in the proof of Theorem~\ref{thm:cohen-bd} to find $I$ as required.
+  We again claim that there is some $I\subset\kappa$ such that $|I|<\kappa$ and $\mathcal F$ is added by the forcing $\Fn(I,2)$. To see this, observe that an interval partition can be coded by its sequence of endpoints, and hence $\mathcal F$ can be coded as a subset of $\lambda\times\omega^4$. Thus we can use a nice name argument as in the proof of Theorem~\ref{thm:cohen-bd} to find $I$ as required.
 
-  Now let $\PP_1=\Fn(I,\omega)$, $G_1=G\cap\PP_1$, $\PP_2=\Fn(\kappa\smallsetminus I,\omega)$, and $G_2=G\cap\PP_2$. Then the covering family $\mathcal F$ lies in $V[G_1]$. But now by Lemma~\ref{lem:cohen-meager}, $g_2=\bigcup G_2$ does not lie in any set of the form $\Diff_P(x)$ of $V[G_1]$, a contradiction.
+  Now let $\PP_1=\Fn(I,2)$, $G_1=G\cap\PP_1$, $\PP_2=\Fn(\kappa\smallsetminus I,2)$, and $G_2=G\cap\PP_2$. Then the covering family $\mathcal F$ lies in $V[G_1]$. But now by Lemma~\ref{lem:cohen-meager}, $g_2=\bigcup G_2$ does not lie in any set of the form $\Diff_P(x)$ of $V[G_1]$, a contradiction.
 
   To show that $\non(\Meager)=\aleph_1$, it suffices to show that $\omega^\omega\cap V$ itself remains nonmeager in $V[G]$. So suppose to the contrary that $\omega^\omega\cap V$ is meager in $V[G]$. Then there exist some $Q,y\in V[G]$ such that $\omega^\omega\cap V\subset\Diff_Q(y)$.
 
-  Using a nice name argument, we can as usual suppose that the countable objects $Q$ and $y$ are added by a countable fragment of the forcing $\PP_1=\Fn(I,\omega)$. But now $\omega^\omega\cap V$ is becomes meager after forcing with $\PP_1$, contradicting Lemma~\ref{lem:cohen-meager}.
+  Using a nice name argument, we can as usual suppose that the countable objects $Q$ and $y$ are added by a countable fragment of the forcing $\PP_1=\Fn(I,2)$. But now $\omega^\omega\cap V$ is becomes meager after forcing with $\PP_1$, contradicting Lemma~\ref{lem:cohen-meager}.
 \end{proof}
 
 \begin{notes}
@@ -2391,7 +2393,7 @@ We are now ready to complete the proof of Theorem~\ref{thm:cohen-cichon}. Referr
 The previous section provided one possible picture of Cicho\'n's diagram after forcing: the left half of the diagram is small, the right half large. It turns out that many other configurations can be achieved with more creative forcing partial orders. In this section we begin to explore the effect of random forcing which, as we will see, does for measure what Cohen forcing did for category.
 
 The random forcing partial order can be defined on any of the spaces $\R$, $2^\omega$, or $\omega^\omega$, but in order to generalize it later we will define it on Cantor space $2^\omega$. Recall that we use the ``coin-tossing'' measure on $2^\omega$, which is defined analogously to the Lebesgue measure of Equation~\eqref{eq:measure} but with the length $\ell$ replaced by the probability $m(V_s)=2^{-|s|}$. Thus we have
-\[m(A)=\inf\set{\sum2^{-|s_n|}\mid A\subset\bigcup V_{s_n}}
+\[m(A)=\inf\set{\sum2^{-|s_n|}\left|\; A\subset\bigcup V_{s_n}\right.}
 \]
 As usual, the function $m$ has the properties of a measure on a class of sets containing all Borel sets. The null ideal $\Null$ on $2^\omega$ consists of those $A$ for which $m(A)=0$.
 
