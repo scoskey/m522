@@ -2418,21 +2418,21 @@ Recall that a subset of $2^\omega$ is called $G_\delta$ if it is a countable int
 \end{lemma}
 
 \begin{proof}
-  First suppose that $A$ is open, that is, has the form $A=\bigcup_nV_{s_n}$, and assume that $A$ is conull. Then the set
+  Assume that $A$ is conull. We first treat the case that $A$ is open, so that there is a sequence of basic open sets $V_{s_n}$ such that $A=\bigcup_nV_{s_n}$. Consider the set
   \[D=\set{[B]\in\PP\mid (\exists n)\;B\subset V_{s_n}}
   \]
-  is dense: any nonnull $B$ has nonnull intersection with some $V_{s_n}$ and therefore $[B\cap V_{s_n}]$ is an element of $\PP$ which lies in $D$. Since $G$ is generic, there is some $n$ such that $[V_{s_n}]$ lies in $G$. By definition of $g$, it follows that $g\in V_{s_n}$ and therefore $g\in A$.
+  Then $D$ is dense: any nonnull $B$ has nonnull intersection with some $V_{s_n}$ and therefore $[B\cap V_{s_n}]$ is an element of $\PP$ which lies in $D$. Since $G$ is generic, there is some $n$ such that $[V_{s_n}]$ lies in $G$. By definition of $g$, it follows that $g\in V_{s_n}$ and therefore $g\in A^*$.
 
-  Now suppose that $A$ is $G_\delta$, so $A$ has the form $\bigcap_m\bigcup_nV_{s_{n,m}}$, and that $A$ is conull. Then each of the sets $A_m=\bigcup_nV_{s_{n,m}}$ is conull too. By the previous argument, $g$ lies in $A_m$ for all $m$. Thus $g\in A$, as desired.
+  Returning to the case that $A$ is $G_\delta$, there is a sequence $A_m$ of open sets such that $A=\bigcap_mA_m$. Then for all $m$, $A_m$ is conull, so the previous paragraph implies that $g\in A_m^*$. Thus $g\in A^*$, as desired.
 
-  Finally if $A$ is null then $A^c$ has the form $\bigcup_m\bigcap_nV_{s_{n,m}}$ and $A^c$ is conull. By a similar dense set argument, one of the sets $A_m=\bigcap_nV_{s_{n,m}}$ must satisfy $[A_m]\in G$. Thus for this $m$ we have that for all $n$, $[V_{s_{n,m}}]\in G$ and hence $g\in V_{s_{n,m}}$. Therefore we have that for some $m$, $g\in A_m$, in other words, $g\in A^c$.
+  Finally assume that $A$ is null. Then $A^c$ is a conull set of the form $\bigcup_m\bigcap_nV_{s_{n,m}}$. By a similar dense set argument, one of the sets $A_m=\bigcap_nV_{s_{n,m}}$ must satisfy $[A_m]\in G$. Thus for this $m$, we have that for all $n$, $[V_{s_{n,m}}]\in G$ and hence $g\in V_{s_{n,m}}$. This means precisely that $g\in\bigcup_m\bigcap_nV_{s_{n,m}}$, as interpreted in $V[G]$. Thus $g$ is in the complement of $A^*$.
 \end{proof}
 
-As we mentioned, this result can be stated for Borel sets $A$ as well; one simply uses induction to reach sets with more complex codes. Meanwhile it follows from Lemma~\ref{lem:random-conull} that the random real $g$ is \emph{new}. Indeed, if $y$ is any element of the ground model $V$, then $A=2^\omega\smallsetminus\{y\}$ is a conull $G_\delta$ set (in fact it is open). Thus $g$ lies in this set (interpreted in $V[G]$, and in particular $g\neq y$.
+As we mentioned, this result can be stated for Borel sets $A$ as well; one simply uses induction to reach sets with more complex codes. Meanwhile it follows from Lemma~\ref{lem:random-conull} that the random real $g$ is \emph{new}. Indeed, if $y$ is any element of the ground model $V$, consider the conull $G_\delta$ set $A=2^\omega\smallsetminus\{y\}$ (in fact it is open). Then $g$ lies in $A^*$, which is the $2^\omega\smallsetminus\{y\}$ of $V[G]$, and in particular $g\neq y$.
 
 Just as Cohen forcing $\Fn(\omega,\omega)$ has a $\kappa$-sized version $\Fn(\kappa,\omega)$, random forcing has a $\kappa$-length version $\Nonnull(2^\kappa)$. Like the $\kappa$-sized Cohen forcing, the $\kappa$-sized random forcing adds $\kappa$ many new elements to Cantor space and therefore pushes the value of the continuum up to $\kappa$.
 
-To make the definition of $\Nonnull(2^\kappa)$ precise, we recall that the \emph{product} topology on $2^\kappa$ has a basis consisting of the sets $V_s=\set{x\in2^\kappa\mid s\subset x}$, where $s$ is a function from a finite subset of $\kappa$ to $\{0,1\}$. The measure on $2^\kappa$ is again defined by assigning to each $V_s$ the measure $2^{-|s|}$ and extending it as before.
+To make the definition of $\Nonnull(2^\kappa)$ precise, we recall that the \emph{product} topology on $2^\kappa$ has a basis consisting of the sets $V_s=\set{x\in2^\kappa\mid s\subset x}$, where $s$ is a function from a finite subset of $\kappa$ to $\{0,1\}$. The coin-tossing measure on $2^\kappa$ is defined by assigning to each $V_s$ the measure $2^{-|s|}$ and extending it as before.
 
 \begin{theorem}
   Suppose that in $V$, CH is true and $\kappa$ is an uncountable cardinal such that $\kappa^{\aleph_0}=\kappa$. Let $\PP=\Nonnull(2^\kappa)$ and let $G$ be a $V$-generic filter. Then in $V[G]$, we have $\mathfrak c=\kappa$.
