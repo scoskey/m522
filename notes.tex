@@ -2441,13 +2441,13 @@ To make the definition of $\Nonnull(2^\kappa)$ precise, we recall that the \emph
 \begin{proof}
   We first claim that $\PP$ is ccc, and hence $\kappa$ remains a cardinal in $V[G]$. To see this, first note that two elements $[A],[B]$ of $\Nonnull(2^\kappa)$ are incompatible if and only if $A\cap B$ is null. Thus it suffices to show that if $\mathcal F$ is a family pairwise disjoint, nonnull subsets of $2^\kappa$, then $\mathcal F$ is countable. For this, since the full space $2^\kappa$ has measure $1$, for each $n$ there can be just finitely many elements of $\mathcal F$ of measure $\geq1/n$. It follows that there can be just countably many elements of $\mathcal F$ in total, and so $\PP$ is ccc.
 
-  Next, we claim that $\PP$ adds $\kappa$ many distinct elements to $2^\omega$. First, by the definition given above in the case of $\Nonnull(2^\omega)$, we can use $G$ to define a corresponding function $g\in2^\kappa$. We then define a family of $\kappa$ many elements of $2^\omega$ by letting $g_\alpha(n)=g(\alpha+n)$ for every limit ordinal $\alpha<\kappa$. Then the $g_\alpha$ are pairwise distinct because this happens with probability one. More percisely, for any distinct limit ordinals $\alpha,\beta<\kappa$ let
-  \[A_{\alpha,\beta}=\set{x\in2^\omega\mid(\forall n)\;x(\alpha+n)=x(\beta+n)}\text{.}
+  Next, we claim that $\PP$ adds $\kappa$ many distinct elements to $2^\omega$. First, by the definition given above in the case of $\Nonnull(2^\omega)$, we can use $G$ to define a corresponding function $g\in2^\kappa$. We then define a family of $\kappa$ many elements of $2^\omega$ by letting $g_\alpha(n)=g(\alpha+n)$ for every limit ordinal $\alpha<\kappa$. Then the $g_\alpha$ are pairwise distinct because this happens with probability one. More precisely, for any distinct limit ordinals $\alpha,\beta<\kappa$ let
+  \[A_{\alpha,\beta}=\set{x\in2^\kappa\mid(\forall n)\;x(\alpha+n)=x(\beta+n)}\text{.}
   \]
   Then $A_{\alpha,\beta}$ is $G_\delta$ and null. To see that it is null, note that $A_{\alpha,\beta}$ is the intersection of the independent events
-  \[A_{\alpha,\beta,n}=\set{x\in2^\omega\mid x(\alpha+n)=x(\beta+n)}\text{,}
+  \[A_{\alpha,\beta,n}=\set{x\in2^\kappa\mid x(\alpha+n)=x(\beta+n)}\text{,}
   \]
-  Since each of these events has probability $1/2$, we have $m(A_{\alpha,\beta})=\prod_n\frac12=0$ and so $A_{\alpha,\beta}$ is null. It now follows from Lemma~\ref{lem:random-conull} that $g$ lies in the complement of $A_{\alpha,\beta}$ (interpreted in $V[G]$) and therefore that $g_\alpha\neq g_\beta$.
+  Since each of these events has probability $1/2$, we have $m(A_{\alpha,\beta})=\prod_n\frac12=0$ and so $A_{\alpha,\beta}$ is null. It now follows from Lemma~\ref{lem:random-conull} (adapted to length $\kappa$) that $g$ lies in the complement of $A_{\alpha,\beta}$ (interpreted in $V[G]$) and therefore that $g_\alpha\neq g_\beta$.
 
   We can now conclude that in $V[G]$ we have $\mathfrak c\geq\kappa$. Finally by the nice name argument of Theorem~\ref{thm:ch-exact}, it is also easy to argue that $\mathfrak c\leq\kappa$.
 \end{proof}
