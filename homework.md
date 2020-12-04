@@ -13,7 +13,7 @@ header-includes: |
 
 1. (Kunen IV.7.10, part 1) Let $\aleph\_0\leq\kappa\lt\lambda$ and let $\mathbb P=Fn(\kappa,\lambda)$. Show that $\lambda$ is countable in $V[G]$, and all cardinals of $V$ above $\lambda$ remain cardinals in $V[G]$.
 2. (Kunen IV.7.10, part 2) With $\mathbb P$ as above, show that if $V$ satisfies the GCH then $V[G]$ satisfies the GCH.
-3. (21.1) Show that if $\mathbb P=\Fn(\omega,\omega)$ and $G$ is $V$-generic, then $g=\bigcup G$ is not dominated by any element of the Baire space of $V$.
+3. (21.1) Show that if $\mathbb P=Fn(\omega,\omega)$ and $G$ is $V$-generic, then $g=\bigcup G$ is not dominated by any element of the Baire space of $V$.
 4. (23.1) Show that random forcing, together with $[\emptyset]$, forms a complete Boolean algebra. (A Boolean algebra $B$ is complete if every subset $X\subset B$ has a least upper bound.)
 
 ## Week 12 (Due Thursday, November 19)
