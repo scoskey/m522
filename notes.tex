@@ -2500,7 +2500,7 @@ We begin by addressing the effect of random forcing on the domination order. The
 \begin{proof}
   It suffices to define a function $f$ in $V$ with the property that for every $p\in\PP$ there exists $q\leq p$ such that $q\forces(\forall n)\;\dot h(n)\leq\check f(n)$. Indeed, if this is the case then the set of such $q$ is dense, and so there is such a $q$ in $G$. Then by the forcing theorem we will have that $V[G]$ satisfies $h\leq f$.
   
-  For each fixed $n\in\omega$, we define $f(n)$ as follows. For each $m$, let $p_m\leq p$ be such that $p_m\forces\dot h\in\omega^\omega\wedge\dot h(\check n)=\check m$. If there is no such $p_m$, simply let $p_m=[\emptyset]$. Then the collection of $p_m$ is pairwise incompatible, or in terms of representing sets, pairwise disjoint. Letting $p'=\bigcup p_m$, choose $f(n)$ to be large enough so that the measure of $q_n=\bigcup_{m\leq f(n)}p_m$ is at least $(1-2^{-n-2})m(p)$.
+  For each fixed $n\in\omega$, we define $f(n)$ as follows. For each $m$, let $p_m\leq p$ be such that $p_m\forces\dot h\in\omega^\omega\wedge\dot h(\check n)=\check m$. If there is no such $p_m$, simply let $p_m=[\emptyset]$. Then the collection of $p_m$ is pairwise incompatible, or in terms of representing sets, pairwise disjoint. Letting $p'=\bigcup p_m$, choose $f(n)$ to be large enough so that the measure of $q_n=\bigcup_{m\leq f(n)}p_m$ is at least $(1-2^{-n-2})m(p')$.
 
   Now clearly $q_n\forces\dot h(\check n)\leq\check f(\check n)$. Therefore, if $q=\bigcap q_n$ then $q\forces(\forall n)\;\dot h(n)\leq\check f(n)$ as desired. However, we must check that $q$ is not null, and this follows from our choice of the $f(n)$:
   \begin{align*}
@@ -2544,11 +2544,17 @@ We now continue the proof of Theorem~\ref{thm:random-cichon}. Referring to the k
 
 Before the proof, we need a factorization lemma to take the place of Lemma~\ref{lem:product}. The following result is similar, but with one important difference. Whereas in Lemma~\ref{lem:product} the two factors $\PP_1$ and $\PP_2$ were defined in $V$, this time the second factor $\PP_2$ must be defined in the extension $V[G_1]$ after the forcing with $\PP_1$.
 
+% \begin{lemma}
+%   Let $\PP=\Nonnull(2^\kappa)$, and let $G\subset\PP$ be $V$-generic. Let $I\subset\kappa$, $\PP_1=\Nonnull(2^I)$, and $G_1=\set{A\restriction2^I\mid A\in G}$. Now in $V[G_1]$ define $\PP_2=\Nonnull(2^{\kappa\smallsetminus I})$ and $G_2=\set{q\in\PP_2\mid(\exists p\in\PP_1)\;p\hat{\times} q\in G}$. Then $G_1$ is $V$-generic for $\PP_1$, $G_2$ is $V[G_1]$-generic for $\PP_2$, and $V[G]=V[G_1][G_2]$.
+% \end{lemma}
+%
+% [For the proof, and the definition of $p\hat{\times}q$, see Kunen V.4.30.]
+
 \begin{lemma}
-  Let $\PP=\Nonnull(2^\kappa)$, and let $G\subset\PP$ be $V$-generic. Let $I\subset\kappa$, $\PP_1=\Nonnull(2^I)$, and $G_1=\set{A\restriction2^I\mid A\in G}$. Now in $V[G_1]$ define $\PP_2=\Nonnull(2^{\kappa\smallsetminus I})$ and $G_2=\set{q\in\PP_2\mid(\exists p\in\PP_1)\;p\hat{\times} q\in G}$. Then $G_1$ is $V$-generic for $\PP_1$, $G_2$ is $V[G_1]$-generic for $\PP_2$, and $V[G]=V[G_1][G_2]$.
+  Let $\PP=\Nonnull(2^\kappa)$, and let $I\subset\kappa$. Then forcing with $\PP$ is equivalent to forcing with $\PP_1=\Nonnull(2^I)$ to produce a generic $G_1$, followed by forcing with $\PP_2=\Nonnull(2^{\kappa\smallsetminus I})$ as it is defined in $V[G_1]$.
 \end{lemma}
 
-[TBA: for the proof, and the definition of $p\hat{\times}q$, see Kunen V.4.30.]
+For the proof of the Lemma, we refer the reader to Kunen, section V.4 and in particular exercise V.4.30.
 
 \begin{proof}[Proof of Theorem~\ref{thm:random-null}]
   The proofs are analogous to the proofs of the two equalities in Theorem~\ref{thm:cohen-meager}. To show that $\cov(\Null)=\kappa$, assume to the contrary that $\cov(\Null)<\kappa$. Then there exists a cardinal $\lambda<\kappa$ and a family $\mathcal F$ of null sets such that $|\mathcal F|=\lambda$ and $\bigcup F=2^\omega$.
@@ -2559,9 +2565,9 @@ Before the proof, we need a factorization lemma to take the place of Lemma~\ref{
 
   To see that $\non(\Null)=\aleph_1$, one can argue that the ground model reals form a nonnull set in the forcing extension. Alternatively we may let $g_\alpha$ be the sequence of random reals added by the forcing, and show that the set $\mathcal F=\set{g_\alpha\mid\alpha<\omega_1}$ is nonnull in $V[G]$.
 
-  For this, suppose to the contrary that $\mathcal F$ is null. Then there is some $G_\delta$ null set $A$ such that $\mathcal F\subset A$. Once again using a nice name argument, we can find a countable set $I\subset\kappa$ such that if $\PP_1=\Nonnull(2^I)$ and $G_1$ is as above, then $c$ appears in $V[G_1]$.
+  For this, suppose to the contrary that $\mathcal F$ is null. Then there is some $G_\delta$ null set $A$ such that $\mathcal F\subset A$. Once again using a nice name argument, we can find a countable set $I\subset\kappa$ such that if $\PP_1=\Nonnull(2^I)$ and $G_1$ is as above, then $A$ appears in $V[G_1]$.
 
-  Finally, since $\mathcal F$ is uncountable we can find some element $g_\alpha\in\mathcal F$ which is not added by $\PP_1$, and instead added over $V[G_1]$ by the forcing $\PP_2$. Once again using Lemma~\ref{lem:random-conull}, since $A$ is a null $G_\delta$ set in $V[G_1]$ we have that $g_\alpha$ lies in the complement of $A^*$. In particular, $g_\alpha$ doesn't lie in $\mathcal F$, a contradiction.
+  Finally, since $\mathcal F$ is uncountable we can find some element $g_\alpha\in\mathcal F$ which is not added by $\PP_1$, and instead added over $V[G_1]$ by the forcing $\PP_2$. Once again using Lemma~\ref{lem:random-conull}, since $A$ is a null $G_\delta$ set in $V[G_1]$ we have that $g_\alpha$ lies in the complement of $A$ as it is interpreted in $V[G]$. In particular, $g_\alpha$ doesn't lie in $\mathcal F$, a contradiction.
 \end{proof}
 
 \begin{notes}
