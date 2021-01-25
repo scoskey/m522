@@ -1,8 +1,8 @@
 \documentclass[11pt,oneside]{amsbook}
 
-\title[Category, measure, and forcing]{Category, measure, and forcing\\Math 522 lecture notes}
+\title[Category, Measure, and Forcing]{Category, Measure, and Forcing\\\smaller Lecture Notes}
 \author{Samuel Coskey}
-\author{Based in part on independent study by Erik Holmes}
+\author{Based on notes by Erik Holmes}
 
 \usepackage{amsmath,amsthm}
 \usepackage[vscale=.8,vmarginratio=4:3]{geometry}
@@ -70,10 +70,25 @@
 
 \begin{document}
 
+\frontmatter
+
 \maketitle
 
 \tableofcontents
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Foreword}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+These notes began when the author Samuel Coskey supervised Erik Holmes in an independent studen course at Boise State University. The subject was cardinal characteristics of the continuum. In his work for the course, Erik wrote a set of notes on the subject. Afterwards, while teaching a graduate course in set theory, Samuel adapted and extended Erik's notes for use as lecture notes, resulting in the present document.
+
+We would like to acknowledge the support of Boise State University, and the Math 522 students who have provided feedback: Rhett Barton, Kyle Beserra, Kayla Krakoff, Joshua Meier, Stephanie Potter, Max Sullivan, and Rustyn Yazdanpour.
+
+
+\mainmatter
+\setcounter{page}{5}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Introduction}
@@ -2575,32 +2590,34 @@ For the proof of the Lemma, we refer the reader to Kunen, section V.4 and in par
 \end{notes}
 
 
-\newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Hechler forcing and Cicho\'n's diagram}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Hechler forcing results in the following.
-
-\begin{figure}[h]
-  \begin{tikzpicture}[every node/.style={minimum size=20pt},->]
-    \node (addn) [right=of a1] {$\aleph_1$};
-    \node (covn) [above=2 of addn] {$\aleph_1$} edge (addn);
-    \node (addm) [right=of addn] {$\mathfrak c$} edge (addn);
-    \node (b) [above=.7 of addm] {$\mathfrak c$} edge (addm);
-    \node (nonm) [above=2 of addm] {$\mathfrak c$} edge (covn) edge (b);
-    \node (covm) [right=of addm] {$\mathfrak c$} edge (addm);
-    \node (d) [above=.7 of covm] {$\mathfrak c$} edge (b) edge (covm);
-    \node (cofm) [above=2 of covm] {$\mathfrak c$} edge (nonm) edge (d);
-    \node (nonn) [right=of covm] {$\mathfrak c$} edge (covm);
-    \node (cofn) [above=2 of nonn]{$\mathfrak c$} edge (cofm) edge (nonn);
-  \end{tikzpicture}
-  \caption{Values of the cardinal characteristics in Cicho\'n's diagram after Hechler forcing. Refer to Figure~\ref{fig:cichon} for the template of cardinal characteristics.\label{fig:cichon-hechler}}
-\end{figure}
-
-%\backmatter
+% \newpage
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Hechler forcing and Cicho\'n's diagram}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Hechler forcing results in the following.
+%
+% \begin{figure}[h]
+%   \begin{tikzpicture}[every node/.style={minimum size=20pt},->]
+%     \node (addn) [right=of a1] {$\aleph_1$};
+%     \node (covn) [above=2 of addn] {$\aleph_1$} edge (addn);
+%     \node (addm) [right=of addn] {$\mathfrak c$} edge (addn);
+%     \node (b) [above=.7 of addm] {$\mathfrak c$} edge (addm);
+%     \node (nonm) [above=2 of addm] {$\mathfrak c$} edge (covn) edge (b);
+%     \node (covm) [right=of addm] {$\mathfrak c$} edge (addm);
+%     \node (d) [above=.7 of covm] {$\mathfrak c$} edge (b) edge (covm);
+%     \node (cofm) [above=2 of covm] {$\mathfrak c$} edge (nonm) edge (d);
+%     \node (nonn) [right=of covm] {$\mathfrak c$} edge (covm);
+%     \node (cofn) [above=2 of nonn]{$\mathfrak c$} edge (cofm) edge (nonn);
+%   \end{tikzpicture}
+%   \caption{Values of the cardinal characteristics in Cicho\'n's diagram after Hechler forcing. Refer to Figure~\ref{fig:cichon} for the template of cardinal characteristics.\label{fig:cichon-hechler}}
+% \end{figure}
 
 %\appendix
 
+\backmatter
+
+\bibliographystyle{amsalpha}
+\bibliography{}
 
 \end{document}
