@@ -136,7 +136,7 @@ Since we will be working with real numbers, we should begin with a definition of
 It is not difficult to prove that any two complete ordered fields are isomorphic to each other, which means it makes sense for us to define the real number system as the unique such object.
 
 \begin{definition}
-  The \emph{real number system} is the unique complete ordered field. 
+  The \emph{real number system} is the unique complete ordered field.
 \end{definition}
 
 Now this definition of the real number system is axiomatic---it tells you how real numbers behave, but it leaves it up to your imagination what a real number really is. In fact, we have some choice in this matter. One can construct real numbers using decimal strings, binary strings, or even Cauchy sequences. For our set-theoretic purposes, all that matters is that we give one construction of the real numbers that works.
@@ -210,7 +210,7 @@ This style argument appears in one form or another numerous times throughout ele
 \end{notes}
 
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Baire category theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -444,7 +444,7 @@ Corollary~\ref{cor:interval-nonnull} is immediate from condition (a) of Theorem~
 \end{exercise}
 
 \begin{notes}
-  Our presentation of Vitali's construction follows Folland, Section~1.1. Our proof of Theorem~\ref{thm:caratheodory}, part (a) follows Oxtoby, Chapter~1. For a proof of part (c), see Folland, Section~1.4. 
+  Our presentation of Vitali's construction follows Folland, Section~1.1. Our proof of Theorem~\ref{thm:caratheodory}, part (a) follows Oxtoby, Chapter~1. For a proof of part (c), see Folland, Section~1.4.
 \end{notes}
 
 
@@ -574,7 +574,7 @@ Although we still can't be fully rigorous about the meaning of the symbols $\ale
 
 
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ordinal numbers and cardinal numbers}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -702,7 +702,7 @@ The map is continuous: if $f(x)\in(a,b)$ then there exists $n$ such that if we r
 With some elementary number theory, it is possible to verify that this map is a bijection onto the set of irrational numbers, and even a homeomorphism.
 \end{proof}
 
-This result also implies that $2^\omega$ admits a complete metric, because the Cantor set is a closed and hence complete subspace of $\R$. In fact, any sequence space $A^\omega$ is completely metrizable. For an example of a complete metric, given $x,y\in A^\omega$ such that $x\neq y$, let $n$ be the least natural number such that $x(n)\neq y(n)$ and set $d(x,y)=1/n$. 
+This result also implies that $2^\omega$ admits a complete metric, because the Cantor set is a closed and hence complete subspace of $\R$. In fact, any sequence space $A^\omega$ is completely metrizable. For an example of a complete metric, given $x,y\in A^\omega$ such that $x\neq y$, let $n$ be the least natural number such that $x(n)\neq y(n)$ and set $d(x,y)=1/n$.
 
 \begin{proposition}
   The metric on $A^\omega$ defined above is complete.
@@ -808,7 +808,7 @@ Next we defnie the \emph{eventual domination} order on Baire space: $f\leq^*g$ i
 
 \begin{proof}
   Suppose $A$ is in $\mathcal K_\sigma$. Then there exist compact sets $A_i$ such that $A\subset\bigcup A_i$. By the previous lemma, each $A_i$ is $\leq$-bounded by some $h_i$. Let $h$ be a single function such that for all $n$ we have $h_i\leq^* h$ (for instance, let $h(n)=\max_{i\leq n}h_i(n)$). Then $A$ is $\leq^*$-bounded by $h$.
-  
+
   Conversely suppose that $A$ is $\leq^*$-bounded by $h$. Let $h_n$ enumerate all possible finite modifications of $h$. Then letting $B_n=\{f\in\omega^\omega\mid f\leq h_n\}$, the previous lemma implies $B_n$ are compact sets, and we have $A\subset\bigcup B_n$.
 \end{proof}
 
@@ -859,7 +859,7 @@ The following result records the relationship between these two cardinal values.
   \label{prop:bd}
   We have $\mathfrak{b}\leq\mathfrak{d}$.
 \end{proposition}
-	
+
 \begin{proof}
   It is enough to show that every dominating family is unbounded. Let us establish the contrapositive: if $\mathcal F$ is bounded, say by $h\in\omega^\omega$, then every $f\in\mathcal F$ satisfies $f\leq^*h$. Letting $h'(n)=h(n+1)$, it follows that every $f\in\mathcal F$ satisfies $h'\not\leq^*f$, and hence that $\mathcal F$ is not a dominating family.
 \end{proof}
@@ -908,7 +908,7 @@ An ideal $\mathcal I$ is called a \emph{$\sigma$-ideal} if it is additionally cl
 
 As was the case with $\Ksigma$, we can associate cardinal characteristics to any ideal. We will consider four key characteristics.
 
-\begin{definition} Let $\mathcal I$ be an ideal of subsets of a set $X$, such that $\mathcal I$ contains all singletons of $X$. 
+\begin{definition} Let $\mathcal I$ be an ideal of subsets of a set $X$, such that $\mathcal I$ contains all singletons of $X$.
   \begin{itemize}
   \item The \emph{additivity} of $\mathcal{I}$, $\add(\mathcal{I})$, is the smallest number of sets in $\mathcal{I}$ whose union is not in $\mathcal{I}$.
   \item The \emph{uniformity} of $\mathcal{I}$, $\non(\mathcal{I})$, is the smallest cardinality of any subset of $X$ that is not in $\mathcal{I}$.
@@ -1047,7 +1047,7 @@ Although this result shows that category and measure are very different in terms
 
 \begin{remark}
   In Cicho\'n's diagram, the $\Meager$ symbol can stand for the meager ideal on any one of the spaces $\R$, $2^\omega$, or $\omega^\omega$. Indeed, we have already seen in Proposition~\ref{prop:cantor-baire-homeo} that $\R$ and $\omega^\omega$ can be made homeomorphic after removing a countable subset of each. In Exercise~\ref{exerc:meager-bij}, we show that the same is true of $\R$ and $2^\omega$.
-  
+
   Similarly, the $\Null$ symbol can stand for the null ideal on either $\R$ or $2^\omega$; see Exercise~\ref{exerc:null-bij}. In fact, it is possible to define a natural measure on $\omega^\omega$, and then $\Null$ can stand for the null ideal on $\omega^\omega$ too.
   [ref] % blass
 \end{remark}
@@ -1173,11 +1173,11 @@ In any case, the definition of a morphism is custom-designed to give us the foll
 
 \begin{proof}
   For the first statement, we simply chase the diagram: since $\mathcal F$ is $R$-dominating, for any $d\in\dom(S)$ there exists $f\in\mathcal F$ such that $\phi(d)\mathrel{R}f$. Since $(\phi,\psi)$ is a morphism, it follows that $d\mathrel{S}\psi(f)$. This confirms that $\psi(\mathcal F)$ is an $S$-dominating family.
-  
+
   The second statement follows from the first, together with the fact that the image $\psi(\mathcal F)$ has the same or smaller cardinality than $\mathcal F$.
 
   For the third statement, just take the contrapositive of the morphism property, $\phi(a)\mathrel R b\implies a\mathrel S\psi(d)$, to arrive at the property required of a morphism from $\hat S$ to $\hat R$.
-  
+
   The fourth statement follows from the third in the same way that the second followed from the first.
 \end{proof}
 
@@ -1197,7 +1197,7 @@ It is possible to extract a morphism hiding in the proof of each of the inequali
   \[\begin{cases}\phi(x)=x-A^c\\\psi(x)=x+A\end{cases}
   \]
   To check that it is a morphism, $\phi(x)\not\ni y$ implies $x-y\in A$, which in turn implies that $x\in y+A=\psi(y)$, as required. Recall that the function $\psi(x)=x+A$ featured prominently in our original proof: for each $X\notin\Meager$ we formed the family of translates $\{x+A\mid x\in X\}$.
-  
+
   Once again, if we exchange the roles of $\phi$ and $\psi$ we obtain a morphism witnessing the inequality $\cov(\Meager)\leq\non(\Null)$. Recall that this proof was the same, but using translates of the comeager null set $A^c$. The minus sign in $x-A^c$ has no effect on the argument.
 \end{example}
 
@@ -1262,7 +1262,7 @@ The sets $\Diff_P(x)$ are useful for studying the meager ideal because we have t
   If $P=(I_n)$ and $Q=(J_m)$ are interval partitions, then we have $\Diff_P(x)\subset\Diff_Q(y)$ if and only if for all but finitely many $J_m$ there exists $I_n$ such that $I_n\subset J_m$ and $x\restriction I_n=y\restriction I_n$.
 \end{proposition}
 
-The proof is elementary (though slightly technical), and we leave it for Exercise~\ref{exerc:engulf}. Proposition~\ref{prop:engulf} provides characterization of $\cof(\Meager)$ as the dominating number of a simple combinatorial relation on pairs $(P,x)$. The cardinals $\mathfrak b$ and $\mathfrak d$ can be characterized by a similar combinatorial relation just on interval partitions. First, if $P=(I_n)$ and $Q=(J_m)$ are interval partitions, we write $P\prec Q$ if for all but finitely many $J_m$ there exists $I_m$ such that $I_n\subset J_m$. 
+The proof is elementary (though slightly technical), and we leave it for Exercise~\ref{exerc:engulf}. Proposition~\ref{prop:engulf} provides characterization of $\cof(\Meager)$ as the dominating number of a simple combinatorial relation on pairs $(P,x)$. The cardinals $\mathfrak b$ and $\mathfrak d$ can be characterized by a similar combinatorial relation just on interval partitions. First, if $P=(I_n)$ and $Q=(J_m)$ are interval partitions, we write $P\prec Q$ if for all but finitely many $J_m$ there exists $I_m$ such that $I_n\subset J_m$.
 
 \begin{proposition}
   There is a morphism from $\prec$ to $\leq^*$, and there is a morphism from $\leq^*$ to $\prec$. Hence $\mathfrak d$ is equal to the dominating number of the $\prec$ relation on interval partitions, and $\mathfrak b$ is the dominating number of the $\not\succ$ relation on interval partitions.
@@ -1539,7 +1539,7 @@ This example brings us back to our discussion of forcing CH to be false in a for
 
 
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Martin's axiom}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1577,7 +1577,7 @@ We sometimes consider the refinements of MA defined as follows. The axiom MA$_\k
   Let $\PP$ be any partial order and let $D_0,D_1,\ldots$ be a countable family of dense subsets of $\PP$. Fix $p_0\in D_0$, and inductively let $p_{n+1}\leq p_n$ be an element of $D_{n+1}$. Then the set $\{p_n\}$ is downwards directed, and hence closing it upwards generates a filter $G$ which meets each of the $D_i$.
 \end{proof}
 
-In fact, in this proof we did not even need $\PP$ to be ccc. The next result states that MA is also consistent with a larger continuum. For now we take this fact for granted and use it to derive several applications, as an introduction to the combinatorics of forcing. 
+In fact, in this proof we did not even need $\PP$ to be ccc. The next result states that MA is also consistent with a larger continuum. For now we take this fact for granted and use it to derive several applications, as an introduction to the combinatorics of forcing.
 
 \begin{theorem}
   There is a model $V$ of set theory which satisfies both MA and $\neg$CH.
@@ -1631,7 +1631,7 @@ We close this section with a result showing the effect of MA on properties of th
 %   Now suppose towards a contradiction that $\cov(\Meager)<\mathfrak c$, and fix a family $\mathcal F$ of pairs $(y,P)$ as above. We will apply MA to the partial order $\PP=2^{<\omega}$ to obtain a suitably generic filter $G$. Our goal will be to ensure that $G$ matches (that is, doesn't strongly differ from) all of the $(y,P)$ pairs, which will be a contradiction. To this end, consider the subsets
 %   \[D_{y,P,n}=\set{s\in2^{<\omega}\mid \text{there is $I\in P$ such that $I>n$ and $s\restriction I=y\restriction I$}}
 %   \]
-%   Then for any $y$, $P$, and $n$ the set $D_{y,P,n}$ is dense: given any $s$ we can find an interval $I$ of $P$ beyond both $n$ and $\dom(s)$, and extend $s$ to a sequence $t$ which agrees with $y$ on $I$. 
+%   Then for any $y$, $P$, and $n$ the set $D_{y,P,n}$ is dense: given any $s$ we can find an interval $I$ of $P$ beyond both $n$ and $\dom(s)$, and extend $s$ to a sequence $t$ which agrees with $y$ on $I$.
 
 %   Thus by MA, there exists a filter $G\subset\PP$ that meets the sets $D_{y,P,n}$ for all $(y,P)\in\mathcal F$, and we let $g=\bigcup G$ be the associated element of $2^\omega$. Given any $(y,P)\in\mathcal F$, since $G$ meets all dense sets $D_{y,P,n}$ it follows that $g$ does not strongly differ from $y$ on $P$. This contradicts our assumption about the family $\mathcal F$.
 % \end{proof}
@@ -1643,7 +1643,7 @@ We close this section with a result showing the effect of MA on properties of th
 
 
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Martin's axiom and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1747,7 +1747,7 @@ We are now prepared to prove Theorem~\ref{thm:ma-addn}.
 % blass for "solving" posets
 
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The machinery of forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1769,7 +1769,7 @@ The first problem we have to deal with when introducing forcing is that if one i
   If $\PP$ is a partial order, then a set $\tau$ is called a \emph{$\PP$-name} for an element of the forcing extension by $\mathbb P$ if $\tau$ consists of elements $(\sigma,p)$ where $\sigma$ is a \emph{$\PP$}-name and $p\in\PP$.
 \end{definition}
 
-The definition is very recursive in the sense that names are made up of other names. This reflects the fact that sets themselves are made up of other sets. To explain the definition briefly, we can think of an ordinary set $x$ as a well-founded tree with $x$ at the root, the elements of $x$ on the first level, the elements of elements of $x$ on the second level, and so on. A $\PP$-name is similar, except the nodes of the tree are also $\PP$-names, and each node is labeled with an element of $\PP$. 
+The definition is very recursive in the sense that names are made up of other names. This reflects the fact that sets themselves are made up of other sets. To explain the definition briefly, we can think of an ordinary set $x$ as a well-founded tree with $x$ at the root, the elements of $x$ on the first level, the elements of elements of $x$ on the second level, and so on. A $\PP$-name is similar, except the nodes of the tree are also $\PP$-names, and each node is labeled with an element of $\PP$.
 
 What are the labels there for? In a moment we will show how to evaluate names $\tau$ to yield an element of the extension $V[G]$. When $(\sigma,p)$ is an element of $\tau$, we will think of the label $p$ as the ``probability'' that $\sigma$ will be included as an element of $\tau$. If $p$ is high in the ordering on $\PP$ then $\sigma$ is more likely to be included; if it is low then $\sigma$ is less likely to be included. Specifically, we include just those $\sigma$ whose label $p$ lies in the generic filter $G$.
 
@@ -1840,7 +1840,7 @@ The most important fact about the forcing extension $V[G]$ is that if $V$ is a m
 
 
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The forcing language and forcing theorems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1933,7 +1933,7 @@ We conclude this section with several elementary but frequently used properties 
 
 
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The proof of the forcing theorems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2033,13 +2033,13 @@ Finally we can conclude that the forcing theorem holds for the true forcing rela
 \end{notes}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Forcing and cardinal characteristics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Cohen forcing and the continuum}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2088,7 +2088,7 @@ The key reason for this is the following property of ccc partial orders, which a
 
 \begin{proof}[Proof of Theorem~\ref{thm:ccc-preserve}]
   The statement is evident for countable cardinals, as their definitions are absolute. Let $\kappa$ be an uncountable cardinal in $V$. Suppose towards a contradiction that in $V[G]$ there exists an ordinal $\gamma<\kappa$ and an onto function $f\colon\gamma\to\kappa$. By the previous lemma, there exists a function $F\colon\gamma\to\mathcal P(\kappa)$ in $V$ with the properties that for all $a\in\gamma$ we have $F(a)$ is countable, and $\bigcup F(a)=\kappa$. Then working in $V$ we can use $F$ together with a bijection between $\gamma$ and $\gamma\times\omega$ to obtain an onto function $F'\colon\gamma\to\kappa$, contradicting that $\kappa$ is a cardinal in $V$.
-  % 
+  %
   % Finally if $\kappa$ is a limit cardinal $\aleph_\lambda$, then $\kappa$ is the limit of the successor cardinals $<\kappa$. Since we have just shown that successor cardinals are preserved, $\kappa$ remains a limit of cardinals in $V[G]$. Since a limit of cardinals is a cardinal, $\kappa$ is a cardinal in $V[G]$.
 \end{proof}
 
@@ -2135,7 +2135,7 @@ This concludes the proof that we can force to create models of ZFC in which the 
 
 
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{More tricks with the continuum}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2215,7 +2215,7 @@ We now return to the argument of the previous section. Recall that we showed for
 \end{proof}
 
 When $\kappa$ satisfies the hypothesis of Theorem~\ref{thm:ch-exact}, that is, $\kappa^{\aleph_0}=\kappa$, we say that $\kappa$ has \emph{uncountable cofinality}. For example, any successor cardinal $\aleph_{\alpha+1}$ has uncountable cofinality. On the other hand $\aleph_\omega$ is a cardinal of countable cofinality and satisfies $(\aleph_\omega)^{\aleph_0}>\aleph_\omega$.
-  
+
 K\"onig's theorem states that $\mathfrak c$ must be a cardinal of uncountable cofinality. Thus Theorem~\ref{thm:ch-exact} implies that K\"onig's theorem is sharp in the sense that the possible values of $\mathfrak c$ are precisely the cardinals of uncountable cofinality.
 
 \begin{exercise}
@@ -2224,7 +2224,7 @@ K\"onig's theorem states that $\mathfrak c$ must be a cardinal of uncountable co
 
 
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Cohen forcing and the domination order}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2312,7 +2312,7 @@ We are now ready to state the effect of forcing with $\Fn(\kappa,\omega)$ on the
 \end{notes}
 
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Cohen forcing and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2359,7 +2359,7 @@ The first part of the lemma says that the generic $g$ does not lie in in any mea
 
 \begin{proof}
   The proofs of the two statements can be viewed as improvements on the two parts of Lemma~\ref{lem:cohen-dominating}, where the $\leq^*$ relation is replaced by the ``different'' relation.
-  
+
   For the first statement, let $P=(I_n)$ be an interval partition and $x\in\omega^\omega$, with $P,x\in V$. For each $N\in\omega$ let
   \[D_N=\set{s\in\PP\mid(\exists n\geq N)\;s\restriction I_n=x\restriction I_n}\text{.}
   \]
@@ -2401,7 +2401,7 @@ We are now ready to complete the proof of Theorem~\ref{thm:cohen-cichon}. Referr
 
 
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Random forcing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2423,7 +2423,7 @@ Like Cohen forcing, if $G$ is a $V$-generic filter for random forcing then there
 \]
 This is well-defined since the elements of $G$ are pairwise compatible.
 
-Just as the Cohen generic real lies in every comeager set coded in the ground model, this generic $g$ is ``random'' in the sense that it lies in every conull set coded in the ground model. Before showing this, we should say precisely what we mean by this coding. While it is possible to code arbitrary Borel sets, for simplicity we will state the result only for $G_\delta$ sets. 
+Just as the Cohen generic real lies in every comeager set coded in the ground model, this generic $g$ is ``random'' in the sense that it lies in every conull set coded in the ground model. Before showing this, we should say precisely what we mean by this coding. While it is possible to code arbitrary Borel sets, for simplicity we will state the result only for $G_\delta$ sets.
 
 Recall that a subset of $2^\omega$ is called $G_\delta$ if it is a countable intersection of open sets. Thus any $G_\delta$ set $A$ can be expressed as $\bigcap_m\bigcup_nV_{s_{n,m}}$, and we say that the sequence $\{s_{n,m}\}$ is a \emph{code} for $A$. If $V[G]$ is a forcing extension of $V$ and $A$ is a $G_\delta$ set of $V$ coded by $\{s_{n,m}\}$, then we let $A^*$ be the $G_\delta$ set in $V[G]$ with the same code.
 
@@ -2474,12 +2474,12 @@ To make the definition of $\Nonnull(2^\kappa)$ precise, we recall that the \emph
 \end{exercise}
 
 \begin{notes}
-  Primarily see Kunen, Section~IV.7. For more background on measure theory behind random forcing see Monk, Lecture notes on set theory, Chapter~27. For more about boolean algebras and forcing see Jech, Chapter~14. 
+  Primarily see Kunen, Section~IV.7. For more background on measure theory behind random forcing see Monk, Lecture notes on set theory, Chapter~27. For more about boolean algebras and forcing see Jech, Chapter~14.
 \end{notes}
 
 
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Random forcing and Cicho\'n's diagram}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2514,7 +2514,7 @@ We begin by addressing the effect of random forcing on the domination order. The
 
 \begin{proof}
   It suffices to define a function $f$ in $V$ with the property that for every $p\in\PP$ there exists $q\leq p$ such that $q\forces(\forall n)\;\dot h(n)\leq\check f(n)$. Indeed, if this is the case then the set of such $q$ is dense, and so there is such a $q$ in $G$. Then by the forcing theorem we will have that $V[G]$ satisfies $h\leq f$.
-  
+
   For each fixed $n\in\omega$, we define $f(n)$ as follows. For each $m$, let $p_m\leq p$ be such that $p_m\forces\dot h\in\omega^\omega\wedge\dot h(\check n)=\check m$. If there is no such $p_m$, simply let $p_m=[\emptyset]$. Then the collection of $p_m$ is pairwise incompatible, or in terms of representing sets, pairwise disjoint. Letting $p'=\bigcup p_m$, choose $f(n)$ to be large enough so that the measure of $q_n=\bigcup_{m\leq f(n)}p_m$ is at least $(1-2^{-n-2})m(p')$.
 
   Now clearly $q_n\forces\dot h(\check n)\leq\check f(\check n)$. Therefore, if $q=\bigcap q_n$ then $q\forces(\forall n)\;\dot h(n)\leq\check f(n)$ as desired. However, we must check that $q$ is not null, and this follows from our choice of the $f(n)$:
