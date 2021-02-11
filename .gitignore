@@ -8,3 +8,12 @@
 *.synctex.gz
 *.toc
 *~
+# tex4ht
+*.4ct
+*.4tc
+*.dvi
+*.idv
+*.lg
+*.tmp
+*.xref
+*.dlog
