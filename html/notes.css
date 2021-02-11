@@ -1,7 +1,6 @@
  
 /* start css.sty */
 .pplr7t-x-x-109{}
-.cmtt-10x-x-109{font-family: monospace,monospace;}
 .pplr7t-x-x-172{font-size:156%;}
 .pplb7t-x-x-172{font-size:156%;font-weight: bold;}
 .pplb7t-x-x-172{font-weight: bold;}
@@ -149,5 +148,6 @@ td.gather {text-align:center; }
 table.gather {width:100%;}
 div.gather-star {text-align:center;}
 .rotatebox{display: inline-block;}
+body { max-width: 80ch; margin: 0 auto;} 
 /* end css.sty */
 
