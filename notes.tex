@@ -388,12 +388,12 @@ The next result states that this rule for defining $m$ actually works for all se
   For condition (a), let $I$ be an interval. It is clear that $m(I)\leq\ell(I)$, since $I$ itself is an interval covering $I$. For the other direction, we will show that $I\subset\bigcup I_n$ implies $\sum\ell(I_n)\geq\ell(I)$. Then taking the infemum over all such coverings this allows us to conclude that $m(I)\geq\ell(I)$.
 
   Let us first handle the case when $I=[a,b]$ is closed and bounded, and all of the $I_n$ are open intervals $(a_n,b_n)$. Then since $I$ is compact, $I$ is covered by just finitely many of the $I_n$, without loss of generality we may assume they are indexed $I_0,\ldots,I_N$. Now after further renaming or removing intervals from the list, we may suppose that $I_0$ covers the left endpoint of $I$, each $I_{n+1}$ covers the right endpoint of $I_n$, and $I_N$ covers the right endpoint of $I$. We can now compute that
-\[\sum\ell(I_n)
-\geq\sum_0^N(b_n-a_n)
-\geq\sum_1^N(b_n-b_{n-1})-a
-\geq b-a
-= \ell(I)\text{.}
-\]
+  \[\sum\ell(I_n)
+  \geq\sum_0^N(b_n-a_n)
+  \geq\sum_1^N(b_n-b_{n-1})-a
+  \geq b-a
+  = \ell(I)\text{.}
+  \]
 
   If $I$ is not necessarily closed and the $I_n$ are not necessarily open, then we look instead at $I'=\cl(I)$ and $I_n'=(I_n)^\circ$. Then the $I_n'$ cover all but a countable subset of $I'$, so for any $\epsilon$ we can find additional open intervals $J_n$ with $\ell(J_n)\leq\epsilon/2^n$ covering these missing points. Now the previous argument shows that $\sum\ell(I_n)+\sum\ell(J_n)\geq\ell(I)$. Using the geometric series formula we obtain $\sum\ell(I_n)+\epsilon\geq\ell(I)$. Letting $\epsilon\to0$ we have the desired result.
 
@@ -695,14 +695,14 @@ The two most important examples of sequence spaces are the \emph{Cantor space} $
   We give the proof in the case of the Cantor space, and a brief hint in the case of the Baire space.
 
   The Cantor middle thirds set $C$ has a natural description in terms of ternary expansions. If $a\in[0,1]$ then $a$ lies in the Cantor set if and only if it has a ternary expansion that does not contain the digit $1$. Thus there is a simple bijection $2^\omega\to C$ given by replacing the $1$'s in $x$ with $2$'s:
-\[f(x)=0.(2x(0))(2x(1))(2x(2))\cdots
-\]
-The map is continuous: if $f(x)\in(a,b)$ then there exists $n$ such that if we round $f(x)$ down at its $n$th digit then it is still $>a$ and if we round it up at its $n$th digit then it is still $<b$. It follows that if $s=x\restriction n$, then we have $f(V_s)>a$. Finally recall that a continuous bijection between compact spaces is always a homeomorphism.
+  \[f(x)=0.(2x(0))(2x(1))(2x(2))\cdots
+  \]
+  The map is continuous: if $f(x)\in(a,b)$ then there exists $n$ such that if we round $f(x)$ down at its $n$th digit then it is still $>a$ and if we round it up at its $n$th digit then it is still $<b$. It follows that if $s=x\restriction n$, then we have $f(V_s)>a$. Finally recall that a continuous bijection between compact spaces is always a homeomorphism.
 
   For the Baire space, it is common to use the values of $x\in(\omega\smallsetminus\{0\})^\omega$ as the entries in a continued fraction:
-\[f(x)=x(0)+\cfrac{1}{x(1)+\cfrac{1}{x(2)+\cdots}}
-\]
-With some elementary number theory, it is possible to verify that this map is a bijection onto the set of irrational numbers, and even a homeomorphism.
+  \[f(x)=x(0)+\cfrac{1}{x(1)+\cfrac{1}{x(2)+\cdots}}
+  \]
+  With some elementary number theory, it is possible to verify that this map is a bijection onto the set of irrational numbers, and even a homeomorphism.
 \end{proof}
 
 This result also implies that $2^\omega$ admits a complete metric, because the Cantor set is a closed and hence complete subspace of $\R$. In fact, any sequence space $A^\omega$ is completely metrizable. For an example of a complete metric, given $x,y\in A^\omega$ such that $x\neq y$, let $n$ be the least natural number such that $x(n)\neq y(n)$ and set $d(x,y)=1/n$.
