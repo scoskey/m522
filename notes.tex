@@ -1,4 +1,4 @@
-\documentclass[11pt,oneside]{amsbook}
+\documentclass[11pt,oneside,a4paper]{amsbook}
 \ifdefined\HCode
   \def\pgfsysdriver{pgfsys-dvisvgm4ht.def}
 \fi
@@ -16,7 +16,7 @@
 \renewcommand{\labelenumi}{(\alph{enumi})}
 \renewcommand{\chaptername}{Part}
 \renewcommand{\thechapter}{\Roman{chapter}}
-\usepackage{remreset}
+%\usepackage{remreset}
 \makeatletter\@removefromreset{section}{chapter}\makeatother
 \usepackage{etoolbox}
 \makeatletter
@@ -91,7 +91,7 @@ We would like to acknowledge the support of Boise State University, and the Math
 
 
 \mainmatter
-\setcounter{page}{5}
+\setcounter{page}{4}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Introduction}
@@ -1586,12 +1586,12 @@ In fact, in this proof we did not even need $\PP$ to be ccc. The next result sta
   There is a model $V$ of set theory which satisfies both MA and $\neg$CH.
 \end{theorem}
 
-We say that a set of axioms is \emph{consistent}, or consistent with ZFC, if there is a model of ZFC which satisfying those axioms. Thus the above result can be rephrased: MA+$\neg$CH is consistent.
+We say that a set of axioms is \emph{consistent}, or consistent with ZFC, if there is a model of ZFC which satisfies those axioms. Thus the above result can be rephrased: MA+$\neg$CH is consistent.
 
 The axiom MA packages a great deal of forcing into one universe $V$. When MA is true, it is as if somebody has already performed forcing with all of the ccc partial orders. In fact later we will see that the consistency of MA can be established by repeatedly applying the forcing construction.
 
 \begin{proposition}
-  In the definition of MA, we cannot completely drop the condition that the family of dense sets $\mathcal F$ have size less than continuum.
+  In the definition of MA, we cannot completely drop the condition that the family of dense sets $\mathcal F$ has size less than continuum.
 \end{proposition}
 
 \begin{proof}
@@ -2618,9 +2618,9 @@ For the proof of the Lemma, we refer the reader to Kunen, section V.4 and in par
 
 %\appendix
 
-\backmatter
+% \backmatter
 
-\bibliographystyle{amsalpha}
-\bibliography{}
+% \bibliographystyle{amsalpha}
+% \bibliography{}
 
 \end{document}
